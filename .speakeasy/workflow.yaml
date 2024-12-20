@@ -20,6 +20,8 @@ targets:
                 username: polar
                 token: $packagist_token
         codeSamples:
+            labelOverride:
+                fixedValue: PHP (SDK)
             registry:
                 location: registry.speakeasyapi.dev/polar/polar/polar-api-php-code-samples
             blocking: false
