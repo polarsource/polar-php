@@ -27,17 +27,17 @@ class WebhookOrderCreatedPayload
 
     /**
      *
-     * @var WebhookOrderCreatedPayloadType $type
+     * @var string $type
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('type')]
-    #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\WebhookOrderCreatedPayloadType')]
-    public WebhookOrderCreatedPayloadType $type;
+    public string $type;
 
     /**
-     * @param  WebhookOrderCreatedPayloadType  $type
+     * @param  string  $type
      * @param  Order  $data
+     * @phpstan-pure
      */
-    public function __construct(Order $data, WebhookOrderCreatedPayloadType $type = WebhookOrderCreatedPayloadType::OrderCreated)
+    public function __construct(Order $data, string $type = 'order.created')
     {
         $this->data = $data;
         $this->type = $type;

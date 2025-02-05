@@ -21,6 +21,7 @@ class CustomFieldsGetRequest
 
     /**
      * @param  string  $id
+     * @phpstan-pure
      */
     public function __construct(string $id)
     {

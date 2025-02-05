@@ -13,16 +13,16 @@ class CustomerBenefitGrantLicenseKeysUpdate
 {
     /**
      *
-     * @var CustomerBenefitGrantLicenseKeysUpdateBenefitType $benefitType
+     * @var string $benefitType
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('benefit_type')]
-    #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\CustomerBenefitGrantLicenseKeysUpdateBenefitType')]
-    public CustomerBenefitGrantLicenseKeysUpdateBenefitType $benefitType;
+    public string $benefitType;
 
     /**
-     * @param  CustomerBenefitGrantLicenseKeysUpdateBenefitType  $benefitType
+     * @param  string  $benefitType
+     * @phpstan-pure
      */
-    public function __construct(CustomerBenefitGrantLicenseKeysUpdateBenefitType $benefitType = CustomerBenefitGrantLicenseKeysUpdateBenefitType::LicenseKeys)
+    public function __construct(string $benefitType = 'license_keys')
     {
         $this->benefitType = $benefitType;
     }

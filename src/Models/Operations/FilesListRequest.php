@@ -47,6 +47,7 @@ class FilesListRequest
      * @param  ?int  $limit
      * @param  ?string  $organizationId
      * @param  ?array<string>  $ids
+     * @phpstan-pure
      */
     public function __construct(?string $organizationId = null, ?array $ids = null, ?int $page = 1, ?int $limit = 10)
     {

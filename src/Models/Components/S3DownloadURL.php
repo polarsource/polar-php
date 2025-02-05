@@ -39,6 +39,7 @@ class S3DownloadURL
      * @param  string  $url
      * @param  \DateTime  $expiresAt
      * @param  ?array<string, string>  $headers
+     * @phpstan-pure
      */
     public function __construct(string $url, \DateTime $expiresAt, ?array $headers = null)
     {

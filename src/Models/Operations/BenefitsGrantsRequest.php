@@ -56,6 +56,7 @@ class BenefitsGrantsRequest
      * @param  ?int  $limit
      * @param  ?bool  $isGranted
      * @param  string|array<string>|null  $customerId
+     * @phpstan-pure
      */
     public function __construct(string $id, ?bool $isGranted = null, string|array|null $customerId = null, ?int $page = 1, ?int $limit = 10)
     {

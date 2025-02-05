@@ -31,11 +31,19 @@ class CheckoutLink
     /**
      * $metadata
      *
-     * @var array<string, mixed> $metadata
+     * @var array<string, string|int|bool> $metadata
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('metadata')]
-    #[\Speakeasy\Serializer\Annotation\Type('array<string, mixed>')]
+    #[\Speakeasy\Serializer\Annotation\Type('array<string, string|int|bool>')]
     public array $metadata;
+
+    /**
+     *
+     * @var PaymentProcessor $paymentProcessor
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('payment_processor')]
+    #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\PaymentProcessor')]
+    public PaymentProcessor $paymentProcessor;
 
     /**
      * Client secret used to access the checkout link.
@@ -122,7 +130,7 @@ class CheckoutLink
      * @var ProductPriceRecurringFixed|ProductPriceRecurringCustom|ProductPriceRecurringFree|ProductPriceOneTimeFixed|ProductPriceOneTimeCustom|ProductPriceOneTimeFree|null $productPrice
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('product_price')]
-    #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\ProductPriceRecurringFixed|\Polar\Models\Components\ProductPriceRecurringCustom|\Polar\Models\Components\ProductPriceRecurringFree|\Polar\Models\Components\ProductPriceOneTimeFixed|\Polar\Models\Components\ProductPriceOneTimeCustom|\Polar\Models\Components\ProductPriceOneTimeFree')]
+    #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\ProductPriceRecurringFixed|\Polar\Models\Components\ProductPriceRecurringCustom|\Polar\Models\Components\ProductPriceRecurringFree|\Polar\Models\Components\ProductPriceOneTimeFixed|\Polar\Models\Components\ProductPriceOneTimeCustom|\Polar\Models\Components\ProductPriceOneTimeFree|null')]
     public ProductPriceRecurringFixed|ProductPriceRecurringCustom|ProductPriceRecurringFree|ProductPriceOneTimeFixed|ProductPriceOneTimeCustom|ProductPriceOneTimeFree|null $productPrice;
 
     /**
@@ -130,21 +138,13 @@ class CheckoutLink
      * @var DiscountFixedOnceForeverDurationBase|DiscountFixedRepeatDurationBase|DiscountPercentageOnceForeverDurationBase|DiscountPercentageRepeatDurationBase|null $discount
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('discount')]
-    #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\DiscountFixedOnceForeverDurationBase|\Polar\Models\Components\DiscountFixedRepeatDurationBase|\Polar\Models\Components\DiscountPercentageOnceForeverDurationBase|\Polar\Models\Components\DiscountPercentageRepeatDurationBase')]
+    #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\DiscountFixedOnceForeverDurationBase|\Polar\Models\Components\DiscountFixedRepeatDurationBase|\Polar\Models\Components\DiscountPercentageOnceForeverDurationBase|\Polar\Models\Components\DiscountPercentageRepeatDurationBase|null')]
     public DiscountFixedOnceForeverDurationBase|DiscountFixedRepeatDurationBase|DiscountPercentageOnceForeverDurationBase|DiscountPercentageRepeatDurationBase|null $discount;
-
-    /**
-     *
-     * @var PaymentProcessor $paymentProcessor
-     */
-    #[\Speakeasy\Serializer\Annotation\SerializedName('payment_processor')]
-    #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\PaymentProcessor')]
-    public PaymentProcessor $paymentProcessor;
 
     /**
      * @param  \DateTime  $createdAt
      * @param  string  $id
-     * @param  array<string, mixed>  $metadata
+     * @param  array<string, string|int|bool>  $metadata
      * @param  PaymentProcessor  $paymentProcessor
      * @param  string  $clientSecret
      * @param  bool  $allowDiscountCodes
@@ -158,12 +158,14 @@ class CheckoutLink
      * @param  ?string  $discountId
      * @param  ProductPriceRecurringFixed|ProductPriceRecurringCustom|ProductPriceRecurringFree|ProductPriceOneTimeFixed|ProductPriceOneTimeCustom|ProductPriceOneTimeFree|null  $productPrice
      * @param  DiscountFixedOnceForeverDurationBase|DiscountFixedRepeatDurationBase|DiscountPercentageOnceForeverDurationBase|DiscountPercentageRepeatDurationBase|null  $discount
+     * @phpstan-pure
      */
-    public function __construct(\DateTime $createdAt, string $id, array $metadata, string $clientSecret, bool $allowDiscountCodes, string $productId, CheckoutLinkProduct $product, string $url, ?\DateTime $modifiedAt = null, ?string $successUrl = null, ?string $label = null, ?string $productPriceId = null, ?string $discountId = null, ProductPriceRecurringFixed|ProductPriceRecurringCustom|ProductPriceRecurringFree|ProductPriceOneTimeFixed|ProductPriceOneTimeCustom|ProductPriceOneTimeFree|null $productPrice = null, DiscountFixedOnceForeverDurationBase|DiscountFixedRepeatDurationBase|DiscountPercentageOnceForeverDurationBase|DiscountPercentageRepeatDurationBase|null $discount = null, PaymentProcessor $paymentProcessor = PaymentProcessor::Stripe)
+    public function __construct(\DateTime $createdAt, string $id, array $metadata, PaymentProcessor $paymentProcessor, string $clientSecret, bool $allowDiscountCodes, string $productId, CheckoutLinkProduct $product, string $url, ?\DateTime $modifiedAt = null, ?string $successUrl = null, ?string $label = null, ?string $productPriceId = null, ?string $discountId = null, ProductPriceRecurringFixed|ProductPriceRecurringCustom|ProductPriceRecurringFree|ProductPriceOneTimeFixed|ProductPriceOneTimeCustom|ProductPriceOneTimeFree|null $productPrice = null, DiscountFixedOnceForeverDurationBase|DiscountFixedRepeatDurationBase|DiscountPercentageOnceForeverDurationBase|DiscountPercentageRepeatDurationBase|null $discount = null)
     {
         $this->createdAt = $createdAt;
         $this->id = $id;
         $this->metadata = $metadata;
+        $this->paymentProcessor = $paymentProcessor;
         $this->clientSecret = $clientSecret;
         $this->allowDiscountCodes = $allowDiscountCodes;
         $this->productId = $productId;
@@ -176,6 +178,5 @@ class CheckoutLink
         $this->discountId = $discountId;
         $this->productPrice = $productPrice;
         $this->discount = $discount;
-        $this->paymentProcessor = $paymentProcessor;
     }
 }

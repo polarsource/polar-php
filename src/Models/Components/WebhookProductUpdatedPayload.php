@@ -28,17 +28,17 @@ class WebhookProductUpdatedPayload
 
     /**
      *
-     * @var WebhookProductUpdatedPayloadType $type
+     * @var string $type
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('type')]
-    #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\WebhookProductUpdatedPayloadType')]
-    public WebhookProductUpdatedPayloadType $type;
+    public string $type;
 
     /**
-     * @param  WebhookProductUpdatedPayloadType  $type
+     * @param  string  $type
      * @param  Product  $data
+     * @phpstan-pure
      */
-    public function __construct(Product $data, WebhookProductUpdatedPayloadType $type = WebhookProductUpdatedPayloadType::ProductUpdated)
+    public function __construct(Product $data, string $type = 'product.updated')
     {
         $this->data = $data;
         $this->type = $type;

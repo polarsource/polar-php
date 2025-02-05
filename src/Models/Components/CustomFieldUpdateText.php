@@ -15,10 +15,10 @@ class CustomFieldUpdateText
     /**
      * $metadata
      *
-     * @var ?array<string, mixed> $metadata
+     * @var ?array<string, string|int|bool> $metadata
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('metadata')]
-    #[\Speakeasy\Serializer\Annotation\Type('array<string, mixed>|null')]
+    #[\Speakeasy\Serializer\Annotation\Type('array<string, string|int|bool>|null')]
     #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
     public ?array $metadata = null;
 
@@ -49,20 +49,20 @@ class CustomFieldUpdateText
 
     /**
      *
-     * @var CustomFieldUpdateTextType $type
+     * @var string $type
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('type')]
-    #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\CustomFieldUpdateTextType')]
-    public CustomFieldUpdateTextType $type;
+    public string $type;
 
     /**
-     * @param  CustomFieldUpdateTextType  $type
-     * @param  ?array<string, mixed>  $metadata
+     * @param  string  $type
+     * @param  ?array<string, string|int|bool>  $metadata
      * @param  ?string  $name
      * @param  ?string  $slug
      * @param  ?CustomFieldTextProperties  $properties
+     * @phpstan-pure
      */
-    public function __construct(?array $metadata = null, ?string $name = null, ?string $slug = null, ?CustomFieldTextProperties $properties = null, CustomFieldUpdateTextType $type = CustomFieldUpdateTextType::Text)
+    public function __construct(?array $metadata = null, ?string $name = null, ?string $slug = null, ?CustomFieldTextProperties $properties = null, string $type = 'text')
     {
         $this->metadata = $metadata;
         $this->name = $name;

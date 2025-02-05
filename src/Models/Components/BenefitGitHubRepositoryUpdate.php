@@ -31,18 +31,18 @@ class BenefitGitHubRepositoryUpdate
 
     /**
      *
-     * @var BenefitGitHubRepositoryUpdateType $type
+     * @var string $type
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('type')]
-    #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\BenefitGitHubRepositoryUpdateType')]
-    public BenefitGitHubRepositoryUpdateType $type;
+    public string $type;
 
     /**
-     * @param  BenefitGitHubRepositoryUpdateType  $type
+     * @param  string  $type
      * @param  ?string  $description
      * @param  ?BenefitGitHubRepositoryCreateProperties  $properties
+     * @phpstan-pure
      */
-    public function __construct(?string $description = null, ?BenefitGitHubRepositoryCreateProperties $properties = null, BenefitGitHubRepositoryUpdateType $type = BenefitGitHubRepositoryUpdateType::GithubRepository)
+    public function __construct(?string $description = null, ?BenefitGitHubRepositoryCreateProperties $properties = null, string $type = 'github_repository')
     {
         $this->description = $description;
         $this->properties = $properties;

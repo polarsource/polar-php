@@ -22,19 +22,17 @@ class ProductPriceOneTimeFixedCreate
 
     /**
      *
-     * @var ProductPriceOneTimeFixedCreateType $type
+     * @var string $type
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('type')]
-    #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\ProductPriceOneTimeFixedCreateType')]
-    public ProductPriceOneTimeFixedCreateType $type;
+    public string $type;
 
     /**
      *
-     * @var ProductPriceOneTimeFixedCreateAmountType $amountType
+     * @var string $amountType
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('amount_type')]
-    #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\ProductPriceOneTimeFixedCreateAmountType')]
-    public ProductPriceOneTimeFixedCreateAmountType $amountType;
+    public string $amountType;
 
     /**
      * The currency. Currently, only `usd` is supported.
@@ -46,12 +44,13 @@ class ProductPriceOneTimeFixedCreate
     public ?string $priceCurrency = null;
 
     /**
-     * @param  ProductPriceOneTimeFixedCreateType  $type
-     * @param  ProductPriceOneTimeFixedCreateAmountType  $amountType
+     * @param  string  $type
+     * @param  string  $amountType
      * @param  int  $priceAmount
      * @param  ?string  $priceCurrency
+     * @phpstan-pure
      */
-    public function __construct(int $priceAmount, ProductPriceOneTimeFixedCreateType $type = ProductPriceOneTimeFixedCreateType::OneTime, ProductPriceOneTimeFixedCreateAmountType $amountType = ProductPriceOneTimeFixedCreateAmountType::Fixed, ?string $priceCurrency = 'usd')
+    public function __construct(int $priceAmount, string $type = 'one_time', string $amountType = 'fixed', ?string $priceCurrency = 'usd')
     {
         $this->priceAmount = $priceAmount;
         $this->type = $type;

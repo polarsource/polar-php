@@ -67,6 +67,7 @@ class CustomFieldsListRequest
      * @param  ?string  $query
      * @param  Components\CustomFieldType|array<Components\CustomFieldType>|null  $typeFilter
      * @param  ?array<Components\CustomFieldSortProperty>  $sorting
+     * @phpstan-pure
      */
     public function __construct(string|array|null $organizationId = null, ?string $query = null, Components\CustomFieldType|array|null $typeFilter = null, ?array $sorting = null, ?int $page = 1, ?int $limit = 10)
     {

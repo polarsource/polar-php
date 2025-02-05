@@ -48,21 +48,21 @@ class TokenResponse
 
     /**
      *
-     * @var TokenType $tokenType
+     * @var string $tokenType
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('token_type')]
-    #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\TokenType')]
-    public TokenType $tokenType;
+    public string $tokenType;
 
     /**
      * @param  string  $accessToken
-     * @param  TokenType  $tokenType
+     * @param  string  $tokenType
      * @param  int  $expiresIn
      * @param  string  $scope
      * @param  string  $idToken
      * @param  ?string  $refreshToken
+     * @phpstan-pure
      */
-    public function __construct(string $accessToken, int $expiresIn, string $scope, string $idToken, ?string $refreshToken = null, TokenType $tokenType = TokenType::Bearer)
+    public function __construct(string $accessToken, int $expiresIn, string $scope, string $idToken, ?string $refreshToken = null, string $tokenType = 'Bearer')
     {
         $this->accessToken = $accessToken;
         $this->expiresIn = $expiresIn;

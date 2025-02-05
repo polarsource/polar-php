@@ -84,24 +84,24 @@ class BenefitGitHubRepository
 
     /**
      *
-     * @var BenefitGitHubRepositoryType $type
+     * @var string $type
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('type')]
-    #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\BenefitGitHubRepositoryType')]
-    public BenefitGitHubRepositoryType $type;
+    public string $type;
 
     /**
      * @param  \DateTime  $createdAt
      * @param  string  $id
-     * @param  BenefitGitHubRepositoryType  $type
+     * @param  string  $type
      * @param  string  $description
      * @param  bool  $selectable
      * @param  bool  $deletable
      * @param  string  $organizationId
      * @param  BenefitGitHubRepositoryProperties  $properties
      * @param  ?\DateTime  $modifiedAt
+     * @phpstan-pure
      */
-    public function __construct(\DateTime $createdAt, string $id, string $description, bool $selectable, bool $deletable, string $organizationId, BenefitGitHubRepositoryProperties $properties, ?\DateTime $modifiedAt = null, BenefitGitHubRepositoryType $type = BenefitGitHubRepositoryType::GithubRepository)
+    public function __construct(\DateTime $createdAt, string $id, string $description, bool $selectable, bool $deletable, string $organizationId, BenefitGitHubRepositoryProperties $properties, ?\DateTime $modifiedAt = null, string $type = 'github_repository')
     {
         $this->createdAt = $createdAt;
         $this->id = $id;

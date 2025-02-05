@@ -19,7 +19,7 @@ Developer-friendly & type-safe Php SDK specifically catered to leverage *polar-s
 
 Polar API: Polar HTTP and Webhooks API
 
-Read the docs at https://docs.polar.sh/api
+Read the docs at https://docs.polar.sh/api-reference
 <!-- End Summary [summary] -->
 
 <!-- Start Table of Contents [toc] -->
@@ -28,6 +28,7 @@ Read the docs at https://docs.polar.sh/api
 * [polar-sh/sdk](#polar-shsdk)
   * [SDK Installation](#sdk-installation)
   * [SDK Example Usage](#sdk-example-usage)
+  * [Authentication](#authentication)
   * [Available Resources and Operations](#available-resources-and-operations)
   * [Pagination](#pagination)
   * [Error Handling](#error-handling)
@@ -43,26 +44,9 @@ Read the docs at https://docs.polar.sh/api
 
 The SDK relies on [Composer](https://getcomposer.org/) to manage its dependencies.
 
-To install the SDK first add the below to your `composer.json` file:
-
-```json
-{
-    "repositories": [
-        {
-            "type": "github",
-            "url": "<UNSET>.git"
-        }
-    ],
-    "require": {
-        "polar-sh/sdk": "*"
-    }
-}
-```
-
-Then run the following command:
-
+To install the SDK and add it as a dependency to an existing `composer.json` file:
 ```bash
-composer update
+composer require "polar-sh/sdk"
 ```
 <!-- End SDK Installation [installation] -->
 
@@ -84,12 +68,13 @@ $sdk = Polar\Polar::builder()->build();
 
 $request = new Components\WebhookCheckoutCreatedPayload(
     data: new Components\Checkout(
-        createdAt: Utils\Utils::parseDateTime('2024-11-12T14:26:42.882Z'),
+        createdAt: Utils\Utils::parseDateTime('2025-11-12T14:26:42.882Z'),
         id: '<value>',
+        paymentProcessor: Components\PaymentProcessor::Stripe,
         status: Components\CheckoutStatus::Confirmed,
         clientSecret: '<value>',
         url: 'https://fragrant-freezing.com',
-        expiresAt: Utils\Utils::parseDateTime('2022-04-01T05:43:33.513Z'),
+        expiresAt: Utils\Utils::parseDateTime('2023-04-01T05:43:33.513Z'),
         successUrl: 'https://lined-privilege.biz/',
         productId: '<value>',
         productPriceId: '<value>',
@@ -99,12 +84,14 @@ $request = new Components\WebhookCheckoutCreatedPayload(
         isPaymentRequired: false,
         isPaymentSetupRequired: false,
         isPaymentFormRequired: false,
-        paymentProcessorMetadata: new Components\PaymentProcessorMetadata(),
+        paymentProcessorMetadata: [
+            'key' => '<value>',
+        ],
         metadata: [
             'key' => 962818,
         ],
         product: new Components\CheckoutProduct(
-            createdAt: Utils\Utils::parseDateTime('2022-01-08T00:22:16.025Z'),
+            createdAt: Utils\Utils::parseDateTime('2023-01-08T00:22:16.025Z'),
             id: '<value>',
             name: '<value>',
             isRecurring: false,
@@ -112,13 +99,13 @@ $request = new Components\WebhookCheckoutCreatedPayload(
             organizationId: '<value>',
             prices: [
                 new Components\ProductPriceRecurringCustom(
-                    createdAt: Utils\Utils::parseDateTime('2022-08-19T22:18:44.316Z'),
+                    createdAt: Utils\Utils::parseDateTime('2023-08-19T22:18:44.316Z'),
                     id: '<value>',
                     isArchived: false,
                     productId: '<value>',
                     priceCurrency: '<value>',
                     recurringInterval: Components\SubscriptionRecurringInterval::Month,
-                    modifiedAt: Utils\Utils::parseDateTime('2024-04-20T22:18:45.464Z'),
+                    modifiedAt: Utils\Utils::parseDateTime('2025-04-20T22:18:45.464Z'),
                     minimumAmount: 598949,
                     maximumAmount: 500372,
                     presetAmount: 688646,
@@ -126,14 +113,14 @@ $request = new Components\WebhookCheckoutCreatedPayload(
             ],
             benefits: [
                 new Components\BenefitBase(
-                    createdAt: Utils\Utils::parseDateTime('2024-07-22T12:18:02.066Z'),
+                    createdAt: Utils\Utils::parseDateTime('2025-07-22T12:18:02.066Z'),
                     id: '<value>',
                     type: Components\BenefitType::Downloadables,
                     description: 'rotten relative for embarrassment untidy long-term near honestly separate',
                     selectable: false,
                     deletable: false,
                     organizationId: '<value>',
-                    modifiedAt: Utils\Utils::parseDateTime('2024-01-10T13:42:03.592Z'),
+                    modifiedAt: Utils\Utils::parseDateTime('2025-01-09T13:42:03.592Z'),
                 ),
             ],
             medias: [
@@ -145,33 +132,33 @@ $request = new Components\WebhookCheckoutCreatedPayload(
                     mimeType: '<value>',
                     size: 879649,
                     isUploaded: false,
-                    createdAt: Utils\Utils::parseDateTime('2024-09-12T19:41:14.261Z'),
+                    createdAt: Utils\Utils::parseDateTime('2025-09-12T19:41:14.261Z'),
                     sizeReadable: '<value>',
                     publicUrl: 'https://rectangular-worth.info/',
                     storageVersion: '<value>',
                     checksumEtag: '<value>',
                     checksumSha256Base64: '<value>',
                     checksumSha256Hex: '<value>',
-                    lastModifiedAt: Utils\Utils::parseDateTime('2024-06-29T02:23:28.661Z'),
+                    lastModifiedAt: Utils\Utils::parseDateTime('2025-06-29T02:23:28.661Z'),
                     version: '<value>',
                 ),
             ],
-            modifiedAt: Utils\Utils::parseDateTime('2023-05-08T04:30:09.331Z'),
+            modifiedAt: Utils\Utils::parseDateTime('2024-05-07T04:30:09.331Z'),
             description: 'provided publicize astride oof mockingly if opposite coagulate pro',
         ),
         productPrice: new Components\ProductPriceRecurringFree(
-            createdAt: Utils\Utils::parseDateTime('2023-12-29T06:38:59.235Z'),
+            createdAt: Utils\Utils::parseDateTime('2024-12-28T06:38:59.235Z'),
             id: '<value>',
             isArchived: false,
             productId: '<value>',
             recurringInterval: Components\SubscriptionRecurringInterval::Year,
-            modifiedAt: Utils\Utils::parseDateTime('2022-03-21T13:22:46.065Z'),
+            modifiedAt: Utils\Utils::parseDateTime('2023-03-21T13:22:46.065Z'),
         ),
         attachedCustomFields: [
             new Components\AttachedCustomField(
                 customFieldId: '<value>',
                 customField: new Components\CustomFieldNumber(
-                    createdAt: Utils\Utils::parseDateTime('2024-09-13T23:13:23.872Z'),
+                    createdAt: Utils\Utils::parseDateTime('2025-09-13T23:13:23.872Z'),
                     id: '<value>',
                     metadata: [
                         'key' => false,
@@ -180,7 +167,7 @@ $request = new Components\WebhookCheckoutCreatedPayload(
                     name: '<value>',
                     organizationId: '<value>',
                     properties: new Components\CustomFieldNumberProperties(),
-                    modifiedAt: Utils\Utils::parseDateTime('2024-03-11T01:07:03.723Z'),
+                    modifiedAt: Utils\Utils::parseDateTime('2025-03-11T01:07:03.723Z'),
                 ),
                 order: 169862,
                 required: false,
@@ -189,7 +176,7 @@ $request = new Components\WebhookCheckoutCreatedPayload(
         customerMetadata: [
             'key' => '<value>',
         ],
-        modifiedAt: Utils\Utils::parseDateTime('2022-09-27T02:51:25.666Z'),
+        modifiedAt: Utils\Utils::parseDateTime('2023-09-27T02:51:25.666Z'),
         embedOrigin: '<value>',
         amount: 587344,
         taxAmount: 753909,
@@ -199,17 +186,17 @@ $request = new Components\WebhookCheckoutCreatedPayload(
         discountId: '<value>',
         customerId: '<value>',
         customerName: '<value>',
-        customerEmail: 'Royce.VonRueden27@gmail.com',
+        customerEmail: '<value>',
         customerIpAddress: '<value>',
         customerBillingAddress: new Components\Address(
-            country: 'Northern Mariana Islands',
+            country: 'British Indian Ocean Territory (Chagos Archipelago)',
         ),
         customerTaxId: '<id>',
         discount: new Components\CheckoutDiscountPercentageRepeatDuration(
-            duration: Components\DiscountDuration::Forever,
-            durationInMonths: 496211,
-            type: Components\DiscountType::Percentage,
-            basisPoints: 741459,
+            duration: Components\DiscountDuration::Repeating,
+            durationInMonths: 918364,
+            type: Components\DiscountType::Fixed,
+            basisPoints: 271748,
             id: '<value>',
             name: '<value>',
             code: '<value>',
@@ -227,6 +214,47 @@ if ($response->any !== null) {
 }
 ```
 <!-- End SDK Example Usage [usage] -->
+
+<!-- Start Authentication [security] -->
+## Authentication
+
+### Per-Client Security Schemes
+
+This SDK supports the following security scheme globally:
+
+| Name          | Type | Scheme      |
+| ------------- | ---- | ----------- |
+| `accessToken` | http | HTTP Bearer |
+
+To authenticate with the API the `accessToken` parameter must be set when initializing the SDK. For example:
+```php
+declare(strict_types=1);
+
+require 'vendor/autoload.php';
+
+use Polar;
+use Polar\Models\Operations;
+
+$sdk = Polar\Polar::builder()
+    ->setSecurity(
+        '<YOUR_BEARER_TOKEN_HERE>'
+    )
+    ->build();
+
+$request = new Operations\ExternalOrganizationsListRequest();
+
+$responses = $sdk->externalOrganizations->list(
+    request: $request
+);
+
+
+foreach ($responses as $response) {
+    if ($response->statusCode === 200) {
+        // handle response
+    }
+}
+```
+<!-- End Authentication [security] -->
 
 <!-- Start Available Resources and Operations [operations] -->
 ## Available Resources and Operations
@@ -342,6 +370,12 @@ if ($response->any !== null) {
 * [list](docs/sdks/discounts/README.md#list) - List Discounts
 * [update](docs/sdks/discounts/README.md#update) - Update Discount
 
+### [events](docs/sdks/events/README.md)
+
+* [get](docs/sdks/events/README.md#get) - Get Event
+* [ingest](docs/sdks/events/README.md#ingest) - Ingest Events
+* [list](docs/sdks/events/README.md#list) - List Events
+
 ### [externalOrganizations](docs/sdks/externalorganizations/README.md)
 
 * [list](docs/sdks/externalorganizations/README.md#list) - List External Organizations
@@ -360,6 +394,15 @@ if ($response->any !== null) {
 * [getActivation](docs/sdks/licensekeys/README.md#getactivation) - Get Activation
 * [list](docs/sdks/licensekeys/README.md#list) - List License Keys
 * [update](docs/sdks/licensekeys/README.md#update) - Update License Key
+
+### [meters](docs/sdks/meters/README.md)
+
+* [create](docs/sdks/meters/README.md#create) - Create Meter
+* [events](docs/sdks/meters/README.md#events) - Get Meter Events
+* [get](docs/sdks/meters/README.md#get) - Get Meter
+* [list](docs/sdks/meters/README.md#list) - List Meters
+* [quantities](docs/sdks/meters/README.md#quantities) - Get Meter Quantities
+* [update](docs/sdks/meters/README.md#update) - Update Meter
 
 ### [metrics](docs/sdks/metrics/README.md)
 
@@ -404,6 +447,11 @@ if ($response->any !== null) {
 * [update](docs/sdks/products/README.md#update) - Update Product
 * [updateBenefits](docs/sdks/products/README.md#updatebenefits) - Update Product Benefits
 
+### [refunds](docs/sdks/refunds/README.md)
+
+* [create](docs/sdks/refunds/README.md#create) - Create Refund
+* [list](docs/sdks/refunds/README.md#list) - List Refunds
+
 ### [repositories](docs/sdks/repositories/README.md)
 
 * [get](docs/sdks/repositories/README.md#get) - Get Repository
@@ -413,7 +461,10 @@ if ($response->any !== null) {
 ### [subscriptions](docs/sdks/subscriptions/README.md)
 
 * [export](docs/sdks/subscriptions/README.md#export) - Export Subscriptions
+* [get](docs/sdks/subscriptions/README.md#get) - Get Subscription
 * [list](docs/sdks/subscriptions/README.md#list) - List Subscriptions
+* [revoke](docs/sdks/subscriptions/README.md#revoke) - Revoke Subscription
+* [update](docs/sdks/subscriptions/README.md#update) - Update Subscription
 
 </details>
 <!-- End Available Resources and Operations [operations] -->
@@ -433,9 +484,11 @@ require 'vendor/autoload.php';
 use Polar;
 use Polar\Models\Operations;
 
-$security = '<YOUR_BEARER_TOKEN_HERE>';
-
-$sdk = Polar\Polar::builder()->setSecurity($security)->build();
+$sdk = Polar\Polar::builder()
+    ->setSecurity(
+        '<YOUR_BEARER_TOKEN_HERE>'
+    )
+    ->build();
 
 $request = new Operations\ExternalOrganizationsListRequest();
 
@@ -483,9 +536,11 @@ require 'vendor/autoload.php';
 use Polar;
 use Polar\Models\Operations;
 
-$security = '<YOUR_BEARER_TOKEN_HERE>';
-
-$sdk = Polar\Polar::builder()->setSecurity($security)->build();
+$sdk = Polar\Polar::builder()
+    ->setSecurity(
+        '<YOUR_BEARER_TOKEN_HERE>'
+    )
+    ->build();
 
 try {
     $request = new Operations\ExternalOrganizationsListRequest();
@@ -531,11 +586,12 @@ require 'vendor/autoload.php';
 use Polar;
 use Polar\Models\Operations;
 
-$security = '<YOUR_BEARER_TOKEN_HERE>';
-
 $sdk = Polar\Polar::builder()
     ->setServer("sandbox")
-    ->setSecurity($security)->build();
+    ->setSecurity(
+        '<YOUR_BEARER_TOKEN_HERE>'
+    )
+    ->build();
 
 $request = new Operations\ExternalOrganizationsListRequest();
 
@@ -562,11 +618,12 @@ require 'vendor/autoload.php';
 use Polar;
 use Polar\Models\Operations;
 
-$security = '<YOUR_BEARER_TOKEN_HERE>';
-
 $sdk = Polar\Polar::builder()
     ->setServerURL('https://api.polar.sh')
-    ->setSecurity($security)->build();
+    ->setSecurity(
+        '<YOUR_BEARER_TOKEN_HERE>'
+    )
+    ->build();
 
 $request = new Operations\ExternalOrganizationsListRequest();
 

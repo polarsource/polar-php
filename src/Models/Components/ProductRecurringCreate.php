@@ -23,10 +23,10 @@ class ProductRecurringCreate
     /**
      * List of available prices for this product.
      *
-     * @var array<ProductPriceRecurringFixedCreate> $prices
+     * @var array<ProductPriceRecurringFixedCreate>|array<ProductPriceRecurringFreeCreate> $prices
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('prices')]
-    #[\Speakeasy\Serializer\Annotation\Type('array<\Polar\Models\Components\ProductPriceRecurringFixedCreate>')]
+    #[\Speakeasy\Serializer\Annotation\Type('array<\Polar\Models\Components\ProductPriceRecurringFixedCreate>|array<\Polar\Models\Components\ProductPriceRecurringFreeCreate>')]
     public array $prices;
 
     /**
@@ -42,10 +42,10 @@ class ProductRecurringCreate
      *
      * You can store up to **50 key-value pairs**.
      *
-     * @var ?array<string, mixed> $metadata
+     * @var ?array<string, string|int|bool> $metadata
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('metadata')]
-    #[\Speakeasy\Serializer\Annotation\Type('array<string, mixed>|null')]
+    #[\Speakeasy\Serializer\Annotation\Type('array<string, string|int|bool>|null')]
     #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
     public ?array $metadata = null;
 
@@ -89,12 +89,13 @@ class ProductRecurringCreate
 
     /**
      * @param  string  $name
-     * @param  array<ProductPriceRecurringFixedCreate>  $prices
-     * @param  ?array<string, mixed>  $metadata
+     * @param  array<ProductPriceRecurringFixedCreate>|array<ProductPriceRecurringFreeCreate>  $prices
+     * @param  ?array<string, string|int|bool>  $metadata
      * @param  ?array<AttachedCustomFieldCreate>  $attachedCustomFields
      * @param  ?string  $description
      * @param  ?array<string>  $medias
      * @param  ?string  $organizationId
+     * @phpstan-pure
      */
     public function __construct(string $name, array $prices, ?array $metadata = null, ?array $attachedCustomFields = null, ?string $description = null, ?array $medias = null, ?string $organizationId = null)
     {

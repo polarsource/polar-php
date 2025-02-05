@@ -67,23 +67,23 @@ class DownloadableFileCreate
 
     /**
      *
-     * @var DownloadableFileCreateService $service
+     * @var string $service
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('service')]
-    #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\DownloadableFileCreateService')]
-    public DownloadableFileCreateService $service;
+    public string $service;
 
     /**
      * @param  string  $name
      * @param  string  $mimeType
      * @param  int  $size
      * @param  S3FileCreateMultipart  $upload
-     * @param  DownloadableFileCreateService  $service
+     * @param  string  $service
      * @param  ?string  $organizationId
      * @param  ?string  $checksumSha256Base64
      * @param  ?string  $version
+     * @phpstan-pure
      */
-    public function __construct(string $name, string $mimeType, int $size, S3FileCreateMultipart $upload, ?string $organizationId = null, ?string $checksumSha256Base64 = null, ?string $version = null, DownloadableFileCreateService $service = DownloadableFileCreateService::Downloadable)
+    public function __construct(string $name, string $mimeType, int $size, S3FileCreateMultipart $upload, ?string $organizationId = null, ?string $checksumSha256Base64 = null, ?string $version = null, string $service = 'downloadable')
     {
         $this->name = $name;
         $this->mimeType = $mimeType;

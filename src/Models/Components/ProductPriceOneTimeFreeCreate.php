@@ -14,25 +14,24 @@ class ProductPriceOneTimeFreeCreate
 {
     /**
      *
-     * @var ProductPriceOneTimeFreeCreateType $type
+     * @var string $type
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('type')]
-    #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\ProductPriceOneTimeFreeCreateType')]
-    public ProductPriceOneTimeFreeCreateType $type;
+    public string $type;
 
     /**
      *
-     * @var ProductPriceOneTimeFreeCreateAmountType $amountType
+     * @var string $amountType
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('amount_type')]
-    #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\ProductPriceOneTimeFreeCreateAmountType')]
-    public ProductPriceOneTimeFreeCreateAmountType $amountType;
+    public string $amountType;
 
     /**
-     * @param  ProductPriceOneTimeFreeCreateType  $type
-     * @param  ProductPriceOneTimeFreeCreateAmountType  $amountType
+     * @param  string  $type
+     * @param  string  $amountType
+     * @phpstan-pure
      */
-    public function __construct(ProductPriceOneTimeFreeCreateType $type = ProductPriceOneTimeFreeCreateType::OneTime, ProductPriceOneTimeFreeCreateAmountType $amountType = ProductPriceOneTimeFreeCreateAmountType::Free)
+    public function __construct(string $type = 'one_time', string $amountType = 'free')
     {
         $this->type = $type;
         $this->amountType = $amountType;

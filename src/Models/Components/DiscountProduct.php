@@ -85,6 +85,7 @@ class DiscountProduct
      * @param  string  $organizationId
      * @param  ?\DateTime  $modifiedAt
      * @param  ?string  $description
+     * @phpstan-pure
      */
     public function __construct(\DateTime $createdAt, string $id, string $name, bool $isRecurring, bool $isArchived, string $organizationId, ?\DateTime $modifiedAt = null, ?string $description = null)
     {

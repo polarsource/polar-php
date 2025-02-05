@@ -44,6 +44,7 @@ class Assignee
      * @param  string  $login
      * @param  string  $htmlUrl
      * @param  string  $avatarUrl
+     * @phpstan-pure
      */
     public function __construct(int $id, string $login, string $htmlUrl, string $avatarUrl)
     {

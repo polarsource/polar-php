@@ -58,6 +58,7 @@ class LicenseKeyUpdate
      * @param  ?int  $limitActivations
      * @param  ?int  $limitUsage
      * @param  ?\DateTime  $expiresAt
+     * @phpstan-pure
      */
     public function __construct(?LicenseKeyStatus $status = null, ?int $limitActivations = null, ?int $limitUsage = null, ?\DateTime $expiresAt = null, ?int $usage = 0)
     {

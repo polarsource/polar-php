@@ -25,6 +25,10 @@
 | `ProductsWrite`             | products:write              |
 | `BenefitsRead`              | benefits:read               |
 | `BenefitsWrite`             | benefits:write              |
+| `EventsRead`                | events:read                 |
+| `EventsWrite`               | events:write                |
+| `MetersRead`                | meters:read                 |
+| `MetersWrite`               | meters:write                |
 | `FilesRead`                 | files:read                  |
 | `FilesWrite`                | files:write                 |
 | `SubscriptionsRead`         | subscriptions:read          |
@@ -33,6 +37,8 @@
 | `CustomersWrite`            | customers:write             |
 | `CustomerSessionsWrite`     | customer_sessions:write     |
 | `OrdersRead`                | orders:read                 |
+| `RefundsRead`               | refunds:read                |
+| `RefundsWrite`              | refunds:write               |
 | `MetricsRead`               | metrics:read                |
 | `WebhooksRead`              | webhooks:read               |
 | `WebhooksWrite`             | webhooks:write              |

@@ -61,10 +61,10 @@ class DiscountFixedOnceForeverDuration
     /**
      * $metadata
      *
-     * @var array<string, mixed> $metadata
+     * @var array<string, string|int|bool> $metadata
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('metadata')]
-    #[\Speakeasy\Serializer\Annotation\Type('array<string, mixed>')]
+    #[\Speakeasy\Serializer\Annotation\Type('array<string, string|int|bool>')]
     public array $metadata;
 
     /**
@@ -147,7 +147,7 @@ class DiscountFixedOnceForeverDuration
      * @param  string  $currency
      * @param  \DateTime  $createdAt
      * @param  string  $id
-     * @param  array<string, mixed>  $metadata
+     * @param  array<string, string|int|bool>  $metadata
      * @param  string  $name
      * @param  int  $redemptionsCount
      * @param  string  $organizationId
@@ -157,6 +157,7 @@ class DiscountFixedOnceForeverDuration
      * @param  ?\DateTime  $startsAt
      * @param  ?\DateTime  $endsAt
      * @param  ?int  $maxRedemptions
+     * @phpstan-pure
      */
     public function __construct(DiscountDuration $duration, DiscountType $type, int $amount, string $currency, \DateTime $createdAt, string $id, array $metadata, string $name, int $redemptionsCount, string $organizationId, array $products, ?\DateTime $modifiedAt = null, ?string $code = null, ?\DateTime $startsAt = null, ?\DateTime $endsAt = null, ?int $maxRedemptions = null)
     {

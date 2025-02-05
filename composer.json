@@ -18,10 +18,10 @@
   },
   "require-dev": {
     "laravel/pint": "^1.18.1",
-    "phpstan/phpstan": "^1.12",
+    "phpstan/phpstan": "^2.1.0",
     "phpunit/phpunit": "^10",
-    "rector/rector": "^0.19",
-    "roave/security-advisories": "dev-latest"
+    "roave/security-advisories": "dev-latest",
+    "orchestra/testbench": "^9.6"
   },
   "minimum-stability": "stable",
   "prefer-stable": true,
@@ -30,6 +30,13 @@
     "classmap-authoritative": true,
     "sort-packages": true,
     "process-timeout": 60
+  },
+  "extra": {
+    "laravel": {
+      "providers": [
+        "Polar\\PackageServiceProvider"
+      ]
+    }
   },
   "scripts": {
     "test": [

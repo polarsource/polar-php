@@ -31,6 +31,10 @@ enum Scope: string
     case ProductsWrite = 'products:write';
     case BenefitsRead = 'benefits:read';
     case BenefitsWrite = 'benefits:write';
+    case EventsRead = 'events:read';
+    case EventsWrite = 'events:write';
+    case MetersRead = 'meters:read';
+    case MetersWrite = 'meters:write';
     case FilesRead = 'files:read';
     case FilesWrite = 'files:write';
     case SubscriptionsRead = 'subscriptions:read';
@@ -39,6 +43,8 @@ enum Scope: string
     case CustomersWrite = 'customers:write';
     case CustomerSessionsWrite = 'customer_sessions:write';
     case OrdersRead = 'orders:read';
+    case RefundsRead = 'refunds:read';
+    case RefundsWrite = 'refunds:write';
     case MetricsRead = 'metrics:read';
     case WebhooksRead = 'webhooks:read';
     case WebhooksWrite = 'webhooks:write';

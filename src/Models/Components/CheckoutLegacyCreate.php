@@ -50,6 +50,7 @@ class CheckoutLegacyCreate
      * @param  string  $successUrl
      * @param  ?string  $customerEmail
      * @param  ?string  $subscriptionId
+     * @phpstan-pure
      */
     public function __construct(string $productPriceId, string $successUrl, ?string $customerEmail = null, ?string $subscriptionId = null)
     {

@@ -30,6 +30,7 @@ class CheckoutsCustomClientConfirmRequest
     /**
      * @param  string  $clientSecret
      * @param  Components\CheckoutConfirmStripe  $checkoutConfirmStripe
+     * @phpstan-pure
      */
     public function __construct(string $clientSecret, Components\CheckoutConfirmStripe $checkoutConfirmStripe)
     {

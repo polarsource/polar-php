@@ -23,9 +23,11 @@ require 'vendor/autoload.php';
 
 use Polar;
 
-$security = '<YOUR_BEARER_TOKEN_HERE>';
-
-$sdk = Polar\Polar::builder()->setSecurity($security)->build();
+$sdk = Polar\Polar::builder()
+    ->setSecurity(
+        '<YOUR_BEARER_TOKEN_HERE>'
+    )
+    ->build();
 
 
 
@@ -70,9 +72,11 @@ require 'vendor/autoload.php';
 
 use Polar;
 
-$security = '<YOUR_BEARER_TOKEN_HERE>';
-
-$sdk = Polar\Polar::builder()->setSecurity($security)->build();
+$sdk = Polar\Polar::builder()
+    ->setSecurity(
+        '<YOUR_BEARER_TOKEN_HERE>'
+    )
+    ->build();
 
 
 
@@ -117,9 +121,11 @@ require 'vendor/autoload.php';
 use Polar;
 use Polar\Models\Operations;
 
-$security = '<YOUR_BEARER_TOKEN_HERE>';
-
-$sdk = Polar\Polar::builder()->setSecurity($security)->build();
+$sdk = Polar\Polar::builder()
+    ->setSecurity(
+        '<YOUR_BEARER_TOKEN_HERE>'
+    )
+    ->build();
 
 $request = new Operations\CustomerPortalSubscriptionsListRequest();
 
@@ -166,17 +172,17 @@ require 'vendor/autoload.php';
 use Polar;
 use Polar\Models\Components;
 
-$security = '<YOUR_BEARER_TOKEN_HERE>';
+$sdk = Polar\Polar::builder()
+    ->setSecurity(
+        '<YOUR_BEARER_TOKEN_HERE>'
+    )
+    ->build();
 
-$sdk = Polar\Polar::builder()->setSecurity($security)->build();
 
-$customerSubscriptionUpdate = new Components\CustomerSubscriptionUpdate(
-    productPriceId: '<value>',
-);
 
 $response = $sdk->customerPortal->subscriptions->update(
     id: '<value>',
-    customerSubscriptionUpdate: $customerSubscriptionUpdate
+    customerSubscriptionUpdate: new Components\CustomerSubscriptionCancel()
 
 );
 
@@ -187,10 +193,10 @@ if ($response->customerSubscription !== null) {
 
 ### Parameters
 
-| Parameter                                                                                      | Type                                                                                           | Required                                                                                       | Description                                                                                    |
-| ---------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------- |
-| `id`                                                                                           | *string*                                                                                       | :heavy_check_mark:                                                                             | The subscription ID.                                                                           |
-| `customerSubscriptionUpdate`                                                                   | [Components\CustomerSubscriptionUpdate](../../Models/Components/CustomerSubscriptionUpdate.md) | :heavy_check_mark:                                                                             | N/A                                                                                            |
+| Parameter                                                                                                                                 | Type                                                                                                                                      | Required                                                                                                                                  | Description                                                                                                                               |
+| ----------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------- |
+| `id`                                                                                                                                      | *string*                                                                                                                                  | :heavy_check_mark:                                                                                                                        | The subscription ID.                                                                                                                      |
+| `customerSubscriptionUpdate`                                                                                                              | [Components\CustomerSubscriptionUpdatePrice\|Components\CustomerSubscriptionCancel](../../Models/Components/CustomerSubscriptionUpdate.md) | :heavy_check_mark:                                                                                                                        | N/A                                                                                                                                       |
 
 ### Response
 
@@ -198,8 +204,9 @@ if ($response->customerSubscription !== null) {
 
 ### Errors
 
-| Error Type                 | Status Code                | Content Type               |
-| -------------------------- | -------------------------- | -------------------------- |
-| Errors\ResourceNotFound    | 404                        | application/json           |
-| Errors\HTTPValidationError | 422                        | application/json           |
-| Errors\APIException        | 4XX, 5XX                   | \*/\*                      |
+| Error Type                         | Status Code                        | Content Type                       |
+| ---------------------------------- | ---------------------------------- | ---------------------------------- |
+| Errors\AlreadyCanceledSubscription | 403                                | application/json                   |
+| Errors\ResourceNotFound            | 404                                | application/json                   |
+| Errors\HTTPValidationError         | 422                                | application/json                   |
+| Errors\APIException                | 4XX, 5XX                           | \*/\*                              |

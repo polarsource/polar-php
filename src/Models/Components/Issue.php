@@ -19,6 +19,14 @@ class Issue
     public string $id;
 
     /**
+     *
+     * @var Platforms $platform
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('platform')]
+    #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\Platforms')]
+    public Platforms $platform;
+
+    /**
      * GitHub #number
      *
      * @var int $number
@@ -183,14 +191,6 @@ class Issue
     public ?string $badgeCustomContent = null;
 
     /**
-     *
-     * @var Platforms $platform
-     */
-    #[\Speakeasy\Serializer\Annotation\SerializedName('platform')]
-    #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\Platforms')]
-    public Platforms $platform;
-
-    /**
      * @param  string  $id
      * @param  Platforms  $platform
      * @param  int  $number
@@ -212,10 +212,12 @@ class Issue
      * @param  ?\DateTime  $confirmedSolvedAt
      * @param  ?int  $upfrontSplitToContributors
      * @param  ?string  $badgeCustomContent
+     * @phpstan-pure
      */
-    public function __construct(string $id, int $number, string $title, State $state, \DateTime $issueCreatedAt, bool $needsConfirmationSolved, Funding $funding, Repository $repository, bool $pledgeBadgeCurrentlyEmbedded, ?array $labels = null, ?string $body = null, ?int $comments = null, ?Author $author = null, ?array $assignees = null, ?Reactions $reactions = null, ?\DateTime $issueClosedAt = null, ?\DateTime $issueModifiedAt = null, ?\DateTime $confirmedSolvedAt = null, ?int $upfrontSplitToContributors = null, ?string $badgeCustomContent = null, Platforms $platform = Platforms::Github)
+    public function __construct(string $id, Platforms $platform, int $number, string $title, State $state, \DateTime $issueCreatedAt, bool $needsConfirmationSolved, Funding $funding, Repository $repository, bool $pledgeBadgeCurrentlyEmbedded, ?array $labels = null, ?string $body = null, ?int $comments = null, ?Author $author = null, ?array $assignees = null, ?Reactions $reactions = null, ?\DateTime $issueClosedAt = null, ?\DateTime $issueModifiedAt = null, ?\DateTime $confirmedSolvedAt = null, ?int $upfrontSplitToContributors = null, ?string $badgeCustomContent = null)
     {
         $this->id = $id;
+        $this->platform = $platform;
         $this->number = $number;
         $this->title = $title;
         $this->state = $state;
@@ -235,6 +237,5 @@ class Issue
         $this->confirmedSolvedAt = $confirmedSolvedAt;
         $this->upfrontSplitToContributors = $upfrontSplitToContributors;
         $this->badgeCustomContent = $badgeCustomContent;
-        $this->platform = $platform;
     }
 }

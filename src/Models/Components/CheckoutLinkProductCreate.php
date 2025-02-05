@@ -32,10 +32,10 @@ class CheckoutLinkProductCreate
      *
      * You can store up to **50 key-value pairs**.
      *
-     * @var ?array<string, mixed> $metadata
+     * @var ?array<string, string|int|bool> $metadata
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('metadata')]
-    #[\Speakeasy\Serializer\Annotation\Type('array<string, mixed>|null')]
+    #[\Speakeasy\Serializer\Annotation\Type('array<string, string|int|bool>|null')]
     #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
     public ?array $metadata = null;
 
@@ -69,11 +69,10 @@ class CheckoutLinkProductCreate
     /**
      * Payment processor to use. Currently only Stripe is supported.
      *
-     * @var CheckoutLinkProductCreatePaymentProcessor $paymentProcessor
+     * @var string $paymentProcessor
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('payment_processor')]
-    #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\CheckoutLinkProductCreatePaymentProcessor')]
-    public CheckoutLinkProductCreatePaymentProcessor $paymentProcessor;
+    public string $paymentProcessor;
 
     /**
      * Whether to allow the customer to apply discount codes. If you apply a discount through `discount_id`, it'll still be applied, but the customer won't be able to change it.
@@ -85,15 +84,16 @@ class CheckoutLinkProductCreate
     public ?bool $allowDiscountCodes = null;
 
     /**
-     * @param  CheckoutLinkProductCreatePaymentProcessor  $paymentProcessor
+     * @param  string  $paymentProcessor
      * @param  string  $productId
-     * @param  ?array<string, mixed>  $metadata
+     * @param  ?array<string, string|int|bool>  $metadata
      * @param  ?bool  $allowDiscountCodes
      * @param  ?string  $label
      * @param  ?string  $discountId
      * @param  ?string  $successUrl
+     * @phpstan-pure
      */
-    public function __construct(string $productId, ?array $metadata = null, ?string $label = null, ?string $discountId = null, ?string $successUrl = null, CheckoutLinkProductCreatePaymentProcessor $paymentProcessor = CheckoutLinkProductCreatePaymentProcessor::Stripe, ?bool $allowDiscountCodes = true)
+    public function __construct(string $productId, ?array $metadata = null, ?string $label = null, ?string $discountId = null, ?string $successUrl = null, string $paymentProcessor = 'stripe', ?bool $allowDiscountCodes = true)
     {
         $this->productId = $productId;
         $this->metadata = $metadata;

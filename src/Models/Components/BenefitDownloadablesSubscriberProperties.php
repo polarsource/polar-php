@@ -22,6 +22,7 @@ class BenefitDownloadablesSubscriberProperties
 
     /**
      * @param  array<string>  $activeFiles
+     * @phpstan-pure
      */
     public function __construct(array $activeFiles)
     {

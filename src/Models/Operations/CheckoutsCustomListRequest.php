@@ -58,6 +58,7 @@ class CheckoutsCustomListRequest
      * @param  string|array<string>|null  $organizationId
      * @param  string|array<string>|null  $productId
      * @param  ?array<Components\CheckoutSortProperty>  $sorting
+     * @phpstan-pure
      */
     public function __construct(string|array|null $organizationId = null, string|array|null $productId = null, ?array $sorting = null, ?int $page = 1, ?int $limit = 10)
     {

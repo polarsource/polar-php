@@ -27,11 +27,11 @@ class IntrospectTokenResponse
 
     /**
      *
-     * @var IntrospectTokenResponseTokenType $tokenType
+     * @var TokenType $tokenType
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('token_type')]
-    #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\IntrospectTokenResponseTokenType')]
-    public IntrospectTokenResponseTokenType $tokenType;
+    #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\TokenType')]
+    public TokenType $tokenType;
 
     /**
      *
@@ -86,7 +86,7 @@ class IntrospectTokenResponse
     /**
      * @param  bool  $active
      * @param  string  $clientId
-     * @param  IntrospectTokenResponseTokenType  $tokenType
+     * @param  TokenType  $tokenType
      * @param  string  $scope
      * @param  SubType  $subType
      * @param  string  $sub
@@ -94,8 +94,9 @@ class IntrospectTokenResponse
      * @param  string  $iss
      * @param  int  $exp
      * @param  int  $iat
+     * @phpstan-pure
      */
-    public function __construct(bool $active, string $clientId, IntrospectTokenResponseTokenType $tokenType, string $scope, SubType $subType, string $sub, string $aud, string $iss, int $exp, int $iat)
+    public function __construct(bool $active, string $clientId, TokenType $tokenType, string $scope, SubType $subType, string $sub, string $aud, string $iss, int $exp, int $iat)
     {
         $this->active = $active;
         $this->clientId = $clientId;

@@ -15,10 +15,10 @@ class PathParameters
     /**
      * @param  string  $type
      * @param  mixed  $pathParams
-     * @param  array<string,array<string,array<string,string>>>  $globals
+     * @param  array<string,array<string,array<string,string>>>|null  $globals
      * @return array<string,string>
      */
-    public function parsePathParams(string $type, mixed $pathParams, array $globals): array
+    public function parsePathParams(string $type, mixed $pathParams, ?array $globals): array
     {
         $parsed = [];
 
@@ -71,6 +71,11 @@ class PathParameters
             case 'object':
                 $vals = [];
 
+                $cls = get_class($value);
+                if ($cls === 'Brick\\Math\\BigDecimal' || $cls === 'Brick\\Math\\BigInteger') {
+                    $pathParams[$metadata->name] = valToString($value, []);
+                    break;
+                }
                 foreach ($value as $field => $fieldValue) { /** @phpstan-ignore-line */
                     if ($fieldValue === null) {
                         continue;

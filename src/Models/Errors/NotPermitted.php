@@ -8,19 +8,15 @@ declare(strict_types=1);
 
 namespace Polar\Models\Errors;
 
-
-use Polar\Models\Errors;
 use Polar\Utils;
-
 class NotPermitted
 {
     /**
      *
-     * @var NotPermittedError $error
+     * @var string $error
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('error')]
-    #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Errors\NotPermittedError')]
-    public NotPermittedError $error;
+    public string $error;
 
     /**
      *
@@ -30,10 +26,11 @@ class NotPermitted
     public string $detail;
 
     /**
-     * @param  NotPermittedError  $error
+     * @param  string  $error
      * @param  string  $detail
+     * @phpstan-pure
      */
-    public function __construct(string $detail, NotPermittedError $error = NotPermittedError::NotPermitted)
+    public function __construct(string $detail, string $error = 'NotPermitted')
     {
         $this->error = $error;
         $this->detail = $detail;

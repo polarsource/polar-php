@@ -22,26 +22,25 @@ class ProductPriceRecurringFreeCreate
 
     /**
      *
-     * @var ProductPriceRecurringFreeCreateType $type
+     * @var string $type
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('type')]
-    #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\ProductPriceRecurringFreeCreateType')]
-    public ProductPriceRecurringFreeCreateType $type;
+    public string $type;
 
     /**
      *
-     * @var ProductPriceRecurringFreeCreateAmountType $amountType
+     * @var string $amountType
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('amount_type')]
-    #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\ProductPriceRecurringFreeCreateAmountType')]
-    public ProductPriceRecurringFreeCreateAmountType $amountType;
+    public string $amountType;
 
     /**
-     * @param  ProductPriceRecurringFreeCreateType  $type
-     * @param  ProductPriceRecurringFreeCreateAmountType  $amountType
+     * @param  string  $type
+     * @param  string  $amountType
      * @param  SubscriptionRecurringInterval  $recurringInterval
+     * @phpstan-pure
      */
-    public function __construct(SubscriptionRecurringInterval $recurringInterval, ProductPriceRecurringFreeCreateType $type = ProductPriceRecurringFreeCreateType::Recurring, ProductPriceRecurringFreeCreateAmountType $amountType = ProductPriceRecurringFreeCreateAmountType::Free)
+    public function __construct(SubscriptionRecurringInterval $recurringInterval, string $type = 'recurring', string $amountType = 'free')
     {
         $this->recurringInterval = $recurringInterval;
         $this->type = $type;

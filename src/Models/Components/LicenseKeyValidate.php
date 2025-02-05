@@ -74,6 +74,7 @@ class LicenseKeyValidate
      * @param  ?string  $benefitId
      * @param  ?string  $customerId
      * @param  ?int  $incrementUsage
+     * @phpstan-pure
      */
     public function __construct(string $key, string $organizationId, ?Conditions $conditions = null, ?string $activationId = null, ?string $benefitId = null, ?string $customerId = null, ?int $incrementUsage = null)
     {

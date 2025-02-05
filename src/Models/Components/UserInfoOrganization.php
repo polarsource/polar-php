@@ -29,6 +29,7 @@ class UserInfoOrganization
     /**
      * @param  string  $sub
      * @param  ?string  $name
+     * @phpstan-pure
      */
     public function __construct(string $sub, ?string $name = null)
     {

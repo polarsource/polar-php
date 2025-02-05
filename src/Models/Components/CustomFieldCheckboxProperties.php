@@ -39,6 +39,7 @@ class CustomFieldCheckboxProperties
      * @param  ?string  $formLabel
      * @param  ?string  $formHelpText
      * @param  ?string  $formPlaceholder
+     * @phpstan-pure
      */
     public function __construct(?string $formLabel = null, ?string $formHelpText = null, ?string $formPlaceholder = null)
     {

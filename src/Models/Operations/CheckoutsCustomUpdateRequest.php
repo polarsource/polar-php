@@ -30,6 +30,7 @@ class CheckoutsCustomUpdateRequest
     /**
      * @param  string  $id
      * @param  Components\CheckoutUpdate  $checkoutUpdate
+     * @phpstan-pure
      */
     public function __construct(string $id, Components\CheckoutUpdate $checkoutUpdate)
     {

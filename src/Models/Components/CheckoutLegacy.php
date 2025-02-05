@@ -67,6 +67,7 @@ class CheckoutLegacy
      * @param  ?string  $customerEmail
      * @param  ?string  $customerName
      * @param  ?string  $url
+     * @phpstan-pure
      */
     public function __construct(string $id, CheckoutProduct $product, ProductPriceRecurringFixed|ProductPriceRecurringCustom|ProductPriceRecurringFree|ProductPriceOneTimeFixed|ProductPriceOneTimeCustom|ProductPriceOneTimeFree $productPrice, ?string $customerEmail = null, ?string $customerName = null, ?string $url = null)
     {

@@ -63,6 +63,7 @@ class MetricsIntervalsLimits
      * @param  MetricsIntervalLimit  $week
      * @param  MetricsIntervalLimit  $month
      * @param  MetricsIntervalLimit  $year
+     * @phpstan-pure
      */
     public function __construct(MetricsIntervalLimit $hour, MetricsIntervalLimit $day, MetricsIntervalLimit $week, MetricsIntervalLimit $month, MetricsIntervalLimit $year)
     {

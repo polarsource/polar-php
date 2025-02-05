@@ -21,17 +21,17 @@ class CustomerBenefitGrantDiscordUpdate
 
     /**
      *
-     * @var CustomerBenefitGrantDiscordUpdateBenefitType $benefitType
+     * @var string $benefitType
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('benefit_type')]
-    #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\CustomerBenefitGrantDiscordUpdateBenefitType')]
-    public CustomerBenefitGrantDiscordUpdateBenefitType $benefitType;
+    public string $benefitType;
 
     /**
-     * @param  CustomerBenefitGrantDiscordUpdateBenefitType  $benefitType
+     * @param  string  $benefitType
      * @param  CustomerBenefitGrantDiscordPropertiesUpdate  $properties
+     * @phpstan-pure
      */
-    public function __construct(CustomerBenefitGrantDiscordPropertiesUpdate $properties, CustomerBenefitGrantDiscordUpdateBenefitType $benefitType = CustomerBenefitGrantDiscordUpdateBenefitType::Discord)
+    public function __construct(CustomerBenefitGrantDiscordPropertiesUpdate $properties, string $benefitType = 'discord')
     {
         $this->properties = $properties;
         $this->benefitType = $benefitType;

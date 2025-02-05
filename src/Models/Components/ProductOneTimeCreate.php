@@ -23,10 +23,10 @@ class ProductOneTimeCreate
     /**
      * List of available prices for this product.
      *
-     * @var array<mixed> $prices
+     * @var array<ProductPriceOneTimeFixedCreate|ProductPriceOneTimeCustomCreate|ProductPriceOneTimeFreeCreate> $prices
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('prices')]
-    #[\Speakeasy\Serializer\Annotation\Type('array<mixed>')]
+    #[\Speakeasy\Serializer\Annotation\Type('array<\Polar\Models\Components\ProductPriceOneTimeFixedCreate|\Polar\Models\Components\ProductPriceOneTimeCustomCreate|\Polar\Models\Components\ProductPriceOneTimeFreeCreate>')]
     public array $prices;
 
     /**
@@ -42,10 +42,10 @@ class ProductOneTimeCreate
      *
      * You can store up to **50 key-value pairs**.
      *
-     * @var ?array<string, mixed> $metadata
+     * @var ?array<string, string|int|bool> $metadata
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('metadata')]
-    #[\Speakeasy\Serializer\Annotation\Type('array<string, mixed>|null')]
+    #[\Speakeasy\Serializer\Annotation\Type('array<string, string|int|bool>|null')]
     #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
     public ?array $metadata = null;
 
@@ -89,12 +89,13 @@ class ProductOneTimeCreate
 
     /**
      * @param  string  $name
-     * @param  array<mixed>  $prices
-     * @param  ?array<string, mixed>  $metadata
+     * @param  array<ProductPriceOneTimeFixedCreate|ProductPriceOneTimeCustomCreate|ProductPriceOneTimeFreeCreate>  $prices
+     * @param  ?array<string, string|int|bool>  $metadata
      * @param  ?array<AttachedCustomFieldCreate>  $attachedCustomFields
      * @param  ?string  $description
      * @param  ?array<string>  $medias
      * @param  ?string  $organizationId
+     * @phpstan-pure
      */
     public function __construct(string $name, array $prices, ?array $metadata = null, ?array $attachedCustomFields = null, ?string $description = null, ?array $medias = null, ?string $organizationId = null)
     {

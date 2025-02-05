@@ -67,6 +67,7 @@ class ExternalOrganizationsListRequest
      * @param  string|array<string>|null  $name
      * @param  string|array<string>|null  $organizationId
      * @param  ?array<Components\ExternalOrganizationSortProperty>  $sorting
+     * @phpstan-pure
      */
     public function __construct(Components\Platforms|array|null $platform = null, string|array|null $name = null, string|array|null $organizationId = null, ?array $sorting = null, ?int $page = 1, ?int $limit = 10)
     {

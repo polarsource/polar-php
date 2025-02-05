@@ -22,6 +22,7 @@ class OrganizationFeatureSettings
 
     /**
      * @param  ?bool  $issueFundingEnabled
+     * @phpstan-pure
      */
     public function __construct(?bool $issueFundingEnabled = false)
     {

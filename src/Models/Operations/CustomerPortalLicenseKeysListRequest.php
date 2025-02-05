@@ -48,6 +48,7 @@ class CustomerPortalLicenseKeysListRequest
      * @param  ?int  $limit
      * @param  string|array<string>|null  $organizationId
      * @param  ?string  $benefitId
+     * @phpstan-pure
      */
     public function __construct(string|array|null $organizationId = null, ?string $benefitId = null, ?int $page = 1, ?int $limit = 10)
     {

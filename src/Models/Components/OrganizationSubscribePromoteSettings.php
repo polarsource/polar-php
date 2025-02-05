@@ -42,6 +42,7 @@ class OrganizationSubscribePromoteSettings
      * @param  ?bool  $promote
      * @param  ?bool  $showCount
      * @param  ?bool  $countFree
+     * @phpstan-pure
      */
     public function __construct(?bool $promote = true, ?bool $showCount = true, ?bool $countFree = true)
     {

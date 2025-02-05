@@ -81,10 +81,10 @@ class Subscription
     /**
      * $metadata
      *
-     * @var array<string, mixed> $metadata
+     * @var array<string, string|int|bool> $metadata
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('metadata')]
-    #[\Speakeasy\Serializer\Annotation\Type('array<string, mixed>')]
+    #[\Speakeasy\Serializer\Annotation\Type('array<string, string|int|bool>')]
     public array $metadata;
 
     /**
@@ -159,10 +159,24 @@ class Subscription
 
     /**
      *
+     * @var ?\DateTime $canceledAt
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('canceled_at')]
+    public ?\DateTime $canceledAt;
+
+    /**
+     *
      * @var ?\DateTime $startedAt
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('started_at')]
     public ?\DateTime $startedAt;
+
+    /**
+     *
+     * @var ?\DateTime $endsAt
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('ends_at')]
+    public ?\DateTime $endsAt;
 
     /**
      *
@@ -186,21 +200,36 @@ class Subscription
     public ?string $checkoutId;
 
     /**
+     *
+     * @var ?CustomerCancellationReason $customerCancellationReason
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('customer_cancellation_reason')]
+    #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\CustomerCancellationReason|null')]
+    public ?CustomerCancellationReason $customerCancellationReason;
+
+    /**
+     *
+     * @var ?string $customerCancellationComment
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('customer_cancellation_comment')]
+    public ?string $customerCancellationComment;
+
+    /**
      * Key-value object storing custom field values.
      *
-     * @var ?SubscriptionCustomFieldData $customFieldData
+     * @var ?array<string, string|int|bool|\DateTime> $customFieldData
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('custom_field_data')]
-    #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\SubscriptionCustomFieldData|null')]
+    #[\Speakeasy\Serializer\Annotation\Type('array<string, string|int|bool|\DateTime>|null')]
     #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
-    public ?SubscriptionCustomFieldData $customFieldData = null;
+    public ?array $customFieldData = null;
 
     /**
      *
      * @var DiscountFixedOnceForeverDurationBase|DiscountFixedRepeatDurationBase|DiscountPercentageOnceForeverDurationBase|DiscountPercentageRepeatDurationBase|null $discount
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('discount')]
-    #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\DiscountFixedOnceForeverDurationBase|\Polar\Models\Components\DiscountFixedRepeatDurationBase|\Polar\Models\Components\DiscountPercentageOnceForeverDurationBase|\Polar\Models\Components\DiscountPercentageRepeatDurationBase')]
+    #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\DiscountFixedOnceForeverDurationBase|\Polar\Models\Components\DiscountFixedRepeatDurationBase|\Polar\Models\Components\DiscountPercentageOnceForeverDurationBase|\Polar\Models\Components\DiscountPercentageRepeatDurationBase|null')]
     public DiscountFixedOnceForeverDurationBase|DiscountFixedRepeatDurationBase|DiscountPercentageOnceForeverDurationBase|DiscountPercentageRepeatDurationBase|null $discount;
 
     /**
@@ -213,7 +242,7 @@ class Subscription
      * @param  string  $customerId
      * @param  string  $productId
      * @param  string  $priceId
-     * @param  array<string, mixed>  $metadata
+     * @param  array<string, string|int|bool>  $metadata
      * @param  SubscriptionCustomer  $customer
      * @param  string  $userId
      * @param  SubscriptionUser  $user
@@ -223,14 +252,19 @@ class Subscription
      * @param  ?int  $amount
      * @param  ?string  $currency
      * @param  ?\DateTime  $currentPeriodEnd
+     * @param  ?\DateTime  $canceledAt
      * @param  ?\DateTime  $startedAt
+     * @param  ?\DateTime  $endsAt
      * @param  ?\DateTime  $endedAt
      * @param  ?string  $discountId
      * @param  ?string  $checkoutId
-     * @param  ?SubscriptionCustomFieldData  $customFieldData
+     * @param  ?CustomerCancellationReason  $customerCancellationReason
+     * @param  ?string  $customerCancellationComment
+     * @param  ?array<string, string|int|bool|\DateTime>  $customFieldData
      * @param  DiscountFixedOnceForeverDurationBase|DiscountFixedRepeatDurationBase|DiscountPercentageOnceForeverDurationBase|DiscountPercentageRepeatDurationBase|null  $discount
+     * @phpstan-pure
      */
-    public function __construct(\DateTime $createdAt, string $id, SubscriptionRecurringInterval $recurringInterval, SubscriptionStatus $status, \DateTime $currentPeriodStart, bool $cancelAtPeriodEnd, string $customerId, string $productId, string $priceId, array $metadata, SubscriptionCustomer $customer, string $userId, SubscriptionUser $user, Product $product, ProductPriceRecurringFixed|ProductPriceRecurringCustom|ProductPriceRecurringFree $price, ?\DateTime $modifiedAt = null, ?int $amount = null, ?string $currency = null, ?\DateTime $currentPeriodEnd = null, ?\DateTime $startedAt = null, ?\DateTime $endedAt = null, ?string $discountId = null, ?string $checkoutId = null, ?SubscriptionCustomFieldData $customFieldData = null, DiscountFixedOnceForeverDurationBase|DiscountFixedRepeatDurationBase|DiscountPercentageOnceForeverDurationBase|DiscountPercentageRepeatDurationBase|null $discount = null)
+    public function __construct(\DateTime $createdAt, string $id, SubscriptionRecurringInterval $recurringInterval, SubscriptionStatus $status, \DateTime $currentPeriodStart, bool $cancelAtPeriodEnd, string $customerId, string $productId, string $priceId, array $metadata, SubscriptionCustomer $customer, string $userId, SubscriptionUser $user, Product $product, ProductPriceRecurringFixed|ProductPriceRecurringCustom|ProductPriceRecurringFree $price, ?\DateTime $modifiedAt = null, ?int $amount = null, ?string $currency = null, ?\DateTime $currentPeriodEnd = null, ?\DateTime $canceledAt = null, ?\DateTime $startedAt = null, ?\DateTime $endsAt = null, ?\DateTime $endedAt = null, ?string $discountId = null, ?string $checkoutId = null, ?CustomerCancellationReason $customerCancellationReason = null, ?string $customerCancellationComment = null, ?array $customFieldData = null, DiscountFixedOnceForeverDurationBase|DiscountFixedRepeatDurationBase|DiscountPercentageOnceForeverDurationBase|DiscountPercentageRepeatDurationBase|null $discount = null)
     {
         $this->createdAt = $createdAt;
         $this->id = $id;
@@ -251,10 +285,14 @@ class Subscription
         $this->amount = $amount;
         $this->currency = $currency;
         $this->currentPeriodEnd = $currentPeriodEnd;
+        $this->canceledAt = $canceledAt;
         $this->startedAt = $startedAt;
+        $this->endsAt = $endsAt;
         $this->endedAt = $endedAt;
         $this->discountId = $discountId;
         $this->checkoutId = $checkoutId;
+        $this->customerCancellationReason = $customerCancellationReason;
+        $this->customerCancellationComment = $customerCancellationComment;
         $this->customFieldData = $customFieldData;
         $this->discount = $discount;
     }

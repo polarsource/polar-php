@@ -34,18 +34,19 @@ class Onev11oauth21tokenPostXComponentsRefreshTokenRequest
 
     /**
      *
-     * @var Onev11oauth21tokenPostXComponentsRefreshTokenRequestGrantType $grantType
+     * @var string $grantType
      */
     #[SpeakeasyMetadata('form:name=grant_type')]
-    public Onev11oauth21tokenPostXComponentsRefreshTokenRequestGrantType $grantType;
+    public string $grantType;
 
     /**
-     * @param  Onev11oauth21tokenPostXComponentsRefreshTokenRequestGrantType  $grantType
+     * @param  string  $grantType
      * @param  string  $clientId
      * @param  string  $clientSecret
      * @param  string  $refreshToken
+     * @phpstan-pure
      */
-    public function __construct(string $clientId, string $clientSecret, string $refreshToken, Onev11oauth21tokenPostXComponentsRefreshTokenRequestGrantType $grantType = Onev11oauth21tokenPostXComponentsRefreshTokenRequestGrantType::RefreshToken)
+    public function __construct(string $clientId, string $clientSecret, string $refreshToken, string $grantType = 'refresh_token')
     {
         $this->clientId = $clientId;
         $this->clientSecret = $clientSecret;

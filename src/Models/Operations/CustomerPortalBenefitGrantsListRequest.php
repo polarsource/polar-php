@@ -94,6 +94,7 @@ class CustomerPortalBenefitGrantsListRequest
      * @param  string|array<string>|null  $orderId
      * @param  string|array<string>|null  $subscriptionId
      * @param  ?array<Components\CustomerBenefitGrantSortProperty>  $sorting
+     * @phpstan-pure
      */
     public function __construct(Components\BenefitType|array|null $typeFilter = null, string|array|null $benefitId = null, string|array|null $organizationId = null, string|array|null $checkoutId = null, string|array|null $orderId = null, string|array|null $subscriptionId = null, ?array $sorting = null, ?int $page = 1, ?int $limit = 10)
     {

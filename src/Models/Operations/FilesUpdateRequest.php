@@ -30,6 +30,7 @@ class FilesUpdateRequest
     /**
      * @param  string  $id
      * @param  Components\FilePatch  $filePatch
+     * @phpstan-pure
      */
     public function __construct(string $id, Components\FilePatch $filePatch)
     {

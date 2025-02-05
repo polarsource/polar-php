@@ -24,14 +24,16 @@ use Polar;
 use Polar\Models\Components;
 use Polar\Models\Operations;
 
-$security = '<YOUR_BEARER_TOKEN_HERE>';
-
-$sdk = Polar\Polar::builder()->setSecurity($security)->build();
+$sdk = Polar\Polar::builder()
+    ->setSecurity(
+        '<YOUR_BEARER_TOKEN_HERE>'
+    )
+    ->build();
 
 $request = new Operations\MetricsGetRequest(
-    startDate: LocalDate::parse('2024-02-07'),
-    endDate: LocalDate::parse('2023-09-05'),
-    interval: Components\Interval::Week,
+    startDate: LocalDate::parse('2025-02-06'),
+    endDate: LocalDate::parse('2024-09-04'),
+    interval: Components\TimeInterval::Week,
 );
 
 $response = $sdk->metrics->get(
@@ -73,9 +75,11 @@ require 'vendor/autoload.php';
 
 use Polar;
 
-$security = '<YOUR_BEARER_TOKEN_HERE>';
-
-$sdk = Polar\Polar::builder()->setSecurity($security)->build();
+$sdk = Polar\Polar::builder()
+    ->setSecurity(
+        '<YOUR_BEARER_TOKEN_HERE>'
+    )
+    ->build();
 
 
 

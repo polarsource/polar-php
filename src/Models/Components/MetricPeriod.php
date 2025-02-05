@@ -35,6 +35,13 @@ class MetricPeriod
 
     /**
      *
+     * @var int $cumulativeRevenue
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('cumulative_revenue')]
+    public int $cumulativeRevenue;
+
+    /**
+     *
      * @var int $averageOrderValue
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('average_order_value')]
@@ -100,6 +107,7 @@ class MetricPeriod
      * @param  \DateTime  $timestamp
      * @param  int  $orders
      * @param  int  $revenue
+     * @param  int  $cumulativeRevenue
      * @param  int  $averageOrderValue
      * @param  int  $oneTimeProducts
      * @param  int  $oneTimeProductsRevenue
@@ -109,12 +117,14 @@ class MetricPeriod
      * @param  int  $renewedSubscriptionsRevenue
      * @param  int  $activeSubscriptions
      * @param  int  $monthlyRecurringRevenue
+     * @phpstan-pure
      */
-    public function __construct(\DateTime $timestamp, int $orders, int $revenue, int $averageOrderValue, int $oneTimeProducts, int $oneTimeProductsRevenue, int $newSubscriptions, int $newSubscriptionsRevenue, int $renewedSubscriptions, int $renewedSubscriptionsRevenue, int $activeSubscriptions, int $monthlyRecurringRevenue)
+    public function __construct(\DateTime $timestamp, int $orders, int $revenue, int $cumulativeRevenue, int $averageOrderValue, int $oneTimeProducts, int $oneTimeProductsRevenue, int $newSubscriptions, int $newSubscriptionsRevenue, int $renewedSubscriptions, int $renewedSubscriptionsRevenue, int $activeSubscriptions, int $monthlyRecurringRevenue)
     {
         $this->timestamp = $timestamp;
         $this->orders = $orders;
         $this->revenue = $revenue;
+        $this->cumulativeRevenue = $cumulativeRevenue;
         $this->averageOrderValue = $averageOrderValue;
         $this->oneTimeProducts = $oneTimeProducts;
         $this->oneTimeProductsRevenue = $oneTimeProductsRevenue;

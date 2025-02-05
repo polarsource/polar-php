@@ -30,6 +30,7 @@ class CustomerPortalBenefitGrantsUpdateRequest
     /**
      * @param  string  $id
      * @param  Components\CustomerBenefitGrantDiscordUpdate|Components\CustomerBenefitGrantGitHubRepositoryUpdate|Components\CustomerBenefitGrantDownloadablesUpdate|Components\CustomerBenefitGrantLicenseKeysUpdate|Components\CustomerBenefitGrantAdsUpdate|Components\CustomerBenefitGrantCustomUpdate  $customerBenefitGrantUpdate
+     * @phpstan-pure
      */
     public function __construct(string $id, Components\CustomerBenefitGrantDiscordUpdate|Components\CustomerBenefitGrantGitHubRepositoryUpdate|Components\CustomerBenefitGrantDownloadablesUpdate|Components\CustomerBenefitGrantLicenseKeysUpdate|Components\CustomerBenefitGrantAdsUpdate|Components\CustomerBenefitGrantCustomUpdate $customerBenefitGrantUpdate)
     {

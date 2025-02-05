@@ -1,0 +1,15 @@
+# Event
+
+
+## Fields
+
+| Field                                                                      | Type                                                                       | Required                                                                   | Description                                                                |
+| -------------------------------------------------------------------------- | -------------------------------------------------------------------------- | -------------------------------------------------------------------------- | -------------------------------------------------------------------------- |
+| `metadata`                                                                 | array<string, [string\|int\|bool](../../Models/Components/EventMetadata.md)> | :heavy_check_mark:                                                         | N/A                                                                        |
+| `id`                                                                       | *string*                                                                   | :heavy_check_mark:                                                         | The ID of the object.                                                      |
+| `timestamp`                                                                | [\DateTime](https://www.php.net/manual/en/class.datetime.php)              | :heavy_check_mark:                                                         | The timestamp of the event.                                                |
+| `name`                                                                     | *string*                                                                   | :heavy_check_mark:                                                         | The name of the event.                                                     |
+| `source`                                                                   | [Components\EventSource](../../Models/Components/EventSource.md)           | :heavy_check_mark:                                                         | N/A                                                                        |
+| `organizationId`                                                           | *string*                                                                   | :heavy_check_mark:                                                         | The ID of the organization owning the event.                               |
+| `customerId`                                                               | *string*                                                                   | :heavy_check_mark:                                                         | ID of the customer in your Polar organization associated with the event.   |
+| `externalCustomerId`                                                       | *string*                                                                   | :heavy_check_mark:                                                         | ID of the customer in your system associated with the event.               |

@@ -127,11 +127,10 @@ class OrganizationAvatarFileRead
 
     /**
      *
-     * @var OrganizationAvatarFileReadService $service
+     * @var string $service
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('service')]
-    #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\OrganizationAvatarFileReadService')]
-    public OrganizationAvatarFileReadService $service;
+    public string $service;
 
     /**
      * @param  string  $id
@@ -140,7 +139,7 @@ class OrganizationAvatarFileRead
      * @param  string  $path
      * @param  string  $mimeType
      * @param  int  $size
-     * @param  OrganizationAvatarFileReadService  $service
+     * @param  string  $service
      * @param  bool  $isUploaded
      * @param  \DateTime  $createdAt
      * @param  string  $sizeReadable
@@ -151,8 +150,9 @@ class OrganizationAvatarFileRead
      * @param  ?string  $checksumSha256Hex
      * @param  ?\DateTime  $lastModifiedAt
      * @param  ?string  $version
+     * @phpstan-pure
      */
-    public function __construct(string $id, string $organizationId, string $name, string $path, string $mimeType, int $size, bool $isUploaded, \DateTime $createdAt, string $sizeReadable, string $publicUrl, ?string $storageVersion = null, ?string $checksumEtag = null, ?string $checksumSha256Base64 = null, ?string $checksumSha256Hex = null, ?\DateTime $lastModifiedAt = null, ?string $version = null, OrganizationAvatarFileReadService $service = OrganizationAvatarFileReadService::OrganizationAvatar)
+    public function __construct(string $id, string $organizationId, string $name, string $path, string $mimeType, int $size, bool $isUploaded, \DateTime $createdAt, string $sizeReadable, string $publicUrl, ?string $storageVersion = null, ?string $checksumEtag = null, ?string $checksumSha256Base64 = null, ?string $checksumSha256Hex = null, ?\DateTime $lastModifiedAt = null, ?string $version = null, string $service = 'organization_avatar')
     {
         $this->id = $id;
         $this->organizationId = $organizationId;

@@ -28,17 +28,17 @@ class WebhookSubscriptionActivePayload
 
     /**
      *
-     * @var WebhookSubscriptionActivePayloadType $type
+     * @var string $type
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('type')]
-    #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\WebhookSubscriptionActivePayloadType')]
-    public WebhookSubscriptionActivePayloadType $type;
+    public string $type;
 
     /**
-     * @param  WebhookSubscriptionActivePayloadType  $type
+     * @param  string  $type
      * @param  Subscription  $data
+     * @phpstan-pure
      */
-    public function __construct(Subscription $data, WebhookSubscriptionActivePayloadType $type = WebhookSubscriptionActivePayloadType::SubscriptionActive)
+    public function __construct(Subscription $data, string $type = 'subscription.active')
     {
         $this->data = $data;
         $this->type = $type;

@@ -47,10 +47,10 @@ class OAuth2ClientConfigurationUpdate
     /**
      * $responseTypes
      *
-     * @var ?array<OAuth2ClientConfigurationUpdateResponseTypes> $responseTypes
+     * @var ?array<string> $responseTypes
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('response_types')]
-    #[\Speakeasy\Serializer\Annotation\Type('array<\Polar\Models\Components\OAuth2ClientConfigurationUpdateResponseTypes>|null')]
+    #[\Speakeasy\Serializer\Annotation\Type('array<string>|null')]
     #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
     public ?array $responseTypes = null;
 
@@ -109,14 +109,15 @@ class OAuth2ClientConfigurationUpdate
      * @param  string  $clientId
      * @param  ?OAuth2ClientConfigurationUpdateTokenEndpointAuthMethod  $tokenEndpointAuthMethod
      * @param  ?array<OAuth2ClientConfigurationUpdateGrantTypes>  $grantTypes
-     * @param  ?array<OAuth2ClientConfigurationUpdateResponseTypes>  $responseTypes
+     * @param  ?array<string>  $responseTypes
      * @param  ?string  $scope
      * @param  ?string  $clientUri
      * @param  ?string  $logoUri
      * @param  ?string  $tosUri
      * @param  ?string  $policyUri
+     * @phpstan-pure
      */
-    public function __construct(array $redirectUris, string $clientName, string $clientId, ?array $grantTypes = null, ?array $responseTypes = null, ?string $clientUri = null, ?string $logoUri = null, ?string $tosUri = null, ?string $policyUri = null, ?OAuth2ClientConfigurationUpdateTokenEndpointAuthMethod $tokenEndpointAuthMethod = OAuth2ClientConfigurationUpdateTokenEndpointAuthMethod::ClientSecretPost, ?string $scope = 'openid profile email user:read organizations:read organizations:write custom_fields:read custom_fields:write discounts:read discounts:write checkout_links:read checkout_links:write checkouts:read checkouts:write products:read products:write benefits:read benefits:write files:read files:write subscriptions:read subscriptions:write customers:read customers:write customer_sessions:write orders:read metrics:read webhooks:read webhooks:write external_organizations:read license_keys:read license_keys:write repositories:read repositories:write issues:read issues:write customer_portal:read customer_portal:write')
+    public function __construct(array $redirectUris, string $clientName, string $clientId, ?array $grantTypes = null, ?array $responseTypes = null, ?string $clientUri = null, ?string $logoUri = null, ?string $tosUri = null, ?string $policyUri = null, ?OAuth2ClientConfigurationUpdateTokenEndpointAuthMethod $tokenEndpointAuthMethod = OAuth2ClientConfigurationUpdateTokenEndpointAuthMethod::ClientSecretPost, ?string $scope = 'openid profile email user:read organizations:read organizations:write custom_fields:read custom_fields:write discounts:read discounts:write checkout_links:read checkout_links:write checkouts:read checkouts:write products:read products:write benefits:read benefits:write events:read events:write meters:read meters:write files:read files:write subscriptions:read subscriptions:write customers:read customers:write customer_sessions:write orders:read refunds:read refunds:write metrics:read webhooks:read webhooks:write external_organizations:read license_keys:read license_keys:write repositories:read repositories:write issues:read issues:write customer_portal:read customer_portal:write')
     {
         $this->redirectUris = $redirectUris;
         $this->clientName = $clientName;

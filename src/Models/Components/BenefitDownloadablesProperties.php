@@ -32,6 +32,7 @@ class BenefitDownloadablesProperties
     /**
      * @param  array<string, bool>  $archived
      * @param  array<string>  $files
+     * @phpstan-pure
      */
     public function __construct(array $archived, array $files)
     {

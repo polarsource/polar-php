@@ -86,35 +86,34 @@ class ProductPriceOneTimeCustom
 
     /**
      *
-     * @var ProductPriceOneTimeCustomAmountType $amountType
+     * @var string $amountType
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('amount_type')]
-    #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\ProductPriceOneTimeCustomAmountType')]
-    public ProductPriceOneTimeCustomAmountType $amountType;
+    public string $amountType;
 
     /**
      * The type of the price.
      *
-     * @var ProductPriceOneTimeCustomType $type
+     * @var string $type
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('type')]
-    #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\ProductPriceOneTimeCustomType')]
-    public ProductPriceOneTimeCustomType $type;
+    public string $type;
 
     /**
      * @param  \DateTime  $createdAt
      * @param  string  $id
-     * @param  ProductPriceOneTimeCustomAmountType  $amountType
+     * @param  string  $amountType
      * @param  bool  $isArchived
      * @param  string  $productId
      * @param  string  $priceCurrency
-     * @param  ProductPriceOneTimeCustomType  $type
+     * @param  string  $type
      * @param  ?\DateTime  $modifiedAt
      * @param  ?int  $minimumAmount
      * @param  ?int  $maximumAmount
      * @param  ?int  $presetAmount
+     * @phpstan-pure
      */
-    public function __construct(\DateTime $createdAt, string $id, bool $isArchived, string $productId, string $priceCurrency, ?\DateTime $modifiedAt = null, ?int $minimumAmount = null, ?int $maximumAmount = null, ?int $presetAmount = null, ProductPriceOneTimeCustomAmountType $amountType = ProductPriceOneTimeCustomAmountType::Custom, ProductPriceOneTimeCustomType $type = ProductPriceOneTimeCustomType::OneTime)
+    public function __construct(\DateTime $createdAt, string $id, bool $isArchived, string $productId, string $priceCurrency, ?\DateTime $modifiedAt = null, ?int $minimumAmount = null, ?int $maximumAmount = null, ?int $presetAmount = null, string $amountType = 'custom', string $type = 'one_time')
     {
         $this->createdAt = $createdAt;
         $this->id = $id;

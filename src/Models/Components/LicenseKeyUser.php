@@ -45,6 +45,7 @@ class LicenseKeyUser
      * @param  string  $email
      * @param  string  $publicName
      * @param  ?string  $avatarUrl
+     * @phpstan-pure
      */
     public function __construct(string $id, string $email, string $publicName, ?string $avatarUrl = null)
     {

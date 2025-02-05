@@ -38,6 +38,7 @@ class S3FileUploadMultipart
      * @param  string  $id
      * @param  string  $path
      * @param  array<S3FileUploadPart>  $parts
+     * @phpstan-pure
      */
     public function __construct(string $id, string $path, array $parts)
     {

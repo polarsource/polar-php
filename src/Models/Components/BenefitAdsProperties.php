@@ -33,6 +33,7 @@ class BenefitAdsProperties
     /**
      * @param  ?int  $imageHeight
      * @param  ?int  $imageWidth
+     * @phpstan-pure
      */
     public function __construct(?int $imageHeight = 400, ?int $imageWidth = 400)
     {

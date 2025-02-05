@@ -21,6 +21,7 @@ class SubscriptionsExportRequest
 
     /**
      * @param  string|array<string>|null  $organizationId
+     * @phpstan-pure
      */
     public function __construct(string|array|null $organizationId = null)
     {

@@ -85,16 +85,15 @@ class BenefitLicenseKeysSubscriber
 
     /**
      *
-     * @var BenefitLicenseKeysSubscriberType $type
+     * @var string $type
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('type')]
-    #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\BenefitLicenseKeysSubscriberType')]
-    public BenefitLicenseKeysSubscriberType $type;
+    public string $type;
 
     /**
      * @param  \DateTime  $createdAt
      * @param  string  $id
-     * @param  BenefitLicenseKeysSubscriberType  $type
+     * @param  string  $type
      * @param  string  $description
      * @param  bool  $selectable
      * @param  bool  $deletable
@@ -102,8 +101,9 @@ class BenefitLicenseKeysSubscriber
      * @param  Organization  $organization
      * @param  BenefitLicenseKeysSubscriberProperties  $properties
      * @param  ?\DateTime  $modifiedAt
+     * @phpstan-pure
      */
-    public function __construct(\DateTime $createdAt, string $id, string $description, bool $selectable, bool $deletable, string $organizationId, Organization $organization, BenefitLicenseKeysSubscriberProperties $properties, ?\DateTime $modifiedAt = null, BenefitLicenseKeysSubscriberType $type = BenefitLicenseKeysSubscriberType::LicenseKeys)
+    public function __construct(\DateTime $createdAt, string $id, string $description, bool $selectable, bool $deletable, string $organizationId, Organization $organization, BenefitLicenseKeysSubscriberProperties $properties, ?\DateTime $modifiedAt = null, string $type = 'license_keys')
     {
         $this->createdAt = $createdAt;
         $this->id = $id;

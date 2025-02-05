@@ -22,6 +22,7 @@ class RepositoryUpdate
 
     /**
      * @param  ?RepositoryProfileSettingsUpdate  $profileSettings
+     * @phpstan-pure
      */
     public function __construct(?RepositoryProfileSettingsUpdate $profileSettings = null)
     {

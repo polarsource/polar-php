@@ -127,11 +127,10 @@ class ProductMediaFileRead
 
     /**
      *
-     * @var Service $service
+     * @var string $service
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('service')]
-    #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\Service')]
-    public Service $service;
+    public string $service;
 
     /**
      * @param  string  $id
@@ -140,7 +139,7 @@ class ProductMediaFileRead
      * @param  string  $path
      * @param  string  $mimeType
      * @param  int  $size
-     * @param  Service  $service
+     * @param  string  $service
      * @param  bool  $isUploaded
      * @param  \DateTime  $createdAt
      * @param  string  $sizeReadable
@@ -151,8 +150,9 @@ class ProductMediaFileRead
      * @param  ?string  $checksumSha256Hex
      * @param  ?\DateTime  $lastModifiedAt
      * @param  ?string  $version
+     * @phpstan-pure
      */
-    public function __construct(string $id, string $organizationId, string $name, string $path, string $mimeType, int $size, bool $isUploaded, \DateTime $createdAt, string $sizeReadable, string $publicUrl, ?string $storageVersion = null, ?string $checksumEtag = null, ?string $checksumSha256Base64 = null, ?string $checksumSha256Hex = null, ?\DateTime $lastModifiedAt = null, ?string $version = null, Service $service = Service::ProductMedia)
+    public function __construct(string $id, string $organizationId, string $name, string $path, string $mimeType, int $size, bool $isUploaded, \DateTime $createdAt, string $sizeReadable, string $publicUrl, ?string $storageVersion = null, ?string $checksumEtag = null, ?string $checksumSha256Base64 = null, ?string $checksumSha256Hex = null, ?\DateTime $lastModifiedAt = null, ?string $version = null, string $service = 'product_media')
     {
         $this->id = $id;
         $this->organizationId = $organizationId;

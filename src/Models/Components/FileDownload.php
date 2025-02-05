@@ -143,6 +143,7 @@ class FileDownload
      * @param  ?string  $checksumSha256Hex
      * @param  ?\DateTime  $lastModifiedAt
      * @param  ?string  $version
+     * @phpstan-pure
      */
     public function __construct(string $id, string $organizationId, string $name, string $path, string $mimeType, int $size, S3DownloadURL $download, bool $isUploaded, FileServiceTypes $service, string $sizeReadable, ?string $storageVersion = null, ?string $checksumEtag = null, ?string $checksumSha256Base64 = null, ?string $checksumSha256Hex = null, ?\DateTime $lastModifiedAt = null, ?string $version = null)
     {

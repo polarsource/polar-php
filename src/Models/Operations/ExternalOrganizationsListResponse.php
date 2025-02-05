@@ -48,6 +48,7 @@ class ExternalOrganizationsListResponse
      * @param  int  $statusCode
      * @param  \Psr\Http\Message\ResponseInterface  $rawResponse
      * @param  ?Components\ListResourceExternalOrganization  $listResourceExternalOrganization
+     * @phpstan-pure
      */
     public function __construct(string $contentType, int $statusCode, \Psr\Http\Message\ResponseInterface $rawResponse, ?Components\ListResourceExternalOrganization $listResourceExternalOrganization = null)
     {

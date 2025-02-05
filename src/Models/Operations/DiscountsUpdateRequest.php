@@ -30,6 +30,7 @@ class DiscountsUpdateRequest
     /**
      * @param  string  $id
      * @param  Components\DiscountUpdate  $discountUpdate
+     * @phpstan-pure
      */
     public function __construct(string $id, Components\DiscountUpdate $discountUpdate)
     {

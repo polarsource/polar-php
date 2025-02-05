@@ -29,6 +29,7 @@ class Oauth2ClientsOauth2UpdateClientRequest
     /**
      * @param  string  $clientId
      * @param  Components\OAuth2ClientConfigurationUpdate  $oAuth2ClientConfigurationUpdate
+     * @phpstan-pure
      */
     public function __construct(string $clientId, Components\OAuth2ClientConfigurationUpdate $oAuth2ClientConfigurationUpdate)
     {

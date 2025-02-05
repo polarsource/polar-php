@@ -85,6 +85,7 @@ class SubscriptionsListRequest
      * @param  string|array<string>|null  $discountId
      * @param  ?bool  $active
      * @param  ?array<Components\SubscriptionSortProperty>  $sorting
+     * @phpstan-pure
      */
     public function __construct(string|array|null $organizationId = null, string|array|null $productId = null, string|array|null $customerId = null, string|array|null $discountId = null, ?bool $active = null, ?array $sorting = null, ?int $page = 1, ?int $limit = 10)
     {

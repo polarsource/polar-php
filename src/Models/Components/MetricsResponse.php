@@ -32,6 +32,7 @@ class MetricsResponse
     /**
      * @param  array<MetricPeriod>  $periods
      * @param  Metrics  $metrics
+     * @phpstan-pure
      */
     public function __construct(array $periods, Metrics $metrics)
     {

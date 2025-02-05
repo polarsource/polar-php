@@ -39,19 +39,19 @@ class BenefitGitHubRepositoryCreate
 
     /**
      *
-     * @var BenefitGitHubRepositoryCreateType $type
+     * @var string $type
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('type')]
-    #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\BenefitGitHubRepositoryCreateType')]
-    public BenefitGitHubRepositoryCreateType $type;
+    public string $type;
 
     /**
-     * @param  BenefitGitHubRepositoryCreateType  $type
+     * @param  string  $type
      * @param  string  $description
      * @param  BenefitGitHubRepositoryCreateProperties  $properties
      * @param  ?string  $organizationId
+     * @phpstan-pure
      */
-    public function __construct(string $description, BenefitGitHubRepositoryCreateProperties $properties, ?string $organizationId = null, BenefitGitHubRepositoryCreateType $type = BenefitGitHubRepositoryCreateType::GithubRepository)
+    public function __construct(string $description, BenefitGitHubRepositoryCreateProperties $properties, ?string $organizationId = null, string $type = 'github_repository')
     {
         $this->description = $description;
         $this->properties = $properties;

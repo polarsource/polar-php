@@ -28,6 +28,7 @@ class BenefitLicenseKeyActivationProperties
     /**
      * @param  int  $limit
      * @param  bool  $enableCustomerAdmin
+     * @phpstan-pure
      */
     public function __construct(int $limit, bool $enableCustomerAdmin)
     {

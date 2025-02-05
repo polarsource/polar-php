@@ -21,6 +21,7 @@ class BenefitCustomProperties
 
     /**
      * @param  ?string  $note
+     * @phpstan-pure
      */
     public function __construct(?string $note = null)
     {

@@ -31,6 +31,7 @@ class BenefitGitHubRepositorySubscriberProperties
     /**
      * @param  string  $repositoryOwner
      * @param  string  $repositoryName
+     * @phpstan-pure
      */
     public function __construct(string $repositoryOwner, string $repositoryName)
     {

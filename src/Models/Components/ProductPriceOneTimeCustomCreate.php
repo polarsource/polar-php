@@ -41,19 +41,17 @@ class ProductPriceOneTimeCustomCreate
 
     /**
      *
-     * @var ProductPriceOneTimeCustomCreateType $type
+     * @var string $type
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('type')]
-    #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\ProductPriceOneTimeCustomCreateType')]
-    public ProductPriceOneTimeCustomCreateType $type;
+    public string $type;
 
     /**
      *
-     * @var ProductPriceOneTimeCustomCreateAmountType $amountType
+     * @var string $amountType
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('amount_type')]
-    #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\ProductPriceOneTimeCustomCreateAmountType')]
-    public ProductPriceOneTimeCustomCreateAmountType $amountType;
+    public string $amountType;
 
     /**
      * The currency. Currently, only `usd` is supported.
@@ -65,14 +63,15 @@ class ProductPriceOneTimeCustomCreate
     public ?string $priceCurrency = null;
 
     /**
-     * @param  ProductPriceOneTimeCustomCreateType  $type
-     * @param  ProductPriceOneTimeCustomCreateAmountType  $amountType
+     * @param  string  $type
+     * @param  string  $amountType
      * @param  ?string  $priceCurrency
      * @param  ?int  $minimumAmount
      * @param  ?int  $maximumAmount
      * @param  ?int  $presetAmount
+     * @phpstan-pure
      */
-    public function __construct(?int $minimumAmount = null, ?int $maximumAmount = null, ?int $presetAmount = null, ProductPriceOneTimeCustomCreateType $type = ProductPriceOneTimeCustomCreateType::OneTime, ProductPriceOneTimeCustomCreateAmountType $amountType = ProductPriceOneTimeCustomCreateAmountType::Custom, ?string $priceCurrency = 'usd')
+    public function __construct(?int $minimumAmount = null, ?int $maximumAmount = null, ?int $presetAmount = null, string $type = 'one_time', string $amountType = 'custom', ?string $priceCurrency = 'usd')
     {
         $this->minimumAmount = $minimumAmount;
         $this->maximumAmount = $maximumAmount;

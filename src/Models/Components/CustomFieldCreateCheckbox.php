@@ -49,10 +49,10 @@ class CustomFieldCreateCheckbox
      *
      * You can store up to **50 key-value pairs**.
      *
-     * @var ?array<string, mixed> $metadata
+     * @var ?array<string, string|int|bool> $metadata
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('metadata')]
-    #[\Speakeasy\Serializer\Annotation\Type('array<string, mixed>|null')]
+    #[\Speakeasy\Serializer\Annotation\Type('array<string, string|int|bool>|null')]
     #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
     public ?array $metadata = null;
 
@@ -67,21 +67,21 @@ class CustomFieldCreateCheckbox
 
     /**
      *
-     * @var CustomFieldCreateCheckboxType $type
+     * @var string $type
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('type')]
-    #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\CustomFieldCreateCheckboxType')]
-    public CustomFieldCreateCheckboxType $type;
+    public string $type;
 
     /**
-     * @param  CustomFieldCreateCheckboxType  $type
+     * @param  string  $type
      * @param  string  $slug
      * @param  string  $name
      * @param  CustomFieldCheckboxProperties  $properties
-     * @param  ?array<string, mixed>  $metadata
+     * @param  ?array<string, string|int|bool>  $metadata
      * @param  ?string  $organizationId
+     * @phpstan-pure
      */
-    public function __construct(string $slug, string $name, CustomFieldCheckboxProperties $properties, ?array $metadata = null, ?string $organizationId = null, CustomFieldCreateCheckboxType $type = CustomFieldCreateCheckboxType::Checkbox)
+    public function __construct(string $slug, string $name, CustomFieldCheckboxProperties $properties, ?array $metadata = null, ?string $organizationId = null, string $type = 'checkbox')
     {
         $this->slug = $slug;
         $this->name = $name;

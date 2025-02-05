@@ -47,6 +47,7 @@ class UserInfoUser
      * @param  ?string  $name
      * @param  ?string  $email
      * @param  ?bool  $emailVerified
+     * @phpstan-pure
      */
     public function __construct(string $sub, ?string $name = null, ?string $email = null, ?bool $emailVerified = null)
     {

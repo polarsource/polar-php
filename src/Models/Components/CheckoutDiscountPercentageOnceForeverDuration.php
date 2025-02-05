@@ -64,6 +64,7 @@ class CheckoutDiscountPercentageOnceForeverDuration
      * @param  string  $id
      * @param  string  $name
      * @param  ?string  $code
+     * @phpstan-pure
      */
     public function __construct(DiscountDuration $duration, DiscountType $type, int $basisPoints, string $id, string $name, ?string $code = null)
     {

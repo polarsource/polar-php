@@ -66,6 +66,7 @@ class CustomFieldTextProperties
      * @param  ?bool  $textarea
      * @param  ?int  $minLength
      * @param  ?int  $maxLength
+     * @phpstan-pure
      */
     public function __construct(?string $formLabel = null, ?string $formHelpText = null, ?string $formPlaceholder = null, ?bool $textarea = null, ?int $minLength = null, ?int $maxLength = null)
     {

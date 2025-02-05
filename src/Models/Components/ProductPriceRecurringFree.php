@@ -62,32 +62,31 @@ class ProductPriceRecurringFree
 
     /**
      *
-     * @var ProductPriceRecurringFreeAmountType $amountType
+     * @var string $amountType
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('amount_type')]
-    #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\ProductPriceRecurringFreeAmountType')]
-    public ProductPriceRecurringFreeAmountType $amountType;
+    public string $amountType;
 
     /**
      * The type of the price.
      *
-     * @var ProductPriceRecurringFreeType $type
+     * @var string $type
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('type')]
-    #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\ProductPriceRecurringFreeType')]
-    public ProductPriceRecurringFreeType $type;
+    public string $type;
 
     /**
      * @param  \DateTime  $createdAt
      * @param  string  $id
-     * @param  ProductPriceRecurringFreeAmountType  $amountType
+     * @param  string  $amountType
      * @param  bool  $isArchived
      * @param  string  $productId
-     * @param  ProductPriceRecurringFreeType  $type
+     * @param  string  $type
      * @param  SubscriptionRecurringInterval  $recurringInterval
      * @param  ?\DateTime  $modifiedAt
+     * @phpstan-pure
      */
-    public function __construct(\DateTime $createdAt, string $id, bool $isArchived, string $productId, SubscriptionRecurringInterval $recurringInterval, ?\DateTime $modifiedAt = null, ProductPriceRecurringFreeAmountType $amountType = ProductPriceRecurringFreeAmountType::Free, ProductPriceRecurringFreeType $type = ProductPriceRecurringFreeType::Recurring)
+    public function __construct(\DateTime $createdAt, string $id, bool $isArchived, string $productId, SubscriptionRecurringInterval $recurringInterval, ?\DateTime $modifiedAt = null, string $amountType = 'free', string $type = 'recurring')
     {
         $this->createdAt = $createdAt;
         $this->id = $id;

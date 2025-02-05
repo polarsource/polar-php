@@ -45,6 +45,7 @@ class S3FileCreatePart
      * @param  int  $chunkStart
      * @param  int  $chunkEnd
      * @param  ?string  $checksumSha256Base64
+     * @phpstan-pure
      */
     public function __construct(int $number, int $chunkStart, int $chunkEnd, ?string $checksumSha256Base64 = null)
     {

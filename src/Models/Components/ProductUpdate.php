@@ -15,10 +15,10 @@ class ProductUpdate
     /**
      * $metadata
      *
-     * @var ?array<string, mixed> $metadata
+     * @var ?array<string, string|int|bool> $metadata
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('metadata')]
-    #[\Speakeasy\Serializer\Annotation\Type('array<string, mixed>|null')]
+    #[\Speakeasy\Serializer\Annotation\Type('array<string, string|int|bool>|null')]
     #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
     public ?array $metadata = null;
 
@@ -51,10 +51,10 @@ class ProductUpdate
     /**
      * List of available prices for this product. If you want to keep existing prices, include them in the list as an `ExistingProductPrice` object.
      *
-     * @var ?array<mixed> $prices
+     * @var ?array<ExistingProductPrice|ProductPriceRecurringFixedCreate|ProductPriceRecurringFreeCreate|ProductPriceOneTimeFixedCreate|ProductPriceOneTimeCustomCreate|ProductPriceOneTimeFreeCreate> $prices
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('prices')]
-    #[\Speakeasy\Serializer\Annotation\Type('array<mixed>|null')]
+    #[\Speakeasy\Serializer\Annotation\Type('array<\Polar\Models\Components\ExistingProductPrice|\Polar\Models\Components\ProductPriceRecurringFixedCreate|\Polar\Models\Components\ProductPriceRecurringFreeCreate|\Polar\Models\Components\ProductPriceOneTimeFixedCreate|\Polar\Models\Components\ProductPriceOneTimeCustomCreate|\Polar\Models\Components\ProductPriceOneTimeFreeCreate>|null')]
     #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
     public ?array $prices = null;
 
@@ -79,13 +79,14 @@ class ProductUpdate
     public ?array $attachedCustomFields = null;
 
     /**
-     * @param  ?array<string, mixed>  $metadata
+     * @param  ?array<string, string|int|bool>  $metadata
      * @param  ?string  $name
      * @param  ?string  $description
      * @param  ?bool  $isArchived
-     * @param  ?array<mixed>  $prices
+     * @param  ?array<ExistingProductPrice|ProductPriceRecurringFixedCreate|ProductPriceRecurringFreeCreate|ProductPriceOneTimeFixedCreate|ProductPriceOneTimeCustomCreate|ProductPriceOneTimeFreeCreate>  $prices
      * @param  ?array<string>  $medias
      * @param  ?array<AttachedCustomFieldCreate>  $attachedCustomFields
+     * @phpstan-pure
      */
     public function __construct(?array $metadata = null, ?string $name = null, ?string $description = null, ?bool $isArchived = null, ?array $prices = null, ?array $medias = null, ?array $attachedCustomFields = null)
     {

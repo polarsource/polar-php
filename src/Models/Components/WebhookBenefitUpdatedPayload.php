@@ -27,17 +27,17 @@ class WebhookBenefitUpdatedPayload
 
     /**
      *
-     * @var WebhookBenefitUpdatedPayloadType $type
+     * @var string $type
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('type')]
-    #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\WebhookBenefitUpdatedPayloadType')]
-    public WebhookBenefitUpdatedPayloadType $type;
+    public string $type;
 
     /**
-     * @param  WebhookBenefitUpdatedPayloadType  $type
+     * @param  string  $type
      * @param  BenefitAds|BenefitCustom|BenefitDiscord|BenefitGitHubRepository|BenefitDownloadables|BenefitLicenseKeys  $data
+     * @phpstan-pure
      */
-    public function __construct(BenefitAds|BenefitCustom|BenefitDiscord|BenefitGitHubRepository|BenefitDownloadables|BenefitLicenseKeys $data, WebhookBenefitUpdatedPayloadType $type = WebhookBenefitUpdatedPayloadType::BenefitUpdated)
+    public function __construct(BenefitAds|BenefitCustom|BenefitDiscord|BenefitGitHubRepository|BenefitDownloadables|BenefitLicenseKeys $data, string $type = 'benefit.updated')
     {
         $this->data = $data;
         $this->type = $type;

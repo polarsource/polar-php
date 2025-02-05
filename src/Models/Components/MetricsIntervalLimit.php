@@ -22,6 +22,7 @@ class MetricsIntervalLimit
 
     /**
      * @param  int  $maxDays
+     * @phpstan-pure
      */
     public function __construct(int $maxDays)
     {

@@ -11,5 +11,6 @@ namespace Polar\Models\Components;
 
 enum TokenType: string
 {
-    case Bearer = 'Bearer';
+    case AccessToken = 'access_token';
+    case RefreshToken = 'refresh_token';
 }

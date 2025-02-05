@@ -84,6 +84,7 @@ class BenefitBase
      * @param  bool  $deletable
      * @param  string  $organizationId
      * @param  ?\DateTime  $modifiedAt
+     * @phpstan-pure
      */
     public function __construct(\DateTime $createdAt, string $id, BenefitType $type, string $description, bool $selectable, bool $deletable, string $organizationId, ?\DateTime $modifiedAt = null)
     {

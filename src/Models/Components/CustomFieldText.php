@@ -31,10 +31,10 @@ class CustomFieldText
     /**
      * $metadata
      *
-     * @var array<string, mixed> $metadata
+     * @var array<string, string|int|bool> $metadata
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('metadata')]
-    #[\Speakeasy\Serializer\Annotation\Type('array<string, mixed>')]
+    #[\Speakeasy\Serializer\Annotation\Type('array<string, string|int|bool>')]
     public array $metadata;
 
     /**
@@ -79,24 +79,24 @@ class CustomFieldText
 
     /**
      *
-     * @var CustomFieldTextType $type
+     * @var string $type
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('type')]
-    #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\CustomFieldTextType')]
-    public CustomFieldTextType $type;
+    public string $type;
 
     /**
      * @param  \DateTime  $createdAt
      * @param  string  $id
-     * @param  array<string, mixed>  $metadata
-     * @param  CustomFieldTextType  $type
+     * @param  array<string, string|int|bool>  $metadata
+     * @param  string  $type
      * @param  string  $slug
      * @param  string  $name
      * @param  string  $organizationId
      * @param  CustomFieldTextProperties  $properties
      * @param  ?\DateTime  $modifiedAt
+     * @phpstan-pure
      */
-    public function __construct(\DateTime $createdAt, string $id, array $metadata, string $slug, string $name, string $organizationId, CustomFieldTextProperties $properties, ?\DateTime $modifiedAt = null, CustomFieldTextType $type = CustomFieldTextType::Text)
+    public function __construct(\DateTime $createdAt, string $id, array $metadata, string $slug, string $name, string $organizationId, CustomFieldTextProperties $properties, ?\DateTime $modifiedAt = null, string $type = 'text')
     {
         $this->createdAt = $createdAt;
         $this->id = $id;

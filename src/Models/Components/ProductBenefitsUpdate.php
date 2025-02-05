@@ -23,6 +23,7 @@ class ProductBenefitsUpdate
 
     /**
      * @param  array<string>  $benefits
+     * @phpstan-pure
      */
     public function __construct(array $benefits)
     {

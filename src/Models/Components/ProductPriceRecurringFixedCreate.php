@@ -30,19 +30,17 @@ class ProductPriceRecurringFixedCreate
 
     /**
      *
-     * @var ProductPriceRecurringFixedCreateType $type
+     * @var string $type
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('type')]
-    #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\ProductPriceRecurringFixedCreateType')]
-    public ProductPriceRecurringFixedCreateType $type;
+    public string $type;
 
     /**
      *
-     * @var ProductPriceRecurringFixedCreateAmountType $amountType
+     * @var string $amountType
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('amount_type')]
-    #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\ProductPriceRecurringFixedCreateAmountType')]
-    public ProductPriceRecurringFixedCreateAmountType $amountType;
+    public string $amountType;
 
     /**
      * The currency. Currently, only `usd` is supported.
@@ -54,13 +52,14 @@ class ProductPriceRecurringFixedCreate
     public ?string $priceCurrency = null;
 
     /**
-     * @param  ProductPriceRecurringFixedCreateType  $type
-     * @param  ProductPriceRecurringFixedCreateAmountType  $amountType
+     * @param  string  $type
+     * @param  string  $amountType
      * @param  int  $priceAmount
      * @param  SubscriptionRecurringInterval  $recurringInterval
      * @param  ?string  $priceCurrency
+     * @phpstan-pure
      */
-    public function __construct(int $priceAmount, SubscriptionRecurringInterval $recurringInterval, ProductPriceRecurringFixedCreateType $type = ProductPriceRecurringFixedCreateType::Recurring, ProductPriceRecurringFixedCreateAmountType $amountType = ProductPriceRecurringFixedCreateAmountType::Fixed, ?string $priceCurrency = 'usd')
+    public function __construct(int $priceAmount, SubscriptionRecurringInterval $recurringInterval, string $type = 'recurring', string $amountType = 'fixed', ?string $priceCurrency = 'usd')
     {
         $this->priceAmount = $priceAmount;
         $this->recurringInterval = $recurringInterval;

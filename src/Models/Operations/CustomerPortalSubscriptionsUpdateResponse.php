@@ -33,7 +33,7 @@ class CustomerPortalSubscriptionsUpdateResponse
     public \Psr\Http\Message\ResponseInterface $rawResponse;
 
     /**
-     * Subscription updated.
+     * Customer subscription updated.
      *
      * @var ?Components\CustomerSubscription $customerSubscription
      */
@@ -44,6 +44,7 @@ class CustomerPortalSubscriptionsUpdateResponse
      * @param  int  $statusCode
      * @param  \Psr\Http\Message\ResponseInterface  $rawResponse
      * @param  ?Components\CustomerSubscription  $customerSubscription
+     * @phpstan-pure
      */
     public function __construct(string $contentType, int $statusCode, \Psr\Http\Message\ResponseInterface $rawResponse, ?Components\CustomerSubscription $customerSubscription = null)
     {

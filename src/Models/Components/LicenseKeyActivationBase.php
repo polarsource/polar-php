@@ -61,6 +61,7 @@ class LicenseKeyActivationBase
      * @param  Meta  $meta
      * @param  \DateTime  $createdAt
      * @param  ?\DateTime  $modifiedAt
+     * @phpstan-pure
      */
     public function __construct(string $id, string $licenseKeyId, string $label, Meta $meta, \DateTime $createdAt, ?\DateTime $modifiedAt = null)
     {

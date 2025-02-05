@@ -92,16 +92,15 @@ class BenefitCustom
 
     /**
      *
-     * @var BenefitCustomType $type
+     * @var string $type
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('type')]
-    #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\BenefitCustomType')]
-    public BenefitCustomType $type;
+    public string $type;
 
     /**
      * @param  \DateTime  $createdAt
      * @param  string  $id
-     * @param  BenefitCustomType  $type
+     * @param  string  $type
      * @param  string  $description
      * @param  bool  $selectable
      * @param  bool  $deletable
@@ -109,8 +108,9 @@ class BenefitCustom
      * @param  BenefitCustomProperties  $properties
      * @param  bool  $isTaxApplicable
      * @param  ?\DateTime  $modifiedAt
+     * @phpstan-pure
      */
-    public function __construct(\DateTime $createdAt, string $id, string $description, bool $selectable, bool $deletable, string $organizationId, BenefitCustomProperties $properties, bool $isTaxApplicable, ?\DateTime $modifiedAt = null, BenefitCustomType $type = BenefitCustomType::Custom)
+    public function __construct(\DateTime $createdAt, string $id, string $description, bool $selectable, bool $deletable, string $organizationId, BenefitCustomProperties $properties, bool $isTaxApplicable, ?\DateTime $modifiedAt = null, string $type = 'custom')
     {
         $this->createdAt = $createdAt;
         $this->id = $id;

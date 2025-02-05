@@ -20,6 +20,7 @@ class BenefitGrantAdsProperties
 
     /**
      * @param  string  $advertisementCampaignId
+     * @phpstan-pure
      */
     public function __construct(string $advertisementCampaignId)
     {

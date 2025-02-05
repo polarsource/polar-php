@@ -32,10 +32,10 @@ class MetricsGetRequest
     /**
      * Interval between two timestamps.
      *
-     * @var Components\Interval $interval
+     * @var Components\TimeInterval $interval
      */
     #[SpeakeasyMetadata('queryParam:style=form,explode=true,name=interval')]
-    public Components\Interval $interval;
+    public Components\TimeInterval $interval;
 
     /**
      * Filter by organization ID.
@@ -62,14 +62,24 @@ class MetricsGetRequest
     public Components\ProductPriceType|array|null $productPriceType = null;
 
     /**
+     * Filter by customer ID.
+     *
+     * @var string|array<string>|null $customerId
+     */
+    #[SpeakeasyMetadata('queryParam:style=form,explode=true,name=customer_id')]
+    public string|array|null $customerId = null;
+
+    /**
      * @param  LocalDate  $startDate
      * @param  LocalDate  $endDate
-     * @param  Components\Interval  $interval
+     * @param  Components\TimeInterval  $interval
      * @param  string|array<string>|null  $organizationId
      * @param  string|array<string>|null  $productId
      * @param  Components\ProductPriceType|array<Components\ProductPriceType>|null  $productPriceType
+     * @param  string|array<string>|null  $customerId
+     * @phpstan-pure
      */
-    public function __construct(LocalDate $startDate, LocalDate $endDate, Components\Interval $interval, string|array|null $organizationId = null, string|array|null $productId = null, Components\ProductPriceType|array|null $productPriceType = null)
+    public function __construct(LocalDate $startDate, LocalDate $endDate, Components\TimeInterval $interval, string|array|null $organizationId = null, string|array|null $productId = null, Components\ProductPriceType|array|null $productPriceType = null, string|array|null $customerId = null)
     {
         $this->startDate = $startDate;
         $this->endDate = $endDate;
@@ -77,5 +87,6 @@ class MetricsGetRequest
         $this->organizationId = $organizationId;
         $this->productId = $productId;
         $this->productPriceType = $productPriceType;
+        $this->customerId = $customerId;
     }
 }

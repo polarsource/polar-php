@@ -8,6 +8,8 @@ declare(strict_types=1);
 
 namespace Polar;
 
+use Polar\Utils\Retry;
+
 /**
  * PolarBuilder is used to configure and build an instance of the SDK.
  */
@@ -42,7 +44,7 @@ class PolarBuilder
         $security = new Models\Components\Security(
             accessToken: $accessToken
         );
-        $this->sdkConfig->security = $security;
+        $this->sdkConfig->securitySource = fn () => $security;
 
         return $this;
     }
@@ -56,7 +58,7 @@ class PolarBuilder
      */
     public function setSecuritySource(\Closure $securitySource): PolarBuilder
     {
-        $this->sdkConfig->securitySource = $securitySource;
+        $this->sdkConfig->securitySource = fn () => new Models\Components\Security(accessToken: $securitySource());
 
         return $this;
     }
@@ -84,6 +86,13 @@ class PolarBuilder
     public function setServer(string $server): PolarBuilder
     {
         $this->sdkConfig->server = $server;
+
+        return $this;
+    }
+
+    public function setRetryConfig(Retry\RetryConfig $config): PolarBuilder
+    {
+        $this->sdkConfig->retryConfig = $config;
 
         return $this;
     }

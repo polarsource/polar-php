@@ -41,6 +41,7 @@ class AdvertisementCampaignListResource
      * @param  array<AdvertisementCampaign>  $items
      * @param  Pagination  $pagination
      * @param  array<int>  $dimensions
+     * @phpstan-pure
      */
     public function __construct(array $items, Pagination $pagination, array $dimensions)
     {

@@ -43,16 +43,28 @@ class OrganizationCreate
     public ?OrganizationFeatureSettings $featureSettings = null;
 
     /**
+     *
+     * @var ?OrganizationSubscriptionSettings $subscriptionSettings
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('subscription_settings')]
+    #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\OrganizationSubscriptionSettings|null')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
+    public ?OrganizationSubscriptionSettings $subscriptionSettings = null;
+
+    /**
      * @param  string  $name
      * @param  string  $slug
      * @param  ?string  $avatarUrl
      * @param  ?OrganizationFeatureSettings  $featureSettings
+     * @param  ?OrganizationSubscriptionSettings  $subscriptionSettings
+     * @phpstan-pure
      */
-    public function __construct(string $name, string $slug, ?string $avatarUrl = null, ?OrganizationFeatureSettings $featureSettings = null)
+    public function __construct(string $name, string $slug, ?string $avatarUrl = null, ?OrganizationFeatureSettings $featureSettings = null, ?OrganizationSubscriptionSettings $subscriptionSettings = null)
     {
         $this->name = $name;
         $this->slug = $slug;
         $this->avatarUrl = $avatarUrl;
         $this->featureSettings = $featureSettings;
+        $this->subscriptionSettings = $subscriptionSettings;
     }
 }

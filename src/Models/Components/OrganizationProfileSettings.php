@@ -86,6 +86,7 @@ class OrganizationProfileSettings
      * @param  ?array<string>  $links
      * @param  ?OrganizationSubscribePromoteSettings  $subscribe
      * @param  ?string  $accentColor
+     * @phpstan-pure
      */
     public function __construct(?bool $enabled = null, ?string $description = null, ?array $featuredProjects = null, ?array $featuredOrganizations = null, ?array $links = null, ?OrganizationSubscribePromoteSettings $subscribe = null, ?string $accentColor = null)
     {

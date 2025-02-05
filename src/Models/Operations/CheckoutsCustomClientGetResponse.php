@@ -44,6 +44,7 @@ class CheckoutsCustomClientGetResponse
      * @param  int  $statusCode
      * @param  \Psr\Http\Message\ResponseInterface  $rawResponse
      * @param  ?Components\CheckoutPublic  $checkoutPublic
+     * @phpstan-pure
      */
     public function __construct(string $contentType, int $statusCode, \Psr\Http\Message\ResponseInterface $rawResponse, ?Components\CheckoutPublic $checkoutPublic = null)
     {

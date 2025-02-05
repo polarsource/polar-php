@@ -29,6 +29,7 @@ class LicenseKeysUpdateRequest
     /**
      * @param  string  $id
      * @param  Components\LicenseKeyUpdate  $licenseKeyUpdate
+     * @phpstan-pure
      */
     public function __construct(string $id, Components\LicenseKeyUpdate $licenseKeyUpdate)
     {

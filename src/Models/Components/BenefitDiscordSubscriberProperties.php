@@ -22,6 +22,7 @@ class BenefitDiscordSubscriberProperties
 
     /**
      * @param  string  $guildId
+     * @phpstan-pure
      */
     public function __construct(string $guildId)
     {

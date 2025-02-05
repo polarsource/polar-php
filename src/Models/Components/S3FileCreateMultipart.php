@@ -22,6 +22,7 @@ class S3FileCreateMultipart
 
     /**
      * @param  array<S3FileCreatePart>  $parts
+     * @phpstan-pure
      */
     public function __construct(array $parts)
     {

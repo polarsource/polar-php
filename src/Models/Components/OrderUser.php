@@ -54,6 +54,7 @@ class OrderUser
      * @param  string  $publicName
      * @param  ?string  $avatarUrl
      * @param  ?string  $githubUsername
+     * @phpstan-pure
      */
     public function __construct(string $id, string $email, string $publicName, ?string $avatarUrl = null, ?string $githubUsername = null)
     {

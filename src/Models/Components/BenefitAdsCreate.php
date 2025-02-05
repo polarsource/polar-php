@@ -39,19 +39,19 @@ class BenefitAdsCreate
 
     /**
      *
-     * @var BenefitAdsCreateType $type
+     * @var string $type
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('type')]
-    #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\BenefitAdsCreateType')]
-    public BenefitAdsCreateType $type;
+    public string $type;
 
     /**
-     * @param  BenefitAdsCreateType  $type
+     * @param  string  $type
      * @param  string  $description
      * @param  BenefitAdsProperties  $properties
      * @param  ?string  $organizationId
+     * @phpstan-pure
      */
-    public function __construct(string $description, BenefitAdsProperties $properties, ?string $organizationId = null, BenefitAdsCreateType $type = BenefitAdsCreateType::Ads)
+    public function __construct(string $description, BenefitAdsProperties $properties, ?string $organizationId = null, string $type = 'ads')
     {
         $this->description = $description;
         $this->properties = $properties;

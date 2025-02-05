@@ -65,6 +65,7 @@ class RepositoryProfileSettings
      * @param  ?array<string>  $featuredOrganizations
      * @param  ?array<string>  $highlightedSubscriptionTiers
      * @param  ?array<string>  $links
+     * @phpstan-pure
      */
     public function __construct(?string $description = null, ?string $coverImageUrl = null, ?array $featuredOrganizations = null, ?array $highlightedSubscriptionTiers = null, ?array $links = null)
     {

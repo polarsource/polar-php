@@ -155,6 +155,7 @@ class LicenseKeyWithActivations
      * @param  ?int  $limitUsage
      * @param  ?\DateTime  $lastValidatedAt
      * @param  ?\DateTime  $expiresAt
+     * @phpstan-pure
      */
     public function __construct(string $id, string $organizationId, string $userId, string $customerId, LicenseKeyUser $user, LicenseKeyCustomer $customer, string $benefitId, string $key, string $displayKey, LicenseKeyStatus $status, int $usage, int $validations, array $activations, ?int $limitActivations = null, ?int $limitUsage = null, ?\DateTime $lastValidatedAt = null, ?\DateTime $expiresAt = null)
     {

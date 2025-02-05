@@ -14,10 +14,10 @@ class ListResourceFileRead
     /**
      * $items
      *
-     * @var array<mixed> $items
+     * @var array<DownloadableFileRead|ProductMediaFileRead|OrganizationAvatarFileRead> $items
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('items')]
-    #[\Speakeasy\Serializer\Annotation\Type('array<mixed>')]
+    #[\Speakeasy\Serializer\Annotation\Type('array<\Polar\Models\Components\DownloadableFileRead|\Polar\Models\Components\ProductMediaFileRead|\Polar\Models\Components\OrganizationAvatarFileRead>')]
     public array $items;
 
     /**
@@ -29,8 +29,9 @@ class ListResourceFileRead
     public Pagination $pagination;
 
     /**
-     * @param  array<mixed>  $items
+     * @param  array<DownloadableFileRead|ProductMediaFileRead|OrganizationAvatarFileRead>  $items
      * @param  Pagination  $pagination
+     * @phpstan-pure
      */
     public function __construct(array $items, Pagination $pagination)
     {

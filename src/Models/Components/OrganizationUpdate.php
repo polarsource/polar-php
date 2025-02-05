@@ -87,6 +87,15 @@ class OrganizationUpdate
 
     /**
      *
+     * @var ?OrganizationSubscriptionSettings $subscriptionSettings
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('subscription_settings')]
+    #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\OrganizationSubscriptionSettings|null')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
+    public ?OrganizationSubscriptionSettings $subscriptionSettings = null;
+
+    /**
+     *
      * @var ?bool $pledgeBadgeShowAmount
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('pledge_badge_show_amount')]
@@ -113,8 +122,10 @@ class OrganizationUpdate
      * @param  ?int  $perUserMonthlySpendingLimit
      * @param  ?OrganizationProfileSettings  $profileSettings
      * @param  ?OrganizationFeatureSettings  $featureSettings
+     * @param  ?OrganizationSubscriptionSettings  $subscriptionSettings
+     * @phpstan-pure
      */
-    public function __construct(?string $name = null, ?string $avatarUrl = null, ?int $defaultUpfrontSplitToContributors = null, ?string $billingEmail = null, ?string $defaultBadgeCustomContent = null, ?int $totalMonthlySpendingLimit = null, ?int $perUserMonthlySpendingLimit = null, ?OrganizationProfileSettings $profileSettings = null, ?OrganizationFeatureSettings $featureSettings = null, ?bool $pledgeBadgeShowAmount = false, ?int $pledgeMinimumAmount = 2000)
+    public function __construct(?string $name = null, ?string $avatarUrl = null, ?int $defaultUpfrontSplitToContributors = null, ?string $billingEmail = null, ?string $defaultBadgeCustomContent = null, ?int $totalMonthlySpendingLimit = null, ?int $perUserMonthlySpendingLimit = null, ?OrganizationProfileSettings $profileSettings = null, ?OrganizationFeatureSettings $featureSettings = null, ?OrganizationSubscriptionSettings $subscriptionSettings = null, ?bool $pledgeBadgeShowAmount = false, ?int $pledgeMinimumAmount = 2000)
     {
         $this->name = $name;
         $this->avatarUrl = $avatarUrl;
@@ -125,6 +136,7 @@ class OrganizationUpdate
         $this->perUserMonthlySpendingLimit = $perUserMonthlySpendingLimit;
         $this->profileSettings = $profileSettings;
         $this->featureSettings = $featureSettings;
+        $this->subscriptionSettings = $subscriptionSettings;
         $this->pledgeBadgeShowAmount = $pledgeBadgeShowAmount;
         $this->pledgeMinimumAmount = $pledgeMinimumAmount;
     }

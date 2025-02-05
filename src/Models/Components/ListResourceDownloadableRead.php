@@ -31,6 +31,7 @@ class ListResourceDownloadableRead
     /**
      * @param  array<DownloadableRead>  $items
      * @param  Pagination  $pagination
+     * @phpstan-pure
      */
     public function __construct(array $items, Pagination $pagination)
     {

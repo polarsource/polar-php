@@ -37,6 +37,7 @@ class DownloadableRead
      * @param  string  $id
      * @param  string  $benefitId
      * @param  FileDownload  $file
+     * @phpstan-pure
      */
     public function __construct(string $id, string $benefitId, FileDownload $file)
     {

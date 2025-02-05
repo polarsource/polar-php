@@ -72,6 +72,7 @@ class S3FileUploadPart
      * @param  \DateTime  $expiresAt
      * @param  ?array<string, string>  $headers
      * @param  ?string  $checksumSha256Base64
+     * @phpstan-pure
      */
     public function __construct(int $number, int $chunkStart, int $chunkEnd, string $url, \DateTime $expiresAt, ?string $checksumSha256Base64 = null, ?array $headers = null)
     {

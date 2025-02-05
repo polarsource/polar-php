@@ -65,10 +65,10 @@ class DiscountPercentageRepeatDuration
     /**
      * $metadata
      *
-     * @var array<string, mixed> $metadata
+     * @var array<string, string|int|bool> $metadata
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('metadata')]
-    #[\Speakeasy\Serializer\Annotation\Type('array<string, mixed>')]
+    #[\Speakeasy\Serializer\Annotation\Type('array<string, string|int|bool>')]
     public array $metadata;
 
     /**
@@ -151,7 +151,7 @@ class DiscountPercentageRepeatDuration
      * @param  int  $basisPoints
      * @param  \DateTime  $createdAt
      * @param  string  $id
-     * @param  array<string, mixed>  $metadata
+     * @param  array<string, string|int|bool>  $metadata
      * @param  string  $name
      * @param  int  $redemptionsCount
      * @param  string  $organizationId
@@ -161,6 +161,7 @@ class DiscountPercentageRepeatDuration
      * @param  ?\DateTime  $startsAt
      * @param  ?\DateTime  $endsAt
      * @param  ?int  $maxRedemptions
+     * @phpstan-pure
      */
     public function __construct(DiscountDuration $duration, int $durationInMonths, DiscountType $type, int $basisPoints, \DateTime $createdAt, string $id, array $metadata, string $name, int $redemptionsCount, string $organizationId, array $products, ?\DateTime $modifiedAt = null, ?string $code = null, ?\DateTime $startsAt = null, ?\DateTime $endsAt = null, ?int $maxRedemptions = null)
     {

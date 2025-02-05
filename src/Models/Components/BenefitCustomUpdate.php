@@ -31,18 +31,18 @@ class BenefitCustomUpdate
 
     /**
      *
-     * @var BenefitCustomUpdateType $type
+     * @var string $type
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('type')]
-    #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\BenefitCustomUpdateType')]
-    public BenefitCustomUpdateType $type;
+    public string $type;
 
     /**
-     * @param  BenefitCustomUpdateType  $type
+     * @param  string  $type
      * @param  ?string  $description
      * @param  ?BenefitCustomProperties  $properties
+     * @phpstan-pure
      */
-    public function __construct(?string $description = null, ?BenefitCustomProperties $properties = null, BenefitCustomUpdateType $type = BenefitCustomUpdateType::Custom)
+    public function __construct(?string $description = null, ?BenefitCustomProperties $properties = null, string $type = 'custom')
     {
         $this->description = $description;
         $this->properties = $properties;

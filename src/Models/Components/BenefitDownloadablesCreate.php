@@ -38,19 +38,19 @@ class BenefitDownloadablesCreate
 
     /**
      *
-     * @var BenefitDownloadablesCreateType $type
+     * @var string $type
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('type')]
-    #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\BenefitDownloadablesCreateType')]
-    public BenefitDownloadablesCreateType $type;
+    public string $type;
 
     /**
-     * @param  BenefitDownloadablesCreateType  $type
+     * @param  string  $type
      * @param  string  $description
      * @param  BenefitDownloadablesCreateProperties  $properties
      * @param  ?string  $organizationId
+     * @phpstan-pure
      */
-    public function __construct(string $description, BenefitDownloadablesCreateProperties $properties, ?string $organizationId = null, BenefitDownloadablesCreateType $type = BenefitDownloadablesCreateType::Downloadables)
+    public function __construct(string $description, BenefitDownloadablesCreateProperties $properties, ?string $organizationId = null, string $type = 'downloadables')
     {
         $this->description = $description;
         $this->properties = $properties;

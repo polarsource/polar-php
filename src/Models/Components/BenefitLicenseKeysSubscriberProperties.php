@@ -46,6 +46,7 @@ class BenefitLicenseKeysSubscriberProperties
      * @param  ?BenefitLicenseKeyExpirationProperties  $expires
      * @param  ?BenefitLicenseKeyActivationProperties  $activations
      * @param  ?int  $limitUsage
+     * @phpstan-pure
      */
     public function __construct(?string $prefix = null, ?BenefitLicenseKeyExpirationProperties $expires = null, ?BenefitLicenseKeyActivationProperties $activations = null, ?int $limitUsage = null)
     {

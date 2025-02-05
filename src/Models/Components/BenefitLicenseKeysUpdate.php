@@ -31,18 +31,18 @@ class BenefitLicenseKeysUpdate
 
     /**
      *
-     * @var BenefitLicenseKeysUpdateType $type
+     * @var string $type
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('type')]
-    #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\BenefitLicenseKeysUpdateType')]
-    public BenefitLicenseKeysUpdateType $type;
+    public string $type;
 
     /**
-     * @param  BenefitLicenseKeysUpdateType  $type
+     * @param  string  $type
      * @param  ?string  $description
      * @param  ?BenefitLicenseKeysCreateProperties  $properties
+     * @phpstan-pure
      */
-    public function __construct(?string $description = null, ?BenefitLicenseKeysCreateProperties $properties = null, BenefitLicenseKeysUpdateType $type = BenefitLicenseKeysUpdateType::LicenseKeys)
+    public function __construct(?string $description = null, ?BenefitLicenseKeysCreateProperties $properties = null, string $type = 'license_keys')
     {
         $this->description = $description;
         $this->properties = $properties;

@@ -15,10 +15,10 @@ class DiscountUpdate
     /**
      * $metadata
      *
-     * @var ?array<string, mixed> $metadata
+     * @var ?array<string, string|int|bool> $metadata
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('metadata')]
-    #[\Speakeasy\Serializer\Annotation\Type('array<string, mixed>|null')]
+    #[\Speakeasy\Serializer\Annotation\Type('array<string, string|int|bool>|null')]
     #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
     public ?array $metadata = null;
 
@@ -123,7 +123,7 @@ class DiscountUpdate
     public ?string $currency = null;
 
     /**
-     * @param  ?array<string, mixed>  $metadata
+     * @param  ?array<string, string|int|bool>  $metadata
      * @param  ?string  $name
      * @param  ?string  $code
      * @param  ?\DateTime  $startsAt
@@ -136,6 +136,7 @@ class DiscountUpdate
      * @param  ?string  $currency
      * @param  ?int  $basisPoints
      * @param  ?array<string>  $products
+     * @phpstan-pure
      */
     public function __construct(?array $metadata = null, ?string $name = null, ?string $code = null, ?\DateTime $startsAt = null, ?\DateTime $endsAt = null, ?int $maxRedemptions = null, ?DiscountDuration $duration = null, ?int $durationInMonths = null, ?DiscountType $type = null, ?int $amount = null, ?int $basisPoints = null, ?array $products = null, ?string $currency = 'usd')
     {

@@ -47,20 +47,20 @@ class AuthorizeResponseOrganization
 
     /**
      *
-     * @var AuthorizeResponseOrganizationSubType $subType
+     * @var string $subType
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('sub_type')]
-    #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\AuthorizeResponseOrganizationSubType')]
-    public AuthorizeResponseOrganizationSubType $subType;
+    public string $subType;
 
     /**
      * @param  OAuth2ClientPublic  $client
-     * @param  AuthorizeResponseOrganizationSubType  $subType
+     * @param  string  $subType
      * @param  array<Scope>  $scopes
      * @param  array<AuthorizeOrganization>  $organizations
      * @param  ?AuthorizeOrganization  $sub
+     * @phpstan-pure
      */
-    public function __construct(OAuth2ClientPublic $client, array $scopes, array $organizations, ?AuthorizeOrganization $sub = null, AuthorizeResponseOrganizationSubType $subType = AuthorizeResponseOrganizationSubType::Organization)
+    public function __construct(OAuth2ClientPublic $client, array $scopes, array $organizations, ?AuthorizeOrganization $sub = null, string $subType = 'organization')
     {
         $this->client = $client;
         $this->scopes = $scopes;

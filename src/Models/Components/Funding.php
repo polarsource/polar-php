@@ -33,6 +33,7 @@ class Funding
     /**
      * @param  ?CurrencyAmount  $fundingGoal
      * @param  ?CurrencyAmount  $pledgesSum
+     * @phpstan-pure
      */
     public function __construct(?CurrencyAmount $fundingGoal = null, ?CurrencyAmount $pledgesSum = null)
     {

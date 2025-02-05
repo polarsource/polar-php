@@ -14,10 +14,10 @@ class ListResourceDiscount
     /**
      * $items
      *
-     * @var array<mixed> $items
+     * @var array<DiscountFixedOnceForeverDuration|DiscountFixedRepeatDuration|DiscountPercentageOnceForeverDuration|DiscountPercentageRepeatDuration> $items
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('items')]
-    #[\Speakeasy\Serializer\Annotation\Type('array<mixed>')]
+    #[\Speakeasy\Serializer\Annotation\Type('array<\Polar\Models\Components\DiscountFixedOnceForeverDuration|\Polar\Models\Components\DiscountFixedRepeatDuration|\Polar\Models\Components\DiscountPercentageOnceForeverDuration|\Polar\Models\Components\DiscountPercentageRepeatDuration>')]
     public array $items;
 
     /**
@@ -29,8 +29,9 @@ class ListResourceDiscount
     public Pagination $pagination;
 
     /**
-     * @param  array<mixed>  $items
+     * @param  array<DiscountFixedOnceForeverDuration|DiscountFixedRepeatDuration|DiscountPercentageOnceForeverDuration|DiscountPercentageRepeatDuration>  $items
      * @param  Pagination  $pagination
+     * @phpstan-pure
      */
     public function __construct(array $items, Pagination $pagination)
     {

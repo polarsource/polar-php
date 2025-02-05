@@ -30,6 +30,7 @@ class CustomersUpdateRequest
     /**
      * @param  string  $id
      * @param  Components\CustomerUpdate  $customerUpdate
+     * @phpstan-pure
      */
     public function __construct(string $id, Components\CustomerUpdate $customerUpdate)
     {

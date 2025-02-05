@@ -94,36 +94,35 @@ class ProductPriceRecurringCustom
 
     /**
      *
-     * @var ProductPriceRecurringCustomAmountType $amountType
+     * @var string $amountType
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('amount_type')]
-    #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\ProductPriceRecurringCustomAmountType')]
-    public ProductPriceRecurringCustomAmountType $amountType;
+    public string $amountType;
 
     /**
      * The type of the price.
      *
-     * @var ProductPriceRecurringCustomType $type
+     * @var string $type
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('type')]
-    #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\ProductPriceRecurringCustomType')]
-    public ProductPriceRecurringCustomType $type;
+    public string $type;
 
     /**
      * @param  \DateTime  $createdAt
      * @param  string  $id
-     * @param  ProductPriceRecurringCustomAmountType  $amountType
+     * @param  string  $amountType
      * @param  bool  $isArchived
      * @param  string  $productId
      * @param  string  $priceCurrency
-     * @param  ProductPriceRecurringCustomType  $type
+     * @param  string  $type
      * @param  SubscriptionRecurringInterval  $recurringInterval
      * @param  ?\DateTime  $modifiedAt
      * @param  ?int  $minimumAmount
      * @param  ?int  $maximumAmount
      * @param  ?int  $presetAmount
+     * @phpstan-pure
      */
-    public function __construct(\DateTime $createdAt, string $id, bool $isArchived, string $productId, string $priceCurrency, SubscriptionRecurringInterval $recurringInterval, ?\DateTime $modifiedAt = null, ?int $minimumAmount = null, ?int $maximumAmount = null, ?int $presetAmount = null, ProductPriceRecurringCustomAmountType $amountType = ProductPriceRecurringCustomAmountType::Custom, ProductPriceRecurringCustomType $type = ProductPriceRecurringCustomType::Recurring)
+    public function __construct(\DateTime $createdAt, string $id, bool $isArchived, string $productId, string $priceCurrency, SubscriptionRecurringInterval $recurringInterval, ?\DateTime $modifiedAt = null, ?int $minimumAmount = null, ?int $maximumAmount = null, ?int $presetAmount = null, string $amountType = 'custom', string $type = 'recurring')
     {
         $this->createdAt = $createdAt;
         $this->id = $id;

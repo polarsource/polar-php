@@ -38,6 +38,7 @@ class FileUploadCompleted
      * @param  string  $id
      * @param  string  $path
      * @param  array<S3FileUploadCompletedPart>  $parts
+     * @phpstan-pure
      */
     public function __construct(string $id, string $path, array $parts)
     {

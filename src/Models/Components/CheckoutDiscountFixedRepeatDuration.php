@@ -84,6 +84,7 @@ class CheckoutDiscountFixedRepeatDuration
      * @param  string  $id
      * @param  string  $name
      * @param  ?string  $code
+     * @phpstan-pure
      */
     public function __construct(DiscountDuration $duration, int $durationInMonths, DiscountType $type, int $amount, string $currency, string $id, string $name, ?string $code = null)
     {

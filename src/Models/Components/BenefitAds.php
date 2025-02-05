@@ -84,24 +84,24 @@ class BenefitAds
 
     /**
      *
-     * @var BenefitAdsType $type
+     * @var string $type
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('type')]
-    #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\BenefitAdsType')]
-    public BenefitAdsType $type;
+    public string $type;
 
     /**
      * @param  \DateTime  $createdAt
      * @param  string  $id
-     * @param  BenefitAdsType  $type
+     * @param  string  $type
      * @param  string  $description
      * @param  bool  $selectable
      * @param  bool  $deletable
      * @param  string  $organizationId
      * @param  BenefitAdsProperties  $properties
      * @param  ?\DateTime  $modifiedAt
+     * @phpstan-pure
      */
-    public function __construct(\DateTime $createdAt, string $id, string $description, bool $selectable, bool $deletable, string $organizationId, BenefitAdsProperties $properties, ?\DateTime $modifiedAt = null, BenefitAdsType $type = BenefitAdsType::Ads)
+    public function __construct(\DateTime $createdAt, string $id, string $description, bool $selectable, bool $deletable, string $organizationId, BenefitAdsProperties $properties, ?\DateTime $modifiedAt = null, string $type = 'ads')
     {
         $this->createdAt = $createdAt;
         $this->id = $id;

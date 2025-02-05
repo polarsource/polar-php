@@ -31,6 +31,7 @@ class ListResourceCustomer
     /**
      * @param  array<Customer>  $items
      * @param  Pagination  $pagination
+     * @phpstan-pure
      */
     public function __construct(array $items, Pagination $pagination)
     {
