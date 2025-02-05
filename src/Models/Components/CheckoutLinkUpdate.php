@@ -15,10 +15,10 @@ class CheckoutLinkUpdate
     /**
      * $metadata
      *
-     * @var ?array<string, mixed> $metadata
+     * @var ?array<string, string|int|bool> $metadata
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('metadata')]
-    #[\Speakeasy\Serializer\Annotation\Type('array<string, mixed>|null')]
+    #[\Speakeasy\Serializer\Annotation\Type('array<string, string|int|bool>|null')]
     #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
     public ?array $metadata = null;
 
@@ -66,12 +66,13 @@ class CheckoutLinkUpdate
     public ?string $successUrl = null;
 
     /**
-     * @param  ?array<string, mixed>  $metadata
+     * @param  ?array<string, string|int|bool>  $metadata
      * @param  ?string  $label
      * @param  ?bool  $allowDiscountCodes
      * @param  ?string  $productPriceId
      * @param  ?string  $discountId
      * @param  ?string  $successUrl
+     * @phpstan-pure
      */
     public function __construct(?array $metadata = null, ?string $label = null, ?bool $allowDiscountCodes = null, ?string $productPriceId = null, ?string $discountId = null, ?string $successUrl = null)
     {

@@ -13,16 +13,16 @@ class CustomerBenefitGrantDownloadablesUpdate
 {
     /**
      *
-     * @var CustomerBenefitGrantDownloadablesUpdateBenefitType $benefitType
+     * @var string $benefitType
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('benefit_type')]
-    #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\CustomerBenefitGrantDownloadablesUpdateBenefitType')]
-    public CustomerBenefitGrantDownloadablesUpdateBenefitType $benefitType;
+    public string $benefitType;
 
     /**
-     * @param  CustomerBenefitGrantDownloadablesUpdateBenefitType  $benefitType
+     * @param  string  $benefitType
+     * @phpstan-pure
      */
-    public function __construct(CustomerBenefitGrantDownloadablesUpdateBenefitType $benefitType = CustomerBenefitGrantDownloadablesUpdateBenefitType::Downloadables)
+    public function __construct(string $benefitType = 'downloadables')
     {
         $this->benefitType = $benefitType;
     }

@@ -31,18 +31,18 @@ class BenefitAdsUpdate
 
     /**
      *
-     * @var BenefitAdsUpdateType $type
+     * @var string $type
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('type')]
-    #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\BenefitAdsUpdateType')]
-    public BenefitAdsUpdateType $type;
+    public string $type;
 
     /**
-     * @param  BenefitAdsUpdateType  $type
+     * @param  string  $type
      * @param  ?string  $description
      * @param  ?BenefitAdsProperties  $properties
+     * @phpstan-pure
      */
-    public function __construct(?string $description = null, ?BenefitAdsProperties $properties = null, BenefitAdsUpdateType $type = BenefitAdsUpdateType::Ads)
+    public function __construct(?string $description = null, ?BenefitAdsProperties $properties = null, string $type = 'ads')
     {
         $this->description = $description;
         $this->properties = $properties;

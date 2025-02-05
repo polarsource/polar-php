@@ -31,6 +31,7 @@ class ListResourceExternalOrganization
     /**
      * @param  array<ExternalOrganization>  $items
      * @param  Pagination  $pagination
+     * @phpstan-pure
      */
     public function __construct(array $items, Pagination $pagination)
     {

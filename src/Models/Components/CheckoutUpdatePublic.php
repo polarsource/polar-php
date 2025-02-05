@@ -15,12 +15,12 @@ class CheckoutUpdatePublic
     /**
      * Key-value object storing custom field values.
      *
-     * @var ?CheckoutUpdatePublicCustomFieldData $customFieldData
+     * @var ?array<string, string|int|bool|\DateTime> $customFieldData
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('custom_field_data')]
-    #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\CheckoutUpdatePublicCustomFieldData|null')]
+    #[\Speakeasy\Serializer\Annotation\Type('array<string, string|int|bool|\DateTime>|null')]
     #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
-    public ?CheckoutUpdatePublicCustomFieldData $customFieldData = null;
+    public ?array $customFieldData = null;
 
     /**
      * ID of the product price to checkout. Must correspond to a price linked to the same product.
@@ -82,7 +82,7 @@ class CheckoutUpdatePublic
     public ?string $discountCode = null;
 
     /**
-     * @param  ?CheckoutUpdatePublicCustomFieldData  $customFieldData
+     * @param  ?array<string, string|int|bool|\DateTime>  $customFieldData
      * @param  ?string  $productPriceId
      * @param  ?int  $amount
      * @param  ?string  $customerName
@@ -90,8 +90,9 @@ class CheckoutUpdatePublic
      * @param  ?Address  $customerBillingAddress
      * @param  ?string  $customerTaxId
      * @param  ?string  $discountCode
+     * @phpstan-pure
      */
-    public function __construct(?CheckoutUpdatePublicCustomFieldData $customFieldData = null, ?string $productPriceId = null, ?int $amount = null, ?string $customerName = null, ?string $customerEmail = null, ?Address $customerBillingAddress = null, ?string $customerTaxId = null, ?string $discountCode = null)
+    public function __construct(?array $customFieldData = null, ?string $productPriceId = null, ?int $amount = null, ?string $customerName = null, ?string $customerEmail = null, ?Address $customerBillingAddress = null, ?string $customerTaxId = null, ?string $discountCode = null)
     {
         $this->customFieldData = $customFieldData;
         $this->productPriceId = $productPriceId;

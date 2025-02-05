@@ -30,6 +30,7 @@ class FilesUploadedRequest
     /**
      * @param  string  $id
      * @param  Components\FileUploadCompleted  $fileUploadCompleted
+     * @phpstan-pure
      */
     public function __construct(string $id, Components\FileUploadCompleted $fileUploadCompleted)
     {

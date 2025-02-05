@@ -68,6 +68,15 @@ class BenefitGrantWebhook
     public string $benefitId;
 
     /**
+     * A customer in an organization.
+     *
+     * @var Customer $customer
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('customer')]
+    #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\Customer')]
+    public Customer $customer;
+
+    /**
      *
      * @var BenefitGrantDiscordProperties|BenefitGrantGitHubRepositoryProperties|BenefitGrantDownloadablesProperties|BenefitGrantLicenseKeysProperties|BenefitGrantAdsProperties|BenefitGrantCustomProperties $properties
      */
@@ -130,7 +139,7 @@ class BenefitGrantWebhook
      * @var BenefitGrantDiscordProperties|BenefitGrantGitHubRepositoryProperties|BenefitGrantDownloadablesProperties|BenefitGrantLicenseKeysProperties|BenefitGrantAdsProperties|BenefitGrantCustomProperties|null $previousProperties
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('previous_properties')]
-    #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\BenefitGrantDiscordProperties|\Polar\Models\Components\BenefitGrantGitHubRepositoryProperties|\Polar\Models\Components\BenefitGrantDownloadablesProperties|\Polar\Models\Components\BenefitGrantLicenseKeysProperties|\Polar\Models\Components\BenefitGrantAdsProperties|\Polar\Models\Components\BenefitGrantCustomProperties')]
+    #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\BenefitGrantDiscordProperties|\Polar\Models\Components\BenefitGrantGitHubRepositoryProperties|\Polar\Models\Components\BenefitGrantDownloadablesProperties|\Polar\Models\Components\BenefitGrantLicenseKeysProperties|\Polar\Models\Components\BenefitGrantAdsProperties|\Polar\Models\Components\BenefitGrantCustomProperties|null')]
     #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
     public BenefitGrantDiscordProperties|BenefitGrantGitHubRepositoryProperties|BenefitGrantDownloadablesProperties|BenefitGrantLicenseKeysProperties|BenefitGrantAdsProperties|BenefitGrantCustomProperties|null $previousProperties = null;
 
@@ -142,6 +151,7 @@ class BenefitGrantWebhook
      * @param  string  $customerId
      * @param  string  $userId
      * @param  string  $benefitId
+     * @param  Customer  $customer
      * @param  BenefitGrantDiscordProperties|BenefitGrantGitHubRepositoryProperties|BenefitGrantDownloadablesProperties|BenefitGrantLicenseKeysProperties|BenefitGrantAdsProperties|BenefitGrantCustomProperties  $properties
      * @param  BenefitAds|BenefitCustom|BenefitDiscord|BenefitGitHubRepository|BenefitDownloadables|BenefitLicenseKeys  $benefit
      * @param  ?\DateTime  $modifiedAt
@@ -150,8 +160,9 @@ class BenefitGrantWebhook
      * @param  ?\DateTime  $grantedAt
      * @param  ?\DateTime  $revokedAt
      * @param  BenefitGrantDiscordProperties|BenefitGrantGitHubRepositoryProperties|BenefitGrantDownloadablesProperties|BenefitGrantLicenseKeysProperties|BenefitGrantAdsProperties|BenefitGrantCustomProperties|null  $previousProperties
+     * @phpstan-pure
      */
-    public function __construct(\DateTime $createdAt, string $id, bool $isGranted, bool $isRevoked, string $customerId, string $userId, string $benefitId, BenefitGrantDiscordProperties|BenefitGrantGitHubRepositoryProperties|BenefitGrantDownloadablesProperties|BenefitGrantLicenseKeysProperties|BenefitGrantAdsProperties|BenefitGrantCustomProperties $properties, BenefitAds|BenefitCustom|BenefitDiscord|BenefitGitHubRepository|BenefitDownloadables|BenefitLicenseKeys $benefit, ?\DateTime $modifiedAt = null, ?string $subscriptionId = null, ?string $orderId = null, ?\DateTime $grantedAt = null, ?\DateTime $revokedAt = null, BenefitGrantDiscordProperties|BenefitGrantGitHubRepositoryProperties|BenefitGrantDownloadablesProperties|BenefitGrantLicenseKeysProperties|BenefitGrantAdsProperties|BenefitGrantCustomProperties|null $previousProperties = null)
+    public function __construct(\DateTime $createdAt, string $id, bool $isGranted, bool $isRevoked, string $customerId, string $userId, string $benefitId, Customer $customer, BenefitGrantDiscordProperties|BenefitGrantGitHubRepositoryProperties|BenefitGrantDownloadablesProperties|BenefitGrantLicenseKeysProperties|BenefitGrantAdsProperties|BenefitGrantCustomProperties $properties, BenefitAds|BenefitCustom|BenefitDiscord|BenefitGitHubRepository|BenefitDownloadables|BenefitLicenseKeys $benefit, ?\DateTime $modifiedAt = null, ?string $subscriptionId = null, ?string $orderId = null, ?\DateTime $grantedAt = null, ?\DateTime $revokedAt = null, BenefitGrantDiscordProperties|BenefitGrantGitHubRepositoryProperties|BenefitGrantDownloadablesProperties|BenefitGrantLicenseKeysProperties|BenefitGrantAdsProperties|BenefitGrantCustomProperties|null $previousProperties = null)
     {
         $this->createdAt = $createdAt;
         $this->id = $id;
@@ -160,6 +171,7 @@ class BenefitGrantWebhook
         $this->customerId = $customerId;
         $this->userId = $userId;
         $this->benefitId = $benefitId;
+        $this->customer = $customer;
         $this->properties = $properties;
         $this->benefit = $benefit;
         $this->modifiedAt = $modifiedAt;

@@ -48,6 +48,7 @@ class FilesListResponse
      * @param  int  $statusCode
      * @param  \Psr\Http\Message\ResponseInterface  $rawResponse
      * @param  ?Components\ListResourceFileRead  $listResourceFileRead
+     * @phpstan-pure
      */
     public function __construct(string $contentType, int $statusCode, \Psr\Http\Message\ResponseInterface $rawResponse, ?Components\ListResourceFileRead $listResourceFileRead = null)
     {

@@ -22,6 +22,7 @@ class CustomerSessionCreate
 
     /**
      * @param  string  $customerId
+     * @phpstan-pure
      */
     public function __construct(string $customerId)
     {

@@ -86,16 +86,15 @@ class BenefitGitHubRepositorySubscriber
 
     /**
      *
-     * @var BenefitGitHubRepositorySubscriberType $type
+     * @var string $type
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('type')]
-    #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\BenefitGitHubRepositorySubscriberType')]
-    public BenefitGitHubRepositorySubscriberType $type;
+    public string $type;
 
     /**
      * @param  \DateTime  $createdAt
      * @param  string  $id
-     * @param  BenefitGitHubRepositorySubscriberType  $type
+     * @param  string  $type
      * @param  string  $description
      * @param  bool  $selectable
      * @param  bool  $deletable
@@ -103,8 +102,9 @@ class BenefitGitHubRepositorySubscriber
      * @param  Organization  $organization
      * @param  BenefitGitHubRepositorySubscriberProperties  $properties
      * @param  ?\DateTime  $modifiedAt
+     * @phpstan-pure
      */
-    public function __construct(\DateTime $createdAt, string $id, string $description, bool $selectable, bool $deletable, string $organizationId, Organization $organization, BenefitGitHubRepositorySubscriberProperties $properties, ?\DateTime $modifiedAt = null, BenefitGitHubRepositorySubscriberType $type = BenefitGitHubRepositorySubscriberType::GithubRepository)
+    public function __construct(\DateTime $createdAt, string $id, string $description, bool $selectable, bool $deletable, string $organizationId, Organization $organization, BenefitGitHubRepositorySubscriberProperties $properties, ?\DateTime $modifiedAt = null, string $type = 'github_repository')
     {
         $this->createdAt = $createdAt;
         $this->id = $id;

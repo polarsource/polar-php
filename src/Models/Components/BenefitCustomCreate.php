@@ -40,19 +40,19 @@ class BenefitCustomCreate
 
     /**
      *
-     * @var BenefitCustomCreateType $type
+     * @var string $type
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('type')]
-    #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\BenefitCustomCreateType')]
-    public BenefitCustomCreateType $type;
+    public string $type;
 
     /**
-     * @param  BenefitCustomCreateType  $type
+     * @param  string  $type
      * @param  string  $description
      * @param  BenefitCustomCreateProperties  $properties
      * @param  ?string  $organizationId
+     * @phpstan-pure
      */
-    public function __construct(string $description, BenefitCustomCreateProperties $properties, ?string $organizationId = null, BenefitCustomCreateType $type = BenefitCustomCreateType::Custom)
+    public function __construct(string $description, BenefitCustomCreateProperties $properties, ?string $organizationId = null, string $type = 'custom')
     {
         $this->description = $description;
         $this->properties = $properties;

@@ -44,6 +44,13 @@ class CustomerSession
 
     /**
      *
+     * @var string $customerPortalUrl
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('customer_portal_url')]
+    public string $customerPortalUrl;
+
+    /**
+     *
      * @var string $customerId
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('customer_id')]
@@ -71,16 +78,19 @@ class CustomerSession
      * @param  string  $id
      * @param  string  $token
      * @param  \DateTime  $expiresAt
+     * @param  string  $customerPortalUrl
      * @param  string  $customerId
      * @param  Customer  $customer
      * @param  ?\DateTime  $modifiedAt
+     * @phpstan-pure
      */
-    public function __construct(\DateTime $createdAt, string $id, string $token, \DateTime $expiresAt, string $customerId, Customer $customer, ?\DateTime $modifiedAt = null)
+    public function __construct(\DateTime $createdAt, string $id, string $token, \DateTime $expiresAt, string $customerPortalUrl, string $customerId, Customer $customer, ?\DateTime $modifiedAt = null)
     {
         $this->createdAt = $createdAt;
         $this->id = $id;
         $this->token = $token;
         $this->expiresAt = $expiresAt;
+        $this->customerPortalUrl = $customerPortalUrl;
         $this->customerId = $customerId;
         $this->customer = $customer;
         $this->modifiedAt = $modifiedAt;

@@ -36,6 +36,7 @@ class AuthorizeOrganization
      * @param  string  $id
      * @param  string  $slug
      * @param  ?string  $avatarUrl
+     * @phpstan-pure
      */
     public function __construct(string $id, string $slug, ?string $avatarUrl = null)
     {

@@ -24,9 +24,11 @@ require 'vendor/autoload.php';
 
 use Polar;
 
-$security = '<YOUR_BEARER_TOKEN_HERE>';
-
-$sdk = Polar\Polar::builder()->setSecurity($security)->build();
+$sdk = Polar\Polar::builder()
+    ->setSecurity(
+        '<YOUR_BEARER_TOKEN_HERE>'
+    )
+    ->build();
 
 
 
@@ -63,9 +65,11 @@ require 'vendor/autoload.php';
 use Polar;
 use Polar\Models\Operations;
 
-$security = '<YOUR_BEARER_TOKEN_HERE>';
-
-$sdk = Polar\Polar::builder()->setSecurity($security)->build();
+$sdk = Polar\Polar::builder()
+    ->setSecurity(
+        '<YOUR_BEARER_TOKEN_HERE>'
+    )
+    ->build();
 
 $request = new Operations\Oauth2IntrospectTokenIntrospectTokenRequest(
     token: '<value>',
@@ -112,9 +116,11 @@ require 'vendor/autoload.php';
 use Polar;
 use Polar\Models\Components;
 
-$security = '<YOUR_BEARER_TOKEN_HERE>';
-
-$sdk = Polar\Polar::builder()->setSecurity($security)->build();
+$sdk = Polar\Polar::builder()
+    ->setSecurity(
+        '<YOUR_BEARER_TOKEN_HERE>'
+    )
+    ->build();
 
 $request = new Components\Onev11oauth21tokenPostXComponentsAuthorizationCodeTokenRequest(
     clientId: '<id>',
@@ -162,9 +168,11 @@ require 'vendor/autoload.php';
 use Polar;
 use Polar\Models\Operations;
 
-$security = '<YOUR_BEARER_TOKEN_HERE>';
-
-$sdk = Polar\Polar::builder()->setSecurity($security)->build();
+$sdk = Polar\Polar::builder()
+    ->setSecurity(
+        '<YOUR_BEARER_TOKEN_HERE>'
+    )
+    ->build();
 
 $request = new Operations\Oauth2RevokeTokenRevokeTokenRequest(
     token: '<value>',
@@ -210,9 +218,11 @@ require 'vendor/autoload.php';
 
 use Polar;
 
-$security = '<YOUR_BEARER_TOKEN_HERE>';
-
-$sdk = Polar\Polar::builder()->setSecurity($security)->build();
+$sdk = Polar\Polar::builder()
+    ->setSecurity(
+        '<YOUR_BEARER_TOKEN_HERE>'
+    )
+    ->build();
 
 
 

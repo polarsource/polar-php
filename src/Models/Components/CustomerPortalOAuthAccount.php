@@ -28,6 +28,7 @@ class CustomerPortalOAuthAccount
     /**
      * @param  string  $accountId
      * @param  ?string  $accountUsername
+     * @phpstan-pure
      */
     public function __construct(string $accountId, ?string $accountUsername = null)
     {

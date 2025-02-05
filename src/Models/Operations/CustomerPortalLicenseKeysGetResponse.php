@@ -44,6 +44,7 @@ class CustomerPortalLicenseKeysGetResponse
      * @param  int  $statusCode
      * @param  \Psr\Http\Message\ResponseInterface  $rawResponse
      * @param  ?Components\LicenseKeyWithActivations  $licenseKeyWithActivations
+     * @phpstan-pure
      */
     public function __construct(string $contentType, int $statusCode, \Psr\Http\Message\ResponseInterface $rawResponse, ?Components\LicenseKeyWithActivations $licenseKeyWithActivations = null)
     {

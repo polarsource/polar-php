@@ -57,6 +57,7 @@ class CustomFieldDateProperties
      * @param  ?string  $formPlaceholder
      * @param  ?int  $ge
      * @param  ?int  $le
+     * @phpstan-pure
      */
     public function __construct(?string $formLabel = null, ?string $formHelpText = null, ?string $formPlaceholder = null, ?int $ge = null, ?int $le = null)
     {

@@ -19,6 +19,26 @@ class CustomerCreate
     public string $email;
 
     /**
+     * Key-value object allowing you to store additional information.
+     *
+     *
+     * The key must be a string with a maximum length of **40 characters**.
+     * The value must be either:
+     *
+     * * A string with a maximum length of **500 characters**
+     * * An integer
+     * * A boolean
+     *
+     * You can store up to **50 key-value pairs**.
+     *
+     * @var ?array<string, string|int|bool> $metadata
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('metadata')]
+    #[\Speakeasy\Serializer\Annotation\Type('array<string, string|int|bool>|null')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
+    public ?array $metadata = null;
+
+    /**
      *
      * @var ?string $name
      */
@@ -38,10 +58,10 @@ class CustomerCreate
     /**
      * $taxId
      *
-     * @var ?array<mixed> $taxId
+     * @var ?array<string|TaxIDFormat> $taxId
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('tax_id')]
-    #[\Speakeasy\Serializer\Annotation\Type('array<mixed>|null')]
+    #[\Speakeasy\Serializer\Annotation\Type('array<string|\Polar\Models\Components\TaxIDFormat>|null')]
     #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
     public ?array $taxId = null;
 
@@ -56,14 +76,17 @@ class CustomerCreate
 
     /**
      * @param  string  $email
+     * @param  ?array<string, string|int|bool>  $metadata
      * @param  ?string  $name
      * @param  ?Address  $billingAddress
-     * @param  ?array<mixed>  $taxId
+     * @param  ?array<string|TaxIDFormat>  $taxId
      * @param  ?string  $organizationId
+     * @phpstan-pure
      */
-    public function __construct(string $email, ?string $name = null, ?Address $billingAddress = null, ?array $taxId = null, ?string $organizationId = null)
+    public function __construct(string $email, ?array $metadata = null, ?string $name = null, ?Address $billingAddress = null, ?array $taxId = null, ?string $organizationId = null)
     {
         $this->email = $email;
+        $this->metadata = $metadata;
         $this->name = $name;
         $this->billingAddress = $billingAddress;
         $this->taxId = $taxId;

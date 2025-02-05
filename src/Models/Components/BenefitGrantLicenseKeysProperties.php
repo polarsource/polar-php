@@ -30,6 +30,7 @@ class BenefitGrantLicenseKeysProperties
     /**
      * @param  ?string  $licenseKeyId
      * @param  ?string  $displayKey
+     * @phpstan-pure
      */
     public function __construct(?string $licenseKeyId = null, ?string $displayKey = null)
     {

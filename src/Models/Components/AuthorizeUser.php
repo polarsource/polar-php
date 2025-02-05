@@ -36,6 +36,7 @@ class AuthorizeUser
      * @param  string  $id
      * @param  string  $email
      * @param  ?string  $avatarUrl
+     * @phpstan-pure
      */
     public function __construct(string $id, string $email, ?string $avatarUrl = null)
     {

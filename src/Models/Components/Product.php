@@ -63,28 +63,28 @@ class Product
     /**
      * $metadata
      *
-     * @var array<string, mixed> $metadata
+     * @var array<string, string|int|bool> $metadata
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('metadata')]
-    #[\Speakeasy\Serializer\Annotation\Type('array<string, mixed>')]
+    #[\Speakeasy\Serializer\Annotation\Type('array<string, string|int|bool>')]
     public array $metadata;
 
     /**
      * List of prices for this product.
      *
-     * @var array<mixed> $prices
+     * @var array<ProductPriceRecurringFixed|ProductPriceRecurringCustom|ProductPriceRecurringFree|ProductPriceOneTimeFixed|ProductPriceOneTimeCustom|ProductPriceOneTimeFree> $prices
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('prices')]
-    #[\Speakeasy\Serializer\Annotation\Type('array<mixed>')]
+    #[\Speakeasy\Serializer\Annotation\Type('array<\Polar\Models\Components\ProductPriceRecurringFixed|\Polar\Models\Components\ProductPriceRecurringCustom|\Polar\Models\Components\ProductPriceRecurringFree|\Polar\Models\Components\ProductPriceOneTimeFixed|\Polar\Models\Components\ProductPriceOneTimeCustom|\Polar\Models\Components\ProductPriceOneTimeFree>')]
     public array $prices;
 
     /**
      * List of benefits granted by the product.
      *
-     * @var array<mixed> $benefits
+     * @var array<BenefitAds|BenefitCustom|BenefitDiscord|BenefitGitHubRepository|BenefitDownloadables|BenefitLicenseKeys> $benefits
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('benefits')]
-    #[\Speakeasy\Serializer\Annotation\Type('array<mixed>')]
+    #[\Speakeasy\Serializer\Annotation\Type('array<\Polar\Models\Components\BenefitAds|\Polar\Models\Components\BenefitCustom|\Polar\Models\Components\BenefitDiscord|\Polar\Models\Components\BenefitGitHubRepository|\Polar\Models\Components\BenefitDownloadables|\Polar\Models\Components\BenefitLicenseKeys>')]
     public array $benefits;
 
     /**
@@ -128,13 +128,14 @@ class Product
      * @param  bool  $isRecurring
      * @param  bool  $isArchived
      * @param  string  $organizationId
-     * @param  array<string, mixed>  $metadata
-     * @param  array<mixed>  $prices
-     * @param  array<mixed>  $benefits
+     * @param  array<string, string|int|bool>  $metadata
+     * @param  array<ProductPriceRecurringFixed|ProductPriceRecurringCustom|ProductPriceRecurringFree|ProductPriceOneTimeFixed|ProductPriceOneTimeCustom|ProductPriceOneTimeFree>  $prices
+     * @param  array<BenefitAds|BenefitCustom|BenefitDiscord|BenefitGitHubRepository|BenefitDownloadables|BenefitLicenseKeys>  $benefits
      * @param  array<ProductMediaFileRead>  $medias
      * @param  array<AttachedCustomField>  $attachedCustomFields
      * @param  ?\DateTime  $modifiedAt
      * @param  ?string  $description
+     * @phpstan-pure
      */
     public function __construct(\DateTime $createdAt, string $id, string $name, bool $isRecurring, bool $isArchived, string $organizationId, array $metadata, array $prices, array $benefits, array $medias, array $attachedCustomFields, ?\DateTime $modifiedAt = null, ?string $description = null)
     {

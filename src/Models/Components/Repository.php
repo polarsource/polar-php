@@ -20,6 +20,14 @@ class Repository
 
     /**
      *
+     * @var Platforms $platform
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('platform')]
+    #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\Platforms')]
+    public Platforms $platform;
+
+    /**
+     *
      * @var bool $isPrivate
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('is_private')]
@@ -86,14 +94,6 @@ class Repository
     public ?Organization $internalOrganization;
 
     /**
-     *
-     * @var Platforms $platform
-     */
-    #[\Speakeasy\Serializer\Annotation\SerializedName('platform')]
-    #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\Platforms')]
-    public Platforms $platform;
-
-    /**
      * @param  string  $id
      * @param  Platforms  $platform
      * @param  bool  $isPrivate
@@ -105,10 +105,12 @@ class Repository
      * @param  ?string  $homepage
      * @param  ?RepositoryProfileSettings  $profileSettings
      * @param  ?Organization  $internalOrganization
+     * @phpstan-pure
      */
-    public function __construct(string $id, bool $isPrivate, string $name, ExternalOrganization $organization, ?string $description = null, ?int $stars = null, ?string $license = null, ?string $homepage = null, ?RepositoryProfileSettings $profileSettings = null, ?Organization $internalOrganization = null, Platforms $platform = Platforms::Github)
+    public function __construct(string $id, Platforms $platform, bool $isPrivate, string $name, ExternalOrganization $organization, ?string $description = null, ?int $stars = null, ?string $license = null, ?string $homepage = null, ?RepositoryProfileSettings $profileSettings = null, ?Organization $internalOrganization = null)
     {
         $this->id = $id;
+        $this->platform = $platform;
         $this->isPrivate = $isPrivate;
         $this->name = $name;
         $this->organization = $organization;
@@ -118,6 +120,5 @@ class Repository
         $this->homepage = $homepage;
         $this->profileSettings = $profileSettings;
         $this->internalOrganization = $internalOrganization;
-        $this->platform = $platform;
     }
 }

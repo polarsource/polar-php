@@ -39,6 +39,7 @@ class BenefitDiscordProperties
      * @param  string  $guildId
      * @param  string  $roleId
      * @param  string  $guildToken
+     * @phpstan-pure
      */
     public function __construct(string $guildId, string $roleId, string $guildToken)
     {

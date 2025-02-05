@@ -48,6 +48,7 @@ class OrdersListResponse
      * @param  int  $statusCode
      * @param  \Psr\Http\Message\ResponseInterface  $rawResponse
      * @param  ?Components\ListResourceOrder  $listResourceOrder
+     * @phpstan-pure
      */
     public function __construct(string $contentType, int $statusCode, \Psr\Http\Message\ResponseInterface $rawResponse, ?Components\ListResourceOrder $listResourceOrder = null)
     {

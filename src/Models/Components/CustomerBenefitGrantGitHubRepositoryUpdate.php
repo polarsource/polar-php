@@ -21,17 +21,17 @@ class CustomerBenefitGrantGitHubRepositoryUpdate
 
     /**
      *
-     * @var CustomerBenefitGrantGitHubRepositoryUpdateBenefitType $benefitType
+     * @var string $benefitType
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('benefit_type')]
-    #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\CustomerBenefitGrantGitHubRepositoryUpdateBenefitType')]
-    public CustomerBenefitGrantGitHubRepositoryUpdateBenefitType $benefitType;
+    public string $benefitType;
 
     /**
-     * @param  CustomerBenefitGrantGitHubRepositoryUpdateBenefitType  $benefitType
+     * @param  string  $benefitType
      * @param  CustomerBenefitGrantGitHubRepositoryPropertiesUpdate  $properties
+     * @phpstan-pure
      */
-    public function __construct(CustomerBenefitGrantGitHubRepositoryPropertiesUpdate $properties, CustomerBenefitGrantGitHubRepositoryUpdateBenefitType $benefitType = CustomerBenefitGrantGitHubRepositoryUpdateBenefitType::GithubRepository)
+    public function __construct(CustomerBenefitGrantGitHubRepositoryPropertiesUpdate $properties, string $benefitType = 'github_repository')
     {
         $this->properties = $properties;
         $this->benefitType = $benefitType;

@@ -13,6 +13,14 @@ use Polar\Utils\SpeakeasyMetadata;
 class ProductsListRequest
 {
     /**
+     * Filter by product ID.
+     *
+     * @var string|array<string>|null $id
+     */
+    #[SpeakeasyMetadata('queryParam:style=form,explode=true,name=id')]
+    public string|array|null $id = null;
+
+    /**
      * Filter by organization ID.
      *
      * @var string|array<string>|null $organizationId
@@ -79,15 +87,18 @@ class ProductsListRequest
     /**
      * @param  ?int  $page
      * @param  ?int  $limit
+     * @param  string|array<string>|null  $id
      * @param  string|array<string>|null  $organizationId
      * @param  ?string  $query
      * @param  ?bool  $isArchived
      * @param  ?bool  $isRecurring
      * @param  string|array<string>|null  $benefitId
      * @param  ?array<Components\ProductSortProperty>  $sorting
+     * @phpstan-pure
      */
-    public function __construct(string|array|null $organizationId = null, ?string $query = null, ?bool $isArchived = null, ?bool $isRecurring = null, string|array|null $benefitId = null, ?array $sorting = null, ?int $page = 1, ?int $limit = 10)
+    public function __construct(string|array|null $id = null, string|array|null $organizationId = null, ?string $query = null, ?bool $isArchived = null, ?bool $isRecurring = null, string|array|null $benefitId = null, ?array $sorting = null, ?int $page = 1, ?int $limit = 10)
     {
+        $this->id = $id;
         $this->organizationId = $organizationId;
         $this->query = $query;
         $this->isArchived = $isArchived;

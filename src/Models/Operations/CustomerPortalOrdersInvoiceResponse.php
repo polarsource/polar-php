@@ -44,6 +44,7 @@ class CustomerPortalOrdersInvoiceResponse
      * @param  int  $statusCode
      * @param  \Psr\Http\Message\ResponseInterface  $rawResponse
      * @param  ?Components\CustomerOrderInvoice  $customerOrderInvoice
+     * @phpstan-pure
      */
     public function __construct(string $contentType, int $statusCode, \Psr\Http\Message\ResponseInterface $rawResponse, ?Components\CustomerOrderInvoice $customerOrderInvoice = null)
     {

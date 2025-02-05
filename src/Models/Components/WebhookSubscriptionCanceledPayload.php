@@ -10,9 +10,9 @@ namespace Polar\Models\Components;
 
 
 /**
- * WebhookSubscriptionCanceledPayload - Sent when a subscription is canceled by the user.
+ * WebhookSubscriptionCanceledPayload - Sent when a subscription is canceled.
  *
- * They might still have access until the end of the current period.
+ * Customers might still have access until the end of the current period.
  *
  * **Discord & Slack support:** Full
  */
@@ -28,17 +28,17 @@ class WebhookSubscriptionCanceledPayload
 
     /**
      *
-     * @var WebhookSubscriptionCanceledPayloadType $type
+     * @var string $type
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('type')]
-    #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\WebhookSubscriptionCanceledPayloadType')]
-    public WebhookSubscriptionCanceledPayloadType $type;
+    public string $type;
 
     /**
-     * @param  WebhookSubscriptionCanceledPayloadType  $type
+     * @param  string  $type
      * @param  Subscription  $data
+     * @phpstan-pure
      */
-    public function __construct(Subscription $data, WebhookSubscriptionCanceledPayloadType $type = WebhookSubscriptionCanceledPayloadType::SubscriptionCanceled)
+    public function __construct(Subscription $data, string $type = 'subscription.canceled')
     {
         $this->data = $data;
         $this->type = $type;

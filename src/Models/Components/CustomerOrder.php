@@ -130,6 +130,7 @@ class CustomerOrder
      * @param  ?\DateTime  $modifiedAt
      * @param  ?string  $subscriptionId
      * @param  ?CustomerOrderSubscription  $subscription
+     * @phpstan-pure
      */
     public function __construct(\DateTime $createdAt, string $id, int $amount, int $taxAmount, string $currency, string $customerId, string $productId, string $productPriceId, string $userId, CustomerOrderProduct $product, ProductPriceRecurringFixed|ProductPriceRecurringCustom|ProductPriceRecurringFree|ProductPriceOneTimeFixed|ProductPriceOneTimeCustom|ProductPriceOneTimeFree $productPrice, ?\DateTime $modifiedAt = null, ?string $subscriptionId = null, ?CustomerOrderSubscription $subscription = null)
     {

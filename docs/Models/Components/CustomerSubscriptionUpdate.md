@@ -1,8 +1,23 @@
 # CustomerSubscriptionUpdate
 
 
-## Fields
+## Supported Types
 
-| Field              | Type               | Required           | Description        |
-| ------------------ | ------------------ | ------------------ | ------------------ |
-| `productPriceId`   | *string*           | :heavy_check_mark: | N/A                |
+### `Components\CustomerSubscriptionUpdatePrice`
+
+```php
+/**
+* @var Components\CustomerSubscriptionUpdatePrice
+*/
+Components\CustomerSubscriptionUpdatePrice $value = /* values here */
+```
+
+### `Components\CustomerSubscriptionCancel`
+
+```php
+/**
+* @var Components\CustomerSubscriptionCancel
+*/
+Components\CustomerSubscriptionCancel $value = /* values here */
+```
+

@@ -61,10 +61,10 @@ class DiscountPercentageOnceForeverDurationCreate
      *
      * You can store up to **50 key-value pairs**.
      *
-     * @var ?array<string, mixed> $metadata
+     * @var ?array<string, string|int|bool> $metadata
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('metadata')]
-    #[\Speakeasy\Serializer\Annotation\Type('array<string, mixed>|null')]
+    #[\Speakeasy\Serializer\Annotation\Type('array<string, string|int|bool>|null')]
     #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
     public ?array $metadata = null;
 
@@ -128,13 +128,14 @@ class DiscountPercentageOnceForeverDurationCreate
      * @param  DiscountType  $type
      * @param  int  $basisPoints
      * @param  string  $name
-     * @param  ?array<string, mixed>  $metadata
+     * @param  ?array<string, string|int|bool>  $metadata
      * @param  ?string  $code
      * @param  ?\DateTime  $startsAt
      * @param  ?\DateTime  $endsAt
      * @param  ?int  $maxRedemptions
      * @param  ?array<string>  $products
      * @param  ?string  $organizationId
+     * @phpstan-pure
      */
     public function __construct(DiscountDuration $duration, DiscountType $type, int $basisPoints, string $name, ?array $metadata = null, ?string $code = null, ?\DateTime $startsAt = null, ?\DateTime $endsAt = null, ?int $maxRedemptions = null, ?array $products = null, ?string $organizationId = null)
     {

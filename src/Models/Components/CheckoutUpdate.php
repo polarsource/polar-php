@@ -15,12 +15,12 @@ class CheckoutUpdate
     /**
      * Key-value object storing custom field values.
      *
-     * @var ?CustomFieldData $customFieldData
+     * @var ?array<string, string|int|bool|\DateTime> $customFieldData
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('custom_field_data')]
-    #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\CustomFieldData|null')]
+    #[\Speakeasy\Serializer\Annotation\Type('array<string, string|int|bool|\DateTime>|null')]
     #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
-    public ?CustomFieldData $customFieldData = null;
+    public ?array $customFieldData = null;
 
     /**
      * ID of the product price to checkout. Must correspond to a price linked to the same product.
@@ -75,10 +75,10 @@ class CheckoutUpdate
     /**
      * $metadata
      *
-     * @var ?array<string, mixed> $metadata
+     * @var ?array<string, string|int|bool> $metadata
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('metadata')]
-    #[\Speakeasy\Serializer\Annotation\Type('array<string, mixed>|null')]
+    #[\Speakeasy\Serializer\Annotation\Type('array<string, string|int|bool>|null')]
     #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
     public ?array $metadata = null;
 
@@ -121,10 +121,10 @@ class CheckoutUpdate
      *
      * You can store up to **50 key-value pairs**.
      *
-     * @var ?array<string, mixed> $customerMetadata
+     * @var ?array<string, string|int|bool> $customerMetadata
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('customer_metadata')]
-    #[\Speakeasy\Serializer\Annotation\Type('array<string, mixed>|null')]
+    #[\Speakeasy\Serializer\Annotation\Type('array<string, string|int|bool>|null')]
     #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
     public ?array $customerMetadata = null;
 
@@ -147,22 +147,23 @@ class CheckoutUpdate
     public ?string $embedOrigin = null;
 
     /**
-     * @param  ?CustomFieldData  $customFieldData
+     * @param  ?array<string, string|int|bool|\DateTime>  $customFieldData
      * @param  ?string  $productPriceId
      * @param  ?int  $amount
      * @param  ?string  $customerName
      * @param  ?string  $customerEmail
      * @param  ?Address  $customerBillingAddress
      * @param  ?string  $customerTaxId
-     * @param  ?array<string, mixed>  $metadata
+     * @param  ?array<string, string|int|bool>  $metadata
      * @param  ?string  $discountId
      * @param  ?bool  $allowDiscountCodes
      * @param  ?string  $customerIpAddress
-     * @param  ?array<string, mixed>  $customerMetadata
+     * @param  ?array<string, string|int|bool>  $customerMetadata
      * @param  ?string  $successUrl
      * @param  ?string  $embedOrigin
+     * @phpstan-pure
      */
-    public function __construct(?CustomFieldData $customFieldData = null, ?string $productPriceId = null, ?int $amount = null, ?string $customerName = null, ?string $customerEmail = null, ?Address $customerBillingAddress = null, ?string $customerTaxId = null, ?array $metadata = null, ?string $discountId = null, ?bool $allowDiscountCodes = null, ?string $customerIpAddress = null, ?array $customerMetadata = null, ?string $successUrl = null, ?string $embedOrigin = null)
+    public function __construct(?array $customFieldData = null, ?string $productPriceId = null, ?int $amount = null, ?string $customerName = null, ?string $customerEmail = null, ?Address $customerBillingAddress = null, ?string $customerTaxId = null, ?array $metadata = null, ?string $discountId = null, ?bool $allowDiscountCodes = null, ?string $customerIpAddress = null, ?array $customerMetadata = null, ?string $successUrl = null, ?string $embedOrigin = null)
     {
         $this->customFieldData = $customFieldData;
         $this->productPriceId = $productPriceId;

@@ -15,12 +15,12 @@ class CheckoutConfirmStripe
     /**
      * Key-value object storing custom field values.
      *
-     * @var ?CheckoutConfirmStripeCustomFieldData $customFieldData
+     * @var ?array<string, string|int|bool|\DateTime> $customFieldData
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('custom_field_data')]
-    #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\CheckoutConfirmStripeCustomFieldData|null')]
+    #[\Speakeasy\Serializer\Annotation\Type('array<string, string|int|bool|\DateTime>|null')]
     #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
-    public ?CheckoutConfirmStripeCustomFieldData $customFieldData = null;
+    public ?array $customFieldData = null;
 
     /**
      * ID of the product price to checkout. Must correspond to a price linked to the same product.
@@ -91,7 +91,7 @@ class CheckoutConfirmStripe
     public ?string $confirmationTokenId = null;
 
     /**
-     * @param  ?CheckoutConfirmStripeCustomFieldData  $customFieldData
+     * @param  ?array<string, string|int|bool|\DateTime>  $customFieldData
      * @param  ?string  $productPriceId
      * @param  ?int  $amount
      * @param  ?string  $customerName
@@ -100,8 +100,9 @@ class CheckoutConfirmStripe
      * @param  ?string  $customerTaxId
      * @param  ?string  $discountCode
      * @param  ?string  $confirmationTokenId
+     * @phpstan-pure
      */
-    public function __construct(?CheckoutConfirmStripeCustomFieldData $customFieldData = null, ?string $productPriceId = null, ?int $amount = null, ?string $customerName = null, ?string $customerEmail = null, ?Address $customerBillingAddress = null, ?string $customerTaxId = null, ?string $discountCode = null, ?string $confirmationTokenId = null)
+    public function __construct(?array $customFieldData = null, ?string $productPriceId = null, ?int $amount = null, ?string $customerName = null, ?string $customerEmail = null, ?Address $customerBillingAddress = null, ?string $customerTaxId = null, ?string $discountCode = null, ?string $confirmationTokenId = null)
     {
         $this->customFieldData = $customFieldData;
         $this->productPriceId = $productPriceId;

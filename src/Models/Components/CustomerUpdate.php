@@ -12,6 +12,16 @@ namespace Polar\Models\Components;
 class CustomerUpdate
 {
     /**
+     * $metadata
+     *
+     * @var ?array<string, string|int|bool> $metadata
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('metadata')]
+    #[\Speakeasy\Serializer\Annotation\Type('array<string, string|int|bool>|null')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
+    public ?array $metadata = null;
+
+    /**
      *
      * @var ?string $email
      */
@@ -39,21 +49,24 @@ class CustomerUpdate
     /**
      * $taxId
      *
-     * @var ?array<mixed> $taxId
+     * @var ?array<string|TaxIDFormat> $taxId
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('tax_id')]
-    #[\Speakeasy\Serializer\Annotation\Type('array<mixed>|null')]
+    #[\Speakeasy\Serializer\Annotation\Type('array<string|\Polar\Models\Components\TaxIDFormat>|null')]
     #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
     public ?array $taxId = null;
 
     /**
+     * @param  ?array<string, string|int|bool>  $metadata
      * @param  ?string  $email
      * @param  ?string  $name
      * @param  ?Address  $billingAddress
-     * @param  ?array<mixed>  $taxId
+     * @param  ?array<string|TaxIDFormat>  $taxId
+     * @phpstan-pure
      */
-    public function __construct(?string $email = null, ?string $name = null, ?Address $billingAddress = null, ?array $taxId = null)
+    public function __construct(?array $metadata = null, ?string $email = null, ?string $name = null, ?Address $billingAddress = null, ?array $taxId = null)
     {
+        $this->metadata = $metadata;
         $this->email = $email;
         $this->name = $name;
         $this->billingAddress = $billingAddress;

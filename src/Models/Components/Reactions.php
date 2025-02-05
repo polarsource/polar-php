@@ -84,6 +84,7 @@ class Reactions
      * @param  int  $heart
      * @param  int  $rocket
      * @param  int  $eyes
+     * @phpstan-pure
      */
     public function __construct(int $totalCount, int $plusOne, int $minusOne, int $laugh, int $hooray, int $confused, int $heart, int $rocket, int $eyes)
     {

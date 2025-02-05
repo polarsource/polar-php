@@ -30,11 +30,18 @@ class Order
     /**
      * $metadata
      *
-     * @var array<string, mixed> $metadata
+     * @var array<string, string|int|bool> $metadata
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('metadata')]
-    #[\Speakeasy\Serializer\Annotation\Type('array<string, mixed>')]
+    #[\Speakeasy\Serializer\Annotation\Type('array<string, string|int|bool>')]
     public array $metadata;
+
+    /**
+     *
+     * @var string $status
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('status')]
+    public string $status;
 
     /**
      *
@@ -49,6 +56,22 @@ class Order
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('tax_amount')]
     public int $taxAmount;
+
+    /**
+     * Amount refunded
+     *
+     * @var int $refundedAmount
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('refunded_amount')]
+    public int $refundedAmount;
+
+    /**
+     * Sales tax refunded
+     *
+     * @var int $refundedTaxAmount
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('refunded_tax_amount')]
+    public int $refundedTaxAmount;
 
     /**
      *
@@ -137,12 +160,12 @@ class Order
     /**
      * Key-value object storing custom field values.
      *
-     * @var ?OrderCustomFieldData $customFieldData
+     * @var ?array<string, string|int|bool|\DateTime> $customFieldData
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('custom_field_data')]
-    #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\OrderCustomFieldData|null')]
+    #[\Speakeasy\Serializer\Annotation\Type('array<string, string|int|bool|\DateTime>|null')]
     #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
-    public ?OrderCustomFieldData $customFieldData = null;
+    public ?array $customFieldData = null;
 
     /**
      *
@@ -178,7 +201,7 @@ class Order
      * @var DiscountFixedOnceForeverDurationBase|DiscountFixedRepeatDurationBase|DiscountPercentageOnceForeverDurationBase|DiscountPercentageRepeatDurationBase|null $discount
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('discount')]
-    #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\DiscountFixedOnceForeverDurationBase|\Polar\Models\Components\DiscountFixedRepeatDurationBase|\Polar\Models\Components\DiscountPercentageOnceForeverDurationBase|\Polar\Models\Components\DiscountPercentageRepeatDurationBase')]
+    #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\DiscountFixedOnceForeverDurationBase|\Polar\Models\Components\DiscountFixedRepeatDurationBase|\Polar\Models\Components\DiscountPercentageOnceForeverDurationBase|\Polar\Models\Components\DiscountPercentageRepeatDurationBase|null')]
     public DiscountFixedOnceForeverDurationBase|DiscountFixedRepeatDurationBase|DiscountPercentageOnceForeverDurationBase|DiscountPercentageRepeatDurationBase|null $discount;
 
     /**
@@ -192,9 +215,12 @@ class Order
     /**
      * @param  \DateTime  $createdAt
      * @param  string  $id
-     * @param  array<string, mixed>  $metadata
+     * @param  array<string, string|int|bool>  $metadata
+     * @param  string  $status
      * @param  int  $amount
      * @param  int  $taxAmount
+     * @param  int  $refundedAmount
+     * @param  int  $refundedTaxAmount
      * @param  string  $currency
      * @param  OrderBillingReason  $billingReason
      * @param  string  $customerId
@@ -206,21 +232,25 @@ class Order
      * @param  OrderProduct  $product
      * @param  ProductPriceRecurringFixed|ProductPriceRecurringCustom|ProductPriceRecurringFree|ProductPriceOneTimeFixed|ProductPriceOneTimeCustom|ProductPriceOneTimeFree  $productPrice
      * @param  ?\DateTime  $modifiedAt
-     * @param  ?OrderCustomFieldData  $customFieldData
+     * @param  ?array<string, string|int|bool|\DateTime>  $customFieldData
      * @param  ?Address  $billingAddress
      * @param  ?string  $discountId
      * @param  ?string  $subscriptionId
      * @param  ?string  $checkoutId
      * @param  DiscountFixedOnceForeverDurationBase|DiscountFixedRepeatDurationBase|DiscountPercentageOnceForeverDurationBase|DiscountPercentageRepeatDurationBase|null  $discount
      * @param  ?OrderSubscription  $subscription
+     * @phpstan-pure
      */
-    public function __construct(\DateTime $createdAt, string $id, array $metadata, int $amount, int $taxAmount, string $currency, OrderBillingReason $billingReason, string $customerId, string $productId, string $productPriceId, OrderCustomer $customer, string $userId, OrderUser $user, OrderProduct $product, ProductPriceRecurringFixed|ProductPriceRecurringCustom|ProductPriceRecurringFree|ProductPriceOneTimeFixed|ProductPriceOneTimeCustom|ProductPriceOneTimeFree $productPrice, ?\DateTime $modifiedAt = null, ?OrderCustomFieldData $customFieldData = null, ?Address $billingAddress = null, ?string $discountId = null, ?string $subscriptionId = null, ?string $checkoutId = null, DiscountFixedOnceForeverDurationBase|DiscountFixedRepeatDurationBase|DiscountPercentageOnceForeverDurationBase|DiscountPercentageRepeatDurationBase|null $discount = null, ?OrderSubscription $subscription = null)
+    public function __construct(\DateTime $createdAt, string $id, array $metadata, string $status, int $amount, int $taxAmount, int $refundedAmount, int $refundedTaxAmount, string $currency, OrderBillingReason $billingReason, string $customerId, string $productId, string $productPriceId, OrderCustomer $customer, string $userId, OrderUser $user, OrderProduct $product, ProductPriceRecurringFixed|ProductPriceRecurringCustom|ProductPriceRecurringFree|ProductPriceOneTimeFixed|ProductPriceOneTimeCustom|ProductPriceOneTimeFree $productPrice, ?\DateTime $modifiedAt = null, ?array $customFieldData = null, ?Address $billingAddress = null, ?string $discountId = null, ?string $subscriptionId = null, ?string $checkoutId = null, DiscountFixedOnceForeverDurationBase|DiscountFixedRepeatDurationBase|DiscountPercentageOnceForeverDurationBase|DiscountPercentageRepeatDurationBase|null $discount = null, ?OrderSubscription $subscription = null)
     {
         $this->createdAt = $createdAt;
         $this->id = $id;
         $this->metadata = $metadata;
+        $this->status = $status;
         $this->amount = $amount;
         $this->taxAmount = $taxAmount;
+        $this->refundedAmount = $refundedAmount;
+        $this->refundedTaxAmount = $refundedTaxAmount;
         $this->currency = $currency;
         $this->billingReason = $billingReason;
         $this->customerId = $customerId;

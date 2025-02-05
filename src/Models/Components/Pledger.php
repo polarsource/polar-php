@@ -36,6 +36,7 @@ class Pledger
      * @param  string  $name
      * @param  ?string  $githubUsername
      * @param  ?string  $avatarUrl
+     * @phpstan-pure
      */
     public function __construct(string $name, ?string $githubUsername = null, ?string $avatarUrl = null)
     {

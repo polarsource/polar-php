@@ -44,6 +44,7 @@ class CheckoutLinksUpdateResponse
      * @param  int  $statusCode
      * @param  \Psr\Http\Message\ResponseInterface  $rawResponse
      * @param  ?Components\CheckoutLink  $checkoutLink
+     * @phpstan-pure
      */
     public function __construct(string $contentType, int $statusCode, \Psr\Http\Message\ResponseInterface $rawResponse, ?Components\CheckoutLink $checkoutLink = null)
     {

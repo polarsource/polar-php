@@ -44,6 +44,7 @@ class Oauth2IntrospectTokenResponse
      * @param  int  $statusCode
      * @param  \Psr\Http\Message\ResponseInterface  $rawResponse
      * @param  ?Components\IntrospectTokenResponse  $introspectTokenResponse
+     * @phpstan-pure
      */
     public function __construct(string $contentType, int $statusCode, \Psr\Http\Message\ResponseInterface $rawResponse, ?Components\IntrospectTokenResponse $introspectTokenResponse = null)
     {

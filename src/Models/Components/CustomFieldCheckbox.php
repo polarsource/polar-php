@@ -31,10 +31,10 @@ class CustomFieldCheckbox
     /**
      * $metadata
      *
-     * @var array<string, mixed> $metadata
+     * @var array<string, string|int|bool> $metadata
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('metadata')]
-    #[\Speakeasy\Serializer\Annotation\Type('array<string, mixed>')]
+    #[\Speakeasy\Serializer\Annotation\Type('array<string, string|int|bool>')]
     public array $metadata;
 
     /**
@@ -79,24 +79,24 @@ class CustomFieldCheckbox
 
     /**
      *
-     * @var CustomFieldCheckboxType $type
+     * @var string $type
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('type')]
-    #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\CustomFieldCheckboxType')]
-    public CustomFieldCheckboxType $type;
+    public string $type;
 
     /**
      * @param  \DateTime  $createdAt
      * @param  string  $id
-     * @param  array<string, mixed>  $metadata
-     * @param  CustomFieldCheckboxType  $type
+     * @param  array<string, string|int|bool>  $metadata
+     * @param  string  $type
      * @param  string  $slug
      * @param  string  $name
      * @param  string  $organizationId
      * @param  CustomFieldCheckboxProperties  $properties
      * @param  ?\DateTime  $modifiedAt
+     * @phpstan-pure
      */
-    public function __construct(\DateTime $createdAt, string $id, array $metadata, string $slug, string $name, string $organizationId, CustomFieldCheckboxProperties $properties, ?\DateTime $modifiedAt = null, CustomFieldCheckboxType $type = CustomFieldCheckboxType::Checkbox)
+    public function __construct(\DateTime $createdAt, string $id, array $metadata, string $slug, string $name, string $organizationId, CustomFieldCheckboxProperties $properties, ?\DateTime $modifiedAt = null, string $type = 'checkbox')
     {
         $this->createdAt = $createdAt;
         $this->id = $id;

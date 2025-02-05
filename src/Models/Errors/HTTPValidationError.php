@@ -10,7 +10,6 @@ namespace Polar\Models\Errors;
 
 use Polar\Models\Components;
 use Polar\Utils;
-
 class HTTPValidationError
 {
     /**
@@ -25,6 +24,7 @@ class HTTPValidationError
 
     /**
      * @param  ?array<Components\ValidationError>  $detail
+     * @phpstan-pure
      */
     public function __construct(?array $detail = null)
     {

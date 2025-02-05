@@ -27,17 +27,17 @@ class WebhookBenefitGrantRevokedPayload
 
     /**
      *
-     * @var WebhookBenefitGrantRevokedPayloadType $type
+     * @var string $type
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('type')]
-    #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\WebhookBenefitGrantRevokedPayloadType')]
-    public WebhookBenefitGrantRevokedPayloadType $type;
+    public string $type;
 
     /**
-     * @param  WebhookBenefitGrantRevokedPayloadType  $type
+     * @param  string  $type
      * @param  BenefitGrantWebhook  $data
+     * @phpstan-pure
      */
-    public function __construct(BenefitGrantWebhook $data, WebhookBenefitGrantRevokedPayloadType $type = WebhookBenefitGrantRevokedPayloadType::BenefitGrantRevoked)
+    public function __construct(BenefitGrantWebhook $data, string $type = 'benefit_grant.revoked')
     {
         $this->data = $data;
         $this->type = $type;

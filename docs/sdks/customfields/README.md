@@ -25,9 +25,11 @@ require 'vendor/autoload.php';
 use Polar;
 use Polar\Models\Components;
 
-$security = '<YOUR_BEARER_TOKEN_HERE>';
-
-$sdk = Polar\Polar::builder()->setSecurity($security)->build();
+$sdk = Polar\Polar::builder()
+    ->setSecurity(
+        '<YOUR_BEARER_TOKEN_HERE>'
+    )
+    ->build();
 
 $request = new Components\CustomFieldCreateNumber(
     slug: '<value>',
@@ -74,9 +76,11 @@ require 'vendor/autoload.php';
 
 use Polar;
 
-$security = '<YOUR_BEARER_TOKEN_HERE>';
-
-$sdk = Polar\Polar::builder()->setSecurity($security)->build();
+$sdk = Polar\Polar::builder()
+    ->setSecurity(
+        '<YOUR_BEARER_TOKEN_HERE>'
+    )
+    ->build();
 
 
 
@@ -120,9 +124,11 @@ require 'vendor/autoload.php';
 
 use Polar;
 
-$security = '<YOUR_BEARER_TOKEN_HERE>';
-
-$sdk = Polar\Polar::builder()->setSecurity($security)->build();
+$sdk = Polar\Polar::builder()
+    ->setSecurity(
+        '<YOUR_BEARER_TOKEN_HERE>'
+    )
+    ->build();
 
 
 
@@ -167,9 +173,11 @@ require 'vendor/autoload.php';
 use Polar;
 use Polar\Models\Operations;
 
-$security = '<YOUR_BEARER_TOKEN_HERE>';
-
-$sdk = Polar\Polar::builder()->setSecurity($security)->build();
+$sdk = Polar\Polar::builder()
+    ->setSecurity(
+        '<YOUR_BEARER_TOKEN_HERE>'
+    )
+    ->build();
 
 $request = new Operations\CustomFieldsListRequest();
 
@@ -216,9 +224,11 @@ require 'vendor/autoload.php';
 use Polar;
 use Polar\Models\Components;
 
-$security = '<YOUR_BEARER_TOKEN_HERE>';
-
-$sdk = Polar\Polar::builder()->setSecurity($security)->build();
+$sdk = Polar\Polar::builder()
+    ->setSecurity(
+        '<YOUR_BEARER_TOKEN_HERE>'
+    )
+    ->build();
 
 
 

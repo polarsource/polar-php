@@ -29,6 +29,7 @@ class BenefitLicenseKeyExpirationProperties
     /**
      * @param  int  $ttl
      * @param  Timeframe  $timeframe
+     * @phpstan-pure
      */
     public function __construct(int $ttl, Timeframe $timeframe)
     {

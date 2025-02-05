@@ -144,6 +144,7 @@ class FileUpload
      * @param  ?\DateTime  $lastModifiedAt
      * @param  ?string  $version
      * @param  ?bool  $isUploaded
+     * @phpstan-pure
      */
     public function __construct(string $id, string $organizationId, string $name, string $path, string $mimeType, int $size, S3FileUploadMultipart $upload, FileServiceTypes $service, string $sizeReadable, ?string $storageVersion = null, ?string $checksumEtag = null, ?string $checksumSha256Base64 = null, ?string $checksumSha256Hex = null, ?\DateTime $lastModifiedAt = null, ?string $version = null, ?bool $isUploaded = false)
     {

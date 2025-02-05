@@ -32,6 +32,7 @@ class MetricsLimits
     /**
      * @param  LocalDate  $minDate
      * @param  MetricsIntervalsLimits  $intervals
+     * @phpstan-pure
      */
     public function __construct(LocalDate $minDate, MetricsIntervalsLimits $intervals)
     {

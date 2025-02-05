@@ -27,17 +27,17 @@ class WebhookBenefitCreatedPayload
 
     /**
      *
-     * @var WebhookBenefitCreatedPayloadType $type
+     * @var string $type
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('type')]
-    #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\WebhookBenefitCreatedPayloadType')]
-    public WebhookBenefitCreatedPayloadType $type;
+    public string $type;
 
     /**
-     * @param  WebhookBenefitCreatedPayloadType  $type
+     * @param  string  $type
      * @param  BenefitAds|BenefitCustom|BenefitDiscord|BenefitGitHubRepository|BenefitDownloadables|BenefitLicenseKeys  $data
+     * @phpstan-pure
      */
-    public function __construct(BenefitAds|BenefitCustom|BenefitDiscord|BenefitGitHubRepository|BenefitDownloadables|BenefitLicenseKeys $data, WebhookBenefitCreatedPayloadType $type = WebhookBenefitCreatedPayloadType::BenefitCreated)
+    public function __construct(BenefitAds|BenefitCustom|BenefitDiscord|BenefitGitHubRepository|BenefitDownloadables|BenefitLicenseKeys $data, string $type = 'benefit.created')
     {
         $this->data = $data;
         $this->type = $type;

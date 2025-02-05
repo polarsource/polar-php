@@ -155,6 +155,7 @@ class Pledge
      * @param  ?Pledger  $pledger
      * @param  ?string  $hostedInvoiceUrl
      * @param  ?Pledger  $createdBy
+     * @phpstan-pure
      */
     public function __construct(\DateTime $createdAt, string $id, int $amount, string $currency, PledgeState $state, PledgeType $type, Issue $issue, ?\DateTime $modifiedAt = null, ?\DateTime $refundedAt = null, ?\DateTime $scheduledPayoutAt = null, ?Pledger $pledger = null, ?string $hostedInvoiceUrl = null, ?Pledger $createdBy = null, ?bool $authedCanAdminSender = false, ?bool $authedCanAdminReceived = false)
     {

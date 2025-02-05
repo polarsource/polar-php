@@ -56,6 +56,14 @@ class Organization
     public bool $pledgeBadgeShowAmount;
 
     /**
+     *
+     * @var OrganizationSubscriptionSettings $subscriptionSettings
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('subscription_settings')]
+    #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\OrganizationSubscriptionSettings')]
+    public OrganizationSubscriptionSettings $subscriptionSettings;
+
+    /**
      * Last modification timestamp of the object.
      *
      * @var ?\DateTime $modifiedAt
@@ -144,6 +152,7 @@ class Organization
      * @param  string  $slug
      * @param  int  $pledgeMinimumAmount
      * @param  bool  $pledgeBadgeShowAmount
+     * @param  OrganizationSubscriptionSettings  $subscriptionSettings
      * @param  ?\DateTime  $modifiedAt
      * @param  ?string  $avatarUrl
      * @param  ?string  $bio
@@ -155,8 +164,9 @@ class Organization
      * @param  ?int  $defaultUpfrontSplitToContributors
      * @param  ?OrganizationProfileSettings  $profileSettings
      * @param  ?OrganizationFeatureSettings  $featureSettings
+     * @phpstan-pure
      */
-    public function __construct(\DateTime $createdAt, string $id, string $name, string $slug, int $pledgeMinimumAmount, bool $pledgeBadgeShowAmount, ?\DateTime $modifiedAt = null, ?string $avatarUrl = null, ?string $bio = null, ?string $company = null, ?string $blog = null, ?string $location = null, ?string $email = null, ?string $twitterUsername = null, ?int $defaultUpfrontSplitToContributors = null, ?OrganizationProfileSettings $profileSettings = null, ?OrganizationFeatureSettings $featureSettings = null)
+    public function __construct(\DateTime $createdAt, string $id, string $name, string $slug, int $pledgeMinimumAmount, bool $pledgeBadgeShowAmount, OrganizationSubscriptionSettings $subscriptionSettings, ?\DateTime $modifiedAt = null, ?string $avatarUrl = null, ?string $bio = null, ?string $company = null, ?string $blog = null, ?string $location = null, ?string $email = null, ?string $twitterUsername = null, ?int $defaultUpfrontSplitToContributors = null, ?OrganizationProfileSettings $profileSettings = null, ?OrganizationFeatureSettings $featureSettings = null)
     {
         $this->createdAt = $createdAt;
         $this->id = $id;
@@ -164,6 +174,7 @@ class Organization
         $this->slug = $slug;
         $this->pledgeMinimumAmount = $pledgeMinimumAmount;
         $this->pledgeBadgeShowAmount = $pledgeBadgeShowAmount;
+        $this->subscriptionSettings = $subscriptionSettings;
         $this->modifiedAt = $modifiedAt;
         $this->avatarUrl = $avatarUrl;
         $this->bio = $bio;

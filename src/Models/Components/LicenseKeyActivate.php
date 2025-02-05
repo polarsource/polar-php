@@ -56,6 +56,7 @@ class LicenseKeyActivate
      * @param  string  $label
      * @param  ?LicenseKeyActivateConditions  $conditions
      * @param  ?LicenseKeyActivateMeta  $meta
+     * @phpstan-pure
      */
     public function __construct(string $key, string $organizationId, string $label, ?LicenseKeyActivateConditions $conditions = null, ?LicenseKeyActivateMeta $meta = null)
     {

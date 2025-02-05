@@ -120,11 +120,10 @@ class DownloadableFileRead
 
     /**
      *
-     * @var DownloadableFileReadService $service
+     * @var string $service
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('service')]
-    #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\DownloadableFileReadService')]
-    public DownloadableFileReadService $service;
+    public string $service;
 
     /**
      * @param  string  $id
@@ -133,7 +132,7 @@ class DownloadableFileRead
      * @param  string  $path
      * @param  string  $mimeType
      * @param  int  $size
-     * @param  DownloadableFileReadService  $service
+     * @param  string  $service
      * @param  bool  $isUploaded
      * @param  \DateTime  $createdAt
      * @param  string  $sizeReadable
@@ -143,8 +142,9 @@ class DownloadableFileRead
      * @param  ?string  $checksumSha256Hex
      * @param  ?\DateTime  $lastModifiedAt
      * @param  ?string  $version
+     * @phpstan-pure
      */
-    public function __construct(string $id, string $organizationId, string $name, string $path, string $mimeType, int $size, bool $isUploaded, \DateTime $createdAt, string $sizeReadable, ?string $storageVersion = null, ?string $checksumEtag = null, ?string $checksumSha256Base64 = null, ?string $checksumSha256Hex = null, ?\DateTime $lastModifiedAt = null, ?string $version = null, DownloadableFileReadService $service = DownloadableFileReadService::Downloadable)
+    public function __construct(string $id, string $organizationId, string $name, string $path, string $mimeType, int $size, bool $isUploaded, \DateTime $createdAt, string $sizeReadable, ?string $storageVersion = null, ?string $checksumEtag = null, ?string $checksumSha256Base64 = null, ?string $checksumSha256Hex = null, ?\DateTime $lastModifiedAt = null, ?string $version = null, string $service = 'downloadable')
     {
         $this->id = $id;
         $this->organizationId = $organizationId;

@@ -167,7 +167,11 @@ class QueryParameters
         switch (gettype($value)) {
             case 'object':
                 $items = [];
-
+                $cls = get_class($value);
+                if ($cls === 'Brick\\Math\\BigDecimal' || $cls === 'Brick\\Math\\BigInteger') {
+                    $queryParams[$metadata->name] = valToString($value, []);
+                    break;
+                }
                 foreach ($value as $field => $val) { /** @phpstan-ignore-line */
                     if ($val === null) {
                         continue;

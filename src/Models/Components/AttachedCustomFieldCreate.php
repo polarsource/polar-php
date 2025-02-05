@@ -31,6 +31,7 @@ class AttachedCustomFieldCreate
     /**
      * @param  string  $customFieldId
      * @param  bool  $required
+     * @phpstan-pure
      */
     public function __construct(string $customFieldId, bool $required)
     {

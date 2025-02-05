@@ -49,6 +49,7 @@ class BenefitsListRequest
      * @param  ?int  $limit
      * @param  string|array<string>|null  $organizationId
      * @param  Components\BenefitType|array<Components\BenefitType>|null  $typeFilter
+     * @phpstan-pure
      */
     public function __construct(string|array|null $organizationId = null, Components\BenefitType|array|null $typeFilter = null, ?int $page = 1, ?int $limit = 10)
     {

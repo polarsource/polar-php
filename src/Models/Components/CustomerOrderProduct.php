@@ -62,10 +62,10 @@ class CustomerOrderProduct
     /**
      * List of prices for this product.
      *
-     * @var array<mixed> $prices
+     * @var array<ProductPriceRecurringFixed|ProductPriceRecurringCustom|ProductPriceRecurringFree|ProductPriceOneTimeFixed|ProductPriceOneTimeCustom|ProductPriceOneTimeFree> $prices
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('prices')]
-    #[\Speakeasy\Serializer\Annotation\Type('array<mixed>')]
+    #[\Speakeasy\Serializer\Annotation\Type('array<\Polar\Models\Components\ProductPriceRecurringFixed|\Polar\Models\Components\ProductPriceRecurringCustom|\Polar\Models\Components\ProductPriceRecurringFree|\Polar\Models\Components\ProductPriceOneTimeFixed|\Polar\Models\Components\ProductPriceOneTimeCustom|\Polar\Models\Components\ProductPriceOneTimeFree>')]
     public array $prices;
 
     /**
@@ -117,12 +117,13 @@ class CustomerOrderProduct
      * @param  bool  $isRecurring
      * @param  bool  $isArchived
      * @param  string  $organizationId
-     * @param  array<mixed>  $prices
+     * @param  array<ProductPriceRecurringFixed|ProductPriceRecurringCustom|ProductPriceRecurringFree|ProductPriceOneTimeFixed|ProductPriceOneTimeCustom|ProductPriceOneTimeFree>  $prices
      * @param  array<BenefitBase>  $benefits
      * @param  array<ProductMediaFileRead>  $medias
      * @param  Organization  $organization
      * @param  ?\DateTime  $modifiedAt
      * @param  ?string  $description
+     * @phpstan-pure
      */
     public function __construct(\DateTime $createdAt, string $id, string $name, bool $isRecurring, bool $isArchived, string $organizationId, array $prices, array $benefits, array $medias, Organization $organization, ?\DateTime $modifiedAt = null, ?string $description = null)
     {

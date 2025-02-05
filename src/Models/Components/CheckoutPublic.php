@@ -30,6 +30,14 @@ class CheckoutPublic
 
     /**
      *
+     * @var PaymentProcessor $paymentProcessor
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('payment_processor')]
+    #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\PaymentProcessor')]
+    public PaymentProcessor $paymentProcessor;
+
+    /**
+     *
      * @var CheckoutStatus $status
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('status')]
@@ -133,12 +141,13 @@ class CheckoutPublic
     public bool $isPaymentFormRequired;
 
     /**
+     * $paymentProcessorMetadata
      *
-     * @var CheckoutPublicPaymentProcessorMetadata $paymentProcessorMetadata
+     * @var array<string, string> $paymentProcessorMetadata
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('payment_processor_metadata')]
-    #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\CheckoutPublicPaymentProcessorMetadata')]
-    public CheckoutPublicPaymentProcessorMetadata $paymentProcessorMetadata;
+    #[\Speakeasy\Serializer\Annotation\Type('array<string, string>')]
+    public array $paymentProcessorMetadata;
 
     /**
      * Product data for a checkout session.
@@ -185,12 +194,12 @@ class CheckoutPublic
     /**
      * Key-value object storing custom field values.
      *
-     * @var ?CheckoutPublicCustomFieldData $customFieldData
+     * @var ?array<string, string|int|bool|\DateTime> $customFieldData
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('custom_field_data')]
-    #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\CheckoutPublicCustomFieldData|null')]
+    #[\Speakeasy\Serializer\Annotation\Type('array<string, string|int|bool|\DateTime>|null')]
     #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
-    public ?CheckoutPublicCustomFieldData $customFieldData = null;
+    public ?array $customFieldData = null;
 
     /**
      * When checkout is embedded, represents the Origin of the page embedding the checkout. Used as a security measure to send messages only to the embedding page.
@@ -255,6 +264,7 @@ class CheckoutPublic
     public ?string $customerId;
 
     /**
+     * Name of the customer.
      *
      * @var ?string $customerName
      */
@@ -262,6 +272,7 @@ class CheckoutPublic
     public ?string $customerName;
 
     /**
+     * Email address of the customer.
      *
      * @var ?string $customerEmail
      */
@@ -295,16 +306,8 @@ class CheckoutPublic
      * @var CheckoutDiscountFixedOnceForeverDuration|CheckoutDiscountFixedRepeatDuration|CheckoutDiscountPercentageOnceForeverDuration|CheckoutDiscountPercentageRepeatDuration|null $discount
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('discount')]
-    #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\CheckoutDiscountFixedOnceForeverDuration|\Polar\Models\Components\CheckoutDiscountFixedRepeatDuration|\Polar\Models\Components\CheckoutDiscountPercentageOnceForeverDuration|\Polar\Models\Components\CheckoutDiscountPercentageRepeatDuration')]
+    #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\CheckoutDiscountFixedOnceForeverDuration|\Polar\Models\Components\CheckoutDiscountFixedRepeatDuration|\Polar\Models\Components\CheckoutDiscountPercentageOnceForeverDuration|\Polar\Models\Components\CheckoutDiscountPercentageRepeatDuration|null')]
     public CheckoutDiscountFixedOnceForeverDuration|CheckoutDiscountFixedRepeatDuration|CheckoutDiscountPercentageOnceForeverDuration|CheckoutDiscountPercentageRepeatDuration|null $discount;
-
-    /**
-     *
-     * @var PaymentProcessor $paymentProcessor
-     */
-    #[\Speakeasy\Serializer\Annotation\SerializedName('payment_processor')]
-    #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\PaymentProcessor')]
-    public PaymentProcessor $paymentProcessor;
 
     /**
      * @param  \DateTime  $createdAt
@@ -323,13 +326,13 @@ class CheckoutPublic
      * @param  bool  $isPaymentRequired
      * @param  bool  $isPaymentSetupRequired
      * @param  bool  $isPaymentFormRequired
-     * @param  CheckoutPublicPaymentProcessorMetadata  $paymentProcessorMetadata
+     * @param  array<string, string>  $paymentProcessorMetadata
      * @param  CheckoutProduct  $product
      * @param  ProductPriceRecurringFixed|ProductPriceRecurringCustom|ProductPriceRecurringFree|ProductPriceOneTimeFixed|ProductPriceOneTimeCustom|ProductPriceOneTimeFree  $productPrice
      * @param  Organization  $organization
      * @param  array<AttachedCustomField>  $attachedCustomFields
      * @param  ?\DateTime  $modifiedAt
-     * @param  ?CheckoutPublicCustomFieldData  $customFieldData
+     * @param  ?array<string, string|int|bool|\DateTime>  $customFieldData
      * @param  ?string  $embedOrigin
      * @param  ?int  $amount
      * @param  ?int  $taxAmount
@@ -344,11 +347,13 @@ class CheckoutPublic
      * @param  ?Address  $customerBillingAddress
      * @param  ?string  $customerTaxId
      * @param  CheckoutDiscountFixedOnceForeverDuration|CheckoutDiscountFixedRepeatDuration|CheckoutDiscountPercentageOnceForeverDuration|CheckoutDiscountPercentageRepeatDuration|null  $discount
+     * @phpstan-pure
      */
-    public function __construct(\DateTime $createdAt, string $id, CheckoutStatus $status, string $clientSecret, string $url, \DateTime $expiresAt, string $successUrl, string $productId, string $productPriceId, bool $allowDiscountCodes, bool $isDiscountApplicable, bool $isFreeProductPrice, bool $isPaymentRequired, bool $isPaymentSetupRequired, bool $isPaymentFormRequired, CheckoutPublicPaymentProcessorMetadata $paymentProcessorMetadata, CheckoutProduct $product, ProductPriceRecurringFixed|ProductPriceRecurringCustom|ProductPriceRecurringFree|ProductPriceOneTimeFixed|ProductPriceOneTimeCustom|ProductPriceOneTimeFree $productPrice, Organization $organization, array $attachedCustomFields, ?\DateTime $modifiedAt = null, ?CheckoutPublicCustomFieldData $customFieldData = null, ?string $embedOrigin = null, ?int $amount = null, ?int $taxAmount = null, ?string $currency = null, ?int $subtotalAmount = null, ?int $totalAmount = null, ?string $discountId = null, ?string $customerId = null, ?string $customerName = null, ?string $customerEmail = null, ?string $customerIpAddress = null, ?Address $customerBillingAddress = null, ?string $customerTaxId = null, CheckoutDiscountFixedOnceForeverDuration|CheckoutDiscountFixedRepeatDuration|CheckoutDiscountPercentageOnceForeverDuration|CheckoutDiscountPercentageRepeatDuration|null $discount = null, PaymentProcessor $paymentProcessor = PaymentProcessor::Stripe)
+    public function __construct(\DateTime $createdAt, string $id, PaymentProcessor $paymentProcessor, CheckoutStatus $status, string $clientSecret, string $url, \DateTime $expiresAt, string $successUrl, string $productId, string $productPriceId, bool $allowDiscountCodes, bool $isDiscountApplicable, bool $isFreeProductPrice, bool $isPaymentRequired, bool $isPaymentSetupRequired, bool $isPaymentFormRequired, array $paymentProcessorMetadata, CheckoutProduct $product, ProductPriceRecurringFixed|ProductPriceRecurringCustom|ProductPriceRecurringFree|ProductPriceOneTimeFixed|ProductPriceOneTimeCustom|ProductPriceOneTimeFree $productPrice, Organization $organization, array $attachedCustomFields, ?\DateTime $modifiedAt = null, ?array $customFieldData = null, ?string $embedOrigin = null, ?int $amount = null, ?int $taxAmount = null, ?string $currency = null, ?int $subtotalAmount = null, ?int $totalAmount = null, ?string $discountId = null, ?string $customerId = null, ?string $customerName = null, ?string $customerEmail = null, ?string $customerIpAddress = null, ?Address $customerBillingAddress = null, ?string $customerTaxId = null, CheckoutDiscountFixedOnceForeverDuration|CheckoutDiscountFixedRepeatDuration|CheckoutDiscountPercentageOnceForeverDuration|CheckoutDiscountPercentageRepeatDuration|null $discount = null)
     {
         $this->createdAt = $createdAt;
         $this->id = $id;
+        $this->paymentProcessor = $paymentProcessor;
         $this->status = $status;
         $this->clientSecret = $clientSecret;
         $this->url = $url;
@@ -383,6 +388,5 @@ class CheckoutPublic
         $this->customerBillingAddress = $customerBillingAddress;
         $this->customerTaxId = $customerTaxId;
         $this->discount = $discount;
-        $this->paymentProcessor = $paymentProcessor;
     }
 }

@@ -27,17 +27,17 @@ class WebhookBenefitGrantCreatedPayload
 
     /**
      *
-     * @var WebhookBenefitGrantCreatedPayloadType $type
+     * @var string $type
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('type')]
-    #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\WebhookBenefitGrantCreatedPayloadType')]
-    public WebhookBenefitGrantCreatedPayloadType $type;
+    public string $type;
 
     /**
-     * @param  WebhookBenefitGrantCreatedPayloadType  $type
+     * @param  string  $type
      * @param  BenefitGrantWebhook  $data
+     * @phpstan-pure
      */
-    public function __construct(BenefitGrantWebhook $data, WebhookBenefitGrantCreatedPayloadType $type = WebhookBenefitGrantCreatedPayloadType::BenefitGrantCreated)
+    public function __construct(BenefitGrantWebhook $data, string $type = 'benefit_grant.created')
     {
         $this->data = $data;
         $this->type = $type;

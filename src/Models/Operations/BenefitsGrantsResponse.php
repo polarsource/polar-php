@@ -48,6 +48,7 @@ class BenefitsGrantsResponse
      * @param  int  $statusCode
      * @param  \Psr\Http\Message\ResponseInterface  $rawResponse
      * @param  ?Components\ListResourceBenefitGrant  $listResourceBenefitGrant
+     * @phpstan-pure
      */
     public function __construct(string $contentType, int $statusCode, \Psr\Http\Message\ResponseInterface $rawResponse, ?Components\ListResourceBenefitGrant $listResourceBenefitGrant = null)
     {

@@ -57,6 +57,14 @@ class CustomerBenefitGrantCustom
 
     /**
      *
+     * @var CustomerPortalCustomer $customer
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('customer')]
+    #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\CustomerPortalCustomer')]
+    public CustomerPortalCustomer $customer;
+
+    /**
+     *
      * @var BenefitCustomSubscriber $benefit
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('benefit')]
@@ -114,6 +122,7 @@ class CustomerBenefitGrantCustom
      * @param  string  $benefitId
      * @param  bool  $isGranted
      * @param  bool  $isRevoked
+     * @param  CustomerPortalCustomer  $customer
      * @param  BenefitCustomSubscriber  $benefit
      * @param  BenefitGrantCustomProperties  $properties
      * @param  ?\DateTime  $modifiedAt
@@ -121,8 +130,9 @@ class CustomerBenefitGrantCustom
      * @param  ?\DateTime  $revokedAt
      * @param  ?string  $subscriptionId
      * @param  ?string  $orderId
+     * @phpstan-pure
      */
-    public function __construct(\DateTime $createdAt, string $id, string $customerId, string $benefitId, bool $isGranted, bool $isRevoked, BenefitCustomSubscriber $benefit, BenefitGrantCustomProperties $properties, ?\DateTime $modifiedAt = null, ?\DateTime $grantedAt = null, ?\DateTime $revokedAt = null, ?string $subscriptionId = null, ?string $orderId = null)
+    public function __construct(\DateTime $createdAt, string $id, string $customerId, string $benefitId, bool $isGranted, bool $isRevoked, CustomerPortalCustomer $customer, BenefitCustomSubscriber $benefit, BenefitGrantCustomProperties $properties, ?\DateTime $modifiedAt = null, ?\DateTime $grantedAt = null, ?\DateTime $revokedAt = null, ?string $subscriptionId = null, ?string $orderId = null)
     {
         $this->createdAt = $createdAt;
         $this->id = $id;
@@ -130,6 +140,7 @@ class CustomerBenefitGrantCustom
         $this->benefitId = $benefitId;
         $this->isGranted = $isGranted;
         $this->isRevoked = $isRevoked;
+        $this->customer = $customer;
         $this->benefit = $benefit;
         $this->properties = $properties;
         $this->modifiedAt = $modifiedAt;

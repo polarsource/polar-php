@@ -44,6 +44,7 @@ class CustomerPortalBenefitGrantsUpdateResponse
      * @param  int  $statusCode
      * @param  \Psr\Http\Message\ResponseInterface  $rawResponse
      * @param  Components\CustomerBenefitGrantDiscord|Components\CustomerBenefitGrantGitHubRepository|Components\CustomerBenefitGrantDownloadables|Components\CustomerBenefitGrantLicenseKeys|Components\CustomerBenefitGrantAds|Components\CustomerBenefitGrantCustom|null  $customerBenefitGrant
+     * @phpstan-pure
      */
     public function __construct(string $contentType, int $statusCode, \Psr\Http\Message\ResponseInterface $rawResponse, Components\CustomerBenefitGrantDiscord|Components\CustomerBenefitGrantGitHubRepository|Components\CustomerBenefitGrantDownloadables|Components\CustomerBenefitGrantLicenseKeys|Components\CustomerBenefitGrantAds|Components\CustomerBenefitGrantCustom|null $customerBenefitGrant = null)
     {

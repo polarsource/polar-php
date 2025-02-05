@@ -30,6 +30,7 @@ class CustomFieldsUpdateRequest
     /**
      * @param  string  $id
      * @param  Components\CustomFieldUpdateText|Components\CustomFieldUpdateNumber|Components\CustomFieldUpdateDate|Components\CustomFieldUpdateCheckbox|Components\CustomFieldUpdateSelect  $customFieldUpdate
+     * @phpstan-pure
      */
     public function __construct(string $id, Components\CustomFieldUpdateText|Components\CustomFieldUpdateNumber|Components\CustomFieldUpdateDate|Components\CustomFieldUpdateCheckbox|Components\CustomFieldUpdateSelect $customFieldUpdate)
     {

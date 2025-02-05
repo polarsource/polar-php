@@ -51,6 +51,7 @@ class BenefitGitHubRepositoryProperties
      * @param  string  $repositoryName
      * @param  Permission  $permission
      * @param  ?string  $repositoryId
+     * @phpstan-pure
      */
     public function __construct(string $repositoryOwner, string $repositoryName, Permission $permission, ?string $repositoryId = null)
     {

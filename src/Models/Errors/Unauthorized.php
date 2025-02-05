@@ -8,19 +8,15 @@ declare(strict_types=1);
 
 namespace Polar\Models\Errors;
 
-
-use Polar\Models\Errors;
 use Polar\Utils;
-
 class Unauthorized
 {
     /**
      *
-     * @var UnauthorizedError $error
+     * @var string $error
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('error')]
-    #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Errors\UnauthorizedError')]
-    public UnauthorizedError $error;
+    public string $error;
 
     /**
      *
@@ -30,10 +26,11 @@ class Unauthorized
     public string $detail;
 
     /**
-     * @param  UnauthorizedError  $error
+     * @param  string  $error
      * @param  string  $detail
+     * @phpstan-pure
      */
-    public function __construct(string $detail, UnauthorizedError $error = UnauthorizedError::Unauthorized)
+    public function __construct(string $detail, string $error = 'Unauthorized')
     {
         $this->error = $error;
         $this->detail = $detail;

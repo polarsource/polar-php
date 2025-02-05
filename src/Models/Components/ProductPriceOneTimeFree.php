@@ -54,31 +54,30 @@ class ProductPriceOneTimeFree
 
     /**
      *
-     * @var ProductPriceOneTimeFreeAmountType $amountType
+     * @var string $amountType
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('amount_type')]
-    #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\ProductPriceOneTimeFreeAmountType')]
-    public ProductPriceOneTimeFreeAmountType $amountType;
+    public string $amountType;
 
     /**
      * The type of the price.
      *
-     * @var ProductPriceOneTimeFreeType $type
+     * @var string $type
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('type')]
-    #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\ProductPriceOneTimeFreeType')]
-    public ProductPriceOneTimeFreeType $type;
+    public string $type;
 
     /**
      * @param  \DateTime  $createdAt
      * @param  string  $id
-     * @param  ProductPriceOneTimeFreeAmountType  $amountType
+     * @param  string  $amountType
      * @param  bool  $isArchived
      * @param  string  $productId
-     * @param  ProductPriceOneTimeFreeType  $type
+     * @param  string  $type
      * @param  ?\DateTime  $modifiedAt
+     * @phpstan-pure
      */
-    public function __construct(\DateTime $createdAt, string $id, bool $isArchived, string $productId, ?\DateTime $modifiedAt = null, ProductPriceOneTimeFreeAmountType $amountType = ProductPriceOneTimeFreeAmountType::Free, ProductPriceOneTimeFreeType $type = ProductPriceOneTimeFreeType::OneTime)
+    public function __construct(\DateTime $createdAt, string $id, bool $isArchived, string $productId, ?\DateTime $modifiedAt = null, string $amountType = 'free', string $type = 'one_time')
     {
         $this->createdAt = $createdAt;
         $this->id = $id;

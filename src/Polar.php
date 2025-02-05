@@ -13,7 +13,7 @@ namespace Polar;
 /**
  * Polar - Polar API: Polar HTTP and Webhooks API
  *
- * Read the docs at https://docs.polar.sh/api
+ * Read the docs at https://docs.polar.sh/api-reference
  */
 class Polar
 {
@@ -48,6 +48,8 @@ class Polar
 
     public Orders $orders;
 
+    public Refunds $refunds;
+
     public Checkouts $checkouts;
 
     public Files $files;
@@ -67,6 +69,10 @@ class Polar
     public CustomerPortal $customerPortal;
 
     public CustomerSessions $customerSessions;
+
+    public Events $events;
+
+    public Meters $meters;
 
     /**
      * Returns a new instance of the SDK builder used to configure and create the SDK instance.
@@ -93,6 +99,7 @@ class Polar
         $this->benefits = new Benefits($this->sdkConfiguration);
         $this->products = new Products($this->sdkConfiguration);
         $this->orders = new Orders($this->sdkConfiguration);
+        $this->refunds = new Refunds($this->sdkConfiguration);
         $this->checkouts = new Checkouts($this->sdkConfiguration);
         $this->files = new Files($this->sdkConfiguration);
         $this->metrics = new Metrics($this->sdkConfiguration);
@@ -103,6 +110,8 @@ class Polar
         $this->customers = new Customers($this->sdkConfiguration);
         $this->customerPortal = new CustomerPortal($this->sdkConfiguration);
         $this->customerSessions = new CustomerSessions($this->sdkConfiguration);
+        $this->events = new Events($this->sdkConfiguration);
+        $this->meters = new Meters($this->sdkConfiguration);
         $this->sdkConfiguration->client = $this->sdkConfiguration->initHooks($this->sdkConfiguration->client);
 
     }

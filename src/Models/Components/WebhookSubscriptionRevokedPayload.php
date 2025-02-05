@@ -28,17 +28,17 @@ class WebhookSubscriptionRevokedPayload
 
     /**
      *
-     * @var WebhookSubscriptionRevokedPayloadType $type
+     * @var string $type
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('type')]
-    #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\WebhookSubscriptionRevokedPayloadType')]
-    public WebhookSubscriptionRevokedPayloadType $type;
+    public string $type;
 
     /**
-     * @param  WebhookSubscriptionRevokedPayloadType  $type
+     * @param  string  $type
      * @param  Subscription  $data
+     * @phpstan-pure
      */
-    public function __construct(Subscription $data, WebhookSubscriptionRevokedPayloadType $type = WebhookSubscriptionRevokedPayloadType::SubscriptionRevoked)
+    public function __construct(Subscription $data, string $type = 'subscription.revoked')
     {
         $this->data = $data;
         $this->type = $type;

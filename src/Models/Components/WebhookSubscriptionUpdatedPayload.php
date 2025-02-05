@@ -31,17 +31,17 @@ class WebhookSubscriptionUpdatedPayload
 
     /**
      *
-     * @var WebhookSubscriptionUpdatedPayloadType $type
+     * @var string $type
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('type')]
-    #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\WebhookSubscriptionUpdatedPayloadType')]
-    public WebhookSubscriptionUpdatedPayloadType $type;
+    public string $type;
 
     /**
-     * @param  WebhookSubscriptionUpdatedPayloadType  $type
+     * @param  string  $type
      * @param  Subscription  $data
+     * @phpstan-pure
      */
-    public function __construct(Subscription $data, WebhookSubscriptionUpdatedPayloadType $type = WebhookSubscriptionUpdatedPayloadType::SubscriptionUpdated)
+    public function __construct(Subscription $data, string $type = 'subscription.updated')
     {
         $this->data = $data;
         $this->type = $type;

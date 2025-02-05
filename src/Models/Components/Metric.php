@@ -40,6 +40,7 @@ class Metric
      * @param  string  $slug
      * @param  string  $displayName
      * @param  MetricType  $type
+     * @phpstan-pure
      */
     public function __construct(string $slug, string $displayName, MetricType $type)
     {

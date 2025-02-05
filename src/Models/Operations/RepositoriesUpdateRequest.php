@@ -29,6 +29,7 @@ class RepositoriesUpdateRequest
     /**
      * @param  string  $id
      * @param  Components\RepositoryUpdate  $repositoryUpdate
+     * @phpstan-pure
      */
     public function __construct(string $id, Components\RepositoryUpdate $repositoryUpdate)
     {

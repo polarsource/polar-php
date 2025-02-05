@@ -39,6 +39,7 @@ class BenefitGrantDiscordProperties
      * @param  ?string  $accountId
      * @param  ?string  $guildId
      * @param  ?string  $roleId
+     * @phpstan-pure
      */
     public function __construct(?string $accountId = null, ?string $guildId = null, ?string $roleId = null)
     {

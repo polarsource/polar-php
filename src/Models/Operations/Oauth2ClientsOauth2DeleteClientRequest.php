@@ -20,6 +20,7 @@ class Oauth2ClientsOauth2DeleteClientRequest
 
     /**
      * @param  string  $clientId
+     * @phpstan-pure
      */
     public function __construct(string $clientId)
     {

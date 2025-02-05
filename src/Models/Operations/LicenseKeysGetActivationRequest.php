@@ -28,6 +28,7 @@ class LicenseKeysGetActivationRequest
     /**
      * @param  string  $id
      * @param  string  $activationId
+     * @phpstan-pure
      */
     public function __construct(string $id, string $activationId)
     {

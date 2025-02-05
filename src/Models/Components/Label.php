@@ -28,6 +28,7 @@ class Label
     /**
      * @param  string  $name
      * @param  string  $color
+     * @phpstan-pure
      */
     public function __construct(string $name, string $color)
     {

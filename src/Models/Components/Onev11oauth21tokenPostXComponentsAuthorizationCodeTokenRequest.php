@@ -41,19 +41,20 @@ class Onev11oauth21tokenPostXComponentsAuthorizationCodeTokenRequest
 
     /**
      *
-     * @var GrantType $grantType
+     * @var string $grantType
      */
     #[SpeakeasyMetadata('form:name=grant_type')]
-    public GrantType $grantType;
+    public string $grantType;
 
     /**
-     * @param  GrantType  $grantType
+     * @param  string  $grantType
      * @param  string  $clientId
      * @param  string  $clientSecret
      * @param  string  $code
      * @param  string  $redirectUri
+     * @phpstan-pure
      */
-    public function __construct(string $clientId, string $clientSecret, string $code, string $redirectUri, GrantType $grantType = GrantType::AuthorizationCode)
+    public function __construct(string $clientId, string $clientSecret, string $code, string $redirectUri, string $grantType = 'authorization_code')
     {
         $this->clientId = $clientId;
         $this->clientSecret = $clientSecret;

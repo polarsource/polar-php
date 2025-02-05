@@ -30,6 +30,7 @@ class Oauth2ClientsListRequest
     /**
      * @param  ?int  $page
      * @param  ?int  $limit
+     * @phpstan-pure
      */
     public function __construct(?int $page = 1, ?int $limit = 10)
     {

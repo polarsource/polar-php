@@ -38,19 +38,19 @@ class AuthorizeResponseUser
 
     /**
      *
-     * @var AuthorizeResponseUserSubType $subType
+     * @var string $subType
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('sub_type')]
-    #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\AuthorizeResponseUserSubType')]
-    public AuthorizeResponseUserSubType $subType;
+    public string $subType;
 
     /**
      * @param  OAuth2ClientPublic  $client
-     * @param  AuthorizeResponseUserSubType  $subType
+     * @param  string  $subType
      * @param  array<Scope>  $scopes
      * @param  ?AuthorizeUser  $sub
+     * @phpstan-pure
      */
-    public function __construct(OAuth2ClientPublic $client, array $scopes, ?AuthorizeUser $sub = null, AuthorizeResponseUserSubType $subType = AuthorizeResponseUserSubType::User)
+    public function __construct(OAuth2ClientPublic $client, array $scopes, ?AuthorizeUser $sub = null, string $subType = 'user')
     {
         $this->client = $client;
         $this->scopes = $scopes;

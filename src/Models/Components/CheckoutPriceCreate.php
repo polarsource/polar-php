@@ -39,22 +39,22 @@ class CheckoutPriceCreate
      *
      * You can store up to **50 key-value pairs**.
      *
-     * @var ?array<string, mixed> $metadata
+     * @var ?array<string, string|int|bool> $metadata
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('metadata')]
-    #[\Speakeasy\Serializer\Annotation\Type('array<string, mixed>|null')]
+    #[\Speakeasy\Serializer\Annotation\Type('array<string, string|int|bool>|null')]
     #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
     public ?array $metadata = null;
 
     /**
      * Key-value object storing custom field values.
      *
-     * @var ?CheckoutPriceCreateCustomFieldData $customFieldData
+     * @var ?array<string, string|int|bool|\DateTime> $customFieldData
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('custom_field_data')]
-    #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\CheckoutPriceCreateCustomFieldData|null')]
+    #[\Speakeasy\Serializer\Annotation\Type('array<string, string|int|bool|\DateTime>|null')]
     #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
-    public ?CheckoutPriceCreateCustomFieldData $customFieldData = null;
+    public ?array $customFieldData = null;
 
     /**
      * Key-value object allowing you to store additional information that'll be copied to the created customer.
@@ -69,10 +69,10 @@ class CheckoutPriceCreate
      *
      * You can store up to **50 key-value pairs**.
      *
-     * @var ?array<string, mixed> $customerMetadata
+     * @var ?array<string, string|int|bool> $customerMetadata
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('customer_metadata')]
-    #[\Speakeasy\Serializer\Annotation\Type('array<string, mixed>|null')]
+    #[\Speakeasy\Serializer\Annotation\Type('array<string, string|int|bool>|null')]
     #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
     public ?array $customerMetadata = null;
 
@@ -171,15 +171,6 @@ class CheckoutPriceCreate
     public ?string $embedOrigin = null;
 
     /**
-     * Payment processor to use. Currently only Stripe is supported.
-     *
-     * @var CheckoutPriceCreatePaymentProcessor $paymentProcessor
-     */
-    #[\Speakeasy\Serializer\Annotation\SerializedName('payment_processor')]
-    #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\CheckoutPriceCreatePaymentProcessor')]
-    public CheckoutPriceCreatePaymentProcessor $paymentProcessor;
-
-    /**
      * Whether to allow the customer to apply discount codes. If you apply a discount through `discount_id`, it'll still be applied, but the customer won't be able to change it.
      *
      * @var ?bool $allowDiscountCodes
@@ -189,12 +180,11 @@ class CheckoutPriceCreate
     public ?bool $allowDiscountCodes = null;
 
     /**
-     * @param  CheckoutPriceCreatePaymentProcessor  $paymentProcessor
      * @param  string  $productPriceId
-     * @param  ?array<string, mixed>  $metadata
-     * @param  ?CheckoutPriceCreateCustomFieldData  $customFieldData
+     * @param  ?array<string, string|int|bool>  $metadata
+     * @param  ?array<string, string|int|bool|\DateTime>  $customFieldData
      * @param  ?bool  $allowDiscountCodes
-     * @param  ?array<string, mixed>  $customerMetadata
+     * @param  ?array<string, string|int|bool>  $customerMetadata
      * @param  ?string  $discountId
      * @param  ?int  $amount
      * @param  ?string  $customerId
@@ -206,8 +196,9 @@ class CheckoutPriceCreate
      * @param  ?string  $subscriptionId
      * @param  ?string  $successUrl
      * @param  ?string  $embedOrigin
+     * @phpstan-pure
      */
-    public function __construct(string $productPriceId, ?array $metadata = null, ?CheckoutPriceCreateCustomFieldData $customFieldData = null, ?array $customerMetadata = null, ?string $discountId = null, ?int $amount = null, ?string $customerId = null, ?string $customerName = null, ?string $customerEmail = null, ?string $customerIpAddress = null, ?Address $customerBillingAddress = null, ?string $customerTaxId = null, ?string $subscriptionId = null, ?string $successUrl = null, ?string $embedOrigin = null, CheckoutPriceCreatePaymentProcessor $paymentProcessor = CheckoutPriceCreatePaymentProcessor::Stripe, ?bool $allowDiscountCodes = true)
+    public function __construct(string $productPriceId, ?array $metadata = null, ?array $customFieldData = null, ?array $customerMetadata = null, ?string $discountId = null, ?int $amount = null, ?string $customerId = null, ?string $customerName = null, ?string $customerEmail = null, ?string $customerIpAddress = null, ?Address $customerBillingAddress = null, ?string $customerTaxId = null, ?string $subscriptionId = null, ?string $successUrl = null, ?string $embedOrigin = null, ?bool $allowDiscountCodes = true)
     {
         $this->productPriceId = $productPriceId;
         $this->metadata = $metadata;
@@ -224,7 +215,6 @@ class CheckoutPriceCreate
         $this->subscriptionId = $subscriptionId;
         $this->successUrl = $successUrl;
         $this->embedOrigin = $embedOrigin;
-        $this->paymentProcessor = $paymentProcessor;
         $this->allowDiscountCodes = $allowDiscountCodes;
     }
 }

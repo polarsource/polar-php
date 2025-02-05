@@ -6,7 +6,10 @@
 ### Available Operations
 
 * [export](#export) - Export Subscriptions
+* [get](#get) - Get Subscription
 * [list](#list) - List Subscriptions
+* [revoke](#revoke) - Revoke Subscription
+* [update](#update) - Update Subscription
 
 ## export
 
@@ -21,9 +24,11 @@ require 'vendor/autoload.php';
 
 use Polar;
 
-$security = '<YOUR_BEARER_TOKEN_HERE>';
-
-$sdk = Polar\Polar::builder()->setSecurity($security)->build();
+$sdk = Polar\Polar::builder()
+    ->setSecurity(
+        '<YOUR_BEARER_TOKEN_HERE>'
+    )
+    ->build();
 
 
 
@@ -55,6 +60,54 @@ if ($response->any !== null) {
 | Errors\HTTPValidationError | 422                        | application/json           |
 | Errors\APIException        | 4XX, 5XX                   | \*/\*                      |
 
+## get
+
+Get a subscription by ID.
+
+### Example Usage
+
+```php
+declare(strict_types=1);
+
+require 'vendor/autoload.php';
+
+use Polar;
+
+$sdk = Polar\Polar::builder()
+    ->setSecurity(
+        '<YOUR_BEARER_TOKEN_HERE>'
+    )
+    ->build();
+
+
+
+$response = $sdk->subscriptions->get(
+    id: '<value>'
+);
+
+if ($response->subscription !== null) {
+    // handle response
+}
+```
+
+### Parameters
+
+| Parameter            | Type                 | Required             | Description          |
+| -------------------- | -------------------- | -------------------- | -------------------- |
+| `id`                 | *string*             | :heavy_check_mark:   | The subscription ID. |
+
+### Response
+
+**[?Operations\SubscriptionsGetResponse](../../Models/Operations/SubscriptionsGetResponse.md)**
+
+### Errors
+
+| Error Type                 | Status Code                | Content Type               |
+| -------------------------- | -------------------------- | -------------------------- |
+| Errors\ResourceNotFound    | 404                        | application/json           |
+| Errors\HTTPValidationError | 422                        | application/json           |
+| Errors\APIException        | 4XX, 5XX                   | \*/\*                      |
+
 ## list
 
 List subscriptions.
@@ -69,9 +122,11 @@ require 'vendor/autoload.php';
 use Polar;
 use Polar\Models\Operations;
 
-$security = '<YOUR_BEARER_TOKEN_HERE>';
-
-$sdk = Polar\Polar::builder()->setSecurity($security)->build();
+$sdk = Polar\Polar::builder()
+    ->setSecurity(
+        '<YOUR_BEARER_TOKEN_HERE>'
+    )
+    ->build();
 
 $request = new Operations\SubscriptionsListRequest();
 
@@ -103,3 +158,105 @@ foreach ($responses as $response) {
 | -------------------------- | -------------------------- | -------------------------- |
 | Errors\HTTPValidationError | 422                        | application/json           |
 | Errors\APIException        | 4XX, 5XX                   | \*/\*                      |
+
+## revoke
+
+Revoke a subscription, i.e cancel immediately.
+
+### Example Usage
+
+```php
+declare(strict_types=1);
+
+require 'vendor/autoload.php';
+
+use Polar;
+
+$sdk = Polar\Polar::builder()
+    ->setSecurity(
+        '<YOUR_BEARER_TOKEN_HERE>'
+    )
+    ->build();
+
+
+
+$response = $sdk->subscriptions->revoke(
+    id: '<value>'
+);
+
+if ($response->subscription !== null) {
+    // handle response
+}
+```
+
+### Parameters
+
+| Parameter            | Type                 | Required             | Description          |
+| -------------------- | -------------------- | -------------------- | -------------------- |
+| `id`                 | *string*             | :heavy_check_mark:   | The subscription ID. |
+
+### Response
+
+**[?Operations\SubscriptionsRevokeResponse](../../Models/Operations/SubscriptionsRevokeResponse.md)**
+
+### Errors
+
+| Error Type                         | Status Code                        | Content Type                       |
+| ---------------------------------- | ---------------------------------- | ---------------------------------- |
+| Errors\AlreadyCanceledSubscription | 403                                | application/json                   |
+| Errors\ResourceNotFound            | 404                                | application/json                   |
+| Errors\HTTPValidationError         | 422                                | application/json                   |
+| Errors\APIException                | 4XX, 5XX                           | \*/\*                              |
+
+## update
+
+Update a subscription.
+
+### Example Usage
+
+```php
+declare(strict_types=1);
+
+require 'vendor/autoload.php';
+
+use Polar;
+use Polar\Models\Components;
+
+$sdk = Polar\Polar::builder()
+    ->setSecurity(
+        '<YOUR_BEARER_TOKEN_HERE>'
+    )
+    ->build();
+
+
+
+$response = $sdk->subscriptions->update(
+    id: '<value>',
+    subscriptionUpdate: new Components\SubscriptionCancel()
+
+);
+
+if ($response->subscription !== null) {
+    // handle response
+}
+```
+
+### Parameters
+
+| Parameter                                                                                                         | Type                                                                                                              | Required                                                                                                          | Description                                                                                                       |
+| ----------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------- |
+| `id`                                                                                                              | *string*                                                                                                          | :heavy_check_mark:                                                                                                | The subscription ID.                                                                                              |
+| `subscriptionUpdate`                                                                                              | [Components\SubscriptionUpdatePrice\|Components\SubscriptionCancel](../../Models/Components/SubscriptionUpdate.md) | :heavy_check_mark:                                                                                                | N/A                                                                                                               |
+
+### Response
+
+**[?Operations\SubscriptionsUpdateResponse](../../Models/Operations/SubscriptionsUpdateResponse.md)**
+
+### Errors
+
+| Error Type                         | Status Code                        | Content Type                       |
+| ---------------------------------- | ---------------------------------- | ---------------------------------- |
+| Errors\AlreadyCanceledSubscription | 403                                | application/json                   |
+| Errors\ResourceNotFound            | 404                                | application/json                   |
+| Errors\HTTPValidationError         | 422                                | application/json                   |
+| Errors\APIException                | 4XX, 5XX                           | \*/\*                              |

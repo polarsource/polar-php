@@ -44,6 +44,7 @@ class Oauth2RevokeTokenRevokeTokenRequest
      * @param  string  $clientId
      * @param  string  $clientSecret
      * @param  ?TokenTypeHint  $tokenTypeHint
+     * @phpstan-pure
      */
     public function __construct(string $token, string $clientId, string $clientSecret, ?TokenTypeHint $tokenTypeHint = null)
     {

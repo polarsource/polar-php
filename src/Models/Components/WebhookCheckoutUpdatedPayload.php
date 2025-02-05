@@ -28,17 +28,17 @@ class WebhookCheckoutUpdatedPayload
 
     /**
      *
-     * @var WebhookCheckoutUpdatedPayloadType $type
+     * @var string $type
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('type')]
-    #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\WebhookCheckoutUpdatedPayloadType')]
-    public WebhookCheckoutUpdatedPayloadType $type;
+    public string $type;
 
     /**
-     * @param  WebhookCheckoutUpdatedPayloadType  $type
+     * @param  string  $type
      * @param  Checkout  $data
+     * @phpstan-pure
      */
-    public function __construct(Checkout $data, WebhookCheckoutUpdatedPayloadType $type = WebhookCheckoutUpdatedPayloadType::CheckoutUpdated)
+    public function __construct(Checkout $data, string $type = 'checkout.updated')
     {
         $this->data = $data;
         $this->type = $type;

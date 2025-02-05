@@ -31,6 +31,7 @@ class ListResourceCustomerOrder
     /**
      * @param  array<CustomerOrder>  $items
      * @param  Pagination  $pagination
+     * @phpstan-pure
      */
     public function __construct(array $items, Pagination $pagination)
     {

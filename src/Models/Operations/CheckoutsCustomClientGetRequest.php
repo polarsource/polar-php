@@ -21,6 +21,7 @@ class CheckoutsCustomClientGetRequest
 
     /**
      * @param  string  $clientSecret
+     * @phpstan-pure
      */
     public function __construct(string $clientSecret)
     {

@@ -31,18 +31,18 @@ class BenefitDiscordUpdate
 
     /**
      *
-     * @var BenefitDiscordUpdateType $type
+     * @var string $type
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('type')]
-    #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\BenefitDiscordUpdateType')]
-    public BenefitDiscordUpdateType $type;
+    public string $type;
 
     /**
-     * @param  BenefitDiscordUpdateType  $type
+     * @param  string  $type
      * @param  ?string  $description
      * @param  ?BenefitDiscordCreateProperties  $properties
+     * @phpstan-pure
      */
-    public function __construct(?string $description = null, ?BenefitDiscordCreateProperties $properties = null, BenefitDiscordUpdateType $type = BenefitDiscordUpdateType::Discord)
+    public function __construct(?string $description = null, ?BenefitDiscordCreateProperties $properties = null, string $type = 'discord')
     {
         $this->description = $description;
         $this->properties = $properties;

@@ -23,6 +23,7 @@ class BenefitGrantDownloadablesProperties
 
     /**
      * @param  ?array<string>  $files
+     * @phpstan-pure
      */
     public function __construct(?array $files = null)
     {

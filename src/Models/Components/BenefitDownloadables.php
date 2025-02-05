@@ -77,24 +77,24 @@ class BenefitDownloadables
 
     /**
      *
-     * @var BenefitDownloadablesType $type
+     * @var string $type
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('type')]
-    #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\BenefitDownloadablesType')]
-    public BenefitDownloadablesType $type;
+    public string $type;
 
     /**
      * @param  \DateTime  $createdAt
      * @param  string  $id
-     * @param  BenefitDownloadablesType  $type
+     * @param  string  $type
      * @param  string  $description
      * @param  bool  $selectable
      * @param  bool  $deletable
      * @param  string  $organizationId
      * @param  BenefitDownloadablesProperties  $properties
      * @param  ?\DateTime  $modifiedAt
+     * @phpstan-pure
      */
-    public function __construct(\DateTime $createdAt, string $id, string $description, bool $selectable, bool $deletable, string $organizationId, BenefitDownloadablesProperties $properties, ?\DateTime $modifiedAt = null, BenefitDownloadablesType $type = BenefitDownloadablesType::Downloadables)
+    public function __construct(\DateTime $createdAt, string $id, string $description, bool $selectable, bool $deletable, string $organizationId, BenefitDownloadablesProperties $properties, ?\DateTime $modifiedAt = null, string $type = 'downloadables')
     {
         $this->createdAt = $createdAt;
         $this->id = $id;

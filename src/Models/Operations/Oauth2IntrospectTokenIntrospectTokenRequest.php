@@ -44,6 +44,7 @@ class Oauth2IntrospectTokenIntrospectTokenRequest
      * @param  string  $clientId
      * @param  string  $clientSecret
      * @param  ?Oauth2IntrospectTokenTokenTypeHint  $tokenTypeHint
+     * @phpstan-pure
      */
     public function __construct(string $token, string $clientId, string $clientSecret, ?Oauth2IntrospectTokenTokenTypeHint $tokenTypeHint = null)
     {

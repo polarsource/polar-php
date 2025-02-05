@@ -48,6 +48,7 @@ class CustomerPortalOrdersListResponse
      * @param  int  $statusCode
      * @param  \Psr\Http\Message\ResponseInterface  $rawResponse
      * @param  ?Components\ListResourceCustomerOrder  $listResourceCustomerOrder
+     * @phpstan-pure
      */
     public function __construct(string $contentType, int $statusCode, \Psr\Http\Message\ResponseInterface $rawResponse, ?Components\ListResourceCustomerOrder $listResourceCustomerOrder = null)
     {

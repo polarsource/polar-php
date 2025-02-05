@@ -28,6 +28,7 @@ class Pagination
     /**
      * @param  int  $totalCount
      * @param  int  $maxPage
+     * @phpstan-pure
      */
     public function __construct(int $totalCount, int $maxPage)
     {

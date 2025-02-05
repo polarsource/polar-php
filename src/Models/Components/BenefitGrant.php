@@ -68,6 +68,15 @@ class BenefitGrant
     public string $benefitId;
 
     /**
+     * A customer in an organization.
+     *
+     * @var Customer $customer
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('customer')]
+    #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\Customer')]
+    public Customer $customer;
+
+    /**
      *
      * @var BenefitGrantDiscordProperties|BenefitGrantGitHubRepositoryProperties|BenefitGrantDownloadablesProperties|BenefitGrantLicenseKeysProperties|BenefitGrantAdsProperties|BenefitGrantCustomProperties $properties
      */
@@ -125,14 +134,16 @@ class BenefitGrant
      * @param  string  $customerId
      * @param  string  $userId
      * @param  string  $benefitId
+     * @param  Customer  $customer
      * @param  BenefitGrantDiscordProperties|BenefitGrantGitHubRepositoryProperties|BenefitGrantDownloadablesProperties|BenefitGrantLicenseKeysProperties|BenefitGrantAdsProperties|BenefitGrantCustomProperties  $properties
      * @param  ?\DateTime  $modifiedAt
      * @param  ?string  $subscriptionId
      * @param  ?string  $orderId
      * @param  ?\DateTime  $grantedAt
      * @param  ?\DateTime  $revokedAt
+     * @phpstan-pure
      */
-    public function __construct(\DateTime $createdAt, string $id, bool $isGranted, bool $isRevoked, string $customerId, string $userId, string $benefitId, BenefitGrantDiscordProperties|BenefitGrantGitHubRepositoryProperties|BenefitGrantDownloadablesProperties|BenefitGrantLicenseKeysProperties|BenefitGrantAdsProperties|BenefitGrantCustomProperties $properties, ?\DateTime $modifiedAt = null, ?string $subscriptionId = null, ?string $orderId = null, ?\DateTime $grantedAt = null, ?\DateTime $revokedAt = null)
+    public function __construct(\DateTime $createdAt, string $id, bool $isGranted, bool $isRevoked, string $customerId, string $userId, string $benefitId, Customer $customer, BenefitGrantDiscordProperties|BenefitGrantGitHubRepositoryProperties|BenefitGrantDownloadablesProperties|BenefitGrantLicenseKeysProperties|BenefitGrantAdsProperties|BenefitGrantCustomProperties $properties, ?\DateTime $modifiedAt = null, ?string $subscriptionId = null, ?string $orderId = null, ?\DateTime $grantedAt = null, ?\DateTime $revokedAt = null)
     {
         $this->createdAt = $createdAt;
         $this->id = $id;
@@ -141,6 +152,7 @@ class BenefitGrant
         $this->customerId = $customerId;
         $this->userId = $userId;
         $this->benefitId = $benefitId;
+        $this->customer = $customer;
         $this->properties = $properties;
         $this->modifiedAt = $modifiedAt;
         $this->subscriptionId = $subscriptionId;

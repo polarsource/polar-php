@@ -49,6 +49,7 @@ class OrganizationsListRequest
      * @param  ?int  $limit
      * @param  ?string  $slug
      * @param  ?array<Components\OrganizationSortProperty>  $sorting
+     * @phpstan-pure
      */
     public function __construct(?string $slug = null, ?array $sorting = null, ?int $page = 1, ?int $limit = 10)
     {

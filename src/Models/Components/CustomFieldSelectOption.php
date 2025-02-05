@@ -28,6 +28,7 @@ class CustomFieldSelectOption
     /**
      * @param  string  $value
      * @param  string  $label
+     * @phpstan-pure
      */
     public function __construct(string $value, string $label)
     {

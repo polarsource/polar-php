@@ -48,6 +48,7 @@ class AdvertisementsListRequest
      * @param  ?int  $page
      * @param  ?int  $limit
      * @param  ?array<Components\AdvertisementSortProperty>  $sorting
+     * @phpstan-pure
      */
     public function __construct(string $benefitId, ?array $sorting = null, ?int $page = 1, ?int $limit = 10)
     {

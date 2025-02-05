@@ -31,6 +31,7 @@ class ListResourceCheckout
     /**
      * @param  array<Checkout>  $items
      * @param  Pagination  $pagination
+     * @phpstan-pure
      */
     public function __construct(array $items, Pagination $pagination)
     {

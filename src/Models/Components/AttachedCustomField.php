@@ -50,6 +50,7 @@ class AttachedCustomField
      * @param  CustomFieldText|CustomFieldNumber|CustomFieldDate|CustomFieldCheckbox|CustomFieldSelect  $customField
      * @param  int  $order
      * @param  bool  $required
+     * @phpstan-pure
      */
     public function __construct(string $customFieldId, CustomFieldText|CustomFieldNumber|CustomFieldDate|CustomFieldCheckbox|CustomFieldSelect $customField, int $order, bool $required)
     {

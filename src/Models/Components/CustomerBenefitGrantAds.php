@@ -57,6 +57,14 @@ class CustomerBenefitGrantAds
 
     /**
      *
+     * @var CustomerPortalCustomer $customer
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('customer')]
+    #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\CustomerPortalCustomer')]
+    public CustomerPortalCustomer $customer;
+
+    /**
+     *
      * @var BenefitAdsSubscriber $benefit
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('benefit')]
@@ -114,6 +122,7 @@ class CustomerBenefitGrantAds
      * @param  string  $benefitId
      * @param  bool  $isGranted
      * @param  bool  $isRevoked
+     * @param  CustomerPortalCustomer  $customer
      * @param  BenefitAdsSubscriber  $benefit
      * @param  BenefitGrantAdsProperties  $properties
      * @param  ?\DateTime  $modifiedAt
@@ -121,8 +130,9 @@ class CustomerBenefitGrantAds
      * @param  ?\DateTime  $revokedAt
      * @param  ?string  $subscriptionId
      * @param  ?string  $orderId
+     * @phpstan-pure
      */
-    public function __construct(\DateTime $createdAt, string $id, string $customerId, string $benefitId, bool $isGranted, bool $isRevoked, BenefitAdsSubscriber $benefit, BenefitGrantAdsProperties $properties, ?\DateTime $modifiedAt = null, ?\DateTime $grantedAt = null, ?\DateTime $revokedAt = null, ?string $subscriptionId = null, ?string $orderId = null)
+    public function __construct(\DateTime $createdAt, string $id, string $customerId, string $benefitId, bool $isGranted, bool $isRevoked, CustomerPortalCustomer $customer, BenefitAdsSubscriber $benefit, BenefitGrantAdsProperties $properties, ?\DateTime $modifiedAt = null, ?\DateTime $grantedAt = null, ?\DateTime $revokedAt = null, ?string $subscriptionId = null, ?string $orderId = null)
     {
         $this->createdAt = $createdAt;
         $this->id = $id;
@@ -130,6 +140,7 @@ class CustomerBenefitGrantAds
         $this->benefitId = $benefitId;
         $this->isGranted = $isGranted;
         $this->isRevoked = $isRevoked;
+        $this->customer = $customer;
         $this->benefit = $benefit;
         $this->properties = $properties;
         $this->modifiedAt = $modifiedAt;

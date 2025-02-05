@@ -44,6 +44,7 @@ class AdvertisementsGetResponse
      * @param  int  $statusCode
      * @param  \Psr\Http\Message\ResponseInterface  $rawResponse
      * @param  ?Components\AdvertisementCampaign  $advertisementCampaign
+     * @phpstan-pure
      */
     public function __construct(string $contentType, int $statusCode, \Psr\Http\Message\ResponseInterface $rawResponse, ?Components\AdvertisementCampaign $advertisementCampaign = null)
     {

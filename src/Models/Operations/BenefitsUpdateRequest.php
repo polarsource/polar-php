@@ -29,6 +29,7 @@ class BenefitsUpdateRequest
     /**
      * @param  string  $id
      * @param  Components\BenefitAdsUpdate|Components\BenefitCustomUpdate|Components\BenefitDiscordUpdate|Components\BenefitGitHubRepositoryUpdate|Components\BenefitDownloadablesUpdate|Components\BenefitLicenseKeysUpdate  $requestBody
+     * @phpstan-pure
      */
     public function __construct(string $id, Components\BenefitAdsUpdate|Components\BenefitCustomUpdate|Components\BenefitDiscordUpdate|Components\BenefitGitHubRepositoryUpdate|Components\BenefitDownloadablesUpdate|Components\BenefitLicenseKeysUpdate $requestBody)
     {

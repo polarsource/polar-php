@@ -49,6 +49,7 @@ class CustomFieldSelectProperties
      * @param  ?string  $formLabel
      * @param  ?string  $formHelpText
      * @param  ?string  $formPlaceholder
+     * @phpstan-pure
      */
     public function __construct(array $options, ?string $formLabel = null, ?string $formHelpText = null, ?string $formPlaceholder = null)
     {

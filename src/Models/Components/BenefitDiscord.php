@@ -84,24 +84,24 @@ class BenefitDiscord
 
     /**
      *
-     * @var BenefitDiscordType $type
+     * @var string $type
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('type')]
-    #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\BenefitDiscordType')]
-    public BenefitDiscordType $type;
+    public string $type;
 
     /**
      * @param  \DateTime  $createdAt
      * @param  string  $id
-     * @param  BenefitDiscordType  $type
+     * @param  string  $type
      * @param  string  $description
      * @param  bool  $selectable
      * @param  bool  $deletable
      * @param  string  $organizationId
      * @param  BenefitDiscordProperties  $properties
      * @param  ?\DateTime  $modifiedAt
+     * @phpstan-pure
      */
-    public function __construct(\DateTime $createdAt, string $id, string $description, bool $selectable, bool $deletable, string $organizationId, BenefitDiscordProperties $properties, ?\DateTime $modifiedAt = null, BenefitDiscordType $type = BenefitDiscordType::Discord)
+    public function __construct(\DateTime $createdAt, string $id, string $description, bool $selectable, bool $deletable, string $organizationId, BenefitDiscordProperties $properties, ?\DateTime $modifiedAt = null, string $type = 'discord')
     {
         $this->createdAt = $createdAt;
         $this->id = $id;

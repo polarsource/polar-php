@@ -36,6 +36,7 @@ class LicenseKeyDeactivate
      * @param  string  $key
      * @param  string  $organizationId
      * @param  string  $activationId
+     * @phpstan-pure
      */
     public function __construct(string $key, string $organizationId, string $activationId)
     {

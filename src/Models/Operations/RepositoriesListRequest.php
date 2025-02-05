@@ -85,6 +85,7 @@ class RepositoriesListRequest
      * @param  ?bool  $isPrivate
      * @param  string|array<string>|null  $organizationId
      * @param  ?array<Components\RepositorySortProperty>  $sorting
+     * @phpstan-pure
      */
     public function __construct(Components\Platforms|array|null $platform = null, string|array|null $name = null, string|array|null $externalOrganizationName = null, ?bool $isPrivate = null, string|array|null $organizationId = null, ?array $sorting = null, ?int $page = 1, ?int $limit = 10)
     {

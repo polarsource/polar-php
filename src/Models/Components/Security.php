@@ -20,6 +20,7 @@ class Security
 
     /**
      * @param  string  $accessToken
+     * @phpstan-pure
      */
     public function __construct(string $accessToken)
     {

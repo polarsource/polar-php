@@ -7,16 +7,14 @@
 declare(strict_types=1);
 
 namespace Polar;
-
+use Polar\Utils\Retry\RetryConfig;
 
 class SDKConfiguration
 {
     public ?\GuzzleHttp\ClientInterface $client = null;
 
     public Hooks\SDKHooks $hooks;
-    public ?Models\Components\Security $security = null;
-
-    /** @var pure-Closure(): string */
+    /** @var ?pure-Closure(): Models\Components\Security */
     public ?\Closure $securitySource = null;
     public string $serverUrl = '';
 
@@ -26,11 +24,13 @@ class SDKConfiguration
 
     public string $openapiDocVersion = '0.1.0';
 
-    public string $sdkVersion = '0.0.2';
+    public string $sdkVersion = '0.0.3';
 
-    public string $genVersion = '2.481.0';
+    public string $genVersion = '2.503.2';
 
-    public string $userAgent = 'speakeasy-sdk/php 0.0.2 2.481.0 0.1.0 polar-sh/sdk';
+    public string $userAgent = 'speakeasy-sdk/php 0.0.3 2.503.2 0.1.0 polar-sh/sdk';
+
+    public ?RetryConfig $retryConfig = null;
 
     public function __construct()
     {
@@ -52,20 +52,12 @@ class SDKConfiguration
     }
     public function hasSecurity(): bool
     {
-        return $this->security !== null || $this->securitySource !== null;
+        return $this->securitySource !== null;
     }
 
     public function getSecurity(): ?Models\Components\Security
     {
-        if ($this->securitySource !== null) {
-            $security = new Models\Components\Security(
-                accessToken: $this->securitySource->call($this)
-            );
-
-            return $security;
-        } else {
-            return $this->security;
-        }
+        return $this->securitySource->call($this);
     }
 
     /**
@@ -73,7 +65,7 @@ class SDKConfiguration
      */
     public function getServerDetails(): Utils\ServerDetails
     {
-        if ($this->serverUrl !== null && $this->serverUrl !== '') {
+        if ($this->serverUrl !== '') {
             return new Utils\ServerDetails(rtrim($this->serverUrl, '/'), []);
         }
 

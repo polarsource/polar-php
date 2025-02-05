@@ -30,6 +30,7 @@ class FilePatch
     /**
      * @param  ?string  $name
      * @param  ?string  $version
+     * @phpstan-pure
      */
     public function __construct(?string $name = null, ?string $version = null)
     {

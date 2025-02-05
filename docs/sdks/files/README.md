@@ -25,9 +25,11 @@ require 'vendor/autoload.php';
 use Polar;
 use Polar\Models\Components;
 
-$security = '<YOUR_BEARER_TOKEN_HERE>';
-
-$sdk = Polar\Polar::builder()->setSecurity($security)->build();
+$sdk = Polar\Polar::builder()
+    ->setSecurity(
+        '<YOUR_BEARER_TOKEN_HERE>'
+    )
+    ->build();
 
 $request = new Components\OrganizationAvatarFileCreate(
     name: '<value>',
@@ -83,9 +85,11 @@ require 'vendor/autoload.php';
 
 use Polar;
 
-$security = '<YOUR_BEARER_TOKEN_HERE>';
-
-$sdk = Polar\Polar::builder()->setSecurity($security)->build();
+$sdk = Polar\Polar::builder()
+    ->setSecurity(
+        '<YOUR_BEARER_TOKEN_HERE>'
+    )
+    ->build();
 
 
 
@@ -130,9 +134,11 @@ require 'vendor/autoload.php';
 
 use Polar;
 
-$security = '<YOUR_BEARER_TOKEN_HERE>';
-
-$sdk = Polar\Polar::builder()->setSecurity($security)->build();
+$sdk = Polar\Polar::builder()
+    ->setSecurity(
+        '<YOUR_BEARER_TOKEN_HERE>'
+    )
+    ->build();
 
 
 
@@ -188,9 +194,11 @@ require 'vendor/autoload.php';
 use Polar;
 use Polar\Models\Components;
 
-$security = '<YOUR_BEARER_TOKEN_HERE>';
-
-$sdk = Polar\Polar::builder()->setSecurity($security)->build();
+$sdk = Polar\Polar::builder()
+    ->setSecurity(
+        '<YOUR_BEARER_TOKEN_HERE>'
+    )
+    ->build();
 
 $filePatch = new Components\FilePatch();
 
@@ -239,9 +247,11 @@ require 'vendor/autoload.php';
 use Polar;
 use Polar\Models\Components;
 
-$security = '<YOUR_BEARER_TOKEN_HERE>';
-
-$sdk = Polar\Polar::builder()->setSecurity($security)->build();
+$sdk = Polar\Polar::builder()
+    ->setSecurity(
+        '<YOUR_BEARER_TOKEN_HERE>'
+    )
+    ->build();
 
 $fileUploadCompleted = new Components\FileUploadCompleted(
     id: '<id>',

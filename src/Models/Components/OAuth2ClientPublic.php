@@ -78,6 +78,7 @@ class OAuth2ClientPublic
      * @param  ?string  $logoUri
      * @param  ?string  $tosUri
      * @param  ?string  $policyUri
+     * @phpstan-pure
      */
     public function __construct(\DateTime $createdAt, string $clientId, ?\DateTime $modifiedAt = null, ?string $clientName = null, ?string $clientUri = null, ?string $logoUri = null, ?string $tosUri = null, ?string $policyUri = null)
     {

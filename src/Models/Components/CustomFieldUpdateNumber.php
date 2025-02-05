@@ -15,10 +15,10 @@ class CustomFieldUpdateNumber
     /**
      * $metadata
      *
-     * @var ?array<string, mixed> $metadata
+     * @var ?array<string, string|int|bool> $metadata
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('metadata')]
-    #[\Speakeasy\Serializer\Annotation\Type('array<string, mixed>|null')]
+    #[\Speakeasy\Serializer\Annotation\Type('array<string, string|int|bool>|null')]
     #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
     public ?array $metadata = null;
 
@@ -49,20 +49,20 @@ class CustomFieldUpdateNumber
 
     /**
      *
-     * @var CustomFieldUpdateNumberType $type
+     * @var string $type
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('type')]
-    #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\CustomFieldUpdateNumberType')]
-    public CustomFieldUpdateNumberType $type;
+    public string $type;
 
     /**
-     * @param  CustomFieldUpdateNumberType  $type
-     * @param  ?array<string, mixed>  $metadata
+     * @param  string  $type
+     * @param  ?array<string, string|int|bool>  $metadata
      * @param  ?string  $name
      * @param  ?string  $slug
      * @param  ?CustomFieldNumberProperties  $properties
+     * @phpstan-pure
      */
-    public function __construct(?array $metadata = null, ?string $name = null, ?string $slug = null, ?CustomFieldNumberProperties $properties = null, CustomFieldUpdateNumberType $type = CustomFieldUpdateNumberType::Number)
+    public function __construct(?array $metadata = null, ?string $name = null, ?string $slug = null, ?CustomFieldNumberProperties $properties = null, string $type = 'number')
     {
         $this->metadata = $metadata;
         $this->name = $name;

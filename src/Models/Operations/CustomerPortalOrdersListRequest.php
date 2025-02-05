@@ -85,6 +85,7 @@ class CustomerPortalOrdersListRequest
      * @param  string|array<string>|null  $subscriptionId
      * @param  ?string  $query
      * @param  ?array<Components\CustomerOrderSortProperty>  $sorting
+     * @phpstan-pure
      */
     public function __construct(string|array|null $organizationId = null, string|array|null $productId = null, Components\ProductPriceType|array|null $productPriceType = null, string|array|null $subscriptionId = null, ?string $query = null, ?array $sorting = null, ?int $page = 1, ?int $limit = 10)
     {

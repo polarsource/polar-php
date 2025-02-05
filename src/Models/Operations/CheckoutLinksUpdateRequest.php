@@ -30,6 +30,7 @@ class CheckoutLinksUpdateRequest
     /**
      * @param  string  $id
      * @param  Components\CheckoutLinkUpdate  $checkoutLinkUpdate
+     * @phpstan-pure
      */
     public function __construct(string $id, Components\CheckoutLinkUpdate $checkoutLinkUpdate)
     {

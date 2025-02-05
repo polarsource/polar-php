@@ -32,6 +32,15 @@ class Metrics
     /**
      * Information about a metric.
      *
+     * @var Metric $cumulativeRevenue
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('cumulative_revenue')]
+    #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\Metric')]
+    public Metric $cumulativeRevenue;
+
+    /**
+     * Information about a metric.
+     *
      * @var Metric $averageOrderValue
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('average_order_value')]
@@ -113,6 +122,7 @@ class Metrics
     /**
      * @param  Metric  $orders
      * @param  Metric  $revenue
+     * @param  Metric  $cumulativeRevenue
      * @param  Metric  $averageOrderValue
      * @param  Metric  $oneTimeProducts
      * @param  Metric  $oneTimeProductsRevenue
@@ -122,11 +132,13 @@ class Metrics
      * @param  Metric  $renewedSubscriptionsRevenue
      * @param  Metric  $activeSubscriptions
      * @param  Metric  $monthlyRecurringRevenue
+     * @phpstan-pure
      */
-    public function __construct(Metric $orders, Metric $revenue, Metric $averageOrderValue, Metric $oneTimeProducts, Metric $oneTimeProductsRevenue, Metric $newSubscriptions, Metric $newSubscriptionsRevenue, Metric $renewedSubscriptions, Metric $renewedSubscriptionsRevenue, Metric $activeSubscriptions, Metric $monthlyRecurringRevenue)
+    public function __construct(Metric $orders, Metric $revenue, Metric $cumulativeRevenue, Metric $averageOrderValue, Metric $oneTimeProducts, Metric $oneTimeProductsRevenue, Metric $newSubscriptions, Metric $newSubscriptionsRevenue, Metric $renewedSubscriptions, Metric $renewedSubscriptionsRevenue, Metric $activeSubscriptions, Metric $monthlyRecurringRevenue)
     {
         $this->orders = $orders;
         $this->revenue = $revenue;
+        $this->cumulativeRevenue = $cumulativeRevenue;
         $this->averageOrderValue = $averageOrderValue;
         $this->oneTimeProducts = $oneTimeProducts;
         $this->oneTimeProductsRevenue = $oneTimeProductsRevenue;

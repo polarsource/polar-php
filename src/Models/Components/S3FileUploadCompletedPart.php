@@ -36,6 +36,7 @@ class S3FileUploadCompletedPart
      * @param  int  $number
      * @param  string  $checksumEtag
      * @param  ?string  $checksumSha256Base64
+     * @phpstan-pure
      */
     public function __construct(int $number, string $checksumEtag, ?string $checksumSha256Base64 = null)
     {

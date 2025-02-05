@@ -31,18 +31,18 @@ class BenefitDownloadablesUpdate
 
     /**
      *
-     * @var BenefitDownloadablesUpdateType $type
+     * @var string $type
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('type')]
-    #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\BenefitDownloadablesUpdateType')]
-    public BenefitDownloadablesUpdateType $type;
+    public string $type;
 
     /**
-     * @param  BenefitDownloadablesUpdateType  $type
+     * @param  string  $type
      * @param  ?string  $description
      * @param  ?BenefitDownloadablesCreateProperties  $properties
+     * @phpstan-pure
      */
-    public function __construct(?string $description = null, ?BenefitDownloadablesCreateProperties $properties = null, BenefitDownloadablesUpdateType $type = BenefitDownloadablesUpdateType::Downloadables)
+    public function __construct(?string $description = null, ?BenefitDownloadablesCreateProperties $properties = null, string $type = 'downloadables')
     {
         $this->description = $description;
         $this->properties = $properties;

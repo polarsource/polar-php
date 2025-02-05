@@ -29,6 +29,7 @@ class OrganizationsUpdateRequest
     /**
      * @param  string  $id
      * @param  Components\OrganizationUpdate  $organizationUpdate
+     * @phpstan-pure
      */
     public function __construct(string $id, Components\OrganizationUpdate $organizationUpdate)
     {

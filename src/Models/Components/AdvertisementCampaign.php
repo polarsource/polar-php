@@ -70,6 +70,7 @@ class AdvertisementCampaign
      * @param  string  $linkUrl
      * @param  ?\DateTime  $modifiedAt
      * @param  ?string  $imageUrlDark
+     * @phpstan-pure
      */
     public function __construct(\DateTime $createdAt, string $id, string $imageUrl, string $text, string $linkUrl, ?\DateTime $modifiedAt = null, ?string $imageUrlDark = null)
     {

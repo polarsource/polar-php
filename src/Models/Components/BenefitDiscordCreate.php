@@ -39,19 +39,19 @@ class BenefitDiscordCreate
 
     /**
      *
-     * @var BenefitDiscordCreateType $type
+     * @var string $type
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('type')]
-    #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\BenefitDiscordCreateType')]
-    public BenefitDiscordCreateType $type;
+    public string $type;
 
     /**
-     * @param  BenefitDiscordCreateType  $type
+     * @param  string  $type
      * @param  string  $description
      * @param  BenefitDiscordCreateProperties  $properties
      * @param  ?string  $organizationId
+     * @phpstan-pure
      */
-    public function __construct(string $description, BenefitDiscordCreateProperties $properties, ?string $organizationId = null, BenefitDiscordCreateType $type = BenefitDiscordCreateType::Discord)
+    public function __construct(string $description, BenefitDiscordCreateProperties $properties, ?string $organizationId = null, string $type = 'discord')
     {
         $this->description = $description;
         $this->properties = $properties;

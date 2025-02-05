@@ -29,6 +29,7 @@ class ProductsUpdateBenefitsRequest
     /**
      * @param  string  $id
      * @param  Components\ProductBenefitsUpdate  $productBenefitsUpdate
+     * @phpstan-pure
      */
     public function __construct(string $id, Components\ProductBenefitsUpdate $productBenefitsUpdate)
     {

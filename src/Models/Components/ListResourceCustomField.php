@@ -14,10 +14,10 @@ class ListResourceCustomField
     /**
      * $items
      *
-     * @var array<mixed> $items
+     * @var array<CustomFieldText|CustomFieldNumber|CustomFieldDate|CustomFieldCheckbox|CustomFieldSelect> $items
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('items')]
-    #[\Speakeasy\Serializer\Annotation\Type('array<mixed>')]
+    #[\Speakeasy\Serializer\Annotation\Type('array<\Polar\Models\Components\CustomFieldText|\Polar\Models\Components\CustomFieldNumber|\Polar\Models\Components\CustomFieldDate|\Polar\Models\Components\CustomFieldCheckbox|\Polar\Models\Components\CustomFieldSelect>')]
     public array $items;
 
     /**
@@ -29,8 +29,9 @@ class ListResourceCustomField
     public Pagination $pagination;
 
     /**
-     * @param  array<mixed>  $items
+     * @param  array<CustomFieldText|CustomFieldNumber|CustomFieldDate|CustomFieldCheckbox|CustomFieldSelect>  $items
      * @param  Pagination  $pagination
+     * @phpstan-pure
      */
     public function __construct(array $items, Pagination $pagination)
     {

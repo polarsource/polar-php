@@ -44,6 +44,7 @@ class CustomerPortalSubscriptionsGetResponse
      * @param  int  $statusCode
      * @param  \Psr\Http\Message\ResponseInterface  $rawResponse
      * @param  ?Components\CustomerSubscription  $customerSubscription
+     * @phpstan-pure
      */
     public function __construct(string $contentType, int $statusCode, \Psr\Http\Message\ResponseInterface $rawResponse, ?Components\CustomerSubscription $customerSubscription = null)
     {

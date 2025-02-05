@@ -48,6 +48,7 @@ class SubscriptionsListResponse
      * @param  int  $statusCode
      * @param  \Psr\Http\Message\ResponseInterface  $rawResponse
      * @param  ?Components\ListResourceSubscription  $listResourceSubscription
+     * @phpstan-pure
      */
     public function __construct(string $contentType, int $statusCode, \Psr\Http\Message\ResponseInterface $rawResponse, ?Components\ListResourceSubscription $listResourceSubscription = null)
     {

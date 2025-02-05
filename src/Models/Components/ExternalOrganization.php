@@ -20,6 +20,14 @@ class ExternalOrganization
 
     /**
      *
+     * @var Platforms $platform
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('platform')]
+    #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\Platforms')]
+    public Platforms $platform;
+
+    /**
+     *
      * @var string $name
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('name')]
@@ -96,14 +104,6 @@ class ExternalOrganization
     public ?string $organizationId;
 
     /**
-     *
-     * @var Platforms $platform
-     */
-    #[\Speakeasy\Serializer\Annotation\SerializedName('platform')]
-    #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\Platforms')]
-    public Platforms $platform;
-
-    /**
      * @param  string  $id
      * @param  Platforms  $platform
      * @param  string  $name
@@ -117,10 +117,12 @@ class ExternalOrganization
      * @param  ?string  $email
      * @param  ?string  $twitterUsername
      * @param  ?string  $organizationId
+     * @phpstan-pure
      */
-    public function __construct(string $id, string $name, string $avatarUrl, bool $isPersonal, ?string $bio = null, ?string $prettyName = null, ?string $company = null, ?string $blog = null, ?string $location = null, ?string $email = null, ?string $twitterUsername = null, ?string $organizationId = null, Platforms $platform = Platforms::Github)
+    public function __construct(string $id, Platforms $platform, string $name, string $avatarUrl, bool $isPersonal, ?string $bio = null, ?string $prettyName = null, ?string $company = null, ?string $blog = null, ?string $location = null, ?string $email = null, ?string $twitterUsername = null, ?string $organizationId = null)
     {
         $this->id = $id;
+        $this->platform = $platform;
         $this->name = $name;
         $this->avatarUrl = $avatarUrl;
         $this->isPersonal = $isPersonal;
@@ -132,6 +134,5 @@ class ExternalOrganization
         $this->email = $email;
         $this->twitterUsername = $twitterUsername;
         $this->organizationId = $organizationId;
-        $this->platform = $platform;
     }
 }

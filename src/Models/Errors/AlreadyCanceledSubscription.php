@@ -8,19 +8,15 @@ declare(strict_types=1);
 
 namespace Polar\Models\Errors;
 
-
-use Polar\Models\Errors;
 use Polar\Utils;
-
 class AlreadyCanceledSubscription
 {
     /**
      *
-     * @var AlreadyCanceledSubscriptionError $error
+     * @var string $error
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('error')]
-    #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Errors\AlreadyCanceledSubscriptionError')]
-    public AlreadyCanceledSubscriptionError $error;
+    public string $error;
 
     /**
      *
@@ -30,10 +26,11 @@ class AlreadyCanceledSubscription
     public string $detail;
 
     /**
-     * @param  AlreadyCanceledSubscriptionError  $error
+     * @param  string  $error
      * @param  string  $detail
+     * @phpstan-pure
      */
-    public function __construct(string $detail, AlreadyCanceledSubscriptionError $error = AlreadyCanceledSubscriptionError::AlreadyCanceledSubscription)
+    public function __construct(string $detail, string $error = 'AlreadyCanceledSubscription')
     {
         $this->error = $error;
         $this->detail = $detail;

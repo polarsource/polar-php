@@ -8,19 +8,15 @@ declare(strict_types=1);
 
 namespace Polar\Models\Errors;
 
-
-use Polar\Models\Errors;
 use Polar\Utils;
-
 class ResourceNotFound
 {
     /**
      *
-     * @var Error $error
+     * @var string $error
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('error')]
-    #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Errors\Error')]
-    public Error $error;
+    public string $error;
 
     /**
      *
@@ -30,10 +26,11 @@ class ResourceNotFound
     public string $detail;
 
     /**
-     * @param  Error  $error
+     * @param  string  $error
      * @param  string  $detail
+     * @phpstan-pure
      */
-    public function __construct(string $detail, Error $error = Error::ResourceNotFound)
+    public function __construct(string $detail, string $error = 'ResourceNotFound')
     {
         $this->error = $error;
         $this->detail = $detail;
