@@ -111,11 +111,11 @@ class Oauth2
      *
      * Get information about an access token.
      *
-     * @param  Operations\Oauth2IntrospectTokenIntrospectTokenRequest  $request
+     * @param  Components\IntrospectTokenRequest  $request
      * @return Operations\Oauth2IntrospectTokenResponse
      * @throws \Polar\Models\Errors\APIException
      */
-    public function introspect(Operations\Oauth2IntrospectTokenIntrospectTokenRequest $request, ?Options $options = null): Operations\Oauth2IntrospectTokenResponse
+    public function introspect(Components\IntrospectTokenRequest $request, ?Options $options = null): Operations\Oauth2IntrospectTokenResponse
     {
         $baseUrl = $this->sdkConfiguration->getServerUrl();
         $url = Utils\Utils::generateUrl($baseUrl, '/v1/oauth2/introspect');
@@ -177,11 +177,11 @@ class Oauth2
      *
      * Request an access token using a valid grant.
      *
-     * @param  Components\Onev11oauth21tokenPostXComponentsAuthorizationCodeTokenRequest|Components\Onev11oauth21tokenPostXComponentsRefreshTokenRequest  $request
+     * @param  Components\AuthorizationCodeTokenRequest|Components\RefreshTokenRequest  $request
      * @return Operations\Oauth2RequestTokenResponse
      * @throws \Polar\Models\Errors\APIException
      */
-    public function token(Components\Onev11oauth21tokenPostXComponentsAuthorizationCodeTokenRequest|Components\Onev11oauth21tokenPostXComponentsRefreshTokenRequest $request, ?Options $options = null): Operations\Oauth2RequestTokenResponse
+    public function token(Components\AuthorizationCodeTokenRequest|Components\RefreshTokenRequest $request, ?Options $options = null): Operations\Oauth2RequestTokenResponse
     {
         $baseUrl = $this->sdkConfiguration->getServerUrl();
         $url = Utils\Utils::generateUrl($baseUrl, '/v1/oauth2/token');
@@ -243,11 +243,11 @@ class Oauth2
      *
      * Revoke an access token or a refresh token.
      *
-     * @param  Operations\Oauth2RevokeTokenRevokeTokenRequest  $request
+     * @param  Components\RevokeTokenRequest  $request
      * @return Operations\Oauth2RevokeTokenResponse
      * @throws \Polar\Models\Errors\APIException
      */
-    public function revoke(Operations\Oauth2RevokeTokenRevokeTokenRequest $request, ?Options $options = null): Operations\Oauth2RevokeTokenResponse
+    public function revoke(Components\RevokeTokenRequest $request, ?Options $options = null): Operations\Oauth2RevokeTokenResponse
     {
         $baseUrl = $this->sdkConfiguration->getServerUrl();
         $url = Utils\Utils::generateUrl($baseUrl, '/v1/oauth2/revoke');

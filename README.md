@@ -286,18 +286,10 @@ foreach ($responses as $response) {
 
 ### [checkouts](docs/sdks/checkouts/README.md)
 
-* [~~create~~](docs/sdks/checkouts/README.md#create) - Create Checkout :warning: **Deprecated** Use [create](docs/sdks/custom/README.md#create) instead.
-* [~~get~~](docs/sdks/checkouts/README.md#get) - Get Checkout :warning: **Deprecated**
-
-#### [checkouts->custom](docs/sdks/custom/README.md)
-
-* [clientConfirm](docs/sdks/custom/README.md#clientconfirm) - Confirm Checkout Session from Client
-* [clientGet](docs/sdks/custom/README.md#clientget) - Get Checkout Session from Client
-* [clientUpdate](docs/sdks/custom/README.md#clientupdate) - Update Checkout Session from Client
-* [create](docs/sdks/custom/README.md#create) - Create Checkout Session
-* [get](docs/sdks/custom/README.md#get) - Get Checkout Session
-* [list](docs/sdks/custom/README.md#list) - List Checkout Sessions
-* [update](docs/sdks/custom/README.md#update) - Update Checkout Session
+* [clientGet](docs/sdks/checkouts/README.md#clientget) - Get Checkout Session from Client
+* [create](docs/sdks/checkouts/README.md#create) - Create Checkout Session
+* [get](docs/sdks/checkouts/README.md#get) - Get Checkout Session
+* [list](docs/sdks/checkouts/README.md#list) - List Checkout Sessions
 
 ### [customerPortal](docs/sdks/customerportal/README.md)
 

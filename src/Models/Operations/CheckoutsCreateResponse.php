@@ -33,24 +33,24 @@ class CheckoutsCreateResponse
     public \Psr\Http\Message\ResponseInterface $rawResponse;
 
     /**
-     * Successful Response
+     * Checkout session created.
      *
-     * @var ?Components\CheckoutLegacy $checkoutLegacy
+     * @var ?Components\Checkout $checkout
      */
-    public ?Components\CheckoutLegacy $checkoutLegacy = null;
+    public ?Components\Checkout $checkout = null;
 
     /**
      * @param  string  $contentType
      * @param  int  $statusCode
      * @param  \Psr\Http\Message\ResponseInterface  $rawResponse
-     * @param  ?Components\CheckoutLegacy  $checkoutLegacy
+     * @param  ?Components\Checkout  $checkout
      * @phpstan-pure
      */
-    public function __construct(string $contentType, int $statusCode, \Psr\Http\Message\ResponseInterface $rawResponse, ?Components\CheckoutLegacy $checkoutLegacy = null)
+    public function __construct(string $contentType, int $statusCode, \Psr\Http\Message\ResponseInterface $rawResponse, ?Components\Checkout $checkout = null)
     {
         $this->contentType = $contentType;
         $this->statusCode = $statusCode;
         $this->rawResponse = $rawResponse;
-        $this->checkoutLegacy = $checkoutLegacy;
+        $this->checkout = $checkout;
     }
 }

@@ -73,7 +73,7 @@ class PathParameters
 
                 $cls = get_class($value);
                 if ($cls === 'Brick\\Math\\BigDecimal' || $cls === 'Brick\\Math\\BigInteger') {
-                    $pathParams[$metadata->name] = valToString($value, []);
+                    $pathParams[$metadata->name] = valToString($value, $metadata->encodingArray());
                     break;
                 }
                 foreach ($value as $field => $fieldValue) { /** @phpstan-ignore-line */
@@ -87,9 +87,9 @@ class PathParameters
                     }
 
                     if ($metadata->explode) {
-                        $vals[] = sprintf('%s=%s', $fieldMetadata->name, valToString($fieldValue, ['dateTimeFormat' => $fieldMetadata->dateTimeFormat]));
+                        $vals[] = sprintf('%s=%s', $fieldMetadata->name, valToString($fieldValue, $fieldMetadata->encodingArray()));
                     } else {
-                        $vals[] = sprintf('%s,%s', $fieldMetadata->name, valToString($fieldValue, ['dateTimeFormat' => $fieldMetadata->dateTimeFormat]));
+                        $vals[] = sprintf('%s,%s', $fieldMetadata->name, valToString($fieldValue, $fieldMetadata->encodingArray()));
                     }
                 }
 
