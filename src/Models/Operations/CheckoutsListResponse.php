@@ -9,7 +9,7 @@ declare(strict_types=1);
 namespace Polar\Models\Operations;
 
 use Polar\Models\Components;
-class CheckoutsGetResponse
+class CheckoutsListResponse
 {
     /**
      * HTTP response content type for this operation
@@ -35,22 +35,39 @@ class CheckoutsGetResponse
     /**
      * Successful Response
      *
-     * @var ?Components\Checkout $checkout
+     * @var ?Components\ListResourceCheckout $listResourceCheckout
      */
-    public ?Components\Checkout $checkout = null;
+    public ?Components\ListResourceCheckout $listResourceCheckout = null;
 
+    /**
+     * @var \Closure(string): ?CheckoutsListResponse $next
+     */
+    public \Closure $next;
     /**
      * @param  string  $contentType
      * @param  int  $statusCode
      * @param  \Psr\Http\Message\ResponseInterface  $rawResponse
-     * @param  ?Components\Checkout  $checkout
+     * @param  ?Components\ListResourceCheckout  $listResourceCheckout
      * @phpstan-pure
      */
-    public function __construct(string $contentType, int $statusCode, \Psr\Http\Message\ResponseInterface $rawResponse, ?Components\Checkout $checkout = null)
+    public function __construct(string $contentType, int $statusCode, \Psr\Http\Message\ResponseInterface $rawResponse, ?Components\ListResourceCheckout $listResourceCheckout = null)
     {
         $this->contentType = $contentType;
         $this->statusCode = $statusCode;
         $this->rawResponse = $rawResponse;
-        $this->checkout = $checkout;
+        $this->listResourceCheckout = $listResourceCheckout;
+    }
+    /**
+     * @param  string  $name
+     * @param  array<mixed>  $args
+     * @return ?CheckoutsListResponse
+     */
+    public function __call($name, $args): ?CheckoutsListResponse
+    {
+        if ($name === 'next') {
+            return call_user_func_array($this->next, $args);
+        }
+
+        return null;
     }
 }

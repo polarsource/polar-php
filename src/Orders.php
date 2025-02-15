@@ -300,6 +300,7 @@ class Orders
                             productPriceType: $request != null ? $request->productPriceType : null,
                             discountId: $request != null ? $request->discountId : null,
                             customerId: $request != null ? $request->customerId : null,
+                            checkoutId: $request != null ? $request->checkoutId : null,
                             page: $nextPage,
                             limit: $request != null ? $request->limit : null,
                             sorting: $request != null ? $request->sorting : null,

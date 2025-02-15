@@ -53,6 +53,14 @@ class OrdersListRequest
     public string|array|null $customerId = null;
 
     /**
+     * Filter by checkout ID.
+     *
+     * @var string|array<string>|null $checkoutId
+     */
+    #[SpeakeasyMetadata('queryParam:style=form,explode=true,name=checkout_id')]
+    public string|array|null $checkoutId = null;
+
+    /**
      * Sorting criterion. Several criteria can be used simultaneously and will be applied in order. Add a minus sign `-` before the criteria name to sort by descending order.
      *
      * @var ?array<Components\OrderSortProperty> $sorting
@@ -84,16 +92,18 @@ class OrdersListRequest
      * @param  Components\ProductPriceType|array<Components\ProductPriceType>|null  $productPriceType
      * @param  string|array<string>|null  $discountId
      * @param  string|array<string>|null  $customerId
+     * @param  string|array<string>|null  $checkoutId
      * @param  ?array<Components\OrderSortProperty>  $sorting
      * @phpstan-pure
      */
-    public function __construct(string|array|null $organizationId = null, string|array|null $productId = null, Components\ProductPriceType|array|null $productPriceType = null, string|array|null $discountId = null, string|array|null $customerId = null, ?array $sorting = null, ?int $page = 1, ?int $limit = 10)
+    public function __construct(string|array|null $organizationId = null, string|array|null $productId = null, Components\ProductPriceType|array|null $productPriceType = null, string|array|null $discountId = null, string|array|null $customerId = null, string|array|null $checkoutId = null, ?array $sorting = null, ?int $page = 1, ?int $limit = 10)
     {
         $this->organizationId = $organizationId;
         $this->productId = $productId;
         $this->productPriceType = $productPriceType;
         $this->discountId = $discountId;
         $this->customerId = $customerId;
+        $this->checkoutId = $checkoutId;
         $this->sorting = $sorting;
         $this->page = $page;
         $this->limit = $limit;

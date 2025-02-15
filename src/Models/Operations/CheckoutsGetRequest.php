@@ -12,6 +12,7 @@ use Polar\Utils\SpeakeasyMetadata;
 class CheckoutsGetRequest
 {
     /**
+     * The checkout session ID.
      *
      * @var string $id
      */

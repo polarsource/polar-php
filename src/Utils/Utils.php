@@ -435,7 +435,7 @@ function valToString(mixed $val, array $extras): string
                         return '"'.$val->__toString().'"';
                     }
 
-                    return $val->__toString();
+                    return (string) (float) $val->__toString();
                 default:
                     if (is_a($val, \BackedEnum::class, true)) {
                         $enumVal = $val->value;

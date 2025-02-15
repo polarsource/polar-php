@@ -173,6 +173,8 @@ final class UnionHandler implements SubscribingHandlerInterface
                 continue;
             } catch (\Brick\Math\Exception\NumberFormatException $e) {
                 continue;
+            } catch (\Brick\Math\Exception\RoundingNecessaryException $e) {
+                continue;
             } catch (RuntimeException $e) {
                 continue;
             }
@@ -342,6 +344,10 @@ final class UnionHandler implements SubscribingHandlerInterface
         if ($type['params']) {
             uasort($type['params'], static function ($a, $b) {
                 if (\class_exists($a['name']) && \class_exists($b['name'])) {
+                    /** always try BigInteger before trying BigDecimal */
+                    if ($a['name'] == '\Brick\Math\BigInteger' && $b['name'] == '\Brick\Math\BigDecimal') {
+                        return -1;
+                    }
                     $aClass = new \ReflectionClass($a['name']);
                     $bClass = new \ReflectionClass($b['name']);
                     $aRequiredPropertyCount = 0;
