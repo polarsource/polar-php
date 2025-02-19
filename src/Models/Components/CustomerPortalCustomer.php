@@ -76,10 +76,10 @@ class CustomerPortalCustomer
     /**
      * $taxId
      *
-     * @var ?array<string|TaxIDFormat> $taxId
+     * @var ?array<string|TaxIDFormat|null> $taxId
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('tax_id')]
-    #[\Speakeasy\Serializer\Annotation\Type('array<string|\Polar\Models\Components\TaxIDFormat>|null')]
+    #[\Speakeasy\Serializer\Annotation\Type('array<string|\Polar\Models\Components\TaxIDFormat|null>|null')]
     public ?array $taxId;
 
     /**
@@ -91,7 +91,7 @@ class CustomerPortalCustomer
      * @param  ?\DateTime  $modifiedAt
      * @param  ?string  $name
      * @param  ?Address  $billingAddress
-     * @param  ?array<string|TaxIDFormat>  $taxId
+     * @param  ?array<string|TaxIDFormat|null>  $taxId
      * @phpstan-pure
      */
     public function __construct(\DateTime $createdAt, string $id, string $email, bool $emailVerified, array $oauthAccounts, ?\DateTime $modifiedAt = null, ?string $name = null, ?Address $billingAddress = null, ?array $taxId = null)

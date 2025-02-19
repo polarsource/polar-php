@@ -15,8 +15,6 @@ enum ProductSortProperty: string
     case MinusCreatedAt = '-created_at';
     case Name = 'name';
     case MinusName = '-name';
-    case PriceType = 'price_type';
-    case MinusPriceType = '-price_type';
     case PriceAmountType = 'price_amount_type';
     case MinusPriceAmountType = '-price_amount_type';
     case PriceAmount = 'price_amount';

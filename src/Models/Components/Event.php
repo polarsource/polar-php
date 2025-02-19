@@ -69,6 +69,15 @@ class Event
     public ?string $customerId;
 
     /**
+     * The customer associated with the event.
+     *
+     * @var ?Customer $customer
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('customer')]
+    #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\Customer|null')]
+    public ?Customer $customer;
+
+    /**
      * ID of the customer in your system associated with the event.
      *
      * @var ?string $externalCustomerId
@@ -84,10 +93,11 @@ class Event
      * @param  EventSource  $source
      * @param  string  $organizationId
      * @param  ?string  $customerId
+     * @param  ?Customer  $customer
      * @param  ?string  $externalCustomerId
      * @phpstan-pure
      */
-    public function __construct(array $metadata, string $id, \DateTime $timestamp, string $name, EventSource $source, string $organizationId, ?string $customerId = null, ?string $externalCustomerId = null)
+    public function __construct(array $metadata, string $id, \DateTime $timestamp, string $name, EventSource $source, string $organizationId, ?string $customerId = null, ?Customer $customer = null, ?string $externalCustomerId = null)
     {
         $this->metadata = $metadata;
         $this->id = $id;
@@ -96,6 +106,7 @@ class Event
         $this->source = $source;
         $this->organizationId = $organizationId;
         $this->customerId = $customerId;
+        $this->customer = $customer;
         $this->externalCustomerId = $externalCustomerId;
     }
 }

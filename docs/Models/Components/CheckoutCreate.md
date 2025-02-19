@@ -3,6 +3,15 @@
 
 ## Supported Types
 
+### `Components\CheckoutProductsCreate`
+
+```php
+/**
+* @var Components\CheckoutProductsCreate
+*/
+Components\CheckoutProductsCreate $value = /* values here */
+```
+
 ### `Components\CheckoutProductCreate`
 
 ```php

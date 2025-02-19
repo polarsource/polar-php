@@ -37,7 +37,7 @@ class Product
     public string $name;
 
     /**
-     * Whether the product is a subscription tier.
+     * Whether the product is a subscription.
      *
      * @var bool $isRecurring
      */
@@ -72,10 +72,10 @@ class Product
     /**
      * List of prices for this product.
      *
-     * @var array<ProductPriceRecurringFixed|ProductPriceRecurringCustom|ProductPriceRecurringFree|ProductPriceOneTimeFixed|ProductPriceOneTimeCustom|ProductPriceOneTimeFree> $prices
+     * @var array<LegacyRecurringProductPriceFixed|LegacyRecurringProductPriceCustom|LegacyRecurringProductPriceFree|ProductPriceFixed|ProductPriceCustom|ProductPriceFree> $prices
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('prices')]
-    #[\Speakeasy\Serializer\Annotation\Type('array<\Polar\Models\Components\ProductPriceRecurringFixed|\Polar\Models\Components\ProductPriceRecurringCustom|\Polar\Models\Components\ProductPriceRecurringFree|\Polar\Models\Components\ProductPriceOneTimeFixed|\Polar\Models\Components\ProductPriceOneTimeCustom|\Polar\Models\Components\ProductPriceOneTimeFree>')]
+    #[\Speakeasy\Serializer\Annotation\Type('array<\Polar\Models\Components\LegacyRecurringProductPriceFixed|\Polar\Models\Components\LegacyRecurringProductPriceCustom|\Polar\Models\Components\LegacyRecurringProductPriceFree|\Polar\Models\Components\ProductPriceFixed|\Polar\Models\Components\ProductPriceCustom|\Polar\Models\Components\ProductPriceFree>')]
     public array $prices;
 
     /**
@@ -122,6 +122,15 @@ class Product
     public ?string $description;
 
     /**
+     * The recurring interval of the product. If `None`, the product is a one-time purchase.
+     *
+     * @var ?SubscriptionRecurringInterval $recurringInterval
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('recurring_interval')]
+    #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\SubscriptionRecurringInterval|null')]
+    public ?SubscriptionRecurringInterval $recurringInterval;
+
+    /**
      * @param  \DateTime  $createdAt
      * @param  string  $id
      * @param  string  $name
@@ -129,15 +138,16 @@ class Product
      * @param  bool  $isArchived
      * @param  string  $organizationId
      * @param  array<string, string|int|bool>  $metadata
-     * @param  array<ProductPriceRecurringFixed|ProductPriceRecurringCustom|ProductPriceRecurringFree|ProductPriceOneTimeFixed|ProductPriceOneTimeCustom|ProductPriceOneTimeFree>  $prices
+     * @param  array<LegacyRecurringProductPriceFixed|LegacyRecurringProductPriceCustom|LegacyRecurringProductPriceFree|ProductPriceFixed|ProductPriceCustom|ProductPriceFree>  $prices
      * @param  array<BenefitAds|BenefitCustom|BenefitDiscord|BenefitGitHubRepository|BenefitDownloadables|BenefitLicenseKeys>  $benefits
      * @param  array<ProductMediaFileRead>  $medias
      * @param  array<AttachedCustomField>  $attachedCustomFields
      * @param  ?\DateTime  $modifiedAt
      * @param  ?string  $description
+     * @param  ?SubscriptionRecurringInterval  $recurringInterval
      * @phpstan-pure
      */
-    public function __construct(\DateTime $createdAt, string $id, string $name, bool $isRecurring, bool $isArchived, string $organizationId, array $metadata, array $prices, array $benefits, array $medias, array $attachedCustomFields, ?\DateTime $modifiedAt = null, ?string $description = null)
+    public function __construct(\DateTime $createdAt, string $id, string $name, bool $isRecurring, bool $isArchived, string $organizationId, array $metadata, array $prices, array $benefits, array $medias, array $attachedCustomFields, ?\DateTime $modifiedAt = null, ?string $description = null, ?SubscriptionRecurringInterval $recurringInterval = null)
     {
         $this->createdAt = $createdAt;
         $this->id = $id;
@@ -152,5 +162,6 @@ class Product
         $this->attachedCustomFields = $attachedCustomFields;
         $this->modifiedAt = $modifiedAt;
         $this->description = $description;
+        $this->recurringInterval = $recurringInterval;
     }
 }

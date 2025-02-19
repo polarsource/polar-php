@@ -23,6 +23,16 @@ class CheckoutLinkUpdate
     public ?array $metadata = null;
 
     /**
+     * List of products that will be available to select at checkout.
+     *
+     * @var ?array<string> $products
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('products')]
+    #[\Speakeasy\Serializer\Annotation\Type('array<string>|null')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
+    public ?array $products = null;
+
+    /**
      *
      * @var ?string $label
      */
@@ -38,14 +48,6 @@ class CheckoutLinkUpdate
     #[\Speakeasy\Serializer\Annotation\SerializedName('allow_discount_codes')]
     #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
     public ?bool $allowDiscountCodes = null;
-
-    /**
-     *
-     * @var ?string $productPriceId
-     */
-    #[\Speakeasy\Serializer\Annotation\SerializedName('product_price_id')]
-    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
-    public ?string $productPriceId = null;
 
     /**
      * ID of the discount to apply to the checkout. If the discount is not applicable anymore when opening the checkout link, it'll be ignored.
@@ -67,19 +69,19 @@ class CheckoutLinkUpdate
 
     /**
      * @param  ?array<string, string|int|bool>  $metadata
+     * @param  ?array<string>  $products
      * @param  ?string  $label
      * @param  ?bool  $allowDiscountCodes
-     * @param  ?string  $productPriceId
      * @param  ?string  $discountId
      * @param  ?string  $successUrl
      * @phpstan-pure
      */
-    public function __construct(?array $metadata = null, ?string $label = null, ?bool $allowDiscountCodes = null, ?string $productPriceId = null, ?string $discountId = null, ?string $successUrl = null)
+    public function __construct(?array $metadata = null, ?array $products = null, ?string $label = null, ?bool $allowDiscountCodes = null, ?string $discountId = null, ?string $successUrl = null)
     {
         $this->metadata = $metadata;
+        $this->products = $products;
         $this->label = $label;
         $this->allowDiscountCodes = $allowDiscountCodes;
-        $this->productPriceId = $productPriceId;
         $this->discountId = $discountId;
         $this->successUrl = $successUrl;
     }

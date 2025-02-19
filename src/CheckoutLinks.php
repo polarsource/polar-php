@@ -50,11 +50,11 @@ class CheckoutLinks
      *
      * Create a checkout link.
      *
-     * @param  Components\CheckoutLinkProductCreate|Components\CheckoutLinkPriceCreate  $request
+     * @param  Components\CheckoutLinkCreateProductPrice|Components\CheckoutLinkCreateProduct|Components\CheckoutLinkCreateProducts  $request
      * @return Operations\CheckoutLinksCreateResponse
      * @throws \Polar\Models\Errors\APIException
      */
-    public function create(Components\CheckoutLinkProductCreate|Components\CheckoutLinkPriceCreate $request, ?Options $options = null): Operations\CheckoutLinksCreateResponse
+    public function create(Components\CheckoutLinkCreateProductPrice|Components\CheckoutLinkCreateProduct|Components\CheckoutLinkCreateProducts $request, ?Options $options = null): Operations\CheckoutLinksCreateResponse
     {
         $baseUrl = $this->sdkConfiguration->getServerUrl();
         $url = Utils\Utils::generateUrl($baseUrl, '/v1/checkout-links/');

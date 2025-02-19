@@ -22,17 +22,17 @@ class SubscriptionsUpdateRequest
 
     /**
      *
-     * @var Components\SubscriptionUpdatePrice|Components\SubscriptionCancel $subscriptionUpdate
+     * @var Components\SubscriptionUpdateProduct|Components\SubscriptionCancel $subscriptionUpdate
      */
     #[SpeakeasyMetadata('request:mediaType=application/json')]
-    public Components\SubscriptionUpdatePrice|Components\SubscriptionCancel $subscriptionUpdate;
+    public Components\SubscriptionUpdateProduct|Components\SubscriptionCancel $subscriptionUpdate;
 
     /**
      * @param  string  $id
-     * @param  Components\SubscriptionUpdatePrice|Components\SubscriptionCancel  $subscriptionUpdate
+     * @param  Components\SubscriptionUpdateProduct|Components\SubscriptionCancel  $subscriptionUpdate
      * @phpstan-pure
      */
-    public function __construct(string $id, Components\SubscriptionUpdatePrice|Components\SubscriptionCancel $subscriptionUpdate)
+    public function __construct(string $id, Components\SubscriptionUpdateProduct|Components\SubscriptionCancel $subscriptionUpdate)
     {
         $this->id = $id;
         $this->subscriptionUpdate = $subscriptionUpdate;

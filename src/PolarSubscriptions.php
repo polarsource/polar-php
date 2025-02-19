@@ -365,12 +365,12 @@ class PolarSubscriptions
      *
      * Update a subscription of the authenticated customer or user.
      *
-     * @param  Components\CustomerSubscriptionUpdatePrice|Components\CustomerSubscriptionCancel  $customerSubscriptionUpdate
+     * @param  Components\CustomerSubscriptionUpdateProduct|Components\CustomerSubscriptionCancel  $customerSubscriptionUpdate
      * @param  string  $id
      * @return Operations\CustomerPortalSubscriptionsUpdateResponse
      * @throws \Polar\Models\Errors\APIException
      */
-    public function update(Components\CustomerSubscriptionUpdatePrice|Components\CustomerSubscriptionCancel $customerSubscriptionUpdate, string $id, ?Options $options = null): Operations\CustomerPortalSubscriptionsUpdateResponse
+    public function update(Components\CustomerSubscriptionUpdateProduct|Components\CustomerSubscriptionCancel $customerSubscriptionUpdate, string $id, ?Options $options = null): Operations\CustomerPortalSubscriptionsUpdateResponse
     {
         $request = new Operations\CustomerPortalSubscriptionsUpdateRequest(
             id: $id,

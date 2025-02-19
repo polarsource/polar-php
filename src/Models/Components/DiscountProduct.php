@@ -37,7 +37,7 @@ class DiscountProduct
     public string $name;
 
     /**
-     * Whether the product is a subscription tier.
+     * Whether the product is a subscription.
      *
      * @var bool $isRecurring
      */
@@ -77,6 +77,15 @@ class DiscountProduct
     public ?string $description;
 
     /**
+     * The recurring interval of the product. If `None`, the product is a one-time purchase.
+     *
+     * @var ?SubscriptionRecurringInterval $recurringInterval
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('recurring_interval')]
+    #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\SubscriptionRecurringInterval|null')]
+    public ?SubscriptionRecurringInterval $recurringInterval;
+
+    /**
      * @param  \DateTime  $createdAt
      * @param  string  $id
      * @param  string  $name
@@ -85,9 +94,10 @@ class DiscountProduct
      * @param  string  $organizationId
      * @param  ?\DateTime  $modifiedAt
      * @param  ?string  $description
+     * @param  ?SubscriptionRecurringInterval  $recurringInterval
      * @phpstan-pure
      */
-    public function __construct(\DateTime $createdAt, string $id, string $name, bool $isRecurring, bool $isArchived, string $organizationId, ?\DateTime $modifiedAt = null, ?string $description = null)
+    public function __construct(\DateTime $createdAt, string $id, string $name, bool $isRecurring, bool $isArchived, string $organizationId, ?\DateTime $modifiedAt = null, ?string $description = null, ?SubscriptionRecurringInterval $recurringInterval = null)
     {
         $this->createdAt = $createdAt;
         $this->id = $id;
@@ -97,5 +107,6 @@ class DiscountProduct
         $this->organizationId = $organizationId;
         $this->modifiedAt = $modifiedAt;
         $this->description = $description;
+        $this->recurringInterval = $recurringInterval;
     }
 }

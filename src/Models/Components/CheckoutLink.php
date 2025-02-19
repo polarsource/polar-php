@@ -62,12 +62,37 @@ class CheckoutLink
     public bool $allowDiscountCodes;
 
     /**
-     * ID of the product to checkout.
+     * The organization ID.
+     *
+     * @var string $organizationId
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('organization_id')]
+    public string $organizationId;
+
+    /**
+     * $products
+     *
+     * @var array<CheckoutLinkProduct> $products
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('products')]
+    #[\Speakeasy\Serializer\Annotation\Type('array<\Polar\Models\Components\CheckoutLinkProduct>')]
+    public array $products;
+
+    /**
      *
      * @var string $productId
+     * @deprecated  field: This will be removed in a future release, please migrate away from it as soon as possible.
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('product_id')]
     public string $productId;
+
+    /**
+     *
+     * @var string $productPriceId
+     * @deprecated  field: This will be removed in a future release, please migrate away from it as soon as possible.
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('product_price_id')]
+    public string $productPriceId;
 
     /**
      * Product data for a checkout link.
@@ -77,6 +102,15 @@ class CheckoutLink
     #[\Speakeasy\Serializer\Annotation\SerializedName('product')]
     #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\CheckoutLinkProduct')]
     public CheckoutLinkProduct $product;
+
+    /**
+     *
+     * @var LegacyRecurringProductPriceFixed|LegacyRecurringProductPriceCustom|LegacyRecurringProductPriceFree|ProductPriceFixed|ProductPriceCustom|ProductPriceFree $productPrice
+     * @deprecated  field: This will be removed in a future release, please migrate away from it as soon as possible.
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('product_price')]
+    #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\LegacyRecurringProductPriceFixed|\Polar\Models\Components\LegacyRecurringProductPriceCustom|\Polar\Models\Components\LegacyRecurringProductPriceFree|\Polar\Models\Components\ProductPriceFixed|\Polar\Models\Components\ProductPriceCustom|\Polar\Models\Components\ProductPriceFree')]
+    public LegacyRecurringProductPriceFixed|LegacyRecurringProductPriceCustom|LegacyRecurringProductPriceFree|ProductPriceFixed|ProductPriceCustom|ProductPriceFree $productPrice;
 
     /**
      *
@@ -110,28 +144,12 @@ class CheckoutLink
     public ?string $label;
 
     /**
-     * ID of the product price to checkout. First available price will be selected unless an explicit price ID is set.
-     *
-     * @var ?string $productPriceId
-     */
-    #[\Speakeasy\Serializer\Annotation\SerializedName('product_price_id')]
-    public ?string $productPriceId;
-
-    /**
      * ID of the discount to apply to the checkout. If the discount is not applicable anymore when opening the checkout link, it'll be ignored.
      *
      * @var ?string $discountId
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('discount_id')]
     public ?string $discountId;
-
-    /**
-     *
-     * @var ProductPriceRecurringFixed|ProductPriceRecurringCustom|ProductPriceRecurringFree|ProductPriceOneTimeFixed|ProductPriceOneTimeCustom|ProductPriceOneTimeFree|null $productPrice
-     */
-    #[\Speakeasy\Serializer\Annotation\SerializedName('product_price')]
-    #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\ProductPriceRecurringFixed|\Polar\Models\Components\ProductPriceRecurringCustom|\Polar\Models\Components\ProductPriceRecurringFree|\Polar\Models\Components\ProductPriceOneTimeFixed|\Polar\Models\Components\ProductPriceOneTimeCustom|\Polar\Models\Components\ProductPriceOneTimeFree|null')]
-    public ProductPriceRecurringFixed|ProductPriceRecurringCustom|ProductPriceRecurringFree|ProductPriceOneTimeFixed|ProductPriceOneTimeCustom|ProductPriceOneTimeFree|null $productPrice;
 
     /**
      *
@@ -148,19 +166,21 @@ class CheckoutLink
      * @param  PaymentProcessor  $paymentProcessor
      * @param  string  $clientSecret
      * @param  bool  $allowDiscountCodes
+     * @param  string  $organizationId
+     * @param  array<CheckoutLinkProduct>  $products
      * @param  string  $productId
+     * @param  string  $productPriceId
      * @param  CheckoutLinkProduct  $product
+     * @param  LegacyRecurringProductPriceFixed|LegacyRecurringProductPriceCustom|LegacyRecurringProductPriceFree|ProductPriceFixed|ProductPriceCustom|ProductPriceFree  $productPrice
      * @param  string  $url
      * @param  ?\DateTime  $modifiedAt
      * @param  ?string  $successUrl
      * @param  ?string  $label
-     * @param  ?string  $productPriceId
      * @param  ?string  $discountId
-     * @param  ProductPriceRecurringFixed|ProductPriceRecurringCustom|ProductPriceRecurringFree|ProductPriceOneTimeFixed|ProductPriceOneTimeCustom|ProductPriceOneTimeFree|null  $productPrice
      * @param  DiscountFixedOnceForeverDurationBase|DiscountFixedRepeatDurationBase|DiscountPercentageOnceForeverDurationBase|DiscountPercentageRepeatDurationBase|null  $discount
      * @phpstan-pure
      */
-    public function __construct(\DateTime $createdAt, string $id, array $metadata, PaymentProcessor $paymentProcessor, string $clientSecret, bool $allowDiscountCodes, string $productId, CheckoutLinkProduct $product, string $url, ?\DateTime $modifiedAt = null, ?string $successUrl = null, ?string $label = null, ?string $productPriceId = null, ?string $discountId = null, ProductPriceRecurringFixed|ProductPriceRecurringCustom|ProductPriceRecurringFree|ProductPriceOneTimeFixed|ProductPriceOneTimeCustom|ProductPriceOneTimeFree|null $productPrice = null, DiscountFixedOnceForeverDurationBase|DiscountFixedRepeatDurationBase|DiscountPercentageOnceForeverDurationBase|DiscountPercentageRepeatDurationBase|null $discount = null)
+    public function __construct(\DateTime $createdAt, string $id, array $metadata, PaymentProcessor $paymentProcessor, string $clientSecret, bool $allowDiscountCodes, string $organizationId, array $products, string $productId, string $productPriceId, CheckoutLinkProduct $product, LegacyRecurringProductPriceFixed|LegacyRecurringProductPriceCustom|LegacyRecurringProductPriceFree|ProductPriceFixed|ProductPriceCustom|ProductPriceFree $productPrice, string $url, ?\DateTime $modifiedAt = null, ?string $successUrl = null, ?string $label = null, ?string $discountId = null, DiscountFixedOnceForeverDurationBase|DiscountFixedRepeatDurationBase|DiscountPercentageOnceForeverDurationBase|DiscountPercentageRepeatDurationBase|null $discount = null)
     {
         $this->createdAt = $createdAt;
         $this->id = $id;
@@ -168,15 +188,17 @@ class CheckoutLink
         $this->paymentProcessor = $paymentProcessor;
         $this->clientSecret = $clientSecret;
         $this->allowDiscountCodes = $allowDiscountCodes;
+        $this->organizationId = $organizationId;
+        $this->products = $products;
         $this->productId = $productId;
+        $this->productPriceId = $productPriceId;
         $this->product = $product;
+        $this->productPrice = $productPrice;
         $this->url = $url;
         $this->modifiedAt = $modifiedAt;
         $this->successUrl = $successUrl;
         $this->label = $label;
-        $this->productPriceId = $productPriceId;
         $this->discountId = $discountId;
-        $this->productPrice = $productPrice;
         $this->discount = $discount;
     }
 }

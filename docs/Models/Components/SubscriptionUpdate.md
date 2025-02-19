@@ -3,13 +3,13 @@
 
 ## Supported Types
 
-### `Components\SubscriptionUpdatePrice`
+### `Components\SubscriptionUpdateProduct`
 
 ```php
 /**
-* @var Components\SubscriptionUpdatePrice
+* @var Components\SubscriptionUpdateProduct
 */
-Components\SubscriptionUpdatePrice $value = /* values here */
+Components\SubscriptionUpdateProduct $value = /* values here */
 ```
 
 ### `Components\SubscriptionCancel`

@@ -1,9 +1,0 @@
-# SubscriptionUpdatePrice
-
-
-## Fields
-
-| Field                                                                                                      | Type                                                                                                       | Required                                                                                                   | Description                                                                                                |
-| ---------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------- |
-| `productPriceId`                                                                                           | *string*                                                                                                   | :heavy_check_mark:                                                                                         | Update subscription to another price.                                                                      |
-| `prorationBehavior`                                                                                        | [?Components\SubscriptionProrationBehavior](../../Models/Components/SubscriptionProrationBehavior.md)      | :heavy_minus_sign:                                                                                         | Determine how to handle the proration billing. If not provided, will use the default organization setting. |

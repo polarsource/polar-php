@@ -35,22 +35,22 @@ class CustomerPortalOrganizationsGetResponse
     /**
      * Successful Response
      *
-     * @var ?Components\Organization $organization
+     * @var ?Components\CustomerOrganization $customerOrganization
      */
-    public ?Components\Organization $organization = null;
+    public ?Components\CustomerOrganization $customerOrganization = null;
 
     /**
      * @param  string  $contentType
      * @param  int  $statusCode
      * @param  \Psr\Http\Message\ResponseInterface  $rawResponse
-     * @param  ?Components\Organization  $organization
+     * @param  ?Components\CustomerOrganization  $customerOrganization
      * @phpstan-pure
      */
-    public function __construct(string $contentType, int $statusCode, \Psr\Http\Message\ResponseInterface $rawResponse, ?Components\Organization $organization = null)
+    public function __construct(string $contentType, int $statusCode, \Psr\Http\Message\ResponseInterface $rawResponse, ?Components\CustomerOrganization $customerOrganization = null)
     {
         $this->contentType = $contentType;
         $this->statusCode = $statusCode;
         $this->rawResponse = $rawResponse;
-        $this->organization = $organization;
+        $this->customerOrganization = $customerOrganization;
     }
 }
