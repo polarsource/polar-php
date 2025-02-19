@@ -49,10 +49,10 @@ class CustomerUpdate
     /**
      * $taxId
      *
-     * @var ?array<string|TaxIDFormat> $taxId
+     * @var ?array<string|TaxIDFormat|null> $taxId
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('tax_id')]
-    #[\Speakeasy\Serializer\Annotation\Type('array<string|\Polar\Models\Components\TaxIDFormat>|null')]
+    #[\Speakeasy\Serializer\Annotation\Type('array<string|\Polar\Models\Components\TaxIDFormat|null>|null')]
     #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
     public ?array $taxId = null;
 
@@ -61,7 +61,7 @@ class CustomerUpdate
      * @param  ?string  $email
      * @param  ?string  $name
      * @param  ?Address  $billingAddress
-     * @param  ?array<string|TaxIDFormat>  $taxId
+     * @param  ?array<string|TaxIDFormat|null>  $taxId
      * @phpstan-pure
      */
     public function __construct(?array $metadata = null, ?string $email = null, ?string $name = null, ?Address $billingAddress = null, ?array $taxId = null)

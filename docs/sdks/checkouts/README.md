@@ -5,14 +5,62 @@
 
 ### Available Operations
 
-* [~~create~~](#create) - Create Checkout :warning: **Deprecated** Use [create](docs/sdks/custom/README.md#create) instead.
-* [~~get~~](#get) - Get Checkout :warning: **Deprecated**
+* [clientGet](#clientget) - Get Checkout Session from Client
+* [create](#create) - Create Checkout Session
+* [get](#get) - Get Checkout Session
+* [list](#list) - List Checkout Sessions
 
-## ~~create~~
+## clientGet
+
+Get a checkout session by client secret.
+
+### Example Usage
+
+```php
+declare(strict_types=1);
+
+require 'vendor/autoload.php';
+
+use Polar;
+
+$sdk = Polar\Polar::builder()
+    ->setSecurity(
+        '<YOUR_BEARER_TOKEN_HERE>'
+    )
+    ->build();
+
+
+
+$response = $sdk->checkouts->clientGet(
+    clientSecret: '<value>'
+);
+
+if ($response->checkoutPublic !== null) {
+    // handle response
+}
+```
+
+### Parameters
+
+| Parameter                           | Type                                | Required                            | Description                         |
+| ----------------------------------- | ----------------------------------- | ----------------------------------- | ----------------------------------- |
+| `clientSecret`                      | *string*                            | :heavy_check_mark:                  | The checkout session client secret. |
+
+### Response
+
+**[?Operations\CheckoutsClientGetResponse](../../Models/Operations/CheckoutsClientGetResponse.md)**
+
+### Errors
+
+| Error Type                 | Status Code                | Content Type               |
+| -------------------------- | -------------------------- | -------------------------- |
+| Errors\ResourceNotFound    | 404                        | application/json           |
+| Errors\HTTPValidationError | 422                        | application/json           |
+| Errors\APIException        | 4XX, 5XX                   | \*/\*                      |
+
+## create
 
 Create a checkout session.
-
-> :warning: **DEPRECATED**: This API is deprecated. We recommend you to use the new custom checkout API, which is more flexible and powerful. Please refer to the documentation for more information.. Use `create` instead.
 
 ### Example Usage
 
@@ -30,25 +78,24 @@ $sdk = Polar\Polar::builder()
     )
     ->build();
 
-$request = new Components\CheckoutLegacyCreate(
-    productPriceId: '<value>',
-    successUrl: 'https://probable-heating.com/',
+$request = new Components\CheckoutProductCreate(
+    productId: '<value>',
 );
 
 $response = $sdk->checkouts->create(
     request: $request
 );
 
-if ($response->checkoutLegacy !== null) {
+if ($response->checkout !== null) {
     // handle response
 }
 ```
 
 ### Parameters
 
-| Parameter                                                                          | Type                                                                               | Required                                                                           | Description                                                                        |
-| ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- |
-| `$request`                                                                         | [Components\CheckoutLegacyCreate](../../Models/Components/CheckoutLegacyCreate.md) | :heavy_check_mark:                                                                 | The request object to use for the request.                                         |
+| Parameter                                                                                                                                      | Type                                                                                                                                           | Required                                                                                                                                       | Description                                                                                                                                    |
+| ---------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------- |
+| `$request`                                                                                                                                     | [Components\CheckoutProductsCreate\|Components\CheckoutProductCreate\|Components\CheckoutPriceCreate](../../Models/Components/CheckoutCreate.md) | :heavy_check_mark:                                                                                                                             | The request object to use for the request.                                                                                                     |
 
 ### Response
 
@@ -61,11 +108,9 @@ if ($response->checkoutLegacy !== null) {
 | Errors\HTTPValidationError | 422                        | application/json           |
 | Errors\APIException        | 4XX, 5XX                   | \*/\*                      |
 
-## ~~get~~
+## get
 
-Get an active checkout session by ID.
-
-> :warning: **DEPRECATED**: This API is deprecated. We recommend you to use the new custom checkout API, which is more flexible and powerful. Please refer to the documentation for more information..
+Get a checkout session by ID.
 
 ### Example Usage
 
@@ -85,23 +130,75 @@ $sdk = Polar\Polar::builder()
 
 
 $response = $sdk->checkouts->get(
-    id: '<id>'
+    id: '<value>'
 );
 
-if ($response->checkoutLegacy !== null) {
+if ($response->checkout !== null) {
     // handle response
 }
 ```
 
 ### Parameters
 
-| Parameter          | Type               | Required           | Description        |
-| ------------------ | ------------------ | ------------------ | ------------------ |
-| `id`               | *string*           | :heavy_check_mark: | N/A                |
+| Parameter                | Type                     | Required                 | Description              |
+| ------------------------ | ------------------------ | ------------------------ | ------------------------ |
+| `id`                     | *string*                 | :heavy_check_mark:       | The checkout session ID. |
 
 ### Response
 
 **[?Operations\CheckoutsGetResponse](../../Models/Operations/CheckoutsGetResponse.md)**
+
+### Errors
+
+| Error Type                 | Status Code                | Content Type               |
+| -------------------------- | -------------------------- | -------------------------- |
+| Errors\ResourceNotFound    | 404                        | application/json           |
+| Errors\HTTPValidationError | 422                        | application/json           |
+| Errors\APIException        | 4XX, 5XX                   | \*/\*                      |
+
+## list
+
+List checkout sessions.
+
+### Example Usage
+
+```php
+declare(strict_types=1);
+
+require 'vendor/autoload.php';
+
+use Polar;
+use Polar\Models\Operations;
+
+$sdk = Polar\Polar::builder()
+    ->setSecurity(
+        '<YOUR_BEARER_TOKEN_HERE>'
+    )
+    ->build();
+
+$request = new Operations\CheckoutsListRequest();
+
+$responses = $sdk->checkouts->list(
+    request: $request
+);
+
+
+foreach ($responses as $response) {
+    if ($response->statusCode === 200) {
+        // handle response
+    }
+}
+```
+
+### Parameters
+
+| Parameter                                                                          | Type                                                                               | Required                                                                           | Description                                                                        |
+| ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- |
+| `$request`                                                                         | [Operations\CheckoutsListRequest](../../Models/Operations/CheckoutsListRequest.md) | :heavy_check_mark:                                                                 | The request object to use for the request.                                         |
+
+### Response
+
+**[?Operations\CheckoutsListResponse](../../Models/Operations/CheckoutsListResponse.md)**
 
 ### Errors
 

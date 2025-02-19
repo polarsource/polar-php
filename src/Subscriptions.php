@@ -444,12 +444,12 @@ class Subscriptions
      *
      * Update a subscription.
      *
-     * @param  Components\SubscriptionUpdatePrice|Components\SubscriptionCancel  $subscriptionUpdate
+     * @param  Components\SubscriptionUpdateProduct|Components\SubscriptionCancel  $subscriptionUpdate
      * @param  string  $id
      * @return Operations\SubscriptionsUpdateResponse
      * @throws \Polar\Models\Errors\APIException
      */
-    public function update(Components\SubscriptionUpdatePrice|Components\SubscriptionCancel $subscriptionUpdate, string $id, ?Options $options = null): Operations\SubscriptionsUpdateResponse
+    public function update(Components\SubscriptionUpdateProduct|Components\SubscriptionCancel $subscriptionUpdate, string $id, ?Options $options = null): Operations\SubscriptionsUpdateResponse
     {
         $request = new Operations\SubscriptionsUpdateRequest(
             id: $id,

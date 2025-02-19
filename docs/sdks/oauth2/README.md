@@ -63,7 +63,7 @@ declare(strict_types=1);
 require 'vendor/autoload.php';
 
 use Polar;
-use Polar\Models\Operations;
+use Polar\Models\Components;
 
 $sdk = Polar\Polar::builder()
     ->setSecurity(
@@ -71,7 +71,7 @@ $sdk = Polar\Polar::builder()
     )
     ->build();
 
-$request = new Operations\Oauth2IntrospectTokenIntrospectTokenRequest(
+$request = new Components\IntrospectTokenRequest(
     token: '<value>',
     clientId: '<id>',
     clientSecret: '<value>',
@@ -88,9 +88,9 @@ if ($response->introspectTokenResponse !== null) {
 
 ### Parameters
 
-| Parameter                                                                                                                        | Type                                                                                                                             | Required                                                                                                                         | Description                                                                                                                      |
-| -------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------- |
-| `$request`                                                                                                                       | [Operations\Oauth2IntrospectTokenIntrospectTokenRequest](../../Models/Operations/Oauth2IntrospectTokenIntrospectTokenRequest.md) | :heavy_check_mark:                                                                                                               | The request object to use for the request.                                                                                       |
+| Parameter                                                                              | Type                                                                                   | Required                                                                               | Description                                                                            |
+| -------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- |
+| `$request`                                                                             | [Components\IntrospectTokenRequest](../../Models/Components/IntrospectTokenRequest.md) | :heavy_check_mark:                                                                     | The request object to use for the request.                                             |
 
 ### Response
 
@@ -122,7 +122,7 @@ $sdk = Polar\Polar::builder()
     )
     ->build();
 
-$request = new Components\Onev11oauth21tokenPostXComponentsAuthorizationCodeTokenRequest(
+$request = new Components\AuthorizationCodeTokenRequest(
     clientId: '<id>',
     clientSecret: '<value>',
     code: '<value>',
@@ -140,9 +140,9 @@ if ($response->tokenResponse !== null) {
 
 ### Parameters
 
-| Parameter                                                                                                                                                                                             | Type                                                                                                                                                                                                  | Required                                                                                                                                                                                              | Description                                                                                                                                                                                           |
-| ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `$request`                                                                                                                                                                                            | [Components\Onev11oauth21tokenPostXComponentsAuthorizationCodeTokenRequest\|Components\Onev11oauth21tokenPostXComponentsRefreshTokenRequest](../../Models/Operations/Oauth2RequestTokenRequestBody.md) | :heavy_check_mark:                                                                                                                                                                                    | The request object to use for the request.                                                                                                                                                            |
+| Parameter                                                                                                                           | Type                                                                                                                                | Required                                                                                                                            | Description                                                                                                                         |
+| ----------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------- |
+| `$request`                                                                                                                          | [Components\AuthorizationCodeTokenRequest\|Components\RefreshTokenRequest](../../Models/Operations/Oauth2RequestTokenRequestBody.md) | :heavy_check_mark:                                                                                                                  | The request object to use for the request.                                                                                          |
 
 ### Response
 
@@ -166,7 +166,7 @@ declare(strict_types=1);
 require 'vendor/autoload.php';
 
 use Polar;
-use Polar\Models\Operations;
+use Polar\Models\Components;
 
 $sdk = Polar\Polar::builder()
     ->setSecurity(
@@ -174,7 +174,7 @@ $sdk = Polar\Polar::builder()
     )
     ->build();
 
-$request = new Operations\Oauth2RevokeTokenRevokeTokenRequest(
+$request = new Components\RevokeTokenRequest(
     token: '<value>',
     clientId: '<id>',
     clientSecret: '<value>',
@@ -191,9 +191,9 @@ if ($response->revokeTokenResponse !== null) {
 
 ### Parameters
 
-| Parameter                                                                                                        | Type                                                                                                             | Required                                                                                                         | Description                                                                                                      |
-| ---------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------- |
-| `$request`                                                                                                       | [Operations\Oauth2RevokeTokenRevokeTokenRequest](../../Models/Operations/Oauth2RevokeTokenRevokeTokenRequest.md) | :heavy_check_mark:                                                                                               | The request object to use for the request.                                                                       |
+| Parameter                                                                      | Type                                                                           | Required                                                                       | Description                                                                    |
+| ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ |
+| `$request`                                                                     | [Components\RevokeTokenRequest](../../Models/Components/RevokeTokenRequest.md) | :heavy_check_mark:                                                             | The request object to use for the request.                                     |
 
 ### Response
 

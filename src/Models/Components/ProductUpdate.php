@@ -40,6 +40,16 @@ class ProductUpdate
     public ?string $description = null;
 
     /**
+     * The recurring interval of the product. If `None`, the product is a one-time purchase. **Can only be set on legacy recurring products. Once set, it can't be changed.**
+     *
+     * @var ?SubscriptionRecurringInterval $recurringInterval
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('recurring_interval')]
+    #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\SubscriptionRecurringInterval|null')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
+    public ?SubscriptionRecurringInterval $recurringInterval = null;
+
+    /**
      * Whether the product is archived. If `true`, the product won't be available for purchase anymore. Existing customers will still have access to their benefits, and subscriptions will continue normally.
      *
      * @var ?bool $isArchived
@@ -51,10 +61,10 @@ class ProductUpdate
     /**
      * List of available prices for this product. If you want to keep existing prices, include them in the list as an `ExistingProductPrice` object.
      *
-     * @var ?array<ExistingProductPrice|ProductPriceRecurringFixedCreate|ProductPriceRecurringFreeCreate|ProductPriceOneTimeFixedCreate|ProductPriceOneTimeCustomCreate|ProductPriceOneTimeFreeCreate> $prices
+     * @var ?array<ExistingProductPrice|ProductPriceFixedCreate|ProductPriceCustomCreate|ProductPriceFreeCreate> $prices
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('prices')]
-    #[\Speakeasy\Serializer\Annotation\Type('array<\Polar\Models\Components\ExistingProductPrice|\Polar\Models\Components\ProductPriceRecurringFixedCreate|\Polar\Models\Components\ProductPriceRecurringFreeCreate|\Polar\Models\Components\ProductPriceOneTimeFixedCreate|\Polar\Models\Components\ProductPriceOneTimeCustomCreate|\Polar\Models\Components\ProductPriceOneTimeFreeCreate>|null')]
+    #[\Speakeasy\Serializer\Annotation\Type('array<\Polar\Models\Components\ExistingProductPrice|\Polar\Models\Components\ProductPriceFixedCreate|\Polar\Models\Components\ProductPriceCustomCreate|\Polar\Models\Components\ProductPriceFreeCreate>|null')]
     #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
     public ?array $prices = null;
 
@@ -82,17 +92,19 @@ class ProductUpdate
      * @param  ?array<string, string|int|bool>  $metadata
      * @param  ?string  $name
      * @param  ?string  $description
+     * @param  ?SubscriptionRecurringInterval  $recurringInterval
      * @param  ?bool  $isArchived
-     * @param  ?array<ExistingProductPrice|ProductPriceRecurringFixedCreate|ProductPriceRecurringFreeCreate|ProductPriceOneTimeFixedCreate|ProductPriceOneTimeCustomCreate|ProductPriceOneTimeFreeCreate>  $prices
+     * @param  ?array<ExistingProductPrice|ProductPriceFixedCreate|ProductPriceCustomCreate|ProductPriceFreeCreate>  $prices
      * @param  ?array<string>  $medias
      * @param  ?array<AttachedCustomFieldCreate>  $attachedCustomFields
      * @phpstan-pure
      */
-    public function __construct(?array $metadata = null, ?string $name = null, ?string $description = null, ?bool $isArchived = null, ?array $prices = null, ?array $medias = null, ?array $attachedCustomFields = null)
+    public function __construct(?array $metadata = null, ?string $name = null, ?string $description = null, ?SubscriptionRecurringInterval $recurringInterval = null, ?bool $isArchived = null, ?array $prices = null, ?array $medias = null, ?array $attachedCustomFields = null)
     {
         $this->metadata = $metadata;
         $this->name = $name;
         $this->description = $description;
+        $this->recurringInterval = $recurringInterval;
         $this->isArchived = $isArchived;
         $this->prices = $prices;
         $this->medias = $medias;

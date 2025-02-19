@@ -12,48 +12,30 @@
 Components\ExistingProductPrice $value = /* values here */
 ```
 
-### `Components\ProductPriceRecurringFixedCreate`
+### `Components\ProductPriceFixedCreate`
 
 ```php
 /**
-* @var Components\ProductPriceRecurringFixedCreate
+* @var Components\ProductPriceFixedCreate
 */
-Components\ProductPriceRecurringFixedCreate $value = /* values here */
+Components\ProductPriceFixedCreate $value = /* values here */
 ```
 
-### `Components\ProductPriceRecurringFreeCreate`
+### `Components\ProductPriceCustomCreate`
 
 ```php
 /**
-* @var Components\ProductPriceRecurringFreeCreate
+* @var Components\ProductPriceCustomCreate
 */
-Components\ProductPriceRecurringFreeCreate $value = /* values here */
+Components\ProductPriceCustomCreate $value = /* values here */
 ```
 
-### `Components\ProductPriceOneTimeFixedCreate`
+### `Components\ProductPriceFreeCreate`
 
 ```php
 /**
-* @var Components\ProductPriceOneTimeFixedCreate
+* @var Components\ProductPriceFreeCreate
 */
-Components\ProductPriceOneTimeFixedCreate $value = /* values here */
-```
-
-### `Components\ProductPriceOneTimeCustomCreate`
-
-```php
-/**
-* @var Components\ProductPriceOneTimeCustomCreate
-*/
-Components\ProductPriceOneTimeCustomCreate $value = /* values here */
-```
-
-### `Components\ProductPriceOneTimeFreeCreate`
-
-```php
-/**
-* @var Components\ProductPriceOneTimeFreeCreate
-*/
-Components\ProductPriceOneTimeFreeCreate $value = /* values here */
+Components\ProductPriceFreeCreate $value = /* values here */
 ```
 

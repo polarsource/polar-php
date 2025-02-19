@@ -13,6 +13,8 @@ namespace Polar\Models\Components;
  * CheckoutPriceCreate - Create a new checkout session from a product price.
  *
  *
+ * **Deprecated**: Use `CheckoutProductsCreate` instead.
+ *
  * Metadata set on the checkout will be copied
  * to the resulting order and/or subscription.
  */
@@ -49,10 +51,10 @@ class CheckoutPriceCreate
     /**
      * Key-value object storing custom field values.
      *
-     * @var ?array<string, string|int|bool|\DateTime> $customFieldData
+     * @var ?array<string, string|int|bool|\DateTime|null> $customFieldData
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('custom_field_data')]
-    #[\Speakeasy\Serializer\Annotation\Type('array<string, string|int|bool|\DateTime>|null')]
+    #[\Speakeasy\Serializer\Annotation\Type('array<string, string|int|bool|\DateTime|null>|null')]
     #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
     public ?array $customFieldData = null;
 
@@ -182,7 +184,7 @@ class CheckoutPriceCreate
     /**
      * @param  string  $productPriceId
      * @param  ?array<string, string|int|bool>  $metadata
-     * @param  ?array<string, string|int|bool|\DateTime>  $customFieldData
+     * @param  ?array<string, string|int|bool|\DateTime|null>  $customFieldData
      * @param  ?bool  $allowDiscountCodes
      * @param  ?array<string, string|int|bool>  $customerMetadata
      * @param  ?string  $discountId

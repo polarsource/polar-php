@@ -122,11 +122,11 @@ class Subscription
 
     /**
      *
-     * @var ProductPriceRecurringFixed|ProductPriceRecurringCustom|ProductPriceRecurringFree $price
+     * @var LegacyRecurringProductPriceFixed|LegacyRecurringProductPriceCustom|LegacyRecurringProductPriceFree|ProductPriceFixed|ProductPriceCustom|ProductPriceFree $price
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('price')]
-    #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\ProductPriceRecurringFixed|\Polar\Models\Components\ProductPriceRecurringCustom|\Polar\Models\Components\ProductPriceRecurringFree')]
-    public ProductPriceRecurringFixed|ProductPriceRecurringCustom|ProductPriceRecurringFree $price;
+    #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\LegacyRecurringProductPriceFixed|\Polar\Models\Components\LegacyRecurringProductPriceCustom|\Polar\Models\Components\LegacyRecurringProductPriceFree|\Polar\Models\Components\ProductPriceFixed|\Polar\Models\Components\ProductPriceCustom|\Polar\Models\Components\ProductPriceFree')]
+    public LegacyRecurringProductPriceFixed|LegacyRecurringProductPriceCustom|LegacyRecurringProductPriceFree|ProductPriceFixed|ProductPriceCustom|ProductPriceFree $price;
 
     /**
      * Last modification timestamp of the object.
@@ -217,10 +217,10 @@ class Subscription
     /**
      * Key-value object storing custom field values.
      *
-     * @var ?array<string, string|int|bool|\DateTime> $customFieldData
+     * @var ?array<string, string|int|bool|\DateTime|null> $customFieldData
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('custom_field_data')]
-    #[\Speakeasy\Serializer\Annotation\Type('array<string, string|int|bool|\DateTime>|null')]
+    #[\Speakeasy\Serializer\Annotation\Type('array<string, string|int|bool|\DateTime|null>|null')]
     #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
     public ?array $customFieldData = null;
 
@@ -247,7 +247,7 @@ class Subscription
      * @param  string  $userId
      * @param  SubscriptionUser  $user
      * @param  Product  $product
-     * @param  ProductPriceRecurringFixed|ProductPriceRecurringCustom|ProductPriceRecurringFree  $price
+     * @param  LegacyRecurringProductPriceFixed|LegacyRecurringProductPriceCustom|LegacyRecurringProductPriceFree|ProductPriceFixed|ProductPriceCustom|ProductPriceFree  $price
      * @param  ?\DateTime  $modifiedAt
      * @param  ?int  $amount
      * @param  ?string  $currency
@@ -260,11 +260,11 @@ class Subscription
      * @param  ?string  $checkoutId
      * @param  ?CustomerCancellationReason  $customerCancellationReason
      * @param  ?string  $customerCancellationComment
-     * @param  ?array<string, string|int|bool|\DateTime>  $customFieldData
+     * @param  ?array<string, string|int|bool|\DateTime|null>  $customFieldData
      * @param  DiscountFixedOnceForeverDurationBase|DiscountFixedRepeatDurationBase|DiscountPercentageOnceForeverDurationBase|DiscountPercentageRepeatDurationBase|null  $discount
      * @phpstan-pure
      */
-    public function __construct(\DateTime $createdAt, string $id, SubscriptionRecurringInterval $recurringInterval, SubscriptionStatus $status, \DateTime $currentPeriodStart, bool $cancelAtPeriodEnd, string $customerId, string $productId, string $priceId, array $metadata, SubscriptionCustomer $customer, string $userId, SubscriptionUser $user, Product $product, ProductPriceRecurringFixed|ProductPriceRecurringCustom|ProductPriceRecurringFree $price, ?\DateTime $modifiedAt = null, ?int $amount = null, ?string $currency = null, ?\DateTime $currentPeriodEnd = null, ?\DateTime $canceledAt = null, ?\DateTime $startedAt = null, ?\DateTime $endsAt = null, ?\DateTime $endedAt = null, ?string $discountId = null, ?string $checkoutId = null, ?CustomerCancellationReason $customerCancellationReason = null, ?string $customerCancellationComment = null, ?array $customFieldData = null, DiscountFixedOnceForeverDurationBase|DiscountFixedRepeatDurationBase|DiscountPercentageOnceForeverDurationBase|DiscountPercentageRepeatDurationBase|null $discount = null)
+    public function __construct(\DateTime $createdAt, string $id, SubscriptionRecurringInterval $recurringInterval, SubscriptionStatus $status, \DateTime $currentPeriodStart, bool $cancelAtPeriodEnd, string $customerId, string $productId, string $priceId, array $metadata, SubscriptionCustomer $customer, string $userId, SubscriptionUser $user, Product $product, LegacyRecurringProductPriceFixed|LegacyRecurringProductPriceCustom|LegacyRecurringProductPriceFree|ProductPriceFixed|ProductPriceCustom|ProductPriceFree $price, ?\DateTime $modifiedAt = null, ?int $amount = null, ?string $currency = null, ?\DateTime $currentPeriodEnd = null, ?\DateTime $canceledAt = null, ?\DateTime $startedAt = null, ?\DateTime $endsAt = null, ?\DateTime $endedAt = null, ?string $discountId = null, ?string $checkoutId = null, ?CustomerCancellationReason $customerCancellationReason = null, ?string $customerCancellationComment = null, ?array $customFieldData = null, DiscountFixedOnceForeverDurationBase|DiscountFixedRepeatDurationBase|DiscountPercentageOnceForeverDurationBase|DiscountPercentageRepeatDurationBase|null $discount = null)
     {
         $this->createdAt = $createdAt;
         $this->id = $id;

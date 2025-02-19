@@ -90,37 +90,90 @@ $request = new Components\WebhookCheckoutCreatedPayload(
         metadata: [
             'key' => 962818,
         ],
+        products: [
+            new Components\CheckoutProduct(
+                createdAt: Utils\Utils::parseDateTime('2023-01-08T00:22:16.025Z'),
+                id: '<value>',
+                name: '<value>',
+                isRecurring: false,
+                isArchived: false,
+                organizationId: '<value>',
+                prices: [
+                    new Components\LegacyRecurringProductPriceFixed(
+                        createdAt: Utils\Utils::parseDateTime('2023-08-19T22:18:44.316Z'),
+                        id: '<value>',
+                        isArchived: false,
+                        productId: '<value>',
+                        recurringInterval: Components\SubscriptionRecurringInterval::Month,
+                        priceCurrency: '<value>',
+                        priceAmount: 767272,
+                        modifiedAt: Utils\Utils::parseDateTime('2024-10-18T10:45:47.767Z'),
+                    ),
+                ],
+                benefits: [
+                    new Components\BenefitBase(
+                        createdAt: Utils\Utils::parseDateTime('2024-07-02T09:46:29.338Z'),
+                        id: '<value>',
+                        type: Components\BenefitType::Downloadables,
+                        description: 'indeed border opposite overload interior shady pfft clear-cut weight',
+                        selectable: false,
+                        deletable: false,
+                        organizationId: '<value>',
+                        modifiedAt: Utils\Utils::parseDateTime('2025-07-18T09:38:21.277Z'),
+                    ),
+                ],
+                medias: [
+                    new Components\ProductMediaFileRead(
+                        id: '<value>',
+                        organizationId: '<value>',
+                        name: '<value>',
+                        path: '/usr/include',
+                        mimeType: '<value>',
+                        size: 674791,
+                        isUploaded: false,
+                        createdAt: Utils\Utils::parseDateTime('2023-06-01T05:58:41.763Z'),
+                        sizeReadable: '<value>',
+                        publicUrl: 'https://unripe-cricket.net',
+                        storageVersion: '<value>',
+                        checksumEtag: '<value>',
+                        checksumSha256Base64: '<value>',
+                        checksumSha256Hex: '<value>',
+                        lastModifiedAt: Utils\Utils::parseDateTime('2025-12-22T08:06:55.176Z'),
+                        version: '<value>',
+                    ),
+                ],
+                modifiedAt: Utils\Utils::parseDateTime('2024-06-16T08:01:15.524Z'),
+                description: 'progress pacemaker via archaeology scientific forsaken who suspiciously mmm',
+                recurringInterval: Components\SubscriptionRecurringInterval::Year,
+            ),
+        ],
         product: new Components\CheckoutProduct(
-            createdAt: Utils\Utils::parseDateTime('2023-01-08T00:22:16.025Z'),
+            createdAt: Utils\Utils::parseDateTime('2025-03-12T22:11:16.367Z'),
             id: '<value>',
             name: '<value>',
             isRecurring: false,
             isArchived: false,
             organizationId: '<value>',
             prices: [
-                new Components\ProductPriceRecurringCustom(
-                    createdAt: Utils\Utils::parseDateTime('2023-08-19T22:18:44.316Z'),
+                new Components\LegacyRecurringProductPriceFree(
+                    createdAt: Utils\Utils::parseDateTime('2024-12-28T06:38:59.235Z'),
                     id: '<value>',
                     isArchived: false,
                     productId: '<value>',
-                    priceCurrency: '<value>',
-                    recurringInterval: Components\SubscriptionRecurringInterval::Month,
-                    modifiedAt: Utils\Utils::parseDateTime('2025-04-20T22:18:45.464Z'),
-                    minimumAmount: 598949,
-                    maximumAmount: 500372,
-                    presetAmount: 688646,
+                    recurringInterval: Components\SubscriptionRecurringInterval::Year,
+                    modifiedAt: Utils\Utils::parseDateTime('2023-03-21T13:22:46.065Z'),
                 ),
             ],
             benefits: [
                 new Components\BenefitBase(
-                    createdAt: Utils\Utils::parseDateTime('2025-07-22T12:18:02.066Z'),
+                    createdAt: Utils\Utils::parseDateTime('2024-03-26T15:35:46.813Z'),
                     id: '<value>',
-                    type: Components\BenefitType::Downloadables,
-                    description: 'rotten relative for embarrassment untidy long-term near honestly separate',
+                    type: Components\BenefitType::LicenseKeys,
+                    description: 'phew advertisement where since hollow massive offensively painfully',
                     selectable: false,
                     deletable: false,
                     organizationId: '<value>',
-                    modifiedAt: Utils\Utils::parseDateTime('2025-01-09T13:42:03.592Z'),
+                    modifiedAt: Utils\Utils::parseDateTime('2025-11-05T09:21:59.104Z'),
                 ),
             ],
             medias: [
@@ -128,37 +181,42 @@ $request = new Components\WebhookCheckoutCreatedPayload(
                     id: '<value>',
                     organizationId: '<value>',
                     name: '<value>',
-                    path: '/etc/namedb',
+                    path: '/home',
                     mimeType: '<value>',
-                    size: 879649,
+                    size: 371516,
                     isUploaded: false,
-                    createdAt: Utils\Utils::parseDateTime('2025-09-12T19:41:14.261Z'),
+                    createdAt: Utils\Utils::parseDateTime('2023-08-10T01:28:46.591Z'),
                     sizeReadable: '<value>',
-                    publicUrl: 'https://rectangular-worth.info/',
+                    publicUrl: 'https://ethical-remark.info',
                     storageVersion: '<value>',
                     checksumEtag: '<value>',
                     checksumSha256Base64: '<value>',
                     checksumSha256Hex: '<value>',
-                    lastModifiedAt: Utils\Utils::parseDateTime('2025-06-29T02:23:28.661Z'),
+                    lastModifiedAt: Utils\Utils::parseDateTime('2025-12-14T07:51:16.955Z'),
                     version: '<value>',
                 ),
             ],
-            modifiedAt: Utils\Utils::parseDateTime('2024-05-07T04:30:09.331Z'),
-            description: 'provided publicize astride oof mockingly if opposite coagulate pro',
+            modifiedAt: Utils\Utils::parseDateTime('2025-12-25T08:36:21.199Z'),
+            description: 'cross-contamination infamous quintuple patiently abaft deploy sustenance um as',
+            recurringInterval: Components\SubscriptionRecurringInterval::Year,
         ),
-        productPrice: new Components\ProductPriceRecurringFree(
-            createdAt: Utils\Utils::parseDateTime('2024-12-28T06:38:59.235Z'),
+        productPrice: new Components\LegacyRecurringProductPriceCustom(
+            createdAt: Utils\Utils::parseDateTime('2023-04-10T17:20:04.418Z'),
             id: '<value>',
             isArchived: false,
             productId: '<value>',
             recurringInterval: Components\SubscriptionRecurringInterval::Year,
-            modifiedAt: Utils\Utils::parseDateTime('2023-03-21T13:22:46.065Z'),
+            priceCurrency: '<value>',
+            modifiedAt: Utils\Utils::parseDateTime('2023-12-06T23:12:58.389Z'),
+            minimumAmount: 747352,
+            maximumAmount: 472727,
+            presetAmount: 659621,
         ),
         attachedCustomFields: [
             new Components\AttachedCustomField(
                 customFieldId: '<value>',
-                customField: new Components\CustomFieldNumber(
-                    createdAt: Utils\Utils::parseDateTime('2025-09-13T23:13:23.872Z'),
+                customField: new Components\CustomFieldDate(
+                    createdAt: Utils\Utils::parseDateTime('2023-10-01T15:46:42.769Z'),
                     id: '<value>',
                     metadata: [
                         'key' => false,
@@ -166,37 +224,36 @@ $request = new Components\WebhookCheckoutCreatedPayload(
                     slug: '<value>',
                     name: '<value>',
                     organizationId: '<value>',
-                    properties: new Components\CustomFieldNumberProperties(),
-                    modifiedAt: Utils\Utils::parseDateTime('2025-03-11T01:07:03.723Z'),
+                    properties: new Components\CustomFieldDateProperties(),
+                    modifiedAt: Utils\Utils::parseDateTime('2023-05-31T07:21:27.686Z'),
                 ),
-                order: 169862,
+                order: 845619,
                 required: false,
             ),
         ],
         customerMetadata: [
             'key' => '<value>',
         ],
-        modifiedAt: Utils\Utils::parseDateTime('2023-09-27T02:51:25.666Z'),
+        modifiedAt: Utils\Utils::parseDateTime('2024-09-22T21:52:32.431Z'),
         embedOrigin: '<value>',
-        amount: 587344,
-        taxAmount: 753909,
-        currency: 'Leone',
-        subtotalAmount: 299632,
-        totalAmount: 617409,
+        amount: 687130,
+        taxAmount: 965804,
+        currency: 'Cape Verde Escudo',
+        subtotalAmount: 343582,
+        totalAmount: 867451,
         discountId: '<value>',
         customerId: '<value>',
         customerName: '<value>',
         customerEmail: '<value>',
         customerIpAddress: '<value>',
         customerBillingAddress: new Components\Address(
-            country: 'British Indian Ocean Territory (Chagos Archipelago)',
+            country: 'Guatemala',
         ),
         customerTaxId: '<id>',
-        discount: new Components\CheckoutDiscountPercentageRepeatDuration(
+        discount: new Components\CheckoutDiscountPercentageOnceForeverDuration(
             duration: Components\DiscountDuration::Repeating,
-            durationInMonths: 918364,
-            type: Components\DiscountType::Fixed,
-            basisPoints: 271748,
+            type: Components\DiscountType::Percentage,
+            basisPoints: 584663,
             id: '<value>',
             name: '<value>',
             code: '<value>',
@@ -286,18 +343,10 @@ foreach ($responses as $response) {
 
 ### [checkouts](docs/sdks/checkouts/README.md)
 
-* [~~create~~](docs/sdks/checkouts/README.md#create) - Create Checkout :warning: **Deprecated** Use [create](docs/sdks/custom/README.md#create) instead.
-* [~~get~~](docs/sdks/checkouts/README.md#get) - Get Checkout :warning: **Deprecated**
-
-#### [checkouts->custom](docs/sdks/custom/README.md)
-
-* [clientConfirm](docs/sdks/custom/README.md#clientconfirm) - Confirm Checkout Session from Client
-* [clientGet](docs/sdks/custom/README.md#clientget) - Get Checkout Session from Client
-* [clientUpdate](docs/sdks/custom/README.md#clientupdate) - Update Checkout Session from Client
-* [create](docs/sdks/custom/README.md#create) - Create Checkout Session
-* [get](docs/sdks/custom/README.md#get) - Get Checkout Session
-* [list](docs/sdks/custom/README.md#list) - List Checkout Sessions
-* [update](docs/sdks/custom/README.md#update) - Update Checkout Session
+* [clientGet](docs/sdks/checkouts/README.md#clientget) - Get Checkout Session from Client
+* [create](docs/sdks/checkouts/README.md#create) - Create Checkout Session
+* [get](docs/sdks/checkouts/README.md#get) - Get Checkout Session
+* [list](docs/sdks/checkouts/README.md#list) - List Checkout Sessions
 
 ### [customerPortal](docs/sdks/customerportal/README.md)
 
@@ -534,6 +583,7 @@ declare(strict_types=1);
 require 'vendor/autoload.php';
 
 use Polar;
+use Polar\Models\Errors;
 use Polar\Models\Operations;
 
 $sdk = Polar\Polar::builder()
@@ -571,10 +621,10 @@ try {
 
 You can override the default server globally using the `setServer(string $serverName)` builder method when initializing the SDK client instance. The selected server will then be used as the default on the operations that use it. This table lists the names associated with the available servers:
 
-| Name         | Server                         |
-| ------------ | ------------------------------ |
-| `production` | `https://api.polar.sh`         |
-| `sandbox`    | `https://sandbox-api.polar.sh` |
+| Name         | Server                         | Description            |
+| ------------ | ------------------------------ | ---------------------- |
+| `production` | `https://api.polar.sh`         | Production environment |
+| `sandbox`    | `https://sandbox-api.polar.sh` | Sandbox environment    |
 
 #### Example
 
@@ -587,7 +637,7 @@ use Polar;
 use Polar\Models\Operations;
 
 $sdk = Polar\Polar::builder()
-    ->setServer("sandbox")
+    ->setServer('sandbox'
     ->setSecurity(
         '<YOUR_BEARER_TOKEN_HERE>'
     )

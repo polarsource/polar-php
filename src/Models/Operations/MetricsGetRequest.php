@@ -54,12 +54,12 @@ class MetricsGetRequest
     public string|array|null $productId = null;
 
     /**
-     * Filter by product price type. `recurring` will filter data corresponding to subscriptions creations or renewals. `one_time` will filter data corresponding to one-time purchases.
+     * Filter by billing type. `recurring` will filter data corresponding to subscriptions creations or renewals. `one_time` will filter data corresponding to one-time purchases.
      *
-     * @var Components\ProductPriceType|array<Components\ProductPriceType>|null $productPriceType
+     * @var Components\ProductBillingType|array<Components\ProductBillingType>|null $billingType
      */
-    #[SpeakeasyMetadata('queryParam:style=form,explode=true,name=product_price_type')]
-    public Components\ProductPriceType|array|null $productPriceType = null;
+    #[SpeakeasyMetadata('queryParam:style=form,explode=true,name=billing_type')]
+    public Components\ProductBillingType|array|null $billingType = null;
 
     /**
      * Filter by customer ID.
@@ -75,18 +75,18 @@ class MetricsGetRequest
      * @param  Components\TimeInterval  $interval
      * @param  string|array<string>|null  $organizationId
      * @param  string|array<string>|null  $productId
-     * @param  Components\ProductPriceType|array<Components\ProductPriceType>|null  $productPriceType
+     * @param  Components\ProductBillingType|array<Components\ProductBillingType>|null  $billingType
      * @param  string|array<string>|null  $customerId
      * @phpstan-pure
      */
-    public function __construct(LocalDate $startDate, LocalDate $endDate, Components\TimeInterval $interval, string|array|null $organizationId = null, string|array|null $productId = null, Components\ProductPriceType|array|null $productPriceType = null, string|array|null $customerId = null)
+    public function __construct(LocalDate $startDate, LocalDate $endDate, Components\TimeInterval $interval, string|array|null $organizationId = null, string|array|null $productId = null, Components\ProductBillingType|array|null $billingType = null, string|array|null $customerId = null)
     {
         $this->startDate = $startDate;
         $this->endDate = $endDate;
         $this->interval = $interval;
         $this->organizationId = $organizationId;
         $this->productId = $productId;
-        $this->productPriceType = $productPriceType;
+        $this->billingType = $billingType;
         $this->customerId = $customerId;
     }
 }

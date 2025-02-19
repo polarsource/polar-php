@@ -58,10 +58,10 @@ class CustomerCreate
     /**
      * $taxId
      *
-     * @var ?array<string|TaxIDFormat> $taxId
+     * @var ?array<string|TaxIDFormat|null> $taxId
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('tax_id')]
-    #[\Speakeasy\Serializer\Annotation\Type('array<string|\Polar\Models\Components\TaxIDFormat>|null')]
+    #[\Speakeasy\Serializer\Annotation\Type('array<string|\Polar\Models\Components\TaxIDFormat|null>|null')]
     #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
     public ?array $taxId = null;
 
@@ -79,7 +79,7 @@ class CustomerCreate
      * @param  ?array<string, string|int|bool>  $metadata
      * @param  ?string  $name
      * @param  ?Address  $billingAddress
-     * @param  ?array<string|TaxIDFormat>  $taxId
+     * @param  ?array<string|TaxIDFormat|null>  $taxId
      * @param  ?string  $organizationId
      * @phpstan-pure
      */

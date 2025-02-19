@@ -3,21 +3,21 @@
 
 ## Supported Types
 
-### `Components\Onev11oauth21tokenPostXComponentsAuthorizationCodeTokenRequest`
+### `Components\AuthorizationCodeTokenRequest`
 
 ```php
 /**
-* @var Components\Onev11oauth21tokenPostXComponentsAuthorizationCodeTokenRequest
+* @var Components\AuthorizationCodeTokenRequest
 */
-Components\Onev11oauth21tokenPostXComponentsAuthorizationCodeTokenRequest $value = /* values here */
+Components\AuthorizationCodeTokenRequest $value = /* values here */
 ```
 
-### `Components\Onev11oauth21tokenPostXComponentsRefreshTokenRequest`
+### `Components\RefreshTokenRequest`
 
 ```php
 /**
-* @var Components\Onev11oauth21tokenPostXComponentsRefreshTokenRequest
+* @var Components\RefreshTokenRequest
 */
-Components\Onev11oauth21tokenPostXComponentsRefreshTokenRequest $value = /* values here */
+Components\RefreshTokenRequest $value = /* values here */
 ```
 

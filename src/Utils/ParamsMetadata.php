@@ -82,5 +82,17 @@ class ParamsMetadata
             dateTimeFormat: $dateTimeFormat,
             serializeToString: $serializeToString
         );
+
+    }
+
+    /**
+     * @return array<string,mixed>
+     */
+    public function encodingArray(): array
+    {
+        return [
+            'dateTimeFormat' => $this->dateTimeFormat,
+            'serializeToString' => $this->serializeToString,
+        ];
     }
 }

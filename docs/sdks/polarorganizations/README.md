@@ -32,7 +32,7 @@ $response = $sdk->customerPortal->organizations->get(
     slug: '<value>'
 );
 
-if ($response->organization !== null) {
+if ($response->customerOrganization !== null) {
     // handle response
 }
 ```
