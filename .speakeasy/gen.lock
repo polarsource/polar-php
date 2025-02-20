@@ -5,8 +5,8 @@ management:
   docVersion: 0.1.0
   speakeasyVersion: 1.497.1
   generationVersion: 2.517.3
-  releaseVersion: 0.1.0
-  configChecksum: dbb4ecb56ff0285a6ba56edd0919a120
+  releaseVersion: 0.1.1
+  configChecksum: 7776cdd2656f41b6e5bdc21993cbb932
   repoURL: https://github.com/polarsource/polar-php.git
   installationURL: https://github.com/polarsource/polar-php
   published: true
