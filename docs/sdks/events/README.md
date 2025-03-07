@@ -13,6 +13,8 @@
 
 Get an event by ID.
 
+**Scopes**: `events:read` `events:write`
+
 ### Example Usage
 
 ```php
@@ -61,6 +63,8 @@ if ($response->event !== null) {
 
 Ingest batch of events.
 
+**Scopes**: `events:write`
+
 ### Example Usage
 
 ```php
@@ -82,6 +86,7 @@ $request = new Components\EventsIngest(
         new Components\EventCreateExternalCustomer(
             name: '<value>',
             externalCustomerId: '<id>',
+            organizationId: '1dbfc517-0bbf-4301-9ba8-555ca42b9737',
         ),
     ],
 );
@@ -116,6 +121,8 @@ if ($response->eventsIngestResponse !== null) {
 
 List events.
 
+**Scopes**: `events:read` `events:write`
+
 ### Example Usage
 
 ```php
@@ -132,7 +139,11 @@ $sdk = Polar\Polar::builder()
     )
     ->build();
 
-$request = new Operations\EventsListRequest();
+$request = new Operations\EventsListRequest(
+    organizationId: [
+        '1dbfc517-0bbf-4301-9ba8-555ca42b9737',
+    ],
+);
 
 $responses = $sdk->events->list(
     request: $request

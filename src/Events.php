@@ -50,6 +50,8 @@ class Events
      *
      * Get an event by ID.
      *
+     * **Scopes**: `events:read` `events:write`
+     *
      * @param  string  $id
      * @return Operations\EventsGetResponse
      * @throws \Polar\Models\Errors\APIException
@@ -136,6 +138,8 @@ class Events
      *
      * Ingest batch of events.
      *
+     * **Scopes**: `events:write`
+     *
      * @param  Components\EventsIngest  $request
      * @return Operations\EventsIngestResponse
      * @throws \Polar\Models\Errors\APIException
@@ -212,6 +216,8 @@ class Events
      * List Events
      *
      * List events.
+     *
+     * **Scopes**: `events:read` `events:write`
      *
      * @param  ?Operations\EventsListRequest  $request
      * @return Operations\EventsListResponse
@@ -329,6 +335,8 @@ class Events
      * List Events
      *
      * List events.
+     *
+     * **Scopes**: `events:read` `events:write`
      *
      * @param  ?Operations\EventsListRequest  $request
      * @return \Generator<Operations\EventsListResponse>

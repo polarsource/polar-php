@@ -15,6 +15,8 @@
 
 Create a discount.
 
+**Scopes**: `discounts:write`
+
 ### Example Usage
 
 ```php
@@ -37,6 +39,7 @@ $request = new Components\DiscountFixedRepeatDurationCreate(
     type: Components\DiscountType::Fixed,
     amount: 69025,
     name: '<value>',
+    organizationId: '1dbfc517-0bbf-4301-9ba8-555ca42b9737',
 );
 
 $response = $sdk->discounts->create(
@@ -68,6 +71,8 @@ if ($response->discount !== null) {
 ## delete
 
 Delete a discount.
+
+**Scopes**: `discounts:write`
 
 ### Example Usage
 
@@ -117,6 +122,8 @@ if ($response->statusCode === 200) {
 
 Get a discount by ID.
 
+**Scopes**: `discounts:read` `discounts:write`
+
 ### Example Usage
 
 ```php
@@ -165,6 +172,8 @@ if ($response->discount !== null) {
 
 List discounts.
 
+**Scopes**: `discounts:read` `discounts:write`
+
 ### Example Usage
 
 ```php
@@ -181,7 +190,11 @@ $sdk = Polar\Polar::builder()
     )
     ->build();
 
-$request = new Operations\DiscountsListRequest();
+$request = new Operations\DiscountsListRequest(
+    organizationId: [
+        '1dbfc517-0bbf-4301-9ba8-555ca42b9737',
+    ],
+);
 
 $responses = $sdk->discounts->list(
     request: $request
@@ -215,6 +228,8 @@ foreach ($responses as $response) {
 ## update
 
 Update a discount.
+
+**Scopes**: `discounts:write`
 
 ### Example Usage
 

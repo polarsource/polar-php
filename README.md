@@ -223,7 +223,7 @@ $request = new Components\WebhookCheckoutCreatedPayload(
                     ],
                     slug: '<value>',
                     name: '<value>',
-                    organizationId: '<value>',
+                    organizationId: '1dbfc517-0bbf-4301-9ba8-555ca42b9737',
                     properties: new Components\CustomFieldDateProperties(),
                     modifiedAt: Utils\Utils::parseDateTime('2023-05-31T07:21:27.686Z'),
                 ),
@@ -247,9 +247,10 @@ $request = new Components\WebhookCheckoutCreatedPayload(
         customerEmail: '<value>',
         customerIpAddress: '<value>',
         customerBillingAddress: new Components\Address(
-            country: 'Guatemala',
+            country: 'SE',
         ),
         customerTaxId: '<id>',
+        customerExternalId: '<id>',
         discount: new Components\CheckoutDiscountPercentageOnceForeverDuration(
             duration: Components\DiscountDuration::Repeating,
             type: Components\DiscountType::Percentage,
@@ -298,7 +299,11 @@ $sdk = Polar\Polar::builder()
     )
     ->build();
 
-$request = new Operations\ExternalOrganizationsListRequest();
+$request = new Operations\ExternalOrganizationsListRequest(
+    organizationId: [
+        '1dbfc517-0bbf-4301-9ba8-555ca42b9737',
+    ],
+);
 
 $responses = $sdk->externalOrganizations->list(
     request: $request
@@ -311,6 +316,35 @@ foreach ($responses as $response) {
     }
 }
 ```
+
+### Per-Operation Security Schemes
+
+Some operations in this SDK require the security scheme to be specified at the request level. For example:
+```php
+declare(strict_types=1);
+
+require 'vendor/autoload.php';
+
+use Polar;
+use Polar\Models\Operations;
+
+$sdk = Polar\Polar::builder()->build();
+
+
+$requestSecurity = new Operations\CustomerPortalBenefitGrantsGetSecurity(
+    customerSession: '<YOUR_BEARER_TOKEN_HERE>',
+);
+
+$response = $sdk->customerPortal->benefitGrants->get(
+    security: $requestSecurity,
+    id: '<value>'
+
+);
+
+if ($response->customerBenefitGrant !== null) {
+    // handle response
+}
+```
 <!-- End Authentication [security] -->
 
 <!-- Start Available Resources and Operations [operations] -->
@@ -318,11 +352,6 @@ foreach ($responses as $response) {
 
 <details open>
 <summary>Available methods</summary>
-
-### [advertisements](docs/sdks/advertisements/README.md)
-
-* [get](docs/sdks/advertisements/README.md#get) - Get Campaign
-* [list](docs/sdks/advertisements/README.md#list) - List Campaigns
 
 ### [benefits](docs/sdks/benefits/README.md)
 
@@ -359,7 +388,11 @@ foreach ($responses as $response) {
 
 #### [customerPortal->customers](docs/sdks/polarcustomers/README.md)
 
+* [addPaymentMethod](docs/sdks/polarcustomers/README.md#addpaymentmethod) - Add Customer Payment Method
+* [deletePaymentMethod](docs/sdks/polarcustomers/README.md#deletepaymentmethod) - Delete Customer Payment Method
 * [get](docs/sdks/polarcustomers/README.md#get) - Get Customer
+* [getPaymentMethods](docs/sdks/polarcustomers/README.md#getpaymentmethods) - Get Customer Payment Methods
+* [update](docs/sdks/polarcustomers/README.md#update) - Update Customer
 
 #### [customerPortal->downloadables](docs/sdks/downloadables/README.md)
 
@@ -395,9 +428,14 @@ foreach ($responses as $response) {
 
 * [create](docs/sdks/customers/README.md#create) - Create Customer
 * [delete](docs/sdks/customers/README.md#delete) - Delete Customer
+* [deleteExternal](docs/sdks/customers/README.md#deleteexternal) - Delete Customer by External ID
 * [get](docs/sdks/customers/README.md#get) - Get Customer
+* [getExternal](docs/sdks/customers/README.md#getexternal) - Get Customer by External ID
+* [getState](docs/sdks/customers/README.md#getstate) - Get Customer State
+* [getStateExternal](docs/sdks/customers/README.md#getstateexternal) - Get Customer State by External ID
 * [list](docs/sdks/customers/README.md#list) - List Customers
 * [update](docs/sdks/customers/README.md#update) - Update Customer
+* [updateExternal](docs/sdks/customers/README.md#updateexternal) - Update Customer by External ID
 
 ### [customerSessions](docs/sdks/customersessions/README.md)
 
@@ -539,7 +577,11 @@ $sdk = Polar\Polar::builder()
     )
     ->build();
 
-$request = new Operations\ExternalOrganizationsListRequest();
+$request = new Operations\ExternalOrganizationsListRequest(
+    organizationId: [
+        '1dbfc517-0bbf-4301-9ba8-555ca42b9737',
+    ],
+);
 
 $responses = $sdk->externalOrganizations->list(
     request: $request
@@ -593,7 +635,11 @@ $sdk = Polar\Polar::builder()
     ->build();
 
 try {
-    $request = new Operations\ExternalOrganizationsListRequest();
+    $request = new Operations\ExternalOrganizationsListRequest(
+        organizationId: [
+            '1dbfc517-0bbf-4301-9ba8-555ca42b9737',
+        ],
+    );
 
     $responses = $sdk->externalOrganizations->list(
         request: $request
@@ -637,13 +683,17 @@ use Polar;
 use Polar\Models\Operations;
 
 $sdk = Polar\Polar::builder()
-    ->setServer('sandbox'
+    ->setServer('sandbox')
     ->setSecurity(
         '<YOUR_BEARER_TOKEN_HERE>'
     )
     ->build();
 
-$request = new Operations\ExternalOrganizationsListRequest();
+$request = new Operations\ExternalOrganizationsListRequest(
+    organizationId: [
+        '1dbfc517-0bbf-4301-9ba8-555ca42b9737',
+    ],
+);
 
 $responses = $sdk->externalOrganizations->list(
     request: $request
@@ -675,7 +725,11 @@ $sdk = Polar\Polar::builder()
     )
     ->build();
 
-$request = new Operations\ExternalOrganizationsListRequest();
+$request = new Operations\ExternalOrganizationsListRequest(
+    organizationId: [
+        '1dbfc517-0bbf-4301-9ba8-555ca42b9737',
+    ],
+);
 
 $responses = $sdk->externalOrganizations->list(
     request: $request

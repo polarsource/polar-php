@@ -14,6 +14,8 @@
 
 Create an organization.
 
+**Scopes**: `organizations:write`
+
 ### Example Usage
 
 ```php
@@ -65,6 +67,8 @@ if ($response->organization !== null) {
 
 Get an organization by ID.
 
+**Scopes**: `organizations:read` `organizations:write`
+
 ### Example Usage
 
 ```php
@@ -83,7 +87,7 @@ $sdk = Polar\Polar::builder()
 
 
 $response = $sdk->organizations->get(
-    id: '<value>'
+    id: '1dbfc517-0bbf-4301-9ba8-555ca42b9737'
 );
 
 if ($response->organization !== null) {
@@ -93,9 +97,9 @@ if ($response->organization !== null) {
 
 ### Parameters
 
-| Parameter          | Type               | Required           | Description        |
-| ------------------ | ------------------ | ------------------ | ------------------ |
-| `id`               | *string*           | :heavy_check_mark: | N/A                |
+| Parameter                            | Type                                 | Required                             | Description                          | Example                              |
+| ------------------------------------ | ------------------------------------ | ------------------------------------ | ------------------------------------ | ------------------------------------ |
+| `id`                                 | *string*                             | :heavy_check_mark:                   | N/A                                  | 1dbfc517-0bbf-4301-9ba8-555ca42b9737 |
 
 ### Response
 
@@ -112,6 +116,8 @@ if ($response->organization !== null) {
 ## list
 
 List organizations.
+
+**Scopes**: `organizations:read` `organizations:write`
 
 ### Example Usage
 
@@ -136,7 +142,7 @@ $responses = $sdk->organizations->list(
     limit: 10,
     slug: '<value>',
     sorting: [
-        Components\OrganizationSortProperty::MinusName,
+        Components\OrganizationSortProperty::Name,
     ]
 
 );
@@ -173,6 +179,8 @@ foreach ($responses as $response) {
 
 Update an organization.
 
+**Scopes**: `organizations:write`
+
 ### Example Usage
 
 ```php
@@ -192,7 +200,7 @@ $sdk = Polar\Polar::builder()
 $organizationUpdate = new Components\OrganizationUpdate();
 
 $response = $sdk->organizations->update(
-    id: '<value>',
+    id: '1dbfc517-0bbf-4301-9ba8-555ca42b9737',
     organizationUpdate: $organizationUpdate
 
 );
@@ -204,10 +212,10 @@ if ($response->organization !== null) {
 
 ### Parameters
 
-| Parameter                                                                      | Type                                                                           | Required                                                                       | Description                                                                    |
-| ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ |
-| `id`                                                                           | *string*                                                                       | :heavy_check_mark:                                                             | N/A                                                                            |
-| `organizationUpdate`                                                           | [Components\OrganizationUpdate](../../Models/Components/OrganizationUpdate.md) | :heavy_check_mark:                                                             | N/A                                                                            |
+| Parameter                                                                      | Type                                                                           | Required                                                                       | Description                                                                    | Example                                                                        |
+| ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ |
+| `id`                                                                           | *string*                                                                       | :heavy_check_mark:                                                             | N/A                                                                            | 1dbfc517-0bbf-4301-9ba8-555ca42b9737                                           |
+| `organizationUpdate`                                                           | [Components\OrganizationUpdate](../../Models/Components/OrganizationUpdate.md) | :heavy_check_mark:                                                             | N/A                                                                            |                                                                                |
 
 ### Response
 

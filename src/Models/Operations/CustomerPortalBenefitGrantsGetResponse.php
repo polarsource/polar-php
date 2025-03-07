@@ -35,18 +35,18 @@ class CustomerPortalBenefitGrantsGetResponse
     /**
      * Successful Response
      *
-     * @var Components\CustomerBenefitGrantDiscord|Components\CustomerBenefitGrantGitHubRepository|Components\CustomerBenefitGrantDownloadables|Components\CustomerBenefitGrantLicenseKeys|Components\CustomerBenefitGrantAds|Components\CustomerBenefitGrantCustom|null $customerBenefitGrant
+     * @var Components\CustomerBenefitGrantDiscord|Components\CustomerBenefitGrantGitHubRepository|Components\CustomerBenefitGrantDownloadables|Components\CustomerBenefitGrantLicenseKeys|Components\CustomerBenefitGrantCustom|null $customerBenefitGrant
      */
-    public Components\CustomerBenefitGrantDiscord|Components\CustomerBenefitGrantGitHubRepository|Components\CustomerBenefitGrantDownloadables|Components\CustomerBenefitGrantLicenseKeys|Components\CustomerBenefitGrantAds|Components\CustomerBenefitGrantCustom|null $customerBenefitGrant = null;
+    public Components\CustomerBenefitGrantDiscord|Components\CustomerBenefitGrantGitHubRepository|Components\CustomerBenefitGrantDownloadables|Components\CustomerBenefitGrantLicenseKeys|Components\CustomerBenefitGrantCustom|null $customerBenefitGrant = null;
 
     /**
      * @param  string  $contentType
      * @param  int  $statusCode
      * @param  \Psr\Http\Message\ResponseInterface  $rawResponse
-     * @param  Components\CustomerBenefitGrantDiscord|Components\CustomerBenefitGrantGitHubRepository|Components\CustomerBenefitGrantDownloadables|Components\CustomerBenefitGrantLicenseKeys|Components\CustomerBenefitGrantAds|Components\CustomerBenefitGrantCustom|null  $customerBenefitGrant
+     * @param  Components\CustomerBenefitGrantDiscord|Components\CustomerBenefitGrantGitHubRepository|Components\CustomerBenefitGrantDownloadables|Components\CustomerBenefitGrantLicenseKeys|Components\CustomerBenefitGrantCustom|null  $customerBenefitGrant
      * @phpstan-pure
      */
-    public function __construct(string $contentType, int $statusCode, \Psr\Http\Message\ResponseInterface $rawResponse, Components\CustomerBenefitGrantDiscord|Components\CustomerBenefitGrantGitHubRepository|Components\CustomerBenefitGrantDownloadables|Components\CustomerBenefitGrantLicenseKeys|Components\CustomerBenefitGrantAds|Components\CustomerBenefitGrantCustom|null $customerBenefitGrant = null)
+    public function __construct(string $contentType, int $statusCode, \Psr\Http\Message\ResponseInterface $rawResponse, Components\CustomerBenefitGrantDiscord|Components\CustomerBenefitGrantGitHubRepository|Components\CustomerBenefitGrantDownloadables|Components\CustomerBenefitGrantLicenseKeys|Components\CustomerBenefitGrantCustom|null $customerBenefitGrant = null)
     {
         $this->contentType = $contentType;
         $this->statusCode = $statusCode;

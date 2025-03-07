@@ -7,7 +7,7 @@ Sent when a new product is created.
 
 ## Fields
 
-| Field                                                    | Type                                                     | Required                                                 | Description                                              |
-| -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- |
-| `type`                                                   | *string*                                                 | :heavy_check_mark:                                       | N/A                                                      |
-| `data`                                                   | [Components\Product](../../Models/Components/Product.md) | :heavy_check_mark:                                       | A product.                                               |
+| Field                                                    | Type                                                     | Required                                                 | Description                                              | Example                                                  |
+| -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- |
+| `type`                                                   | *string*                                                 | :heavy_check_mark:                                       | N/A                                                      | product.created                                          |
+| `data`                                                   | [Components\Product](../../Models/Components/Product.md) | :heavy_check_mark:                                       | A product.                                               |                                                          |

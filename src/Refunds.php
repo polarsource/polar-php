@@ -50,6 +50,8 @@ class Refunds
      *
      * Create a refund.
      *
+     * **Scopes**: `refunds:write`
+     *
      * @param  Components\RefundCreate  $request
      * @return Operations\RefundsCreateResponse
      * @throws \Polar\Models\Errors\APIException
@@ -156,6 +158,8 @@ class Refunds
      * List Refunds
      *
      * List products.
+     *
+     * **Scopes**: `refunds:read` `refunds:write`
      *
      * @param  ?Operations\RefundsListRequest  $request
      * @return Operations\RefundsListResponse
@@ -272,6 +276,8 @@ class Refunds
      * List Refunds
      *
      * List products.
+     *
+     * **Scopes**: `refunds:read` `refunds:write`
      *
      * @param  ?Operations\RefundsListRequest  $request
      * @return \Generator<Operations\RefundsListResponse>

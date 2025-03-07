@@ -105,6 +105,15 @@ class CheckoutProductsCreate
     public ?string $customerId = null;
 
     /**
+     * ID of the customer in your system. If a matching customer exists on Polar, the resulting order will be linked to this customer. Otherwise, a new customer will be created with this external ID set.
+     *
+     * @var ?string $customerExternalId
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('customer_external_id')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
+    public ?string $customerExternalId = null;
+
+    /**
      *
      * @var ?string $customerName
      */
@@ -190,6 +199,7 @@ class CheckoutProductsCreate
      * @param  ?string  $discountId
      * @param  ?int  $amount
      * @param  ?string  $customerId
+     * @param  ?string  $customerExternalId
      * @param  ?string  $customerName
      * @param  ?string  $customerEmail
      * @param  ?string  $customerIpAddress
@@ -200,7 +210,7 @@ class CheckoutProductsCreate
      * @param  ?string  $embedOrigin
      * @phpstan-pure
      */
-    public function __construct(array $products, ?array $metadata = null, ?array $customFieldData = null, ?array $customerMetadata = null, ?string $discountId = null, ?int $amount = null, ?string $customerId = null, ?string $customerName = null, ?string $customerEmail = null, ?string $customerIpAddress = null, ?Address $customerBillingAddress = null, ?string $customerTaxId = null, ?string $subscriptionId = null, ?string $successUrl = null, ?string $embedOrigin = null, ?bool $allowDiscountCodes = true)
+    public function __construct(array $products, ?array $metadata = null, ?array $customFieldData = null, ?array $customerMetadata = null, ?string $discountId = null, ?int $amount = null, ?string $customerId = null, ?string $customerExternalId = null, ?string $customerName = null, ?string $customerEmail = null, ?string $customerIpAddress = null, ?Address $customerBillingAddress = null, ?string $customerTaxId = null, ?string $subscriptionId = null, ?string $successUrl = null, ?string $embedOrigin = null, ?bool $allowDiscountCodes = true)
     {
         $this->products = $products;
         $this->metadata = $metadata;
@@ -209,6 +219,7 @@ class CheckoutProductsCreate
         $this->discountId = $discountId;
         $this->amount = $amount;
         $this->customerId = $customerId;
+        $this->customerExternalId = $customerExternalId;
         $this->customerName = $customerName;
         $this->customerEmail = $customerEmail;
         $this->customerIpAddress = $customerIpAddress;

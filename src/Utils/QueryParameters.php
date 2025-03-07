@@ -189,9 +189,9 @@ class QueryParameters
         switch (gettype($value)) {
             case 'object':
                 $items = [];
-                $cls = get_class($value);
-                if ($cls === 'Brick\\Math\\BigDecimal' || $cls === 'Brick\\Math\\BigInteger') {
-                    $queryParams[$metadata->name] = valToString($value, []);
+
+                if ($value instanceof \Brick\Math\BigDecimal || $value instanceof \Brick\Math\BigInteger || $value instanceof \Brick\DateTime\LocalDate || $value instanceof \DateTime || $value instanceof \UnitEnum) {
+                    $queryParams[$metadata->name] = valToString($value, $metadata->encodingArray());
                     break;
                 }
                 foreach ($value as $field => $val) { /** @phpstan-ignore-line */

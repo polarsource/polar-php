@@ -12,7 +12,9 @@
 
 ## cancel
 
-Cancel a subscription of the authenticated customer or user.
+Cancel a subscription of the authenticated customer.
+
+**Scopes**: `customer_portal:write`
 
 ### Example Usage
 
@@ -22,17 +24,19 @@ declare(strict_types=1);
 require 'vendor/autoload.php';
 
 use Polar;
+use Polar\Models\Operations;
 
-$sdk = Polar\Polar::builder()
-    ->setSecurity(
-        '<YOUR_BEARER_TOKEN_HERE>'
-    )
-    ->build();
+$sdk = Polar\Polar::builder()->build();
 
 
+$requestSecurity = new Operations\CustomerPortalSubscriptionsCancelSecurity(
+    customerSession: '<YOUR_BEARER_TOKEN_HERE>',
+);
 
 $response = $sdk->customerPortal->subscriptions->cancel(
+    security: $requestSecurity,
     id: '<value>'
+
 );
 
 if ($response->customerSubscription !== null) {
@@ -42,9 +46,10 @@ if ($response->customerSubscription !== null) {
 
 ### Parameters
 
-| Parameter            | Type                 | Required             | Description          |
-| -------------------- | -------------------- | -------------------- | -------------------- |
-| `id`                 | *string*             | :heavy_check_mark:   | The subscription ID. |
+| Parameter                                                                                                                    | Type                                                                                                                         | Required                                                                                                                     | Description                                                                                                                  |
+| ---------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------- |
+| `security`                                                                                                                   | [Operations\CustomerPortalSubscriptionsCancelSecurity](../../Models/Operations/CustomerPortalSubscriptionsCancelSecurity.md) | :heavy_check_mark:                                                                                                           | The security requirements to use for the request.                                                                            |
+| `id`                                                                                                                         | *string*                                                                                                                     | :heavy_check_mark:                                                                                                           | The subscription ID.                                                                                                         |
 
 ### Response
 
@@ -61,7 +66,9 @@ if ($response->customerSubscription !== null) {
 
 ## get
 
-Get a subscription for the authenticated customer or user.
+Get a subscription for the authenticated customer.
+
+**Scopes**: `customer_portal:read` `customer_portal:write`
 
 ### Example Usage
 
@@ -71,17 +78,19 @@ declare(strict_types=1);
 require 'vendor/autoload.php';
 
 use Polar;
+use Polar\Models\Operations;
 
-$sdk = Polar\Polar::builder()
-    ->setSecurity(
-        '<YOUR_BEARER_TOKEN_HERE>'
-    )
-    ->build();
+$sdk = Polar\Polar::builder()->build();
 
 
+$requestSecurity = new Operations\CustomerPortalSubscriptionsGetSecurity(
+    customerSession: '<YOUR_BEARER_TOKEN_HERE>',
+);
 
 $response = $sdk->customerPortal->subscriptions->get(
+    security: $requestSecurity,
     id: '<value>'
+
 );
 
 if ($response->customerSubscription !== null) {
@@ -91,9 +100,10 @@ if ($response->customerSubscription !== null) {
 
 ### Parameters
 
-| Parameter            | Type                 | Required             | Description          |
-| -------------------- | -------------------- | -------------------- | -------------------- |
-| `id`                 | *string*             | :heavy_check_mark:   | The subscription ID. |
+| Parameter                                                                                                              | Type                                                                                                                   | Required                                                                                                               | Description                                                                                                            |
+| ---------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------- |
+| `security`                                                                                                             | [Operations\CustomerPortalSubscriptionsGetSecurity](../../Models/Operations/CustomerPortalSubscriptionsGetSecurity.md) | :heavy_check_mark:                                                                                                     | The security requirements to use for the request.                                                                      |
+| `id`                                                                                                                   | *string*                                                                                                               | :heavy_check_mark:                                                                                                     | The subscription ID.                                                                                                   |
 
 ### Response
 
@@ -109,7 +119,9 @@ if ($response->customerSubscription !== null) {
 
 ## list
 
-List subscriptions of the authenticated customer or user.
+List subscriptions of the authenticated customer.
+
+**Scopes**: `customer_portal:read` `customer_portal:write`
 
 ### Example Usage
 
@@ -121,16 +133,20 @@ require 'vendor/autoload.php';
 use Polar;
 use Polar\Models\Operations;
 
-$sdk = Polar\Polar::builder()
-    ->setSecurity(
-        '<YOUR_BEARER_TOKEN_HERE>'
-    )
-    ->build();
+$sdk = Polar\Polar::builder()->build();
 
-$request = new Operations\CustomerPortalSubscriptionsListRequest();
+$request = new Operations\CustomerPortalSubscriptionsListRequest(
+    organizationId: [
+        '1dbfc517-0bbf-4301-9ba8-555ca42b9737',
+    ],
+);
+$requestSecurity = new Operations\CustomerPortalSubscriptionsListSecurity(
+    customerSession: '<YOUR_BEARER_TOKEN_HERE>',
+);
 
 $responses = $sdk->customerPortal->subscriptions->list(
-    request: $request
+    request: $request,
+    security: $requestSecurity
 );
 
 
@@ -143,9 +159,10 @@ foreach ($responses as $response) {
 
 ### Parameters
 
-| Parameter                                                                                                              | Type                                                                                                                   | Required                                                                                                               | Description                                                                                                            |
-| ---------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------- |
-| `$request`                                                                                                             | [Operations\CustomerPortalSubscriptionsListRequest](../../Models/Operations/CustomerPortalSubscriptionsListRequest.md) | :heavy_check_mark:                                                                                                     | The request object to use for the request.                                                                             |
+| Parameter                                                                                                                | Type                                                                                                                     | Required                                                                                                                 | Description                                                                                                              |
+| ------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------ |
+| `$request`                                                                                                               | [Operations\CustomerPortalSubscriptionsListRequest](../../Models/Operations/CustomerPortalSubscriptionsListRequest.md)   | :heavy_check_mark:                                                                                                       | The request object to use for the request.                                                                               |
+| `security`                                                                                                               | [Operations\CustomerPortalSubscriptionsListSecurity](../../Models/Operations/CustomerPortalSubscriptionsListSecurity.md) | :heavy_check_mark:                                                                                                       | The security requirements to use for the request.                                                                        |
 
 ### Response
 
@@ -160,7 +177,9 @@ foreach ($responses as $response) {
 
 ## update
 
-Update a subscription of the authenticated customer or user.
+Update a subscription of the authenticated customer.
+
+**Scopes**: `customer_portal:write`
 
 ### Example Usage
 
@@ -171,16 +190,17 @@ require 'vendor/autoload.php';
 
 use Polar;
 use Polar\Models\Components;
+use Polar\Models\Operations;
 
-$sdk = Polar\Polar::builder()
-    ->setSecurity(
-        '<YOUR_BEARER_TOKEN_HERE>'
-    )
-    ->build();
+$sdk = Polar\Polar::builder()->build();
 
 
+$requestSecurity = new Operations\CustomerPortalSubscriptionsUpdateSecurity(
+    customerSession: '<YOUR_BEARER_TOKEN_HERE>',
+);
 
 $response = $sdk->customerPortal->subscriptions->update(
+    security: $requestSecurity,
     id: '<value>',
     customerSubscriptionUpdate: new Components\CustomerSubscriptionCancel()
 
@@ -195,6 +215,7 @@ if ($response->customerSubscription !== null) {
 
 | Parameter                                                                                                                                   | Type                                                                                                                                        | Required                                                                                                                                    | Description                                                                                                                                 |
 | ------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------- |
+| `security`                                                                                                                                  | [Operations\CustomerPortalSubscriptionsUpdateSecurity](../../Models/Operations/CustomerPortalSubscriptionsUpdateSecurity.md)                | :heavy_check_mark:                                                                                                                          | The security requirements to use for the request.                                                                                           |
 | `id`                                                                                                                                        | *string*                                                                                                                                    | :heavy_check_mark:                                                                                                                          | The subscription ID.                                                                                                                        |
 | `customerSubscriptionUpdate`                                                                                                                | [Components\CustomerSubscriptionUpdateProduct\|Components\CustomerSubscriptionCancel](../../Models/Components/CustomerSubscriptionUpdate.md) | :heavy_check_mark:                                                                                                                          | N/A                                                                                                                                         |
 

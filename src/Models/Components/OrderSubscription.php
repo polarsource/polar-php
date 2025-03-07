@@ -53,6 +53,7 @@ class OrderSubscription
     public SubscriptionStatus $status;
 
     /**
+     * The start timestamp of the current billing period.
      *
      * @var \DateTime $currentPeriodStart
      */
@@ -60,6 +61,7 @@ class OrderSubscription
     public \DateTime $currentPeriodStart;
 
     /**
+     * Whether the subscription will be canceled at the end of the current period.
      *
      * @var bool $cancelAtPeriodEnd
      */
@@ -67,6 +69,7 @@ class OrderSubscription
     public bool $cancelAtPeriodEnd;
 
     /**
+     * The ID of the subscribed customer.
      *
      * @var string $customerId
      */
@@ -74,6 +77,7 @@ class OrderSubscription
     public string $customerId;
 
     /**
+     * The ID of the subscribed product.
      *
      * @var string $productId
      */
@@ -81,6 +85,7 @@ class OrderSubscription
     public string $productId;
 
     /**
+     * The ID of the subscribed price.
      *
      * @var string $priceId
      */
@@ -104,6 +109,7 @@ class OrderSubscription
     public ?\DateTime $modifiedAt;
 
     /**
+     * The amount of the subscription.
      *
      * @var ?int $amount
      */
@@ -111,6 +117,7 @@ class OrderSubscription
     public ?int $amount;
 
     /**
+     * The currency of the subscription.
      *
      * @var ?string $currency
      */
@@ -118,6 +125,7 @@ class OrderSubscription
     public ?string $currency;
 
     /**
+     * The end timestamp of the current billing period.
      *
      * @var ?\DateTime $currentPeriodEnd
      */
@@ -125,6 +133,7 @@ class OrderSubscription
     public ?\DateTime $currentPeriodEnd;
 
     /**
+     * The timestamp when the subscription was canceled. The subscription might still be active if `cancel_at_period_end` is `true`.
      *
      * @var ?\DateTime $canceledAt
      */
@@ -132,6 +141,7 @@ class OrderSubscription
     public ?\DateTime $canceledAt;
 
     /**
+     * The timestamp when the subscription started.
      *
      * @var ?\DateTime $startedAt
      */
@@ -139,6 +149,7 @@ class OrderSubscription
     public ?\DateTime $startedAt;
 
     /**
+     * The timestamp when the subscription will end.
      *
      * @var ?\DateTime $endsAt
      */
@@ -146,6 +157,7 @@ class OrderSubscription
     public ?\DateTime $endsAt;
 
     /**
+     * The timestamp when the subscription ended.
      *
      * @var ?\DateTime $endedAt
      */
@@ -153,6 +165,7 @@ class OrderSubscription
     public ?\DateTime $endedAt;
 
     /**
+     * The ID of the applied discount, if any.
      *
      * @var ?string $discountId
      */

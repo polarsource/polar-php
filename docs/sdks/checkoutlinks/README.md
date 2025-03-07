@@ -15,6 +15,8 @@
 
 Create a checkout link.
 
+**Scopes**: `checkout_links:write`
+
 ### Example Usage
 
 ```php
@@ -65,6 +67,8 @@ if ($response->checkoutLink !== null) {
 
 Delete a checkout link.
 
+**Scopes**: `checkout_links:write`
+
 ### Example Usage
 
 ```php
@@ -112,6 +116,8 @@ if ($response->statusCode === 200) {
 ## get
 
 Get a checkout link by ID.
+
+**Scopes**: `checkout_links:read` `checkout_links:write`
 
 ### Example Usage
 
@@ -161,6 +167,8 @@ if ($response->checkoutLink !== null) {
 
 List checkout links.
 
+**Scopes**: `checkout_links:read` `checkout_links:write`
+
 ### Example Usage
 
 ```php
@@ -177,7 +185,11 @@ $sdk = Polar\Polar::builder()
     )
     ->build();
 
-$request = new Operations\CheckoutLinksListRequest();
+$request = new Operations\CheckoutLinksListRequest(
+    organizationId: [
+        '1dbfc517-0bbf-4301-9ba8-555ca42b9737',
+    ],
+);
 
 $responses = $sdk->checkoutLinks->list(
     request: $request
@@ -211,6 +223,8 @@ foreach ($responses as $response) {
 ## update
 
 Update a checkout link.
+
+**Scopes**: `checkout_links:write`
 
 ### Example Usage
 

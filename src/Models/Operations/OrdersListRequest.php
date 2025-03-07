@@ -29,9 +29,17 @@ class OrdersListRequest
     public string|array|null $productId = null;
 
     /**
-     * Filter by product price type. `recurring` will return orders corresponding to subscriptions creations or renewals. `one_time` will return orders corresponding to one-time purchases.
+     * Filter by product billing type. `recurring` will filter data corresponding to subscriptions creations or renewals. `one_time` will filter data corresponding to one-time purchases.
+     *
+     * @var Components\ProductBillingType|array<Components\ProductBillingType>|null $productBillingType
+     */
+    #[SpeakeasyMetadata('queryParam:style=form,explode=true,name=product_billing_type')]
+    public Components\ProductBillingType|array|null $productBillingType = null;
+
+    /**
      *
      * @var Components\ProductPriceType|array<Components\ProductPriceType>|null $productPriceType
+     * @deprecated  field: This will be removed in a future release, please migrate away from it as soon as possible.
      */
     #[SpeakeasyMetadata('queryParam:style=form,explode=true,name=product_price_type')]
     public Components\ProductPriceType|array|null $productPriceType = null;
@@ -89,6 +97,7 @@ class OrdersListRequest
      * @param  ?int  $limit
      * @param  string|array<string>|null  $organizationId
      * @param  string|array<string>|null  $productId
+     * @param  Components\ProductBillingType|array<Components\ProductBillingType>|null  $productBillingType
      * @param  Components\ProductPriceType|array<Components\ProductPriceType>|null  $productPriceType
      * @param  string|array<string>|null  $discountId
      * @param  string|array<string>|null  $customerId
@@ -96,10 +105,11 @@ class OrdersListRequest
      * @param  ?array<Components\OrderSortProperty>  $sorting
      * @phpstan-pure
      */
-    public function __construct(string|array|null $organizationId = null, string|array|null $productId = null, Components\ProductPriceType|array|null $productPriceType = null, string|array|null $discountId = null, string|array|null $customerId = null, string|array|null $checkoutId = null, ?array $sorting = null, ?int $page = 1, ?int $limit = 10)
+    public function __construct(string|array|null $organizationId = null, string|array|null $productId = null, Components\ProductBillingType|array|null $productBillingType = null, Components\ProductPriceType|array|null $productPriceType = null, string|array|null $discountId = null, string|array|null $customerId = null, string|array|null $checkoutId = null, ?array $sorting = null, ?int $page = 1, ?int $limit = 10)
     {
         $this->organizationId = $organizationId;
         $this->productId = $productId;
+        $this->productBillingType = $productBillingType;
         $this->productPriceType = $productPriceType;
         $this->discountId = $discountId;
         $this->customerId = $customerId;

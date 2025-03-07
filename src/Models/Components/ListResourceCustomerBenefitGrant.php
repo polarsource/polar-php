@@ -14,10 +14,10 @@ class ListResourceCustomerBenefitGrant
     /**
      * $items
      *
-     * @var array<CustomerBenefitGrantDiscord|CustomerBenefitGrantGitHubRepository|CustomerBenefitGrantDownloadables|CustomerBenefitGrantLicenseKeys|CustomerBenefitGrantAds|CustomerBenefitGrantCustom> $items
+     * @var array<CustomerBenefitGrantDiscord|CustomerBenefitGrantGitHubRepository|CustomerBenefitGrantDownloadables|CustomerBenefitGrantLicenseKeys|CustomerBenefitGrantCustom> $items
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('items')]
-    #[\Speakeasy\Serializer\Annotation\Type('array<\Polar\Models\Components\CustomerBenefitGrantDiscord|\Polar\Models\Components\CustomerBenefitGrantGitHubRepository|\Polar\Models\Components\CustomerBenefitGrantDownloadables|\Polar\Models\Components\CustomerBenefitGrantLicenseKeys|\Polar\Models\Components\CustomerBenefitGrantAds|\Polar\Models\Components\CustomerBenefitGrantCustom>')]
+    #[\Speakeasy\Serializer\Annotation\Type('array<\Polar\Models\Components\CustomerBenefitGrantDiscord|\Polar\Models\Components\CustomerBenefitGrantGitHubRepository|\Polar\Models\Components\CustomerBenefitGrantDownloadables|\Polar\Models\Components\CustomerBenefitGrantLicenseKeys|\Polar\Models\Components\CustomerBenefitGrantCustom>')]
     public array $items;
 
     /**
@@ -29,7 +29,7 @@ class ListResourceCustomerBenefitGrant
     public Pagination $pagination;
 
     /**
-     * @param  array<CustomerBenefitGrantDiscord|CustomerBenefitGrantGitHubRepository|CustomerBenefitGrantDownloadables|CustomerBenefitGrantLicenseKeys|CustomerBenefitGrantAds|CustomerBenefitGrantCustom>  $items
+     * @param  array<CustomerBenefitGrantDiscord|CustomerBenefitGrantGitHubRepository|CustomerBenefitGrantDownloadables|CustomerBenefitGrantLicenseKeys|CustomerBenefitGrantCustom>  $items
      * @param  Pagination  $pagination
      * @phpstan-pure
      */

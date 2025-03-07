@@ -50,6 +50,8 @@ class Repositories
      *
      * Get a repository by ID.
      *
+     * **Scopes**: `repositories:read` `repositories:write`
+     *
      * @param  string  $id
      * @return Operations\RepositoriesGetResponse
      * @throws \Polar\Models\Errors\APIException
@@ -135,6 +137,8 @@ class Repositories
      * List Repositories
      *
      * List repositories.
+     *
+     * **Scopes**: `repositories:read` `repositories:write`
      *
      * @param  ?Operations\RepositoriesListRequest  $request
      * @return Operations\RepositoriesListResponse
@@ -251,6 +255,8 @@ class Repositories
      *
      * List repositories.
      *
+     * **Scopes**: `repositories:read` `repositories:write`
+     *
      * @param  ?Operations\RepositoriesListRequest  $request
      * @return \Generator<Operations\RepositoriesListResponse>
      * @throws \Polar\Models\Errors\APIException
@@ -268,6 +274,8 @@ class Repositories
      * Update Repository
      *
      * Update a repository.
+     *
+     * **Scopes**: `repositories:write`
      *
      * @param  Components\RepositoryUpdate  $repositoryUpdate
      * @param  string  $id

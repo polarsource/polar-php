@@ -16,6 +16,8 @@
 
 Create a meter.
 
+**Scopes**: `meters:write`
+
 ### Example Usage
 
 ```php
@@ -44,6 +46,7 @@ $request = new Components\MeterCreate(
         func: Components\Func::Max,
         property: '<value>',
     ),
+    organizationId: '1dbfc517-0bbf-4301-9ba8-555ca42b9737',
 );
 
 $response = $sdk->meters->create(
@@ -75,6 +78,8 @@ if ($response->meter !== null) {
 ## events
 
 Get events matching the filter of a meter.
+
+**Scopes**: `meters:read` `meters:write`
 
 ### Example Usage
 
@@ -132,6 +137,8 @@ foreach ($responses as $response) {
 
 Get a meter by ID.
 
+**Scopes**: `meters:read` `meters:write`
+
 ### Example Usage
 
 ```php
@@ -180,6 +187,8 @@ if ($response->meter !== null) {
 
 List meters.
 
+**Scopes**: `meters:read` `meters:write`
+
 ### Example Usage
 
 ```php
@@ -196,7 +205,11 @@ $sdk = Polar\Polar::builder()
     )
     ->build();
 
-$request = new Operations\MetersListRequest();
+$request = new Operations\MetersListRequest(
+    organizationId: [
+        '1dbfc517-0bbf-4301-9ba8-555ca42b9737',
+    ],
+);
 
 $responses = $sdk->meters->list(
     request: $request
@@ -230,6 +243,8 @@ foreach ($responses as $response) {
 ## quantities
 
 Get quantities of a meter over a time period.
+
+**Scopes**: `meters:read` `meters:write`
 
 ### Example Usage
 
@@ -286,6 +301,8 @@ if ($response->meterQuantities !== null) {
 ## update
 
 Update a meter.
+
+**Scopes**: `meters:write`
 
 ### Example Usage
 

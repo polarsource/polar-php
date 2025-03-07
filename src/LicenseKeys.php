@@ -50,6 +50,8 @@ class LicenseKeys
      *
      * Get a license key.
      *
+     * **Scopes**: `license_keys:read` `license_keys:write`
+     *
      * @param  string  $id
      * @return Operations\LicenseKeysGetResponse
      * @throws \Polar\Models\Errors\APIException
@@ -146,6 +148,8 @@ class LicenseKeys
      * Get Activation
      *
      * Get a license key activation.
+     *
+     * **Scopes**: `license_keys:read` `license_keys:write`
      *
      * @param  string  $id
      * @param  string  $activationId
@@ -245,6 +249,8 @@ class LicenseKeys
      * List License Keys
      *
      * Get license keys connected to the given organization & filters.
+     *
+     * **Scopes**: `license_keys:read` `license_keys:write`
      *
      * @param  string|array<string>|null  $organizationId
      * @param  string|array<string>|null  $benefitId
@@ -386,6 +392,8 @@ class LicenseKeys
      *
      * Get license keys connected to the given organization & filters.
      *
+     * **Scopes**: `license_keys:read` `license_keys:write`
+     *
      * @param  string|array<string>|null  $organizationId
      * @param  string|array<string>|null  $benefitId
      * @param  ?int  $page
@@ -406,6 +414,8 @@ class LicenseKeys
      * Update License Key
      *
      * Update a license key.
+     *
+     * **Scopes**: `license_keys:write`
      *
      * @param  Components\LicenseKeyUpdate  $licenseKeyUpdate
      * @param  string  $id

@@ -50,6 +50,8 @@ class Products
      *
      * Create a product.
      *
+     * **Scopes**: `products:write`
+     *
      * @param  Components\ProductCreate  $request
      * @return Operations\ProductsCreateResponse
      * @throws \Polar\Models\Errors\APIException
@@ -126,6 +128,8 @@ class Products
      * Get Product
      *
      * Get a product by ID.
+     *
+     * **Scopes**: `products:read` `products:write`
      *
      * @param  string  $id
      * @return Operations\ProductsGetResponse
@@ -212,6 +216,8 @@ class Products
      * List Products
      *
      * List products.
+     *
+     * **Scopes**: `products:read` `products:write`
      *
      * @param  ?Operations\ProductsListRequest  $request
      * @return Operations\ProductsListResponse
@@ -329,6 +335,8 @@ class Products
      *
      * List products.
      *
+     * **Scopes**: `products:read` `products:write`
+     *
      * @param  ?Operations\ProductsListRequest  $request
      * @return \Generator<Operations\ProductsListResponse>
      * @throws \Polar\Models\Errors\APIException
@@ -346,6 +354,8 @@ class Products
      * Update Product
      *
      * Update a product.
+     *
+     * **Scopes**: `products:write`
      *
      * @param  Components\ProductUpdate  $productUpdate
      * @param  string  $id
@@ -450,6 +460,8 @@ class Products
      * Update Product Benefits
      *
      * Update benefits granted by a product.
+     *
+     * **Scopes**: `products:write`
      *
      * @param  Components\ProductBenefitsUpdate  $productBenefitsUpdate
      * @param  string  $id

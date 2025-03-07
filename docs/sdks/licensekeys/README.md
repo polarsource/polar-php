@@ -14,6 +14,8 @@
 
 Get a license key.
 
+**Scopes**: `license_keys:read` `license_keys:write`
+
 ### Example Usage
 
 ```php
@@ -62,6 +64,8 @@ if ($response->licenseKeyWithActivations !== null) {
 ## getActivation
 
 Get a license key activation.
+
+**Scopes**: `license_keys:read` `license_keys:write`
 
 ### Example Usage
 
@@ -115,6 +119,8 @@ if ($response->licenseKeyActivationRead !== null) {
 
 Get license keys connected to the given organization & filters.
 
+**Scopes**: `license_keys:read` `license_keys:write`
+
 ### Example Usage
 
 ```php
@@ -136,7 +142,7 @@ $responses = $sdk->licenseKeys->list(
     page: 1,
     limit: 10,
     organizationId: [
-        '<value>',
+        '1dbfc517-0bbf-4301-9ba8-555ca42b9737',
     ],
     benefitId: [
         '<value>',
@@ -177,6 +183,8 @@ foreach ($responses as $response) {
 ## update
 
 Update a license key.
+
+**Scopes**: `license_keys:write`
 
 ### Example Usage
 

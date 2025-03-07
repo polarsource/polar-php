@@ -50,11 +50,13 @@ class Benefits
      *
      * Create a benefit.
      *
-     * @param  Components\BenefitCustomCreate|Components\BenefitAdsCreate|Components\BenefitDiscordCreate|Components\BenefitGitHubRepositoryCreate|Components\BenefitDownloadablesCreate|Components\BenefitLicenseKeysCreate  $request
+     * **Scopes**: `benefits:write`
+     *
+     * @param  Components\BenefitCustomCreate|Components\BenefitDiscordCreate|Components\BenefitGitHubRepositoryCreate|Components\BenefitDownloadablesCreate|Components\BenefitLicenseKeysCreate  $request
      * @return Operations\BenefitsCreateResponse
      * @throws \Polar\Models\Errors\APIException
      */
-    public function create(Components\BenefitCustomCreate|Components\BenefitAdsCreate|Components\BenefitDiscordCreate|Components\BenefitGitHubRepositoryCreate|Components\BenefitDownloadablesCreate|Components\BenefitLicenseKeysCreate $request, ?Options $options = null): Operations\BenefitsCreateResponse
+    public function create(Components\BenefitCustomCreate|Components\BenefitDiscordCreate|Components\BenefitGitHubRepositoryCreate|Components\BenefitDownloadablesCreate|Components\BenefitLicenseKeysCreate $request, ?Options $options = null): Operations\BenefitsCreateResponse
     {
         $baseUrl = $this->sdkConfiguration->getServerUrl();
         $url = Utils\Utils::generateUrl($baseUrl, '/v1/benefits/');
@@ -91,7 +93,7 @@ class Benefits
 
                 $serializer = Utils\JSON::createSerializer();
                 $responseData = (string) $httpResponse->getBody();
-                $obj = $serializer->deserialize($responseData, '\Polar\Models\Components\BenefitAds|\Polar\Models\Components\BenefitCustom|\Polar\Models\Components\BenefitDiscord|\Polar\Models\Components\BenefitGitHubRepository|\Polar\Models\Components\BenefitDownloadables|\Polar\Models\Components\BenefitLicenseKeys', 'json', DeserializationContext::create()->setRequireAllRequiredProperties(true));
+                $obj = $serializer->deserialize($responseData, '\Polar\Models\Components\BenefitCustom|\Polar\Models\Components\BenefitDiscord|\Polar\Models\Components\BenefitGitHubRepository|\Polar\Models\Components\BenefitDownloadables|\Polar\Models\Components\BenefitLicenseKeys', 'json', DeserializationContext::create()->setRequireAllRequiredProperties(true));
                 $response = new Operations\BenefitsCreateResponse(
                     statusCode: $statusCode,
                     contentType: $contentType,
@@ -130,6 +132,8 @@ class Benefits
      * > [!WARNING]
      * > Every grants associated with the benefit will be revoked.
      * > Users will lose access to the benefit.
+     *
+     * **Scopes**: `benefits:write`
      *
      * @param  string  $id
      * @return Operations\BenefitsDeleteResponse
@@ -219,6 +223,8 @@ class Benefits
      *
      * Get a benefit by ID.
      *
+     * **Scopes**: `benefits:read` `benefits:write`
+     *
      * @param  string  $id
      * @return Operations\BenefitsGetResponse
      * @throws \Polar\Models\Errors\APIException
@@ -258,7 +264,7 @@ class Benefits
 
                 $serializer = Utils\JSON::createSerializer();
                 $responseData = (string) $httpResponse->getBody();
-                $obj = $serializer->deserialize($responseData, '\Polar\Models\Components\BenefitAds|\Polar\Models\Components\BenefitCustom|\Polar\Models\Components\BenefitDiscord|\Polar\Models\Components\BenefitGitHubRepository|\Polar\Models\Components\BenefitDownloadables|\Polar\Models\Components\BenefitLicenseKeys', 'json', DeserializationContext::create()->setRequireAllRequiredProperties(true));
+                $obj = $serializer->deserialize($responseData, '\Polar\Models\Components\BenefitCustom|\Polar\Models\Components\BenefitDiscord|\Polar\Models\Components\BenefitGitHubRepository|\Polar\Models\Components\BenefitDownloadables|\Polar\Models\Components\BenefitLicenseKeys', 'json', DeserializationContext::create()->setRequireAllRequiredProperties(true));
                 $response = new Operations\BenefitsGetResponse(
                     statusCode: $statusCode,
                     contentType: $contentType,
@@ -306,6 +312,8 @@ class Benefits
      * List the individual grants for a benefit.
      *
      * It's especially useful to check if a user has been granted a benefit.
+     *
+     * **Scopes**: `benefits:read` `benefits:write`
      *
      * @param  Operations\BenefitsGrantsRequest  $request
      * @return Operations\BenefitsGrantsResponse
@@ -432,6 +440,8 @@ class Benefits
      *
      * It's especially useful to check if a user has been granted a benefit.
      *
+     * **Scopes**: `benefits:read` `benefits:write`
+     *
      * @param  Operations\BenefitsGrantsRequest  $request
      * @return \Generator<Operations\BenefitsGrantsResponse>
      * @throws \Polar\Models\Errors\APIException
@@ -449,6 +459,8 @@ class Benefits
      * List Benefits
      *
      * List benefits.
+     *
+     * **Scopes**: `benefits:read` `benefits:write`
      *
      * @param  string|array<string>|null  $organizationId
      * @param  Components\BenefitType|array<Components\BenefitType>|null  $typeFilter
@@ -568,6 +580,8 @@ class Benefits
      *
      * List benefits.
      *
+     * **Scopes**: `benefits:read` `benefits:write`
+     *
      * @param  string|array<string>|null  $organizationId
      * @param  Components\BenefitType|array<Components\BenefitType>|null  $typeFilter
      * @param  ?int  $page
@@ -589,12 +603,14 @@ class Benefits
      *
      * Update a benefit.
      *
-     * @param  Components\BenefitAdsUpdate|Components\BenefitCustomUpdate|Components\BenefitDiscordUpdate|Components\BenefitGitHubRepositoryUpdate|Components\BenefitDownloadablesUpdate|Components\BenefitLicenseKeysUpdate  $requestBody
+     * **Scopes**: `benefits:write`
+     *
+     * @param  Components\BenefitCustomUpdate|Components\BenefitDiscordUpdate|Components\BenefitGitHubRepositoryUpdate|Components\BenefitDownloadablesUpdate|Components\BenefitLicenseKeysUpdate  $requestBody
      * @param  string  $id
      * @return Operations\BenefitsUpdateResponse
      * @throws \Polar\Models\Errors\APIException
      */
-    public function update(Components\BenefitAdsUpdate|Components\BenefitCustomUpdate|Components\BenefitDiscordUpdate|Components\BenefitGitHubRepositoryUpdate|Components\BenefitDownloadablesUpdate|Components\BenefitLicenseKeysUpdate $requestBody, string $id, ?Options $options = null): Operations\BenefitsUpdateResponse
+    public function update(Components\BenefitCustomUpdate|Components\BenefitDiscordUpdate|Components\BenefitGitHubRepositoryUpdate|Components\BenefitDownloadablesUpdate|Components\BenefitLicenseKeysUpdate $requestBody, string $id, ?Options $options = null): Operations\BenefitsUpdateResponse
     {
         $request = new Operations\BenefitsUpdateRequest(
             id: $id,
@@ -635,7 +651,7 @@ class Benefits
 
                 $serializer = Utils\JSON::createSerializer();
                 $responseData = (string) $httpResponse->getBody();
-                $obj = $serializer->deserialize($responseData, '\Polar\Models\Components\BenefitAds|\Polar\Models\Components\BenefitCustom|\Polar\Models\Components\BenefitDiscord|\Polar\Models\Components\BenefitGitHubRepository|\Polar\Models\Components\BenefitDownloadables|\Polar\Models\Components\BenefitLicenseKeys', 'json', DeserializationContext::create()->setRequireAllRequiredProperties(true));
+                $obj = $serializer->deserialize($responseData, '\Polar\Models\Components\BenefitCustom|\Polar\Models\Components\BenefitDiscord|\Polar\Models\Components\BenefitGitHubRepository|\Polar\Models\Components\BenefitDownloadables|\Polar\Models\Components\BenefitLicenseKeys', 'json', DeserializationContext::create()->setRequireAllRequiredProperties(true));
                 $response = new Operations\BenefitsUpdateResponse(
                     statusCode: $statusCode,
                     contentType: $contentType,

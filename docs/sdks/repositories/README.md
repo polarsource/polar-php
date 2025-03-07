@@ -13,6 +13,8 @@
 
 Get a repository by ID.
 
+**Scopes**: `repositories:read` `repositories:write`
+
 ### Example Usage
 
 ```php
@@ -61,6 +63,8 @@ if ($response->repository !== null) {
 
 List repositories.
 
+**Scopes**: `repositories:read` `repositories:write`
+
 ### Example Usage
 
 ```php
@@ -77,7 +81,11 @@ $sdk = Polar\Polar::builder()
     )
     ->build();
 
-$request = new Operations\RepositoriesListRequest();
+$request = new Operations\RepositoriesListRequest(
+    organizationId: [
+        '1dbfc517-0bbf-4301-9ba8-555ca42b9737',
+    ],
+);
 
 $responses = $sdk->repositories->list(
     request: $request
@@ -111,6 +119,8 @@ foreach ($responses as $response) {
 ## update
 
 Update a repository.
+
+**Scopes**: `repositories:write`
 
 ### Example Usage
 

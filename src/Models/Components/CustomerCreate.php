@@ -12,6 +12,7 @@ namespace Polar\Models\Components;
 class CustomerCreate
 {
     /**
+     * The email address of the customer. This must be unique within the organization.
      *
      * @var string $email
      */
@@ -39,6 +40,16 @@ class CustomerCreate
     public ?array $metadata = null;
 
     /**
+     * The ID of the customer in your system. This must be unique within the organization. Once set, it can't be updated.
+     *
+     * @var ?string $externalId
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('external_id')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
+    public ?string $externalId = null;
+
+    /**
+     * The name of the customer.
      *
      * @var ?string $name
      */
@@ -77,16 +88,18 @@ class CustomerCreate
     /**
      * @param  string  $email
      * @param  ?array<string, string|int|bool>  $metadata
+     * @param  ?string  $externalId
      * @param  ?string  $name
      * @param  ?Address  $billingAddress
      * @param  ?array<string|TaxIDFormat|null>  $taxId
      * @param  ?string  $organizationId
      * @phpstan-pure
      */
-    public function __construct(string $email, ?array $metadata = null, ?string $name = null, ?Address $billingAddress = null, ?array $taxId = null, ?string $organizationId = null)
+    public function __construct(string $email, ?array $metadata = null, ?string $externalId = null, ?string $name = null, ?Address $billingAddress = null, ?array $taxId = null, ?string $organizationId = null)
     {
         $this->email = $email;
         $this->metadata = $metadata;
+        $this->externalId = $externalId;
         $this->name = $name;
         $this->billingAddress = $billingAddress;
         $this->taxId = $taxId;

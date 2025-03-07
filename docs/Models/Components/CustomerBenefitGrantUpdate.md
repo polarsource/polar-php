@@ -3,15 +3,6 @@
 
 ## Supported Types
 
-### `Components\CustomerBenefitGrantAdsUpdate`
-
-```php
-/**
-* @var Components\CustomerBenefitGrantAdsUpdate
-*/
-Components\CustomerBenefitGrantAdsUpdate $value = /* values here */
-```
-
 ### `Components\CustomerBenefitGrantCustomUpdate`
 
 ```php

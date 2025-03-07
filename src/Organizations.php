@@ -50,6 +50,8 @@ class Organizations
      *
      * Create an organization.
      *
+     * **Scopes**: `organizations:write`
+     *
      * @param  Components\OrganizationCreate  $request
      * @return Operations\OrganizationsCreateResponse
      * @throws \Polar\Models\Errors\APIException
@@ -126,6 +128,8 @@ class Organizations
      * Get Organization
      *
      * Get an organization by ID.
+     *
+     * **Scopes**: `organizations:read` `organizations:write`
      *
      * @param  string  $id
      * @return Operations\OrganizationsGetResponse
@@ -212,6 +216,8 @@ class Organizations
      * List Organizations
      *
      * List organizations.
+     *
+     * **Scopes**: `organizations:read` `organizations:write`
      *
      * @param  ?string  $slug
      * @param  ?int  $page
@@ -331,6 +337,8 @@ class Organizations
      *
      * List organizations.
      *
+     * **Scopes**: `organizations:read` `organizations:write`
+     *
      * @param  ?string  $slug
      * @param  ?int  $page
      * @param  ?int  $limit
@@ -351,6 +359,8 @@ class Organizations
      * Update Organization
      *
      * Update an organization.
+     *
+     * **Scopes**: `organizations:write`
      *
      * @param  Components\OrganizationUpdate  $organizationUpdate
      * @param  string  $id

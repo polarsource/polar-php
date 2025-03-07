@@ -39,15 +39,6 @@ Components\BenefitGrantDownloadablesProperties $value = /* values here */
 Components\BenefitGrantLicenseKeysProperties $value = /* values here */
 ```
 
-### `Components\BenefitGrantAdsProperties`
-
-```php
-/**
-* @var Components\BenefitGrantAdsProperties
-*/
-Components\BenefitGrantAdsProperties $value = /* values here */
-```
-
 ### `Components\BenefitGrantCustomProperties`
 
 ```php

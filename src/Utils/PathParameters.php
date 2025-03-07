@@ -71,8 +71,7 @@ class PathParameters
             case 'object':
                 $vals = [];
 
-                $cls = get_class($value);
-                if ($cls === 'Brick\\Math\\BigDecimal' || $cls === 'Brick\\Math\\BigInteger') {
+                if ($value instanceof \Brick\Math\BigDecimal || $value instanceof \Brick\Math\BigInteger || $value instanceof \Brick\DateTime\LocalDate || $value instanceof \DateTime || $value instanceof \UnitEnum) {
                     $pathParams[$metadata->name] = valToString($value, $metadata->encodingArray());
                     break;
                 }

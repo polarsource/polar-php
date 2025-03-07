@@ -66,7 +66,7 @@ class Checkouts
         $httpOptions['headers']['Accept'] = 'application/json';
         $httpOptions['headers']['user-agent'] = $this->sdkConfiguration->userAgent;
         $httpRequest = new \GuzzleHttp\Psr7\Request('GET', $url);
-        $hookContext = new HookContext('checkouts:client_get', null, $this->sdkConfiguration->securitySource);
+        $hookContext = new HookContext('checkouts:client_get', null, null);
         $httpRequest = $this->sdkConfiguration->hooks->beforeRequest(new Hooks\BeforeRequestContext($hookContext), $httpRequest);
         $httpOptions = Utils\Utils::convertHeadersToOptions($httpRequest, $httpOptions);
         $httpRequest = Utils\Utils::removeHeaders($httpRequest);
@@ -135,6 +135,8 @@ class Checkouts
      * Create Checkout Session
      *
      * Create a checkout session.
+     *
+     * **Scopes**: `checkouts:write`
      *
      * @param  Components\CheckoutProductsCreate|Components\CheckoutProductCreate|Components\CheckoutPriceCreate  $request
      * @return Operations\CheckoutsCreateResponse
@@ -212,6 +214,8 @@ class Checkouts
      * Get Checkout Session
      *
      * Get a checkout session by ID.
+     *
+     * **Scopes**: `checkouts:read` `checkouts:write`
      *
      * @param  string  $id
      * @return Operations\CheckoutsGetResponse
@@ -298,6 +302,8 @@ class Checkouts
      * List Checkout Sessions
      *
      * List checkout sessions.
+     *
+     * **Scopes**: `checkouts:read` `checkouts:write`
      *
      * @param  ?Operations\CheckoutsListRequest  $request
      * @return Operations\CheckoutsListResponse
@@ -410,6 +416,8 @@ class Checkouts
      * List Checkout Sessions
      *
      * List checkout sessions.
+     *
+     * **Scopes**: `checkouts:read` `checkouts:write`
      *
      * @param  ?Operations\CheckoutsListRequest  $request
      * @return \Generator<Operations\CheckoutsListResponse>

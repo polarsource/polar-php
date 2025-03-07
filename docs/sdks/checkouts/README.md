@@ -23,11 +23,7 @@ require 'vendor/autoload.php';
 
 use Polar;
 
-$sdk = Polar\Polar::builder()
-    ->setSecurity(
-        '<YOUR_BEARER_TOKEN_HERE>'
-    )
-    ->build();
+$sdk = Polar\Polar::builder()->build();
 
 
 
@@ -62,6 +58,8 @@ if ($response->checkoutPublic !== null) {
 
 Create a checkout session.
 
+**Scopes**: `checkouts:write`
+
 ### Example Usage
 
 ```php
@@ -80,6 +78,9 @@ $sdk = Polar\Polar::builder()
 
 $request = new Components\CheckoutProductCreate(
     productId: '<value>',
+    customerBillingAddress: new Components\Address(
+        country: 'SE',
+    ),
 );
 
 $response = $sdk->checkouts->create(
@@ -111,6 +112,8 @@ if ($response->checkout !== null) {
 ## get
 
 Get a checkout session by ID.
+
+**Scopes**: `checkouts:read` `checkouts:write`
 
 ### Example Usage
 
@@ -160,6 +163,8 @@ if ($response->checkout !== null) {
 
 List checkout sessions.
 
+**Scopes**: `checkouts:read` `checkouts:write`
+
 ### Example Usage
 
 ```php
@@ -176,7 +181,11 @@ $sdk = Polar\Polar::builder()
     )
     ->build();
 
-$request = new Operations\CheckoutsListRequest();
+$request = new Operations\CheckoutsListRequest(
+    organizationId: [
+        '1dbfc517-0bbf-4301-9ba8-555ca42b9737',
+    ],
+);
 
 $responses = $sdk->checkouts->list(
     request: $request

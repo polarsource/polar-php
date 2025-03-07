@@ -3,15 +3,6 @@
 
 ## Supported Types
 
-### `Components\BenefitAdsCreate`
-
-```php
-/**
-* @var Components\BenefitAdsCreate
-*/
-Components\BenefitAdsCreate $value = /* values here */
-```
-
 ### `Components\BenefitCustomCreate`
 
 ```php

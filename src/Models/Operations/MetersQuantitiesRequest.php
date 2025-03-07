@@ -55,10 +55,10 @@ class MetersQuantitiesRequest
     /**
      * Filter by external customer ID.
      *
-     * @var string|array<string>|null $exernalCustomerId
+     * @var string|array<string>|null $externalCustomerId
      */
-    #[SpeakeasyMetadata('queryParam:style=form,explode=true,name=exernal_customer_id')]
-    public string|array|null $exernalCustomerId = null;
+    #[SpeakeasyMetadata('queryParam:style=form,explode=true,name=external_customer_id')]
+    public string|array|null $externalCustomerId = null;
 
     /**
      * @param  string  $id
@@ -66,16 +66,16 @@ class MetersQuantitiesRequest
      * @param  \DateTime  $endTimestamp
      * @param  Components\TimeInterval  $interval
      * @param  string|array<string>|null  $customerId
-     * @param  string|array<string>|null  $exernalCustomerId
+     * @param  string|array<string>|null  $externalCustomerId
      * @phpstan-pure
      */
-    public function __construct(string $id, \DateTime $startTimestamp, \DateTime $endTimestamp, Components\TimeInterval $interval, string|array|null $customerId = null, string|array|null $exernalCustomerId = null)
+    public function __construct(string $id, \DateTime $startTimestamp, \DateTime $endTimestamp, Components\TimeInterval $interval, string|array|null $customerId = null, string|array|null $externalCustomerId = null)
     {
         $this->id = $id;
         $this->startTimestamp = $startTimestamp;
         $this->endTimestamp = $endTimestamp;
         $this->interval = $interval;
         $this->customerId = $customerId;
-        $this->exernalCustomerId = $exernalCustomerId;
+        $this->externalCustomerId = $externalCustomerId;
     }
 }

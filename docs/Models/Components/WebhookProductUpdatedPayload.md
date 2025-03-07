@@ -7,7 +7,7 @@ Sent when a product is updated.
 
 ## Fields
 
-| Field                                                    | Type                                                     | Required                                                 | Description                                              |
-| -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- |
-| `type`                                                   | *string*                                                 | :heavy_check_mark:                                       | N/A                                                      |
-| `data`                                                   | [Components\Product](../../Models/Components/Product.md) | :heavy_check_mark:                                       | A product.                                               |
+| Field                                                    | Type                                                     | Required                                                 | Description                                              | Example                                                  |
+| -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- |
+| `type`                                                   | *string*                                                 | :heavy_check_mark:                                       | N/A                                                      | product.updated                                          |
+| `data`                                                   | [Components\Product](../../Models/Components/Product.md) | :heavy_check_mark:                                       | A product.                                               |                                                          |

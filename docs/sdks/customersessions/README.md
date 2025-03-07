@@ -11,6 +11,8 @@
 
 Create a customer session.
 
+**Scopes**: `customer_sessions:write`
+
 ### Example Usage
 
 ```php
@@ -27,7 +29,7 @@ $sdk = Polar\Polar::builder()
     )
     ->build();
 
-$request = new Components\CustomerSessionCreate(
+$request = new Components\CustomerSessionCustomerIDCreate(
     customerId: '<value>',
 );
 
@@ -42,9 +44,9 @@ if ($response->customerSession !== null) {
 
 ### Parameters
 
-| Parameter                                                                            | Type                                                                                 | Required                                                                             | Description                                                                          |
-| ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------ |
-| `$request`                                                                           | [Components\CustomerSessionCreate](../../Models/Components/CustomerSessionCreate.md) | :heavy_check_mark:                                                                   | The request object to use for the request.                                           |
+| Parameter                                                                                                                                                               | Type                                                                                                                                                                    | Required                                                                                                                                                                | Description                                                                                                                                                             |
+| ----------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `$request`                                                                                                                                                              | [Components\CustomerSessionCustomerIDCreate\|Components\CustomerSessionCustomerExternalIDCreate](../../Models/Operations/CustomerSessionsCreateCustomerSessionCreate.md) | :heavy_check_mark:                                                                                                                                                      | The request object to use for the request.                                                                                                                              |
 
 ### Response
 

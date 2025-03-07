@@ -50,6 +50,8 @@ class CheckoutLinks
      *
      * Create a checkout link.
      *
+     * **Scopes**: `checkout_links:write`
+     *
      * @param  Components\CheckoutLinkCreateProductPrice|Components\CheckoutLinkCreateProduct|Components\CheckoutLinkCreateProducts  $request
      * @return Operations\CheckoutLinksCreateResponse
      * @throws \Polar\Models\Errors\APIException
@@ -127,6 +129,8 @@ class CheckoutLinks
      *
      * Delete a checkout link.
      *
+     * **Scopes**: `checkout_links:write`
+     *
      * @param  string  $id
      * @return Operations\CheckoutLinksDeleteResponse
      * @throws \Polar\Models\Errors\APIException
@@ -203,6 +207,8 @@ class CheckoutLinks
      * Get Checkout Link
      *
      * Get a checkout link by ID.
+     *
+     * **Scopes**: `checkout_links:read` `checkout_links:write`
      *
      * @param  string  $id
      * @return Operations\CheckoutLinksGetResponse
@@ -289,6 +295,8 @@ class CheckoutLinks
      * List Checkout Links
      *
      * List checkout links.
+     *
+     * **Scopes**: `checkout_links:read` `checkout_links:write`
      *
      * @param  ?Operations\CheckoutLinksListRequest  $request
      * @return Operations\CheckoutLinksListResponse
@@ -402,6 +410,8 @@ class CheckoutLinks
      *
      * List checkout links.
      *
+     * **Scopes**: `checkout_links:read` `checkout_links:write`
+     *
      * @param  ?Operations\CheckoutLinksListRequest  $request
      * @return \Generator<Operations\CheckoutLinksListResponse>
      * @throws \Polar\Models\Errors\APIException
@@ -419,6 +429,8 @@ class CheckoutLinks
      * Update Checkout Link
      *
      * Update a checkout link.
+     *
+     * **Scopes**: `checkout_links:write`
      *
      * @param  Components\CheckoutLinkUpdate  $checkoutLinkUpdate
      * @param  string  $id

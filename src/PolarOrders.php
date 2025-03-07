@@ -47,13 +47,16 @@ class PolarOrders
     /**
      * Get Order
      *
-     * Get an order by ID for the authenticated customer or user.
+     * Get an order by ID for the authenticated customer.
      *
+     * **Scopes**: `customer_portal:read` `customer_portal:write`
+     *
+     * @param  Operations\CustomerPortalOrdersGetSecurity  $security
      * @param  string  $id
      * @return Operations\CustomerPortalOrdersGetResponse
      * @throws \Polar\Models\Errors\APIException
      */
-    public function get(string $id, ?Options $options = null): Operations\CustomerPortalOrdersGetResponse
+    public function get(Operations\CustomerPortalOrdersGetSecurity $security, string $id, ?Options $options = null): Operations\CustomerPortalOrdersGetResponse
     {
         $request = new Operations\CustomerPortalOrdersGetRequest(
             id: $id,
@@ -65,12 +68,18 @@ class PolarOrders
         $httpOptions['headers']['Accept'] = 'application/json';
         $httpOptions['headers']['user-agent'] = $this->sdkConfiguration->userAgent;
         $httpRequest = new \GuzzleHttp\Psr7\Request('GET', $url);
-        $hookContext = new HookContext('customer_portal:orders:get', null, $this->sdkConfiguration->securitySource);
+        if ($security != null) {
+            $client = Utils\Utils::configureSecurityClient($this->sdkConfiguration->client, $security);
+        } else {
+            $client = $this->sdkConfiguration->client;
+        }
+
+        $hookContext = new HookContext('customer_portal:orders:get', null, fn () => $security);
         $httpRequest = $this->sdkConfiguration->hooks->beforeRequest(new Hooks\BeforeRequestContext($hookContext), $httpRequest);
         $httpOptions = Utils\Utils::convertHeadersToOptions($httpRequest, $httpOptions);
         $httpRequest = Utils\Utils::removeHeaders($httpRequest);
         try {
-            $httpResponse = $this->sdkConfiguration->client->send($httpRequest, $httpOptions);
+            $httpResponse = $client->send($httpRequest, $httpOptions);
         } catch (\GuzzleHttp\Exception\GuzzleException $error) {
             $res = $this->sdkConfiguration->hooks->afterError(new Hooks\AfterErrorContext($hookContext), null, $error);
             $httpResponse = $res;
@@ -135,11 +144,14 @@ class PolarOrders
      *
      * Get an order's invoice data.
      *
+     * **Scopes**: `customer_portal:read` `customer_portal:write`
+     *
+     * @param  Operations\CustomerPortalOrdersInvoiceSecurity  $security
      * @param  string  $id
      * @return Operations\CustomerPortalOrdersInvoiceResponse
      * @throws \Polar\Models\Errors\APIException
      */
-    public function invoice(string $id, ?Options $options = null): Operations\CustomerPortalOrdersInvoiceResponse
+    public function invoice(Operations\CustomerPortalOrdersInvoiceSecurity $security, string $id, ?Options $options = null): Operations\CustomerPortalOrdersInvoiceResponse
     {
         $request = new Operations\CustomerPortalOrdersInvoiceRequest(
             id: $id,
@@ -151,12 +163,18 @@ class PolarOrders
         $httpOptions['headers']['Accept'] = 'application/json';
         $httpOptions['headers']['user-agent'] = $this->sdkConfiguration->userAgent;
         $httpRequest = new \GuzzleHttp\Psr7\Request('GET', $url);
-        $hookContext = new HookContext('customer_portal:orders:invoice', null, $this->sdkConfiguration->securitySource);
+        if ($security != null) {
+            $client = Utils\Utils::configureSecurityClient($this->sdkConfiguration->client, $security);
+        } else {
+            $client = $this->sdkConfiguration->client;
+        }
+
+        $hookContext = new HookContext('customer_portal:orders:invoice', null, fn () => $security);
         $httpRequest = $this->sdkConfiguration->hooks->beforeRequest(new Hooks\BeforeRequestContext($hookContext), $httpRequest);
         $httpOptions = Utils\Utils::convertHeadersToOptions($httpRequest, $httpOptions);
         $httpRequest = Utils\Utils::removeHeaders($httpRequest);
         try {
-            $httpResponse = $this->sdkConfiguration->client->send($httpRequest, $httpOptions);
+            $httpResponse = $client->send($httpRequest, $httpOptions);
         } catch (\GuzzleHttp\Exception\GuzzleException $error) {
             $res = $this->sdkConfiguration->hooks->afterError(new Hooks\AfterErrorContext($hookContext), null, $error);
             $httpResponse = $res;
@@ -219,13 +237,16 @@ class PolarOrders
     /**
      * List Orders
      *
-     * List orders of the authenticated customer or user.
+     * List orders of the authenticated customer.
      *
+     * **Scopes**: `customer_portal:read` `customer_portal:write`
+     *
+     * @param  Operations\CustomerPortalOrdersListSecurity  $security
      * @param  ?Operations\CustomerPortalOrdersListRequest  $request
      * @return Operations\CustomerPortalOrdersListResponse
      * @throws \Polar\Models\Errors\APIException
      */
-    private function listIndividual(?Operations\CustomerPortalOrdersListRequest $request = null, ?Options $options = null): Operations\CustomerPortalOrdersListResponse
+    private function listIndividual(Operations\CustomerPortalOrdersListSecurity $security, ?Operations\CustomerPortalOrdersListRequest $request = null, ?Options $options = null): Operations\CustomerPortalOrdersListResponse
     {
         $baseUrl = $this->sdkConfiguration->getServerUrl();
         $url = Utils\Utils::generateUrl($baseUrl, '/v1/customer-portal/orders/');
@@ -236,13 +257,19 @@ class PolarOrders
         $httpOptions['headers']['Accept'] = 'application/json';
         $httpOptions['headers']['user-agent'] = $this->sdkConfiguration->userAgent;
         $httpRequest = new \GuzzleHttp\Psr7\Request('GET', $url);
-        $hookContext = new HookContext('customer_portal:orders:list', null, $this->sdkConfiguration->securitySource);
+        if ($security != null) {
+            $client = Utils\Utils::configureSecurityClient($this->sdkConfiguration->client, $security);
+        } else {
+            $client = $this->sdkConfiguration->client;
+        }
+
+        $hookContext = new HookContext('customer_portal:orders:list', null, fn () => $security);
         $httpRequest = $this->sdkConfiguration->hooks->beforeRequest(new Hooks\BeforeRequestContext($hookContext), $httpRequest);
         $httpOptions['query'] = Utils\QueryParameters::standardizeQueryParams($httpRequest, $qp);
         $httpOptions = Utils\Utils::convertHeadersToOptions($httpRequest, $httpOptions);
         $httpRequest = Utils\Utils::removeHeaders($httpRequest);
         try {
-            $httpResponse = $this->sdkConfiguration->client->send($httpRequest, $httpOptions);
+            $httpResponse = $client->send($httpRequest, $httpOptions);
         } catch (\GuzzleHttp\Exception\GuzzleException $error) {
             $res = $this->sdkConfiguration->hooks->afterError(new Hooks\AfterErrorContext($hookContext), null, $error);
             $httpResponse = $res;
@@ -268,7 +295,7 @@ class PolarOrders
                     listResourceCustomerOrder: $obj);
                 $sdk = $this;
 
-                $response->next = function () use ($sdk, $request, $responseData): ?Operations\CustomerPortalOrdersListResponse {
+                $response->next = function () use ($sdk, $request, $responseData, $security): ?Operations\CustomerPortalOrdersListResponse {
                     $page = $request != null ? $request->page : 0;
                     $nextPage = $page + 1;
                     $jsonObject = new \JsonPath\JsonObject($responseData);
@@ -297,6 +324,7 @@ class PolarOrders
                         request: new Operations\CustomerPortalOrdersListRequest(
                             organizationId: $request != null ? $request->organizationId : null,
                             productId: $request != null ? $request->productId : null,
+                            productBillingType: $request != null ? $request->productBillingType : null,
                             productPriceType: $request != null ? $request->productPriceType : null,
                             subscriptionId: $request != null ? $request->subscriptionId : null,
                             query: $request != null ? $request->query : null,
@@ -304,6 +332,7 @@ class PolarOrders
                             limit: $request != null ? $request->limit : null,
                             sorting: $request != null ? $request->sorting : null,
                         ),
+                        security: $security,
                     );
                 };
 
@@ -334,15 +363,18 @@ class PolarOrders
     /**
      * List Orders
      *
-     * List orders of the authenticated customer or user.
+     * List orders of the authenticated customer.
      *
+     * **Scopes**: `customer_portal:read` `customer_portal:write`
+     *
+     * @param  Operations\CustomerPortalOrdersListSecurity  $security
      * @param  ?Operations\CustomerPortalOrdersListRequest  $request
      * @return \Generator<Operations\CustomerPortalOrdersListResponse>
      * @throws \Polar\Models\Errors\APIException
      */
-    public function list(?Operations\CustomerPortalOrdersListRequest $request = null, ?Options $options = null): \Generator
+    public function list(Operations\CustomerPortalOrdersListSecurity $security, ?Operations\CustomerPortalOrdersListRequest $request = null, ?Options $options = null): \Generator
     {
-        $res = $this->listIndividual($request, $options);
+        $res = $this->listIndividual($security, $request, $options);
         while ($res !== null) {
             yield $res;
             $res = $res->next($res);

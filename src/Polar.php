@@ -38,8 +38,6 @@ class Polar
 
     public Subscriptions $subscriptions;
 
-    public Advertisements $advertisements;
-
     public Oauth2 $oauth2;
 
     public Benefits $benefits;
@@ -94,7 +92,6 @@ class Polar
         $this->repositories = new Repositories($this->sdkConfiguration);
         $this->organizations = new Organizations($this->sdkConfiguration);
         $this->subscriptions = new Subscriptions($this->sdkConfiguration);
-        $this->advertisements = new Advertisements($this->sdkConfiguration);
         $this->oauth2 = new Oauth2($this->sdkConfiguration);
         $this->benefits = new Benefits($this->sdkConfiguration);
         $this->products = new Products($this->sdkConfiguration);

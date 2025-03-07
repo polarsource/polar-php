@@ -13,16 +13,16 @@ class Security
 {
     /**
      *
-     * @var string $accessToken
+     * @var ?string $accessToken
      */
     #[SpeakeasyMetadata('security:scheme=true,type=http,subtype=bearer,name=Authorization')]
-    public string $accessToken;
+    public ?string $accessToken = null;
 
     /**
-     * @param  string  $accessToken
+     * @param  ?string  $accessToken
      * @phpstan-pure
      */
-    public function __construct(string $accessToken)
+    public function __construct(?string $accessToken = null)
     {
         $this->accessToken = $accessToken;
     }

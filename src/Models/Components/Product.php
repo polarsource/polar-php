@@ -81,10 +81,10 @@ class Product
     /**
      * List of benefits granted by the product.
      *
-     * @var array<BenefitAds|BenefitCustom|BenefitDiscord|BenefitGitHubRepository|BenefitDownloadables|BenefitLicenseKeys> $benefits
+     * @var array<BenefitCustom|BenefitDiscord|BenefitGitHubRepository|BenefitDownloadables|BenefitLicenseKeys> $benefits
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('benefits')]
-    #[\Speakeasy\Serializer\Annotation\Type('array<\Polar\Models\Components\BenefitAds|\Polar\Models\Components\BenefitCustom|\Polar\Models\Components\BenefitDiscord|\Polar\Models\Components\BenefitGitHubRepository|\Polar\Models\Components\BenefitDownloadables|\Polar\Models\Components\BenefitLicenseKeys>')]
+    #[\Speakeasy\Serializer\Annotation\Type('array<\Polar\Models\Components\BenefitCustom|\Polar\Models\Components\BenefitDiscord|\Polar\Models\Components\BenefitGitHubRepository|\Polar\Models\Components\BenefitDownloadables|\Polar\Models\Components\BenefitLicenseKeys>')]
     public array $benefits;
 
     /**
@@ -139,7 +139,7 @@ class Product
      * @param  string  $organizationId
      * @param  array<string, string|int|bool>  $metadata
      * @param  array<LegacyRecurringProductPriceFixed|LegacyRecurringProductPriceCustom|LegacyRecurringProductPriceFree|ProductPriceFixed|ProductPriceCustom|ProductPriceFree>  $prices
-     * @param  array<BenefitAds|BenefitCustom|BenefitDiscord|BenefitGitHubRepository|BenefitDownloadables|BenefitLicenseKeys>  $benefits
+     * @param  array<BenefitCustom|BenefitDiscord|BenefitGitHubRepository|BenefitDownloadables|BenefitLicenseKeys>  $benefits
      * @param  array<ProductMediaFileRead>  $medias
      * @param  array<AttachedCustomField>  $attachedCustomFields
      * @param  ?\DateTime  $modifiedAt

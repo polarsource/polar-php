@@ -50,6 +50,8 @@ class CustomFields
      *
      * Create a custom field.
      *
+     * **Scopes**: `custom_fields:write`
+     *
      * @param  Components\CustomFieldCreateText|Components\CustomFieldCreateNumber|Components\CustomFieldCreateDate|Components\CustomFieldCreateCheckbox|Components\CustomFieldCreateSelect  $request
      * @return Operations\CustomFieldsCreateResponse
      * @throws \Polar\Models\Errors\APIException
@@ -127,6 +129,8 @@ class CustomFields
      *
      * Delete a custom field.
      *
+     * **Scopes**: `custom_fields:write`
+     *
      * @param  string  $id
      * @return Operations\CustomFieldsDeleteResponse
      * @throws \Polar\Models\Errors\APIException
@@ -203,6 +207,8 @@ class CustomFields
      * Get Custom Field
      *
      * Get a custom field by ID.
+     *
+     * **Scopes**: `custom_fields:read` `custom_fields:write`
      *
      * @param  string  $id
      * @return Operations\CustomFieldsGetResponse
@@ -289,6 +295,8 @@ class CustomFields
      * List Custom Fields
      *
      * List custom fields.
+     *
+     * **Scopes**: `custom_fields:read` `custom_fields:write`
      *
      * @param  ?Operations\CustomFieldsListRequest  $request
      * @return Operations\CustomFieldsListResponse
@@ -403,6 +411,8 @@ class CustomFields
      *
      * List custom fields.
      *
+     * **Scopes**: `custom_fields:read` `custom_fields:write`
+     *
      * @param  ?Operations\CustomFieldsListRequest  $request
      * @return \Generator<Operations\CustomFieldsListResponse>
      * @throws \Polar\Models\Errors\APIException
@@ -420,6 +430,8 @@ class CustomFields
      * Update Custom Field
      *
      * Update a custom field.
+     *
+     * **Scopes**: `custom_fields:write`
      *
      * @param  Components\CustomFieldUpdateText|Components\CustomFieldUpdateNumber|Components\CustomFieldUpdateDate|Components\CustomFieldUpdateCheckbox|Components\CustomFieldUpdateSelect  $customFieldUpdate
      * @param  string  $id

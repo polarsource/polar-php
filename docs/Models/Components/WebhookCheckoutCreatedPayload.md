@@ -7,7 +7,7 @@ Sent when a new checkout is created.
 
 ## Fields
 
-| Field                                                      | Type                                                       | Required                                                   | Description                                                |
-| ---------------------------------------------------------- | ---------------------------------------------------------- | ---------------------------------------------------------- | ---------------------------------------------------------- |
-| `type`                                                     | *string*                                                   | :heavy_check_mark:                                         | N/A                                                        |
-| `data`                                                     | [Components\Checkout](../../Models/Components/Checkout.md) | :heavy_check_mark:                                         | Checkout session data retrieved using an access token.     |
+| Field                                                      | Type                                                       | Required                                                   | Description                                                | Example                                                    |
+| ---------------------------------------------------------- | ---------------------------------------------------------- | ---------------------------------------------------------- | ---------------------------------------------------------- | ---------------------------------------------------------- |
+| `type`                                                     | *string*                                                   | :heavy_check_mark:                                         | N/A                                                        | checkout.created                                           |
+| `data`                                                     | [Components\Checkout](../../Models/Components/Checkout.md) | :heavy_check_mark:                                         | Checkout session data retrieved using an access token.     |                                                            |
