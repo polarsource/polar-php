@@ -50,6 +50,8 @@ class Files
      *
      * Create a file.
      *
+     * **Scopes**: `files:write`
+     *
      * @param  Components\DownloadableFileCreate|Components\ProductMediaFileCreate|Components\OrganizationAvatarFileCreate  $request
      * @return Operations\FilesCreateResponse
      * @throws \Polar\Models\Errors\APIException
@@ -126,6 +128,8 @@ class Files
      * Delete File
      *
      * Delete a file.
+     *
+     * **Scopes**: `files:write`
      *
      * @param  string  $id
      * @return Operations\FilesDeleteResponse
@@ -214,6 +218,8 @@ class Files
      * List Files
      *
      * List files.
+     *
+     * **Scopes**: `files:read` `files:write`
      *
      * @param  ?string  $organizationId
      * @param  ?array<string>  $ids
@@ -333,6 +339,8 @@ class Files
      *
      * List files.
      *
+     * **Scopes**: `files:read` `files:write`
+     *
      * @param  ?string  $organizationId
      * @param  ?array<string>  $ids
      * @param  ?int  $page
@@ -353,6 +361,8 @@ class Files
      * Update File
      *
      * Update a file.
+     *
+     * **Scopes**: `files:write`
      *
      * @param  Components\FilePatch  $filePatch
      * @param  string  $id
@@ -457,6 +467,8 @@ class Files
      * Complete File Upload
      *
      * Complete a file upload.
+     *
+     * **Scopes**: `files:write`
      *
      * @param  Components\FileUploadCompleted  $fileUploadCompleted
      * @param  string  $id

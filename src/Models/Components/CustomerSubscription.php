@@ -111,6 +111,7 @@ class CustomerSubscription
     public ?\DateTime $modifiedAt;
 
     /**
+     * The amount of the subscription.
      *
      * @var ?int $amount
      */
@@ -118,6 +119,7 @@ class CustomerSubscription
     public ?int $amount;
 
     /**
+     * The currency of the subscription.
      *
      * @var ?string $currency
      */
@@ -160,6 +162,7 @@ class CustomerSubscription
     public ?\DateTime $endedAt;
 
     /**
+     * The ID of the applied discount, if any.
      *
      * @var ?string $discountId
      */

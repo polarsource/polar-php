@@ -49,6 +49,8 @@ class ExternalOrganizations
      *
      * List external organizations.
      *
+     * **Scopes**: `external_organizations:read`
+     *
      * @param  ?Operations\ExternalOrganizationsListRequest  $request
      * @return Operations\ExternalOrganizationsListResponse
      * @throws \Polar\Models\Errors\APIException
@@ -161,6 +163,8 @@ class ExternalOrganizations
      * List External Organizations
      *
      * List external organizations.
+     *
+     * **Scopes**: `external_organizations:read`
      *
      * @param  ?Operations\ExternalOrganizationsListRequest  $request
      * @return \Generator<Operations\ExternalOrganizationsListResponse>

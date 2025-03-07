@@ -13,6 +13,8 @@
 
 Get an order by ID.
 
+**Scopes**: `orders:read`
+
 ### Example Usage
 
 ```php
@@ -60,6 +62,8 @@ if ($response->order !== null) {
 ## invoice
 
 Get an order's invoice data.
+
+**Scopes**: `orders:read`
 
 ### Example Usage
 
@@ -109,6 +113,8 @@ if ($response->orderInvoice !== null) {
 
 List orders.
 
+**Scopes**: `orders:read`
+
 ### Example Usage
 
 ```php
@@ -125,7 +131,11 @@ $sdk = Polar\Polar::builder()
     )
     ->build();
 
-$request = new Operations\OrdersListRequest();
+$request = new Operations\OrdersListRequest(
+    organizationId: [
+        '1dbfc517-0bbf-4301-9ba8-555ca42b9737',
+    ],
+);
 
 $responses = $sdk->orders->list(
     request: $request

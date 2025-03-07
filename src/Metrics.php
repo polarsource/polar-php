@@ -49,6 +49,10 @@ class Metrics
      *
      * Get metrics about your orders and subscriptions.
      *
+     * Currency values are output in cents.
+     *
+     * **Scopes**: `metrics:read`
+     *
      * @param  Operations\MetricsGetRequest  $request
      * @return Operations\MetricsGetResponse
      * @throws \Polar\Models\Errors\APIException
@@ -123,6 +127,8 @@ class Metrics
      * Get Metrics Limits
      *
      * Get the interval limits for the metrics endpoint.
+     *
+     * **Scopes**: `metrics:read`
      *
      * @return Operations\MetricsLimitsResponse
      * @throws \Polar\Models\Errors\APIException

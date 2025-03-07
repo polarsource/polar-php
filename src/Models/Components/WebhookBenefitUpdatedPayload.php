@@ -19,11 +19,11 @@ class WebhookBenefitUpdatedPayload
 {
     /**
      *
-     * @var BenefitAds|BenefitCustom|BenefitDiscord|BenefitGitHubRepository|BenefitDownloadables|BenefitLicenseKeys $data
+     * @var BenefitCustom|BenefitDiscord|BenefitGitHubRepository|BenefitDownloadables|BenefitLicenseKeys $data
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('data')]
-    #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\BenefitAds|\Polar\Models\Components\BenefitCustom|\Polar\Models\Components\BenefitDiscord|\Polar\Models\Components\BenefitGitHubRepository|\Polar\Models\Components\BenefitDownloadables|\Polar\Models\Components\BenefitLicenseKeys')]
-    public BenefitAds|BenefitCustom|BenefitDiscord|BenefitGitHubRepository|BenefitDownloadables|BenefitLicenseKeys $data;
+    #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\BenefitCustom|\Polar\Models\Components\BenefitDiscord|\Polar\Models\Components\BenefitGitHubRepository|\Polar\Models\Components\BenefitDownloadables|\Polar\Models\Components\BenefitLicenseKeys')]
+    public BenefitCustom|BenefitDiscord|BenefitGitHubRepository|BenefitDownloadables|BenefitLicenseKeys $data;
 
     /**
      *
@@ -34,10 +34,10 @@ class WebhookBenefitUpdatedPayload
 
     /**
      * @param  string  $type
-     * @param  BenefitAds|BenefitCustom|BenefitDiscord|BenefitGitHubRepository|BenefitDownloadables|BenefitLicenseKeys  $data
+     * @param  BenefitCustom|BenefitDiscord|BenefitGitHubRepository|BenefitDownloadables|BenefitLicenseKeys  $data
      * @phpstan-pure
      */
-    public function __construct(BenefitAds|BenefitCustom|BenefitDiscord|BenefitGitHubRepository|BenefitDownloadables|BenefitLicenseKeys $data, string $type = 'benefit.updated')
+    public function __construct(BenefitCustom|BenefitDiscord|BenefitGitHubRepository|BenefitDownloadables|BenefitLicenseKeys $data, string $type = 'benefit.updated')
     {
         $this->data = $data;
         $this->type = $type;

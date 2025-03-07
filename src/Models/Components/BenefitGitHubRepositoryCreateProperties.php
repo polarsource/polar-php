@@ -31,19 +31,19 @@ class BenefitGitHubRepositoryCreateProperties
     /**
      * The permission level to grant. Read more about roles and their permissions on [GitHub documentation](https://docs.github.com/en/organizations/managing-user-access-to-your-organizations-repositories/managing-repository-roles/repository-roles-for-an-organization#permissions-for-each-role).
      *
-     * @var BenefitGitHubRepositoryCreatePropertiesPermission $permission
+     * @var Permission $permission
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('permission')]
-    #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\BenefitGitHubRepositoryCreatePropertiesPermission')]
-    public BenefitGitHubRepositoryCreatePropertiesPermission $permission;
+    #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\Permission')]
+    public Permission $permission;
 
     /**
      * @param  string  $repositoryOwner
      * @param  string  $repositoryName
-     * @param  BenefitGitHubRepositoryCreatePropertiesPermission  $permission
+     * @param  Permission  $permission
      * @phpstan-pure
      */
-    public function __construct(string $repositoryOwner, string $repositoryName, BenefitGitHubRepositoryCreatePropertiesPermission $permission)
+    public function __construct(string $repositoryOwner, string $repositoryName, Permission $permission)
     {
         $this->repositoryOwner = $repositoryOwner;
         $this->repositoryName = $repositoryName;

@@ -50,6 +50,8 @@ class Subscriptions
      *
      * Export subscriptions as a CSV file.
      *
+     * **Scopes**: `subscriptions:read` `subscriptions:write`
+     *
      * @param  string|array<string>|null  $organizationId
      * @return Operations\SubscriptionsExportResponse
      * @throws \Polar\Models\Errors\APIException
@@ -127,6 +129,8 @@ class Subscriptions
      * Get Subscription
      *
      * Get a subscription by ID.
+     *
+     * **Scopes**: `subscriptions:write`
      *
      * @param  string  $id
      * @return Operations\SubscriptionsGetResponse
@@ -213,6 +217,8 @@ class Subscriptions
      * List Subscriptions
      *
      * List subscriptions.
+     *
+     * **Scopes**: `subscriptions:read` `subscriptions:write`
      *
      * @param  ?Operations\SubscriptionsListRequest  $request
      * @return Operations\SubscriptionsListResponse
@@ -329,6 +335,8 @@ class Subscriptions
      *
      * List subscriptions.
      *
+     * **Scopes**: `subscriptions:read` `subscriptions:write`
+     *
      * @param  ?Operations\SubscriptionsListRequest  $request
      * @return \Generator<Operations\SubscriptionsListResponse>
      * @throws \Polar\Models\Errors\APIException
@@ -346,6 +354,8 @@ class Subscriptions
      * Revoke Subscription
      *
      * Revoke a subscription, i.e cancel immediately.
+     *
+     * **Scopes**: `subscriptions:write`
      *
      * @param  string  $id
      * @return Operations\SubscriptionsRevokeResponse
@@ -443,6 +453,8 @@ class Subscriptions
      * Update Subscription
      *
      * Update a subscription.
+     *
+     * **Scopes**: `subscriptions:write`
      *
      * @param  Components\SubscriptionUpdateProduct|Components\SubscriptionCancel  $subscriptionUpdate
      * @param  string  $id

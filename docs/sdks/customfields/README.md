@@ -15,6 +15,8 @@
 
 Create a custom field.
 
+**Scopes**: `custom_fields:write`
+
 ### Example Usage
 
 ```php
@@ -35,6 +37,7 @@ $request = new Components\CustomFieldCreateNumber(
     slug: '<value>',
     name: '<value>',
     properties: new Components\CustomFieldNumberProperties(),
+    organizationId: '1dbfc517-0bbf-4301-9ba8-555ca42b9737',
 );
 
 $response = $sdk->customFields->create(
@@ -66,6 +69,8 @@ if ($response->customField !== null) {
 ## delete
 
 Delete a custom field.
+
+**Scopes**: `custom_fields:write`
 
 ### Example Usage
 
@@ -115,6 +120,8 @@ if ($response->statusCode === 200) {
 
 Get a custom field by ID.
 
+**Scopes**: `custom_fields:read` `custom_fields:write`
+
 ### Example Usage
 
 ```php
@@ -163,6 +170,8 @@ if ($response->customField !== null) {
 
 List custom fields.
 
+**Scopes**: `custom_fields:read` `custom_fields:write`
+
 ### Example Usage
 
 ```php
@@ -179,7 +188,11 @@ $sdk = Polar\Polar::builder()
     )
     ->build();
 
-$request = new Operations\CustomFieldsListRequest();
+$request = new Operations\CustomFieldsListRequest(
+    organizationId: [
+        '1dbfc517-0bbf-4301-9ba8-555ca42b9737',
+    ],
+);
 
 $responses = $sdk->customFields->list(
     request: $request
@@ -213,6 +226,8 @@ foreach ($responses as $response) {
 ## update
 
 Update a custom field.
+
+**Scopes**: `custom_fields:write`
 
 ### Example Usage
 

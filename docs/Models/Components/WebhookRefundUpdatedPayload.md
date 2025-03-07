@@ -7,7 +7,7 @@ Sent when a refund is updated.
 
 ## Fields
 
-| Field                                                  | Type                                                   | Required                                               | Description                                            |
-| ------------------------------------------------------ | ------------------------------------------------------ | ------------------------------------------------------ | ------------------------------------------------------ |
-| `type`                                                 | *string*                                               | :heavy_check_mark:                                     | N/A                                                    |
-| `data`                                                 | [Components\Refund](../../Models/Components/Refund.md) | :heavy_check_mark:                                     | N/A                                                    |
+| Field                                                  | Type                                                   | Required                                               | Description                                            | Example                                                |
+| ------------------------------------------------------ | ------------------------------------------------------ | ------------------------------------------------------ | ------------------------------------------------------ | ------------------------------------------------------ |
+| `type`                                                 | *string*                                               | :heavy_check_mark:                                     | N/A                                                    | refund.updated                                         |
+| `data`                                                 | [Components\Refund](../../Models/Components/Refund.md) | :heavy_check_mark:                                     | N/A                                                    |                                                        |

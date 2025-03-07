@@ -12,6 +12,10 @@
 
 Get metrics about your orders and subscriptions.
 
+Currency values are output in cents.
+
+**Scopes**: `metrics:read`
+
 ### Example Usage
 
 ```php
@@ -34,6 +38,9 @@ $request = new Operations\MetricsGetRequest(
     startDate: LocalDate::parse('2025-02-06'),
     endDate: LocalDate::parse('2024-09-04'),
     interval: Components\TimeInterval::Week,
+    organizationId: [
+        '1dbfc517-0bbf-4301-9ba8-555ca42b9737',
+    ],
 );
 
 $response = $sdk->metrics->get(
@@ -65,6 +72,8 @@ if ($response->metricsResponse !== null) {
 ## limits
 
 Get the interval limits for the metrics endpoint.
+
+**Scopes**: `metrics:read`
 
 ### Example Usage
 

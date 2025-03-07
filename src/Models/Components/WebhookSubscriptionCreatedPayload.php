@@ -13,6 +13,8 @@ namespace Polar\Models\Components;
  * WebhookSubscriptionCreatedPayload - Sent when a new subscription is created.
  *
  *
+ * When this event occurs, the subscription `status` might not be `active` yet, as we can still have to wait for the first payment to be processed.
+ *
  * **Discord & Slack support:** Full
  */
 class WebhookSubscriptionCreatedPayload

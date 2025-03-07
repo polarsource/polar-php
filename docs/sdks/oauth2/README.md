@@ -65,11 +65,7 @@ require 'vendor/autoload.php';
 use Polar;
 use Polar\Models\Components;
 
-$sdk = Polar\Polar::builder()
-    ->setSecurity(
-        '<YOUR_BEARER_TOKEN_HERE>'
-    )
-    ->build();
+$sdk = Polar\Polar::builder()->build();
 
 $request = new Components\IntrospectTokenRequest(
     token: '<value>',
@@ -116,11 +112,7 @@ require 'vendor/autoload.php';
 use Polar;
 use Polar\Models\Components;
 
-$sdk = Polar\Polar::builder()
-    ->setSecurity(
-        '<YOUR_BEARER_TOKEN_HERE>'
-    )
-    ->build();
+$sdk = Polar\Polar::builder()->build();
 
 $request = new Components\AuthorizationCodeTokenRequest(
     clientId: '<id>',
@@ -168,11 +160,7 @@ require 'vendor/autoload.php';
 use Polar;
 use Polar\Models\Components;
 
-$sdk = Polar\Polar::builder()
-    ->setSecurity(
-        '<YOUR_BEARER_TOKEN_HERE>'
-    )
-    ->build();
+$sdk = Polar\Polar::builder()->build();
 
 $request = new Components\RevokeTokenRequest(
     token: '<value>',

@@ -50,6 +50,8 @@ class Meters
      *
      * Create a meter.
      *
+     * **Scopes**: `meters:write`
+     *
      * @param  Components\MeterCreate  $request
      * @return Operations\MetersCreateResponse
      * @throws \Polar\Models\Errors\APIException
@@ -126,6 +128,8 @@ class Meters
      * Get Meter Events
      *
      * Get events matching the filter of a meter.
+     *
+     * **Scopes**: `meters:read` `meters:write`
      *
      * @param  string  $id
      * @param  ?int  $page
@@ -253,6 +257,8 @@ class Meters
      *
      * Get events matching the filter of a meter.
      *
+     * **Scopes**: `meters:read` `meters:write`
+     *
      * @param  string  $id
      * @param  ?int  $page
      * @param  ?int  $limit
@@ -272,6 +278,8 @@ class Meters
      * Get Meter
      *
      * Get a meter by ID.
+     *
+     * **Scopes**: `meters:read` `meters:write`
      *
      * @param  string  $id
      * @return Operations\MetersGetResponse
@@ -358,6 +366,8 @@ class Meters
      * List Meters
      *
      * List meters.
+     *
+     * **Scopes**: `meters:read` `meters:write`
      *
      * @param  ?Operations\MetersListRequest  $request
      * @return Operations\MetersListResponse
@@ -472,6 +482,8 @@ class Meters
      *
      * List meters.
      *
+     * **Scopes**: `meters:read` `meters:write`
+     *
      * @param  ?Operations\MetersListRequest  $request
      * @return \Generator<Operations\MetersListResponse>
      * @throws \Polar\Models\Errors\APIException
@@ -489,6 +501,8 @@ class Meters
      * Get Meter Quantities
      *
      * Get quantities of a meter over a time period.
+     *
+     * **Scopes**: `meters:read` `meters:write`
      *
      * @param  Operations\MetersQuantitiesRequest  $request
      * @return Operations\MetersQuantitiesResponse
@@ -575,6 +589,8 @@ class Meters
      * Update Meter
      *
      * Update a meter.
+     *
+     * **Scopes**: `meters:write`
      *
      * @param  Components\MeterUpdate  $meterUpdate
      * @param  string  $id

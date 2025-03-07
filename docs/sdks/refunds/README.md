@@ -12,6 +12,8 @@
 
 Create a refund.
 
+**Scopes**: `refunds:write`
+
 ### Example Usage
 
 ```php
@@ -66,6 +68,8 @@ if ($response->refund !== null) {
 
 List products.
 
+**Scopes**: `refunds:read` `refunds:write`
+
 ### Example Usage
 
 ```php
@@ -82,7 +86,11 @@ $sdk = Polar\Polar::builder()
     )
     ->build();
 
-$request = new Operations\RefundsListRequest();
+$request = new Operations\RefundsListRequest(
+    organizationId: [
+        '1dbfc517-0bbf-4301-9ba8-555ca42b9737',
+    ],
+);
 
 $responses = $sdk->refunds->list(
     request: $request

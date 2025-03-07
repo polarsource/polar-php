@@ -50,6 +50,8 @@ class Discounts
      *
      * Create a discount.
      *
+     * **Scopes**: `discounts:write`
+     *
      * @param  Components\DiscountFixedOnceForeverDurationCreate|Components\DiscountFixedRepeatDurationCreate|Components\DiscountPercentageOnceForeverDurationCreate|Components\DiscountPercentageRepeatDurationCreate  $request
      * @return Operations\DiscountsCreateResponse
      * @throws \Polar\Models\Errors\APIException
@@ -127,6 +129,8 @@ class Discounts
      *
      * Delete a discount.
      *
+     * **Scopes**: `discounts:write`
+     *
      * @param  string  $id
      * @return Operations\DiscountsDeleteResponse
      * @throws \Polar\Models\Errors\APIException
@@ -203,6 +207,8 @@ class Discounts
      * Get Discount
      *
      * Get a discount by ID.
+     *
+     * **Scopes**: `discounts:read` `discounts:write`
      *
      * @param  string  $id
      * @return Operations\DiscountsGetResponse
@@ -289,6 +295,8 @@ class Discounts
      * List Discounts
      *
      * List discounts.
+     *
+     * **Scopes**: `discounts:read` `discounts:write`
      *
      * @param  ?Operations\DiscountsListRequest  $request
      * @return Operations\DiscountsListResponse
@@ -402,6 +410,8 @@ class Discounts
      *
      * List discounts.
      *
+     * **Scopes**: `discounts:read` `discounts:write`
+     *
      * @param  ?Operations\DiscountsListRequest  $request
      * @return \Generator<Operations\DiscountsListResponse>
      * @throws \Polar\Models\Errors\APIException
@@ -419,6 +429,8 @@ class Discounts
      * Update Discount
      *
      * Update a discount.
+     *
+     * **Scopes**: `discounts:write`
      *
      * @param  Components\DiscountUpdate  $discountUpdate
      * @param  string  $id

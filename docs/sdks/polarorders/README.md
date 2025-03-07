@@ -11,7 +11,9 @@
 
 ## get
 
-Get an order by ID for the authenticated customer or user.
+Get an order by ID for the authenticated customer.
+
+**Scopes**: `customer_portal:read` `customer_portal:write`
 
 ### Example Usage
 
@@ -21,17 +23,19 @@ declare(strict_types=1);
 require 'vendor/autoload.php';
 
 use Polar;
+use Polar\Models\Operations;
 
-$sdk = Polar\Polar::builder()
-    ->setSecurity(
-        '<YOUR_BEARER_TOKEN_HERE>'
-    )
-    ->build();
+$sdk = Polar\Polar::builder()->build();
 
 
+$requestSecurity = new Operations\CustomerPortalOrdersGetSecurity(
+    customerSession: '<YOUR_BEARER_TOKEN_HERE>',
+);
 
 $response = $sdk->customerPortal->orders->get(
+    security: $requestSecurity,
     id: '<value>'
+
 );
 
 if ($response->customerOrder !== null) {
@@ -41,9 +45,10 @@ if ($response->customerOrder !== null) {
 
 ### Parameters
 
-| Parameter          | Type               | Required           | Description        |
-| ------------------ | ------------------ | ------------------ | ------------------ |
-| `id`               | *string*           | :heavy_check_mark: | The order ID.      |
+| Parameter                                                                                                | Type                                                                                                     | Required                                                                                                 | Description                                                                                              |
+| -------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------- |
+| `security`                                                                                               | [Operations\CustomerPortalOrdersGetSecurity](../../Models/Operations/CustomerPortalOrdersGetSecurity.md) | :heavy_check_mark:                                                                                       | The security requirements to use for the request.                                                        |
+| `id`                                                                                                     | *string*                                                                                                 | :heavy_check_mark:                                                                                       | The order ID.                                                                                            |
 
 ### Response
 
@@ -61,6 +66,8 @@ if ($response->customerOrder !== null) {
 
 Get an order's invoice data.
 
+**Scopes**: `customer_portal:read` `customer_portal:write`
+
 ### Example Usage
 
 ```php
@@ -69,17 +76,19 @@ declare(strict_types=1);
 require 'vendor/autoload.php';
 
 use Polar;
+use Polar\Models\Operations;
 
-$sdk = Polar\Polar::builder()
-    ->setSecurity(
-        '<YOUR_BEARER_TOKEN_HERE>'
-    )
-    ->build();
+$sdk = Polar\Polar::builder()->build();
 
 
+$requestSecurity = new Operations\CustomerPortalOrdersInvoiceSecurity(
+    customerSession: '<YOUR_BEARER_TOKEN_HERE>',
+);
 
 $response = $sdk->customerPortal->orders->invoice(
+    security: $requestSecurity,
     id: '<value>'
+
 );
 
 if ($response->customerOrderInvoice !== null) {
@@ -89,9 +98,10 @@ if ($response->customerOrderInvoice !== null) {
 
 ### Parameters
 
-| Parameter          | Type               | Required           | Description        |
-| ------------------ | ------------------ | ------------------ | ------------------ |
-| `id`               | *string*           | :heavy_check_mark: | The order ID.      |
+| Parameter                                                                                                        | Type                                                                                                             | Required                                                                                                         | Description                                                                                                      |
+| ---------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------- |
+| `security`                                                                                                       | [Operations\CustomerPortalOrdersInvoiceSecurity](../../Models/Operations/CustomerPortalOrdersInvoiceSecurity.md) | :heavy_check_mark:                                                                                               | The security requirements to use for the request.                                                                |
+| `id`                                                                                                             | *string*                                                                                                         | :heavy_check_mark:                                                                                               | The order ID.                                                                                                    |
 
 ### Response
 
@@ -107,7 +117,9 @@ if ($response->customerOrderInvoice !== null) {
 
 ## list
 
-List orders of the authenticated customer or user.
+List orders of the authenticated customer.
+
+**Scopes**: `customer_portal:read` `customer_portal:write`
 
 ### Example Usage
 
@@ -119,16 +131,20 @@ require 'vendor/autoload.php';
 use Polar;
 use Polar\Models\Operations;
 
-$sdk = Polar\Polar::builder()
-    ->setSecurity(
-        '<YOUR_BEARER_TOKEN_HERE>'
-    )
-    ->build();
+$sdk = Polar\Polar::builder()->build();
 
-$request = new Operations\CustomerPortalOrdersListRequest();
+$request = new Operations\CustomerPortalOrdersListRequest(
+    organizationId: [
+        '1dbfc517-0bbf-4301-9ba8-555ca42b9737',
+    ],
+);
+$requestSecurity = new Operations\CustomerPortalOrdersListSecurity(
+    customerSession: '<YOUR_BEARER_TOKEN_HERE>',
+);
 
 $responses = $sdk->customerPortal->orders->list(
-    request: $request
+    request: $request,
+    security: $requestSecurity
 );
 
 
@@ -141,9 +157,10 @@ foreach ($responses as $response) {
 
 ### Parameters
 
-| Parameter                                                                                                | Type                                                                                                     | Required                                                                                                 | Description                                                                                              |
-| -------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------- |
-| `$request`                                                                                               | [Operations\CustomerPortalOrdersListRequest](../../Models/Operations/CustomerPortalOrdersListRequest.md) | :heavy_check_mark:                                                                                       | The request object to use for the request.                                                               |
+| Parameter                                                                                                  | Type                                                                                                       | Required                                                                                                   | Description                                                                                                |
+| ---------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------- |
+| `$request`                                                                                                 | [Operations\CustomerPortalOrdersListRequest](../../Models/Operations/CustomerPortalOrdersListRequest.md)   | :heavy_check_mark:                                                                                         | The request object to use for the request.                                                                 |
+| `security`                                                                                                 | [Operations\CustomerPortalOrdersListSecurity](../../Models/Operations/CustomerPortalOrdersListSecurity.md) | :heavy_check_mark:                                                                                         | The security requirements to use for the request.                                                          |
 
 ### Response
 

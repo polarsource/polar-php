@@ -49,6 +49,8 @@ class Orders
      *
      * Get an order by ID.
      *
+     * **Scopes**: `orders:read`
+     *
      * @param  string  $id
      * @return Operations\OrdersGetResponse
      * @throws \Polar\Models\Errors\APIException
@@ -134,6 +136,8 @@ class Orders
      * Get Order Invoice
      *
      * Get an order's invoice data.
+     *
+     * **Scopes**: `orders:read`
      *
      * @param  string  $id
      * @return Operations\OrdersInvoiceResponse
@@ -221,6 +225,8 @@ class Orders
      *
      * List orders.
      *
+     * **Scopes**: `orders:read`
+     *
      * @param  ?Operations\OrdersListRequest  $request
      * @return Operations\OrdersListResponse
      * @throws \Polar\Models\Errors\APIException
@@ -297,6 +303,7 @@ class Orders
                         request: new Operations\OrdersListRequest(
                             organizationId: $request != null ? $request->organizationId : null,
                             productId: $request != null ? $request->productId : null,
+                            productBillingType: $request != null ? $request->productBillingType : null,
                             productPriceType: $request != null ? $request->productPriceType : null,
                             discountId: $request != null ? $request->discountId : null,
                             customerId: $request != null ? $request->customerId : null,
@@ -336,6 +343,8 @@ class Orders
      * List Orders
      *
      * List orders.
+     *
+     * **Scopes**: `orders:read`
      *
      * @param  ?Operations\OrdersListRequest  $request
      * @return \Generator<Operations\OrdersListResponse>

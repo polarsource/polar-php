@@ -15,6 +15,8 @@
 
 Export subscriptions as a CSV file.
 
+**Scopes**: `subscriptions:read` `subscriptions:write`
+
 ### Example Usage
 
 ```php
@@ -34,7 +36,7 @@ $sdk = Polar\Polar::builder()
 
 $response = $sdk->subscriptions->export(
     organizationId: [
-        '<value>',
+        '1dbfc517-0bbf-4301-9ba8-555ca42b9737',
     ]
 );
 
@@ -63,6 +65,8 @@ if ($response->any !== null) {
 ## get
 
 Get a subscription by ID.
+
+**Scopes**: `subscriptions:write`
 
 ### Example Usage
 
@@ -112,6 +116,8 @@ if ($response->subscription !== null) {
 
 List subscriptions.
 
+**Scopes**: `subscriptions:read` `subscriptions:write`
+
 ### Example Usage
 
 ```php
@@ -128,7 +134,11 @@ $sdk = Polar\Polar::builder()
     )
     ->build();
 
-$request = new Operations\SubscriptionsListRequest();
+$request = new Operations\SubscriptionsListRequest(
+    organizationId: [
+        '1dbfc517-0bbf-4301-9ba8-555ca42b9737',
+    ],
+);
 
 $responses = $sdk->subscriptions->list(
     request: $request
@@ -162,6 +172,8 @@ foreach ($responses as $response) {
 ## revoke
 
 Revoke a subscription, i.e cancel immediately.
+
+**Scopes**: `subscriptions:write`
 
 ### Example Usage
 
@@ -211,6 +223,8 @@ if ($response->subscription !== null) {
 ## update
 
 Update a subscription.
+
+**Scopes**: `subscriptions:write`
 
 ### Example Usage
 

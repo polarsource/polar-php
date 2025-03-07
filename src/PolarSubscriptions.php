@@ -48,13 +48,16 @@ class PolarSubscriptions
     /**
      * Cancel Subscription
      *
-     * Cancel a subscription of the authenticated customer or user.
+     * Cancel a subscription of the authenticated customer.
      *
+     * **Scopes**: `customer_portal:write`
+     *
+     * @param  Operations\CustomerPortalSubscriptionsCancelSecurity  $security
      * @param  string  $id
      * @return Operations\CustomerPortalSubscriptionsCancelResponse
      * @throws \Polar\Models\Errors\APIException
      */
-    public function cancel(string $id, ?Options $options = null): Operations\CustomerPortalSubscriptionsCancelResponse
+    public function cancel(Operations\CustomerPortalSubscriptionsCancelSecurity $security, string $id, ?Options $options = null): Operations\CustomerPortalSubscriptionsCancelResponse
     {
         $request = new Operations\CustomerPortalSubscriptionsCancelRequest(
             id: $id,
@@ -66,12 +69,18 @@ class PolarSubscriptions
         $httpOptions['headers']['Accept'] = 'application/json';
         $httpOptions['headers']['user-agent'] = $this->sdkConfiguration->userAgent;
         $httpRequest = new \GuzzleHttp\Psr7\Request('DELETE', $url);
-        $hookContext = new HookContext('customer_portal:subscriptions:cancel', null, $this->sdkConfiguration->securitySource);
+        if ($security != null) {
+            $client = Utils\Utils::configureSecurityClient($this->sdkConfiguration->client, $security);
+        } else {
+            $client = $this->sdkConfiguration->client;
+        }
+
+        $hookContext = new HookContext('customer_portal:subscriptions:cancel', null, fn () => $security);
         $httpRequest = $this->sdkConfiguration->hooks->beforeRequest(new Hooks\BeforeRequestContext($hookContext), $httpRequest);
         $httpOptions = Utils\Utils::convertHeadersToOptions($httpRequest, $httpOptions);
         $httpRequest = Utils\Utils::removeHeaders($httpRequest);
         try {
-            $httpResponse = $this->sdkConfiguration->client->send($httpRequest, $httpOptions);
+            $httpResponse = $client->send($httpRequest, $httpOptions);
         } catch (\GuzzleHttp\Exception\GuzzleException $error) {
             $res = $this->sdkConfiguration->hooks->afterError(new Hooks\AfterErrorContext($hookContext), null, $error);
             $httpResponse = $res;
@@ -145,13 +154,16 @@ class PolarSubscriptions
     /**
      * Get Subscription
      *
-     * Get a subscription for the authenticated customer or user.
+     * Get a subscription for the authenticated customer.
      *
+     * **Scopes**: `customer_portal:read` `customer_portal:write`
+     *
+     * @param  Operations\CustomerPortalSubscriptionsGetSecurity  $security
      * @param  string  $id
      * @return Operations\CustomerPortalSubscriptionsGetResponse
      * @throws \Polar\Models\Errors\APIException
      */
-    public function get(string $id, ?Options $options = null): Operations\CustomerPortalSubscriptionsGetResponse
+    public function get(Operations\CustomerPortalSubscriptionsGetSecurity $security, string $id, ?Options $options = null): Operations\CustomerPortalSubscriptionsGetResponse
     {
         $request = new Operations\CustomerPortalSubscriptionsGetRequest(
             id: $id,
@@ -163,12 +175,18 @@ class PolarSubscriptions
         $httpOptions['headers']['Accept'] = 'application/json';
         $httpOptions['headers']['user-agent'] = $this->sdkConfiguration->userAgent;
         $httpRequest = new \GuzzleHttp\Psr7\Request('GET', $url);
-        $hookContext = new HookContext('customer_portal:subscriptions:get', null, $this->sdkConfiguration->securitySource);
+        if ($security != null) {
+            $client = Utils\Utils::configureSecurityClient($this->sdkConfiguration->client, $security);
+        } else {
+            $client = $this->sdkConfiguration->client;
+        }
+
+        $hookContext = new HookContext('customer_portal:subscriptions:get', null, fn () => $security);
         $httpRequest = $this->sdkConfiguration->hooks->beforeRequest(new Hooks\BeforeRequestContext($hookContext), $httpRequest);
         $httpOptions = Utils\Utils::convertHeadersToOptions($httpRequest, $httpOptions);
         $httpRequest = Utils\Utils::removeHeaders($httpRequest);
         try {
-            $httpResponse = $this->sdkConfiguration->client->send($httpRequest, $httpOptions);
+            $httpResponse = $client->send($httpRequest, $httpOptions);
         } catch (\GuzzleHttp\Exception\GuzzleException $error) {
             $res = $this->sdkConfiguration->hooks->afterError(new Hooks\AfterErrorContext($hookContext), null, $error);
             $httpResponse = $res;
@@ -231,13 +249,16 @@ class PolarSubscriptions
     /**
      * List Subscriptions
      *
-     * List subscriptions of the authenticated customer or user.
+     * List subscriptions of the authenticated customer.
      *
+     * **Scopes**: `customer_portal:read` `customer_portal:write`
+     *
+     * @param  Operations\CustomerPortalSubscriptionsListSecurity  $security
      * @param  ?Operations\CustomerPortalSubscriptionsListRequest  $request
      * @return Operations\CustomerPortalSubscriptionsListResponse
      * @throws \Polar\Models\Errors\APIException
      */
-    private function listIndividual(?Operations\CustomerPortalSubscriptionsListRequest $request = null, ?Options $options = null): Operations\CustomerPortalSubscriptionsListResponse
+    private function listIndividual(Operations\CustomerPortalSubscriptionsListSecurity $security, ?Operations\CustomerPortalSubscriptionsListRequest $request = null, ?Options $options = null): Operations\CustomerPortalSubscriptionsListResponse
     {
         $baseUrl = $this->sdkConfiguration->getServerUrl();
         $url = Utils\Utils::generateUrl($baseUrl, '/v1/customer-portal/subscriptions/');
@@ -248,13 +269,19 @@ class PolarSubscriptions
         $httpOptions['headers']['Accept'] = 'application/json';
         $httpOptions['headers']['user-agent'] = $this->sdkConfiguration->userAgent;
         $httpRequest = new \GuzzleHttp\Psr7\Request('GET', $url);
-        $hookContext = new HookContext('customer_portal:subscriptions:list', null, $this->sdkConfiguration->securitySource);
+        if ($security != null) {
+            $client = Utils\Utils::configureSecurityClient($this->sdkConfiguration->client, $security);
+        } else {
+            $client = $this->sdkConfiguration->client;
+        }
+
+        $hookContext = new HookContext('customer_portal:subscriptions:list', null, fn () => $security);
         $httpRequest = $this->sdkConfiguration->hooks->beforeRequest(new Hooks\BeforeRequestContext($hookContext), $httpRequest);
         $httpOptions['query'] = Utils\QueryParameters::standardizeQueryParams($httpRequest, $qp);
         $httpOptions = Utils\Utils::convertHeadersToOptions($httpRequest, $httpOptions);
         $httpRequest = Utils\Utils::removeHeaders($httpRequest);
         try {
-            $httpResponse = $this->sdkConfiguration->client->send($httpRequest, $httpOptions);
+            $httpResponse = $client->send($httpRequest, $httpOptions);
         } catch (\GuzzleHttp\Exception\GuzzleException $error) {
             $res = $this->sdkConfiguration->hooks->afterError(new Hooks\AfterErrorContext($hookContext), null, $error);
             $httpResponse = $res;
@@ -280,7 +307,7 @@ class PolarSubscriptions
                     listResourceCustomerSubscription: $obj);
                 $sdk = $this;
 
-                $response->next = function () use ($sdk, $request, $responseData): ?Operations\CustomerPortalSubscriptionsListResponse {
+                $response->next = function () use ($sdk, $request, $responseData, $security): ?Operations\CustomerPortalSubscriptionsListResponse {
                     $page = $request != null ? $request->page : 0;
                     $nextPage = $page + 1;
                     $jsonObject = new \JsonPath\JsonObject($responseData);
@@ -315,6 +342,7 @@ class PolarSubscriptions
                             limit: $request != null ? $request->limit : null,
                             sorting: $request != null ? $request->sorting : null,
                         ),
+                        security: $security,
                     );
                 };
 
@@ -345,15 +373,18 @@ class PolarSubscriptions
     /**
      * List Subscriptions
      *
-     * List subscriptions of the authenticated customer or user.
+     * List subscriptions of the authenticated customer.
      *
+     * **Scopes**: `customer_portal:read` `customer_portal:write`
+     *
+     * @param  Operations\CustomerPortalSubscriptionsListSecurity  $security
      * @param  ?Operations\CustomerPortalSubscriptionsListRequest  $request
      * @return \Generator<Operations\CustomerPortalSubscriptionsListResponse>
      * @throws \Polar\Models\Errors\APIException
      */
-    public function list(?Operations\CustomerPortalSubscriptionsListRequest $request = null, ?Options $options = null): \Generator
+    public function list(Operations\CustomerPortalSubscriptionsListSecurity $security, ?Operations\CustomerPortalSubscriptionsListRequest $request = null, ?Options $options = null): \Generator
     {
-        $res = $this->listIndividual($request, $options);
+        $res = $this->listIndividual($security, $request, $options);
         while ($res !== null) {
             yield $res;
             $res = $res->next($res);
@@ -363,14 +394,17 @@ class PolarSubscriptions
     /**
      * Update Subscription
      *
-     * Update a subscription of the authenticated customer or user.
+     * Update a subscription of the authenticated customer.
      *
+     * **Scopes**: `customer_portal:write`
+     *
+     * @param  Operations\CustomerPortalSubscriptionsUpdateSecurity  $security
      * @param  Components\CustomerSubscriptionUpdateProduct|Components\CustomerSubscriptionCancel  $customerSubscriptionUpdate
      * @param  string  $id
      * @return Operations\CustomerPortalSubscriptionsUpdateResponse
      * @throws \Polar\Models\Errors\APIException
      */
-    public function update(Components\CustomerSubscriptionUpdateProduct|Components\CustomerSubscriptionCancel $customerSubscriptionUpdate, string $id, ?Options $options = null): Operations\CustomerPortalSubscriptionsUpdateResponse
+    public function update(Operations\CustomerPortalSubscriptionsUpdateSecurity $security, Components\CustomerSubscriptionUpdateProduct|Components\CustomerSubscriptionCancel $customerSubscriptionUpdate, string $id, ?Options $options = null): Operations\CustomerPortalSubscriptionsUpdateResponse
     {
         $request = new Operations\CustomerPortalSubscriptionsUpdateRequest(
             id: $id,
@@ -388,12 +422,18 @@ class PolarSubscriptions
         $httpOptions['headers']['Accept'] = 'application/json';
         $httpOptions['headers']['user-agent'] = $this->sdkConfiguration->userAgent;
         $httpRequest = new \GuzzleHttp\Psr7\Request('PATCH', $url);
-        $hookContext = new HookContext('customer_portal:subscriptions:update', null, $this->sdkConfiguration->securitySource);
+        if ($security != null) {
+            $client = Utils\Utils::configureSecurityClient($this->sdkConfiguration->client, $security);
+        } else {
+            $client = $this->sdkConfiguration->client;
+        }
+
+        $hookContext = new HookContext('customer_portal:subscriptions:update', null, fn () => $security);
         $httpRequest = $this->sdkConfiguration->hooks->beforeRequest(new Hooks\BeforeRequestContext($hookContext), $httpRequest);
         $httpOptions = Utils\Utils::convertHeadersToOptions($httpRequest, $httpOptions);
         $httpRequest = Utils\Utils::removeHeaders($httpRequest);
         try {
-            $httpResponse = $this->sdkConfiguration->client->send($httpRequest, $httpOptions);
+            $httpResponse = $client->send($httpRequest, $httpOptions);
         } catch (\GuzzleHttp\Exception\GuzzleException $error) {
             $res = $this->sdkConfiguration->hooks->afterError(new Hooks\AfterErrorContext($hookContext), null, $error);
             $httpResponse = $res;

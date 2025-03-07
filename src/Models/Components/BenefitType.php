@@ -12,7 +12,6 @@ namespace Polar\Models\Components;
 enum BenefitType: string
 {
     case Custom = 'custom';
-    case Ads = 'ads';
     case Discord = 'discord';
     case GithubRepository = 'github_repository';
     case Downloadables = 'downloadables';

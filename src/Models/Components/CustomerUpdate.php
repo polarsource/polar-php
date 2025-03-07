@@ -22,6 +22,16 @@ class CustomerUpdate
     public ?array $metadata = null;
 
     /**
+     * The ID of the customer in your system. This must be unique within the organization. Once set, it can't be updated.
+     *
+     * @var ?string $externalId
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('external_id')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
+    public ?string $externalId = null;
+
+    /**
+     * The email address of the customer. This must be unique within the organization.
      *
      * @var ?string $email
      */
@@ -30,6 +40,7 @@ class CustomerUpdate
     public ?string $email = null;
 
     /**
+     * The name of the customer.
      *
      * @var ?string $name
      */
@@ -58,15 +69,17 @@ class CustomerUpdate
 
     /**
      * @param  ?array<string, string|int|bool>  $metadata
+     * @param  ?string  $externalId
      * @param  ?string  $email
      * @param  ?string  $name
      * @param  ?Address  $billingAddress
      * @param  ?array<string|TaxIDFormat|null>  $taxId
      * @phpstan-pure
      */
-    public function __construct(?array $metadata = null, ?string $email = null, ?string $name = null, ?Address $billingAddress = null, ?array $taxId = null)
+    public function __construct(?array $metadata = null, ?string $externalId = null, ?string $email = null, ?string $name = null, ?Address $billingAddress = null, ?array $taxId = null)
     {
         $this->metadata = $metadata;
+        $this->externalId = $externalId;
         $this->email = $email;
         $this->name = $name;
         $this->billingAddress = $billingAddress;

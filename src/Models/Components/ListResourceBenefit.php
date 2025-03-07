@@ -14,10 +14,10 @@ class ListResourceBenefit
     /**
      * $items
      *
-     * @var array<BenefitAds|BenefitCustom|BenefitDiscord|BenefitGitHubRepository|BenefitDownloadables|BenefitLicenseKeys> $items
+     * @var array<BenefitCustom|BenefitDiscord|BenefitGitHubRepository|BenefitDownloadables|BenefitLicenseKeys> $items
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('items')]
-    #[\Speakeasy\Serializer\Annotation\Type('array<\Polar\Models\Components\BenefitAds|\Polar\Models\Components\BenefitCustom|\Polar\Models\Components\BenefitDiscord|\Polar\Models\Components\BenefitGitHubRepository|\Polar\Models\Components\BenefitDownloadables|\Polar\Models\Components\BenefitLicenseKeys>')]
+    #[\Speakeasy\Serializer\Annotation\Type('array<\Polar\Models\Components\BenefitCustom|\Polar\Models\Components\BenefitDiscord|\Polar\Models\Components\BenefitGitHubRepository|\Polar\Models\Components\BenefitDownloadables|\Polar\Models\Components\BenefitLicenseKeys>')]
     public array $items;
 
     /**
@@ -29,7 +29,7 @@ class ListResourceBenefit
     public Pagination $pagination;
 
     /**
-     * @param  array<BenefitAds|BenefitCustom|BenefitDiscord|BenefitGitHubRepository|BenefitDownloadables|BenefitLicenseKeys>  $items
+     * @param  array<BenefitCustom|BenefitDiscord|BenefitGitHubRepository|BenefitDownloadables|BenefitLicenseKeys>  $items
      * @param  Pagination  $pagination
      * @phpstan-pure
      */

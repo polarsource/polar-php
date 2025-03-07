@@ -15,6 +15,8 @@
 
 Create a file.
 
+**Scopes**: `files:write`
+
 ### Example Usage
 
 ```php
@@ -44,6 +46,7 @@ $request = new Components\OrganizationAvatarFileCreate(
             ),
         ],
     ),
+    organizationId: '1dbfc517-0bbf-4301-9ba8-555ca42b9737',
 );
 
 $response = $sdk->files->create(
@@ -75,6 +78,8 @@ if ($response->fileUpload !== null) {
 ## delete
 
 Delete a file.
+
+**Scopes**: `files:write`
 
 ### Example Usage
 
@@ -125,6 +130,8 @@ if ($response->statusCode === 200) {
 
 List files.
 
+**Scopes**: `files:read` `files:write`
+
 ### Example Usage
 
 ```php
@@ -145,7 +152,7 @@ $sdk = Polar\Polar::builder()
 $responses = $sdk->files->list(
     page: 1,
     limit: 10,
-    organizationId: '<value>',
+    organizationId: '1dbfc517-0bbf-4301-9ba8-555ca42b9737',
     ids: [
         '<value>',
     ]
@@ -162,12 +169,12 @@ foreach ($responses as $response) {
 
 ### Parameters
 
-| Parameter                                       | Type                                            | Required                                        | Description                                     |
-| ----------------------------------------------- | ----------------------------------------------- | ----------------------------------------------- | ----------------------------------------------- |
-| `page`                                          | *?int*                                          | :heavy_minus_sign:                              | Page number, defaults to 1.                     |
-| `limit`                                         | *?int*                                          | :heavy_minus_sign:                              | Size of a page, defaults to 10. Maximum is 100. |
-| `organizationId`                                | *?string*                                       | :heavy_minus_sign:                              | N/A                                             |
-| `ids`                                           | array<*string*>                                 | :heavy_minus_sign:                              | List of file IDs to get.                        |
+| Parameter                                       | Type                                            | Required                                        | Description                                     | Example                                         |
+| ----------------------------------------------- | ----------------------------------------------- | ----------------------------------------------- | ----------------------------------------------- | ----------------------------------------------- |
+| `page`                                          | *?int*                                          | :heavy_minus_sign:                              | Page number, defaults to 1.                     |                                                 |
+| `limit`                                         | *?int*                                          | :heavy_minus_sign:                              | Size of a page, defaults to 10. Maximum is 100. |                                                 |
+| `organizationId`                                | *?string*                                       | :heavy_minus_sign:                              | N/A                                             | 1dbfc517-0bbf-4301-9ba8-555ca42b9737            |
+| `ids`                                           | array<*string*>                                 | :heavy_minus_sign:                              | List of file IDs to get.                        |                                                 |
 
 ### Response
 
@@ -183,6 +190,8 @@ foreach ($responses as $response) {
 ## update
 
 Update a file.
+
+**Scopes**: `files:write`
 
 ### Example Usage
 
@@ -236,6 +245,8 @@ if ($response->responseFilesUpdate !== null) {
 ## uploaded
 
 Complete a file upload.
+
+**Scopes**: `files:write`
 
 ### Example Usage
 

@@ -68,7 +68,7 @@ class PolarLicenseKeys
         $httpOptions['headers']['Accept'] = 'application/json';
         $httpOptions['headers']['user-agent'] = $this->sdkConfiguration->userAgent;
         $httpRequest = new \GuzzleHttp\Psr7\Request('POST', $url);
-        $hookContext = new HookContext('customer_portal:license_keys:activate', null, $this->sdkConfiguration->securitySource);
+        $hookContext = new HookContext('customer_portal:license_keys:activate', null, null);
         $httpRequest = $this->sdkConfiguration->hooks->beforeRequest(new Hooks\BeforeRequestContext($hookContext), $httpRequest);
         $httpOptions = Utils\Utils::convertHeadersToOptions($httpRequest, $httpOptions);
         $httpRequest = Utils\Utils::removeHeaders($httpRequest);
@@ -167,7 +167,7 @@ class PolarLicenseKeys
         $httpOptions['headers']['Accept'] = 'application/json';
         $httpOptions['headers']['user-agent'] = $this->sdkConfiguration->userAgent;
         $httpRequest = new \GuzzleHttp\Psr7\Request('POST', $url);
-        $hookContext = new HookContext('customer_portal:license_keys:deactivate', null, $this->sdkConfiguration->securitySource);
+        $hookContext = new HookContext('customer_portal:license_keys:deactivate', null, null);
         $httpRequest = $this->sdkConfiguration->hooks->beforeRequest(new Hooks\BeforeRequestContext($hookContext), $httpRequest);
         $httpOptions = Utils\Utils::convertHeadersToOptions($httpRequest, $httpOptions);
         $httpRequest = Utils\Utils::removeHeaders($httpRequest);
@@ -228,11 +228,14 @@ class PolarLicenseKeys
      *
      * Get a license key.
      *
+     * **Scopes**: `customer_portal:read` `customer_portal:write`
+     *
+     * @param  Operations\CustomerPortalLicenseKeysGetSecurity  $security
      * @param  string  $id
      * @return Operations\CustomerPortalLicenseKeysGetResponse
      * @throws \Polar\Models\Errors\APIException
      */
-    public function get(string $id, ?Options $options = null): Operations\CustomerPortalLicenseKeysGetResponse
+    public function get(Operations\CustomerPortalLicenseKeysGetSecurity $security, string $id, ?Options $options = null): Operations\CustomerPortalLicenseKeysGetResponse
     {
         $request = new Operations\CustomerPortalLicenseKeysGetRequest(
             id: $id,
@@ -244,12 +247,18 @@ class PolarLicenseKeys
         $httpOptions['headers']['Accept'] = 'application/json';
         $httpOptions['headers']['user-agent'] = $this->sdkConfiguration->userAgent;
         $httpRequest = new \GuzzleHttp\Psr7\Request('GET', $url);
-        $hookContext = new HookContext('customer_portal:license_keys:get', null, $this->sdkConfiguration->securitySource);
+        if ($security != null) {
+            $client = Utils\Utils::configureSecurityClient($this->sdkConfiguration->client, $security);
+        } else {
+            $client = $this->sdkConfiguration->client;
+        }
+
+        $hookContext = new HookContext('customer_portal:license_keys:get', null, fn () => $security);
         $httpRequest = $this->sdkConfiguration->hooks->beforeRequest(new Hooks\BeforeRequestContext($hookContext), $httpRequest);
         $httpOptions = Utils\Utils::convertHeadersToOptions($httpRequest, $httpOptions);
         $httpRequest = Utils\Utils::removeHeaders($httpRequest);
         try {
-            $httpResponse = $this->sdkConfiguration->client->send($httpRequest, $httpOptions);
+            $httpResponse = $client->send($httpRequest, $httpOptions);
         } catch (\GuzzleHttp\Exception\GuzzleException $error) {
             $res = $this->sdkConfiguration->hooks->afterError(new Hooks\AfterErrorContext($hookContext), null, $error);
             $httpResponse = $res;
@@ -312,6 +321,9 @@ class PolarLicenseKeys
     /**
      * List License Keys
      *
+     * **Scopes**: `customer_portal:read` `customer_portal:write`
+     *
+     * @param  Operations\CustomerPortalLicenseKeysListSecurity  $security
      * @param  string|array<string>|null  $organizationId
      * @param  ?string  $benefitId
      * @param  ?int  $page
@@ -319,7 +331,7 @@ class PolarLicenseKeys
      * @return Operations\CustomerPortalLicenseKeysListResponse
      * @throws \Polar\Models\Errors\APIException
      */
-    private function listIndividual(string|array|null $organizationId = null, ?string $benefitId = null, ?int $page = null, ?int $limit = null, ?Options $options = null): Operations\CustomerPortalLicenseKeysListResponse
+    private function listIndividual(Operations\CustomerPortalLicenseKeysListSecurity $security, string|array|null $organizationId = null, ?string $benefitId = null, ?int $page = null, ?int $limit = null, ?Options $options = null): Operations\CustomerPortalLicenseKeysListResponse
     {
         $request = new Operations\CustomerPortalLicenseKeysListRequest(
             organizationId: $organizationId,
@@ -336,13 +348,19 @@ class PolarLicenseKeys
         $httpOptions['headers']['Accept'] = 'application/json';
         $httpOptions['headers']['user-agent'] = $this->sdkConfiguration->userAgent;
         $httpRequest = new \GuzzleHttp\Psr7\Request('GET', $url);
-        $hookContext = new HookContext('customer_portal:license_keys:list', null, $this->sdkConfiguration->securitySource);
+        if ($security != null) {
+            $client = Utils\Utils::configureSecurityClient($this->sdkConfiguration->client, $security);
+        } else {
+            $client = $this->sdkConfiguration->client;
+        }
+
+        $hookContext = new HookContext('customer_portal:license_keys:list', null, fn () => $security);
         $httpRequest = $this->sdkConfiguration->hooks->beforeRequest(new Hooks\BeforeRequestContext($hookContext), $httpRequest);
         $httpOptions['query'] = Utils\QueryParameters::standardizeQueryParams($httpRequest, $qp);
         $httpOptions = Utils\Utils::convertHeadersToOptions($httpRequest, $httpOptions);
         $httpRequest = Utils\Utils::removeHeaders($httpRequest);
         try {
-            $httpResponse = $this->sdkConfiguration->client->send($httpRequest, $httpOptions);
+            $httpResponse = $client->send($httpRequest, $httpOptions);
         } catch (\GuzzleHttp\Exception\GuzzleException $error) {
             $res = $this->sdkConfiguration->hooks->afterError(new Hooks\AfterErrorContext($hookContext), null, $error);
             $httpResponse = $res;
@@ -368,7 +386,7 @@ class PolarLicenseKeys
                     listResourceLicenseKeyRead: $obj);
                 $sdk = $this;
 
-                $response->next = function () use ($sdk, $request, $responseData, $organizationId, $benefitId, $limit): ?Operations\CustomerPortalLicenseKeysListResponse {
+                $response->next = function () use ($sdk, $request, $responseData, $security, $organizationId, $benefitId, $limit): ?Operations\CustomerPortalLicenseKeysListResponse {
                     $page = $request != null ? $request->page : 0;
                     $nextPage = $page + 1;
                     $jsonObject = new \JsonPath\JsonObject($responseData);
@@ -394,6 +412,7 @@ class PolarLicenseKeys
                     }
 
                     return $sdk->listIndividual(
+                        security: $security,
                         organizationId: $organizationId,
                         benefitId: $benefitId,
                         page: $nextPage,
@@ -450,6 +469,9 @@ class PolarLicenseKeys
     /**
      * List License Keys
      *
+     * **Scopes**: `customer_portal:read` `customer_portal:write`
+     *
+     * @param  Operations\CustomerPortalLicenseKeysListSecurity  $security
      * @param  string|array<string>|null  $organizationId
      * @param  ?string  $benefitId
      * @param  ?int  $page
@@ -457,9 +479,9 @@ class PolarLicenseKeys
      * @return \Generator<Operations\CustomerPortalLicenseKeysListResponse>
      * @throws \Polar\Models\Errors\APIException
      */
-    public function list(string|array|null $organizationId = null, ?string $benefitId = null, ?int $page = null, ?int $limit = null, ?Options $options = null): \Generator
+    public function list(Operations\CustomerPortalLicenseKeysListSecurity $security, string|array|null $organizationId = null, ?string $benefitId = null, ?int $page = null, ?int $limit = null, ?Options $options = null): \Generator
     {
-        $res = $this->listIndividual($organizationId, $benefitId, $page, $limit, $options);
+        $res = $this->listIndividual($security, $organizationId, $benefitId, $page, $limit, $options);
         while ($res !== null) {
             yield $res;
             $res = $res->next($res);
@@ -489,7 +511,7 @@ class PolarLicenseKeys
         $httpOptions['headers']['Accept'] = 'application/json';
         $httpOptions['headers']['user-agent'] = $this->sdkConfiguration->userAgent;
         $httpRequest = new \GuzzleHttp\Psr7\Request('POST', $url);
-        $hookContext = new HookContext('customer_portal:license_keys:validate', null, $this->sdkConfiguration->securitySource);
+        $hookContext = new HookContext('customer_portal:license_keys:validate', null, null);
         $httpRequest = $this->sdkConfiguration->hooks->beforeRequest(new Hooks\BeforeRequestContext($hookContext), $httpRequest);
         $httpOptions = Utils\Utils::convertHeadersToOptions($httpRequest, $httpOptions);
         $httpRequest = Utils\Utils::removeHeaders($httpRequest);

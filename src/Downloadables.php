@@ -63,7 +63,7 @@ class Downloadables
         $httpOptions['headers']['Accept'] = 'application/json';
         $httpOptions['headers']['user-agent'] = $this->sdkConfiguration->userAgent;
         $httpRequest = new \GuzzleHttp\Psr7\Request('GET', $url);
-        $hookContext = new HookContext('customer_portal:downloadables:customer_portal.downloadables.get', null, $this->sdkConfiguration->securitySource);
+        $hookContext = new HookContext('customer_portal:downloadables:customer_portal.downloadables.get', null, null);
         $httpRequest = $this->sdkConfiguration->hooks->beforeRequest(new Hooks\BeforeRequestContext($hookContext), $httpRequest);
         $httpOptions = Utils\Utils::convertHeadersToOptions($httpRequest, $httpOptions);
         $httpRequest = Utils\Utils::removeHeaders($httpRequest);
@@ -128,6 +128,9 @@ class Downloadables
     /**
      * List Downloadables
      *
+     * **Scopes**: `customer_portal:read` `customer_portal:write`
+     *
+     * @param  Operations\CustomerPortalDownloadablesListSecurity  $security
      * @param  string|array<string>|null  $organizationId
      * @param  string|array<string>|null  $benefitId
      * @param  ?int  $page
@@ -135,7 +138,7 @@ class Downloadables
      * @return Operations\CustomerPortalDownloadablesListResponse
      * @throws \Polar\Models\Errors\APIException
      */
-    private function listIndividual(string|array|null $organizationId = null, string|array|null $benefitId = null, ?int $page = null, ?int $limit = null, ?Options $options = null): Operations\CustomerPortalDownloadablesListResponse
+    private function listIndividual(Operations\CustomerPortalDownloadablesListSecurity $security, string|array|null $organizationId = null, string|array|null $benefitId = null, ?int $page = null, ?int $limit = null, ?Options $options = null): Operations\CustomerPortalDownloadablesListResponse
     {
         $request = new Operations\CustomerPortalDownloadablesListRequest(
             organizationId: $organizationId,
@@ -152,13 +155,19 @@ class Downloadables
         $httpOptions['headers']['Accept'] = 'application/json';
         $httpOptions['headers']['user-agent'] = $this->sdkConfiguration->userAgent;
         $httpRequest = new \GuzzleHttp\Psr7\Request('GET', $url);
-        $hookContext = new HookContext('customer_portal:downloadables:list', null, $this->sdkConfiguration->securitySource);
+        if ($security != null) {
+            $client = Utils\Utils::configureSecurityClient($this->sdkConfiguration->client, $security);
+        } else {
+            $client = $this->sdkConfiguration->client;
+        }
+
+        $hookContext = new HookContext('customer_portal:downloadables:list', null, fn () => $security);
         $httpRequest = $this->sdkConfiguration->hooks->beforeRequest(new Hooks\BeforeRequestContext($hookContext), $httpRequest);
         $httpOptions['query'] = Utils\QueryParameters::standardizeQueryParams($httpRequest, $qp);
         $httpOptions = Utils\Utils::convertHeadersToOptions($httpRequest, $httpOptions);
         $httpRequest = Utils\Utils::removeHeaders($httpRequest);
         try {
-            $httpResponse = $this->sdkConfiguration->client->send($httpRequest, $httpOptions);
+            $httpResponse = $client->send($httpRequest, $httpOptions);
         } catch (\GuzzleHttp\Exception\GuzzleException $error) {
             $res = $this->sdkConfiguration->hooks->afterError(new Hooks\AfterErrorContext($hookContext), null, $error);
             $httpResponse = $res;
@@ -184,7 +193,7 @@ class Downloadables
                     listResourceDownloadableRead: $obj);
                 $sdk = $this;
 
-                $response->next = function () use ($sdk, $request, $responseData, $organizationId, $benefitId, $limit): ?Operations\CustomerPortalDownloadablesListResponse {
+                $response->next = function () use ($sdk, $request, $responseData, $security, $organizationId, $benefitId, $limit): ?Operations\CustomerPortalDownloadablesListResponse {
                     $page = $request != null ? $request->page : 0;
                     $nextPage = $page + 1;
                     $jsonObject = new \JsonPath\JsonObject($responseData);
@@ -210,6 +219,7 @@ class Downloadables
                     }
 
                     return $sdk->listIndividual(
+                        security: $security,
                         organizationId: $organizationId,
                         benefitId: $benefitId,
                         page: $nextPage,
@@ -244,6 +254,9 @@ class Downloadables
     /**
      * List Downloadables
      *
+     * **Scopes**: `customer_portal:read` `customer_portal:write`
+     *
+     * @param  Operations\CustomerPortalDownloadablesListSecurity  $security
      * @param  string|array<string>|null  $organizationId
      * @param  string|array<string>|null  $benefitId
      * @param  ?int  $page
@@ -251,9 +264,9 @@ class Downloadables
      * @return \Generator<Operations\CustomerPortalDownloadablesListResponse>
      * @throws \Polar\Models\Errors\APIException
      */
-    public function list(string|array|null $organizationId = null, string|array|null $benefitId = null, ?int $page = null, ?int $limit = null, ?Options $options = null): \Generator
+    public function list(Operations\CustomerPortalDownloadablesListSecurity $security, string|array|null $organizationId = null, string|array|null $benefitId = null, ?int $page = null, ?int $limit = null, ?Options $options = null): \Generator
     {
-        $res = $this->listIndividual($organizationId, $benefitId, $page, $limit, $options);
+        $res = $this->listIndividual($security, $organizationId, $benefitId, $page, $limit, $options);
         while ($res !== null) {
             yield $res;
             $res = $res->next($res);

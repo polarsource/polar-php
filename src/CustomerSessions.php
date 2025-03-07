@@ -50,11 +50,13 @@ class CustomerSessions
      *
      * Create a customer session.
      *
-     * @param  Components\CustomerSessionCreate  $request
+     * **Scopes**: `customer_sessions:write`
+     *
+     * @param  Components\CustomerSessionCustomerIDCreate|Components\CustomerSessionCustomerExternalIDCreate  $request
      * @return Operations\CustomerSessionsCreateResponse
      * @throws \Polar\Models\Errors\APIException
      */
-    public function create(Components\CustomerSessionCreate $request, ?Options $options = null): Operations\CustomerSessionsCreateResponse
+    public function create(Components\CustomerSessionCustomerIDCreate|Components\CustomerSessionCustomerExternalIDCreate $request, ?Options $options = null): Operations\CustomerSessionsCreateResponse
     {
         $baseUrl = $this->sdkConfiguration->getServerUrl();
         $url = Utils\Utils::generateUrl($baseUrl, '/v1/customer-sessions/');

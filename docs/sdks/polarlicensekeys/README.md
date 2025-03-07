@@ -25,11 +25,7 @@ require 'vendor/autoload.php';
 use Polar;
 use Polar\Models\Components;
 
-$sdk = Polar\Polar::builder()
-    ->setSecurity(
-        '<YOUR_BEARER_TOKEN_HERE>'
-    )
-    ->build();
+$sdk = Polar\Polar::builder()->build();
 
 $request = new Components\LicenseKeyActivate(
     key: '<key>',
@@ -79,11 +75,7 @@ require 'vendor/autoload.php';
 use Polar;
 use Polar\Models\Components;
 
-$sdk = Polar\Polar::builder()
-    ->setSecurity(
-        '<YOUR_BEARER_TOKEN_HERE>'
-    )
-    ->build();
+$sdk = Polar\Polar::builder()->build();
 
 $request = new Components\LicenseKeyDeactivate(
     key: '<key>',
@@ -122,6 +114,8 @@ if ($response->statusCode === 200) {
 
 Get a license key.
 
+**Scopes**: `customer_portal:read` `customer_portal:write`
+
 ### Example Usage
 
 ```php
@@ -130,17 +124,19 @@ declare(strict_types=1);
 require 'vendor/autoload.php';
 
 use Polar;
+use Polar\Models\Operations;
 
-$sdk = Polar\Polar::builder()
-    ->setSecurity(
-        '<YOUR_BEARER_TOKEN_HERE>'
-    )
-    ->build();
+$sdk = Polar\Polar::builder()->build();
 
 
+$requestSecurity = new Operations\CustomerPortalLicenseKeysGetSecurity(
+    customerSession: '<YOUR_BEARER_TOKEN_HERE>',
+);
 
 $response = $sdk->customerPortal->licenseKeys->get(
+    security: $requestSecurity,
     id: '<value>'
+
 );
 
 if ($response->licenseKeyWithActivations !== null) {
@@ -150,9 +146,10 @@ if ($response->licenseKeyWithActivations !== null) {
 
 ### Parameters
 
-| Parameter          | Type               | Required           | Description        |
-| ------------------ | ------------------ | ------------------ | ------------------ |
-| `id`               | *string*           | :heavy_check_mark: | N/A                |
+| Parameter                                                                                                          | Type                                                                                                               | Required                                                                                                           | Description                                                                                                        |
+| ------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------ |
+| `security`                                                                                                         | [Operations\CustomerPortalLicenseKeysGetSecurity](../../Models/Operations/CustomerPortalLicenseKeysGetSecurity.md) | :heavy_check_mark:                                                                                                 | The security requirements to use for the request.                                                                  |
+| `id`                                                                                                               | *string*                                                                                                           | :heavy_check_mark:                                                                                                 | N/A                                                                                                                |
 
 ### Response
 
@@ -168,7 +165,7 @@ if ($response->licenseKeyWithActivations !== null) {
 
 ## list
 
-List License Keys
+**Scopes**: `customer_portal:read` `customer_portal:write`
 
 ### Example Usage
 
@@ -178,20 +175,21 @@ declare(strict_types=1);
 require 'vendor/autoload.php';
 
 use Polar;
+use Polar\Models\Operations;
 
-$sdk = Polar\Polar::builder()
-    ->setSecurity(
-        '<YOUR_BEARER_TOKEN_HERE>'
-    )
-    ->build();
+$sdk = Polar\Polar::builder()->build();
 
 
+$requestSecurity = new Operations\CustomerPortalLicenseKeysListSecurity(
+    customerSession: '<YOUR_BEARER_TOKEN_HERE>',
+);
 
 $responses = $sdk->customerPortal->licenseKeys->list(
+    security: $requestSecurity,
     page: 1,
     limit: 10,
     organizationId: [
-        '<value>',
+        '1dbfc517-0bbf-4301-9ba8-555ca42b9737',
     ],
     benefitId: '<value>'
 
@@ -207,12 +205,13 @@ foreach ($responses as $response) {
 
 ### Parameters
 
-| Parameter                                                                                                   | Type                                                                                                        | Required                                                                                                    | Description                                                                                                 |
-| ----------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------- |
-| `page`                                                                                                      | *?int*                                                                                                      | :heavy_minus_sign:                                                                                          | Page number, defaults to 1.                                                                                 |
-| `limit`                                                                                                     | *?int*                                                                                                      | :heavy_minus_sign:                                                                                          | Size of a page, defaults to 10. Maximum is 100.                                                             |
-| `organizationId`                                                                                            | [string\|array\|null](../../Models/Operations/CustomerPortalLicenseKeysListQueryParamOrganizationIDFilter.md) | :heavy_minus_sign:                                                                                          | Filter by organization ID.                                                                                  |
-| `benefitId`                                                                                                 | *?string*                                                                                                   | :heavy_minus_sign:                                                                                          | Filter by a specific benefit                                                                                |
+| Parameter                                                                                                            | Type                                                                                                                 | Required                                                                                                             | Description                                                                                                          |
+| -------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------- |
+| `security`                                                                                                           | [Operations\CustomerPortalLicenseKeysListSecurity](../../Models/Operations/CustomerPortalLicenseKeysListSecurity.md) | :heavy_check_mark:                                                                                                   | The security requirements to use for the request.                                                                    |
+| `page`                                                                                                               | *?int*                                                                                                               | :heavy_minus_sign:                                                                                                   | Page number, defaults to 1.                                                                                          |
+| `limit`                                                                                                              | *?int*                                                                                                               | :heavy_minus_sign:                                                                                                   | Size of a page, defaults to 10. Maximum is 100.                                                                      |
+| `organizationId`                                                                                                     | [string\|array\|null](../../Models/Operations/CustomerPortalLicenseKeysListQueryParamOrganizationIDFilter.md)        | :heavy_minus_sign:                                                                                                   | Filter by organization ID.                                                                                           |
+| `benefitId`                                                                                                          | *?string*                                                                                                            | :heavy_minus_sign:                                                                                                   | Filter by a specific benefit                                                                                         |
 
 ### Response
 
@@ -241,11 +240,7 @@ require 'vendor/autoload.php';
 use Polar;
 use Polar\Models\Components;
 
-$sdk = Polar\Polar::builder()
-    ->setSecurity(
-        '<YOUR_BEARER_TOKEN_HERE>'
-    )
-    ->build();
+$sdk = Polar\Polar::builder()->build();
 
 $request = new Components\LicenseKeyValidate(
     key: '<key>',

@@ -15,6 +15,8 @@
 
 Create a product.
 
+**Scopes**: `products:write`
+
 ### Example Usage
 
 ```php
@@ -37,6 +39,7 @@ $request = new Components\ProductCreate(
         new Components\ProductPriceCustomCreate(),
     ],
     recurringInterval: Components\SubscriptionRecurringInterval::Year,
+    organizationId: '1dbfc517-0bbf-4301-9ba8-555ca42b9737',
 );
 
 $response = $sdk->products->create(
@@ -68,6 +71,8 @@ if ($response->product !== null) {
 ## get
 
 Get a product by ID.
+
+**Scopes**: `products:read` `products:write`
 
 ### Example Usage
 
@@ -117,6 +122,8 @@ if ($response->product !== null) {
 
 List products.
 
+**Scopes**: `products:read` `products:write`
+
 ### Example Usage
 
 ```php
@@ -133,7 +140,11 @@ $sdk = Polar\Polar::builder()
     )
     ->build();
 
-$request = new Operations\ProductsListRequest();
+$request = new Operations\ProductsListRequest(
+    organizationId: [
+        '1dbfc517-0bbf-4301-9ba8-555ca42b9737',
+    ],
+);
 
 $responses = $sdk->products->list(
     request: $request
@@ -167,6 +178,8 @@ foreach ($responses as $response) {
 ## update
 
 Update a product.
+
+**Scopes**: `products:write`
 
 ### Example Usage
 
@@ -220,6 +233,8 @@ if ($response->product !== null) {
 ## updateBenefits
 
 Update benefits granted by a product.
+
+**Scopes**: `products:write`
 
 ### Example Usage
 

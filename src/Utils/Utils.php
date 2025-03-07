@@ -111,7 +111,7 @@ class Utils
             $type = $parts[0];
             $subtype = $parts[1];
 
-            if ($pattern === '$type/*' || $pattern === '*/$subtype') {
+            if ($pattern === "$type/*" || $pattern === "*/$subtype") {
                 return true;
             }
         }

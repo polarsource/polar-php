@@ -78,11 +78,11 @@ class BenefitGrant
 
     /**
      *
-     * @var BenefitGrantDiscordProperties|BenefitGrantGitHubRepositoryProperties|BenefitGrantDownloadablesProperties|BenefitGrantLicenseKeysProperties|BenefitGrantAdsProperties|BenefitGrantCustomProperties $properties
+     * @var BenefitGrantDiscordProperties|BenefitGrantGitHubRepositoryProperties|BenefitGrantDownloadablesProperties|BenefitGrantLicenseKeysProperties|BenefitGrantCustomProperties $properties
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('properties')]
-    #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\BenefitGrantDiscordProperties|\Polar\Models\Components\BenefitGrantGitHubRepositoryProperties|\Polar\Models\Components\BenefitGrantDownloadablesProperties|\Polar\Models\Components\BenefitGrantLicenseKeysProperties|\Polar\Models\Components\BenefitGrantAdsProperties|\Polar\Models\Components\BenefitGrantCustomProperties')]
-    public BenefitGrantDiscordProperties|BenefitGrantGitHubRepositoryProperties|BenefitGrantDownloadablesProperties|BenefitGrantLicenseKeysProperties|BenefitGrantAdsProperties|BenefitGrantCustomProperties $properties;
+    #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\BenefitGrantDiscordProperties|\Polar\Models\Components\BenefitGrantGitHubRepositoryProperties|\Polar\Models\Components\BenefitGrantDownloadablesProperties|\Polar\Models\Components\BenefitGrantLicenseKeysProperties|\Polar\Models\Components\BenefitGrantCustomProperties')]
+    public BenefitGrantDiscordProperties|BenefitGrantGitHubRepositoryProperties|BenefitGrantDownloadablesProperties|BenefitGrantLicenseKeysProperties|BenefitGrantCustomProperties $properties;
 
     /**
      * Last modification timestamp of the object.
@@ -135,7 +135,7 @@ class BenefitGrant
      * @param  string  $userId
      * @param  string  $benefitId
      * @param  Customer  $customer
-     * @param  BenefitGrantDiscordProperties|BenefitGrantGitHubRepositoryProperties|BenefitGrantDownloadablesProperties|BenefitGrantLicenseKeysProperties|BenefitGrantAdsProperties|BenefitGrantCustomProperties  $properties
+     * @param  BenefitGrantDiscordProperties|BenefitGrantGitHubRepositoryProperties|BenefitGrantDownloadablesProperties|BenefitGrantLicenseKeysProperties|BenefitGrantCustomProperties  $properties
      * @param  ?\DateTime  $modifiedAt
      * @param  ?string  $subscriptionId
      * @param  ?string  $orderId
@@ -143,7 +143,7 @@ class BenefitGrant
      * @param  ?\DateTime  $revokedAt
      * @phpstan-pure
      */
-    public function __construct(\DateTime $createdAt, string $id, bool $isGranted, bool $isRevoked, string $customerId, string $userId, string $benefitId, Customer $customer, BenefitGrantDiscordProperties|BenefitGrantGitHubRepositoryProperties|BenefitGrantDownloadablesProperties|BenefitGrantLicenseKeysProperties|BenefitGrantAdsProperties|BenefitGrantCustomProperties $properties, ?\DateTime $modifiedAt = null, ?string $subscriptionId = null, ?string $orderId = null, ?\DateTime $grantedAt = null, ?\DateTime $revokedAt = null)
+    public function __construct(\DateTime $createdAt, string $id, bool $isGranted, bool $isRevoked, string $customerId, string $userId, string $benefitId, Customer $customer, BenefitGrantDiscordProperties|BenefitGrantGitHubRepositoryProperties|BenefitGrantDownloadablesProperties|BenefitGrantLicenseKeysProperties|BenefitGrantCustomProperties $properties, ?\DateTime $modifiedAt = null, ?string $subscriptionId = null, ?string $orderId = null, ?\DateTime $grantedAt = null, ?\DateTime $revokedAt = null)
     {
         $this->createdAt = $createdAt;
         $this->id = $id;

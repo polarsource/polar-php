@@ -13,6 +13,8 @@ enum OrganizationSortProperty: string
 {
     case CreatedAt = 'created_at';
     case MinusCreatedAt = '-created_at';
+    case Slug = 'slug';
+    case MinusSlug = '-slug';
     case Name = 'name';
     case MinusName = '-name';
 }

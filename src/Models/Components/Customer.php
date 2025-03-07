@@ -13,20 +13,20 @@ namespace Polar\Models\Components;
 class Customer
 {
     /**
+     * The ID of the customer.
+     *
+     * @var string $id
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('id')]
+    public string $id;
+
+    /**
      * Creation timestamp of the object.
      *
      * @var \DateTime $createdAt
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('created_at')]
     public \DateTime $createdAt;
-
-    /**
-     * The ID of the object.
-     *
-     * @var string $id
-     */
-    #[\Speakeasy\Serializer\Annotation\SerializedName('id')]
-    public string $id;
 
     /**
      * $metadata
@@ -38,6 +38,7 @@ class Customer
     public array $metadata;
 
     /**
+     * The email address of the customer. This must be unique within the organization.
      *
      * @var string $email
      */
@@ -45,6 +46,7 @@ class Customer
     public string $email;
 
     /**
+     * Whether the customer email address is verified. The address is automatically verified when the customer accesses the customer portal using their email address.
      *
      * @var bool $emailVerified
      */
@@ -52,6 +54,7 @@ class Customer
     public bool $emailVerified;
 
     /**
+     * The ID of the organization owning the customer.
      *
      * @var string $organizationId
      */
@@ -74,6 +77,15 @@ class Customer
     public ?\DateTime $modifiedAt;
 
     /**
+     * The ID of the customer in your system. This must be unique within the organization. Once set, it can't be updated.
+     *
+     * @var ?string $externalId
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('external_id')]
+    public ?string $externalId;
+
+    /**
+     * The name of the customer.
      *
      * @var ?string $name
      */
@@ -98,29 +110,31 @@ class Customer
     public ?array $taxId;
 
     /**
-     * @param  \DateTime  $createdAt
      * @param  string  $id
+     * @param  \DateTime  $createdAt
      * @param  array<string, string|int|bool>  $metadata
      * @param  string  $email
      * @param  bool  $emailVerified
      * @param  string  $organizationId
      * @param  string  $avatarUrl
      * @param  ?\DateTime  $modifiedAt
+     * @param  ?string  $externalId
      * @param  ?string  $name
      * @param  ?Address  $billingAddress
      * @param  ?array<string|TaxIDFormat|null>  $taxId
      * @phpstan-pure
      */
-    public function __construct(\DateTime $createdAt, string $id, array $metadata, string $email, bool $emailVerified, string $organizationId, string $avatarUrl, ?\DateTime $modifiedAt = null, ?string $name = null, ?Address $billingAddress = null, ?array $taxId = null)
+    public function __construct(string $id, \DateTime $createdAt, array $metadata, string $email, bool $emailVerified, string $organizationId, string $avatarUrl, ?\DateTime $modifiedAt = null, ?string $externalId = null, ?string $name = null, ?Address $billingAddress = null, ?array $taxId = null)
     {
-        $this->createdAt = $createdAt;
         $this->id = $id;
+        $this->createdAt = $createdAt;
         $this->metadata = $metadata;
         $this->email = $email;
         $this->emailVerified = $emailVerified;
         $this->organizationId = $organizationId;
         $this->avatarUrl = $avatarUrl;
         $this->modifiedAt = $modifiedAt;
+        $this->externalId = $externalId;
         $this->name = $name;
         $this->billingAddress = $billingAddress;
         $this->taxId = $taxId;

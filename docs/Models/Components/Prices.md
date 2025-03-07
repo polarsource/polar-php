@@ -3,21 +3,30 @@
 
 ## Supported Types
 
-### `Components\LegacyRecurringProductPriceFixed|Components\LegacyRecurringProductPriceCustom|Components\LegacyRecurringProductPriceFree`
+### `Components\ProductPriceFixedCreate`
 
 ```php
 /**
-* @var Components\LegacyRecurringProductPriceFixed|Components\LegacyRecurringProductPriceCustom|Components\LegacyRecurringProductPriceFree
+* @var Components\ProductPriceFixedCreate
 */
-Components\LegacyRecurringProductPriceFixed|Components\LegacyRecurringProductPriceCustom|Components\LegacyRecurringProductPriceFree $value = /* values here */
+Components\ProductPriceFixedCreate $value = /* values here */
 ```
 
-### `Components\ProductPriceFixed|Components\ProductPriceCustom|Components\ProductPriceFree`
+### `Components\ProductPriceCustomCreate`
 
 ```php
 /**
-* @var Components\ProductPriceFixed|Components\ProductPriceCustom|Components\ProductPriceFree
+* @var Components\ProductPriceCustomCreate
 */
-Components\ProductPriceFixed|Components\ProductPriceCustom|Components\ProductPriceFree $value = /* values here */
+Components\ProductPriceCustomCreate $value = /* values here */
+```
+
+### `Components\ProductPriceFreeCreate`
+
+```php
+/**
+* @var Components\ProductPriceFreeCreate
+*/
+Components\ProductPriceFreeCreate $value = /* values here */
 ```
 

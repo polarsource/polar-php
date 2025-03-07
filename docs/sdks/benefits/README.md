@@ -16,6 +16,8 @@
 
 Create a benefit.
 
+**Scopes**: `benefits:write`
+
 ### Example Usage
 
 ```php
@@ -32,12 +34,14 @@ $sdk = Polar\Polar::builder()
     )
     ->build();
 
-$request = new Components\BenefitDiscordCreate(
+$request = new Components\BenefitDownloadablesCreate(
     description: 'delightfully fumigate convection though zowie up bulky electronics',
-    properties: new Components\BenefitDiscordCreateProperties(
-        guildToken: '<value>',
-        roleId: '<id>',
+    properties: new Components\BenefitDownloadablesCreateProperties(
+        files: [
+            '<value>',
+        ],
     ),
+    organizationId: '1dbfc517-0bbf-4301-9ba8-555ca42b9737',
 );
 
 $response = $sdk->benefits->create(
@@ -51,9 +55,9 @@ if ($response->benefit !== null) {
 
 ### Parameters
 
-| Parameter                                                                                                                                                                                                                                                 | Type                                                                                                                                                                                                                                                      | Required                                                                                                                                                                                                                                                  | Description                                                                                                                                                                                                                                               |
-| --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `$request`                                                                                                                                                                                                                                                | [Components\BenefitCustomCreate\|Components\BenefitAdsCreate\|Components\BenefitDiscordCreate\|Components\BenefitGitHubRepositoryCreate\|Components\BenefitDownloadablesCreate\|Components\BenefitLicenseKeysCreate](../../Models/Components/BenefitCreate.md) | :heavy_check_mark:                                                                                                                                                                                                                                        | The request object to use for the request.                                                                                                                                                                                                                |
+| Parameter                                                                                                                                                                                                                     | Type                                                                                                                                                                                                                          | Required                                                                                                                                                                                                                      | Description                                                                                                                                                                                                                   |
+| ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `$request`                                                                                                                                                                                                                    | [Components\BenefitCustomCreate\|Components\BenefitDiscordCreate\|Components\BenefitGitHubRepositoryCreate\|Components\BenefitDownloadablesCreate\|Components\BenefitLicenseKeysCreate](../../Models/Components/BenefitCreate.md) | :heavy_check_mark:                                                                                                                                                                                                            | The request object to use for the request.                                                                                                                                                                                    |
 
 ### Response
 
@@ -73,6 +77,8 @@ Delete a benefit.
 > [!WARNING]
 > Every grants associated with the benefit will be revoked.
 > Users will lose access to the benefit.
+
+**Scopes**: `benefits:write`
 
 ### Example Usage
 
@@ -123,6 +129,8 @@ if ($response->statusCode === 200) {
 
 Get a benefit by ID.
 
+**Scopes**: `benefits:read` `benefits:write`
+
 ### Example Usage
 
 ```php
@@ -172,6 +180,8 @@ if ($response->benefit !== null) {
 List the individual grants for a benefit.
 
 It's especially useful to check if a user has been granted a benefit.
+
+**Scopes**: `benefits:read` `benefits:write`
 
 ### Example Usage
 
@@ -227,6 +237,8 @@ foreach ($responses as $response) {
 
 List benefits.
 
+**Scopes**: `benefits:read` `benefits:write`
+
 ### Example Usage
 
 ```php
@@ -249,7 +261,7 @@ $responses = $sdk->benefits->list(
     page: 1,
     limit: 10,
     organizationId: [
-        '<value>',
+        '1dbfc517-0bbf-4301-9ba8-555ca42b9737',
     ],
     typeFilter: [
         Components\BenefitType::Downloadables,
@@ -289,6 +301,8 @@ foreach ($responses as $response) {
 
 Update a benefit.
 
+**Scopes**: `benefits:write`
+
 ### Example Usage
 
 ```php
@@ -320,10 +334,10 @@ if ($response->benefit !== null) {
 
 ### Parameters
 
-| Parameter                                                                                                                                                                                                                                                               | Type                                                                                                                                                                                                                                                                    | Required                                                                                                                                                                                                                                                                | Description                                                                                                                                                                                                                                                             |
-| ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `id`                                                                                                                                                                                                                                                                    | *string*                                                                                                                                                                                                                                                                | :heavy_check_mark:                                                                                                                                                                                                                                                      | N/A                                                                                                                                                                                                                                                                     |
-| `requestBody`                                                                                                                                                                                                                                                           | [Components\BenefitAdsUpdate\|Components\BenefitCustomUpdate\|Components\BenefitDiscordUpdate\|Components\BenefitGitHubRepositoryUpdate\|Components\BenefitDownloadablesUpdate\|Components\BenefitLicenseKeysUpdate](../../Models/Operations/BenefitsUpdateBenefitUpdate.md) | :heavy_check_mark:                                                                                                                                                                                                                                                      | N/A                                                                                                                                                                                                                                                                     |
+| Parameter                                                                                                                                                                                                                                   | Type                                                                                                                                                                                                                                        | Required                                                                                                                                                                                                                                    | Description                                                                                                                                                                                                                                 |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `id`                                                                                                                                                                                                                                        | *string*                                                                                                                                                                                                                                    | :heavy_check_mark:                                                                                                                                                                                                                          | N/A                                                                                                                                                                                                                                         |
+| `requestBody`                                                                                                                                                                                                                               | [Components\BenefitCustomUpdate\|Components\BenefitDiscordUpdate\|Components\BenefitGitHubRepositoryUpdate\|Components\BenefitDownloadablesUpdate\|Components\BenefitLicenseKeysUpdate](../../Models/Operations/BenefitsUpdateBenefitUpdate.md) | :heavy_check_mark:                                                                                                                                                                                                                          | N/A                                                                                                                                                                                                                                         |
 
 ### Response
 
