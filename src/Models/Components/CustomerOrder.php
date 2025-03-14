@@ -27,18 +27,69 @@ class CustomerOrder
     public string $id;
 
     /**
+     * Amount in cents, before discounts and taxes.
+     *
+     * @var int $subtotalAmount
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('subtotal_amount')]
+    public int $subtotalAmount;
+
+    /**
+     * Discount amount in cents.
+     *
+     * @var int $discountAmount
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('discount_amount')]
+    public int $discountAmount;
+
+    /**
+     * Amount in cents, after discounts but before taxes.
+     *
+     * @var int $netAmount
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('net_amount')]
+    public int $netAmount;
+
+    /**
+     * Amount in cents, after discounts but before taxes.
      *
      * @var int $amount
+     * @deprecated  field: This will be removed in a future release, please migrate away from it as soon as possible.
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('amount')]
     public int $amount;
 
     /**
+     * Sales tax amount in cents.
      *
      * @var int $taxAmount
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('tax_amount')]
     public int $taxAmount;
+
+    /**
+     * Amount in cents, after discounts and taxes.
+     *
+     * @var int $totalAmount
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('total_amount')]
+    public int $totalAmount;
+
+    /**
+     * Amount refunded in cents.
+     *
+     * @var int $refundedAmount
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('refunded_amount')]
+    public int $refundedAmount;
+
+    /**
+     * Sales tax refunded in cents.
+     *
+     * @var int $refundedTaxAmount
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('refunded_tax_amount')]
+    public int $refundedTaxAmount;
 
     /**
      *
@@ -64,6 +115,7 @@ class CustomerOrder
     /**
      *
      * @var string $productPriceId
+     * @deprecated  field: This will be removed in a future release, please migrate away from it as soon as possible.
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('product_price_id')]
     public string $productPriceId;
@@ -87,10 +139,20 @@ class CustomerOrder
     /**
      *
      * @var LegacyRecurringProductPriceFixed|LegacyRecurringProductPriceCustom|LegacyRecurringProductPriceFree|ProductPriceFixed|ProductPriceCustom|ProductPriceFree $productPrice
+     * @deprecated  field: This will be removed in a future release, please migrate away from it as soon as possible.
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('product_price')]
     #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\LegacyRecurringProductPriceFixed|\Polar\Models\Components\LegacyRecurringProductPriceCustom|\Polar\Models\Components\LegacyRecurringProductPriceFree|\Polar\Models\Components\ProductPriceFixed|\Polar\Models\Components\ProductPriceCustom|\Polar\Models\Components\ProductPriceFree')]
     public LegacyRecurringProductPriceFixed|LegacyRecurringProductPriceCustom|LegacyRecurringProductPriceFree|ProductPriceFixed|ProductPriceCustom|ProductPriceFree $productPrice;
+
+    /**
+     * Line items composing the order.
+     *
+     * @var array<OrderItemSchema> $items
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('items')]
+    #[\Speakeasy\Serializer\Annotation\Type('array<\Polar\Models\Components\OrderItemSchema>')]
+    public array $items;
 
     /**
      * Last modification timestamp of the object.
@@ -118,8 +180,14 @@ class CustomerOrder
     /**
      * @param  \DateTime  $createdAt
      * @param  string  $id
+     * @param  int  $subtotalAmount
+     * @param  int  $discountAmount
+     * @param  int  $netAmount
      * @param  int  $amount
      * @param  int  $taxAmount
+     * @param  int  $totalAmount
+     * @param  int  $refundedAmount
+     * @param  int  $refundedTaxAmount
      * @param  string  $currency
      * @param  string  $customerId
      * @param  string  $productId
@@ -127,17 +195,24 @@ class CustomerOrder
      * @param  string  $userId
      * @param  CustomerOrderProduct  $product
      * @param  LegacyRecurringProductPriceFixed|LegacyRecurringProductPriceCustom|LegacyRecurringProductPriceFree|ProductPriceFixed|ProductPriceCustom|ProductPriceFree  $productPrice
+     * @param  array<OrderItemSchema>  $items
      * @param  ?\DateTime  $modifiedAt
      * @param  ?string  $subscriptionId
      * @param  ?CustomerOrderSubscription  $subscription
      * @phpstan-pure
      */
-    public function __construct(\DateTime $createdAt, string $id, int $amount, int $taxAmount, string $currency, string $customerId, string $productId, string $productPriceId, string $userId, CustomerOrderProduct $product, LegacyRecurringProductPriceFixed|LegacyRecurringProductPriceCustom|LegacyRecurringProductPriceFree|ProductPriceFixed|ProductPriceCustom|ProductPriceFree $productPrice, ?\DateTime $modifiedAt = null, ?string $subscriptionId = null, ?CustomerOrderSubscription $subscription = null)
+    public function __construct(\DateTime $createdAt, string $id, int $subtotalAmount, int $discountAmount, int $netAmount, int $amount, int $taxAmount, int $totalAmount, int $refundedAmount, int $refundedTaxAmount, string $currency, string $customerId, string $productId, string $productPriceId, string $userId, CustomerOrderProduct $product, LegacyRecurringProductPriceFixed|LegacyRecurringProductPriceCustom|LegacyRecurringProductPriceFree|ProductPriceFixed|ProductPriceCustom|ProductPriceFree $productPrice, array $items, ?\DateTime $modifiedAt = null, ?string $subscriptionId = null, ?CustomerOrderSubscription $subscription = null)
     {
         $this->createdAt = $createdAt;
         $this->id = $id;
+        $this->subtotalAmount = $subtotalAmount;
+        $this->discountAmount = $discountAmount;
+        $this->netAmount = $netAmount;
         $this->amount = $amount;
         $this->taxAmount = $taxAmount;
+        $this->totalAmount = $totalAmount;
+        $this->refundedAmount = $refundedAmount;
+        $this->refundedTaxAmount = $refundedTaxAmount;
         $this->currency = $currency;
         $this->customerId = $customerId;
         $this->productId = $productId;
@@ -145,6 +220,7 @@ class CustomerOrder
         $this->userId = $userId;
         $this->product = $product;
         $this->productPrice = $productPrice;
+        $this->items = $items;
         $this->modifiedAt = $modifiedAt;
         $this->subscriptionId = $subscriptionId;
         $this->subscription = $subscription;

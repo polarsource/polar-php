@@ -28,6 +28,22 @@ class CustomerOrderSubscription
     public string $id;
 
     /**
+     * The amount of the subscription.
+     *
+     * @var int $amount
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('amount')]
+    public int $amount;
+
+    /**
+     * The currency of the subscription.
+     *
+     * @var string $currency
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('currency')]
+    public string $currency;
+
+    /**
      *
      * @var SubscriptionRecurringInterval $recurringInterval
      */
@@ -76,9 +92,9 @@ class CustomerOrderSubscription
     public string $productId;
 
     /**
-     * The ID of the subscribed price.
      *
      * @var string $priceId
+     * @deprecated  field: This will be removed in a future release, please migrate away from it as soon as possible.
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('price_id')]
     public string $priceId;
@@ -90,22 +106,6 @@ class CustomerOrderSubscription
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('modified_at')]
     public ?\DateTime $modifiedAt;
-
-    /**
-     * The amount of the subscription.
-     *
-     * @var ?int $amount
-     */
-    #[\Speakeasy\Serializer\Annotation\SerializedName('amount')]
-    public ?int $amount;
-
-    /**
-     * The currency of the subscription.
-     *
-     * @var ?string $currency
-     */
-    #[\Speakeasy\Serializer\Annotation\SerializedName('currency')]
-    public ?string $currency;
 
     /**
      * The end timestamp of the current billing period.
@@ -180,6 +180,8 @@ class CustomerOrderSubscription
     /**
      * @param  \DateTime  $createdAt
      * @param  string  $id
+     * @param  int  $amount
+     * @param  string  $currency
      * @param  SubscriptionRecurringInterval  $recurringInterval
      * @param  SubscriptionStatus  $status
      * @param  \DateTime  $currentPeriodStart
@@ -188,8 +190,6 @@ class CustomerOrderSubscription
      * @param  string  $productId
      * @param  string  $priceId
      * @param  ?\DateTime  $modifiedAt
-     * @param  ?int  $amount
-     * @param  ?string  $currency
      * @param  ?\DateTime  $currentPeriodEnd
      * @param  ?\DateTime  $canceledAt
      * @param  ?\DateTime  $startedAt
@@ -201,10 +201,12 @@ class CustomerOrderSubscription
      * @param  ?string  $customerCancellationComment
      * @phpstan-pure
      */
-    public function __construct(\DateTime $createdAt, string $id, SubscriptionRecurringInterval $recurringInterval, SubscriptionStatus $status, \DateTime $currentPeriodStart, bool $cancelAtPeriodEnd, string $customerId, string $productId, string $priceId, ?\DateTime $modifiedAt = null, ?int $amount = null, ?string $currency = null, ?\DateTime $currentPeriodEnd = null, ?\DateTime $canceledAt = null, ?\DateTime $startedAt = null, ?\DateTime $endsAt = null, ?\DateTime $endedAt = null, ?string $discountId = null, ?string $checkoutId = null, ?CustomerCancellationReason $customerCancellationReason = null, ?string $customerCancellationComment = null)
+    public function __construct(\DateTime $createdAt, string $id, int $amount, string $currency, SubscriptionRecurringInterval $recurringInterval, SubscriptionStatus $status, \DateTime $currentPeriodStart, bool $cancelAtPeriodEnd, string $customerId, string $productId, string $priceId, ?\DateTime $modifiedAt = null, ?\DateTime $currentPeriodEnd = null, ?\DateTime $canceledAt = null, ?\DateTime $startedAt = null, ?\DateTime $endsAt = null, ?\DateTime $endedAt = null, ?string $discountId = null, ?string $checkoutId = null, ?CustomerCancellationReason $customerCancellationReason = null, ?string $customerCancellationComment = null)
     {
         $this->createdAt = $createdAt;
         $this->id = $id;
+        $this->amount = $amount;
+        $this->currency = $currency;
         $this->recurringInterval = $recurringInterval;
         $this->status = $status;
         $this->currentPeriodStart = $currentPeriodStart;
@@ -213,8 +215,6 @@ class CustomerOrderSubscription
         $this->productId = $productId;
         $this->priceId = $priceId;
         $this->modifiedAt = $modifiedAt;
-        $this->amount = $amount;
-        $this->currency = $currency;
         $this->currentPeriodEnd = $currentPeriodEnd;
         $this->canceledAt = $canceledAt;
         $this->startedAt = $startedAt;

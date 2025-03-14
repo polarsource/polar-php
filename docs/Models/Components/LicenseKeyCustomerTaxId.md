@@ -1,4 +1,4 @@
-# SubscriptionCustomerTaxId
+# LicenseKeyCustomerTaxId
 
 
 ## Supported Types

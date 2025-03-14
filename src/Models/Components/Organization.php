@@ -28,6 +28,7 @@ class Organization
     public string $id;
 
     /**
+     * Organization name shown in checkout, customer portal, emails etc.
      *
      * @var string $name
      */
@@ -35,6 +36,7 @@ class Organization
     public string $name;
 
     /**
+     * Unique organization slug in checkout, customer portal and credit card statements.
      *
      * @var string $slug
      */
@@ -42,18 +44,13 @@ class Organization
     public string $slug;
 
     /**
+     * Links to social profiles.
      *
-     * @var int $pledgeMinimumAmount
+     * @var array<OrganizationSocialLink> $socials
      */
-    #[\Speakeasy\Serializer\Annotation\SerializedName('pledge_minimum_amount')]
-    public int $pledgeMinimumAmount;
-
-    /**
-     *
-     * @var bool $pledgeBadgeShowAmount
-     */
-    #[\Speakeasy\Serializer\Annotation\SerializedName('pledge_badge_show_amount')]
-    public bool $pledgeBadgeShowAmount;
+    #[\Speakeasy\Serializer\Annotation\SerializedName('socials')]
+    #[\Speakeasy\Serializer\Annotation\Type('array<\Polar\Models\Components\OrganizationSocialLink>')]
+    public array $socials;
 
     /**
      *
@@ -64,6 +61,22 @@ class Organization
     public OrganizationSubscriptionSettings $subscriptionSettings;
 
     /**
+     *
+     * @var int $pledgeMinimumAmount
+     * @deprecated  field: This will be removed in a future release, please migrate away from it as soon as possible.
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('pledge_minimum_amount')]
+    public int $pledgeMinimumAmount;
+
+    /**
+     *
+     * @var bool $pledgeBadgeShowAmount
+     * @deprecated  field: This will be removed in a future release, please migrate away from it as soon as possible.
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('pledge_badge_show_amount')]
+    public bool $pledgeBadgeShowAmount;
+
+    /**
      * Last modification timestamp of the object.
      *
      * @var ?\DateTime $modifiedAt
@@ -72,6 +85,7 @@ class Organization
     public ?\DateTime $modifiedAt;
 
     /**
+     * Avatar URL shown in checkout, customer portal, emails etc.
      *
      * @var ?string $avatarUrl
      */
@@ -79,34 +93,7 @@ class Organization
     public ?string $avatarUrl;
 
     /**
-     *
-     * @var ?string $bio
-     */
-    #[\Speakeasy\Serializer\Annotation\SerializedName('bio')]
-    public ?string $bio;
-
-    /**
-     *
-     * @var ?string $company
-     */
-    #[\Speakeasy\Serializer\Annotation\SerializedName('company')]
-    public ?string $company;
-
-    /**
-     *
-     * @var ?string $blog
-     */
-    #[\Speakeasy\Serializer\Annotation\SerializedName('blog')]
-    public ?string $blog;
-
-    /**
-     *
-     * @var ?string $location
-     */
-    #[\Speakeasy\Serializer\Annotation\SerializedName('location')]
-    public ?string $location;
-
-    /**
+     * Public support email.
      *
      * @var ?string $email
      */
@@ -114,30 +101,23 @@ class Organization
     public ?string $email;
 
     /**
+     * Official website of the organization.
      *
-     * @var ?string $twitterUsername
+     * @var ?string $website
      */
-    #[\Speakeasy\Serializer\Annotation\SerializedName('twitter_username')]
-    public ?string $twitterUsername;
+    #[\Speakeasy\Serializer\Annotation\SerializedName('website')]
+    public ?string $website;
 
     /**
+     * When the business details were submitted.
      *
-     * @var ?int $defaultUpfrontSplitToContributors
+     * @var ?\DateTime $detailsSubmittedAt
      */
-    #[\Speakeasy\Serializer\Annotation\SerializedName('default_upfront_split_to_contributors')]
-    public ?int $defaultUpfrontSplitToContributors;
+    #[\Speakeasy\Serializer\Annotation\SerializedName('details_submitted_at')]
+    public ?\DateTime $detailsSubmittedAt;
 
     /**
-     * Settings for the organization profile
-     *
-     * @var ?OrganizationProfileSettings $profileSettings
-     */
-    #[\Speakeasy\Serializer\Annotation\SerializedName('profile_settings')]
-    #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\OrganizationProfileSettings|null')]
-    public ?OrganizationProfileSettings $profileSettings;
-
-    /**
-     * Settings for the organization features
+     * Organization feature settings
      *
      * @var ?OrganizationFeatureSettings $featureSettings
      */
@@ -146,45 +126,109 @@ class Organization
     public ?OrganizationFeatureSettings $featureSettings;
 
     /**
+     *
+     * @var ?string $bio
+     * @deprecated  field: This will be removed in a future release, please migrate away from it as soon as possible.
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('bio')]
+    public ?string $bio;
+
+    /**
+     *
+     * @var ?string $company
+     * @deprecated  field: This will be removed in a future release, please migrate away from it as soon as possible.
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('company')]
+    public ?string $company;
+
+    /**
+     *
+     * @var ?string $blog
+     * @deprecated  field: This will be removed in a future release, please migrate away from it as soon as possible.
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('blog')]
+    public ?string $blog;
+
+    /**
+     *
+     * @var ?string $location
+     * @deprecated  field: This will be removed in a future release, please migrate away from it as soon as possible.
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('location')]
+    public ?string $location;
+
+    /**
+     *
+     * @var ?string $twitterUsername
+     * @deprecated  field: This will be removed in a future release, please migrate away from it as soon as possible.
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('twitter_username')]
+    public ?string $twitterUsername;
+
+    /**
+     *
+     * @var ?int $defaultUpfrontSplitToContributors
+     * @deprecated  field: This will be removed in a future release, please migrate away from it as soon as possible.
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('default_upfront_split_to_contributors')]
+    public ?int $defaultUpfrontSplitToContributors;
+
+    /**
+     * Settings for the organization profile
+     *
+     * @var ?OrganizationProfileSettings $profileSettings
+     * @deprecated  field: This will be removed in a future release, please migrate away from it as soon as possible.
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('profile_settings')]
+    #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\OrganizationProfileSettings|null')]
+    public ?OrganizationProfileSettings $profileSettings;
+
+    /**
      * @param  \DateTime  $createdAt
      * @param  string  $id
      * @param  string  $name
      * @param  string  $slug
+     * @param  array<OrganizationSocialLink>  $socials
+     * @param  OrganizationSubscriptionSettings  $subscriptionSettings
      * @param  int  $pledgeMinimumAmount
      * @param  bool  $pledgeBadgeShowAmount
-     * @param  OrganizationSubscriptionSettings  $subscriptionSettings
      * @param  ?\DateTime  $modifiedAt
      * @param  ?string  $avatarUrl
+     * @param  ?string  $email
+     * @param  ?string  $website
+     * @param  ?\DateTime  $detailsSubmittedAt
+     * @param  ?OrganizationFeatureSettings  $featureSettings
      * @param  ?string  $bio
      * @param  ?string  $company
      * @param  ?string  $blog
      * @param  ?string  $location
-     * @param  ?string  $email
      * @param  ?string  $twitterUsername
      * @param  ?int  $defaultUpfrontSplitToContributors
      * @param  ?OrganizationProfileSettings  $profileSettings
-     * @param  ?OrganizationFeatureSettings  $featureSettings
      * @phpstan-pure
      */
-    public function __construct(\DateTime $createdAt, string $id, string $name, string $slug, int $pledgeMinimumAmount, bool $pledgeBadgeShowAmount, OrganizationSubscriptionSettings $subscriptionSettings, ?\DateTime $modifiedAt = null, ?string $avatarUrl = null, ?string $bio = null, ?string $company = null, ?string $blog = null, ?string $location = null, ?string $email = null, ?string $twitterUsername = null, ?int $defaultUpfrontSplitToContributors = null, ?OrganizationProfileSettings $profileSettings = null, ?OrganizationFeatureSettings $featureSettings = null)
+    public function __construct(\DateTime $createdAt, string $id, string $name, string $slug, array $socials, OrganizationSubscriptionSettings $subscriptionSettings, int $pledgeMinimumAmount, bool $pledgeBadgeShowAmount, ?\DateTime $modifiedAt = null, ?string $avatarUrl = null, ?string $email = null, ?string $website = null, ?\DateTime $detailsSubmittedAt = null, ?OrganizationFeatureSettings $featureSettings = null, ?string $bio = null, ?string $company = null, ?string $blog = null, ?string $location = null, ?string $twitterUsername = null, ?int $defaultUpfrontSplitToContributors = null, ?OrganizationProfileSettings $profileSettings = null)
     {
         $this->createdAt = $createdAt;
         $this->id = $id;
         $this->name = $name;
         $this->slug = $slug;
+        $this->socials = $socials;
+        $this->subscriptionSettings = $subscriptionSettings;
         $this->pledgeMinimumAmount = $pledgeMinimumAmount;
         $this->pledgeBadgeShowAmount = $pledgeBadgeShowAmount;
-        $this->subscriptionSettings = $subscriptionSettings;
         $this->modifiedAt = $modifiedAt;
         $this->avatarUrl = $avatarUrl;
+        $this->email = $email;
+        $this->website = $website;
+        $this->detailsSubmittedAt = $detailsSubmittedAt;
+        $this->featureSettings = $featureSettings;
         $this->bio = $bio;
         $this->company = $company;
         $this->blog = $blog;
         $this->location = $location;
-        $this->email = $email;
         $this->twitterUsername = $twitterUsername;
         $this->defaultUpfrontSplitToContributors = $defaultUpfrontSplitToContributors;
         $this->profileSettings = $profileSettings;
-        $this->featureSettings = $featureSettings;
     }
 }

@@ -28,53 +28,42 @@ class OrganizationUpdate
     public ?string $avatarUrl = null;
 
     /**
+     * Public support email.
      *
-     * @var ?int $defaultUpfrontSplitToContributors
+     * @var ?string $email
      */
-    #[\Speakeasy\Serializer\Annotation\SerializedName('default_upfront_split_to_contributors')]
+    #[\Speakeasy\Serializer\Annotation\SerializedName('email')]
     #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
-    public ?int $defaultUpfrontSplitToContributors = null;
+    public ?string $email = null;
 
     /**
+     * Official website of the organization.
      *
-     * @var ?string $billingEmail
+     * @var ?string $website
      */
-    #[\Speakeasy\Serializer\Annotation\SerializedName('billing_email')]
+    #[\Speakeasy\Serializer\Annotation\SerializedName('website')]
     #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
-    public ?string $billingEmail = null;
+    public ?string $website = null;
 
     /**
+     * Links to social profiles.
      *
-     * @var ?string $defaultBadgeCustomContent
+     * @var ?array<OrganizationSocialLink> $socials
      */
-    #[\Speakeasy\Serializer\Annotation\SerializedName('default_badge_custom_content')]
+    #[\Speakeasy\Serializer\Annotation\SerializedName('socials')]
+    #[\Speakeasy\Serializer\Annotation\Type('array<\Polar\Models\Components\OrganizationSocialLink>|null')]
     #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
-    public ?string $defaultBadgeCustomContent = null;
+    public ?array $socials = null;
 
     /**
+     * Additional, private, business details Polar needs about active organizations for compliance (KYC).
      *
-     * @var ?int $totalMonthlySpendingLimit
+     * @var ?OrganizationDetails $details
      */
-    #[\Speakeasy\Serializer\Annotation\SerializedName('total_monthly_spending_limit')]
+    #[\Speakeasy\Serializer\Annotation\SerializedName('details')]
+    #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\OrganizationDetails|null')]
     #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
-    public ?int $totalMonthlySpendingLimit = null;
-
-    /**
-     *
-     * @var ?int $perUserMonthlySpendingLimit
-     */
-    #[\Speakeasy\Serializer\Annotation\SerializedName('per_user_monthly_spending_limit')]
-    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
-    public ?int $perUserMonthlySpendingLimit = null;
-
-    /**
-     *
-     * @var ?OrganizationProfileSettings $profileSettings
-     */
-    #[\Speakeasy\Serializer\Annotation\SerializedName('profile_settings')]
-    #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\OrganizationProfileSettings|null')]
-    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
-    public ?OrganizationProfileSettings $profileSettings = null;
+    public ?OrganizationDetails $details = null;
 
     /**
      *
@@ -96,7 +85,63 @@ class OrganizationUpdate
 
     /**
      *
+     * @var ?int $defaultUpfrontSplitToContributors
+     * @deprecated  field: This will be removed in a future release, please migrate away from it as soon as possible.
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('default_upfront_split_to_contributors')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
+    public ?int $defaultUpfrontSplitToContributors = null;
+
+    /**
+     *
+     * @var ?string $billingEmail
+     * @deprecated  field: This will be removed in a future release, please migrate away from it as soon as possible.
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('billing_email')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
+    public ?string $billingEmail = null;
+
+    /**
+     *
+     * @var ?string $defaultBadgeCustomContent
+     * @deprecated  field: This will be removed in a future release, please migrate away from it as soon as possible.
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('default_badge_custom_content')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
+    public ?string $defaultBadgeCustomContent = null;
+
+    /**
+     *
+     * @var ?int $totalMonthlySpendingLimit
+     * @deprecated  field: This will be removed in a future release, please migrate away from it as soon as possible.
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('total_monthly_spending_limit')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
+    public ?int $totalMonthlySpendingLimit = null;
+
+    /**
+     *
+     * @var ?int $perUserMonthlySpendingLimit
+     * @deprecated  field: This will be removed in a future release, please migrate away from it as soon as possible.
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('per_user_monthly_spending_limit')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
+    public ?int $perUserMonthlySpendingLimit = null;
+
+    /**
+     *
+     * @var ?OrganizationProfileSettings $profileSettings
+     * @deprecated  field: This will be removed in a future release, please migrate away from it as soon as possible.
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('profile_settings')]
+    #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\OrganizationProfileSettings|null')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
+    public ?OrganizationProfileSettings $profileSettings = null;
+
+    /**
+     *
      * @var ?bool $pledgeBadgeShowAmount
+     * @deprecated  field: This will be removed in a future release, please migrate away from it as soon as possible.
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('pledge_badge_show_amount')]
     #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
@@ -105,6 +150,7 @@ class OrganizationUpdate
     /**
      *
      * @var ?int $pledgeMinimumAmount
+     * @deprecated  field: This will be removed in a future release, please migrate away from it as soon as possible.
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('pledge_minimum_amount')]
     #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
@@ -115,28 +161,36 @@ class OrganizationUpdate
      * @param  ?int  $pledgeMinimumAmount
      * @param  ?string  $name
      * @param  ?string  $avatarUrl
+     * @param  ?string  $email
+     * @param  ?string  $website
+     * @param  ?array<OrganizationSocialLink>  $socials
+     * @param  ?OrganizationDetails  $details
+     * @param  ?OrganizationFeatureSettings  $featureSettings
+     * @param  ?OrganizationSubscriptionSettings  $subscriptionSettings
      * @param  ?int  $defaultUpfrontSplitToContributors
      * @param  ?string  $billingEmail
      * @param  ?string  $defaultBadgeCustomContent
      * @param  ?int  $totalMonthlySpendingLimit
      * @param  ?int  $perUserMonthlySpendingLimit
      * @param  ?OrganizationProfileSettings  $profileSettings
-     * @param  ?OrganizationFeatureSettings  $featureSettings
-     * @param  ?OrganizationSubscriptionSettings  $subscriptionSettings
      * @phpstan-pure
      */
-    public function __construct(?string $name = null, ?string $avatarUrl = null, ?int $defaultUpfrontSplitToContributors = null, ?string $billingEmail = null, ?string $defaultBadgeCustomContent = null, ?int $totalMonthlySpendingLimit = null, ?int $perUserMonthlySpendingLimit = null, ?OrganizationProfileSettings $profileSettings = null, ?OrganizationFeatureSettings $featureSettings = null, ?OrganizationSubscriptionSettings $subscriptionSettings = null, ?bool $pledgeBadgeShowAmount = false, ?int $pledgeMinimumAmount = 2000)
+    public function __construct(?string $name = null, ?string $avatarUrl = null, ?string $email = null, ?string $website = null, ?array $socials = null, ?OrganizationDetails $details = null, ?OrganizationFeatureSettings $featureSettings = null, ?OrganizationSubscriptionSettings $subscriptionSettings = null, ?int $defaultUpfrontSplitToContributors = null, ?string $billingEmail = null, ?string $defaultBadgeCustomContent = null, ?int $totalMonthlySpendingLimit = null, ?int $perUserMonthlySpendingLimit = null, ?OrganizationProfileSettings $profileSettings = null, ?bool $pledgeBadgeShowAmount = false, ?int $pledgeMinimumAmount = 2000)
     {
         $this->name = $name;
         $this->avatarUrl = $avatarUrl;
+        $this->email = $email;
+        $this->website = $website;
+        $this->socials = $socials;
+        $this->details = $details;
+        $this->featureSettings = $featureSettings;
+        $this->subscriptionSettings = $subscriptionSettings;
         $this->defaultUpfrontSplitToContributors = $defaultUpfrontSplitToContributors;
         $this->billingEmail = $billingEmail;
         $this->defaultBadgeCustomContent = $defaultBadgeCustomContent;
         $this->totalMonthlySpendingLimit = $totalMonthlySpendingLimit;
         $this->perUserMonthlySpendingLimit = $perUserMonthlySpendingLimit;
         $this->profileSettings = $profileSettings;
-        $this->featureSettings = $featureSettings;
-        $this->subscriptionSettings = $subscriptionSettings;
         $this->pledgeBadgeShowAmount = $pledgeBadgeShowAmount;
         $this->pledgeMinimumAmount = $pledgeMinimumAmount;
     }
