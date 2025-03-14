@@ -34,6 +34,44 @@ class OrganizationCreate
     public ?string $avatarUrl = null;
 
     /**
+     * Public support email.
+     *
+     * @var ?string $email
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('email')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
+    public ?string $email = null;
+
+    /**
+     * Official website of the organization.
+     *
+     * @var ?string $website
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('website')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
+    public ?string $website = null;
+
+    /**
+     * Link to social profiles.
+     *
+     * @var ?array<OrganizationSocialLink> $socials
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('socials')]
+    #[\Speakeasy\Serializer\Annotation\Type('array<\Polar\Models\Components\OrganizationSocialLink>|null')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
+    public ?array $socials = null;
+
+    /**
+     * Additional, private, business details Polar needs about active organizations for compliance (KYC).
+     *
+     * @var ?OrganizationDetails $details
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('details')]
+    #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\OrganizationDetails|null')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
+    public ?OrganizationDetails $details = null;
+
+    /**
      *
      * @var ?OrganizationFeatureSettings $featureSettings
      */
@@ -55,15 +93,23 @@ class OrganizationCreate
      * @param  string  $name
      * @param  string  $slug
      * @param  ?string  $avatarUrl
+     * @param  ?string  $email
+     * @param  ?string  $website
+     * @param  ?array<OrganizationSocialLink>  $socials
+     * @param  ?OrganizationDetails  $details
      * @param  ?OrganizationFeatureSettings  $featureSettings
      * @param  ?OrganizationSubscriptionSettings  $subscriptionSettings
      * @phpstan-pure
      */
-    public function __construct(string $name, string $slug, ?string $avatarUrl = null, ?OrganizationFeatureSettings $featureSettings = null, ?OrganizationSubscriptionSettings $subscriptionSettings = null)
+    public function __construct(string $name, string $slug, ?string $avatarUrl = null, ?string $email = null, ?string $website = null, ?array $socials = null, ?OrganizationDetails $details = null, ?OrganizationFeatureSettings $featureSettings = null, ?OrganizationSubscriptionSettings $subscriptionSettings = null)
     {
         $this->name = $name;
         $this->slug = $slug;
         $this->avatarUrl = $avatarUrl;
+        $this->email = $email;
+        $this->website = $website;
+        $this->socials = $socials;
+        $this->details = $details;
         $this->featureSettings = $featureSettings;
         $this->subscriptionSettings = $subscriptionSettings;
     }

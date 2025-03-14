@@ -38,6 +38,22 @@ class CustomerStateSubscription
     public array $metadata;
 
     /**
+     * The amount of the subscription.
+     *
+     * @var int $amount
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('amount')]
+    public int $amount;
+
+    /**
+     * The currency of the subscription.
+     *
+     * @var string $currency
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('currency')]
+    public string $currency;
+
+    /**
      *
      * @var SubscriptionRecurringInterval $recurringInterval
      */
@@ -70,9 +86,9 @@ class CustomerStateSubscription
     public string $productId;
 
     /**
-     * The ID of the subscribed price.
      *
      * @var string $priceId
+     * @deprecated  field: This will be removed in a future release, please migrate away from it as soon as possible.
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('price_id')]
     public string $priceId;
@@ -94,22 +110,6 @@ class CustomerStateSubscription
     #[\Speakeasy\Serializer\Annotation\Type('array<string, string|int|bool|\DateTime|null>|null')]
     #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
     public ?array $customFieldData = null;
-
-    /**
-     * The amount of the subscription.
-     *
-     * @var ?int $amount
-     */
-    #[\Speakeasy\Serializer\Annotation\SerializedName('amount')]
-    public ?int $amount;
-
-    /**
-     * The currency of the subscription.
-     *
-     * @var ?string $currency
-     */
-    #[\Speakeasy\Serializer\Annotation\SerializedName('currency')]
-    public ?string $currency;
 
     /**
      * The end timestamp of the current billing period.
@@ -163,6 +163,8 @@ class CustomerStateSubscription
      * @param  \DateTime  $createdAt
      * @param  array<string, string|int|bool>  $metadata
      * @param  string  $status
+     * @param  int  $amount
+     * @param  string  $currency
      * @param  SubscriptionRecurringInterval  $recurringInterval
      * @param  \DateTime  $currentPeriodStart
      * @param  bool  $cancelAtPeriodEnd
@@ -170,8 +172,6 @@ class CustomerStateSubscription
      * @param  string  $priceId
      * @param  ?\DateTime  $modifiedAt
      * @param  ?array<string, string|int|bool|\DateTime|null>  $customFieldData
-     * @param  ?int  $amount
-     * @param  ?string  $currency
      * @param  ?\DateTime  $currentPeriodEnd
      * @param  ?\DateTime  $canceledAt
      * @param  ?\DateTime  $startedAt
@@ -179,11 +179,13 @@ class CustomerStateSubscription
      * @param  ?string  $discountId
      * @phpstan-pure
      */
-    public function __construct(string $id, \DateTime $createdAt, array $metadata, SubscriptionRecurringInterval $recurringInterval, \DateTime $currentPeriodStart, bool $cancelAtPeriodEnd, string $productId, string $priceId, ?\DateTime $modifiedAt = null, ?array $customFieldData = null, ?int $amount = null, ?string $currency = null, ?\DateTime $currentPeriodEnd = null, ?\DateTime $canceledAt = null, ?\DateTime $startedAt = null, ?\DateTime $endsAt = null, ?string $discountId = null, string $status = 'active')
+    public function __construct(string $id, \DateTime $createdAt, array $metadata, int $amount, string $currency, SubscriptionRecurringInterval $recurringInterval, \DateTime $currentPeriodStart, bool $cancelAtPeriodEnd, string $productId, string $priceId, ?\DateTime $modifiedAt = null, ?array $customFieldData = null, ?\DateTime $currentPeriodEnd = null, ?\DateTime $canceledAt = null, ?\DateTime $startedAt = null, ?\DateTime $endsAt = null, ?string $discountId = null, string $status = 'active')
     {
         $this->id = $id;
         $this->createdAt = $createdAt;
         $this->metadata = $metadata;
+        $this->amount = $amount;
+        $this->currency = $currency;
         $this->recurringInterval = $recurringInterval;
         $this->currentPeriodStart = $currentPeriodStart;
         $this->cancelAtPeriodEnd = $cancelAtPeriodEnd;
@@ -191,8 +193,6 @@ class CustomerStateSubscription
         $this->priceId = $priceId;
         $this->modifiedAt = $modifiedAt;
         $this->customFieldData = $customFieldData;
-        $this->amount = $amount;
-        $this->currency = $currency;
         $this->currentPeriodEnd = $currentPeriodEnd;
         $this->canceledAt = $canceledAt;
         $this->startedAt = $startedAt;

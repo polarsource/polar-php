@@ -462,21 +462,12 @@ class Benefits
      *
      * **Scopes**: `benefits:read` `benefits:write`
      *
-     * @param  string|array<string>|null  $organizationId
-     * @param  Components\BenefitType|array<Components\BenefitType>|null  $typeFilter
-     * @param  ?int  $page
-     * @param  ?int  $limit
+     * @param  ?Operations\BenefitsListRequest  $request
      * @return Operations\BenefitsListResponse
      * @throws \Polar\Models\Errors\APIException
      */
-    private function listIndividual(string|array|null $organizationId = null, Components\BenefitType|array|null $typeFilter = null, ?int $page = null, ?int $limit = null, ?Options $options = null): Operations\BenefitsListResponse
+    private function listIndividual(?Operations\BenefitsListRequest $request = null, ?Options $options = null): Operations\BenefitsListResponse
     {
-        $request = new Operations\BenefitsListRequest(
-            organizationId: $organizationId,
-            typeFilter: $typeFilter,
-            page: $page,
-            limit: $limit,
-        );
         $baseUrl = $this->sdkConfiguration->getServerUrl();
         $url = Utils\Utils::generateUrl($baseUrl, '/v1/benefits/');
         $urlOverride = null;
@@ -518,7 +509,7 @@ class Benefits
                     listResourceBenefit: $obj);
                 $sdk = $this;
 
-                $response->next = function () use ($sdk, $request, $responseData, $organizationId, $typeFilter, $limit): ?Operations\BenefitsListResponse {
+                $response->next = function () use ($sdk, $request, $responseData): ?Operations\BenefitsListResponse {
                     $page = $request != null ? $request->page : 0;
                     $nextPage = $page + 1;
                     $jsonObject = new \JsonPath\JsonObject($responseData);
@@ -544,10 +535,13 @@ class Benefits
                     }
 
                     return $sdk->listIndividual(
-                        organizationId: $organizationId,
-                        typeFilter: $typeFilter,
-                        page: $nextPage,
-                        limit: $limit,
+                        request: new Operations\BenefitsListRequest(
+                            organizationId: $request != null ? $request->organizationId : null,
+                            typeFilter: $request != null ? $request->typeFilter : null,
+                            query: $request != null ? $request->query : null,
+                            page: $nextPage,
+                            limit: $request != null ? $request->limit : null,
+                        ),
                     );
                 };
 
@@ -582,16 +576,13 @@ class Benefits
      *
      * **Scopes**: `benefits:read` `benefits:write`
      *
-     * @param  string|array<string>|null  $organizationId
-     * @param  Components\BenefitType|array<Components\BenefitType>|null  $typeFilter
-     * @param  ?int  $page
-     * @param  ?int  $limit
+     * @param  ?Operations\BenefitsListRequest  $request
      * @return \Generator<Operations\BenefitsListResponse>
      * @throws \Polar\Models\Errors\APIException
      */
-    public function list(string|array|null $organizationId = null, Components\BenefitType|array|null $typeFilter = null, ?int $page = null, ?int $limit = null, ?Options $options = null): \Generator
+    public function list(?Operations\BenefitsListRequest $request = null, ?Options $options = null): \Generator
     {
-        $res = $this->listIndividual($organizationId, $typeFilter, $page, $limit, $options);
+        $res = $this->listIndividual($request, $options);
         while ($res !== null) {
             yield $res;
             $res = $res->next($res);

@@ -1,4 +1,4 @@
-# SubscriptionMetadata
+# ProductCreateMetadata
 
 
 ## Supported Types

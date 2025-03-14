@@ -15,8 +15,8 @@ enum CustomerOrderSortProperty: string
     case MinusCreatedAt = '-created_at';
     case Amount = 'amount';
     case MinusAmount = '-amount';
-    case Organization = 'organization';
-    case MinusOrganization = '-organization';
+    case NetAmount = 'net_amount';
+    case MinusNetAmount = '-net_amount';
     case Product = 'product';
     case MinusProduct = '-product';
     case Subscription = 'subscription';

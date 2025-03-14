@@ -247,7 +247,7 @@ declare(strict_types=1);
 require 'vendor/autoload.php';
 
 use Polar;
-use Polar\Models\Components;
+use Polar\Models\Operations;
 
 $sdk = Polar\Polar::builder()
     ->setSecurity(
@@ -255,18 +255,14 @@ $sdk = Polar\Polar::builder()
     )
     ->build();
 
-
-
-$responses = $sdk->benefits->list(
-    page: 1,
-    limit: 10,
+$request = new Operations\BenefitsListRequest(
     organizationId: [
         '1dbfc517-0bbf-4301-9ba8-555ca42b9737',
     ],
-    typeFilter: [
-        Components\BenefitType::Downloadables,
-    ]
+);
 
+$responses = $sdk->benefits->list(
+    request: $request
 );
 
 
@@ -279,12 +275,9 @@ foreach ($responses as $response) {
 
 ### Parameters
 
-| Parameter                                                                                  | Type                                                                                       | Required                                                                                   | Description                                                                                |
-| ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------ |
-| `page`                                                                                     | *?int*                                                                                     | :heavy_minus_sign:                                                                         | Page number, defaults to 1.                                                                |
-| `limit`                                                                                    | *?int*                                                                                     | :heavy_minus_sign:                                                                         | Size of a page, defaults to 10. Maximum is 100.                                            |
-| `organizationId`                                                                           | [string\|array\|null](../../Models/Operations/BenefitsListQueryParamOrganizationIDFilter.md) | :heavy_minus_sign:                                                                         | Filter by organization ID.                                                                 |
-| `typeFilter`                                                                               | [Components\BenefitType\|array\|null](../../Models/Operations/BenefitTypeFilter.md)        | :heavy_minus_sign:                                                                         | Filter by benefit type.                                                                    |
+| Parameter                                                                        | Type                                                                             | Required                                                                         | Description                                                                      |
+| -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- |
+| `$request`                                                                       | [Operations\BenefitsListRequest](../../Models/Operations/BenefitsListRequest.md) | :heavy_check_mark:                                                               | The request object to use for the request.                                       |
 
 ### Response
 

@@ -109,6 +109,14 @@ class SubscriptionCustomer
     public ?array $taxId;
 
     /**
+     * Timestamp for when the customer was soft deleted.
+     *
+     * @var ?\DateTime $deletedAt
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('deleted_at')]
+    public ?\DateTime $deletedAt;
+
+    /**
      * @param  string  $id
      * @param  \DateTime  $createdAt
      * @param  array<string, string|int|bool>  $metadata
@@ -121,9 +129,10 @@ class SubscriptionCustomer
      * @param  ?string  $name
      * @param  ?Address  $billingAddress
      * @param  ?array<string|TaxIDFormat|null>  $taxId
+     * @param  ?\DateTime  $deletedAt
      * @phpstan-pure
      */
-    public function __construct(string $id, \DateTime $createdAt, array $metadata, string $email, bool $emailVerified, string $organizationId, string $avatarUrl, ?\DateTime $modifiedAt = null, ?string $externalId = null, ?string $name = null, ?Address $billingAddress = null, ?array $taxId = null)
+    public function __construct(string $id, \DateTime $createdAt, array $metadata, string $email, bool $emailVerified, string $organizationId, string $avatarUrl, ?\DateTime $modifiedAt = null, ?string $externalId = null, ?string $name = null, ?Address $billingAddress = null, ?array $taxId = null, ?\DateTime $deletedAt = null)
     {
         $this->id = $id;
         $this->createdAt = $createdAt;
@@ -137,5 +146,6 @@ class SubscriptionCustomer
         $this->name = $name;
         $this->billingAddress = $billingAddress;
         $this->taxId = $taxId;
+        $this->deletedAt = $deletedAt;
     }
 }

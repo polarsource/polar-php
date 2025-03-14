@@ -28,6 +28,22 @@ class CustomerSubscription
     public string $id;
 
     /**
+     * The amount of the subscription.
+     *
+     * @var int $amount
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('amount')]
+    public int $amount;
+
+    /**
+     * The currency of the subscription.
+     *
+     * @var string $currency
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('currency')]
+    public string $currency;
+
+    /**
      *
      * @var SubscriptionRecurringInterval $recurringInterval
      */
@@ -44,6 +60,7 @@ class CustomerSubscription
     public SubscriptionStatus $status;
 
     /**
+     * The start timestamp of the current billing period.
      *
      * @var \DateTime $currentPeriodStart
      */
@@ -51,6 +68,7 @@ class CustomerSubscription
     public \DateTime $currentPeriodStart;
 
     /**
+     * Whether the subscription will be canceled at the end of the current period.
      *
      * @var bool $cancelAtPeriodEnd
      */
@@ -58,6 +76,7 @@ class CustomerSubscription
     public bool $cancelAtPeriodEnd;
 
     /**
+     * The ID of the subscribed customer.
      *
      * @var string $customerId
      */
@@ -65,6 +84,7 @@ class CustomerSubscription
     public string $customerId;
 
     /**
+     * The ID of the subscribed product.
      *
      * @var string $productId
      */
@@ -74,6 +94,7 @@ class CustomerSubscription
     /**
      *
      * @var string $priceId
+     * @deprecated  field: This will be removed in a future release, please migrate away from it as soon as possible.
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('price_id')]
     public string $priceId;
@@ -97,10 +118,20 @@ class CustomerSubscription
     /**
      *
      * @var LegacyRecurringProductPriceFixed|LegacyRecurringProductPriceCustom|LegacyRecurringProductPriceFree|ProductPriceFixed|ProductPriceCustom|ProductPriceFree $price
+     * @deprecated  field: This will be removed in a future release, please migrate away from it as soon as possible.
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('price')]
     #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\LegacyRecurringProductPriceFixed|\Polar\Models\Components\LegacyRecurringProductPriceCustom|\Polar\Models\Components\LegacyRecurringProductPriceFree|\Polar\Models\Components\ProductPriceFixed|\Polar\Models\Components\ProductPriceCustom|\Polar\Models\Components\ProductPriceFree')]
     public LegacyRecurringProductPriceFixed|LegacyRecurringProductPriceCustom|LegacyRecurringProductPriceFree|ProductPriceFixed|ProductPriceCustom|ProductPriceFree $price;
+
+    /**
+     * List of enabled prices for the subscription.
+     *
+     * @var array<LegacyRecurringProductPriceFixed|LegacyRecurringProductPriceCustom|LegacyRecurringProductPriceFree|ProductPriceFixed|ProductPriceCustom|ProductPriceFree> $prices
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('prices')]
+    #[\Speakeasy\Serializer\Annotation\Type('array<\Polar\Models\Components\LegacyRecurringProductPriceFixed|\Polar\Models\Components\LegacyRecurringProductPriceCustom|\Polar\Models\Components\LegacyRecurringProductPriceFree|\Polar\Models\Components\ProductPriceFixed|\Polar\Models\Components\ProductPriceCustom|\Polar\Models\Components\ProductPriceFree>')]
+    public array $prices;
 
     /**
      * Last modification timestamp of the object.
@@ -111,22 +142,7 @@ class CustomerSubscription
     public ?\DateTime $modifiedAt;
 
     /**
-     * The amount of the subscription.
-     *
-     * @var ?int $amount
-     */
-    #[\Speakeasy\Serializer\Annotation\SerializedName('amount')]
-    public ?int $amount;
-
-    /**
-     * The currency of the subscription.
-     *
-     * @var ?string $currency
-     */
-    #[\Speakeasy\Serializer\Annotation\SerializedName('currency')]
-    public ?string $currency;
-
-    /**
+     * The end timestamp of the current billing period.
      *
      * @var ?\DateTime $currentPeriodEnd
      */
@@ -134,6 +150,7 @@ class CustomerSubscription
     public ?\DateTime $currentPeriodEnd;
 
     /**
+     * The timestamp when the subscription was canceled. The subscription might still be active if `cancel_at_period_end` is `true`.
      *
      * @var ?\DateTime $canceledAt
      */
@@ -141,6 +158,7 @@ class CustomerSubscription
     public ?\DateTime $canceledAt;
 
     /**
+     * The timestamp when the subscription started.
      *
      * @var ?\DateTime $startedAt
      */
@@ -148,6 +166,7 @@ class CustomerSubscription
     public ?\DateTime $startedAt;
 
     /**
+     * The timestamp when the subscription will end.
      *
      * @var ?\DateTime $endsAt
      */
@@ -155,6 +174,7 @@ class CustomerSubscription
     public ?\DateTime $endsAt;
 
     /**
+     * The timestamp when the subscription ended.
      *
      * @var ?\DateTime $endedAt
      */
@@ -194,6 +214,8 @@ class CustomerSubscription
     /**
      * @param  \DateTime  $createdAt
      * @param  string  $id
+     * @param  int  $amount
+     * @param  string  $currency
      * @param  SubscriptionRecurringInterval  $recurringInterval
      * @param  SubscriptionStatus  $status
      * @param  \DateTime  $currentPeriodStart
@@ -204,9 +226,8 @@ class CustomerSubscription
      * @param  string  $userId
      * @param  CustomerSubscriptionProduct  $product
      * @param  LegacyRecurringProductPriceFixed|LegacyRecurringProductPriceCustom|LegacyRecurringProductPriceFree|ProductPriceFixed|ProductPriceCustom|ProductPriceFree  $price
+     * @param  array<LegacyRecurringProductPriceFixed|LegacyRecurringProductPriceCustom|LegacyRecurringProductPriceFree|ProductPriceFixed|ProductPriceCustom|ProductPriceFree>  $prices
      * @param  ?\DateTime  $modifiedAt
-     * @param  ?int  $amount
-     * @param  ?string  $currency
      * @param  ?\DateTime  $currentPeriodEnd
      * @param  ?\DateTime  $canceledAt
      * @param  ?\DateTime  $startedAt
@@ -218,10 +239,12 @@ class CustomerSubscription
      * @param  ?string  $customerCancellationComment
      * @phpstan-pure
      */
-    public function __construct(\DateTime $createdAt, string $id, SubscriptionRecurringInterval $recurringInterval, SubscriptionStatus $status, \DateTime $currentPeriodStart, bool $cancelAtPeriodEnd, string $customerId, string $productId, string $priceId, string $userId, CustomerSubscriptionProduct $product, LegacyRecurringProductPriceFixed|LegacyRecurringProductPriceCustom|LegacyRecurringProductPriceFree|ProductPriceFixed|ProductPriceCustom|ProductPriceFree $price, ?\DateTime $modifiedAt = null, ?int $amount = null, ?string $currency = null, ?\DateTime $currentPeriodEnd = null, ?\DateTime $canceledAt = null, ?\DateTime $startedAt = null, ?\DateTime $endsAt = null, ?\DateTime $endedAt = null, ?string $discountId = null, ?string $checkoutId = null, ?CustomerCancellationReason $customerCancellationReason = null, ?string $customerCancellationComment = null)
+    public function __construct(\DateTime $createdAt, string $id, int $amount, string $currency, SubscriptionRecurringInterval $recurringInterval, SubscriptionStatus $status, \DateTime $currentPeriodStart, bool $cancelAtPeriodEnd, string $customerId, string $productId, string $priceId, string $userId, CustomerSubscriptionProduct $product, LegacyRecurringProductPriceFixed|LegacyRecurringProductPriceCustom|LegacyRecurringProductPriceFree|ProductPriceFixed|ProductPriceCustom|ProductPriceFree $price, array $prices, ?\DateTime $modifiedAt = null, ?\DateTime $currentPeriodEnd = null, ?\DateTime $canceledAt = null, ?\DateTime $startedAt = null, ?\DateTime $endsAt = null, ?\DateTime $endedAt = null, ?string $discountId = null, ?string $checkoutId = null, ?CustomerCancellationReason $customerCancellationReason = null, ?string $customerCancellationComment = null)
     {
         $this->createdAt = $createdAt;
         $this->id = $id;
+        $this->amount = $amount;
+        $this->currency = $currency;
         $this->recurringInterval = $recurringInterval;
         $this->status = $status;
         $this->currentPeriodStart = $currentPeriodStart;
@@ -232,9 +255,8 @@ class CustomerSubscription
         $this->userId = $userId;
         $this->product = $product;
         $this->price = $price;
+        $this->prices = $prices;
         $this->modifiedAt = $modifiedAt;
-        $this->amount = $amount;
-        $this->currency = $currency;
         $this->currentPeriodEnd = $currentPeriodEnd;
         $this->canceledAt = $canceledAt;
         $this->startedAt = $startedAt;

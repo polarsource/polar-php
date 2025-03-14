@@ -9,8 +9,8 @@
 | `MinusCreatedAt`    | -created_at         |
 | `Amount`            | amount              |
 | `MinusAmount`       | -amount             |
-| `Organization`      | organization        |
-| `MinusOrganization` | -organization       |
+| `NetAmount`         | net_amount          |
+| `MinusNetAmount`    | -net_amount         |
 | `Product`           | product             |
 | `MinusProduct`      | -product            |
 | `Subscription`      | subscription        |

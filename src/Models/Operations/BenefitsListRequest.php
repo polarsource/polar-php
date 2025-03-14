@@ -29,6 +29,14 @@ class BenefitsListRequest
     public Components\BenefitType|array|null $typeFilter = null;
 
     /**
+     * Filter by description.
+     *
+     * @var ?string $query
+     */
+    #[SpeakeasyMetadata('queryParam:style=form,explode=true,name=query')]
+    public ?string $query = null;
+
+    /**
      * Page number, defaults to 1.
      *
      * @var ?int $page
@@ -49,12 +57,14 @@ class BenefitsListRequest
      * @param  ?int  $limit
      * @param  string|array<string>|null  $organizationId
      * @param  Components\BenefitType|array<Components\BenefitType>|null  $typeFilter
+     * @param  ?string  $query
      * @phpstan-pure
      */
-    public function __construct(string|array|null $organizationId = null, Components\BenefitType|array|null $typeFilter = null, ?int $page = 1, ?int $limit = 10)
+    public function __construct(string|array|null $organizationId = null, Components\BenefitType|array|null $typeFilter = null, ?string $query = null, ?int $page = 1, ?int $limit = 10)
     {
         $this->organizationId = $organizationId;
         $this->typeFilter = $typeFilter;
+        $this->query = $query;
         $this->page = $page;
         $this->limit = $limit;
     }

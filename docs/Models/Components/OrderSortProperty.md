@@ -9,6 +9,8 @@
 | `MinusCreatedAt`    | -created_at         |
 | `Amount`            | amount              |
 | `MinusAmount`       | -amount             |
+| `NetAmount`         | net_amount          |
+| `MinusNetAmount`    | -net_amount         |
 | `Customer`          | customer            |
 | `MinusCustomer`     | -customer           |
 | `Product`           | product             |
