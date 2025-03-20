@@ -27,6 +27,22 @@ class CustomerOrder
     public string $id;
 
     /**
+     *
+     * @var OrderStatus $status
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('status')]
+    #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\OrderStatus')]
+    public OrderStatus $status;
+
+    /**
+     * Whether the order has been paid for.
+     *
+     * @var bool $paid
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('paid')]
+    public bool $paid;
+
+    /**
      * Amount in cents, before discounts and taxes.
      *
      * @var int $subtotalAmount
@@ -180,6 +196,8 @@ class CustomerOrder
     /**
      * @param  \DateTime  $createdAt
      * @param  string  $id
+     * @param  OrderStatus  $status
+     * @param  bool  $paid
      * @param  int  $subtotalAmount
      * @param  int  $discountAmount
      * @param  int  $netAmount
@@ -201,10 +219,12 @@ class CustomerOrder
      * @param  ?CustomerOrderSubscription  $subscription
      * @phpstan-pure
      */
-    public function __construct(\DateTime $createdAt, string $id, int $subtotalAmount, int $discountAmount, int $netAmount, int $amount, int $taxAmount, int $totalAmount, int $refundedAmount, int $refundedTaxAmount, string $currency, string $customerId, string $productId, string $productPriceId, string $userId, CustomerOrderProduct $product, LegacyRecurringProductPriceFixed|LegacyRecurringProductPriceCustom|LegacyRecurringProductPriceFree|ProductPriceFixed|ProductPriceCustom|ProductPriceFree $productPrice, array $items, ?\DateTime $modifiedAt = null, ?string $subscriptionId = null, ?CustomerOrderSubscription $subscription = null)
+    public function __construct(\DateTime $createdAt, string $id, OrderStatus $status, bool $paid, int $subtotalAmount, int $discountAmount, int $netAmount, int $amount, int $taxAmount, int $totalAmount, int $refundedAmount, int $refundedTaxAmount, string $currency, string $customerId, string $productId, string $productPriceId, string $userId, CustomerOrderProduct $product, LegacyRecurringProductPriceFixed|LegacyRecurringProductPriceCustom|LegacyRecurringProductPriceFree|ProductPriceFixed|ProductPriceCustom|ProductPriceFree $productPrice, array $items, ?\DateTime $modifiedAt = null, ?string $subscriptionId = null, ?CustomerOrderSubscription $subscription = null)
     {
         $this->createdAt = $createdAt;
         $this->id = $id;
+        $this->status = $status;
+        $this->paid = $paid;
         $this->subtotalAmount = $subtotalAmount;
         $this->discountAmount = $discountAmount;
         $this->netAmount = $netAmount;

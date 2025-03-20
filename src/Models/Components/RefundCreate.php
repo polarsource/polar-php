@@ -27,6 +27,7 @@ class RefundCreate
     public RefundReason $reason;
 
     /**
+     * Amount to refund in cents. Minimum is 1.
      *
      * @var int $amount
      */
