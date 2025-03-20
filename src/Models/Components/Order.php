@@ -38,10 +38,19 @@ class Order
 
     /**
      *
-     * @var string $status
+     * @var OrderStatus $status
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('status')]
-    public string $status;
+    #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\OrderStatus')]
+    public OrderStatus $status;
+
+    /**
+     * Whether the order has been paid for.
+     *
+     * @var bool $paid
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('paid')]
+    public bool $paid;
 
     /**
      * Amount in cents, before discounts and taxes.
@@ -262,7 +271,8 @@ class Order
      * @param  \DateTime  $createdAt
      * @param  string  $id
      * @param  array<string, string|int|bool>  $metadata
-     * @param  string  $status
+     * @param  OrderStatus  $status
+     * @param  bool  $paid
      * @param  int  $subtotalAmount
      * @param  int  $discountAmount
      * @param  int  $netAmount
@@ -292,12 +302,13 @@ class Order
      * @param  ?OrderSubscription  $subscription
      * @phpstan-pure
      */
-    public function __construct(\DateTime $createdAt, string $id, array $metadata, string $status, int $subtotalAmount, int $discountAmount, int $netAmount, int $amount, int $taxAmount, int $totalAmount, int $refundedAmount, int $refundedTaxAmount, string $currency, OrderBillingReason $billingReason, string $customerId, string $productId, string $productPriceId, OrderCustomer $customer, string $userId, OrderUser $user, OrderProduct $product, LegacyRecurringProductPriceFixed|LegacyRecurringProductPriceCustom|LegacyRecurringProductPriceFree|ProductPriceFixed|ProductPriceCustom|ProductPriceFree $productPrice, array $items, ?\DateTime $modifiedAt = null, ?array $customFieldData = null, ?Address $billingAddress = null, ?string $discountId = null, ?string $subscriptionId = null, ?string $checkoutId = null, DiscountFixedOnceForeverDurationBase|DiscountFixedRepeatDurationBase|DiscountPercentageOnceForeverDurationBase|DiscountPercentageRepeatDurationBase|null $discount = null, ?OrderSubscription $subscription = null)
+    public function __construct(\DateTime $createdAt, string $id, array $metadata, OrderStatus $status, bool $paid, int $subtotalAmount, int $discountAmount, int $netAmount, int $amount, int $taxAmount, int $totalAmount, int $refundedAmount, int $refundedTaxAmount, string $currency, OrderBillingReason $billingReason, string $customerId, string $productId, string $productPriceId, OrderCustomer $customer, string $userId, OrderUser $user, OrderProduct $product, LegacyRecurringProductPriceFixed|LegacyRecurringProductPriceCustom|LegacyRecurringProductPriceFree|ProductPriceFixed|ProductPriceCustom|ProductPriceFree $productPrice, array $items, ?\DateTime $modifiedAt = null, ?array $customFieldData = null, ?Address $billingAddress = null, ?string $discountId = null, ?string $subscriptionId = null, ?string $checkoutId = null, DiscountFixedOnceForeverDurationBase|DiscountFixedRepeatDurationBase|DiscountPercentageOnceForeverDurationBase|DiscountPercentageRepeatDurationBase|null $discount = null, ?OrderSubscription $subscription = null)
     {
         $this->createdAt = $createdAt;
         $this->id = $id;
         $this->metadata = $metadata;
         $this->status = $status;
+        $this->paid = $paid;
         $this->subtotalAmount = $subtotalAmount;
         $this->discountAmount = $discountAmount;
         $this->netAmount = $netAmount;
