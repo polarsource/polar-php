@@ -170,11 +170,11 @@ class CheckoutPublic
     /**
      * Price of the selected product.
      *
-     * @var LegacyRecurringProductPriceFixed|LegacyRecurringProductPriceCustom|LegacyRecurringProductPriceFree|ProductPriceFixed|ProductPriceCustom|ProductPriceFree $productPrice
+     * @var LegacyRecurringProductPriceFixed|LegacyRecurringProductPriceCustom|LegacyRecurringProductPriceFree|ProductPriceFixed|ProductPriceCustom|ProductPriceFree|ProductPriceMeteredUnit $productPrice
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('product_price')]
-    #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\LegacyRecurringProductPriceFixed|\Polar\Models\Components\LegacyRecurringProductPriceCustom|\Polar\Models\Components\LegacyRecurringProductPriceFree|\Polar\Models\Components\ProductPriceFixed|\Polar\Models\Components\ProductPriceCustom|\Polar\Models\Components\ProductPriceFree')]
-    public LegacyRecurringProductPriceFixed|LegacyRecurringProductPriceCustom|LegacyRecurringProductPriceFree|ProductPriceFixed|ProductPriceCustom|ProductPriceFree $productPrice;
+    #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\LegacyRecurringProductPriceFixed|\Polar\Models\Components\LegacyRecurringProductPriceCustom|\Polar\Models\Components\LegacyRecurringProductPriceFree|\Polar\Models\Components\ProductPriceFixed|\Polar\Models\Components\ProductPriceCustom|\Polar\Models\Components\ProductPriceFree|\Polar\Models\Components\ProductPriceMeteredUnit')]
+    public LegacyRecurringProductPriceFixed|LegacyRecurringProductPriceCustom|LegacyRecurringProductPriceFree|ProductPriceFixed|ProductPriceCustom|ProductPriceFree|ProductPriceMeteredUnit $productPrice;
 
     /**
      *
@@ -227,12 +227,36 @@ class CheckoutPublic
     public ?int $amount;
 
     /**
-     * Computed tax amount to pay in cents.
+     * Discount amount in cents.
+     *
+     * @var ?int $discountAmount
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('discount_amount')]
+    public ?int $discountAmount;
+
+    /**
+     * Amount in cents, after discounts but before taxes.
+     *
+     * @var ?int $netAmount
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('net_amount')]
+    public ?int $netAmount;
+
+    /**
+     * Sales tax amount in cents.
      *
      * @var ?int $taxAmount
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('tax_amount')]
     public ?int $taxAmount;
+
+    /**
+     * Amount in cents, after discounts and taxes.
+     *
+     * @var ?int $totalAmount
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('total_amount')]
+    public ?int $totalAmount;
 
     /**
      * Currency code of the checkout session.
@@ -241,22 +265,6 @@ class CheckoutPublic
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('currency')]
     public ?string $currency;
-
-    /**
-     * Subtotal amount in cents, including discounts and before tax.
-     *
-     * @var ?int $subtotalAmount
-     */
-    #[\Speakeasy\Serializer\Annotation\SerializedName('subtotal_amount')]
-    public ?int $subtotalAmount;
-
-    /**
-     * Total amount to pay in cents, including discounts and after tax.
-     *
-     * @var ?int $totalAmount
-     */
-    #[\Speakeasy\Serializer\Annotation\SerializedName('total_amount')]
-    public ?int $totalAmount;
 
     /**
      * ID of the discount applied to the checkout.
@@ -313,6 +321,14 @@ class CheckoutPublic
 
     /**
      *
+     * @var ?int $subtotalAmount
+     * @deprecated  field: This will be removed in a future release, please migrate away from it as soon as possible.
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('subtotal_amount')]
+    public ?int $subtotalAmount;
+
+    /**
+     *
      * @var CheckoutDiscountFixedOnceForeverDuration|CheckoutDiscountFixedRepeatDuration|CheckoutDiscountPercentageOnceForeverDuration|CheckoutDiscountPercentageRepeatDuration|null $discount
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('discount')]
@@ -339,17 +355,18 @@ class CheckoutPublic
      * @param  array<string, string>  $paymentProcessorMetadata
      * @param  array<CheckoutProduct>  $products
      * @param  CheckoutProduct  $product
-     * @param  LegacyRecurringProductPriceFixed|LegacyRecurringProductPriceCustom|LegacyRecurringProductPriceFree|ProductPriceFixed|ProductPriceCustom|ProductPriceFree  $productPrice
+     * @param  LegacyRecurringProductPriceFixed|LegacyRecurringProductPriceCustom|LegacyRecurringProductPriceFree|ProductPriceFixed|ProductPriceCustom|ProductPriceFree|ProductPriceMeteredUnit  $productPrice
      * @param  Organization  $organization
      * @param  array<AttachedCustomField>  $attachedCustomFields
      * @param  ?\DateTime  $modifiedAt
      * @param  ?array<string, string|int|bool|\DateTime|null>  $customFieldData
      * @param  ?string  $embedOrigin
      * @param  ?int  $amount
+     * @param  ?int  $discountAmount
+     * @param  ?int  $netAmount
      * @param  ?int  $taxAmount
-     * @param  ?string  $currency
-     * @param  ?int  $subtotalAmount
      * @param  ?int  $totalAmount
+     * @param  ?string  $currency
      * @param  ?string  $discountId
      * @param  ?string  $customerId
      * @param  ?string  $customerName
@@ -357,10 +374,11 @@ class CheckoutPublic
      * @param  ?string  $customerIpAddress
      * @param  ?Address  $customerBillingAddress
      * @param  ?string  $customerTaxId
+     * @param  ?int  $subtotalAmount
      * @param  CheckoutDiscountFixedOnceForeverDuration|CheckoutDiscountFixedRepeatDuration|CheckoutDiscountPercentageOnceForeverDuration|CheckoutDiscountPercentageRepeatDuration|null  $discount
      * @phpstan-pure
      */
-    public function __construct(\DateTime $createdAt, string $id, PaymentProcessor $paymentProcessor, CheckoutStatus $status, string $clientSecret, string $url, \DateTime $expiresAt, string $successUrl, string $productId, string $productPriceId, bool $allowDiscountCodes, bool $isDiscountApplicable, bool $isFreeProductPrice, bool $isPaymentRequired, bool $isPaymentSetupRequired, bool $isPaymentFormRequired, array $paymentProcessorMetadata, array $products, CheckoutProduct $product, LegacyRecurringProductPriceFixed|LegacyRecurringProductPriceCustom|LegacyRecurringProductPriceFree|ProductPriceFixed|ProductPriceCustom|ProductPriceFree $productPrice, Organization $organization, array $attachedCustomFields, ?\DateTime $modifiedAt = null, ?array $customFieldData = null, ?string $embedOrigin = null, ?int $amount = null, ?int $taxAmount = null, ?string $currency = null, ?int $subtotalAmount = null, ?int $totalAmount = null, ?string $discountId = null, ?string $customerId = null, ?string $customerName = null, ?string $customerEmail = null, ?string $customerIpAddress = null, ?Address $customerBillingAddress = null, ?string $customerTaxId = null, CheckoutDiscountFixedOnceForeverDuration|CheckoutDiscountFixedRepeatDuration|CheckoutDiscountPercentageOnceForeverDuration|CheckoutDiscountPercentageRepeatDuration|null $discount = null)
+    public function __construct(\DateTime $createdAt, string $id, PaymentProcessor $paymentProcessor, CheckoutStatus $status, string $clientSecret, string $url, \DateTime $expiresAt, string $successUrl, string $productId, string $productPriceId, bool $allowDiscountCodes, bool $isDiscountApplicable, bool $isFreeProductPrice, bool $isPaymentRequired, bool $isPaymentSetupRequired, bool $isPaymentFormRequired, array $paymentProcessorMetadata, array $products, CheckoutProduct $product, LegacyRecurringProductPriceFixed|LegacyRecurringProductPriceCustom|LegacyRecurringProductPriceFree|ProductPriceFixed|ProductPriceCustom|ProductPriceFree|ProductPriceMeteredUnit $productPrice, Organization $organization, array $attachedCustomFields, ?\DateTime $modifiedAt = null, ?array $customFieldData = null, ?string $embedOrigin = null, ?int $amount = null, ?int $discountAmount = null, ?int $netAmount = null, ?int $taxAmount = null, ?int $totalAmount = null, ?string $currency = null, ?string $discountId = null, ?string $customerId = null, ?string $customerName = null, ?string $customerEmail = null, ?string $customerIpAddress = null, ?Address $customerBillingAddress = null, ?string $customerTaxId = null, ?int $subtotalAmount = null, CheckoutDiscountFixedOnceForeverDuration|CheckoutDiscountFixedRepeatDuration|CheckoutDiscountPercentageOnceForeverDuration|CheckoutDiscountPercentageRepeatDuration|null $discount = null)
     {
         $this->createdAt = $createdAt;
         $this->id = $id;
@@ -388,10 +406,11 @@ class CheckoutPublic
         $this->customFieldData = $customFieldData;
         $this->embedOrigin = $embedOrigin;
         $this->amount = $amount;
+        $this->discountAmount = $discountAmount;
+        $this->netAmount = $netAmount;
         $this->taxAmount = $taxAmount;
-        $this->currency = $currency;
-        $this->subtotalAmount = $subtotalAmount;
         $this->totalAmount = $totalAmount;
+        $this->currency = $currency;
         $this->discountId = $discountId;
         $this->customerId = $customerId;
         $this->customerName = $customerName;
@@ -399,6 +418,7 @@ class CheckoutPublic
         $this->customerIpAddress = $customerIpAddress;
         $this->customerBillingAddress = $customerBillingAddress;
         $this->customerTaxId = $customerTaxId;
+        $this->subtotalAmount = $subtotalAmount;
         $this->discount = $discount;
     }
 }
