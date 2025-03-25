@@ -14,12 +14,12 @@ Price of the selected product.
 Components\LegacyRecurringProductPriceFixed|Components\LegacyRecurringProductPriceCustom|Components\LegacyRecurringProductPriceFree $value = /* values here */
 ```
 
-### `Components\ProductPriceFixed|Components\ProductPriceCustom|Components\ProductPriceFree`
+### `Components\ProductPriceFixed|Components\ProductPriceCustom|Components\ProductPriceFree|Components\ProductPriceMeteredUnit`
 
 ```php
 /**
-* @var Components\ProductPriceFixed|Components\ProductPriceCustom|Components\ProductPriceFree
+* @var Components\ProductPriceFixed|Components\ProductPriceCustom|Components\ProductPriceFree|Components\ProductPriceMeteredUnit
 */
-Components\ProductPriceFixed|Components\ProductPriceCustom|Components\ProductPriceFree $value = /* values here */
+Components\ProductPriceFixed|Components\ProductPriceCustom|Components\ProductPriceFree|Components\ProductPriceMeteredUnit $value = /* values here */
 ```
 
