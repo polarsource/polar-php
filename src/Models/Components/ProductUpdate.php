@@ -71,10 +71,10 @@ class ProductUpdate
     /**
      * List of available prices for this product. If you want to keep existing prices, include them in the list as an `ExistingProductPrice` object.
      *
-     * @var ?array<ExistingProductPrice|ProductPriceFixedCreate|ProductPriceCustomCreate|ProductPriceFreeCreate> $prices
+     * @var ?array<ExistingProductPrice|ProductPriceFixedCreate|ProductPriceCustomCreate|ProductPriceFreeCreate|ProductPriceMeteredUnitCreate> $prices
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('prices')]
-    #[\Speakeasy\Serializer\Annotation\Type('array<\Polar\Models\Components\ExistingProductPrice|\Polar\Models\Components\ProductPriceFixedCreate|\Polar\Models\Components\ProductPriceCustomCreate|\Polar\Models\Components\ProductPriceFreeCreate>|null')]
+    #[\Speakeasy\Serializer\Annotation\Type('array<\Polar\Models\Components\ExistingProductPrice|\Polar\Models\Components\ProductPriceFixedCreate|\Polar\Models\Components\ProductPriceCustomCreate|\Polar\Models\Components\ProductPriceFreeCreate|\Polar\Models\Components\ProductPriceMeteredUnitCreate>|null')]
     #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
     public ?array $prices = null;
 
@@ -104,7 +104,7 @@ class ProductUpdate
      * @param  ?string  $description
      * @param  ?SubscriptionRecurringInterval  $recurringInterval
      * @param  ?bool  $isArchived
-     * @param  ?array<ExistingProductPrice|ProductPriceFixedCreate|ProductPriceCustomCreate|ProductPriceFreeCreate>  $prices
+     * @param  ?array<ExistingProductPrice|ProductPriceFixedCreate|ProductPriceCustomCreate|ProductPriceFreeCreate|ProductPriceMeteredUnitCreate>  $prices
      * @param  ?array<string>  $medias
      * @param  ?array<AttachedCustomFieldCreate>  $attachedCustomFields
      * @phpstan-pure

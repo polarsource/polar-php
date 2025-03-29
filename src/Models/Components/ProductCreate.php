@@ -23,10 +23,10 @@ class ProductCreate
     /**
      * List of available prices for this product. Currently, only a single price is supported.
      *
-     * @var array<ProductPriceFixedCreate|ProductPriceCustomCreate|ProductPriceFreeCreate> $prices
+     * @var array<ProductPriceFixedCreate|ProductPriceCustomCreate|ProductPriceFreeCreate|ProductPriceMeteredUnitCreate> $prices
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('prices')]
-    #[\Speakeasy\Serializer\Annotation\Type('array<\Polar\Models\Components\ProductPriceFixedCreate|\Polar\Models\Components\ProductPriceCustomCreate|\Polar\Models\Components\ProductPriceFreeCreate>')]
+    #[\Speakeasy\Serializer\Annotation\Type('array<\Polar\Models\Components\ProductPriceFixedCreate|\Polar\Models\Components\ProductPriceCustomCreate|\Polar\Models\Components\ProductPriceFreeCreate|\Polar\Models\Components\ProductPriceMeteredUnitCreate>')]
     public array $prices;
 
     /**
@@ -98,7 +98,7 @@ class ProductCreate
 
     /**
      * @param  string  $name
-     * @param  array<ProductPriceFixedCreate|ProductPriceCustomCreate|ProductPriceFreeCreate>  $prices
+     * @param  array<ProductPriceFixedCreate|ProductPriceCustomCreate|ProductPriceFreeCreate|ProductPriceMeteredUnitCreate>  $prices
      * @param  ?array<string, string|int|bool>  $metadata
      * @param  ?SubscriptionRecurringInterval  $recurringInterval
      * @param  ?array<AttachedCustomFieldCreate>  $attachedCustomFields
