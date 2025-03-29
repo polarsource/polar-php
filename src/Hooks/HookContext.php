@@ -12,6 +12,10 @@ namespace Polar\Hooks;
 class HookContext
 {
     /**
+     * @var string $baseURL
+     */
+    public string $baseURL;
+    /**
      * @var string $operationID
      */
     public string $operationID;
@@ -29,8 +33,9 @@ class HookContext
      * @param  ?array<string>  $oauth2Scopes
      * @param  ?\Closure(): ?mixed  $securitySource
      */
-    public function __construct(string $operationID, ?array $oauth2Scopes, ?\Closure $securitySource)
+    public function __construct(string $baseURL, string $operationID, ?array $oauth2Scopes, ?\Closure $securitySource)
     {
+        $this->baseURL = $baseURL;
         $this->operationID = $operationID;
         $this->oauth2Scopes = $oauth2Scopes;
         $this->securitySource = $securitySource;

@@ -74,7 +74,7 @@ class PolarOrders
             $client = $this->sdkConfiguration->client;
         }
 
-        $hookContext = new HookContext('customer_portal:orders:get', null, fn () => $security);
+        $hookContext = new HookContext($baseUrl, 'customer_portal:orders:get', [], fn () => $security);
         $httpRequest = $this->sdkConfiguration->hooks->beforeRequest(new Hooks\BeforeRequestContext($hookContext), $httpRequest);
         $httpOptions = Utils\Utils::convertHeadersToOptions($httpRequest, $httpOptions);
         $httpRequest = Utils\Utils::removeHeaders($httpRequest);
@@ -169,7 +169,7 @@ class PolarOrders
             $client = $this->sdkConfiguration->client;
         }
 
-        $hookContext = new HookContext('customer_portal:orders:invoice', null, fn () => $security);
+        $hookContext = new HookContext($baseUrl, 'customer_portal:orders:invoice', [], fn () => $security);
         $httpRequest = $this->sdkConfiguration->hooks->beforeRequest(new Hooks\BeforeRequestContext($hookContext), $httpRequest);
         $httpOptions = Utils\Utils::convertHeadersToOptions($httpRequest, $httpOptions);
         $httpRequest = Utils\Utils::removeHeaders($httpRequest);
@@ -263,7 +263,7 @@ class PolarOrders
             $client = $this->sdkConfiguration->client;
         }
 
-        $hookContext = new HookContext('customer_portal:orders:list', null, fn () => $security);
+        $hookContext = new HookContext($baseUrl, 'customer_portal:orders:list', [], fn () => $security);
         $httpRequest = $this->sdkConfiguration->hooks->beforeRequest(new Hooks\BeforeRequestContext($hookContext), $httpRequest);
         $httpOptions['query'] = Utils\QueryParameters::standardizeQueryParams($httpRequest, $qp);
         $httpOptions = Utils\Utils::convertHeadersToOptions($httpRequest, $httpOptions);

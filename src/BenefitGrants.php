@@ -75,7 +75,7 @@ class BenefitGrants
             $client = $this->sdkConfiguration->client;
         }
 
-        $hookContext = new HookContext('customer_portal:benefit-grants:get', null, fn () => $security);
+        $hookContext = new HookContext($baseUrl, 'customer_portal:benefit-grants:get', [], fn () => $security);
         $httpRequest = $this->sdkConfiguration->hooks->beforeRequest(new Hooks\BeforeRequestContext($hookContext), $httpRequest);
         $httpOptions = Utils\Utils::convertHeadersToOptions($httpRequest, $httpOptions);
         $httpRequest = Utils\Utils::removeHeaders($httpRequest);
@@ -169,7 +169,7 @@ class BenefitGrants
             $client = $this->sdkConfiguration->client;
         }
 
-        $hookContext = new HookContext('customer_portal:benefit-grants:list', null, fn () => $security);
+        $hookContext = new HookContext($baseUrl, 'customer_portal:benefit-grants:list', [], fn () => $security);
         $httpRequest = $this->sdkConfiguration->hooks->beforeRequest(new Hooks\BeforeRequestContext($hookContext), $httpRequest);
         $httpOptions['query'] = Utils\QueryParameters::standardizeQueryParams($httpRequest, $qp);
         $httpOptions = Utils\Utils::convertHeadersToOptions($httpRequest, $httpOptions);
@@ -324,7 +324,7 @@ class BenefitGrants
             $client = $this->sdkConfiguration->client;
         }
 
-        $hookContext = new HookContext('customer_portal:benefit-grants:update', null, fn () => $security);
+        $hookContext = new HookContext($baseUrl, 'customer_portal:benefit-grants:update', [], fn () => $security);
         $httpRequest = $this->sdkConfiguration->hooks->beforeRequest(new Hooks\BeforeRequestContext($hookContext), $httpRequest);
         $httpOptions = Utils\Utils::convertHeadersToOptions($httpRequest, $httpOptions);
         $httpRequest = Utils\Utils::removeHeaders($httpRequest);
