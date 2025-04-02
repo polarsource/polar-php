@@ -13,6 +13,6 @@ class AfterSuccessContext extends HookContext
 {
     public function __construct(HookContext $hookCtx)
     {
-        parent::__construct($hookCtx->operationID, $hookCtx->oauth2Scopes, $hookCtx->securitySource);
+        parent::__construct($hookCtx->baseURL, $hookCtx->operationID, $hookCtx->oauth2Scopes, $hookCtx->securitySource);
     }
 }

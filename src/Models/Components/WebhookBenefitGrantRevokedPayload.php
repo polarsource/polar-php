@@ -10,7 +10,7 @@ namespace Polar\Models\Components;
 
 
 /**
- * WebhookBenefitGrantRevokedPayload - Sent when a new benefit grant is revoked.
+ * WebhookBenefitGrantRevokedPayload - Sent when a benefit grant is revoked.
  *
  *
  * **Discord & Slack support:** Basic

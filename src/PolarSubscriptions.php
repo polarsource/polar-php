@@ -75,7 +75,7 @@ class PolarSubscriptions
             $client = $this->sdkConfiguration->client;
         }
 
-        $hookContext = new HookContext('customer_portal:subscriptions:cancel', null, fn () => $security);
+        $hookContext = new HookContext($baseUrl, 'customer_portal:subscriptions:cancel', [], fn () => $security);
         $httpRequest = $this->sdkConfiguration->hooks->beforeRequest(new Hooks\BeforeRequestContext($hookContext), $httpRequest);
         $httpOptions = Utils\Utils::convertHeadersToOptions($httpRequest, $httpOptions);
         $httpRequest = Utils\Utils::removeHeaders($httpRequest);
@@ -181,7 +181,7 @@ class PolarSubscriptions
             $client = $this->sdkConfiguration->client;
         }
 
-        $hookContext = new HookContext('customer_portal:subscriptions:get', null, fn () => $security);
+        $hookContext = new HookContext($baseUrl, 'customer_portal:subscriptions:get', [], fn () => $security);
         $httpRequest = $this->sdkConfiguration->hooks->beforeRequest(new Hooks\BeforeRequestContext($hookContext), $httpRequest);
         $httpOptions = Utils\Utils::convertHeadersToOptions($httpRequest, $httpOptions);
         $httpRequest = Utils\Utils::removeHeaders($httpRequest);
@@ -275,7 +275,7 @@ class PolarSubscriptions
             $client = $this->sdkConfiguration->client;
         }
 
-        $hookContext = new HookContext('customer_portal:subscriptions:list', null, fn () => $security);
+        $hookContext = new HookContext($baseUrl, 'customer_portal:subscriptions:list', [], fn () => $security);
         $httpRequest = $this->sdkConfiguration->hooks->beforeRequest(new Hooks\BeforeRequestContext($hookContext), $httpRequest);
         $httpOptions['query'] = Utils\QueryParameters::standardizeQueryParams($httpRequest, $qp);
         $httpOptions = Utils\Utils::convertHeadersToOptions($httpRequest, $httpOptions);
@@ -428,7 +428,7 @@ class PolarSubscriptions
             $client = $this->sdkConfiguration->client;
         }
 
-        $hookContext = new HookContext('customer_portal:subscriptions:update', null, fn () => $security);
+        $hookContext = new HookContext($baseUrl, 'customer_portal:subscriptions:update', [], fn () => $security);
         $httpRequest = $this->sdkConfiguration->hooks->beforeRequest(new Hooks\BeforeRequestContext($hookContext), $httpRequest);
         $httpOptions = Utils\Utils::convertHeadersToOptions($httpRequest, $httpOptions);
         $httpRequest = Utils\Utils::removeHeaders($httpRequest);

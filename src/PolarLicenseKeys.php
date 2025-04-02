@@ -68,7 +68,7 @@ class PolarLicenseKeys
         $httpOptions['headers']['Accept'] = 'application/json';
         $httpOptions['headers']['user-agent'] = $this->sdkConfiguration->userAgent;
         $httpRequest = new \GuzzleHttp\Psr7\Request('POST', $url);
-        $hookContext = new HookContext('customer_portal:license_keys:activate', null, null);
+        $hookContext = new HookContext($baseUrl, 'customer_portal:license_keys:activate', [], null);
         $httpRequest = $this->sdkConfiguration->hooks->beforeRequest(new Hooks\BeforeRequestContext($hookContext), $httpRequest);
         $httpOptions = Utils\Utils::convertHeadersToOptions($httpRequest, $httpOptions);
         $httpRequest = Utils\Utils::removeHeaders($httpRequest);
@@ -167,7 +167,7 @@ class PolarLicenseKeys
         $httpOptions['headers']['Accept'] = 'application/json';
         $httpOptions['headers']['user-agent'] = $this->sdkConfiguration->userAgent;
         $httpRequest = new \GuzzleHttp\Psr7\Request('POST', $url);
-        $hookContext = new HookContext('customer_portal:license_keys:deactivate', null, null);
+        $hookContext = new HookContext($baseUrl, 'customer_portal:license_keys:deactivate', [], null);
         $httpRequest = $this->sdkConfiguration->hooks->beforeRequest(new Hooks\BeforeRequestContext($hookContext), $httpRequest);
         $httpOptions = Utils\Utils::convertHeadersToOptions($httpRequest, $httpOptions);
         $httpRequest = Utils\Utils::removeHeaders($httpRequest);
@@ -253,7 +253,7 @@ class PolarLicenseKeys
             $client = $this->sdkConfiguration->client;
         }
 
-        $hookContext = new HookContext('customer_portal:license_keys:get', null, fn () => $security);
+        $hookContext = new HookContext($baseUrl, 'customer_portal:license_keys:get', [], fn () => $security);
         $httpRequest = $this->sdkConfiguration->hooks->beforeRequest(new Hooks\BeforeRequestContext($hookContext), $httpRequest);
         $httpOptions = Utils\Utils::convertHeadersToOptions($httpRequest, $httpOptions);
         $httpRequest = Utils\Utils::removeHeaders($httpRequest);
@@ -354,7 +354,7 @@ class PolarLicenseKeys
             $client = $this->sdkConfiguration->client;
         }
 
-        $hookContext = new HookContext('customer_portal:license_keys:list', null, fn () => $security);
+        $hookContext = new HookContext($baseUrl, 'customer_portal:license_keys:list', [], fn () => $security);
         $httpRequest = $this->sdkConfiguration->hooks->beforeRequest(new Hooks\BeforeRequestContext($hookContext), $httpRequest);
         $httpOptions['query'] = Utils\QueryParameters::standardizeQueryParams($httpRequest, $qp);
         $httpOptions = Utils\Utils::convertHeadersToOptions($httpRequest, $httpOptions);
@@ -511,7 +511,7 @@ class PolarLicenseKeys
         $httpOptions['headers']['Accept'] = 'application/json';
         $httpOptions['headers']['user-agent'] = $this->sdkConfiguration->userAgent;
         $httpRequest = new \GuzzleHttp\Psr7\Request('POST', $url);
-        $hookContext = new HookContext('customer_portal:license_keys:validate', null, null);
+        $hookContext = new HookContext($baseUrl, 'customer_portal:license_keys:validate', [], null);
         $httpRequest = $this->sdkConfiguration->hooks->beforeRequest(new Hooks\BeforeRequestContext($hookContext), $httpRequest);
         $httpOptions = Utils\Utils::convertHeadersToOptions($httpRequest, $httpOptions);
         $httpRequest = Utils\Utils::removeHeaders($httpRequest);

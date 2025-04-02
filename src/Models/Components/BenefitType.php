@@ -16,4 +16,5 @@ enum BenefitType: string
     case GithubRepository = 'github_repository';
     case Downloadables = 'downloadables';
     case LicenseKeys = 'license_keys';
+    case MeterCredit = 'meter_credit';
 }

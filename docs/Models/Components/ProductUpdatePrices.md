@@ -39,3 +39,12 @@ Components\ProductPriceCustomCreate $value = /* values here */
 Components\ProductPriceFreeCreate $value = /* values here */
 ```
 
+### `Components\ProductPriceMeteredUnitCreate`
+
+```php
+/**
+* @var Components\ProductPriceMeteredUnitCreate
+*/
+Components\ProductPriceMeteredUnitCreate $value = /* values here */
+```
+

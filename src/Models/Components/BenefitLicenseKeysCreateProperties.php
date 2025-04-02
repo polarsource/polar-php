@@ -30,12 +30,12 @@ class BenefitLicenseKeysCreateProperties
 
     /**
      *
-     * @var ?BenefitLicenseKeyActivationProperties $activations
+     * @var ?BenefitLicenseKeyActivationCreateProperties $activations
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('activations')]
-    #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\BenefitLicenseKeyActivationProperties|null')]
+    #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\BenefitLicenseKeyActivationCreateProperties|null')]
     #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
-    public ?BenefitLicenseKeyActivationProperties $activations = null;
+    public ?BenefitLicenseKeyActivationCreateProperties $activations = null;
 
     /**
      *
@@ -48,11 +48,11 @@ class BenefitLicenseKeysCreateProperties
     /**
      * @param  ?string  $prefix
      * @param  ?BenefitLicenseKeyExpirationProperties  $expires
-     * @param  ?BenefitLicenseKeyActivationProperties  $activations
+     * @param  ?BenefitLicenseKeyActivationCreateProperties  $activations
      * @param  ?int  $limitUsage
      * @phpstan-pure
      */
-    public function __construct(?string $prefix = null, ?BenefitLicenseKeyExpirationProperties $expires = null, ?BenefitLicenseKeyActivationProperties $activations = null, ?int $limitUsage = null)
+    public function __construct(?string $prefix = null, ?BenefitLicenseKeyExpirationProperties $expires = null, ?BenefitLicenseKeyActivationCreateProperties $activations = null, ?int $limitUsage = null)
     {
         $this->prefix = $prefix;
         $this->expires = $expires;
