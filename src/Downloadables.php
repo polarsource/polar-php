@@ -63,7 +63,7 @@ class Downloadables
         $httpOptions['headers']['Accept'] = 'application/json';
         $httpOptions['headers']['user-agent'] = $this->sdkConfiguration->userAgent;
         $httpRequest = new \GuzzleHttp\Psr7\Request('GET', $url);
-        $hookContext = new HookContext('customer_portal:downloadables:customer_portal.downloadables.get', null, null);
+        $hookContext = new HookContext($baseUrl, 'customer_portal:downloadables:customer_portal.downloadables.get', [], null);
         $httpRequest = $this->sdkConfiguration->hooks->beforeRequest(new Hooks\BeforeRequestContext($hookContext), $httpRequest);
         $httpOptions = Utils\Utils::convertHeadersToOptions($httpRequest, $httpOptions);
         $httpRequest = Utils\Utils::removeHeaders($httpRequest);
@@ -161,7 +161,7 @@ class Downloadables
             $client = $this->sdkConfiguration->client;
         }
 
-        $hookContext = new HookContext('customer_portal:downloadables:list', null, fn () => $security);
+        $hookContext = new HookContext($baseUrl, 'customer_portal:downloadables:list', [], fn () => $security);
         $httpRequest = $this->sdkConfiguration->hooks->beforeRequest(new Hooks\BeforeRequestContext($hookContext), $httpRequest);
         $httpOptions['query'] = Utils\QueryParameters::standardizeQueryParams($httpRequest, $qp);
         $httpOptions = Utils\Utils::convertHeadersToOptions($httpRequest, $httpOptions);

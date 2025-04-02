@@ -48,3 +48,12 @@ Components\BenefitDownloadablesUpdate $value = /* values here */
 Components\BenefitLicenseKeysUpdate $value = /* values here */
 ```
 
+### `Components\BenefitMeterCreditUpdate`
+
+```php
+/**
+* @var Components\BenefitMeterCreditUpdate
+*/
+Components\BenefitMeterCreditUpdate $value = /* values here */
+```
+

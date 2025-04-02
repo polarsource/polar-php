@@ -48,3 +48,12 @@ Components\BenefitGitHubRepositoryCreate $value = /* values here */
 Components\BenefitLicenseKeysCreate $value = /* values here */
 ```
 
+### `Components\BenefitMeterCreditCreate`
+
+```php
+/**
+* @var Components\BenefitMeterCreditCreate
+*/
+Components\BenefitMeterCreditCreate $value = /* values here */
+```
+

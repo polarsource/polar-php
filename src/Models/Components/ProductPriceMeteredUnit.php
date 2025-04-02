@@ -69,14 +69,6 @@ class ProductPriceMeteredUnit
     public int $unitAmount;
 
     /**
-     * The number of units included in the price. They will be deducted from the total.
-     *
-     * @var int $includedUnits
-     */
-    #[\Speakeasy\Serializer\Annotation\SerializedName('included_units')]
-    public int $includedUnits;
-
-    /**
      * The ID of the meter associated to the price.
      *
      * @var string $meterId
@@ -134,7 +126,6 @@ class ProductPriceMeteredUnit
      * @param  ProductPriceType  $type
      * @param  string  $priceCurrency
      * @param  int  $unitAmount
-     * @param  int  $includedUnits
      * @param  string  $meterId
      * @param  ProductPriceMeter  $meter
      * @param  ?\DateTime  $modifiedAt
@@ -142,7 +133,7 @@ class ProductPriceMeteredUnit
      * @param  ?int  $capAmount
      * @phpstan-pure
      */
-    public function __construct(\DateTime $createdAt, string $id, bool $isArchived, string $productId, ProductPriceType $type, string $priceCurrency, int $unitAmount, int $includedUnits, string $meterId, ProductPriceMeter $meter, ?\DateTime $modifiedAt = null, ?SubscriptionRecurringInterval $recurringInterval = null, ?int $capAmount = null, string $amountType = 'metered_unit')
+    public function __construct(\DateTime $createdAt, string $id, bool $isArchived, string $productId, ProductPriceType $type, string $priceCurrency, int $unitAmount, string $meterId, ProductPriceMeter $meter, ?\DateTime $modifiedAt = null, ?SubscriptionRecurringInterval $recurringInterval = null, ?int $capAmount = null, string $amountType = 'metered_unit')
     {
         $this->createdAt = $createdAt;
         $this->id = $id;
@@ -151,7 +142,6 @@ class ProductPriceMeteredUnit
         $this->type = $type;
         $this->priceCurrency = $priceCurrency;
         $this->unitAmount = $unitAmount;
-        $this->includedUnits = $includedUnits;
         $this->meterId = $meterId;
         $this->meter = $meter;
         $this->modifiedAt = $modifiedAt;
