@@ -5,117 +5,10 @@
 
 ### Available Operations
 
-* [cancel](#cancel) - Cancel Subscription
-* [get](#get) - Get Subscription
 * [list](#list) - List Subscriptions
+* [get](#get) - Get Subscription
 * [update](#update) - Update Subscription
-
-## cancel
-
-Cancel a subscription of the authenticated customer.
-
-**Scopes**: `customer_portal:write`
-
-### Example Usage
-
-```php
-declare(strict_types=1);
-
-require 'vendor/autoload.php';
-
-use Polar;
-use Polar\Models\Operations;
-
-$sdk = Polar\Polar::builder()->build();
-
-
-$requestSecurity = new Operations\CustomerPortalSubscriptionsCancelSecurity(
-    customerSession: '<YOUR_BEARER_TOKEN_HERE>',
-);
-
-$response = $sdk->customerPortal->subscriptions->cancel(
-    security: $requestSecurity,
-    id: '<value>'
-
-);
-
-if ($response->customerSubscription !== null) {
-    // handle response
-}
-```
-
-### Parameters
-
-| Parameter                                                                                                                    | Type                                                                                                                         | Required                                                                                                                     | Description                                                                                                                  |
-| ---------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------- |
-| `security`                                                                                                                   | [Operations\CustomerPortalSubscriptionsCancelSecurity](../../Models/Operations/CustomerPortalSubscriptionsCancelSecurity.md) | :heavy_check_mark:                                                                                                           | The security requirements to use for the request.                                                                            |
-| `id`                                                                                                                         | *string*                                                                                                                     | :heavy_check_mark:                                                                                                           | The subscription ID.                                                                                                         |
-
-### Response
-
-**[?Operations\CustomerPortalSubscriptionsCancelResponse](../../Models/Operations/CustomerPortalSubscriptionsCancelResponse.md)**
-
-### Errors
-
-| Error Type                         | Status Code                        | Content Type                       |
-| ---------------------------------- | ---------------------------------- | ---------------------------------- |
-| Errors\AlreadyCanceledSubscription | 403                                | application/json                   |
-| Errors\ResourceNotFound            | 404                                | application/json                   |
-| Errors\HTTPValidationError         | 422                                | application/json                   |
-| Errors\APIException                | 4XX, 5XX                           | \*/\*                              |
-
-## get
-
-Get a subscription for the authenticated customer.
-
-**Scopes**: `customer_portal:read` `customer_portal:write`
-
-### Example Usage
-
-```php
-declare(strict_types=1);
-
-require 'vendor/autoload.php';
-
-use Polar;
-use Polar\Models\Operations;
-
-$sdk = Polar\Polar::builder()->build();
-
-
-$requestSecurity = new Operations\CustomerPortalSubscriptionsGetSecurity(
-    customerSession: '<YOUR_BEARER_TOKEN_HERE>',
-);
-
-$response = $sdk->customerPortal->subscriptions->get(
-    security: $requestSecurity,
-    id: '<value>'
-
-);
-
-if ($response->customerSubscription !== null) {
-    // handle response
-}
-```
-
-### Parameters
-
-| Parameter                                                                                                              | Type                                                                                                                   | Required                                                                                                               | Description                                                                                                            |
-| ---------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------- |
-| `security`                                                                                                             | [Operations\CustomerPortalSubscriptionsGetSecurity](../../Models/Operations/CustomerPortalSubscriptionsGetSecurity.md) | :heavy_check_mark:                                                                                                     | The security requirements to use for the request.                                                                      |
-| `id`                                                                                                                   | *string*                                                                                                               | :heavy_check_mark:                                                                                                     | The subscription ID.                                                                                                   |
-
-### Response
-
-**[?Operations\CustomerPortalSubscriptionsGetResponse](../../Models/Operations/CustomerPortalSubscriptionsGetResponse.md)**
-
-### Errors
-
-| Error Type                 | Status Code                | Content Type               |
-| -------------------------- | -------------------------- | -------------------------- |
-| Errors\ResourceNotFound    | 404                        | application/json           |
-| Errors\HTTPValidationError | 422                        | application/json           |
-| Errors\APIException        | 4XX, 5XX                   | \*/\*                      |
+* [cancel](#cancel) - Cancel Subscription
 
 ## list
 
@@ -175,6 +68,59 @@ foreach ($responses as $response) {
 | Errors\HTTPValidationError | 422                        | application/json           |
 | Errors\APIException        | 4XX, 5XX                   | \*/\*                      |
 
+## get
+
+Get a subscription for the authenticated customer.
+
+**Scopes**: `customer_portal:read` `customer_portal:write`
+
+### Example Usage
+
+```php
+declare(strict_types=1);
+
+require 'vendor/autoload.php';
+
+use Polar;
+use Polar\Models\Operations;
+
+$sdk = Polar\Polar::builder()->build();
+
+
+$requestSecurity = new Operations\CustomerPortalSubscriptionsGetSecurity(
+    customerSession: '<YOUR_BEARER_TOKEN_HERE>',
+);
+
+$response = $sdk->customerPortal->subscriptions->get(
+    security: $requestSecurity,
+    id: '<value>'
+
+);
+
+if ($response->customerSubscription !== null) {
+    // handle response
+}
+```
+
+### Parameters
+
+| Parameter                                                                                                              | Type                                                                                                                   | Required                                                                                                               | Description                                                                                                            |
+| ---------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------- |
+| `security`                                                                                                             | [Operations\CustomerPortalSubscriptionsGetSecurity](../../Models/Operations/CustomerPortalSubscriptionsGetSecurity.md) | :heavy_check_mark:                                                                                                     | The security requirements to use for the request.                                                                      |
+| `id`                                                                                                                   | *string*                                                                                                               | :heavy_check_mark:                                                                                                     | The subscription ID.                                                                                                   |
+
+### Response
+
+**[?Operations\CustomerPortalSubscriptionsGetResponse](../../Models/Operations/CustomerPortalSubscriptionsGetResponse.md)**
+
+### Errors
+
+| Error Type                 | Status Code                | Content Type               |
+| -------------------------- | -------------------------- | -------------------------- |
+| Errors\ResourceNotFound    | 404                        | application/json           |
+| Errors\HTTPValidationError | 422                        | application/json           |
+| Errors\APIException        | 4XX, 5XX                   | \*/\*                      |
+
 ## update
 
 Update a subscription of the authenticated customer.
@@ -222,6 +168,60 @@ if ($response->customerSubscription !== null) {
 ### Response
 
 **[?Operations\CustomerPortalSubscriptionsUpdateResponse](../../Models/Operations/CustomerPortalSubscriptionsUpdateResponse.md)**
+
+### Errors
+
+| Error Type                         | Status Code                        | Content Type                       |
+| ---------------------------------- | ---------------------------------- | ---------------------------------- |
+| Errors\AlreadyCanceledSubscription | 403                                | application/json                   |
+| Errors\ResourceNotFound            | 404                                | application/json                   |
+| Errors\HTTPValidationError         | 422                                | application/json                   |
+| Errors\APIException                | 4XX, 5XX                           | \*/\*                              |
+
+## cancel
+
+Cancel a subscription of the authenticated customer.
+
+**Scopes**: `customer_portal:write`
+
+### Example Usage
+
+```php
+declare(strict_types=1);
+
+require 'vendor/autoload.php';
+
+use Polar;
+use Polar\Models\Operations;
+
+$sdk = Polar\Polar::builder()->build();
+
+
+$requestSecurity = new Operations\CustomerPortalSubscriptionsCancelSecurity(
+    customerSession: '<YOUR_BEARER_TOKEN_HERE>',
+);
+
+$response = $sdk->customerPortal->subscriptions->cancel(
+    security: $requestSecurity,
+    id: '<value>'
+
+);
+
+if ($response->customerSubscription !== null) {
+    // handle response
+}
+```
+
+### Parameters
+
+| Parameter                                                                                                                    | Type                                                                                                                         | Required                                                                                                                     | Description                                                                                                                  |
+| ---------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------- |
+| `security`                                                                                                                   | [Operations\CustomerPortalSubscriptionsCancelSecurity](../../Models/Operations/CustomerPortalSubscriptionsCancelSecurity.md) | :heavy_check_mark:                                                                                                           | The security requirements to use for the request.                                                                            |
+| `id`                                                                                                                         | *string*                                                                                                                     | :heavy_check_mark:                                                                                                           | The subscription ID.                                                                                                         |
+
+### Response
+
+**[?Operations\CustomerPortalSubscriptionsCancelResponse](../../Models/Operations/CustomerPortalSubscriptionsCancelResponse.md)**
 
 ### Errors
 

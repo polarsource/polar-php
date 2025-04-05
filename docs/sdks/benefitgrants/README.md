@@ -5,62 +5,9 @@
 
 ### Available Operations
 
-* [get](#get) - Get Benefit Grant
 * [list](#list) - List Benefit Grants
+* [get](#get) - Get Benefit Grant
 * [update](#update) - Update Benefit Grant
-
-## get
-
-Get a benefit grant by ID for the authenticated customer.
-
-**Scopes**: `customer_portal:read` `customer_portal:write`
-
-### Example Usage
-
-```php
-declare(strict_types=1);
-
-require 'vendor/autoload.php';
-
-use Polar;
-use Polar\Models\Operations;
-
-$sdk = Polar\Polar::builder()->build();
-
-
-$requestSecurity = new Operations\CustomerPortalBenefitGrantsGetSecurity(
-    customerSession: '<YOUR_BEARER_TOKEN_HERE>',
-);
-
-$response = $sdk->customerPortal->benefitGrants->get(
-    security: $requestSecurity,
-    id: '<value>'
-
-);
-
-if ($response->customerBenefitGrant !== null) {
-    // handle response
-}
-```
-
-### Parameters
-
-| Parameter                                                                                                              | Type                                                                                                                   | Required                                                                                                               | Description                                                                                                            |
-| ---------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------- |
-| `security`                                                                                                             | [Operations\CustomerPortalBenefitGrantsGetSecurity](../../Models/Operations/CustomerPortalBenefitGrantsGetSecurity.md) | :heavy_check_mark:                                                                                                     | The security requirements to use for the request.                                                                      |
-| `id`                                                                                                                   | *string*                                                                                                               | :heavy_check_mark:                                                                                                     | The benefit grant ID.                                                                                                  |
-
-### Response
-
-**[?Operations\CustomerPortalBenefitGrantsGetResponse](../../Models/Operations/CustomerPortalBenefitGrantsGetResponse.md)**
-
-### Errors
-
-| Error Type                 | Status Code                | Content Type               |
-| -------------------------- | -------------------------- | -------------------------- |
-| Errors\ResourceNotFound    | 404                        | application/json           |
-| Errors\HTTPValidationError | 422                        | application/json           |
-| Errors\APIException        | 4XX, 5XX                   | \*/\*                      |
 
 ## list
 
@@ -120,6 +67,59 @@ foreach ($responses as $response) {
 | Errors\HTTPValidationError | 422                        | application/json           |
 | Errors\APIException        | 4XX, 5XX                   | \*/\*                      |
 
+## get
+
+Get a benefit grant by ID for the authenticated customer.
+
+**Scopes**: `customer_portal:read` `customer_portal:write`
+
+### Example Usage
+
+```php
+declare(strict_types=1);
+
+require 'vendor/autoload.php';
+
+use Polar;
+use Polar\Models\Operations;
+
+$sdk = Polar\Polar::builder()->build();
+
+
+$requestSecurity = new Operations\CustomerPortalBenefitGrantsGetSecurity(
+    customerSession: '<YOUR_BEARER_TOKEN_HERE>',
+);
+
+$response = $sdk->customerPortal->benefitGrants->get(
+    security: $requestSecurity,
+    id: '<value>'
+
+);
+
+if ($response->customerBenefitGrant !== null) {
+    // handle response
+}
+```
+
+### Parameters
+
+| Parameter                                                                                                              | Type                                                                                                                   | Required                                                                                                               | Description                                                                                                            |
+| ---------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------- |
+| `security`                                                                                                             | [Operations\CustomerPortalBenefitGrantsGetSecurity](../../Models/Operations/CustomerPortalBenefitGrantsGetSecurity.md) | :heavy_check_mark:                                                                                                     | The security requirements to use for the request.                                                                      |
+| `id`                                                                                                                   | *string*                                                                                                               | :heavy_check_mark:                                                                                                     | The benefit grant ID.                                                                                                  |
+
+### Response
+
+**[?Operations\CustomerPortalBenefitGrantsGetResponse](../../Models/Operations/CustomerPortalBenefitGrantsGetResponse.md)**
+
+### Errors
+
+| Error Type                 | Status Code                | Content Type               |
+| -------------------------- | -------------------------- | -------------------------- |
+| Errors\ResourceNotFound    | 404                        | application/json           |
+| Errors\HTTPValidationError | 422                        | application/json           |
+| Errors\APIException        | 4XX, 5XX                   | \*/\*                      |
+
 ## update
 
 Update a benefit grant for the authenticated customer.
@@ -147,7 +147,7 @@ $requestSecurity = new Operations\CustomerPortalBenefitGrantsUpdateSecurity(
 $response = $sdk->customerPortal->benefitGrants->update(
     security: $requestSecurity,
     id: '<value>',
-    customerBenefitGrantUpdate: new Components\CustomerBenefitGrantLicenseKeysUpdate()
+    customerBenefitGrantUpdate: new Components\CustomerBenefitGrantMeterCreditUpdate()
 
 );
 
@@ -158,11 +158,11 @@ if ($response->customerBenefitGrant !== null) {
 
 ### Parameters
 
-| Parameter                                                                                                                                                                                                                                                                                                   | Type                                                                                                                                                                                                                                                                                                        | Required                                                                                                                                                                                                                                                                                                    | Description                                                                                                                                                                                                                                                                                                 |
-| ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `security`                                                                                                                                                                                                                                                                                                  | [Operations\CustomerPortalBenefitGrantsUpdateSecurity](../../Models/Operations/CustomerPortalBenefitGrantsUpdateSecurity.md)                                                                                                                                                                                | :heavy_check_mark:                                                                                                                                                                                                                                                                                          | The security requirements to use for the request.                                                                                                                                                                                                                                                           |
-| `id`                                                                                                                                                                                                                                                                                                        | *string*                                                                                                                                                                                                                                                                                                    | :heavy_check_mark:                                                                                                                                                                                                                                                                                          | The benefit grant ID.                                                                                                                                                                                                                                                                                       |
-| `customerBenefitGrantUpdate`                                                                                                                                                                                                                                                                                | [Components\CustomerBenefitGrantDiscordUpdate\|Components\CustomerBenefitGrantGitHubRepositoryUpdate\|Components\CustomerBenefitGrantDownloadablesUpdate\|Components\CustomerBenefitGrantLicenseKeysUpdate\|Components\CustomerBenefitGrantCustomUpdate](../../Models/Components/CustomerBenefitGrantUpdate.md) | :heavy_check_mark:                                                                                                                                                                                                                                                                                          | N/A                                                                                                                                                                                                                                                                                                         |
+| Parameter                                                                                                                                                                                                                                                                                                                                                    | Type                                                                                                                                                                                                                                                                                                                                                         | Required                                                                                                                                                                                                                                                                                                                                                     | Description                                                                                                                                                                                                                                                                                                                                                  |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `security`                                                                                                                                                                                                                                                                                                                                                   | [Operations\CustomerPortalBenefitGrantsUpdateSecurity](../../Models/Operations/CustomerPortalBenefitGrantsUpdateSecurity.md)                                                                                                                                                                                                                                 | :heavy_check_mark:                                                                                                                                                                                                                                                                                                                                           | The security requirements to use for the request.                                                                                                                                                                                                                                                                                                            |
+| `id`                                                                                                                                                                                                                                                                                                                                                         | *string*                                                                                                                                                                                                                                                                                                                                                     | :heavy_check_mark:                                                                                                                                                                                                                                                                                                                                           | The benefit grant ID.                                                                                                                                                                                                                                                                                                                                        |
+| `customerBenefitGrantUpdate`                                                                                                                                                                                                                                                                                                                                 | [Components\CustomerBenefitGrantDiscordUpdate\|Components\CustomerBenefitGrantGitHubRepositoryUpdate\|Components\CustomerBenefitGrantDownloadablesUpdate\|Components\CustomerBenefitGrantLicenseKeysUpdate\|Components\CustomerBenefitGrantCustomUpdate\|Components\CustomerBenefitGrantMeterCreditUpdate](../../Models/Components/CustomerBenefitGrantUpdate.md) | :heavy_check_mark:                                                                                                                                                                                                                                                                                                                                           | N/A                                                                                                                                                                                                                                                                                                                                                          |
 
 ### Response
 

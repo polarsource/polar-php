@@ -7,9 +7,9 @@
 
 * [list](#list) - List Clients
 * [create](#create) - Create Client
-* [delete](#delete) - Delete Client
 * [get](#get) - Get Client
 * [update](#update) - Update Client
+* [delete](#delete) - Delete Client
 
 ## list
 
@@ -117,53 +117,6 @@ if ($response->any !== null) {
 | Errors\HTTPValidationError | 422                        | application/json           |
 | Errors\APIException        | 4XX, 5XX                   | \*/\*                      |
 
-## delete
-
-Delete an OAuth2 client.
-
-### Example Usage
-
-```php
-declare(strict_types=1);
-
-require 'vendor/autoload.php';
-
-use Polar;
-
-$sdk = Polar\Polar::builder()
-    ->setSecurity(
-        '<YOUR_BEARER_TOKEN_HERE>'
-    )
-    ->build();
-
-
-
-$response = $sdk->oauth2->clients->delete(
-    clientId: '<id>'
-);
-
-if ($response->any !== null) {
-    // handle response
-}
-```
-
-### Parameters
-
-| Parameter          | Type               | Required           | Description        |
-| ------------------ | ------------------ | ------------------ | ------------------ |
-| `clientId`         | *string*           | :heavy_check_mark: | N/A                |
-
-### Response
-
-**[?Operations\Oauth2ClientsOauth2DeleteClientResponse](../../Models/Operations/Oauth2ClientsOauth2DeleteClientResponse.md)**
-
-### Errors
-
-| Error Type                 | Status Code                | Content Type               |
-| -------------------------- | -------------------------- | -------------------------- |
-| Errors\HTTPValidationError | 422                        | application/json           |
-| Errors\APIException        | 4XX, 5XX                   | \*/\*                      |
-
 ## get
 
 Get an OAuth2 client by Client ID.
@@ -260,6 +213,53 @@ if ($response->any !== null) {
 ### Response
 
 **[?Operations\Oauth2ClientsOauth2UpdateClientResponse](../../Models/Operations/Oauth2ClientsOauth2UpdateClientResponse.md)**
+
+### Errors
+
+| Error Type                 | Status Code                | Content Type               |
+| -------------------------- | -------------------------- | -------------------------- |
+| Errors\HTTPValidationError | 422                        | application/json           |
+| Errors\APIException        | 4XX, 5XX                   | \*/\*                      |
+
+## delete
+
+Delete an OAuth2 client.
+
+### Example Usage
+
+```php
+declare(strict_types=1);
+
+require 'vendor/autoload.php';
+
+use Polar;
+
+$sdk = Polar\Polar::builder()
+    ->setSecurity(
+        '<YOUR_BEARER_TOKEN_HERE>'
+    )
+    ->build();
+
+
+
+$response = $sdk->oauth2->clients->delete(
+    clientId: '<id>'
+);
+
+if ($response->any !== null) {
+    // handle response
+}
+```
+
+### Parameters
+
+| Parameter          | Type               | Required           | Description        |
+| ------------------ | ------------------ | ------------------ | ------------------ |
+| `clientId`         | *string*           | :heavy_check_mark: | N/A                |
+
+### Response
+
+**[?Operations\Oauth2ClientsOauth2DeleteClientResponse](../../Models/Operations/Oauth2ClientsOauth2DeleteClientResponse.md)**
 
 ### Errors
 

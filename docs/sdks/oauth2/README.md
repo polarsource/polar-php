@@ -6,9 +6,9 @@
 ### Available Operations
 
 * [authorize](#authorize) - Authorize
-* [introspect](#introspect) - Introspect Token
 * [token](#token) - Request Token
 * [revoke](#revoke) - Revoke Token
+* [introspect](#introspect) - Introspect Token
 * [userinfo](#userinfo) - Get User Info
 
 ## authorize
@@ -44,53 +44,6 @@ if ($response->responseOauth2Authorize !== null) {
 ### Response
 
 **[?Operations\Oauth2AuthorizeResponse](../../Models/Operations/Oauth2AuthorizeResponse.md)**
-
-### Errors
-
-| Error Type          | Status Code         | Content Type        |
-| ------------------- | ------------------- | ------------------- |
-| Errors\APIException | 4XX, 5XX            | \*/\*               |
-
-## introspect
-
-Get information about an access token.
-
-### Example Usage
-
-```php
-declare(strict_types=1);
-
-require 'vendor/autoload.php';
-
-use Polar;
-use Polar\Models\Components;
-
-$sdk = Polar\Polar::builder()->build();
-
-$request = new Components\IntrospectTokenRequest(
-    token: '<value>',
-    clientId: '<id>',
-    clientSecret: '<value>',
-);
-
-$response = $sdk->oauth2->introspect(
-    request: $request
-);
-
-if ($response->introspectTokenResponse !== null) {
-    // handle response
-}
-```
-
-### Parameters
-
-| Parameter                                                                              | Type                                                                                   | Required                                                                               | Description                                                                            |
-| -------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- |
-| `$request`                                                                             | [Components\IntrospectTokenRequest](../../Models/Components/IntrospectTokenRequest.md) | :heavy_check_mark:                                                                     | The request object to use for the request.                                             |
-
-### Response
-
-**[?Operations\Oauth2IntrospectTokenResponse](../../Models/Operations/Oauth2IntrospectTokenResponse.md)**
 
 ### Errors
 
@@ -186,6 +139,53 @@ if ($response->revokeTokenResponse !== null) {
 ### Response
 
 **[?Operations\Oauth2RevokeTokenResponse](../../Models/Operations/Oauth2RevokeTokenResponse.md)**
+
+### Errors
+
+| Error Type          | Status Code         | Content Type        |
+| ------------------- | ------------------- | ------------------- |
+| Errors\APIException | 4XX, 5XX            | \*/\*               |
+
+## introspect
+
+Get information about an access token.
+
+### Example Usage
+
+```php
+declare(strict_types=1);
+
+require 'vendor/autoload.php';
+
+use Polar;
+use Polar\Models\Components;
+
+$sdk = Polar\Polar::builder()->build();
+
+$request = new Components\IntrospectTokenRequest(
+    token: '<value>',
+    clientId: '<id>',
+    clientSecret: '<value>',
+);
+
+$response = $sdk->oauth2->introspect(
+    request: $request
+);
+
+if ($response->introspectTokenResponse !== null) {
+    // handle response
+}
+```
+
+### Parameters
+
+| Parameter                                                                              | Type                                                                                   | Required                                                                               | Description                                                                            |
+| -------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- |
+| `$request`                                                                             | [Components\IntrospectTokenRequest](../../Models/Components/IntrospectTokenRequest.md) | :heavy_check_mark:                                                                     | The request object to use for the request.                                             |
+
+### Response
+
+**[?Operations\Oauth2IntrospectTokenResponse](../../Models/Operations/Oauth2IntrospectTokenResponse.md)**
 
 ### Errors
 

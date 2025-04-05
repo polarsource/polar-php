@@ -5,11 +5,68 @@
 
 ### Available Operations
 
+* [list](#list) - List Products
 * [create](#create) - Create Product
 * [get](#get) - Get Product
-* [list](#list) - List Products
 * [update](#update) - Update Product
 * [updateBenefits](#updatebenefits) - Update Product Benefits
+
+## list
+
+List products.
+
+**Scopes**: `products:read` `products:write`
+
+### Example Usage
+
+```php
+declare(strict_types=1);
+
+require 'vendor/autoload.php';
+
+use Polar;
+use Polar\Models\Operations;
+
+$sdk = Polar\Polar::builder()
+    ->setSecurity(
+        '<YOUR_BEARER_TOKEN_HERE>'
+    )
+    ->build();
+
+$request = new Operations\ProductsListRequest(
+    organizationId: [
+        '1dbfc517-0bbf-4301-9ba8-555ca42b9737',
+    ],
+);
+
+$responses = $sdk->products->list(
+    request: $request
+);
+
+
+foreach ($responses as $response) {
+    if ($response->statusCode === 200) {
+        // handle response
+    }
+}
+```
+
+### Parameters
+
+| Parameter                                                                        | Type                                                                             | Required                                                                         | Description                                                                      |
+| -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- |
+| `$request`                                                                       | [Operations\ProductsListRequest](../../Models/Operations/ProductsListRequest.md) | :heavy_check_mark:                                                               | The request object to use for the request.                                       |
+
+### Response
+
+**[?Operations\ProductsListResponse](../../Models/Operations/ProductsListResponse.md)**
+
+### Errors
+
+| Error Type                 | Status Code                | Content Type               |
+| -------------------------- | -------------------------- | -------------------------- |
+| Errors\HTTPValidationError | 422                        | application/json           |
+| Errors\APIException        | 4XX, 5XX                   | \*/\*                      |
 
 ## create
 
@@ -35,10 +92,10 @@ $sdk = Polar\Polar::builder()
 
 $request = new Components\ProductCreate(
     name: '<value>',
+    recurringInterval: Components\SubscriptionRecurringInterval::Month,
     prices: [
-        new Components\ProductPriceCustomCreate(),
+        new Components\ProductPriceFreeCreate(),
     ],
-    recurringInterval: Components\SubscriptionRecurringInterval::Year,
     organizationId: '1dbfc517-0bbf-4301-9ba8-555ca42b9737',
 );
 
@@ -115,63 +172,6 @@ if ($response->product !== null) {
 | Error Type                 | Status Code                | Content Type               |
 | -------------------------- | -------------------------- | -------------------------- |
 | Errors\ResourceNotFound    | 404                        | application/json           |
-| Errors\HTTPValidationError | 422                        | application/json           |
-| Errors\APIException        | 4XX, 5XX                   | \*/\*                      |
-
-## list
-
-List products.
-
-**Scopes**: `products:read` `products:write`
-
-### Example Usage
-
-```php
-declare(strict_types=1);
-
-require 'vendor/autoload.php';
-
-use Polar;
-use Polar\Models\Operations;
-
-$sdk = Polar\Polar::builder()
-    ->setSecurity(
-        '<YOUR_BEARER_TOKEN_HERE>'
-    )
-    ->build();
-
-$request = new Operations\ProductsListRequest(
-    organizationId: [
-        '1dbfc517-0bbf-4301-9ba8-555ca42b9737',
-    ],
-);
-
-$responses = $sdk->products->list(
-    request: $request
-);
-
-
-foreach ($responses as $response) {
-    if ($response->statusCode === 200) {
-        // handle response
-    }
-}
-```
-
-### Parameters
-
-| Parameter                                                                        | Type                                                                             | Required                                                                         | Description                                                                      |
-| -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- |
-| `$request`                                                                       | [Operations\ProductsListRequest](../../Models/Operations/ProductsListRequest.md) | :heavy_check_mark:                                                               | The request object to use for the request.                                       |
-
-### Response
-
-**[?Operations\ProductsListResponse](../../Models/Operations/ProductsListResponse.md)**
-
-### Errors
-
-| Error Type                 | Status Code                | Content Type               |
-| -------------------------- | -------------------------- | -------------------------- |
 | Errors\HTTPValidationError | 422                        | application/json           |
 | Errors\APIException        | 4XX, 5XX                   | \*/\*                      |
 
