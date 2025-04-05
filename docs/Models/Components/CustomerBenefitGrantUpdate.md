@@ -48,3 +48,12 @@ Components\CustomerBenefitGrantGitHubRepositoryUpdate $value = /* values here */
 Components\CustomerBenefitGrantLicenseKeysUpdate $value = /* values here */
 ```
 
+### `Components\CustomerBenefitGrantMeterCreditUpdate`
+
+```php
+/**
+* @var Components\CustomerBenefitGrantMeterCreditUpdate
+*/
+Components\CustomerBenefitGrantMeterCreditUpdate $value = /* values here */
+```
+
