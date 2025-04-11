@@ -5,12 +5,68 @@
 
 ### Available Operations
 
-* [create](#create) - Create Meter
-* [events](#events) - Get Meter Events
-* [get](#get) - Get Meter
 * [list](#list) - List Meters
-* [quantities](#quantities) - Get Meter Quantities
+* [create](#create) - Create Meter
+* [get](#get) - Get Meter
 * [update](#update) - Update Meter
+* [quantities](#quantities) - Get Meter Quantities
+
+## list
+
+List meters.
+
+**Scopes**: `meters:read` `meters:write`
+
+### Example Usage
+
+```php
+declare(strict_types=1);
+
+require 'vendor/autoload.php';
+
+use Polar;
+use Polar\Models\Operations;
+
+$sdk = Polar\Polar::builder()
+    ->setSecurity(
+        '<YOUR_BEARER_TOKEN_HERE>'
+    )
+    ->build();
+
+$request = new Operations\MetersListRequest(
+    organizationId: [
+        '1dbfc517-0bbf-4301-9ba8-555ca42b9737',
+    ],
+);
+
+$responses = $sdk->meters->list(
+    request: $request
+);
+
+
+foreach ($responses as $response) {
+    if ($response->statusCode === 200) {
+        // handle response
+    }
+}
+```
+
+### Parameters
+
+| Parameter                                                                    | Type                                                                         | Required                                                                     | Description                                                                  |
+| ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- |
+| `$request`                                                                   | [Operations\MetersListRequest](../../Models/Operations/MetersListRequest.md) | :heavy_check_mark:                                                           | The request object to use for the request.                                   |
+
+### Response
+
+**[?Operations\MetersListResponse](../../Models/Operations/MetersListResponse.md)**
+
+### Errors
+
+| Error Type                 | Status Code                | Content Type               |
+| -------------------------- | -------------------------- | -------------------------- |
+| Errors\HTTPValidationError | 422                        | application/json           |
+| Errors\APIException        | 4XX, 5XX                   | \*/\*                      |
 
 ## create
 
@@ -75,64 +131,6 @@ if ($response->meter !== null) {
 | Errors\HTTPValidationError | 422                        | application/json           |
 | Errors\APIException        | 4XX, 5XX                   | \*/\*                      |
 
-## events
-
-Get events matching the filter of a meter.
-
-**Scopes**: `meters:read` `meters:write`
-
-### Example Usage
-
-```php
-declare(strict_types=1);
-
-require 'vendor/autoload.php';
-
-use Polar;
-
-$sdk = Polar\Polar::builder()
-    ->setSecurity(
-        '<YOUR_BEARER_TOKEN_HERE>'
-    )
-    ->build();
-
-
-
-$responses = $sdk->meters->events(
-    id: '<value>',
-    page: 1,
-    limit: 10
-
-);
-
-
-foreach ($responses as $response) {
-    if ($response->statusCode === 200) {
-        // handle response
-    }
-}
-```
-
-### Parameters
-
-| Parameter                                       | Type                                            | Required                                        | Description                                     |
-| ----------------------------------------------- | ----------------------------------------------- | ----------------------------------------------- | ----------------------------------------------- |
-| `id`                                            | *string*                                        | :heavy_check_mark:                              | The meter ID.                                   |
-| `page`                                          | *?int*                                          | :heavy_minus_sign:                              | Page number, defaults to 1.                     |
-| `limit`                                         | *?int*                                          | :heavy_minus_sign:                              | Size of a page, defaults to 10. Maximum is 100. |
-
-### Response
-
-**[?Operations\MetersEventsResponse](../../Models/Operations/MetersEventsResponse.md)**
-
-### Errors
-
-| Error Type                 | Status Code                | Content Type               |
-| -------------------------- | -------------------------- | -------------------------- |
-| Errors\ResourceNotFound    | 404                        | application/json           |
-| Errors\HTTPValidationError | 422                        | application/json           |
-| Errors\APIException        | 4XX, 5XX                   | \*/\*                      |
-
 ## get
 
 Get a meter by ID.
@@ -174,121 +172,6 @@ if ($response->meter !== null) {
 ### Response
 
 **[?Operations\MetersGetResponse](../../Models/Operations/MetersGetResponse.md)**
-
-### Errors
-
-| Error Type                 | Status Code                | Content Type               |
-| -------------------------- | -------------------------- | -------------------------- |
-| Errors\ResourceNotFound    | 404                        | application/json           |
-| Errors\HTTPValidationError | 422                        | application/json           |
-| Errors\APIException        | 4XX, 5XX                   | \*/\*                      |
-
-## list
-
-List meters.
-
-**Scopes**: `meters:read` `meters:write`
-
-### Example Usage
-
-```php
-declare(strict_types=1);
-
-require 'vendor/autoload.php';
-
-use Polar;
-use Polar\Models\Operations;
-
-$sdk = Polar\Polar::builder()
-    ->setSecurity(
-        '<YOUR_BEARER_TOKEN_HERE>'
-    )
-    ->build();
-
-$request = new Operations\MetersListRequest(
-    organizationId: [
-        '1dbfc517-0bbf-4301-9ba8-555ca42b9737',
-    ],
-);
-
-$responses = $sdk->meters->list(
-    request: $request
-);
-
-
-foreach ($responses as $response) {
-    if ($response->statusCode === 200) {
-        // handle response
-    }
-}
-```
-
-### Parameters
-
-| Parameter                                                                    | Type                                                                         | Required                                                                     | Description                                                                  |
-| ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- |
-| `$request`                                                                   | [Operations\MetersListRequest](../../Models/Operations/MetersListRequest.md) | :heavy_check_mark:                                                           | The request object to use for the request.                                   |
-
-### Response
-
-**[?Operations\MetersListResponse](../../Models/Operations/MetersListResponse.md)**
-
-### Errors
-
-| Error Type                 | Status Code                | Content Type               |
-| -------------------------- | -------------------------- | -------------------------- |
-| Errors\HTTPValidationError | 422                        | application/json           |
-| Errors\APIException        | 4XX, 5XX                   | \*/\*                      |
-
-## quantities
-
-Get quantities of a meter over a time period.
-
-**Scopes**: `meters:read` `meters:write`
-
-### Example Usage
-
-```php
-declare(strict_types=1);
-
-require 'vendor/autoload.php';
-
-use Polar;
-use Polar\Models\Components;
-use Polar\Models\Operations;
-use Polar\Utils;
-
-$sdk = Polar\Polar::builder()
-    ->setSecurity(
-        '<YOUR_BEARER_TOKEN_HERE>'
-    )
-    ->build();
-
-$request = new Operations\MetersQuantitiesRequest(
-    id: '<value>',
-    startTimestamp: Utils\Utils::parseDateTime('2023-09-17T00:45:34.608Z'),
-    endTimestamp: Utils\Utils::parseDateTime('2023-07-21T18:11:39.069Z'),
-    interval: Components\TimeInterval::Hour,
-);
-
-$response = $sdk->meters->quantities(
-    request: $request
-);
-
-if ($response->meterQuantities !== null) {
-    // handle response
-}
-```
-
-### Parameters
-
-| Parameter                                                                                | Type                                                                                     | Required                                                                                 | Description                                                                              |
-| ---------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- |
-| `$request`                                                                               | [Operations\MetersQuantitiesRequest](../../Models/Operations/MetersQuantitiesRequest.md) | :heavy_check_mark:                                                                       | The request object to use for the request.                                               |
-
-### Response
-
-**[?Operations\MetersQuantitiesResponse](../../Models/Operations/MetersQuantitiesResponse.md)**
 
 ### Errors
 
@@ -343,6 +226,64 @@ if ($response->meter !== null) {
 ### Response
 
 **[?Operations\MetersUpdateResponse](../../Models/Operations/MetersUpdateResponse.md)**
+
+### Errors
+
+| Error Type                 | Status Code                | Content Type               |
+| -------------------------- | -------------------------- | -------------------------- |
+| Errors\ResourceNotFound    | 404                        | application/json           |
+| Errors\HTTPValidationError | 422                        | application/json           |
+| Errors\APIException        | 4XX, 5XX                   | \*/\*                      |
+
+## quantities
+
+Get quantities of a meter over a time period.
+
+**Scopes**: `meters:read` `meters:write`
+
+### Example Usage
+
+```php
+declare(strict_types=1);
+
+require 'vendor/autoload.php';
+
+use Polar;
+use Polar\Models\Components;
+use Polar\Models\Operations;
+use Polar\Utils;
+
+$sdk = Polar\Polar::builder()
+    ->setSecurity(
+        '<YOUR_BEARER_TOKEN_HERE>'
+    )
+    ->build();
+
+$request = new Operations\MetersQuantitiesRequest(
+    id: '<value>',
+    startTimestamp: Utils\Utils::parseDateTime('2023-09-17T00:45:34.608Z'),
+    endTimestamp: Utils\Utils::parseDateTime('2023-07-21T18:11:39.069Z'),
+    interval: Components\TimeInterval::Hour,
+);
+
+$response = $sdk->meters->quantities(
+    request: $request
+);
+
+if ($response->meterQuantities !== null) {
+    // handle response
+}
+```
+
+### Parameters
+
+| Parameter                                                                                | Type                                                                                     | Required                                                                                 | Description                                                                              |
+| ---------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- |
+| `$request`                                                                               | [Operations\MetersQuantitiesRequest](../../Models/Operations/MetersQuantitiesRequest.md) | :heavy_check_mark:                                                                       | The request object to use for the request.                                               |
+
+### Response
+
+**[?Operations\MetersQuantitiesResponse](../../Models/Operations/MetersQuantitiesResponse.md)**
 
 ### Errors
 

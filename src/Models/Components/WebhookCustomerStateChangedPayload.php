@@ -28,7 +28,8 @@ class WebhookCustomerStateChangedPayload
      *
      *
      * * Active subscriptions
-     * * Active benefits
+     * * Granted benefits
+     * * Active meters
      *
      * @var CustomerState $data
      */

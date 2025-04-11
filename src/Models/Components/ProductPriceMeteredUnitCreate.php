@@ -21,12 +21,13 @@ class ProductPriceMeteredUnitCreate
     public string $meterId;
 
     /**
-     * The price per unit in cents.
+     * The price per unit in cents. Supports up to 12 decimal places.
      *
-     * @var int $unitAmount
+     * @var float|string $unitAmount
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('unit_amount')]
-    public int $unitAmount;
+    #[\Speakeasy\Serializer\Annotation\Type('float|string')]
+    public float|string $unitAmount;
 
     /**
      * Optional maximum amount in cents that can be charged, regardless of the number of units consumed.
@@ -56,12 +57,12 @@ class ProductPriceMeteredUnitCreate
     /**
      * @param  string  $amountType
      * @param  string  $meterId
-     * @param  int  $unitAmount
+     * @param  float|string  $unitAmount
      * @param  ?string  $priceCurrency
      * @param  ?int  $capAmount
      * @phpstan-pure
      */
-    public function __construct(string $meterId, int $unitAmount, ?int $capAmount = null, string $amountType = 'metered_unit', ?string $priceCurrency = 'usd')
+    public function __construct(string $meterId, float|string $unitAmount, ?int $capAmount = null, string $amountType = 'metered_unit', ?string $priceCurrency = 'usd')
     {
         $this->meterId = $meterId;
         $this->unitAmount = $unitAmount;

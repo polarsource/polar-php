@@ -53,6 +53,22 @@ class EventsListRequest
     public string|array|null $externalCustomerId = null;
 
     /**
+     * Filter by a meter filter clause.
+     *
+     * @var ?string $meterId
+     */
+    #[SpeakeasyMetadata('queryParam:style=form,explode=true,name=meter_id')]
+    public ?string $meterId = null;
+
+    /**
+     * Filter by event name.
+     *
+     * @var string|array<string>|null $name
+     */
+    #[SpeakeasyMetadata('queryParam:style=form,explode=true,name=name')]
+    public string|array|null $name = null;
+
+    /**
      * Filter by event source.
      *
      * @var Components\EventSource|array<Components\EventSource>|null $source
@@ -100,18 +116,22 @@ class EventsListRequest
      * @param  string|array<string>|null  $organizationId
      * @param  string|array<string>|null  $customerId
      * @param  string|array<string>|null  $externalCustomerId
+     * @param  ?string  $meterId
+     * @param  string|array<string>|null  $name
      * @param  Components\EventSource|array<Components\EventSource>|null  $source
      * @param  ?array<Components\EventSortProperty>  $sorting
      * @param  ?array<string, string|int|bool|array<string>|array<int>|array<bool>>  $metadata
      * @phpstan-pure
      */
-    public function __construct(?\DateTime $startTimestamp = null, ?\DateTime $endTimestamp = null, string|array|null $organizationId = null, string|array|null $customerId = null, string|array|null $externalCustomerId = null, Components\EventSource|array|null $source = null, ?array $sorting = null, ?array $metadata = null, ?int $page = 1, ?int $limit = 10)
+    public function __construct(?\DateTime $startTimestamp = null, ?\DateTime $endTimestamp = null, string|array|null $organizationId = null, string|array|null $customerId = null, string|array|null $externalCustomerId = null, ?string $meterId = null, string|array|null $name = null, Components\EventSource|array|null $source = null, ?array $sorting = null, ?array $metadata = null, ?int $page = 1, ?int $limit = 10)
     {
         $this->startTimestamp = $startTimestamp;
         $this->endTimestamp = $endTimestamp;
         $this->organizationId = $organizationId;
         $this->customerId = $customerId;
         $this->externalCustomerId = $externalCustomerId;
+        $this->meterId = $meterId;
+        $this->name = $name;
         $this->source = $source;
         $this->sorting = $sorting;
         $this->metadata = $metadata;

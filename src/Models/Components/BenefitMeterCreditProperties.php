@@ -14,10 +14,10 @@ class BenefitMeterCreditProperties
 {
     /**
      *
-     * @var int $unit
+     * @var int $units
      */
-    #[\Speakeasy\Serializer\Annotation\SerializedName('unit')]
-    public int $unit;
+    #[\Speakeasy\Serializer\Annotation\SerializedName('units')]
+    public int $units;
 
     /**
      *
@@ -27,13 +27,13 @@ class BenefitMeterCreditProperties
     public string $meterId;
 
     /**
-     * @param  int  $unit
+     * @param  int  $units
      * @param  string  $meterId
      * @phpstan-pure
      */
-    public function __construct(int $unit, string $meterId)
+    public function __construct(int $units, string $meterId)
     {
-        $this->unit = $unit;
+        $this->units = $units;
         $this->meterId = $meterId;
     }
 }

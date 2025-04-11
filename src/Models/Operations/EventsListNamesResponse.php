@@ -9,7 +9,7 @@ declare(strict_types=1);
 namespace Polar\Models\Operations;
 
 use Polar\Models\Components;
-class MetersEventsResponse
+class EventsListNamesResponse
 {
     /**
      * HTTP response content type for this operation
@@ -35,34 +35,34 @@ class MetersEventsResponse
     /**
      * Successful Response
      *
-     * @var ?Components\ListResourceEvent $listResourceEvent
+     * @var ?Components\ListResourceEventName $listResourceEventName
      */
-    public ?Components\ListResourceEvent $listResourceEvent = null;
+    public ?Components\ListResourceEventName $listResourceEventName = null;
 
     /**
-     * @var \Closure(string): ?MetersEventsResponse $next
+     * @var \Closure(string): ?EventsListNamesResponse $next
      */
     public \Closure $next;
     /**
      * @param  string  $contentType
      * @param  int  $statusCode
      * @param  \Psr\Http\Message\ResponseInterface  $rawResponse
-     * @param  ?Components\ListResourceEvent  $listResourceEvent
+     * @param  ?Components\ListResourceEventName  $listResourceEventName
      * @phpstan-pure
      */
-    public function __construct(string $contentType, int $statusCode, \Psr\Http\Message\ResponseInterface $rawResponse, ?Components\ListResourceEvent $listResourceEvent = null)
+    public function __construct(string $contentType, int $statusCode, \Psr\Http\Message\ResponseInterface $rawResponse, ?Components\ListResourceEventName $listResourceEventName = null)
     {
         $this->contentType = $contentType;
         $this->statusCode = $statusCode;
         $this->rawResponse = $rawResponse;
-        $this->listResourceEvent = $listResourceEvent;
+        $this->listResourceEventName = $listResourceEventName;
     }
     /**
      * @param  string  $name
      * @param  array<mixed>  $args
-     * @return ?MetersEventsResponse
+     * @return ?EventsListNamesResponse
      */
-    public function __call($name, $args): ?MetersEventsResponse
+    public function __call($name, $args): ?EventsListNamesResponse
     {
         if ($name === 'next') {
             return call_user_func_array($this->next, $args);
