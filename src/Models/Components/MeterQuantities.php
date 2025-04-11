@@ -21,11 +21,21 @@ class MeterQuantities
     public array $quantities;
 
     /**
+     * The total quantity for the period.
+     *
+     * @var float $total
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('total')]
+    public float $total;
+
+    /**
      * @param  array<MeterQuantity>  $quantities
+     * @param  float  $total
      * @phpstan-pure
      */
-    public function __construct(array $quantities)
+    public function __construct(array $quantities, float $total)
     {
         $this->quantities = $quantities;
+        $this->total = $total;
     }
 }

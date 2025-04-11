@@ -14,7 +14,8 @@ namespace Polar\Models\Components;
  *
  *
  * * Active subscriptions
- * * Active benefits
+ * * Granted benefits
+ * * Active meters
  */
 class CustomerState
 {
@@ -86,6 +87,15 @@ class CustomerState
     public array $grantedBenefits;
 
     /**
+     * The customer's active meters.
+     *
+     * @var array<CustomerStateMeter> $activeMeters
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('active_meters')]
+    #[\Speakeasy\Serializer\Annotation\Type('array<\Polar\Models\Components\CustomerStateMeter>')]
+    public array $activeMeters;
+
+    /**
      *
      * @var string $avatarUrl
      */
@@ -150,6 +160,7 @@ class CustomerState
      * @param  string  $organizationId
      * @param  array<CustomerStateSubscription>  $activeSubscriptions
      * @param  array<CustomerStateBenefitGrant>  $grantedBenefits
+     * @param  array<CustomerStateMeter>  $activeMeters
      * @param  string  $avatarUrl
      * @param  ?\DateTime  $modifiedAt
      * @param  ?string  $externalId
@@ -159,7 +170,7 @@ class CustomerState
      * @param  ?\DateTime  $deletedAt
      * @phpstan-pure
      */
-    public function __construct(string $id, \DateTime $createdAt, array $metadata, string $email, bool $emailVerified, string $organizationId, array $activeSubscriptions, array $grantedBenefits, string $avatarUrl, ?\DateTime $modifiedAt = null, ?string $externalId = null, ?string $name = null, ?Address $billingAddress = null, ?array $taxId = null, ?\DateTime $deletedAt = null)
+    public function __construct(string $id, \DateTime $createdAt, array $metadata, string $email, bool $emailVerified, string $organizationId, array $activeSubscriptions, array $grantedBenefits, array $activeMeters, string $avatarUrl, ?\DateTime $modifiedAt = null, ?string $externalId = null, ?string $name = null, ?Address $billingAddress = null, ?array $taxId = null, ?\DateTime $deletedAt = null)
     {
         $this->id = $id;
         $this->createdAt = $createdAt;
@@ -169,6 +180,7 @@ class CustomerState
         $this->organizationId = $organizationId;
         $this->activeSubscriptions = $activeSubscriptions;
         $this->grantedBenefits = $grantedBenefits;
+        $this->activeMeters = $activeMeters;
         $this->avatarUrl = $avatarUrl;
         $this->modifiedAt = $modifiedAt;
         $this->externalId = $externalId;

@@ -17,6 +17,8 @@ class CustomerPortal
 
     public PolarCustomers $customers;
 
+    public PolarCustomerMeters $customerMeters;
+
     public Downloadables $downloadables;
 
     public PolarLicenseKeys $licenseKeys;
@@ -35,6 +37,7 @@ class CustomerPortal
         $this->sdkConfiguration = $sdkConfig;
         $this->benefitGrants = new BenefitGrants($this->sdkConfiguration);
         $this->customers = new PolarCustomers($this->sdkConfiguration);
+        $this->customerMeters = new PolarCustomerMeters($this->sdkConfiguration);
         $this->downloadables = new Downloadables($this->sdkConfiguration);
         $this->licenseKeys = new PolarLicenseKeys($this->sdkConfiguration);
         $this->orders = new PolarOrders($this->sdkConfiguration);

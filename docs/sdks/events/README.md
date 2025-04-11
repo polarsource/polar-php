@@ -5,9 +5,122 @@
 
 ### Available Operations
 
+* [list](#list) - List Events
+* [listNames](#listnames) - List Event Names
 * [get](#get) - Get Event
 * [ingest](#ingest) - Ingest Events
-* [list](#list) - List Events
+
+## list
+
+List events.
+
+**Scopes**: `events:read` `events:write`
+
+### Example Usage
+
+```php
+declare(strict_types=1);
+
+require 'vendor/autoload.php';
+
+use Polar;
+use Polar\Models\Operations;
+
+$sdk = Polar\Polar::builder()
+    ->setSecurity(
+        '<YOUR_BEARER_TOKEN_HERE>'
+    )
+    ->build();
+
+$request = new Operations\EventsListRequest(
+    organizationId: [
+        '1dbfc517-0bbf-4301-9ba8-555ca42b9737',
+    ],
+);
+
+$responses = $sdk->events->list(
+    request: $request
+);
+
+
+foreach ($responses as $response) {
+    if ($response->statusCode === 200) {
+        // handle response
+    }
+}
+```
+
+### Parameters
+
+| Parameter                                                                    | Type                                                                         | Required                                                                     | Description                                                                  |
+| ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- |
+| `$request`                                                                   | [Operations\EventsListRequest](../../Models/Operations/EventsListRequest.md) | :heavy_check_mark:                                                           | The request object to use for the request.                                   |
+
+### Response
+
+**[?Operations\EventsListResponse](../../Models/Operations/EventsListResponse.md)**
+
+### Errors
+
+| Error Type                 | Status Code                | Content Type               |
+| -------------------------- | -------------------------- | -------------------------- |
+| Errors\HTTPValidationError | 422                        | application/json           |
+| Errors\APIException        | 4XX, 5XX                   | \*/\*                      |
+
+## listNames
+
+List event names.
+
+**Scopes**: `events:read` `events:write`
+
+### Example Usage
+
+```php
+declare(strict_types=1);
+
+require 'vendor/autoload.php';
+
+use Polar;
+use Polar\Models\Operations;
+
+$sdk = Polar\Polar::builder()
+    ->setSecurity(
+        '<YOUR_BEARER_TOKEN_HERE>'
+    )
+    ->build();
+
+$request = new Operations\EventsListNamesRequest(
+    organizationId: '1dbfc517-0bbf-4301-9ba8-555ca42b9737',
+);
+
+$responses = $sdk->events->listNames(
+    request: $request
+);
+
+
+foreach ($responses as $response) {
+    if ($response->statusCode === 200) {
+        // handle response
+    }
+}
+```
+
+### Parameters
+
+| Parameter                                                                              | Type                                                                                   | Required                                                                               | Description                                                                            |
+| -------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- |
+| `$request`                                                                             | [Operations\EventsListNamesRequest](../../Models/Operations/EventsListNamesRequest.md) | :heavy_check_mark:                                                                     | The request object to use for the request.                                             |
+
+### Response
+
+**[?Operations\EventsListNamesResponse](../../Models/Operations/EventsListNamesResponse.md)**
+
+### Errors
+
+| Error Type                 | Status Code                | Content Type               |
+| -------------------------- | -------------------------- | -------------------------- |
+| Errors\HTTPValidationError | 422                        | application/json           |
+| Errors\APIException        | 4XX, 5XX                   | \*/\*                      |
 
 ## get
 
@@ -85,8 +198,8 @@ $request = new Components\EventsIngest(
     events: [
         new Components\EventCreateExternalCustomer(
             name: '<value>',
-            externalCustomerId: '<id>',
             organizationId: '1dbfc517-0bbf-4301-9ba8-555ca42b9737',
+            externalCustomerId: '<id>',
         ),
     ],
 );
@@ -109,63 +222,6 @@ if ($response->eventsIngestResponse !== null) {
 ### Response
 
 **[?Operations\EventsIngestResponse](../../Models/Operations/EventsIngestResponse.md)**
-
-### Errors
-
-| Error Type                 | Status Code                | Content Type               |
-| -------------------------- | -------------------------- | -------------------------- |
-| Errors\HTTPValidationError | 422                        | application/json           |
-| Errors\APIException        | 4XX, 5XX                   | \*/\*                      |
-
-## list
-
-List events.
-
-**Scopes**: `events:read` `events:write`
-
-### Example Usage
-
-```php
-declare(strict_types=1);
-
-require 'vendor/autoload.php';
-
-use Polar;
-use Polar\Models\Operations;
-
-$sdk = Polar\Polar::builder()
-    ->setSecurity(
-        '<YOUR_BEARER_TOKEN_HERE>'
-    )
-    ->build();
-
-$request = new Operations\EventsListRequest(
-    organizationId: [
-        '1dbfc517-0bbf-4301-9ba8-555ca42b9737',
-    ],
-);
-
-$responses = $sdk->events->list(
-    request: $request
-);
-
-
-foreach ($responses as $response) {
-    if ($response->statusCode === 200) {
-        // handle response
-    }
-}
-```
-
-### Parameters
-
-| Parameter                                                                    | Type                                                                         | Required                                                                     | Description                                                                  |
-| ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- |
-| `$request`                                                                   | [Operations\EventsListRequest](../../Models/Operations/EventsListRequest.md) | :heavy_check_mark:                                                           | The request object to use for the request.                                   |
-
-### Response
-
-**[?Operations\EventsListResponse](../../Models/Operations/EventsListResponse.md)**
 
 ### Errors
 

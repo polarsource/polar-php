@@ -109,6 +109,14 @@ class CheckoutPublic
     public int $totalAmount;
 
     /**
+     * Currency code of the checkout session.
+     *
+     * @var string $currency
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('currency')]
+    public string $currency;
+
+    /**
      * ID of the product to checkout.
      *
      * @var string $productId
@@ -260,14 +268,6 @@ class CheckoutPublic
     public ?int $taxAmount;
 
     /**
-     * Currency code of the checkout session.
-     *
-     * @var ?string $currency
-     */
-    #[\Speakeasy\Serializer\Annotation\SerializedName('currency')]
-    public ?string $currency;
-
-    /**
      * ID of the discount applied to the checkout.
      *
      * @var ?string $discountId
@@ -349,6 +349,7 @@ class CheckoutPublic
      * @param  int  $discountAmount
      * @param  int  $netAmount
      * @param  int  $totalAmount
+     * @param  string  $currency
      * @param  string  $productId
      * @param  string  $productPriceId
      * @param  bool  $allowDiscountCodes
@@ -367,7 +368,6 @@ class CheckoutPublic
      * @param  ?array<string, string|int|bool|\DateTime|null>  $customFieldData
      * @param  ?string  $embedOrigin
      * @param  ?int  $taxAmount
-     * @param  ?string  $currency
      * @param  ?string  $discountId
      * @param  ?string  $customerId
      * @param  ?string  $customerName
@@ -379,7 +379,7 @@ class CheckoutPublic
      * @param  CheckoutDiscountFixedOnceForeverDuration|CheckoutDiscountFixedRepeatDuration|CheckoutDiscountPercentageOnceForeverDuration|CheckoutDiscountPercentageRepeatDuration|null  $discount
      * @phpstan-pure
      */
-    public function __construct(\DateTime $createdAt, string $id, PaymentProcessor $paymentProcessor, CheckoutStatus $status, string $clientSecret, string $url, \DateTime $expiresAt, string $successUrl, int $amount, int $discountAmount, int $netAmount, int $totalAmount, string $productId, string $productPriceId, bool $allowDiscountCodes, bool $isDiscountApplicable, bool $isFreeProductPrice, bool $isPaymentRequired, bool $isPaymentSetupRequired, bool $isPaymentFormRequired, array $paymentProcessorMetadata, array $products, CheckoutProduct $product, LegacyRecurringProductPriceFixed|LegacyRecurringProductPriceCustom|LegacyRecurringProductPriceFree|ProductPriceFixed|ProductPriceCustom|ProductPriceFree|ProductPriceMeteredUnit $productPrice, Organization $organization, array $attachedCustomFields, ?\DateTime $modifiedAt = null, ?array $customFieldData = null, ?string $embedOrigin = null, ?int $taxAmount = null, ?string $currency = null, ?string $discountId = null, ?string $customerId = null, ?string $customerName = null, ?string $customerEmail = null, ?string $customerIpAddress = null, ?Address $customerBillingAddress = null, ?string $customerTaxId = null, ?int $subtotalAmount = null, CheckoutDiscountFixedOnceForeverDuration|CheckoutDiscountFixedRepeatDuration|CheckoutDiscountPercentageOnceForeverDuration|CheckoutDiscountPercentageRepeatDuration|null $discount = null)
+    public function __construct(\DateTime $createdAt, string $id, PaymentProcessor $paymentProcessor, CheckoutStatus $status, string $clientSecret, string $url, \DateTime $expiresAt, string $successUrl, int $amount, int $discountAmount, int $netAmount, int $totalAmount, string $currency, string $productId, string $productPriceId, bool $allowDiscountCodes, bool $isDiscountApplicable, bool $isFreeProductPrice, bool $isPaymentRequired, bool $isPaymentSetupRequired, bool $isPaymentFormRequired, array $paymentProcessorMetadata, array $products, CheckoutProduct $product, LegacyRecurringProductPriceFixed|LegacyRecurringProductPriceCustom|LegacyRecurringProductPriceFree|ProductPriceFixed|ProductPriceCustom|ProductPriceFree|ProductPriceMeteredUnit $productPrice, Organization $organization, array $attachedCustomFields, ?\DateTime $modifiedAt = null, ?array $customFieldData = null, ?string $embedOrigin = null, ?int $taxAmount = null, ?string $discountId = null, ?string $customerId = null, ?string $customerName = null, ?string $customerEmail = null, ?string $customerIpAddress = null, ?Address $customerBillingAddress = null, ?string $customerTaxId = null, ?int $subtotalAmount = null, CheckoutDiscountFixedOnceForeverDuration|CheckoutDiscountFixedRepeatDuration|CheckoutDiscountPercentageOnceForeverDuration|CheckoutDiscountPercentageRepeatDuration|null $discount = null)
     {
         $this->createdAt = $createdAt;
         $this->id = $id;
@@ -393,6 +393,7 @@ class CheckoutPublic
         $this->discountAmount = $discountAmount;
         $this->netAmount = $netAmount;
         $this->totalAmount = $totalAmount;
+        $this->currency = $currency;
         $this->productId = $productId;
         $this->productPriceId = $productPriceId;
         $this->allowDiscountCodes = $allowDiscountCodes;
@@ -411,7 +412,6 @@ class CheckoutPublic
         $this->customFieldData = $customFieldData;
         $this->embedOrigin = $embedOrigin;
         $this->taxAmount = $taxAmount;
-        $this->currency = $currency;
         $this->discountId = $discountId;
         $this->customerId = $customerId;
         $this->customerName = $customerName;

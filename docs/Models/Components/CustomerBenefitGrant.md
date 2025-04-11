@@ -48,3 +48,12 @@ Components\CustomerBenefitGrantLicenseKeys $value = /* values here */
 Components\CustomerBenefitGrantCustom $value = /* values here */
 ```
 
+### `Components\CustomerBenefitGrantMeterCredit`
+
+```php
+/**
+* @var Components\CustomerBenefitGrantMeterCredit
+*/
+Components\CustomerBenefitGrantMeterCredit $value = /* values here */
+```
+

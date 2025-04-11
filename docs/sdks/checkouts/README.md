@@ -5,14 +5,16 @@
 
 ### Available Operations
 
-* [clientGet](#clientget) - Get Checkout Session from Client
+* [list](#list) - List Checkout Sessions
 * [create](#create) - Create Checkout Session
 * [get](#get) - Get Checkout Session
-* [list](#list) - List Checkout Sessions
+* [clientGet](#clientget) - Get Checkout Session from Client
 
-## clientGet
+## list
 
-Get a checkout session by client secret.
+List checkout sessions.
+
+**Scopes**: `checkouts:read` `checkouts:write`
 
 ### Example Usage
 
@@ -22,35 +24,46 @@ declare(strict_types=1);
 require 'vendor/autoload.php';
 
 use Polar;
+use Polar\Models\Operations;
 
-$sdk = Polar\Polar::builder()->build();
+$sdk = Polar\Polar::builder()
+    ->setSecurity(
+        '<YOUR_BEARER_TOKEN_HERE>'
+    )
+    ->build();
 
-
-
-$response = $sdk->checkouts->clientGet(
-    clientSecret: '<value>'
+$request = new Operations\CheckoutsListRequest(
+    organizationId: [
+        '1dbfc517-0bbf-4301-9ba8-555ca42b9737',
+    ],
 );
 
-if ($response->checkoutPublic !== null) {
-    // handle response
+$responses = $sdk->checkouts->list(
+    request: $request
+);
+
+
+foreach ($responses as $response) {
+    if ($response->statusCode === 200) {
+        // handle response
+    }
 }
 ```
 
 ### Parameters
 
-| Parameter                           | Type                                | Required                            | Description                         |
-| ----------------------------------- | ----------------------------------- | ----------------------------------- | ----------------------------------- |
-| `clientSecret`                      | *string*                            | :heavy_check_mark:                  | The checkout session client secret. |
+| Parameter                                                                          | Type                                                                               | Required                                                                           | Description                                                                        |
+| ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- |
+| `$request`                                                                         | [Operations\CheckoutsListRequest](../../Models/Operations/CheckoutsListRequest.md) | :heavy_check_mark:                                                                 | The request object to use for the request.                                         |
 
 ### Response
 
-**[?Operations\CheckoutsClientGetResponse](../../Models/Operations/CheckoutsClientGetResponse.md)**
+**[?Operations\CheckoutsListResponse](../../Models/Operations/CheckoutsListResponse.md)**
 
 ### Errors
 
 | Error Type                 | Status Code                | Content Type               |
 | -------------------------- | -------------------------- | -------------------------- |
-| Errors\ResourceNotFound    | 404                        | application/json           |
 | Errors\HTTPValidationError | 422                        | application/json           |
 | Errors\APIException        | 4XX, 5XX                   | \*/\*                      |
 
@@ -77,10 +90,10 @@ $sdk = Polar\Polar::builder()
     ->build();
 
 $request = new Components\CheckoutProductCreate(
-    productId: '<value>',
     customerBillingAddress: new Components\Address(
         country: 'SE',
     ),
+    productId: '<value>',
 );
 
 $response = $sdk->checkouts->create(
@@ -159,11 +172,9 @@ if ($response->checkout !== null) {
 | Errors\HTTPValidationError | 422                        | application/json           |
 | Errors\APIException        | 4XX, 5XX                   | \*/\*                      |
 
-## list
+## clientGet
 
-List checkout sessions.
-
-**Scopes**: `checkouts:read` `checkouts:write`
+Get a checkout session by client secret.
 
 ### Example Usage
 
@@ -173,45 +184,35 @@ declare(strict_types=1);
 require 'vendor/autoload.php';
 
 use Polar;
-use Polar\Models\Operations;
 
-$sdk = Polar\Polar::builder()
-    ->setSecurity(
-        '<YOUR_BEARER_TOKEN_HERE>'
-    )
-    ->build();
+$sdk = Polar\Polar::builder()->build();
 
-$request = new Operations\CheckoutsListRequest(
-    organizationId: [
-        '1dbfc517-0bbf-4301-9ba8-555ca42b9737',
-    ],
+
+
+$response = $sdk->checkouts->clientGet(
+    clientSecret: '<value>'
 );
 
-$responses = $sdk->checkouts->list(
-    request: $request
-);
-
-
-foreach ($responses as $response) {
-    if ($response->statusCode === 200) {
-        // handle response
-    }
+if ($response->checkoutPublic !== null) {
+    // handle response
 }
 ```
 
 ### Parameters
 
-| Parameter                                                                          | Type                                                                               | Required                                                                           | Description                                                                        |
-| ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- |
-| `$request`                                                                         | [Operations\CheckoutsListRequest](../../Models/Operations/CheckoutsListRequest.md) | :heavy_check_mark:                                                                 | The request object to use for the request.                                         |
+| Parameter                           | Type                                | Required                            | Description                         |
+| ----------------------------------- | ----------------------------------- | ----------------------------------- | ----------------------------------- |
+| `clientSecret`                      | *string*                            | :heavy_check_mark:                  | The checkout session client secret. |
 
 ### Response
 
-**[?Operations\CheckoutsListResponse](../../Models/Operations/CheckoutsListResponse.md)**
+**[?Operations\CheckoutsClientGetResponse](../../Models/Operations/CheckoutsClientGetResponse.md)**
 
 ### Errors
 
-| Error Type                 | Status Code                | Content Type               |
-| -------------------------- | -------------------------- | -------------------------- |
-| Errors\HTTPValidationError | 422                        | application/json           |
-| Errors\APIException        | 4XX, 5XX                   | \*/\*                      |
+| Error Type                  | Status Code                 | Content Type                |
+| --------------------------- | --------------------------- | --------------------------- |
+| Errors\ResourceNotFound     | 404                         | application/json            |
+| Errors\ExpiredCheckoutError | 410                         | application/json            |
+| Errors\HTTPValidationError  | 422                         | application/json            |
+| Errors\APIException         | 4XX, 5XX                    | \*/\*                       |
