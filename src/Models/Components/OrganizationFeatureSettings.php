@@ -21,11 +21,22 @@ class OrganizationFeatureSettings
     public ?bool $issueFundingEnabled = null;
 
     /**
+     * If this organization has usage-based billing enabled
+     *
+     * @var ?bool $usageBasedBillingEnabled
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('usage_based_billing_enabled')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
+    public ?bool $usageBasedBillingEnabled = null;
+
+    /**
      * @param  ?bool  $issueFundingEnabled
+     * @param  ?bool  $usageBasedBillingEnabled
      * @phpstan-pure
      */
-    public function __construct(?bool $issueFundingEnabled = false)
+    public function __construct(?bool $issueFundingEnabled = false, ?bool $usageBasedBillingEnabled = false)
     {
         $this->issueFundingEnabled = $issueFundingEnabled;
+        $this->usageBasedBillingEnabled = $usageBasedBillingEnabled;
     }
 }

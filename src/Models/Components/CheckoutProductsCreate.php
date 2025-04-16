@@ -37,14 +37,15 @@ class CheckoutProductsCreate
      *
      * * A string with a maximum length of **500 characters**
      * * An integer
+     * * A floating-point number
      * * A boolean
      *
      * You can store up to **50 key-value pairs**.
      *
-     * @var ?array<string, string|int|bool> $metadata
+     * @var ?array<string, string|int|float|bool> $metadata
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('metadata')]
-    #[\Speakeasy\Serializer\Annotation\Type('array<string, string|int|bool>|null')]
+    #[\Speakeasy\Serializer\Annotation\Type('array<string, string|int|float|bool>|null')]
     #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
     public ?array $metadata = null;
 
@@ -67,14 +68,15 @@ class CheckoutProductsCreate
      *
      * * A string with a maximum length of **500 characters**
      * * An integer
+     * * A floating-point number
      * * A boolean
      *
      * You can store up to **50 key-value pairs**.
      *
-     * @var ?array<string, string|int|bool> $customerMetadata
+     * @var ?array<string, string|int|float|bool> $customerMetadata
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('customer_metadata')]
-    #[\Speakeasy\Serializer\Annotation\Type('array<string, string|int|bool>|null')]
+    #[\Speakeasy\Serializer\Annotation\Type('array<string, string|int|float|bool>|null')]
     #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
     public ?array $customerMetadata = null;
 
@@ -192,10 +194,10 @@ class CheckoutProductsCreate
 
     /**
      * @param  array<string>  $products
-     * @param  ?array<string, string|int|bool>  $metadata
+     * @param  ?array<string, string|int|float|bool>  $metadata
      * @param  ?array<string, string|int|bool|\DateTime|null>  $customFieldData
      * @param  ?bool  $allowDiscountCodes
-     * @param  ?array<string, string|int|bool>  $customerMetadata
+     * @param  ?array<string, string|int|float|bool>  $customerMetadata
      * @param  ?string  $discountId
      * @param  ?int  $amount
      * @param  ?string  $customerId

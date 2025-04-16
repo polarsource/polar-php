@@ -53,10 +53,10 @@ class DiscountPercentageOnceForeverDurationBase
     /**
      * $metadata
      *
-     * @var array<string, string|int|bool> $metadata
+     * @var array<string, string|int|float|bool> $metadata
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('metadata')]
-    #[\Speakeasy\Serializer\Annotation\Type('array<string, string|int|bool>')]
+    #[\Speakeasy\Serializer\Annotation\Type('array<string, string|int|float|bool>')]
     public array $metadata;
 
     /**
@@ -129,7 +129,7 @@ class DiscountPercentageOnceForeverDurationBase
      * @param  int  $basisPoints
      * @param  \DateTime  $createdAt
      * @param  string  $id
-     * @param  array<string, string|int|bool>  $metadata
+     * @param  array<string, string|int|float|bool>  $metadata
      * @param  string  $name
      * @param  int  $redemptionsCount
      * @param  string  $organizationId

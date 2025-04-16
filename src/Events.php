@@ -438,6 +438,7 @@ class Events
                             organizationId: $request != null ? $request->organizationId : null,
                             customerId: $request != null ? $request->customerId : null,
                             externalCustomerId: $request != null ? $request->externalCustomerId : null,
+                            source: $request != null ? $request->source : null,
                             query: $request != null ? $request->query : null,
                             page: $nextPage,
                             limit: $request != null ? $request->limit : null,

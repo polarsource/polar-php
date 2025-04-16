@@ -31,10 +31,10 @@ class CustomFieldText
     /**
      * $metadata
      *
-     * @var array<string, string|int|bool> $metadata
+     * @var array<string, string|int|float|bool> $metadata
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('metadata')]
-    #[\Speakeasy\Serializer\Annotation\Type('array<string, string|int|bool>')]
+    #[\Speakeasy\Serializer\Annotation\Type('array<string, string|int|float|bool>')]
     public array $metadata;
 
     /**
@@ -87,7 +87,7 @@ class CustomFieldText
     /**
      * @param  \DateTime  $createdAt
      * @param  string  $id
-     * @param  array<string, string|int|bool>  $metadata
+     * @param  array<string, string|int|float|bool>  $metadata
      * @param  string  $type
      * @param  string  $slug
      * @param  string  $name

@@ -38,10 +38,10 @@ class CustomerState
     /**
      * $metadata
      *
-     * @var array<string, string|int|bool> $metadata
+     * @var array<string, string|int|float|bool> $metadata
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('metadata')]
-    #[\Speakeasy\Serializer\Annotation\Type('array<string, string|int|bool>')]
+    #[\Speakeasy\Serializer\Annotation\Type('array<string, string|int|float|bool>')]
     public array $metadata;
 
     /**
@@ -154,7 +154,7 @@ class CustomerState
     /**
      * @param  string  $id
      * @param  \DateTime  $createdAt
-     * @param  array<string, string|int|bool>  $metadata
+     * @param  array<string, string|int|float|bool>  $metadata
      * @param  string  $email
      * @param  bool  $emailVerified
      * @param  string  $organizationId

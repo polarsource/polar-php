@@ -21,14 +21,15 @@ class DiscountUpdate
      *
      * * A string with a maximum length of **500 characters**
      * * An integer
+     * * A floating-point number
      * * A boolean
      *
      * You can store up to **50 key-value pairs**.
      *
-     * @var ?array<string, string|int|bool> $metadata
+     * @var ?array<string, string|int|float|bool> $metadata
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('metadata')]
-    #[\Speakeasy\Serializer\Annotation\Type('array<string, string|int|bool>|null')]
+    #[\Speakeasy\Serializer\Annotation\Type('array<string, string|int|float|bool>|null')]
     #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
     public ?array $metadata = null;
 
@@ -133,7 +134,7 @@ class DiscountUpdate
     public ?string $currency = null;
 
     /**
-     * @param  ?array<string, string|int|bool>  $metadata
+     * @param  ?array<string, string|int|float|bool>  $metadata
      * @param  ?string  $name
      * @param  ?string  $code
      * @param  ?\DateTime  $startsAt

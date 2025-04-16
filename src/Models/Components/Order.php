@@ -30,10 +30,10 @@ class Order
     /**
      * $metadata
      *
-     * @var array<string, string|int|bool> $metadata
+     * @var array<string, string|int|float|bool> $metadata
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('metadata')]
-    #[\Speakeasy\Serializer\Annotation\Type('array<string, string|int|bool>')]
+    #[\Speakeasy\Serializer\Annotation\Type('array<string, string|int|float|bool>')]
     public array $metadata;
 
     /**
@@ -270,7 +270,7 @@ class Order
     /**
      * @param  \DateTime  $createdAt
      * @param  string  $id
-     * @param  array<string, string|int|bool>  $metadata
+     * @param  array<string, string|int|float|bool>  $metadata
      * @param  OrderStatus  $status
      * @param  bool  $paid
      * @param  int  $subtotalAmount
