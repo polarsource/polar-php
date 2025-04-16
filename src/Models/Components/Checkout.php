@@ -192,10 +192,10 @@ class Checkout
     /**
      * $metadata
      *
-     * @var array<string, string|int|bool> $metadata
+     * @var array<string, string|int|float|bool> $metadata
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('metadata')]
-    #[\Speakeasy\Serializer\Annotation\Type('array<string, string|int|bool>')]
+    #[\Speakeasy\Serializer\Annotation\Type('array<string, string|int|float|bool>')]
     public array $metadata;
 
     /**
@@ -384,7 +384,7 @@ class Checkout
      * @param  bool  $isPaymentSetupRequired
      * @param  bool  $isPaymentFormRequired
      * @param  array<string, string>  $paymentProcessorMetadata
-     * @param  array<string, string|int|bool>  $metadata
+     * @param  array<string, string|int|float|bool>  $metadata
      * @param  array<CheckoutProduct>  $products
      * @param  CheckoutProduct  $product
      * @param  LegacyRecurringProductPriceFixed|LegacyRecurringProductPriceCustom|LegacyRecurringProductPriceFree|ProductPriceFixed|ProductPriceCustom|ProductPriceFree|ProductPriceMeteredUnit  $productPrice

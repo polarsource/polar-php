@@ -21,6 +21,15 @@ string $value = /* values here */
 int $value = /* values here */
 ```
 
+### `float`
+
+```php
+/**
+* @var float
+*/
+float $value = /* values here */
+```
+
 ### `bool`
 
 ```php

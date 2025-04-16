@@ -38,14 +38,15 @@ class ProductCreate
      *
      * * A string with a maximum length of **500 characters**
      * * An integer
+     * * A floating-point number
      * * A boolean
      *
      * You can store up to **50 key-value pairs**.
      *
-     * @var ?array<string, string|int|bool> $metadata
+     * @var ?array<string, string|int|float|bool> $metadata
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('metadata')]
-    #[\Speakeasy\Serializer\Annotation\Type('array<string, string|int|bool>|null')]
+    #[\Speakeasy\Serializer\Annotation\Type('array<string, string|int|float|bool>|null')]
     #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
     public ?array $metadata = null;
 
@@ -99,7 +100,7 @@ class ProductCreate
     /**
      * @param  string  $name
      * @param  array<ProductPriceFixedCreate|ProductPriceCustomCreate|ProductPriceFreeCreate|ProductPriceMeteredUnitCreate>  $prices
-     * @param  ?array<string, string|int|bool>  $metadata
+     * @param  ?array<string, string|int|float|bool>  $metadata
      * @param  ?SubscriptionRecurringInterval  $recurringInterval
      * @param  ?array<AttachedCustomFieldCreate>  $attachedCustomFields
      * @param  ?string  $description

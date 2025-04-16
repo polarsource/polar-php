@@ -12,6 +12,14 @@ namespace Polar\Models\Components;
 class BenefitBase
 {
     /**
+     * The ID of the benefit.
+     *
+     * @var string $id
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('id')]
+    public string $id;
+
+    /**
      * Creation timestamp of the object.
      *
      * @var \DateTime $createdAt
@@ -20,12 +28,13 @@ class BenefitBase
     public \DateTime $createdAt;
 
     /**
-     * The ID of the benefit.
+     * $metadata
      *
-     * @var string $id
+     * @var array<string, string|int|float|bool> $metadata
      */
-    #[\Speakeasy\Serializer\Annotation\SerializedName('id')]
-    public string $id;
+    #[\Speakeasy\Serializer\Annotation\SerializedName('metadata')]
+    #[\Speakeasy\Serializer\Annotation\Type('array<string, string|int|float|bool>')]
+    public array $metadata;
 
     /**
      *
@@ -76,8 +85,9 @@ class BenefitBase
     public ?\DateTime $modifiedAt;
 
     /**
-     * @param  \DateTime  $createdAt
      * @param  string  $id
+     * @param  \DateTime  $createdAt
+     * @param  array<string, string|int|float|bool>  $metadata
      * @param  BenefitType  $type
      * @param  string  $description
      * @param  bool  $selectable
@@ -86,10 +96,11 @@ class BenefitBase
      * @param  ?\DateTime  $modifiedAt
      * @phpstan-pure
      */
-    public function __construct(\DateTime $createdAt, string $id, BenefitType $type, string $description, bool $selectable, bool $deletable, string $organizationId, ?\DateTime $modifiedAt = null)
+    public function __construct(string $id, \DateTime $createdAt, array $metadata, BenefitType $type, string $description, bool $selectable, bool $deletable, string $organizationId, ?\DateTime $modifiedAt = null)
     {
-        $this->createdAt = $createdAt;
         $this->id = $id;
+        $this->createdAt = $createdAt;
+        $this->metadata = $metadata;
         $this->type = $type;
         $this->description = $description;
         $this->selectable = $selectable;

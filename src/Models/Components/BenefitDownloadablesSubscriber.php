@@ -12,6 +12,14 @@ namespace Polar\Models\Components;
 class BenefitDownloadablesSubscriber
 {
     /**
+     * The ID of the benefit.
+     *
+     * @var string $id
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('id')]
+    public string $id;
+
+    /**
      * Creation timestamp of the object.
      *
      * @var \DateTime $createdAt
@@ -20,12 +28,13 @@ class BenefitDownloadablesSubscriber
     public \DateTime $createdAt;
 
     /**
-     * The ID of the benefit.
+     * $metadata
      *
-     * @var string $id
+     * @var array<string, string|int|float|bool> $metadata
      */
-    #[\Speakeasy\Serializer\Annotation\SerializedName('id')]
-    public string $id;
+    #[\Speakeasy\Serializer\Annotation\SerializedName('metadata')]
+    #[\Speakeasy\Serializer\Annotation\Type('array<string, string|int|float|bool>')]
+    public array $metadata;
 
     /**
      * The description of the benefit.
@@ -91,8 +100,9 @@ class BenefitDownloadablesSubscriber
     public string $type;
 
     /**
-     * @param  \DateTime  $createdAt
      * @param  string  $id
+     * @param  \DateTime  $createdAt
+     * @param  array<string, string|int|float|bool>  $metadata
      * @param  string  $type
      * @param  string  $description
      * @param  bool  $selectable
@@ -103,10 +113,11 @@ class BenefitDownloadablesSubscriber
      * @param  ?\DateTime  $modifiedAt
      * @phpstan-pure
      */
-    public function __construct(\DateTime $createdAt, string $id, string $description, bool $selectable, bool $deletable, string $organizationId, Organization $organization, BenefitDownloadablesSubscriberProperties $properties, ?\DateTime $modifiedAt = null, string $type = 'downloadables')
+    public function __construct(string $id, \DateTime $createdAt, array $metadata, string $description, bool $selectable, bool $deletable, string $organizationId, Organization $organization, BenefitDownloadablesSubscriberProperties $properties, ?\DateTime $modifiedAt = null, string $type = 'downloadables')
     {
-        $this->createdAt = $createdAt;
         $this->id = $id;
+        $this->createdAt = $createdAt;
+        $this->metadata = $metadata;
         $this->description = $description;
         $this->selectable = $selectable;
         $this->deletable = $deletable;

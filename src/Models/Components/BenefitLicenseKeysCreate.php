@@ -28,6 +28,27 @@ class BenefitLicenseKeysCreate
     public BenefitLicenseKeysCreateProperties $properties;
 
     /**
+     * Key-value object allowing you to store additional information.
+     *
+     *
+     * The key must be a string with a maximum length of **40 characters**.
+     * The value must be either:
+     *
+     * * A string with a maximum length of **500 characters**
+     * * An integer
+     * * A floating-point number
+     * * A boolean
+     *
+     * You can store up to **50 key-value pairs**.
+     *
+     * @var ?array<string, string|int|float|bool> $metadata
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('metadata')]
+    #[\Speakeasy\Serializer\Annotation\Type('array<string, string|int|float|bool>|null')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
+    public ?array $metadata = null;
+
+    /**
      * The ID of the organization owning the benefit. **Required unless you use an organization token.**
      *
      * @var ?string $organizationId
@@ -47,13 +68,15 @@ class BenefitLicenseKeysCreate
      * @param  string  $type
      * @param  string  $description
      * @param  BenefitLicenseKeysCreateProperties  $properties
+     * @param  ?array<string, string|int|float|bool>  $metadata
      * @param  ?string  $organizationId
      * @phpstan-pure
      */
-    public function __construct(string $description, BenefitLicenseKeysCreateProperties $properties, ?string $organizationId = null, string $type = 'license_keys')
+    public function __construct(string $description, BenefitLicenseKeysCreateProperties $properties, ?array $metadata = null, ?string $organizationId = null, string $type = 'license_keys')
     {
         $this->description = $description;
         $this->properties = $properties;
+        $this->metadata = $metadata;
         $this->organizationId = $organizationId;
         $this->type = $type;
     }

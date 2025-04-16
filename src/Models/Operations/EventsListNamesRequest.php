@@ -37,6 +37,14 @@ class EventsListNamesRequest
     public string|array|null $externalCustomerId = null;
 
     /**
+     * Filter by event source.
+     *
+     * @var Components\EventSource|array<Components\EventSource>|null $source
+     */
+    #[SpeakeasyMetadata('queryParam:style=form,explode=true,name=source')]
+    public Components\EventSource|array|null $source = null;
+
+    /**
      * Query to filter event names.
      *
      * @var ?string $query
@@ -74,15 +82,17 @@ class EventsListNamesRequest
      * @param  string|array<string>|null  $organizationId
      * @param  string|array<string>|null  $customerId
      * @param  string|array<string>|null  $externalCustomerId
+     * @param  Components\EventSource|array<Components\EventSource>|null  $source
      * @param  ?string  $query
      * @param  ?array<Components\EventNamesSortProperty>  $sorting
      * @phpstan-pure
      */
-    public function __construct(string|array|null $organizationId = null, string|array|null $customerId = null, string|array|null $externalCustomerId = null, ?string $query = null, ?array $sorting = null, ?int $page = 1, ?int $limit = 10)
+    public function __construct(string|array|null $organizationId = null, string|array|null $customerId = null, string|array|null $externalCustomerId = null, Components\EventSource|array|null $source = null, ?string $query = null, ?array $sorting = null, ?int $page = 1, ?int $limit = 10)
     {
         $this->organizationId = $organizationId;
         $this->customerId = $customerId;
         $this->externalCustomerId = $externalCustomerId;
+        $this->source = $source;
         $this->query = $query;
         $this->sorting = $sorting;
         $this->page = $page;
