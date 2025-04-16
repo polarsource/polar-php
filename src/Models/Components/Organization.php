@@ -61,22 +61,6 @@ class Organization
     public OrganizationSubscriptionSettings $subscriptionSettings;
 
     /**
-     *
-     * @var int $pledgeMinimumAmount
-     * @deprecated  field: This will be removed in a future release, please migrate away from it as soon as possible.
-     */
-    #[\Speakeasy\Serializer\Annotation\SerializedName('pledge_minimum_amount')]
-    public int $pledgeMinimumAmount;
-
-    /**
-     *
-     * @var bool $pledgeBadgeShowAmount
-     * @deprecated  field: This will be removed in a future release, please migrate away from it as soon as possible.
-     */
-    #[\Speakeasy\Serializer\Annotation\SerializedName('pledge_badge_show_amount')]
-    public bool $pledgeBadgeShowAmount;
-
-    /**
      * Last modification timestamp of the object.
      *
      * @var ?\DateTime $modifiedAt
@@ -166,32 +150,12 @@ class Organization
     public ?string $twitterUsername;
 
     /**
-     *
-     * @var ?int $defaultUpfrontSplitToContributors
-     * @deprecated  field: This will be removed in a future release, please migrate away from it as soon as possible.
-     */
-    #[\Speakeasy\Serializer\Annotation\SerializedName('default_upfront_split_to_contributors')]
-    public ?int $defaultUpfrontSplitToContributors;
-
-    /**
-     * Settings for the organization profile
-     *
-     * @var ?OrganizationProfileSettings $profileSettings
-     * @deprecated  field: This will be removed in a future release, please migrate away from it as soon as possible.
-     */
-    #[\Speakeasy\Serializer\Annotation\SerializedName('profile_settings')]
-    #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\OrganizationProfileSettings|null')]
-    public ?OrganizationProfileSettings $profileSettings;
-
-    /**
      * @param  \DateTime  $createdAt
      * @param  string  $id
      * @param  string  $name
      * @param  string  $slug
      * @param  array<OrganizationSocialLink>  $socials
      * @param  OrganizationSubscriptionSettings  $subscriptionSettings
-     * @param  int  $pledgeMinimumAmount
-     * @param  bool  $pledgeBadgeShowAmount
      * @param  ?\DateTime  $modifiedAt
      * @param  ?string  $avatarUrl
      * @param  ?string  $email
@@ -203,11 +167,9 @@ class Organization
      * @param  ?string  $blog
      * @param  ?string  $location
      * @param  ?string  $twitterUsername
-     * @param  ?int  $defaultUpfrontSplitToContributors
-     * @param  ?OrganizationProfileSettings  $profileSettings
      * @phpstan-pure
      */
-    public function __construct(\DateTime $createdAt, string $id, string $name, string $slug, array $socials, OrganizationSubscriptionSettings $subscriptionSettings, int $pledgeMinimumAmount, bool $pledgeBadgeShowAmount, ?\DateTime $modifiedAt = null, ?string $avatarUrl = null, ?string $email = null, ?string $website = null, ?\DateTime $detailsSubmittedAt = null, ?OrganizationFeatureSettings $featureSettings = null, ?string $bio = null, ?string $company = null, ?string $blog = null, ?string $location = null, ?string $twitterUsername = null, ?int $defaultUpfrontSplitToContributors = null, ?OrganizationProfileSettings $profileSettings = null)
+    public function __construct(\DateTime $createdAt, string $id, string $name, string $slug, array $socials, OrganizationSubscriptionSettings $subscriptionSettings, ?\DateTime $modifiedAt = null, ?string $avatarUrl = null, ?string $email = null, ?string $website = null, ?\DateTime $detailsSubmittedAt = null, ?OrganizationFeatureSettings $featureSettings = null, ?string $bio = null, ?string $company = null, ?string $blog = null, ?string $location = null, ?string $twitterUsername = null)
     {
         $this->createdAt = $createdAt;
         $this->id = $id;
@@ -215,8 +177,6 @@ class Organization
         $this->slug = $slug;
         $this->socials = $socials;
         $this->subscriptionSettings = $subscriptionSettings;
-        $this->pledgeMinimumAmount = $pledgeMinimumAmount;
-        $this->pledgeBadgeShowAmount = $pledgeBadgeShowAmount;
         $this->modifiedAt = $modifiedAt;
         $this->avatarUrl = $avatarUrl;
         $this->email = $email;
@@ -228,7 +188,5 @@ class Organization
         $this->blog = $blog;
         $this->location = $location;
         $this->twitterUsername = $twitterUsername;
-        $this->defaultUpfrontSplitToContributors = $defaultUpfrontSplitToContributors;
-        $this->profileSettings = $profileSettings;
     }
 }

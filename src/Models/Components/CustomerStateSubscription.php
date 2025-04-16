@@ -94,6 +94,15 @@ class CustomerStateSubscription
     public string $priceId;
 
     /**
+     * List of meters associated with the subscription.
+     *
+     * @var array<CustomerStateSubscriptionMeter> $meters
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('meters')]
+    #[\Speakeasy\Serializer\Annotation\Type('array<\Polar\Models\Components\CustomerStateSubscriptionMeter>')]
+    public array $meters;
+
+    /**
      * Last modification timestamp of the object.
      *
      * @var ?\DateTime $modifiedAt
@@ -170,6 +179,7 @@ class CustomerStateSubscription
      * @param  bool  $cancelAtPeriodEnd
      * @param  string  $productId
      * @param  string  $priceId
+     * @param  array<CustomerStateSubscriptionMeter>  $meters
      * @param  ?\DateTime  $modifiedAt
      * @param  ?array<string, string|int|bool|\DateTime|null>  $customFieldData
      * @param  ?\DateTime  $currentPeriodEnd
@@ -179,7 +189,7 @@ class CustomerStateSubscription
      * @param  ?string  $discountId
      * @phpstan-pure
      */
-    public function __construct(string $id, \DateTime $createdAt, array $metadata, int $amount, string $currency, SubscriptionRecurringInterval $recurringInterval, \DateTime $currentPeriodStart, bool $cancelAtPeriodEnd, string $productId, string $priceId, ?\DateTime $modifiedAt = null, ?array $customFieldData = null, ?\DateTime $currentPeriodEnd = null, ?\DateTime $canceledAt = null, ?\DateTime $startedAt = null, ?\DateTime $endsAt = null, ?string $discountId = null, string $status = 'active')
+    public function __construct(string $id, \DateTime $createdAt, array $metadata, int $amount, string $currency, SubscriptionRecurringInterval $recurringInterval, \DateTime $currentPeriodStart, bool $cancelAtPeriodEnd, string $productId, string $priceId, array $meters, ?\DateTime $modifiedAt = null, ?array $customFieldData = null, ?\DateTime $currentPeriodEnd = null, ?\DateTime $canceledAt = null, ?\DateTime $startedAt = null, ?\DateTime $endsAt = null, ?string $discountId = null, string $status = 'active')
     {
         $this->id = $id;
         $this->createdAt = $createdAt;
@@ -191,6 +201,7 @@ class CustomerStateSubscription
         $this->cancelAtPeriodEnd = $cancelAtPeriodEnd;
         $this->productId = $productId;
         $this->priceId = $priceId;
+        $this->meters = $meters;
         $this->modifiedAt = $modifiedAt;
         $this->customFieldData = $customFieldData;
         $this->currentPeriodEnd = $currentPeriodEnd;

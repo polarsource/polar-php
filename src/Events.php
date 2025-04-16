@@ -293,6 +293,7 @@ class Events
 
                     return $sdk->listIndividual(
                         request: new Operations\EventsListRequest(
+                            filter: $request != null ? $request->filter : null,
                             startTimestamp: $request != null ? $request->startTimestamp : null,
                             endTimestamp: $request != null ? $request->endTimestamp : null,
                             organizationId: $request != null ? $request->organizationId : null,

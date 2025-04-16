@@ -302,7 +302,7 @@ declare(strict_types=1);
 require 'vendor/autoload.php';
 
 use Polar;
-use Polar\Models\Operations;
+use Polar\Models\Components;
 
 $sdk = Polar\Polar::builder()
     ->setSecurity(
@@ -310,14 +310,16 @@ $sdk = Polar\Polar::builder()
     )
     ->build();
 
-$request = new Operations\ExternalOrganizationsListRequest(
-    organizationId: [
-        '1dbfc517-0bbf-4301-9ba8-555ca42b9737',
-    ],
-);
 
-$responses = $sdk->externalOrganizations->list(
-    request: $request
+
+$responses = $sdk->organizations->list(
+    slug: '<value>',
+    page: 1,
+    limit: 10,
+    sorting: [
+        Components\OrganizationSortProperty::Name,
+    ]
+
 );
 
 
@@ -491,10 +493,6 @@ foreach ($responses as $response) {
 * [get](docs/sdks/events/README.md#get) - Get Event
 * [ingest](docs/sdks/events/README.md#ingest) - Ingest Events
 
-### [externalOrganizations](docs/sdks/externalorganizations/README.md)
-
-* [list](docs/sdks/externalorganizations/README.md#list) - List External Organizations
-
 ### [files](docs/sdks/files/README.md)
 
 * [list](docs/sdks/files/README.md#list) - List Files
@@ -566,12 +564,6 @@ foreach ($responses as $response) {
 * [list](docs/sdks/refunds/README.md#list) - List Refunds
 * [create](docs/sdks/refunds/README.md#create) - Create Refund
 
-### [repositories](docs/sdks/repositories/README.md)
-
-* [list](docs/sdks/repositories/README.md#list) - List Repositories
-* [get](docs/sdks/repositories/README.md#get) - Get Repository
-* [update](docs/sdks/repositories/README.md#update) - Update Repository
-
 ### [subscriptions](docs/sdks/subscriptions/README.md)
 
 * [list](docs/sdks/subscriptions/README.md#list) - List Subscriptions
@@ -596,7 +588,7 @@ declare(strict_types=1);
 require 'vendor/autoload.php';
 
 use Polar;
-use Polar\Models\Operations;
+use Polar\Models\Components;
 
 $sdk = Polar\Polar::builder()
     ->setSecurity(
@@ -604,14 +596,16 @@ $sdk = Polar\Polar::builder()
     )
     ->build();
 
-$request = new Operations\ExternalOrganizationsListRequest(
-    organizationId: [
-        '1dbfc517-0bbf-4301-9ba8-555ca42b9737',
-    ],
-);
 
-$responses = $sdk->externalOrganizations->list(
-    request: $request
+
+$responses = $sdk->organizations->list(
+    slug: '<value>',
+    page: 1,
+    limit: 10,
+    sorting: [
+        Components\OrganizationSortProperty::Name,
+    ]
+
 );
 
 
@@ -652,8 +646,8 @@ declare(strict_types=1);
 require 'vendor/autoload.php';
 
 use Polar;
+use Polar\Models\Components;
 use Polar\Models\Errors;
-use Polar\Models\Operations;
 
 $sdk = Polar\Polar::builder()
     ->setSecurity(
@@ -662,14 +656,14 @@ $sdk = Polar\Polar::builder()
     ->build();
 
 try {
-    $request = new Operations\ExternalOrganizationsListRequest(
-        organizationId: [
-            '1dbfc517-0bbf-4301-9ba8-555ca42b9737',
-        ],
-    );
+    $responses = $sdk->organizations->list(
+        slug: '<value>',
+        page: 1,
+        limit: 10,
+        sorting: [
+            Components\OrganizationSortProperty::Name,
+        ]
 
-    $responses = $sdk->externalOrganizations->list(
-        request: $request
     );
 
     foreach ($responses as $response) {
@@ -707,7 +701,7 @@ declare(strict_types=1);
 require 'vendor/autoload.php';
 
 use Polar;
-use Polar\Models\Operations;
+use Polar\Models\Components;
 
 $sdk = Polar\Polar::builder()
     ->setServer('sandbox')
@@ -716,14 +710,16 @@ $sdk = Polar\Polar::builder()
     )
     ->build();
 
-$request = new Operations\ExternalOrganizationsListRequest(
-    organizationId: [
-        '1dbfc517-0bbf-4301-9ba8-555ca42b9737',
-    ],
-);
 
-$responses = $sdk->externalOrganizations->list(
-    request: $request
+
+$responses = $sdk->organizations->list(
+    slug: '<value>',
+    page: 1,
+    limit: 10,
+    sorting: [
+        Components\OrganizationSortProperty::Name,
+    ]
+
 );
 
 
@@ -743,7 +739,7 @@ declare(strict_types=1);
 require 'vendor/autoload.php';
 
 use Polar;
-use Polar\Models\Operations;
+use Polar\Models\Components;
 
 $sdk = Polar\Polar::builder()
     ->setServerURL('https://api.polar.sh')
@@ -752,14 +748,16 @@ $sdk = Polar\Polar::builder()
     )
     ->build();
 
-$request = new Operations\ExternalOrganizationsListRequest(
-    organizationId: [
-        '1dbfc517-0bbf-4301-9ba8-555ca42b9737',
-    ],
-);
 
-$responses = $sdk->externalOrganizations->list(
-    request: $request
+
+$responses = $sdk->organizations->list(
+    slug: '<value>',
+    page: 1,
+    limit: 10,
+    sorting: [
+        Components\OrganizationSortProperty::Name,
+    ]
+
 );
 
 

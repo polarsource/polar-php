@@ -30,10 +30,6 @@ class Polar
         Polar::SERVER_SANDBOX => 'https://sandbox-api.polar.sh',
     ];
 
-    public ExternalOrganizations $externalOrganizations;
-
-    public Repositories $repositories;
-
     public Organizations $organizations;
 
     public Subscriptions $subscriptions;
@@ -90,8 +86,6 @@ class Polar
     public function __construct(
         public SDKConfiguration $sdkConfiguration,
     ) {
-        $this->externalOrganizations = new ExternalOrganizations($this->sdkConfiguration);
-        $this->repositories = new Repositories($this->sdkConfiguration);
         $this->organizations = new Organizations($this->sdkConfiguration);
         $this->subscriptions = new Subscriptions($this->sdkConfiguration);
         $this->oauth2 = new Oauth2($this->sdkConfiguration);

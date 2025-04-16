@@ -160,6 +160,15 @@ class Subscription
     public array $prices;
 
     /**
+     * List of meters associated with the subscription.
+     *
+     * @var array<SubscriptionMeter> $meters
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('meters')]
+    #[\Speakeasy\Serializer\Annotation\Type('array<\Polar\Models\Components\SubscriptionMeter>')]
+    public array $meters;
+
+    /**
      * Last modification timestamp of the object.
      *
      * @var ?\DateTime $modifiedAt
@@ -274,6 +283,7 @@ class Subscription
      * @param  Product  $product
      * @param  LegacyRecurringProductPriceFixed|LegacyRecurringProductPriceCustom|LegacyRecurringProductPriceFree|ProductPriceFixed|ProductPriceCustom|ProductPriceFree|ProductPriceMeteredUnit  $price
      * @param  array<LegacyRecurringProductPriceFixed|LegacyRecurringProductPriceCustom|LegacyRecurringProductPriceFree|ProductPriceFixed|ProductPriceCustom|ProductPriceFree|ProductPriceMeteredUnit>  $prices
+     * @param  array<SubscriptionMeter>  $meters
      * @param  ?\DateTime  $modifiedAt
      * @param  ?\DateTime  $currentPeriodEnd
      * @param  ?\DateTime  $canceledAt
@@ -288,7 +298,7 @@ class Subscription
      * @param  DiscountFixedOnceForeverDurationBase|DiscountFixedRepeatDurationBase|DiscountPercentageOnceForeverDurationBase|DiscountPercentageRepeatDurationBase|null  $discount
      * @phpstan-pure
      */
-    public function __construct(\DateTime $createdAt, string $id, int $amount, string $currency, SubscriptionRecurringInterval $recurringInterval, SubscriptionStatus $status, \DateTime $currentPeriodStart, bool $cancelAtPeriodEnd, string $customerId, string $productId, string $priceId, array $metadata, SubscriptionCustomer $customer, string $userId, SubscriptionUser $user, Product $product, LegacyRecurringProductPriceFixed|LegacyRecurringProductPriceCustom|LegacyRecurringProductPriceFree|ProductPriceFixed|ProductPriceCustom|ProductPriceFree|ProductPriceMeteredUnit $price, array $prices, ?\DateTime $modifiedAt = null, ?\DateTime $currentPeriodEnd = null, ?\DateTime $canceledAt = null, ?\DateTime $startedAt = null, ?\DateTime $endsAt = null, ?\DateTime $endedAt = null, ?string $discountId = null, ?string $checkoutId = null, ?CustomerCancellationReason $customerCancellationReason = null, ?string $customerCancellationComment = null, ?array $customFieldData = null, DiscountFixedOnceForeverDurationBase|DiscountFixedRepeatDurationBase|DiscountPercentageOnceForeverDurationBase|DiscountPercentageRepeatDurationBase|null $discount = null)
+    public function __construct(\DateTime $createdAt, string $id, int $amount, string $currency, SubscriptionRecurringInterval $recurringInterval, SubscriptionStatus $status, \DateTime $currentPeriodStart, bool $cancelAtPeriodEnd, string $customerId, string $productId, string $priceId, array $metadata, SubscriptionCustomer $customer, string $userId, SubscriptionUser $user, Product $product, LegacyRecurringProductPriceFixed|LegacyRecurringProductPriceCustom|LegacyRecurringProductPriceFree|ProductPriceFixed|ProductPriceCustom|ProductPriceFree|ProductPriceMeteredUnit $price, array $prices, array $meters, ?\DateTime $modifiedAt = null, ?\DateTime $currentPeriodEnd = null, ?\DateTime $canceledAt = null, ?\DateTime $startedAt = null, ?\DateTime $endsAt = null, ?\DateTime $endedAt = null, ?string $discountId = null, ?string $checkoutId = null, ?CustomerCancellationReason $customerCancellationReason = null, ?string $customerCancellationComment = null, ?array $customFieldData = null, DiscountFixedOnceForeverDurationBase|DiscountFixedRepeatDurationBase|DiscountPercentageOnceForeverDurationBase|DiscountPercentageRepeatDurationBase|null $discount = null)
     {
         $this->createdAt = $createdAt;
         $this->id = $id;
@@ -308,6 +318,7 @@ class Subscription
         $this->product = $product;
         $this->price = $price;
         $this->prices = $prices;
+        $this->meters = $meters;
         $this->modifiedAt = $modifiedAt;
         $this->currentPeriodEnd = $currentPeriodEnd;
         $this->canceledAt = $canceledAt;
