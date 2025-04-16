@@ -20,6 +20,14 @@ class EventName
     public string $name;
 
     /**
+     *
+     * @var EventSource $source
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('source')]
+    #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\EventSource')]
+    public EventSource $source;
+
+    /**
      * Number of times the event has occurred.
      *
      * @var int $occurrences
@@ -45,14 +53,16 @@ class EventName
 
     /**
      * @param  string  $name
+     * @param  EventSource  $source
      * @param  int  $occurrences
      * @param  \DateTime  $firstSeen
      * @param  \DateTime  $lastSeen
      * @phpstan-pure
      */
-    public function __construct(string $name, int $occurrences, \DateTime $firstSeen, \DateTime $lastSeen)
+    public function __construct(string $name, EventSource $source, int $occurrences, \DateTime $firstSeen, \DateTime $lastSeen)
     {
         $this->name = $name;
+        $this->source = $source;
         $this->occurrences = $occurrences;
         $this->firstSeen = $firstSeen;
         $this->lastSeen = $lastSeen;

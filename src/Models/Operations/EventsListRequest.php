@@ -13,6 +13,14 @@ use Polar\Utils\SpeakeasyMetadata;
 class EventsListRequest
 {
     /**
+     * Filter events following filter clauses. JSON string following the same schema a meter filter clause. 
+     *
+     * @var ?string $filter
+     */
+    #[SpeakeasyMetadata('queryParam:style=form,explode=true,name=filter')]
+    public ?string $filter = null;
+
+    /**
      * Filter events after this timestamp.
      *
      * @var ?\DateTime $startTimestamp
@@ -111,6 +119,7 @@ class EventsListRequest
     /**
      * @param  ?int  $page
      * @param  ?int  $limit
+     * @param  ?string  $filter
      * @param  ?\DateTime  $startTimestamp
      * @param  ?\DateTime  $endTimestamp
      * @param  string|array<string>|null  $organizationId
@@ -123,8 +132,9 @@ class EventsListRequest
      * @param  ?array<string, string|int|bool|array<string>|array<int>|array<bool>>  $metadata
      * @phpstan-pure
      */
-    public function __construct(?\DateTime $startTimestamp = null, ?\DateTime $endTimestamp = null, string|array|null $organizationId = null, string|array|null $customerId = null, string|array|null $externalCustomerId = null, ?string $meterId = null, string|array|null $name = null, Components\EventSource|array|null $source = null, ?array $sorting = null, ?array $metadata = null, ?int $page = 1, ?int $limit = 10)
+    public function __construct(?string $filter = null, ?\DateTime $startTimestamp = null, ?\DateTime $endTimestamp = null, string|array|null $organizationId = null, string|array|null $customerId = null, string|array|null $externalCustomerId = null, ?string $meterId = null, string|array|null $name = null, Components\EventSource|array|null $source = null, ?array $sorting = null, ?array $metadata = null, ?int $page = 1, ?int $limit = 10)
     {
+        $this->filter = $filter;
         $this->startTimestamp = $startTimestamp;
         $this->endTimestamp = $endTimestamp;
         $this->organizationId = $organizationId;

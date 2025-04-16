@@ -1,9 +1,0 @@
-# Funding
-
-
-## Fields
-
-| Field                                                                                                               | Type                                                                                                                | Required                                                                                                            | Description                                                                                                         |
-| ------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------- |
-| `fundingGoal`                                                                                                       | [?Components\CurrencyAmount](../../Models/Components/CurrencyAmount.md)                                             | :heavy_minus_sign:                                                                                                  | N/A                                                                                                                 |
-| `pledgesSum`                                                                                                        | [?Components\CurrencyAmount](../../Models/Components/CurrencyAmount.md)                                             | :heavy_minus_sign:                                                                                                  | Sum of pledges to this isuse (including currently open pledges and pledges that have been paid out). Always in USD. |

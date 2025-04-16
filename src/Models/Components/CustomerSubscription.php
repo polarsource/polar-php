@@ -134,6 +134,15 @@ class CustomerSubscription
     public array $prices;
 
     /**
+     * List of meters associated with the subscription.
+     *
+     * @var array<CustomerSubscriptionMeter> $meters
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('meters')]
+    #[\Speakeasy\Serializer\Annotation\Type('array<\Polar\Models\Components\CustomerSubscriptionMeter>')]
+    public array $meters;
+
+    /**
      * Last modification timestamp of the object.
      *
      * @var ?\DateTime $modifiedAt
@@ -227,6 +236,7 @@ class CustomerSubscription
      * @param  CustomerSubscriptionProduct  $product
      * @param  LegacyRecurringProductPriceFixed|LegacyRecurringProductPriceCustom|LegacyRecurringProductPriceFree|ProductPriceFixed|ProductPriceCustom|ProductPriceFree|ProductPriceMeteredUnit  $price
      * @param  array<LegacyRecurringProductPriceFixed|LegacyRecurringProductPriceCustom|LegacyRecurringProductPriceFree|ProductPriceFixed|ProductPriceCustom|ProductPriceFree|ProductPriceMeteredUnit>  $prices
+     * @param  array<CustomerSubscriptionMeter>  $meters
      * @param  ?\DateTime  $modifiedAt
      * @param  ?\DateTime  $currentPeriodEnd
      * @param  ?\DateTime  $canceledAt
@@ -239,7 +249,7 @@ class CustomerSubscription
      * @param  ?string  $customerCancellationComment
      * @phpstan-pure
      */
-    public function __construct(\DateTime $createdAt, string $id, int $amount, string $currency, SubscriptionRecurringInterval $recurringInterval, SubscriptionStatus $status, \DateTime $currentPeriodStart, bool $cancelAtPeriodEnd, string $customerId, string $productId, string $priceId, string $userId, CustomerSubscriptionProduct $product, LegacyRecurringProductPriceFixed|LegacyRecurringProductPriceCustom|LegacyRecurringProductPriceFree|ProductPriceFixed|ProductPriceCustom|ProductPriceFree|ProductPriceMeteredUnit $price, array $prices, ?\DateTime $modifiedAt = null, ?\DateTime $currentPeriodEnd = null, ?\DateTime $canceledAt = null, ?\DateTime $startedAt = null, ?\DateTime $endsAt = null, ?\DateTime $endedAt = null, ?string $discountId = null, ?string $checkoutId = null, ?CustomerCancellationReason $customerCancellationReason = null, ?string $customerCancellationComment = null)
+    public function __construct(\DateTime $createdAt, string $id, int $amount, string $currency, SubscriptionRecurringInterval $recurringInterval, SubscriptionStatus $status, \DateTime $currentPeriodStart, bool $cancelAtPeriodEnd, string $customerId, string $productId, string $priceId, string $userId, CustomerSubscriptionProduct $product, LegacyRecurringProductPriceFixed|LegacyRecurringProductPriceCustom|LegacyRecurringProductPriceFree|ProductPriceFixed|ProductPriceCustom|ProductPriceFree|ProductPriceMeteredUnit $price, array $prices, array $meters, ?\DateTime $modifiedAt = null, ?\DateTime $currentPeriodEnd = null, ?\DateTime $canceledAt = null, ?\DateTime $startedAt = null, ?\DateTime $endsAt = null, ?\DateTime $endedAt = null, ?string $discountId = null, ?string $checkoutId = null, ?CustomerCancellationReason $customerCancellationReason = null, ?string $customerCancellationComment = null)
     {
         $this->createdAt = $createdAt;
         $this->id = $id;
@@ -256,6 +266,7 @@ class CustomerSubscription
         $this->product = $product;
         $this->price = $price;
         $this->prices = $prices;
+        $this->meters = $meters;
         $this->modifiedAt = $modifiedAt;
         $this->currentPeriodEnd = $currentPeriodEnd;
         $this->canceledAt = $canceledAt;
