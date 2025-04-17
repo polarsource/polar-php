@@ -71,10 +71,10 @@ class CustomerSubscriptionProduct
     /**
      * List of benefits granted by the product.
      *
-     * @var array<BenefitBase> $benefits
+     * @var array<BenefitPublic> $benefits
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('benefits')]
-    #[\Speakeasy\Serializer\Annotation\Type('array<\Polar\Models\Components\BenefitBase>')]
+    #[\Speakeasy\Serializer\Annotation\Type('array<\Polar\Models\Components\BenefitPublic>')]
     public array $benefits;
 
     /**
@@ -127,7 +127,7 @@ class CustomerSubscriptionProduct
      * @param  bool  $isArchived
      * @param  string  $organizationId
      * @param  array<LegacyRecurringProductPriceFixed|LegacyRecurringProductPriceCustom|LegacyRecurringProductPriceFree|ProductPriceFixed|ProductPriceCustom|ProductPriceFree|ProductPriceMeteredUnit>  $prices
-     * @param  array<BenefitBase>  $benefits
+     * @param  array<BenefitPublic>  $benefits
      * @param  array<ProductMediaFileRead>  $medias
      * @param  Organization  $organization
      * @param  ?\DateTime  $modifiedAt

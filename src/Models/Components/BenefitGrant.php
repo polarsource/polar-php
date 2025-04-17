@@ -52,14 +52,6 @@ class BenefitGrant
     public string $customerId;
 
     /**
-     *
-     * @var string $userId
-     * @deprecated  field: This will be removed in a future release, please migrate away from it as soon as possible.
-     */
-    #[\Speakeasy\Serializer\Annotation\SerializedName('user_id')]
-    public string $userId;
-
-    /**
      * The ID of the benefit concerned by this grant.
      *
      * @var string $benefitId
@@ -132,7 +124,6 @@ class BenefitGrant
      * @param  bool  $isGranted
      * @param  bool  $isRevoked
      * @param  string  $customerId
-     * @param  string  $userId
      * @param  string  $benefitId
      * @param  Customer  $customer
      * @param  BenefitGrantDiscordProperties|BenefitGrantGitHubRepositoryProperties|BenefitGrantDownloadablesProperties|BenefitGrantLicenseKeysProperties|BenefitGrantCustomProperties  $properties
@@ -143,14 +134,13 @@ class BenefitGrant
      * @param  ?\DateTime  $revokedAt
      * @phpstan-pure
      */
-    public function __construct(\DateTime $createdAt, string $id, bool $isGranted, bool $isRevoked, string $customerId, string $userId, string $benefitId, Customer $customer, BenefitGrantDiscordProperties|BenefitGrantGitHubRepositoryProperties|BenefitGrantDownloadablesProperties|BenefitGrantLicenseKeysProperties|BenefitGrantCustomProperties $properties, ?\DateTime $modifiedAt = null, ?string $subscriptionId = null, ?string $orderId = null, ?\DateTime $grantedAt = null, ?\DateTime $revokedAt = null)
+    public function __construct(\DateTime $createdAt, string $id, bool $isGranted, bool $isRevoked, string $customerId, string $benefitId, Customer $customer, BenefitGrantDiscordProperties|BenefitGrantGitHubRepositoryProperties|BenefitGrantDownloadablesProperties|BenefitGrantLicenseKeysProperties|BenefitGrantCustomProperties $properties, ?\DateTime $modifiedAt = null, ?string $subscriptionId = null, ?string $orderId = null, ?\DateTime $grantedAt = null, ?\DateTime $revokedAt = null)
     {
         $this->createdAt = $createdAt;
         $this->id = $id;
         $this->isGranted = $isGranted;
         $this->isRevoked = $isRevoked;
         $this->customerId = $customerId;
-        $this->userId = $userId;
         $this->benefitId = $benefitId;
         $this->customer = $customer;
         $this->properties = $properties;

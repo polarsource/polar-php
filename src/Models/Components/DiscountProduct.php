@@ -13,6 +13,15 @@ namespace Polar\Models\Components;
 class DiscountProduct
 {
     /**
+     * $metadata
+     *
+     * @var array<string, string|int|float|bool> $metadata
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('metadata')]
+    #[\Speakeasy\Serializer\Annotation\Type('array<string, string|int|float|bool>')]
+    public array $metadata;
+
+    /**
      * Creation timestamp of the object.
      *
      * @var \DateTime $createdAt
@@ -86,6 +95,7 @@ class DiscountProduct
     public ?SubscriptionRecurringInterval $recurringInterval;
 
     /**
+     * @param  array<string, string|int|float|bool>  $metadata
      * @param  \DateTime  $createdAt
      * @param  string  $id
      * @param  string  $name
@@ -97,8 +107,9 @@ class DiscountProduct
      * @param  ?SubscriptionRecurringInterval  $recurringInterval
      * @phpstan-pure
      */
-    public function __construct(\DateTime $createdAt, string $id, string $name, bool $isRecurring, bool $isArchived, string $organizationId, ?\DateTime $modifiedAt = null, ?string $description = null, ?SubscriptionRecurringInterval $recurringInterval = null)
+    public function __construct(array $metadata, \DateTime $createdAt, string $id, string $name, bool $isRecurring, bool $isArchived, string $organizationId, ?\DateTime $modifiedAt = null, ?string $description = null, ?SubscriptionRecurringInterval $recurringInterval = null)
     {
+        $this->metadata = $metadata;
         $this->createdAt = $createdAt;
         $this->id = $id;
         $this->name = $name;

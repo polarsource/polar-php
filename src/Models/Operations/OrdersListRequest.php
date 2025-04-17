@@ -37,14 +37,6 @@ class OrdersListRequest
     public Components\ProductBillingType|array|null $productBillingType = null;
 
     /**
-     *
-     * @var Components\ProductPriceType|array<Components\ProductPriceType>|null $productPriceType
-     * @deprecated  field: This will be removed in a future release, please migrate away from it as soon as possible.
-     */
-    #[SpeakeasyMetadata('queryParam:style=form,explode=true,name=product_price_type')]
-    public Components\ProductPriceType|array|null $productPriceType = null;
-
-    /**
      * Filter by discount ID.
      *
      * @var string|array<string>|null $discountId
@@ -98,19 +90,17 @@ class OrdersListRequest
      * @param  string|array<string>|null  $organizationId
      * @param  string|array<string>|null  $productId
      * @param  Components\ProductBillingType|array<Components\ProductBillingType>|null  $productBillingType
-     * @param  Components\ProductPriceType|array<Components\ProductPriceType>|null  $productPriceType
      * @param  string|array<string>|null  $discountId
      * @param  string|array<string>|null  $customerId
      * @param  string|array<string>|null  $checkoutId
      * @param  ?array<Components\OrderSortProperty>  $sorting
      * @phpstan-pure
      */
-    public function __construct(string|array|null $organizationId = null, string|array|null $productId = null, Components\ProductBillingType|array|null $productBillingType = null, Components\ProductPriceType|array|null $productPriceType = null, string|array|null $discountId = null, string|array|null $customerId = null, string|array|null $checkoutId = null, ?array $sorting = null, ?int $page = 1, ?int $limit = 10)
+    public function __construct(string|array|null $organizationId = null, string|array|null $productId = null, Components\ProductBillingType|array|null $productBillingType = null, string|array|null $discountId = null, string|array|null $customerId = null, string|array|null $checkoutId = null, ?array $sorting = null, ?int $page = 1, ?int $limit = 10)
     {
         $this->organizationId = $organizationId;
         $this->productId = $productId;
         $this->productBillingType = $productBillingType;
-        $this->productPriceType = $productPriceType;
         $this->discountId = $discountId;
         $this->customerId = $customerId;
         $this->checkoutId = $checkoutId;

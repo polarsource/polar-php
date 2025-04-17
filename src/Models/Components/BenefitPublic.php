@@ -9,7 +9,7 @@ declare(strict_types=1);
 namespace Polar\Models\Components;
 
 
-class BenefitBase
+class BenefitPublic
 {
     /**
      * The ID of the benefit.
@@ -26,15 +26,6 @@ class BenefitBase
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('created_at')]
     public \DateTime $createdAt;
-
-    /**
-     * $metadata
-     *
-     * @var array<string, string|int|float|bool> $metadata
-     */
-    #[\Speakeasy\Serializer\Annotation\SerializedName('metadata')]
-    #[\Speakeasy\Serializer\Annotation\Type('array<string, string|int|float|bool>')]
-    public array $metadata;
 
     /**
      *
@@ -87,7 +78,6 @@ class BenefitBase
     /**
      * @param  string  $id
      * @param  \DateTime  $createdAt
-     * @param  array<string, string|int|float|bool>  $metadata
      * @param  BenefitType  $type
      * @param  string  $description
      * @param  bool  $selectable
@@ -96,11 +86,10 @@ class BenefitBase
      * @param  ?\DateTime  $modifiedAt
      * @phpstan-pure
      */
-    public function __construct(string $id, \DateTime $createdAt, array $metadata, BenefitType $type, string $description, bool $selectable, bool $deletable, string $organizationId, ?\DateTime $modifiedAt = null)
+    public function __construct(string $id, \DateTime $createdAt, BenefitType $type, string $description, bool $selectable, bool $deletable, string $organizationId, ?\DateTime $modifiedAt = null)
     {
         $this->id = $id;
         $this->createdAt = $createdAt;
-        $this->metadata = $metadata;
         $this->type = $type;
         $this->description = $description;
         $this->selectable = $selectable;

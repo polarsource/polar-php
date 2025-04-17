@@ -13,6 +13,15 @@ namespace Polar\Models\Components;
 class CheckoutLinkProduct
 {
     /**
+     * $metadata
+     *
+     * @var array<string, string|int|float|bool> $metadata
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('metadata')]
+    #[\Speakeasy\Serializer\Annotation\Type('array<string, string|int|float|bool>')]
+    public array $metadata;
+
+    /**
      * Creation timestamp of the object.
      *
      * @var \DateTime $createdAt
@@ -72,10 +81,10 @@ class CheckoutLinkProduct
     /**
      * List of benefits granted by the product.
      *
-     * @var array<BenefitBase> $benefits
+     * @var array<BenefitPublic> $benefits
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('benefits')]
-    #[\Speakeasy\Serializer\Annotation\Type('array<\Polar\Models\Components\BenefitBase>')]
+    #[\Speakeasy\Serializer\Annotation\Type('array<\Polar\Models\Components\BenefitPublic>')]
     public array $benefits;
 
     /**
@@ -113,6 +122,7 @@ class CheckoutLinkProduct
     public ?SubscriptionRecurringInterval $recurringInterval;
 
     /**
+     * @param  array<string, string|int|float|bool>  $metadata
      * @param  \DateTime  $createdAt
      * @param  string  $id
      * @param  string  $name
@@ -120,15 +130,16 @@ class CheckoutLinkProduct
      * @param  bool  $isArchived
      * @param  string  $organizationId
      * @param  array<LegacyRecurringProductPriceFixed|LegacyRecurringProductPriceCustom|LegacyRecurringProductPriceFree|ProductPriceFixed|ProductPriceCustom|ProductPriceFree|ProductPriceMeteredUnit>  $prices
-     * @param  array<BenefitBase>  $benefits
+     * @param  array<BenefitPublic>  $benefits
      * @param  array<ProductMediaFileRead>  $medias
      * @param  ?\DateTime  $modifiedAt
      * @param  ?string  $description
      * @param  ?SubscriptionRecurringInterval  $recurringInterval
      * @phpstan-pure
      */
-    public function __construct(\DateTime $createdAt, string $id, string $name, bool $isRecurring, bool $isArchived, string $organizationId, array $prices, array $benefits, array $medias, ?\DateTime $modifiedAt = null, ?string $description = null, ?SubscriptionRecurringInterval $recurringInterval = null)
+    public function __construct(array $metadata, \DateTime $createdAt, string $id, string $name, bool $isRecurring, bool $isArchived, string $organizationId, array $prices, array $benefits, array $medias, ?\DateTime $modifiedAt = null, ?string $description = null, ?SubscriptionRecurringInterval $recurringInterval = null)
     {
+        $this->metadata = $metadata;
         $this->createdAt = $createdAt;
         $this->id = $id;
         $this->name = $name;

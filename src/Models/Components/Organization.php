@@ -110,46 +110,6 @@ class Organization
     public ?OrganizationFeatureSettings $featureSettings;
 
     /**
-     *
-     * @var ?string $bio
-     * @deprecated  field: This will be removed in a future release, please migrate away from it as soon as possible.
-     */
-    #[\Speakeasy\Serializer\Annotation\SerializedName('bio')]
-    public ?string $bio;
-
-    /**
-     *
-     * @var ?string $company
-     * @deprecated  field: This will be removed in a future release, please migrate away from it as soon as possible.
-     */
-    #[\Speakeasy\Serializer\Annotation\SerializedName('company')]
-    public ?string $company;
-
-    /**
-     *
-     * @var ?string $blog
-     * @deprecated  field: This will be removed in a future release, please migrate away from it as soon as possible.
-     */
-    #[\Speakeasy\Serializer\Annotation\SerializedName('blog')]
-    public ?string $blog;
-
-    /**
-     *
-     * @var ?string $location
-     * @deprecated  field: This will be removed in a future release, please migrate away from it as soon as possible.
-     */
-    #[\Speakeasy\Serializer\Annotation\SerializedName('location')]
-    public ?string $location;
-
-    /**
-     *
-     * @var ?string $twitterUsername
-     * @deprecated  field: This will be removed in a future release, please migrate away from it as soon as possible.
-     */
-    #[\Speakeasy\Serializer\Annotation\SerializedName('twitter_username')]
-    public ?string $twitterUsername;
-
-    /**
      * @param  \DateTime  $createdAt
      * @param  string  $id
      * @param  string  $name
@@ -162,14 +122,9 @@ class Organization
      * @param  ?string  $website
      * @param  ?\DateTime  $detailsSubmittedAt
      * @param  ?OrganizationFeatureSettings  $featureSettings
-     * @param  ?string  $bio
-     * @param  ?string  $company
-     * @param  ?string  $blog
-     * @param  ?string  $location
-     * @param  ?string  $twitterUsername
      * @phpstan-pure
      */
-    public function __construct(\DateTime $createdAt, string $id, string $name, string $slug, array $socials, OrganizationSubscriptionSettings $subscriptionSettings, ?\DateTime $modifiedAt = null, ?string $avatarUrl = null, ?string $email = null, ?string $website = null, ?\DateTime $detailsSubmittedAt = null, ?OrganizationFeatureSettings $featureSettings = null, ?string $bio = null, ?string $company = null, ?string $blog = null, ?string $location = null, ?string $twitterUsername = null)
+    public function __construct(\DateTime $createdAt, string $id, string $name, string $slug, array $socials, OrganizationSubscriptionSettings $subscriptionSettings, ?\DateTime $modifiedAt = null, ?string $avatarUrl = null, ?string $email = null, ?string $website = null, ?\DateTime $detailsSubmittedAt = null, ?OrganizationFeatureSettings $featureSettings = null)
     {
         $this->createdAt = $createdAt;
         $this->id = $id;
@@ -183,10 +138,5 @@ class Organization
         $this->website = $website;
         $this->detailsSubmittedAt = $detailsSubmittedAt;
         $this->featureSettings = $featureSettings;
-        $this->bio = $bio;
-        $this->company = $company;
-        $this->blog = $blog;
-        $this->location = $location;
-        $this->twitterUsername = $twitterUsername;
     }
 }

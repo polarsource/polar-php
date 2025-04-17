@@ -89,11 +89,13 @@ $sdk = Polar\Polar::builder()
     )
     ->build();
 
-$request = new Components\CheckoutProductCreate(
+$request = new Components\CheckoutCreate(
     customerBillingAddress: new Components\Address(
         country: 'SE',
     ),
-    productId: '<value>',
+    products: [
+        '<value>',
+    ],
 );
 
 $response = $sdk->checkouts->create(
@@ -107,9 +109,9 @@ if ($response->checkout !== null) {
 
 ### Parameters
 
-| Parameter                                                                                                                                      | Type                                                                                                                                           | Required                                                                                                                                       | Description                                                                                                                                    |
-| ---------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------- |
-| `$request`                                                                                                                                     | [Components\CheckoutProductsCreate\|Components\CheckoutProductCreate\|Components\CheckoutPriceCreate](../../Models/Components/CheckoutCreate.md) | :heavy_check_mark:                                                                                                                             | The request object to use for the request.                                                                                                     |
+| Parameter                                                              | Type                                                                   | Required                                                               | Description                                                            |
+| ---------------------------------------------------------------------- | ---------------------------------------------------------------------- | ---------------------------------------------------------------------- | ---------------------------------------------------------------------- |
+| `$request`                                                             | [Components\CheckoutCreate](../../Models/Components/CheckoutCreate.md) | :heavy_check_mark:                                                     | The request object to use for the request.                             |
 
 ### Response
 

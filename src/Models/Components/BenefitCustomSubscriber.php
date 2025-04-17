@@ -28,15 +28,6 @@ class BenefitCustomSubscriber
     public \DateTime $createdAt;
 
     /**
-     * $metadata
-     *
-     * @var array<string, string|int|float|bool> $metadata
-     */
-    #[\Speakeasy\Serializer\Annotation\SerializedName('metadata')]
-    #[\Speakeasy\Serializer\Annotation\Type('array<string, string|int|float|bool>')]
-    public array $metadata;
-
-    /**
      * The description of the benefit.
      *
      * @var string $description
@@ -67,6 +58,15 @@ class BenefitCustomSubscriber
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('organization_id')]
     public string $organizationId;
+
+    /**
+     * $metadata
+     *
+     * @var array<string, string|int|float|bool> $metadata
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('metadata')]
+    #[\Speakeasy\Serializer\Annotation\Type('array<string, string|int|float|bool>')]
+    public array $metadata;
 
     /**
      *
@@ -103,26 +103,26 @@ class BenefitCustomSubscriber
     /**
      * @param  string  $id
      * @param  \DateTime  $createdAt
-     * @param  array<string, string|int|float|bool>  $metadata
      * @param  string  $type
      * @param  string  $description
      * @param  bool  $selectable
      * @param  bool  $deletable
      * @param  string  $organizationId
+     * @param  array<string, string|int|float|bool>  $metadata
      * @param  Organization  $organization
      * @param  BenefitCustomSubscriberProperties  $properties
      * @param  ?\DateTime  $modifiedAt
      * @phpstan-pure
      */
-    public function __construct(string $id, \DateTime $createdAt, array $metadata, string $description, bool $selectable, bool $deletable, string $organizationId, Organization $organization, BenefitCustomSubscriberProperties $properties, ?\DateTime $modifiedAt = null, string $type = 'custom')
+    public function __construct(string $id, \DateTime $createdAt, string $description, bool $selectable, bool $deletable, string $organizationId, array $metadata, Organization $organization, BenefitCustomSubscriberProperties $properties, ?\DateTime $modifiedAt = null, string $type = 'custom')
     {
         $this->id = $id;
         $this->createdAt = $createdAt;
-        $this->metadata = $metadata;
         $this->description = $description;
         $this->selectable = $selectable;
         $this->deletable = $deletable;
         $this->organizationId = $organizationId;
+        $this->metadata = $metadata;
         $this->organization = $organization;
         $this->properties = $properties;
         $this->modifiedAt = $modifiedAt;

@@ -37,14 +37,6 @@ class CustomerPortalOrdersListRequest
     public Components\ProductBillingType|array|null $productBillingType = null;
 
     /**
-     *
-     * @var Components\ProductPriceType|array<Components\ProductPriceType>|null $productPriceType
-     * @deprecated  field: This will be removed in a future release, please migrate away from it as soon as possible.
-     */
-    #[SpeakeasyMetadata('queryParam:style=form,explode=true,name=product_price_type')]
-    public Components\ProductPriceType|array|null $productPriceType = null;
-
-    /**
      * Filter by subscription ID.
      *
      * @var string|array<string>|null $subscriptionId
@@ -90,18 +82,16 @@ class CustomerPortalOrdersListRequest
      * @param  string|array<string>|null  $organizationId
      * @param  string|array<string>|null  $productId
      * @param  Components\ProductBillingType|array<Components\ProductBillingType>|null  $productBillingType
-     * @param  Components\ProductPriceType|array<Components\ProductPriceType>|null  $productPriceType
      * @param  string|array<string>|null  $subscriptionId
      * @param  ?string  $query
      * @param  ?array<Components\CustomerOrderSortProperty>  $sorting
      * @phpstan-pure
      */
-    public function __construct(string|array|null $organizationId = null, string|array|null $productId = null, Components\ProductBillingType|array|null $productBillingType = null, Components\ProductPriceType|array|null $productPriceType = null, string|array|null $subscriptionId = null, ?string $query = null, ?array $sorting = null, ?int $page = 1, ?int $limit = 10)
+    public function __construct(string|array|null $organizationId = null, string|array|null $productId = null, Components\ProductBillingType|array|null $productBillingType = null, string|array|null $subscriptionId = null, ?string $query = null, ?array $sorting = null, ?int $page = 1, ?int $limit = 10)
     {
         $this->organizationId = $organizationId;
         $this->productId = $productId;
         $this->productBillingType = $productBillingType;
-        $this->productPriceType = $productPriceType;
         $this->subscriptionId = $subscriptionId;
         $this->query = $query;
         $this->sorting = $sorting;
