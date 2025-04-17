@@ -325,7 +325,6 @@ class PolarOrders
                             organizationId: $request != null ? $request->organizationId : null,
                             productId: $request != null ? $request->productId : null,
                             productBillingType: $request != null ? $request->productBillingType : null,
-                            productPriceType: $request != null ? $request->productPriceType : null,
                             subscriptionId: $request != null ? $request->subscriptionId : null,
                             query: $request != null ? $request->query : null,
                             page: $nextPage,

@@ -148,14 +148,6 @@ class Order
 
     /**
      *
-     * @var string $productPriceId
-     * @deprecated  field: This will be removed in a future release, please migrate away from it as soon as possible.
-     */
-    #[\Speakeasy\Serializer\Annotation\SerializedName('product_price_id')]
-    public string $productPriceId;
-
-    /**
-     *
      * @var OrderCustomer $customer
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('customer')]
@@ -172,28 +164,11 @@ class Order
 
     /**
      *
-     * @var OrderUser $user
-     */
-    #[\Speakeasy\Serializer\Annotation\SerializedName('user')]
-    #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\OrderUser')]
-    public OrderUser $user;
-
-    /**
-     *
      * @var OrderProduct $product
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('product')]
     #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\OrderProduct')]
     public OrderProduct $product;
-
-    /**
-     *
-     * @var LegacyRecurringProductPriceFixed|LegacyRecurringProductPriceCustom|LegacyRecurringProductPriceFree|ProductPriceFixed|ProductPriceCustom|ProductPriceFree|ProductPriceMeteredUnit $productPrice
-     * @deprecated  field: This will be removed in a future release, please migrate away from it as soon as possible.
-     */
-    #[\Speakeasy\Serializer\Annotation\SerializedName('product_price')]
-    #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\LegacyRecurringProductPriceFixed|\Polar\Models\Components\LegacyRecurringProductPriceCustom|\Polar\Models\Components\LegacyRecurringProductPriceFree|\Polar\Models\Components\ProductPriceFixed|\Polar\Models\Components\ProductPriceCustom|\Polar\Models\Components\ProductPriceFree|\Polar\Models\Components\ProductPriceMeteredUnit')]
-    public LegacyRecurringProductPriceFixed|LegacyRecurringProductPriceCustom|LegacyRecurringProductPriceFree|ProductPriceFixed|ProductPriceCustom|ProductPriceFree|ProductPriceMeteredUnit $productPrice;
 
     /**
      * Line items composing the order.
@@ -285,12 +260,9 @@ class Order
      * @param  OrderBillingReason  $billingReason
      * @param  string  $customerId
      * @param  string  $productId
-     * @param  string  $productPriceId
      * @param  OrderCustomer  $customer
      * @param  string  $userId
-     * @param  OrderUser  $user
      * @param  OrderProduct  $product
-     * @param  LegacyRecurringProductPriceFixed|LegacyRecurringProductPriceCustom|LegacyRecurringProductPriceFree|ProductPriceFixed|ProductPriceCustom|ProductPriceFree|ProductPriceMeteredUnit  $productPrice
      * @param  array<OrderItemSchema>  $items
      * @param  ?\DateTime  $modifiedAt
      * @param  ?array<string, string|int|bool|\DateTime|null>  $customFieldData
@@ -302,7 +274,7 @@ class Order
      * @param  ?OrderSubscription  $subscription
      * @phpstan-pure
      */
-    public function __construct(\DateTime $createdAt, string $id, array $metadata, OrderStatus $status, bool $paid, int $subtotalAmount, int $discountAmount, int $netAmount, int $amount, int $taxAmount, int $totalAmount, int $refundedAmount, int $refundedTaxAmount, string $currency, OrderBillingReason $billingReason, string $customerId, string $productId, string $productPriceId, OrderCustomer $customer, string $userId, OrderUser $user, OrderProduct $product, LegacyRecurringProductPriceFixed|LegacyRecurringProductPriceCustom|LegacyRecurringProductPriceFree|ProductPriceFixed|ProductPriceCustom|ProductPriceFree|ProductPriceMeteredUnit $productPrice, array $items, ?\DateTime $modifiedAt = null, ?array $customFieldData = null, ?Address $billingAddress = null, ?string $discountId = null, ?string $subscriptionId = null, ?string $checkoutId = null, DiscountFixedOnceForeverDurationBase|DiscountFixedRepeatDurationBase|DiscountPercentageOnceForeverDurationBase|DiscountPercentageRepeatDurationBase|null $discount = null, ?OrderSubscription $subscription = null)
+    public function __construct(\DateTime $createdAt, string $id, array $metadata, OrderStatus $status, bool $paid, int $subtotalAmount, int $discountAmount, int $netAmount, int $amount, int $taxAmount, int $totalAmount, int $refundedAmount, int $refundedTaxAmount, string $currency, OrderBillingReason $billingReason, string $customerId, string $productId, OrderCustomer $customer, string $userId, OrderProduct $product, array $items, ?\DateTime $modifiedAt = null, ?array $customFieldData = null, ?Address $billingAddress = null, ?string $discountId = null, ?string $subscriptionId = null, ?string $checkoutId = null, DiscountFixedOnceForeverDurationBase|DiscountFixedRepeatDurationBase|DiscountPercentageOnceForeverDurationBase|DiscountPercentageRepeatDurationBase|null $discount = null, ?OrderSubscription $subscription = null)
     {
         $this->createdAt = $createdAt;
         $this->id = $id;
@@ -321,12 +293,9 @@ class Order
         $this->billingReason = $billingReason;
         $this->customerId = $customerId;
         $this->productId = $productId;
-        $this->productPriceId = $productPriceId;
         $this->customer = $customer;
         $this->userId = $userId;
-        $this->user = $user;
         $this->product = $product;
-        $this->productPrice = $productPrice;
         $this->items = $items;
         $this->modifiedAt = $modifiedAt;
         $this->customFieldData = $customFieldData;

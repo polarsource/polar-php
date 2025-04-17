@@ -1,4 +1,4 @@
-# CheckoutProductCreateCustomFieldData
+# CheckoutLinkProductMetadata
 
 
 ## Supported Types
@@ -21,6 +21,15 @@ string $value = /* values here */
 int $value = /* values here */
 ```
 
+### `float`
+
+```php
+/**
+* @var float
+*/
+float $value = /* values here */
+```
+
 ### `bool`
 
 ```php
@@ -28,14 +37,5 @@ int $value = /* values here */
 * @var bool
 */
 bool $value = /* values here */
-```
-
-### `\DateTime`
-
-```php
-/**
-* @var \DateTime
-*/
-\DateTime $value = /* values here */
 ```
 

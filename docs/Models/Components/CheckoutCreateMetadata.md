@@ -1,4 +1,4 @@
-# CheckoutPriceCreateMetadata
+# CheckoutCreateMetadata
 
 
 ## Supported Types

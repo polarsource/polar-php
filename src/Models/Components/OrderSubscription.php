@@ -101,22 +101,6 @@ class OrderSubscription
     public string $productId;
 
     /**
-     *
-     * @var string $priceId
-     * @deprecated  field: This will be removed in a future release, please migrate away from it as soon as possible.
-     */
-    #[\Speakeasy\Serializer\Annotation\SerializedName('price_id')]
-    public string $priceId;
-
-    /**
-     *
-     * @var string $userId
-     * @deprecated  field: This will be removed in a future release, please migrate away from it as soon as possible.
-     */
-    #[\Speakeasy\Serializer\Annotation\SerializedName('user_id')]
-    public string $userId;
-
-    /**
      * Last modification timestamp of the object.
      *
      * @var ?\DateTime $modifiedAt
@@ -206,8 +190,6 @@ class OrderSubscription
      * @param  bool  $cancelAtPeriodEnd
      * @param  string  $customerId
      * @param  string  $productId
-     * @param  string  $priceId
-     * @param  string  $userId
      * @param  ?\DateTime  $modifiedAt
      * @param  ?\DateTime  $currentPeriodEnd
      * @param  ?\DateTime  $canceledAt
@@ -220,7 +202,7 @@ class OrderSubscription
      * @param  ?string  $customerCancellationComment
      * @phpstan-pure
      */
-    public function __construct(array $metadata, \DateTime $createdAt, string $id, int $amount, string $currency, SubscriptionRecurringInterval $recurringInterval, SubscriptionStatus $status, \DateTime $currentPeriodStart, bool $cancelAtPeriodEnd, string $customerId, string $productId, string $priceId, string $userId, ?\DateTime $modifiedAt = null, ?\DateTime $currentPeriodEnd = null, ?\DateTime $canceledAt = null, ?\DateTime $startedAt = null, ?\DateTime $endsAt = null, ?\DateTime $endedAt = null, ?string $discountId = null, ?string $checkoutId = null, ?CustomerCancellationReason $customerCancellationReason = null, ?string $customerCancellationComment = null)
+    public function __construct(array $metadata, \DateTime $createdAt, string $id, int $amount, string $currency, SubscriptionRecurringInterval $recurringInterval, SubscriptionStatus $status, \DateTime $currentPeriodStart, bool $cancelAtPeriodEnd, string $customerId, string $productId, ?\DateTime $modifiedAt = null, ?\DateTime $currentPeriodEnd = null, ?\DateTime $canceledAt = null, ?\DateTime $startedAt = null, ?\DateTime $endsAt = null, ?\DateTime $endedAt = null, ?string $discountId = null, ?string $checkoutId = null, ?CustomerCancellationReason $customerCancellationReason = null, ?string $customerCancellationComment = null)
     {
         $this->metadata = $metadata;
         $this->createdAt = $createdAt;
@@ -233,8 +215,6 @@ class OrderSubscription
         $this->cancelAtPeriodEnd = $cancelAtPeriodEnd;
         $this->customerId = $customerId;
         $this->productId = $productId;
-        $this->priceId = $priceId;
-        $this->userId = $userId;
         $this->modifiedAt = $modifiedAt;
         $this->currentPeriodEnd = $currentPeriodEnd;
         $this->canceledAt = $canceledAt;

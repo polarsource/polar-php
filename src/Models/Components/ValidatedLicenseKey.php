@@ -27,26 +27,10 @@ class ValidatedLicenseKey
 
     /**
      *
-     * @var string $userId
-     * @deprecated  field: This will be removed in a future release, please migrate away from it as soon as possible.
-     */
-    #[\Speakeasy\Serializer\Annotation\SerializedName('user_id')]
-    public string $userId;
-
-    /**
-     *
      * @var string $customerId
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('customer_id')]
     public string $customerId;
-
-    /**
-     *
-     * @var LicenseKeyUser $user
-     */
-    #[\Speakeasy\Serializer\Annotation\SerializedName('user')]
-    #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\LicenseKeyUser')]
-    public LicenseKeyUser $user;
 
     /**
      *
@@ -140,9 +124,7 @@ class ValidatedLicenseKey
     /**
      * @param  string  $id
      * @param  string  $organizationId
-     * @param  string  $userId
      * @param  string  $customerId
-     * @param  LicenseKeyUser  $user
      * @param  LicenseKeyCustomer  $customer
      * @param  string  $benefitId
      * @param  string  $key
@@ -157,13 +139,11 @@ class ValidatedLicenseKey
      * @param  ?LicenseKeyActivationBase  $activation
      * @phpstan-pure
      */
-    public function __construct(string $id, string $organizationId, string $userId, string $customerId, LicenseKeyUser $user, LicenseKeyCustomer $customer, string $benefitId, string $key, string $displayKey, LicenseKeyStatus $status, int $usage, int $validations, ?int $limitActivations = null, ?int $limitUsage = null, ?\DateTime $lastValidatedAt = null, ?\DateTime $expiresAt = null, ?LicenseKeyActivationBase $activation = null)
+    public function __construct(string $id, string $organizationId, string $customerId, LicenseKeyCustomer $customer, string $benefitId, string $key, string $displayKey, LicenseKeyStatus $status, int $usage, int $validations, ?int $limitActivations = null, ?int $limitUsage = null, ?\DateTime $lastValidatedAt = null, ?\DateTime $expiresAt = null, ?LicenseKeyActivationBase $activation = null)
     {
         $this->id = $id;
         $this->organizationId = $organizationId;
-        $this->userId = $userId;
         $this->customerId = $customerId;
-        $this->user = $user;
         $this->customer = $customer;
         $this->benefitId = $benefitId;
         $this->key = $key;

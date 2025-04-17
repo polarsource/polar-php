@@ -10,14 +10,14 @@ namespace Polar\Models\Components;
 
 
 /**
- * CheckoutProductsCreate - Create a new checkout session from a list of products.
+ * CheckoutCreate - Create a new checkout session from a list of products.
  *
  * Customers will be able to switch between those products.
  *
  * Metadata set on the checkout will be copied
  * to the resulting order and/or subscription.
  */
-class CheckoutProductsCreate
+class CheckoutCreate
 {
     /**
      * List of product IDs available to select at that checkout. The first one will be selected by default.

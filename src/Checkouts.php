@@ -149,11 +149,11 @@ class Checkouts
      *
      * **Scopes**: `checkouts:write`
      *
-     * @param  Components\CheckoutProductsCreate|Components\CheckoutProductCreate|Components\CheckoutPriceCreate  $request
+     * @param  Components\CheckoutCreate  $request
      * @return Operations\CheckoutsCreateResponse
      * @throws \Polar\Models\Errors\APIException
      */
-    public function create(Components\CheckoutProductsCreate|Components\CheckoutProductCreate|Components\CheckoutPriceCreate $request, ?Options $options = null): Operations\CheckoutsCreateResponse
+    public function create(Components\CheckoutCreate $request, ?Options $options = null): Operations\CheckoutsCreateResponse
     {
         $baseUrl = $this->sdkConfiguration->getServerUrl();
         $url = Utils\Utils::generateUrl($baseUrl, '/v1/checkouts/');

@@ -38,26 +38,15 @@ class BenefitGitHubRepositoryProperties
     public Permission $permission;
 
     /**
-     *
-     * @var ?string $repositoryId
-     * @deprecated  field: This will be removed in a future release, please migrate away from it as soon as possible.
-     */
-    #[\Speakeasy\Serializer\Annotation\SerializedName('repository_id')]
-    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
-    public ?string $repositoryId = null;
-
-    /**
      * @param  string  $repositoryOwner
      * @param  string  $repositoryName
      * @param  Permission  $permission
-     * @param  ?string  $repositoryId
      * @phpstan-pure
      */
-    public function __construct(string $repositoryOwner, string $repositoryName, Permission $permission, ?string $repositoryId = null)
+    public function __construct(string $repositoryOwner, string $repositoryName, Permission $permission)
     {
         $this->repositoryOwner = $repositoryOwner;
         $this->repositoryName = $repositoryName;
         $this->permission = $permission;
-        $this->repositoryId = $repositoryId;
     }
 }
