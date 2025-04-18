@@ -456,12 +456,12 @@ class Subscriptions
      *
      * **Scopes**: `subscriptions:write`
      *
-     * @param  Components\SubscriptionUpdateProduct|Components\SubscriptionCancel  $subscriptionUpdate
+     * @param  Components\SubscriptionUpdateProduct|Components\SubscriptionCancel|Components\SubscriptionRevoke  $subscriptionUpdate
      * @param  string  $id
      * @return Operations\SubscriptionsUpdateResponse
      * @throws \Polar\Models\Errors\APIException
      */
-    public function update(Components\SubscriptionUpdateProduct|Components\SubscriptionCancel $subscriptionUpdate, string $id, ?Options $options = null): Operations\SubscriptionsUpdateResponse
+    public function update(Components\SubscriptionUpdateProduct|Components\SubscriptionCancel|Components\SubscriptionRevoke $subscriptionUpdate, string $id, ?Options $options = null): Operations\SubscriptionsUpdateResponse
     {
         $request = new Operations\SubscriptionsUpdateRequest(
             id: $id,

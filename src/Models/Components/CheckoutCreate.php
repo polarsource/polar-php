@@ -193,10 +193,20 @@ class CheckoutCreate
     public ?bool $allowDiscountCodes = null;
 
     /**
+     * Whether to require the customer to fill their full billing address, instead of just the country. Customers in the US will always be required to fill their full address, regardless of this setting. If you preset the billing address, this setting will be automatically set to `true`.
+     *
+     * @var ?bool $requireBillingAddress
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('require_billing_address')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
+    public ?bool $requireBillingAddress = null;
+
+    /**
      * @param  array<string>  $products
      * @param  ?array<string, string|int|float|bool>  $metadata
      * @param  ?array<string, string|int|bool|\DateTime|null>  $customFieldData
      * @param  ?bool  $allowDiscountCodes
+     * @param  ?bool  $requireBillingAddress
      * @param  ?array<string, string|int|float|bool>  $customerMetadata
      * @param  ?string  $discountId
      * @param  ?int  $amount
@@ -212,7 +222,7 @@ class CheckoutCreate
      * @param  ?string  $embedOrigin
      * @phpstan-pure
      */
-    public function __construct(array $products, ?array $metadata = null, ?array $customFieldData = null, ?array $customerMetadata = null, ?string $discountId = null, ?int $amount = null, ?string $customerId = null, ?string $customerExternalId = null, ?string $customerName = null, ?string $customerEmail = null, ?string $customerIpAddress = null, ?Address $customerBillingAddress = null, ?string $customerTaxId = null, ?string $subscriptionId = null, ?string $successUrl = null, ?string $embedOrigin = null, ?bool $allowDiscountCodes = true)
+    public function __construct(array $products, ?array $metadata = null, ?array $customFieldData = null, ?array $customerMetadata = null, ?string $discountId = null, ?int $amount = null, ?string $customerId = null, ?string $customerExternalId = null, ?string $customerName = null, ?string $customerEmail = null, ?string $customerIpAddress = null, ?Address $customerBillingAddress = null, ?string $customerTaxId = null, ?string $subscriptionId = null, ?string $successUrl = null, ?string $embedOrigin = null, ?bool $allowDiscountCodes = true, ?bool $requireBillingAddress = false)
     {
         $this->products = $products;
         $this->metadata = $metadata;
@@ -231,5 +241,6 @@ class CheckoutCreate
         $this->successUrl = $successUrl;
         $this->embedOrigin = $embedOrigin;
         $this->allowDiscountCodes = $allowDiscountCodes;
+        $this->requireBillingAddress = $requireBillingAddress;
     }
 }

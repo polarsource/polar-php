@@ -62,6 +62,14 @@ class CheckoutLink
     public bool $allowDiscountCodes;
 
     /**
+     * Whether to require the customer to fill their full billing address, instead of just the country. Customers in the US will always be required to fill their full address, regardless of this setting.
+     *
+     * @var bool $requireBillingAddress
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('require_billing_address')]
+    public bool $requireBillingAddress;
+
+    /**
      * The organization ID.
      *
      * @var string $organizationId
@@ -132,6 +140,7 @@ class CheckoutLink
      * @param  PaymentProcessor  $paymentProcessor
      * @param  string  $clientSecret
      * @param  bool  $allowDiscountCodes
+     * @param  bool  $requireBillingAddress
      * @param  string  $organizationId
      * @param  array<CheckoutLinkProduct>  $products
      * @param  string  $url
@@ -142,7 +151,7 @@ class CheckoutLink
      * @param  DiscountFixedOnceForeverDurationBase|DiscountFixedRepeatDurationBase|DiscountPercentageOnceForeverDurationBase|DiscountPercentageRepeatDurationBase|null  $discount
      * @phpstan-pure
      */
-    public function __construct(\DateTime $createdAt, string $id, array $metadata, PaymentProcessor $paymentProcessor, string $clientSecret, bool $allowDiscountCodes, string $organizationId, array $products, string $url, ?\DateTime $modifiedAt = null, ?string $successUrl = null, ?string $label = null, ?string $discountId = null, DiscountFixedOnceForeverDurationBase|DiscountFixedRepeatDurationBase|DiscountPercentageOnceForeverDurationBase|DiscountPercentageRepeatDurationBase|null $discount = null)
+    public function __construct(\DateTime $createdAt, string $id, array $metadata, PaymentProcessor $paymentProcessor, string $clientSecret, bool $allowDiscountCodes, bool $requireBillingAddress, string $organizationId, array $products, string $url, ?\DateTime $modifiedAt = null, ?string $successUrl = null, ?string $label = null, ?string $discountId = null, DiscountFixedOnceForeverDurationBase|DiscountFixedRepeatDurationBase|DiscountPercentageOnceForeverDurationBase|DiscountPercentageRepeatDurationBase|null $discount = null)
     {
         $this->createdAt = $createdAt;
         $this->id = $id;
@@ -150,6 +159,7 @@ class CheckoutLink
         $this->paymentProcessor = $paymentProcessor;
         $this->clientSecret = $clientSecret;
         $this->allowDiscountCodes = $allowDiscountCodes;
+        $this->requireBillingAddress = $requireBillingAddress;
         $this->organizationId = $organizationId;
         $this->products = $products;
         $this->url = $url;

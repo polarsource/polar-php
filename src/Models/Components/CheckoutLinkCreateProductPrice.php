@@ -90,16 +90,26 @@ class CheckoutLinkCreateProductPrice
     public ?bool $allowDiscountCodes = null;
 
     /**
+     * Whether to require the customer to fill their full billing address, instead of just the country. Customers in the US will always be required to fill their full address, regardless of this setting.
+     *
+     * @var ?bool $requireBillingAddress
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('require_billing_address')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
+    public ?bool $requireBillingAddress = null;
+
+    /**
      * @param  string  $paymentProcessor
      * @param  string  $productPriceId
      * @param  ?array<string, string|int|float|bool>  $metadata
      * @param  ?bool  $allowDiscountCodes
+     * @param  ?bool  $requireBillingAddress
      * @param  ?string  $label
      * @param  ?string  $discountId
      * @param  ?string  $successUrl
      * @phpstan-pure
      */
-    public function __construct(string $productPriceId, ?array $metadata = null, ?string $label = null, ?string $discountId = null, ?string $successUrl = null, string $paymentProcessor = 'stripe', ?bool $allowDiscountCodes = true)
+    public function __construct(string $productPriceId, ?array $metadata = null, ?string $label = null, ?string $discountId = null, ?string $successUrl = null, string $paymentProcessor = 'stripe', ?bool $allowDiscountCodes = true, ?bool $requireBillingAddress = false)
     {
         $this->productPriceId = $productPriceId;
         $this->metadata = $metadata;
@@ -108,5 +118,6 @@ class CheckoutLinkCreateProductPrice
         $this->successUrl = $successUrl;
         $this->paymentProcessor = $paymentProcessor;
         $this->allowDiscountCodes = $allowDiscountCodes;
+        $this->requireBillingAddress = $requireBillingAddress;
     }
 }

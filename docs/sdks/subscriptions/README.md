@@ -195,7 +195,7 @@ $sdk = Polar\Polar::builder()
 
 $response = $sdk->subscriptions->update(
     id: '<value>',
-    subscriptionUpdate: new Components\SubscriptionCancel()
+    subscriptionUpdate: new Components\SubscriptionRevoke()
 
 );
 
@@ -206,10 +206,10 @@ if ($response->subscription !== null) {
 
 ### Parameters
 
-| Parameter                                                                                                           | Type                                                                                                                | Required                                                                                                            | Description                                                                                                         |
-| ------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------- |
-| `id`                                                                                                                | *string*                                                                                                            | :heavy_check_mark:                                                                                                  | The subscription ID.                                                                                                |
-| `subscriptionUpdate`                                                                                                | [Components\SubscriptionUpdateProduct\|Components\SubscriptionCancel](../../Models/Components/SubscriptionUpdate.md) | :heavy_check_mark:                                                                                                  | N/A                                                                                                                 |
+| Parameter                                                                                                                                         | Type                                                                                                                                              | Required                                                                                                                                          | Description                                                                                                                                       |
+| ------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `id`                                                                                                                                              | *string*                                                                                                                                          | :heavy_check_mark:                                                                                                                                | The subscription ID.                                                                                                                              |
+| `subscriptionUpdate`                                                                                                                              | [Components\SubscriptionUpdateProduct\|Components\SubscriptionCancel\|Components\SubscriptionRevoke](../../Models/Components/SubscriptionUpdate.md) | :heavy_check_mark:                                                                                                                                | N/A                                                                                                                                               |
 
 ### Response
 
