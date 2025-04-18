@@ -61,6 +61,15 @@ class CheckoutLinkUpdate
     public ?bool $allowDiscountCodes = null;
 
     /**
+     * Whether to require the customer to fill their full billing address, instead of just the country. Customers in the US will always be required to fill their full address, regardless of this setting.
+     *
+     * @var ?bool $requireBillingAddress
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('require_billing_address')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
+    public ?bool $requireBillingAddress = null;
+
+    /**
      * ID of the discount to apply to the checkout. If the discount is not applicable anymore when opening the checkout link, it'll be ignored.
      *
      * @var ?string $discountId
@@ -83,16 +92,18 @@ class CheckoutLinkUpdate
      * @param  ?array<string>  $products
      * @param  ?string  $label
      * @param  ?bool  $allowDiscountCodes
+     * @param  ?bool  $requireBillingAddress
      * @param  ?string  $discountId
      * @param  ?string  $successUrl
      * @phpstan-pure
      */
-    public function __construct(?array $metadata = null, ?array $products = null, ?string $label = null, ?bool $allowDiscountCodes = null, ?string $discountId = null, ?string $successUrl = null)
+    public function __construct(?array $metadata = null, ?array $products = null, ?string $label = null, ?bool $allowDiscountCodes = null, ?bool $requireBillingAddress = null, ?string $discountId = null, ?string $successUrl = null)
     {
         $this->metadata = $metadata;
         $this->products = $products;
         $this->label = $label;
         $this->allowDiscountCodes = $allowDiscountCodes;
+        $this->requireBillingAddress = $requireBillingAddress;
         $this->discountId = $discountId;
         $this->successUrl = $successUrl;
     }

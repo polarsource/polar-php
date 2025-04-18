@@ -9,19 +9,8 @@ declare(strict_types=1);
 namespace Polar\Models\Components;
 
 
-class SubscriptionCancel
+class SubscriptionRevoke
 {
-    /**
-     * Cancel an active subscription once the current period ends.
-     *
-     *
-     * Or uncancel a subscription currently set to be revoked at period end.
-     *
-     * @var bool $cancelAtPeriodEnd
-     */
-    #[\Speakeasy\Serializer\Annotation\SerializedName('cancel_at_period_end')]
-    public bool $cancelAtPeriodEnd;
-
     /**
      * Customer reason for cancellation.
      *
@@ -68,15 +57,23 @@ class SubscriptionCancel
     public ?string $customerCancellationComment = null;
 
     /**
-     * @param  bool  $cancelAtPeriodEnd
+     * Cancel and revoke an active subscription immediately
+     *
+     * @var bool $revoke
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('revoke')]
+    public bool $revoke;
+
+    /**
+     * @param  bool  $revoke
      * @param  ?CustomerCancellationReason  $customerCancellationReason
      * @param  ?string  $customerCancellationComment
      * @phpstan-pure
      */
-    public function __construct(bool $cancelAtPeriodEnd, ?CustomerCancellationReason $customerCancellationReason = null, ?string $customerCancellationComment = null)
+    public function __construct(?CustomerCancellationReason $customerCancellationReason = null, ?string $customerCancellationComment = null, bool $revoke = true)
     {
-        $this->cancelAtPeriodEnd = $cancelAtPeriodEnd;
         $this->customerCancellationReason = $customerCancellationReason;
         $this->customerCancellationComment = $customerCancellationComment;
+        $this->revoke = $revoke;
     }
 }

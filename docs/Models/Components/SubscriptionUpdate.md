@@ -21,3 +21,12 @@ Components\SubscriptionUpdateProduct $value = /* values here */
 Components\SubscriptionCancel $value = /* values here */
 ```
 
+### `Components\SubscriptionRevoke`
+
+```php
+/**
+* @var Components\SubscriptionRevoke
+*/
+Components\SubscriptionRevoke $value = /* values here */
+```
+

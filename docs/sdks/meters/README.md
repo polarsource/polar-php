@@ -94,9 +94,7 @@ $request = new Components\MeterCreate(
     name: '<value>',
     filter: new Components\Filter(
         conjunction: Components\FilterConjunction::And,
-        clauses: [
-
-        ],
+        clauses: [],
     ),
     aggregation: new Components\PropertyAggregation(
         func: Components\Func::Max,

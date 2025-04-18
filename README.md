@@ -88,6 +88,7 @@ $request = new Components\WebhookCheckoutCreatedPayload(
         productPriceId: '<value>',
         discountId: '<value>',
         allowDiscountCodes: false,
+        requireBillingAddress: false,
         isDiscountApplicable: false,
         isFreeProductPrice: false,
         isPaymentRequired: false,
@@ -259,6 +260,14 @@ $request = new Components\WebhookCheckoutCreatedPayload(
         customerMetadata: [
             'key' => '<value>',
         ],
+        customerBillingAddressFields: new Components\CheckoutCustomerBillingAddressFields(
+            country: false,
+            state: false,
+            city: false,
+            postalCode: false,
+            line1: false,
+            line2: false,
+        ),
     ),
 );
 
