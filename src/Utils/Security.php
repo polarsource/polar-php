@@ -149,6 +149,7 @@ class Security
             case 'http':
                 match ($metadata->subtype) {
                     'bearer' => $clientOptions['headers'][$fieldMetadata->name] = preg_match('/^Bearer /i', $value) ? $value : 'Bearer '.$value,
+                    'custom' => null,
                     default => throw new \RuntimeException('Unknown http security scheme subtype: '.$metadata->subtype)
                 };
 
