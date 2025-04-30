@@ -898,22 +898,22 @@ class Customers
      *
      * **Scopes**: `customers:write`
      *
-     * @param  Components\CustomerUpdate  $customerUpdate
+     * @param  Components\CustomerUpdateExternalID  $customerUpdateExternalID
      * @param  string  $externalId
      * @return Operations\CustomersUpdateExternalResponse
      * @throws \Polar\Models\Errors\APIException
      */
-    public function updateExternal(Components\CustomerUpdate $customerUpdate, string $externalId, ?Options $options = null): Operations\CustomersUpdateExternalResponse
+    public function updateExternal(Components\CustomerUpdateExternalID $customerUpdateExternalID, string $externalId, ?Options $options = null): Operations\CustomersUpdateExternalResponse
     {
         $request = new Operations\CustomersUpdateExternalRequest(
             externalId: $externalId,
-            customerUpdate: $customerUpdate,
+            customerUpdateExternalID: $customerUpdateExternalID,
         );
         $baseUrl = $this->sdkConfiguration->getServerUrl();
         $url = Utils\Utils::generateUrl($baseUrl, '/v1/customers/external/{external_id}', Operations\CustomersUpdateExternalRequest::class, $request);
         $urlOverride = null;
         $httpOptions = ['http_errors' => false];
-        $body = Utils\Utils::serializeRequestBody($request, 'customerUpdate', 'json');
+        $body = Utils\Utils::serializeRequestBody($request, 'customerUpdateExternalID', 'json');
         if ($body === null) {
             throw new \Exception('Request body is required');
         }

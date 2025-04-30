@@ -22,19 +22,19 @@ class CustomersUpdateExternalRequest
 
     /**
      *
-     * @var Components\CustomerUpdate $customerUpdate
+     * @var Components\CustomerUpdateExternalID $customerUpdateExternalID
      */
     #[SpeakeasyMetadata('request:mediaType=application/json')]
-    public Components\CustomerUpdate $customerUpdate;
+    public Components\CustomerUpdateExternalID $customerUpdateExternalID;
 
     /**
      * @param  string  $externalId
-     * @param  Components\CustomerUpdate  $customerUpdate
+     * @param  Components\CustomerUpdateExternalID  $customerUpdateExternalID
      * @phpstan-pure
      */
-    public function __construct(string $externalId, Components\CustomerUpdate $customerUpdate)
+    public function __construct(string $externalId, Components\CustomerUpdateExternalID $customerUpdateExternalID)
     {
         $this->externalId = $externalId;
-        $this->customerUpdate = $customerUpdate;
+        $this->customerUpdateExternalID = $customerUpdateExternalID;
     }
 }
