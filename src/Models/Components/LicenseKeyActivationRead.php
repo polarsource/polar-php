@@ -33,12 +33,13 @@ class LicenseKeyActivationRead
     public string $label;
 
     /**
+     * $meta
      *
-     * @var LicenseKeyActivationReadMeta $meta
+     * @var array<string, string|int|float|bool> $meta
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('meta')]
-    #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\LicenseKeyActivationReadMeta')]
-    public LicenseKeyActivationReadMeta $meta;
+    #[\Speakeasy\Serializer\Annotation\Type('array<string, string|int|float|bool>')]
+    public array $meta;
 
     /**
      *
@@ -66,13 +67,13 @@ class LicenseKeyActivationRead
      * @param  string  $id
      * @param  string  $licenseKeyId
      * @param  string  $label
-     * @param  LicenseKeyActivationReadMeta  $meta
+     * @param  array<string, string|int|float|bool>  $meta
      * @param  \DateTime  $createdAt
      * @param  LicenseKeyRead  $licenseKey
      * @param  ?\DateTime  $modifiedAt
      * @phpstan-pure
      */
-    public function __construct(string $id, string $licenseKeyId, string $label, LicenseKeyActivationReadMeta $meta, \DateTime $createdAt, LicenseKeyRead $licenseKey, ?\DateTime $modifiedAt = null)
+    public function __construct(string $id, string $licenseKeyId, string $label, array $meta, \DateTime $createdAt, LicenseKeyRead $licenseKey, ?\DateTime $modifiedAt = null)
     {
         $this->id = $id;
         $this->licenseKeyId = $licenseKeyId;
