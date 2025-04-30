@@ -9,7 +9,7 @@ declare(strict_types=1);
 namespace Polar\Models\Components;
 
 
-class CustomerUpdate
+class CustomerUpdateExternalID
 {
     /**
      * Key-value object allowing you to store additional information.
@@ -70,30 +70,19 @@ class CustomerUpdate
     public ?array $taxId = null;
 
     /**
-     * The ID of the customer in your system. This must be unique within the organization. Once set, it can't be updated.
-     *
-     * @var ?string $externalId
-     */
-    #[\Speakeasy\Serializer\Annotation\SerializedName('external_id')]
-    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
-    public ?string $externalId = null;
-
-    /**
      * @param  ?array<string, string|int|float|bool>  $metadata
      * @param  ?string  $email
      * @param  ?string  $name
      * @param  ?Address  $billingAddress
      * @param  ?array<string|TaxIDFormat|null>  $taxId
-     * @param  ?string  $externalId
      * @phpstan-pure
      */
-    public function __construct(?array $metadata = null, ?string $email = null, ?string $name = null, ?Address $billingAddress = null, ?array $taxId = null, ?string $externalId = null)
+    public function __construct(?array $metadata = null, ?string $email = null, ?string $name = null, ?Address $billingAddress = null, ?array $taxId = null)
     {
         $this->metadata = $metadata;
         $this->email = $email;
         $this->name = $name;
         $this->billingAddress = $billingAddress;
         $this->taxId = $taxId;
-        $this->externalId = $externalId;
     }
 }

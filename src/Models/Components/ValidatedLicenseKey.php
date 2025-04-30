@@ -12,11 +12,20 @@ namespace Polar\Models\Components;
 class ValidatedLicenseKey
 {
     /**
+     * The ID of the object.
      *
      * @var string $id
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('id')]
     public string $id;
+
+    /**
+     * Creation timestamp of the object.
+     *
+     * @var \DateTime $createdAt
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('created_at')]
+    public \DateTime $createdAt;
 
     /**
      *
@@ -85,6 +94,14 @@ class ValidatedLicenseKey
     public int $validations;
 
     /**
+     * Last modification timestamp of the object.
+     *
+     * @var ?\DateTime $modifiedAt
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('modified_at')]
+    public ?\DateTime $modifiedAt;
+
+    /**
      *
      * @var ?int $limitActivations
      */
@@ -123,6 +140,7 @@ class ValidatedLicenseKey
 
     /**
      * @param  string  $id
+     * @param  \DateTime  $createdAt
      * @param  string  $organizationId
      * @param  string  $customerId
      * @param  LicenseKeyCustomer  $customer
@@ -132,6 +150,7 @@ class ValidatedLicenseKey
      * @param  LicenseKeyStatus  $status
      * @param  int  $usage
      * @param  int  $validations
+     * @param  ?\DateTime  $modifiedAt
      * @param  ?int  $limitActivations
      * @param  ?int  $limitUsage
      * @param  ?\DateTime  $lastValidatedAt
@@ -139,9 +158,10 @@ class ValidatedLicenseKey
      * @param  ?LicenseKeyActivationBase  $activation
      * @phpstan-pure
      */
-    public function __construct(string $id, string $organizationId, string $customerId, LicenseKeyCustomer $customer, string $benefitId, string $key, string $displayKey, LicenseKeyStatus $status, int $usage, int $validations, ?int $limitActivations = null, ?int $limitUsage = null, ?\DateTime $lastValidatedAt = null, ?\DateTime $expiresAt = null, ?LicenseKeyActivationBase $activation = null)
+    public function __construct(string $id, \DateTime $createdAt, string $organizationId, string $customerId, LicenseKeyCustomer $customer, string $benefitId, string $key, string $displayKey, LicenseKeyStatus $status, int $usage, int $validations, ?\DateTime $modifiedAt = null, ?int $limitActivations = null, ?int $limitUsage = null, ?\DateTime $lastValidatedAt = null, ?\DateTime $expiresAt = null, ?LicenseKeyActivationBase $activation = null)
     {
         $this->id = $id;
+        $this->createdAt = $createdAt;
         $this->organizationId = $organizationId;
         $this->customerId = $customerId;
         $this->customer = $customer;
@@ -151,6 +171,7 @@ class ValidatedLicenseKey
         $this->status = $status;
         $this->usage = $usage;
         $this->validations = $validations;
+        $this->modifiedAt = $modifiedAt;
         $this->limitActivations = $limitActivations;
         $this->limitUsage = $limitUsage;
         $this->lastValidatedAt = $lastValidatedAt;

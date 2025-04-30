@@ -208,7 +208,6 @@ $sdk = Polar\Polar::builder()
     ->build();
 
 $customerUpdate = new Components\CustomerUpdate(
-    externalId: 'usr_1337',
     email: 'customer@example.com',
     name: 'John Doe',
     billingAddress: new Components\Address(
@@ -218,6 +217,7 @@ $customerUpdate = new Components\CustomerUpdate(
         'FR61954506077',
         'eu_vat',
     ],
+    externalId: 'usr_1337',
 );
 
 $response = $sdk->customers->update(
@@ -384,8 +384,7 @@ $sdk = Polar\Polar::builder()
     )
     ->build();
 
-$customerUpdate = new Components\CustomerUpdate(
-    externalId: 'usr_1337',
+$customerUpdateExternalID = new Components\CustomerUpdateExternalID(
     email: 'customer@example.com',
     name: 'John Doe',
     billingAddress: new Components\Address(
@@ -399,7 +398,7 @@ $customerUpdate = new Components\CustomerUpdate(
 
 $response = $sdk->customers->updateExternal(
     externalId: '<id>',
-    customerUpdate: $customerUpdate
+    customerUpdateExternalID: $customerUpdateExternalID
 
 );
 
@@ -410,10 +409,10 @@ if ($response->customer !== null) {
 
 ### Parameters
 
-| Parameter                                                              | Type                                                                   | Required                                                               | Description                                                            |
-| ---------------------------------------------------------------------- | ---------------------------------------------------------------------- | ---------------------------------------------------------------------- | ---------------------------------------------------------------------- |
-| `externalId`                                                           | *string*                                                               | :heavy_check_mark:                                                     | The customer external ID.                                              |
-| `customerUpdate`                                                       | [Components\CustomerUpdate](../../Models/Components/CustomerUpdate.md) | :heavy_check_mark:                                                     | N/A                                                                    |
+| Parameter                                                                                  | Type                                                                                       | Required                                                                                   | Description                                                                                |
+| ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------ |
+| `externalId`                                                                               | *string*                                                                                   | :heavy_check_mark:                                                                         | The customer external ID.                                                                  |
+| `customerUpdateExternalID`                                                                 | [Components\CustomerUpdateExternalID](../../Models/Components/CustomerUpdateExternalID.md) | :heavy_check_mark:                                                                         | N/A                                                                                        |
 
 ### Response
 

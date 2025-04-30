@@ -12,19 +12,20 @@ namespace Polar\Models\Components;
 class CustomerOrder
 {
     /**
+     * The ID of the object.
+     *
+     * @var string $id
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('id')]
+    public string $id;
+
+    /**
      * Creation timestamp of the object.
      *
      * @var \DateTime $createdAt
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('created_at')]
     public \DateTime $createdAt;
-
-    /**
-     *
-     * @var string $id
-     */
-    #[\Speakeasy\Serializer\Annotation\SerializedName('id')]
-    public string $id;
 
     /**
      *
@@ -67,6 +68,15 @@ class CustomerOrder
     public int $netAmount;
 
     /**
+     * Amount in cents, after discounts but before taxes.
+     *
+     * @var int $amount
+     * @deprecated  field: This will be removed in a future release, please migrate away from it as soon as possible.
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('amount')]
+    public int $amount;
+
+    /**
      * Sales tax amount in cents.
      *
      * @var int $taxAmount
@@ -104,6 +114,14 @@ class CustomerOrder
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('currency')]
     public string $currency;
+
+    /**
+     *
+     * @var OrderBillingReason $billingReason
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('billing_reason')]
+    #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\OrderBillingReason')]
+    public OrderBillingReason $billingReason;
 
     /**
      *
@@ -154,10 +172,32 @@ class CustomerOrder
 
     /**
      *
+     * @var ?Address $billingAddress
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('billing_address')]
+    #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\Address|null')]
+    public ?Address $billingAddress;
+
+    /**
+     *
+     * @var ?string $discountId
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('discount_id')]
+    public ?string $discountId;
+
+    /**
+     *
      * @var ?string $subscriptionId
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('subscription_id')]
     public ?string $subscriptionId;
+
+    /**
+     *
+     * @var ?string $checkoutId
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('checkout_id')]
+    public ?string $checkoutId;
 
     /**
      *
@@ -168,49 +208,59 @@ class CustomerOrder
     public ?CustomerOrderSubscription $subscription;
 
     /**
-     * @param  \DateTime  $createdAt
      * @param  string  $id
+     * @param  \DateTime  $createdAt
      * @param  OrderStatus  $status
      * @param  bool  $paid
      * @param  int  $subtotalAmount
      * @param  int  $discountAmount
      * @param  int  $netAmount
+     * @param  int  $amount
      * @param  int  $taxAmount
      * @param  int  $totalAmount
      * @param  int  $refundedAmount
      * @param  int  $refundedTaxAmount
      * @param  string  $currency
+     * @param  OrderBillingReason  $billingReason
      * @param  string  $customerId
      * @param  string  $productId
      * @param  string  $userId
      * @param  CustomerOrderProduct  $product
      * @param  array<OrderItemSchema>  $items
      * @param  ?\DateTime  $modifiedAt
+     * @param  ?Address  $billingAddress
+     * @param  ?string  $discountId
      * @param  ?string  $subscriptionId
+     * @param  ?string  $checkoutId
      * @param  ?CustomerOrderSubscription  $subscription
      * @phpstan-pure
      */
-    public function __construct(\DateTime $createdAt, string $id, OrderStatus $status, bool $paid, int $subtotalAmount, int $discountAmount, int $netAmount, int $taxAmount, int $totalAmount, int $refundedAmount, int $refundedTaxAmount, string $currency, string $customerId, string $productId, string $userId, CustomerOrderProduct $product, array $items, ?\DateTime $modifiedAt = null, ?string $subscriptionId = null, ?CustomerOrderSubscription $subscription = null)
+    public function __construct(string $id, \DateTime $createdAt, OrderStatus $status, bool $paid, int $subtotalAmount, int $discountAmount, int $netAmount, int $amount, int $taxAmount, int $totalAmount, int $refundedAmount, int $refundedTaxAmount, string $currency, OrderBillingReason $billingReason, string $customerId, string $productId, string $userId, CustomerOrderProduct $product, array $items, ?\DateTime $modifiedAt = null, ?Address $billingAddress = null, ?string $discountId = null, ?string $subscriptionId = null, ?string $checkoutId = null, ?CustomerOrderSubscription $subscription = null)
     {
-        $this->createdAt = $createdAt;
         $this->id = $id;
+        $this->createdAt = $createdAt;
         $this->status = $status;
         $this->paid = $paid;
         $this->subtotalAmount = $subtotalAmount;
         $this->discountAmount = $discountAmount;
         $this->netAmount = $netAmount;
+        $this->amount = $amount;
         $this->taxAmount = $taxAmount;
         $this->totalAmount = $totalAmount;
         $this->refundedAmount = $refundedAmount;
         $this->refundedTaxAmount = $refundedTaxAmount;
         $this->currency = $currency;
+        $this->billingReason = $billingReason;
         $this->customerId = $customerId;
         $this->productId = $productId;
         $this->userId = $userId;
         $this->product = $product;
         $this->items = $items;
         $this->modifiedAt = $modifiedAt;
+        $this->billingAddress = $billingAddress;
+        $this->discountId = $discountId;
         $this->subscriptionId = $subscriptionId;
+        $this->checkoutId = $checkoutId;
         $this->subscription = $subscription;
     }
 }

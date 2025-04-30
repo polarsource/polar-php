@@ -12,14 +12,6 @@ namespace Polar\Models\Components;
 class Order
 {
     /**
-     * Creation timestamp of the object.
-     *
-     * @var \DateTime $createdAt
-     */
-    #[\Speakeasy\Serializer\Annotation\SerializedName('created_at')]
-    public \DateTime $createdAt;
-
-    /**
      * The ID of the object.
      *
      * @var string $id
@@ -28,13 +20,12 @@ class Order
     public string $id;
 
     /**
-     * $metadata
+     * Creation timestamp of the object.
      *
-     * @var array<string, string|int|float|bool> $metadata
+     * @var \DateTime $createdAt
      */
-    #[\Speakeasy\Serializer\Annotation\SerializedName('metadata')]
-    #[\Speakeasy\Serializer\Annotation\Type('array<string, string|int|float|bool>')]
-    public array $metadata;
+    #[\Speakeasy\Serializer\Annotation\SerializedName('created_at')]
+    public \DateTime $createdAt;
 
     /**
      *
@@ -147,6 +138,15 @@ class Order
     public string $productId;
 
     /**
+     * $metadata
+     *
+     * @var array<string, string|int|float|bool> $metadata
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('metadata')]
+    #[\Speakeasy\Serializer\Annotation\Type('array<string, string|int|float|bool>')]
+    public array $metadata;
+
+    /**
      *
      * @var OrderCustomer $customer
      */
@@ -188,16 +188,6 @@ class Order
     public ?\DateTime $modifiedAt;
 
     /**
-     * Key-value object storing custom field values.
-     *
-     * @var ?array<string, string|int|bool|\DateTime|null> $customFieldData
-     */
-    #[\Speakeasy\Serializer\Annotation\SerializedName('custom_field_data')]
-    #[\Speakeasy\Serializer\Annotation\Type('array<string, string|int|bool|\DateTime|null>|null')]
-    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
-    public ?array $customFieldData = null;
-
-    /**
      *
      * @var ?Address $billingAddress
      */
@@ -227,6 +217,16 @@ class Order
     public ?string $checkoutId;
 
     /**
+     * Key-value object storing custom field values.
+     *
+     * @var ?array<string, string|int|bool|\DateTime|null> $customFieldData
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('custom_field_data')]
+    #[\Speakeasy\Serializer\Annotation\Type('array<string, string|int|bool|\DateTime|null>|null')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
+    public ?array $customFieldData = null;
+
+    /**
      *
      * @var DiscountFixedOnceForeverDurationBase|DiscountFixedRepeatDurationBase|DiscountPercentageOnceForeverDurationBase|DiscountPercentageRepeatDurationBase|null $discount
      */
@@ -243,9 +243,8 @@ class Order
     public ?OrderSubscription $subscription;
 
     /**
-     * @param  \DateTime  $createdAt
      * @param  string  $id
-     * @param  array<string, string|int|float|bool>  $metadata
+     * @param  \DateTime  $createdAt
      * @param  OrderStatus  $status
      * @param  bool  $paid
      * @param  int  $subtotalAmount
@@ -260,25 +259,25 @@ class Order
      * @param  OrderBillingReason  $billingReason
      * @param  string  $customerId
      * @param  string  $productId
+     * @param  array<string, string|int|float|bool>  $metadata
      * @param  OrderCustomer  $customer
      * @param  string  $userId
      * @param  OrderProduct  $product
      * @param  array<OrderItemSchema>  $items
      * @param  ?\DateTime  $modifiedAt
-     * @param  ?array<string, string|int|bool|\DateTime|null>  $customFieldData
      * @param  ?Address  $billingAddress
      * @param  ?string  $discountId
      * @param  ?string  $subscriptionId
      * @param  ?string  $checkoutId
+     * @param  ?array<string, string|int|bool|\DateTime|null>  $customFieldData
      * @param  DiscountFixedOnceForeverDurationBase|DiscountFixedRepeatDurationBase|DiscountPercentageOnceForeverDurationBase|DiscountPercentageRepeatDurationBase|null  $discount
      * @param  ?OrderSubscription  $subscription
      * @phpstan-pure
      */
-    public function __construct(\DateTime $createdAt, string $id, array $metadata, OrderStatus $status, bool $paid, int $subtotalAmount, int $discountAmount, int $netAmount, int $amount, int $taxAmount, int $totalAmount, int $refundedAmount, int $refundedTaxAmount, string $currency, OrderBillingReason $billingReason, string $customerId, string $productId, OrderCustomer $customer, string $userId, OrderProduct $product, array $items, ?\DateTime $modifiedAt = null, ?array $customFieldData = null, ?Address $billingAddress = null, ?string $discountId = null, ?string $subscriptionId = null, ?string $checkoutId = null, DiscountFixedOnceForeverDurationBase|DiscountFixedRepeatDurationBase|DiscountPercentageOnceForeverDurationBase|DiscountPercentageRepeatDurationBase|null $discount = null, ?OrderSubscription $subscription = null)
+    public function __construct(string $id, \DateTime $createdAt, OrderStatus $status, bool $paid, int $subtotalAmount, int $discountAmount, int $netAmount, int $amount, int $taxAmount, int $totalAmount, int $refundedAmount, int $refundedTaxAmount, string $currency, OrderBillingReason $billingReason, string $customerId, string $productId, array $metadata, OrderCustomer $customer, string $userId, OrderProduct $product, array $items, ?\DateTime $modifiedAt = null, ?Address $billingAddress = null, ?string $discountId = null, ?string $subscriptionId = null, ?string $checkoutId = null, ?array $customFieldData = null, DiscountFixedOnceForeverDurationBase|DiscountFixedRepeatDurationBase|DiscountPercentageOnceForeverDurationBase|DiscountPercentageRepeatDurationBase|null $discount = null, ?OrderSubscription $subscription = null)
     {
-        $this->createdAt = $createdAt;
         $this->id = $id;
-        $this->metadata = $metadata;
+        $this->createdAt = $createdAt;
         $this->status = $status;
         $this->paid = $paid;
         $this->subtotalAmount = $subtotalAmount;
@@ -293,16 +292,17 @@ class Order
         $this->billingReason = $billingReason;
         $this->customerId = $customerId;
         $this->productId = $productId;
+        $this->metadata = $metadata;
         $this->customer = $customer;
         $this->userId = $userId;
         $this->product = $product;
         $this->items = $items;
         $this->modifiedAt = $modifiedAt;
-        $this->customFieldData = $customFieldData;
         $this->billingAddress = $billingAddress;
         $this->discountId = $discountId;
         $this->subscriptionId = $subscriptionId;
         $this->checkoutId = $checkoutId;
+        $this->customFieldData = $customFieldData;
         $this->discount = $discount;
         $this->subscription = $subscription;
     }
