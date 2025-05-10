@@ -21,6 +21,13 @@ class BenefitMeterCreditProperties
 
     /**
      *
+     * @var bool $rollover
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('rollover')]
+    public bool $rollover;
+
+    /**
+     *
      * @var string $meterId
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('meter_id')]
@@ -28,12 +35,14 @@ class BenefitMeterCreditProperties
 
     /**
      * @param  int  $units
+     * @param  bool  $rollover
      * @param  string  $meterId
      * @phpstan-pure
      */
-    public function __construct(int $units, string $meterId)
+    public function __construct(int $units, bool $rollover, string $meterId)
     {
         $this->units = $units;
+        $this->rollover = $rollover;
         $this->meterId = $meterId;
     }
 }
