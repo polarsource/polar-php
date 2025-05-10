@@ -149,3 +149,13 @@ Based on:
 - [php v0.2.11] .
 ### Releases
 - [Composer v0.2.11] https://packagist.org/packages/polar-sh/sdk#v0.2.11 - .
+
+## 2025-05-10 00:17:47
+### Changes
+Based on:
+- OpenAPI Doc  
+- Speakeasy CLI 1.543.4 (2.598.22) https://github.com/speakeasy-api/speakeasy
+### Generated
+- [php v0.2.12] .
+### Releases
+- [Composer v0.2.12] https://packagist.org/packages/polar-sh/sdk#v0.2.12 - .
