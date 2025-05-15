@@ -13,4 +13,5 @@ enum MetricType: string
 {
     case Scalar = 'scalar';
     case Currency = 'currency';
+    case Percentage = 'percentage';
 }

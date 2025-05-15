@@ -60,7 +60,7 @@ class CustomerCustomerMeter
     public int $creditedUnits;
 
     /**
-     * The balance of the meter, i.e. the difference between credited and consumed units. Never goes negative.
+     * The balance of the meter, i.e. the difference between credited and consumed units.
      *
      * @var float $balance
      */

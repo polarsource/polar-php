@@ -547,6 +547,11 @@ foreach ($responses as $response) {
 * [get](docs/sdks/organizations/README.md#get) - Get Organization
 * [update](docs/sdks/organizations/README.md#update) - Update Organization
 
+### [payments](docs/sdks/payments/README.md)
+
+* [list](docs/sdks/payments/README.md#list) - List Payments
+* [get](docs/sdks/payments/README.md#get) - Get Payment
+
 
 ### [products](docs/sdks/products/README.md)
 

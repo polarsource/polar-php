@@ -29,6 +29,30 @@ class CheckoutsListRequest
     public string|array|null $productId = null;
 
     /**
+     * Filter by customer ID.
+     *
+     * @var string|array<string>|null $customerId
+     */
+    #[SpeakeasyMetadata('queryParam:style=form,explode=true,name=customer_id')]
+    public string|array|null $customerId = null;
+
+    /**
+     * Filter by checkout session status.
+     *
+     * @var Components\CheckoutStatus|array<Components\CheckoutStatus>|null $status
+     */
+    #[SpeakeasyMetadata('queryParam:style=form,explode=true,name=status')]
+    public Components\CheckoutStatus|array|null $status = null;
+
+    /**
+     * Filter by customer email.
+     *
+     * @var ?string $query
+     */
+    #[SpeakeasyMetadata('queryParam:style=form,explode=true,name=query')]
+    public ?string $query = null;
+
+    /**
      * Sorting criterion. Several criteria can be used simultaneously and will be applied in order. Add a minus sign `-` before the criteria name to sort by descending order.
      *
      * @var ?array<Components\CheckoutSortProperty> $sorting
@@ -57,13 +81,19 @@ class CheckoutsListRequest
      * @param  ?int  $limit
      * @param  string|array<string>|null  $organizationId
      * @param  string|array<string>|null  $productId
+     * @param  string|array<string>|null  $customerId
+     * @param  Components\CheckoutStatus|array<Components\CheckoutStatus>|null  $status
+     * @param  ?string  $query
      * @param  ?array<Components\CheckoutSortProperty>  $sorting
      * @phpstan-pure
      */
-    public function __construct(string|array|null $organizationId = null, string|array|null $productId = null, ?array $sorting = null, ?int $page = 1, ?int $limit = 10)
+    public function __construct(string|array|null $organizationId = null, string|array|null $productId = null, string|array|null $customerId = null, Components\CheckoutStatus|array|null $status = null, ?string $query = null, ?array $sorting = null, ?int $page = 1, ?int $limit = 10)
     {
         $this->organizationId = $organizationId;
         $this->productId = $productId;
+        $this->customerId = $customerId;
+        $this->status = $status;
+        $this->query = $query;
         $this->sorting = $sorting;
         $this->page = $page;
         $this->limit = $limit;

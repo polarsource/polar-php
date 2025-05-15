@@ -120,6 +120,33 @@ class Metrics
     public Metric $monthlyRecurringRevenue;
 
     /**
+     * Information about a metric.
+     *
+     * @var Metric $checkouts
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('checkouts')]
+    #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\Metric')]
+    public Metric $checkouts;
+
+    /**
+     * Information about a metric.
+     *
+     * @var Metric $succeededCheckouts
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('succeeded_checkouts')]
+    #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\Metric')]
+    public Metric $succeededCheckouts;
+
+    /**
+     * Information about a metric.
+     *
+     * @var Metric $checkoutsConversion
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('checkouts_conversion')]
+    #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\Metric')]
+    public Metric $checkoutsConversion;
+
+    /**
      * @param  Metric  $orders
      * @param  Metric  $revenue
      * @param  Metric  $cumulativeRevenue
@@ -132,9 +159,12 @@ class Metrics
      * @param  Metric  $renewedSubscriptionsRevenue
      * @param  Metric  $activeSubscriptions
      * @param  Metric  $monthlyRecurringRevenue
+     * @param  Metric  $checkouts
+     * @param  Metric  $succeededCheckouts
+     * @param  Metric  $checkoutsConversion
      * @phpstan-pure
      */
-    public function __construct(Metric $orders, Metric $revenue, Metric $cumulativeRevenue, Metric $averageOrderValue, Metric $oneTimeProducts, Metric $oneTimeProductsRevenue, Metric $newSubscriptions, Metric $newSubscriptionsRevenue, Metric $renewedSubscriptions, Metric $renewedSubscriptionsRevenue, Metric $activeSubscriptions, Metric $monthlyRecurringRevenue)
+    public function __construct(Metric $orders, Metric $revenue, Metric $cumulativeRevenue, Metric $averageOrderValue, Metric $oneTimeProducts, Metric $oneTimeProductsRevenue, Metric $newSubscriptions, Metric $newSubscriptionsRevenue, Metric $renewedSubscriptions, Metric $renewedSubscriptionsRevenue, Metric $activeSubscriptions, Metric $monthlyRecurringRevenue, Metric $checkouts, Metric $succeededCheckouts, Metric $checkoutsConversion)
     {
         $this->orders = $orders;
         $this->revenue = $revenue;
@@ -148,5 +178,8 @@ class Metrics
         $this->renewedSubscriptionsRevenue = $renewedSubscriptionsRevenue;
         $this->activeSubscriptions = $activeSubscriptions;
         $this->monthlyRecurringRevenue = $monthlyRecurringRevenue;
+        $this->checkouts = $checkouts;
+        $this->succeededCheckouts = $succeededCheckouts;
+        $this->checkoutsConversion = $checkoutsConversion;
     }
 }

@@ -70,6 +70,8 @@ class Polar
 
     public CustomerMeters $customerMeters;
 
+    public Payments $payments;
+
     /**
      * Returns a new instance of the SDK builder used to configure and create the SDK instance.
      *
@@ -106,6 +108,7 @@ class Polar
         $this->events = new Events($this->sdkConfiguration);
         $this->meters = new Meters($this->sdkConfiguration);
         $this->customerMeters = new CustomerMeters($this->sdkConfiguration);
+        $this->payments = new Payments($this->sdkConfiguration);
         $this->sdkConfiguration->client = $this->sdkConfiguration->initHooks($this->sdkConfiguration->client);
 
     }
