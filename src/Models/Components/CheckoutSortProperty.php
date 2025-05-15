@@ -15,4 +15,6 @@ enum CheckoutSortProperty: string
     case MinusCreatedAt = '-created_at';
     case ExpiresAt = 'expires_at';
     case MinusExpiresAt = '-expires_at';
+    case Status = 'status';
+    case MinusStatus = '-status';
 }

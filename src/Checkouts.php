@@ -392,6 +392,9 @@ class Checkouts
                         request: new Operations\CheckoutsListRequest(
                             organizationId: $request != null ? $request->organizationId : null,
                             productId: $request != null ? $request->productId : null,
+                            customerId: $request != null ? $request->customerId : null,
+                            status: $request != null ? $request->status : null,
+                            query: $request != null ? $request->query : null,
                             page: $nextPage,
                             limit: $request != null ? $request->limit : null,
                             sorting: $request != null ? $request->sorting : null,

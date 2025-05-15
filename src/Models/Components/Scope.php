@@ -46,6 +46,7 @@ enum Scope: string
     case OrdersRead = 'orders:read';
     case RefundsRead = 'refunds:read';
     case RefundsWrite = 'refunds:write';
+    case PaymentsRead = 'payments:read';
     case MetricsRead = 'metrics:read';
     case WebhooksRead = 'webhooks:read';
     case WebhooksWrite = 'webhooks:write';

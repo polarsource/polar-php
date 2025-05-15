@@ -3,7 +3,8 @@
 
 ## Values
 
-| Name       | Value      |
-| ---------- | ---------- |
-| `Scalar`   | scalar     |
-| `Currency` | currency   |
+| Name         | Value        |
+| ------------ | ------------ |
+| `Scalar`     | scalar       |
+| `Currency`   | currency     |
+| `Percentage` | percentage   |

@@ -1,3 +1,5 @@
+**/.speakeasy/temp/
+**/.speakeasy/logs/
 .speakeasy/temp/
 composer.lock
 vendor

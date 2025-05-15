@@ -23,6 +23,14 @@ class MetricsResponse
 
     /**
      *
+     * @var MetricsTotals $totals
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('totals')]
+    #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\MetricsTotals')]
+    public MetricsTotals $totals;
+
+    /**
+     *
      * @var Metrics $metrics
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('metrics')]
@@ -31,12 +39,14 @@ class MetricsResponse
 
     /**
      * @param  array<MetricPeriod>  $periods
+     * @param  MetricsTotals  $totals
      * @param  Metrics  $metrics
      * @phpstan-pure
      */
-    public function __construct(array $periods, Metrics $metrics)
+    public function __construct(array $periods, MetricsTotals $totals, Metrics $metrics)
     {
         $this->periods = $periods;
+        $this->totals = $totals;
         $this->metrics = $metrics;
     }
 }

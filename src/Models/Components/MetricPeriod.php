@@ -21,105 +21,144 @@ class MetricPeriod
 
     /**
      *
-     * @var int $orders
+     * @var int|float $orders
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('orders')]
-    public int $orders;
+    #[\Speakeasy\Serializer\Annotation\Type('int|float')]
+    public int|float $orders;
 
     /**
      *
-     * @var int $revenue
+     * @var int|float $revenue
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('revenue')]
-    public int $revenue;
+    #[\Speakeasy\Serializer\Annotation\Type('int|float')]
+    public int|float $revenue;
 
     /**
      *
-     * @var int $cumulativeRevenue
+     * @var int|float $cumulativeRevenue
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('cumulative_revenue')]
-    public int $cumulativeRevenue;
+    #[\Speakeasy\Serializer\Annotation\Type('int|float')]
+    public int|float $cumulativeRevenue;
 
     /**
      *
-     * @var int $averageOrderValue
+     * @var int|float $averageOrderValue
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('average_order_value')]
-    public int $averageOrderValue;
+    #[\Speakeasy\Serializer\Annotation\Type('int|float')]
+    public int|float $averageOrderValue;
 
     /**
      *
-     * @var int $oneTimeProducts
+     * @var int|float $oneTimeProducts
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('one_time_products')]
-    public int $oneTimeProducts;
+    #[\Speakeasy\Serializer\Annotation\Type('int|float')]
+    public int|float $oneTimeProducts;
 
     /**
      *
-     * @var int $oneTimeProductsRevenue
+     * @var int|float $oneTimeProductsRevenue
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('one_time_products_revenue')]
-    public int $oneTimeProductsRevenue;
+    #[\Speakeasy\Serializer\Annotation\Type('int|float')]
+    public int|float $oneTimeProductsRevenue;
 
     /**
      *
-     * @var int $newSubscriptions
+     * @var int|float $newSubscriptions
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('new_subscriptions')]
-    public int $newSubscriptions;
+    #[\Speakeasy\Serializer\Annotation\Type('int|float')]
+    public int|float $newSubscriptions;
 
     /**
      *
-     * @var int $newSubscriptionsRevenue
+     * @var int|float $newSubscriptionsRevenue
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('new_subscriptions_revenue')]
-    public int $newSubscriptionsRevenue;
+    #[\Speakeasy\Serializer\Annotation\Type('int|float')]
+    public int|float $newSubscriptionsRevenue;
 
     /**
      *
-     * @var int $renewedSubscriptions
+     * @var int|float $renewedSubscriptions
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('renewed_subscriptions')]
-    public int $renewedSubscriptions;
+    #[\Speakeasy\Serializer\Annotation\Type('int|float')]
+    public int|float $renewedSubscriptions;
 
     /**
      *
-     * @var int $renewedSubscriptionsRevenue
+     * @var int|float $renewedSubscriptionsRevenue
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('renewed_subscriptions_revenue')]
-    public int $renewedSubscriptionsRevenue;
+    #[\Speakeasy\Serializer\Annotation\Type('int|float')]
+    public int|float $renewedSubscriptionsRevenue;
 
     /**
      *
-     * @var int $activeSubscriptions
+     * @var int|float $activeSubscriptions
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('active_subscriptions')]
-    public int $activeSubscriptions;
+    #[\Speakeasy\Serializer\Annotation\Type('int|float')]
+    public int|float $activeSubscriptions;
 
     /**
      *
-     * @var int $monthlyRecurringRevenue
+     * @var int|float $monthlyRecurringRevenue
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('monthly_recurring_revenue')]
-    public int $monthlyRecurringRevenue;
+    #[\Speakeasy\Serializer\Annotation\Type('int|float')]
+    public int|float $monthlyRecurringRevenue;
+
+    /**
+     *
+     * @var int|float $checkouts
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('checkouts')]
+    #[\Speakeasy\Serializer\Annotation\Type('int|float')]
+    public int|float $checkouts;
+
+    /**
+     *
+     * @var int|float $succeededCheckouts
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('succeeded_checkouts')]
+    #[\Speakeasy\Serializer\Annotation\Type('int|float')]
+    public int|float $succeededCheckouts;
+
+    /**
+     *
+     * @var int|float $checkoutsConversion
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('checkouts_conversion')]
+    #[\Speakeasy\Serializer\Annotation\Type('int|float')]
+    public int|float $checkoutsConversion;
 
     /**
      * @param  \DateTime  $timestamp
-     * @param  int  $orders
-     * @param  int  $revenue
-     * @param  int  $cumulativeRevenue
-     * @param  int  $averageOrderValue
-     * @param  int  $oneTimeProducts
-     * @param  int  $oneTimeProductsRevenue
-     * @param  int  $newSubscriptions
-     * @param  int  $newSubscriptionsRevenue
-     * @param  int  $renewedSubscriptions
-     * @param  int  $renewedSubscriptionsRevenue
-     * @param  int  $activeSubscriptions
-     * @param  int  $monthlyRecurringRevenue
+     * @param  int|float  $orders
+     * @param  int|float  $revenue
+     * @param  int|float  $cumulativeRevenue
+     * @param  int|float  $averageOrderValue
+     * @param  int|float  $oneTimeProducts
+     * @param  int|float  $oneTimeProductsRevenue
+     * @param  int|float  $newSubscriptions
+     * @param  int|float  $newSubscriptionsRevenue
+     * @param  int|float  $renewedSubscriptions
+     * @param  int|float  $renewedSubscriptionsRevenue
+     * @param  int|float  $activeSubscriptions
+     * @param  int|float  $monthlyRecurringRevenue
+     * @param  int|float  $checkouts
+     * @param  int|float  $succeededCheckouts
+     * @param  int|float  $checkoutsConversion
      * @phpstan-pure
      */
-    public function __construct(\DateTime $timestamp, int $orders, int $revenue, int $cumulativeRevenue, int $averageOrderValue, int $oneTimeProducts, int $oneTimeProductsRevenue, int $newSubscriptions, int $newSubscriptionsRevenue, int $renewedSubscriptions, int $renewedSubscriptionsRevenue, int $activeSubscriptions, int $monthlyRecurringRevenue)
+    public function __construct(\DateTime $timestamp, int|float $orders, int|float $revenue, int|float $cumulativeRevenue, int|float $averageOrderValue, int|float $oneTimeProducts, int|float $oneTimeProductsRevenue, int|float $newSubscriptions, int|float $newSubscriptionsRevenue, int|float $renewedSubscriptions, int|float $renewedSubscriptionsRevenue, int|float $activeSubscriptions, int|float $monthlyRecurringRevenue, int|float $checkouts, int|float $succeededCheckouts, int|float $checkoutsConversion)
     {
         $this->timestamp = $timestamp;
         $this->orders = $orders;
@@ -134,5 +173,8 @@ class MetricPeriod
         $this->renewedSubscriptionsRevenue = $renewedSubscriptionsRevenue;
         $this->activeSubscriptions = $activeSubscriptions;
         $this->monthlyRecurringRevenue = $monthlyRecurringRevenue;
+        $this->checkouts = $checkouts;
+        $this->succeededCheckouts = $succeededCheckouts;
+        $this->checkoutsConversion = $checkoutsConversion;
     }
 }
