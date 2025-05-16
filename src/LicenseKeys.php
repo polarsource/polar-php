@@ -268,7 +268,7 @@ class LicenseKeys
             limit: $limit,
         );
         $baseUrl = $this->sdkConfiguration->getServerUrl();
-        $url = Utils\Utils::generateUrl($baseUrl, '/v1/license-keys');
+        $url = Utils\Utils::generateUrl($baseUrl, '/v1/license-keys/');
         $urlOverride = null;
         $httpOptions = ['http_errors' => false];
 

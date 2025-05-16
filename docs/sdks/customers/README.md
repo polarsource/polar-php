@@ -100,7 +100,7 @@ $request = new Components\CustomerCreate(
     email: 'customer@example.com',
     name: 'John Doe',
     billingAddress: new Components\Address(
-        country: 'SE',
+        country: 'FR',
     ),
     taxId: [
         'FR61954506077',
@@ -214,8 +214,8 @@ $customerUpdate = new Components\CustomerUpdate(
         country: 'FR',
     ),
     taxId: [
-        'FR61954506077',
-        'eu_vat',
+        '911144442',
+        'us_ein',
     ],
     externalId: 'usr_1337',
 );
@@ -391,8 +391,8 @@ $customerUpdateExternalID = new Components\CustomerUpdateExternalID(
         country: 'US',
     ),
     taxId: [
-        'FR61954506077',
-        'eu_vat',
+        '911144442',
+        'us_ein',
     ],
 );
 

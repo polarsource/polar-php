@@ -61,6 +61,14 @@ class SubscriptionsListRequest
     public ?array $sorting = null;
 
     /**
+     * Filter by metadata key-value pairs. It uses the `deepObject` style, e.g. `?metadata[key]=value`.
+     *
+     * @var ?array<string, string|int|bool|array<string>|array<int>|array<bool>> $metadata
+     */
+    #[SpeakeasyMetadata('queryParam:style=deepObject,explode=true,name=metadata')]
+    public ?array $metadata = null;
+
+    /**
      * Page number, defaults to 1.
      *
      * @var ?int $page
@@ -85,9 +93,10 @@ class SubscriptionsListRequest
      * @param  string|array<string>|null  $discountId
      * @param  ?bool  $active
      * @param  ?array<Components\SubscriptionSortProperty>  $sorting
+     * @param  ?array<string, string|int|bool|array<string>|array<int>|array<bool>>  $metadata
      * @phpstan-pure
      */
-    public function __construct(string|array|null $organizationId = null, string|array|null $productId = null, string|array|null $customerId = null, string|array|null $discountId = null, ?bool $active = null, ?array $sorting = null, ?int $page = 1, ?int $limit = 10)
+    public function __construct(string|array|null $organizationId = null, string|array|null $productId = null, string|array|null $customerId = null, string|array|null $discountId = null, ?bool $active = null, ?array $sorting = null, ?array $metadata = null, ?int $page = 1, ?int $limit = 10)
     {
         $this->organizationId = $organizationId;
         $this->productId = $productId;
@@ -95,6 +104,7 @@ class SubscriptionsListRequest
         $this->discountId = $discountId;
         $this->active = $active;
         $this->sorting = $sorting;
+        $this->metadata = $metadata;
         $this->page = $page;
         $this->limit = $limit;
     }

@@ -310,6 +310,7 @@ class Orders
                             page: $nextPage,
                             limit: $request != null ? $request->limit : null,
                             sorting: $request != null ? $request->sorting : null,
+                            metadata: $request != null ? $request->metadata : null,
                         ),
                     );
                 };

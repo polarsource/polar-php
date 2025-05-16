@@ -29,9 +29,7 @@ use Polar\Models\Operations;
 $sdk = Polar\Polar::builder()->build();
 
 $request = new Operations\CustomerPortalSubscriptionsListRequest(
-    organizationId: [
-        '1dbfc517-0bbf-4301-9ba8-555ca42b9737',
-    ],
+    organizationId: '1dbfc517-0bbf-4301-9ba8-555ca42b9737',
 );
 $requestSecurity = new Operations\CustomerPortalSubscriptionsListSecurity(
     customerSession: '<YOUR_BEARER_TOKEN_HERE>',

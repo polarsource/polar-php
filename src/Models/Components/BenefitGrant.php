@@ -119,6 +119,16 @@ class BenefitGrant
     public ?\DateTime $revokedAt = null;
 
     /**
+     * The error information if the benefit grant failed with an unrecoverable error.
+     *
+     * @var ?BenefitGrantError $error
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('error')]
+    #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\BenefitGrantError|null')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
+    public ?BenefitGrantError $error = null;
+
+    /**
      * @param  \DateTime  $createdAt
      * @param  string  $id
      * @param  bool  $isGranted
@@ -132,9 +142,10 @@ class BenefitGrant
      * @param  ?string  $orderId
      * @param  ?\DateTime  $grantedAt
      * @param  ?\DateTime  $revokedAt
+     * @param  ?BenefitGrantError  $error
      * @phpstan-pure
      */
-    public function __construct(\DateTime $createdAt, string $id, bool $isGranted, bool $isRevoked, string $customerId, string $benefitId, Customer $customer, BenefitGrantDiscordProperties|BenefitGrantGitHubRepositoryProperties|BenefitGrantDownloadablesProperties|BenefitGrantLicenseKeysProperties|BenefitGrantCustomProperties $properties, ?\DateTime $modifiedAt = null, ?string $subscriptionId = null, ?string $orderId = null, ?\DateTime $grantedAt = null, ?\DateTime $revokedAt = null)
+    public function __construct(\DateTime $createdAt, string $id, bool $isGranted, bool $isRevoked, string $customerId, string $benefitId, Customer $customer, BenefitGrantDiscordProperties|BenefitGrantGitHubRepositoryProperties|BenefitGrantDownloadablesProperties|BenefitGrantLicenseKeysProperties|BenefitGrantCustomProperties $properties, ?\DateTime $modifiedAt = null, ?string $subscriptionId = null, ?string $orderId = null, ?\DateTime $grantedAt = null, ?\DateTime $revokedAt = null, ?BenefitGrantError $error = null)
     {
         $this->createdAt = $createdAt;
         $this->id = $id;
@@ -149,5 +160,6 @@ class BenefitGrant
         $this->orderId = $orderId;
         $this->grantedAt = $grantedAt;
         $this->revokedAt = $revokedAt;
+        $this->error = $error;
     }
 }

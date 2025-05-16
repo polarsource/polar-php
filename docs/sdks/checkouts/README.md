@@ -33,9 +33,7 @@ $sdk = Polar\Polar::builder()
     ->build();
 
 $request = new Operations\CheckoutsListRequest(
-    organizationId: [
-        '1dbfc517-0bbf-4301-9ba8-555ca42b9737',
-    ],
+    organizationId: '1dbfc517-0bbf-4301-9ba8-555ca42b9737',
 );
 
 $responses = $sdk->checkouts->list(
@@ -91,7 +89,7 @@ $sdk = Polar\Polar::builder()
 
 $request = new Components\CheckoutCreate(
     customerBillingAddress: new Components\Address(
-        country: 'SE',
+        country: 'FR',
     ),
     products: [
         '<value>',

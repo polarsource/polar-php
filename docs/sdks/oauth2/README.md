@@ -71,7 +71,7 @@ $request = new Components\AuthorizationCodeTokenRequest(
     clientId: '<id>',
     clientSecret: '<value>',
     code: '<value>',
-    redirectUri: 'https://old-fort.name',
+    redirectUri: 'https://memorable-season.name',
 );
 
 $response = $sdk->oauth2->token(

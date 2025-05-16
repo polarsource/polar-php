@@ -35,12 +35,10 @@ $sdk = Polar\Polar::builder()
     ->build();
 
 $request = new Operations\MetricsGetRequest(
-    startDate: LocalDate::parse('2025-02-06'),
-    endDate: LocalDate::parse('2024-09-04'),
-    interval: Components\TimeInterval::Week,
-    organizationId: [
-        '1dbfc517-0bbf-4301-9ba8-555ca42b9737',
-    ],
+    startDate: LocalDate::parse('2025-03-14'),
+    endDate: LocalDate::parse('2025-03-18'),
+    interval: Components\TimeInterval::Hour,
+    organizationId: '1dbfc517-0bbf-4301-9ba8-555ca42b9737',
 );
 
 $response = $sdk->metrics->get(
