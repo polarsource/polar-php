@@ -90,8 +90,8 @@ $sdk = Polar\Polar::builder()
     )
     ->build();
 
-$request = new Components\CheckoutLinkCreateProduct(
-    productId: '<value>',
+$request = new Components\CheckoutLinkCreateProductPrice(
+    productPriceId: '<value>',
 );
 
 $response = $sdk->checkoutLinks->create(

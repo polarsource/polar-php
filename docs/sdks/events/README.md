@@ -196,10 +196,10 @@ $sdk = Polar\Polar::builder()
 
 $request = new Components\EventsIngest(
     events: [
-        new Components\EventCreateExternalCustomer(
+        new Components\EventCreateCustomer(
             name: '<value>',
             organizationId: '1dbfc517-0bbf-4301-9ba8-555ca42b9737',
-            externalCustomerId: '<id>',
+            customerId: '<value>',
         ),
     ],
 );

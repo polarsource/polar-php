@@ -34,9 +34,7 @@ $sdk = Polar\Polar::builder()
     ->build();
 
 $request = new Operations\CustomFieldsListRequest(
-    organizationId: [
-        '1dbfc517-0bbf-4301-9ba8-555ca42b9737',
-    ],
+    organizationId: '1dbfc517-0bbf-4301-9ba8-555ca42b9737',
 );
 
 $responses = $sdk->customFields->list(
@@ -90,11 +88,18 @@ $sdk = Polar\Polar::builder()
     )
     ->build();
 
-$request = new Components\CustomFieldCreateNumber(
+$request = new Components\CustomFieldCreateSelect(
     slug: '<value>',
     name: '<value>',
     organizationId: '1dbfc517-0bbf-4301-9ba8-555ca42b9737',
-    properties: new Components\CustomFieldNumberProperties(),
+    properties: new Components\CustomFieldSelectProperties(
+        options: [
+            new Components\CustomFieldSelectOption(
+                value: '<value>',
+                label: '<value>',
+            ),
+        ],
+    ),
 );
 
 $response = $sdk->customFields->create(
@@ -199,7 +204,7 @@ $sdk = Polar\Polar::builder()
 
 $response = $sdk->customFields->update(
     id: '<value>',
-    customFieldUpdate: new Components\CustomFieldUpdateText()
+    customFieldUpdate: new Components\CustomFieldUpdateDate()
 
 );
 

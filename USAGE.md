@@ -20,7 +20,7 @@ $responses = $sdk->organizations->list(
     page: 1,
     limit: 10,
     sorting: [
-        Components\OrganizationSortProperty::Name,
+        Components\OrganizationSortProperty::CreatedAt,
     ]
 
 );

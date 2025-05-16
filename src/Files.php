@@ -221,14 +221,14 @@ class Files
      *
      * **Scopes**: `files:read` `files:write`
      *
-     * @param  ?string  $organizationId
-     * @param  ?array<string>  $ids
+     * @param  string|array<string>|null  $organizationId
+     * @param  string|array<string>|null  $ids
      * @param  ?int  $page
      * @param  ?int  $limit
      * @return Operations\FilesListResponse
      * @throws \Polar\Models\Errors\APIException
      */
-    private function listIndividual(?string $organizationId = null, ?array $ids = null, ?int $page = null, ?int $limit = null, ?Options $options = null): Operations\FilesListResponse
+    private function listIndividual(string|array|null $organizationId = null, string|array|null $ids = null, ?int $page = null, ?int $limit = null, ?Options $options = null): Operations\FilesListResponse
     {
         $request = new Operations\FilesListRequest(
             organizationId: $organizationId,
@@ -341,14 +341,14 @@ class Files
      *
      * **Scopes**: `files:read` `files:write`
      *
-     * @param  ?string  $organizationId
-     * @param  ?array<string>  $ids
+     * @param  string|array<string>|null  $organizationId
+     * @param  string|array<string>|null  $ids
      * @param  ?int  $page
      * @param  ?int  $limit
      * @return \Generator<Operations\FilesListResponse>
      * @throws \Polar\Models\Errors\APIException
      */
-    public function list(?string $organizationId = null, ?array $ids = null, ?int $page = null, ?int $limit = null, ?Options $options = null): \Generator
+    public function list(string|array|null $organizationId = null, string|array|null $ids = null, ?int $page = null, ?int $limit = null, ?Options $options = null): \Generator
     {
         $res = $this->listIndividual($organizationId, $ids, $page, $limit, $options);
         while ($res !== null) {

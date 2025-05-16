@@ -12,19 +12,20 @@ use Polar\Utils\SpeakeasyMetadata;
 class FilesListRequest
 {
     /**
+     * Filter by organization ID.
      *
-     * @var ?string $organizationId
+     * @var string|array<string>|null $organizationId
      */
     #[SpeakeasyMetadata('queryParam:style=form,explode=true,name=organization_id')]
-    public ?string $organizationId = null;
+    public string|array|null $organizationId = null;
 
     /**
-     * List of file IDs to get. 
+     * Filter by file ID.
      *
-     * @var ?array<string> $ids
+     * @var string|array<string>|null $ids
      */
     #[SpeakeasyMetadata('queryParam:style=form,explode=true,name=ids')]
-    public ?array $ids = null;
+    public string|array|null $ids = null;
 
     /**
      * Page number, defaults to 1.
@@ -45,11 +46,11 @@ class FilesListRequest
     /**
      * @param  ?int  $page
      * @param  ?int  $limit
-     * @param  ?string  $organizationId
-     * @param  ?array<string>  $ids
+     * @param  string|array<string>|null  $organizationId
+     * @param  string|array<string>|null  $ids
      * @phpstan-pure
      */
-    public function __construct(?string $organizationId = null, ?array $ids = null, ?int $page = 1, ?int $limit = 10)
+    public function __construct(string|array|null $organizationId = null, string|array|null $ids = null, ?int $page = 1, ?int $limit = 10)
     {
         $this->organizationId = $organizationId;
         $this->ids = $ids;

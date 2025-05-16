@@ -80,7 +80,7 @@ $sdk = Polar\Polar::builder()->build();
 
 $request = new Components\CustomerPortalCustomerUpdate(
     billingAddress: new Components\Address(
-        country: 'FR',
+        country: 'US',
     ),
 );
 $requestSecurity = new Operations\CustomerPortalCustomersUpdateSecurity(
@@ -194,7 +194,7 @@ $sdk = Polar\Polar::builder()->build();
 $request = new Components\CustomerPaymentMethodCreate(
     confirmationTokenId: '<id>',
     setDefault: false,
-    returnUrl: 'https://probable-resource.biz',
+    returnUrl: 'https://jubilant-worth.biz',
 );
 $requestSecurity = new Operations\CustomerPortalCustomersAddPaymentMethodSecurity(
     customerSession: '<YOUR_BEARER_TOKEN_HERE>',

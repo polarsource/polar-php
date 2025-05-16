@@ -34,9 +34,7 @@ $sdk = Polar\Polar::builder()
     ->build();
 
 $request = new Operations\MetersListRequest(
-    organizationId: [
-        '1dbfc517-0bbf-4301-9ba8-555ca42b9737',
-    ],
+    organizationId: '1dbfc517-0bbf-4301-9ba8-555ca42b9737',
 );
 
 $responses = $sdk->meters->list(
@@ -93,13 +91,10 @@ $sdk = Polar\Polar::builder()
 $request = new Components\MeterCreate(
     name: '<value>',
     filter: new Components\Filter(
-        conjunction: Components\FilterConjunction::And,
+        conjunction: Components\FilterConjunction::Or,
         clauses: [],
     ),
-    aggregation: new Components\PropertyAggregation(
-        func: Components\Func::Max,
-        property: '<value>',
-    ),
+    aggregation: new Components\CountAggregation(),
     organizationId: '1dbfc517-0bbf-4301-9ba8-555ca42b9737',
 );
 
@@ -259,9 +254,9 @@ $sdk = Polar\Polar::builder()
 
 $request = new Operations\MetersQuantitiesRequest(
     id: '<value>',
-    startTimestamp: Utils\Utils::parseDateTime('2023-09-17T00:45:34.608Z'),
-    endTimestamp: Utils\Utils::parseDateTime('2023-07-21T18:11:39.069Z'),
-    interval: Components\TimeInterval::Hour,
+    startTimestamp: Utils\Utils::parseDateTime('2025-11-25T04:37:16.823Z'),
+    endTimestamp: Utils\Utils::parseDateTime('2025-11-26T17:06:00.727Z'),
+    interval: Components\TimeInterval::Day,
 );
 
 $response = $sdk->meters->quantities(

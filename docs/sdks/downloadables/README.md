@@ -31,9 +31,7 @@ $requestSecurity = new Operations\CustomerPortalDownloadablesListSecurity(
 
 $responses = $sdk->customerPortal->downloadables->list(
     security: $requestSecurity,
-    organizationId: [
-        '1dbfc517-0bbf-4301-9ba8-555ca42b9737',
-    ],
+    organizationId: '1dbfc517-0bbf-4301-9ba8-555ca42b9737',
     benefitId: [
         '<value>',
     ],

@@ -195,7 +195,9 @@ $sdk = Polar\Polar::builder()
 
 $response = $sdk->subscriptions->update(
     id: '<value>',
-    subscriptionUpdate: new Components\SubscriptionRevoke()
+    subscriptionUpdate: new Components\SubscriptionUpdateProduct(
+        productId: '<value>',
+    )
 
 );
 

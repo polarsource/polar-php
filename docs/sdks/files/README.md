@@ -36,9 +36,7 @@ $sdk = Polar\Polar::builder()
 
 $responses = $sdk->files->list(
     organizationId: '1dbfc517-0bbf-4301-9ba8-555ca42b9737',
-    ids: [
-        '<value>',
-    ],
+    ids: '<value>',
     page: 1,
     limit: 10
 
@@ -54,12 +52,12 @@ foreach ($responses as $response) {
 
 ### Parameters
 
-| Parameter                                       | Type                                            | Required                                        | Description                                     | Example                                         |
-| ----------------------------------------------- | ----------------------------------------------- | ----------------------------------------------- | ----------------------------------------------- | ----------------------------------------------- |
-| `organizationId`                                | *?string*                                       | :heavy_minus_sign:                              | N/A                                             | 1dbfc517-0bbf-4301-9ba8-555ca42b9737            |
-| `ids`                                           | array<*string*>                                 | :heavy_minus_sign:                              | List of file IDs to get.                        |                                                 |
-| `page`                                          | *?int*                                          | :heavy_minus_sign:                              | Page number, defaults to 1.                     |                                                 |
-| `limit`                                         | *?int*                                          | :heavy_minus_sign:                              | Size of a page, defaults to 10. Maximum is 100. |                                                 |
+| Parameter                                                                               | Type                                                                                    | Required                                                                                | Description                                                                             |
+| --------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------- |
+| `organizationId`                                                                        | [string\|array\|null](../../Models/Operations/FilesListQueryParamOrganizationIDFilter.md) | :heavy_minus_sign:                                                                      | Filter by organization ID.                                                              |
+| `ids`                                                                                   | [string\|array\|null](../../Models/Operations/FileIDFilter.md)                          | :heavy_minus_sign:                                                                      | Filter by file ID.                                                                      |
+| `page`                                                                                  | *?int*                                                                                  | :heavy_minus_sign:                                                                      | Page number, defaults to 1.                                                             |
+| `limit`                                                                                 | *?int*                                                                                  | :heavy_minus_sign:                                                                      | Size of a page, defaults to 10. Maximum is 100.                                         |
 
 ### Response
 
@@ -94,17 +92,17 @@ $sdk = Polar\Polar::builder()
     )
     ->build();
 
-$request = new Components\OrganizationAvatarFileCreate(
+$request = new Components\DownloadableFileCreate(
     organizationId: '1dbfc517-0bbf-4301-9ba8-555ca42b9737',
     name: '<value>',
     mimeType: '<value>',
-    size: 638424,
+    size: 612128,
     upload: new Components\S3FileCreateMultipart(
         parts: [
             new Components\S3FileCreatePart(
-                number: 417458,
-                chunkStart: 134365,
-                chunkEnd: 69025,
+                number: 3303,
+                chunkStart: 703026,
+                chunkEnd: 476601,
             ),
         ],
     ),
@@ -160,10 +158,10 @@ $sdk = Polar\Polar::builder()
 
 $fileUploadCompleted = new Components\FileUploadCompleted(
     id: '<id>',
-    path: '/sys',
+    path: '/boot',
     parts: [
         new Components\S3FileUploadCompletedPart(
-            number: 848922,
+            number: 859084,
             checksumEtag: '<value>',
             checksumSha256Base64: '<value>',
         ),

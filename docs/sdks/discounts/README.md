@@ -34,9 +34,7 @@ $sdk = Polar\Polar::builder()
     ->build();
 
 $request = new Operations\DiscountsListRequest(
-    organizationId: [
-        '1dbfc517-0bbf-4301-9ba8-555ca42b9737',
-    ],
+    organizationId: '1dbfc517-0bbf-4301-9ba8-555ca42b9737',
 );
 
 $responses = $sdk->discounts->list(
@@ -90,11 +88,10 @@ $sdk = Polar\Polar::builder()
     )
     ->build();
 
-$request = new Components\DiscountFixedRepeatDurationCreate(
-    duration: Components\DiscountDuration::Forever,
-    durationInMonths: 417458,
+$request = new Components\DiscountPercentageOnceForeverDurationCreate(
+    duration: Components\DiscountDuration::Once,
     type: Components\DiscountType::Fixed,
-    amount: 69025,
+    basisPoints: 449604,
     name: '<value>',
     organizationId: '1dbfc517-0bbf-4301-9ba8-555ca42b9737',
 );
