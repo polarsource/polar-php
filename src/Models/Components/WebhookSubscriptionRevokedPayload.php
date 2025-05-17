@@ -10,7 +10,7 @@ namespace Polar\Models\Components;
 
 
 /**
- * WebhookSubscriptionRevokedPayload - Sent when a subscription is revoked, the user looses access immediately.
+ * WebhookSubscriptionRevokedPayload - Sent when a subscription is revoked, the user loses access immediately.
  *
  * Happens when the subscription is canceled, or payment is past due.
  *
