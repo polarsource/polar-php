@@ -14,10 +14,10 @@ class ListResourceEvent
     /**
      * $items
      *
-     * @var array<Event> $items
+     * @var array<MeterCreditEvent|MeterResetEvent|BenefitGrantedEvent|BenefitCycledEvent|BenefitUpdatedEvent|BenefitRevokedEvent|UserEvent> $items
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('items')]
-    #[\Speakeasy\Serializer\Annotation\Type('array<\Polar\Models\Components\Event>')]
+    #[\Speakeasy\Serializer\Annotation\Type('array<\Polar\Models\Components\MeterCreditEvent|\Polar\Models\Components\MeterResetEvent|\Polar\Models\Components\BenefitGrantedEvent|\Polar\Models\Components\BenefitCycledEvent|\Polar\Models\Components\BenefitUpdatedEvent|\Polar\Models\Components\BenefitRevokedEvent|\Polar\Models\Components\UserEvent>')]
     public array $items;
 
     /**
@@ -29,7 +29,7 @@ class ListResourceEvent
     public Pagination $pagination;
 
     /**
-     * @param  array<Event>  $items
+     * @param  array<MeterCreditEvent|MeterResetEvent|BenefitGrantedEvent|BenefitCycledEvent|BenefitUpdatedEvent|BenefitRevokedEvent|UserEvent>  $items
      * @param  Pagination  $pagination
      * @phpstan-pure
      */

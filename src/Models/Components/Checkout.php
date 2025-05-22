@@ -189,6 +189,14 @@ class Checkout
     public bool $isPaymentFormRequired;
 
     /**
+     * Whether the customer is a business or an individual. If `true`, the customer will be required to fill their full billing address and billing name.
+     *
+     * @var bool $isBusinessCustomer
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('is_business_customer')]
+    public bool $isBusinessCustomer;
+
+    /**
      * $paymentProcessorMetadata
      *
      * @var array<string, string> $paymentProcessorMetadata
@@ -333,6 +341,13 @@ class Checkout
 
     /**
      *
+     * @var ?string $customerBillingName
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('customer_billing_name')]
+    public ?string $customerBillingName;
+
+    /**
+     *
      * @var ?Address $customerBillingAddress
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('customer_billing_address')]
@@ -392,6 +407,7 @@ class Checkout
      * @param  bool  $isPaymentRequired
      * @param  bool  $isPaymentSetupRequired
      * @param  bool  $isPaymentFormRequired
+     * @param  bool  $isBusinessCustomer
      * @param  array<string, string>  $paymentProcessorMetadata
      * @param  array<string, string|int|float|bool>  $metadata
      * @param  array<CheckoutProduct>  $products
@@ -409,6 +425,7 @@ class Checkout
      * @param  ?string  $customerName
      * @param  ?string  $customerEmail
      * @param  ?string  $customerIpAddress
+     * @param  ?string  $customerBillingName
      * @param  ?Address  $customerBillingAddress
      * @param  ?string  $customerTaxId
      * @param  ?string  $customerExternalId
@@ -416,7 +433,7 @@ class Checkout
      * @param  ?string  $subscriptionId
      * @phpstan-pure
      */
-    public function __construct(\DateTime $createdAt, string $id, PaymentProcessor $paymentProcessor, CheckoutStatus $status, string $clientSecret, string $url, \DateTime $expiresAt, string $successUrl, int $amount, int $discountAmount, int $netAmount, int $totalAmount, string $currency, string $productId, string $productPriceId, bool $allowDiscountCodes, bool $requireBillingAddress, bool $isDiscountApplicable, bool $isFreeProductPrice, bool $isPaymentRequired, bool $isPaymentSetupRequired, bool $isPaymentFormRequired, array $paymentProcessorMetadata, array $metadata, array $products, CheckoutProduct $product, LegacyRecurringProductPriceFixed|LegacyRecurringProductPriceCustom|LegacyRecurringProductPriceFree|ProductPriceFixed|ProductPriceCustom|ProductPriceFree|ProductPriceMeteredUnit $productPrice, array $attachedCustomFields, array $customerMetadata, CheckoutCustomerBillingAddressFields $customerBillingAddressFields, ?\DateTime $modifiedAt = null, ?array $customFieldData = null, ?string $embedOrigin = null, ?int $taxAmount = null, ?string $discountId = null, ?string $customerId = null, ?string $customerName = null, ?string $customerEmail = null, ?string $customerIpAddress = null, ?Address $customerBillingAddress = null, ?string $customerTaxId = null, ?string $customerExternalId = null, CheckoutDiscountFixedOnceForeverDuration|CheckoutDiscountFixedRepeatDuration|CheckoutDiscountPercentageOnceForeverDuration|CheckoutDiscountPercentageRepeatDuration|null $discount = null, ?string $subscriptionId = null)
+    public function __construct(\DateTime $createdAt, string $id, PaymentProcessor $paymentProcessor, CheckoutStatus $status, string $clientSecret, string $url, \DateTime $expiresAt, string $successUrl, int $amount, int $discountAmount, int $netAmount, int $totalAmount, string $currency, string $productId, string $productPriceId, bool $allowDiscountCodes, bool $requireBillingAddress, bool $isDiscountApplicable, bool $isFreeProductPrice, bool $isPaymentRequired, bool $isPaymentSetupRequired, bool $isPaymentFormRequired, bool $isBusinessCustomer, array $paymentProcessorMetadata, array $metadata, array $products, CheckoutProduct $product, LegacyRecurringProductPriceFixed|LegacyRecurringProductPriceCustom|LegacyRecurringProductPriceFree|ProductPriceFixed|ProductPriceCustom|ProductPriceFree|ProductPriceMeteredUnit $productPrice, array $attachedCustomFields, array $customerMetadata, CheckoutCustomerBillingAddressFields $customerBillingAddressFields, ?\DateTime $modifiedAt = null, ?array $customFieldData = null, ?string $embedOrigin = null, ?int $taxAmount = null, ?string $discountId = null, ?string $customerId = null, ?string $customerName = null, ?string $customerEmail = null, ?string $customerIpAddress = null, ?string $customerBillingName = null, ?Address $customerBillingAddress = null, ?string $customerTaxId = null, ?string $customerExternalId = null, CheckoutDiscountFixedOnceForeverDuration|CheckoutDiscountFixedRepeatDuration|CheckoutDiscountPercentageOnceForeverDuration|CheckoutDiscountPercentageRepeatDuration|null $discount = null, ?string $subscriptionId = null)
     {
         $this->createdAt = $createdAt;
         $this->id = $id;
@@ -440,6 +457,7 @@ class Checkout
         $this->isPaymentRequired = $isPaymentRequired;
         $this->isPaymentSetupRequired = $isPaymentSetupRequired;
         $this->isPaymentFormRequired = $isPaymentFormRequired;
+        $this->isBusinessCustomer = $isBusinessCustomer;
         $this->paymentProcessorMetadata = $paymentProcessorMetadata;
         $this->metadata = $metadata;
         $this->products = $products;
@@ -457,6 +475,7 @@ class Checkout
         $this->customerName = $customerName;
         $this->customerEmail = $customerEmail;
         $this->customerIpAddress = $customerIpAddress;
+        $this->customerBillingName = $customerBillingName;
         $this->customerBillingAddress = $customerBillingAddress;
         $this->customerTaxId = $customerTaxId;
         $this->customerExternalId = $customerExternalId;

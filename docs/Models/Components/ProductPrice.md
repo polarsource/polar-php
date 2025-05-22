@@ -3,15 +3,6 @@
 
 ## Supported Types
 
-### `Components\ProductPriceFixed`
-
-```php
-/**
-* @var Components\ProductPriceFixed
-*/
-Components\ProductPriceFixed $value = /* values here */
-```
-
 ### `Components\ProductPriceCustom`
 
 ```php
@@ -19,6 +10,15 @@ Components\ProductPriceFixed $value = /* values here */
 * @var Components\ProductPriceCustom
 */
 Components\ProductPriceCustom $value = /* values here */
+```
+
+### `Components\ProductPriceFixed`
+
+```php
+/**
+* @var Components\ProductPriceFixed
+*/
+Components\ProductPriceFixed $value = /* values here */
 ```
 
 ### `Components\ProductPriceFree`

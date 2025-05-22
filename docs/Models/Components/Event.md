@@ -1,16 +1,23 @@
 # Event
 
 
-## Fields
+## Supported Types
 
-| Field                                                                            | Type                                                                             | Required                                                                         | Description                                                                      | Example                                                                          |
-| -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- |
-| `metadata`                                                                       | array<string, [string\|int\|float\|bool](../../Models/Components/EventMetadata.md)> | :heavy_check_mark:                                                               | N/A                                                                              |                                                                                  |
-| `id`                                                                             | *string*                                                                         | :heavy_check_mark:                                                               | The ID of the object.                                                            |                                                                                  |
-| `timestamp`                                                                      | [\DateTime](https://www.php.net/manual/en/class.datetime.php)                    | :heavy_check_mark:                                                               | The timestamp of the event.                                                      |                                                                                  |
-| `name`                                                                           | *string*                                                                         | :heavy_check_mark:                                                               | The name of the event.                                                           |                                                                                  |
-| `source`                                                                         | [Components\EventSource](../../Models/Components/EventSource.md)                 | :heavy_check_mark:                                                               | N/A                                                                              |                                                                                  |
-| `organizationId`                                                                 | *string*                                                                         | :heavy_check_mark:                                                               | The ID of the organization owning the event.                                     | 1dbfc517-0bbf-4301-9ba8-555ca42b9737                                             |
-| `customerId`                                                                     | *string*                                                                         | :heavy_check_mark:                                                               | ID of the customer in your Polar organization associated with the event.         |                                                                                  |
-| `customer`                                                                       | [Components\Customer](../../Models/Components/Customer.md)                       | :heavy_check_mark:                                                               | The customer associated with the event.                                          |                                                                                  |
-| `externalCustomerId`                                                             | *string*                                                                         | :heavy_check_mark:                                                               | ID of the customer in your system associated with the event.                     |                                                                                  |
+### `Components\MeterCreditEvent|Components\MeterResetEvent|Components\BenefitGrantedEvent|Components\BenefitCycledEvent|Components\BenefitUpdatedEvent|Components\BenefitRevokedEvent`
+
+```php
+/**
+* @var Components\MeterCreditEvent|Components\MeterResetEvent|Components\BenefitGrantedEvent|Components\BenefitCycledEvent|Components\BenefitUpdatedEvent|Components\BenefitRevokedEvent
+*/
+Components\MeterCreditEvent|Components\MeterResetEvent|Components\BenefitGrantedEvent|Components\BenefitCycledEvent|Components\BenefitUpdatedEvent|Components\BenefitRevokedEvent $value = /* values here */
+```
+
+### `Components\UserEvent`
+
+```php
+/**
+* @var Components\UserEvent
+*/
+Components\UserEvent $value = /* values here */
+```
+
