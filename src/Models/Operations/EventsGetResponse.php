@@ -35,18 +35,18 @@ class EventsGetResponse
     /**
      * Successful Response
      *
-     * @var ?Components\Event $event
+     * @var Components\MeterCreditEvent|Components\MeterResetEvent|Components\BenefitGrantedEvent|Components\BenefitCycledEvent|Components\BenefitUpdatedEvent|Components\BenefitRevokedEvent|Components\UserEvent|null $event
      */
-    public ?Components\Event $event = null;
+    public Components\MeterCreditEvent|Components\MeterResetEvent|Components\BenefitGrantedEvent|Components\BenefitCycledEvent|Components\BenefitUpdatedEvent|Components\BenefitRevokedEvent|Components\UserEvent|null $event = null;
 
     /**
      * @param  string  $contentType
      * @param  int  $statusCode
      * @param  \Psr\Http\Message\ResponseInterface  $rawResponse
-     * @param  ?Components\Event  $event
+     * @param  Components\MeterCreditEvent|Components\MeterResetEvent|Components\BenefitGrantedEvent|Components\BenefitCycledEvent|Components\BenefitUpdatedEvent|Components\BenefitRevokedEvent|Components\UserEvent|null  $event
      * @phpstan-pure
      */
-    public function __construct(string $contentType, int $statusCode, \Psr\Http\Message\ResponseInterface $rawResponse, ?Components\Event $event = null)
+    public function __construct(string $contentType, int $statusCode, \Psr\Http\Message\ResponseInterface $rawResponse, Components\MeterCreditEvent|Components\MeterResetEvent|Components\BenefitGrantedEvent|Components\BenefitCycledEvent|Components\BenefitUpdatedEvent|Components\BenefitRevokedEvent|Components\UserEvent|null $event = null)
     {
         $this->contentType = $contentType;
         $this->statusCode = $statusCode;

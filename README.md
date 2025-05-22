@@ -95,9 +95,11 @@ $request = new Components\WebhookCheckoutCreatedPayload(
         isPaymentSetupRequired: false,
         isPaymentFormRequired: false,
         customerId: '<value>',
+        isBusinessCustomer: false,
         customerName: '<value>',
         customerEmail: '<value>',
         customerIpAddress: '<value>',
+        customerBillingName: '<value>',
         customerBillingAddress: new Components\Address(
             country: 'US',
         ),

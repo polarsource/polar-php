@@ -141,6 +141,14 @@ class CheckoutCreate
 
     /**
      *
+     * @var ?string $customerBillingName
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('customer_billing_name')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
+    public ?string $customerBillingName = null;
+
+    /**
+     *
      * @var ?Address $customerBillingAddress
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('customer_billing_address')]
@@ -202,11 +210,21 @@ class CheckoutCreate
     public ?bool $requireBillingAddress = null;
 
     /**
+     * Whether the customer is a business or an individual. If `true`, the customer will be required to fill their full billing address and billing name.
+     *
+     * @var ?bool $isBusinessCustomer
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('is_business_customer')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
+    public ?bool $isBusinessCustomer = null;
+
+    /**
      * @param  array<string>  $products
      * @param  ?array<string, string|int|float|bool>  $metadata
      * @param  ?array<string, string|int|bool|\DateTime|null>  $customFieldData
      * @param  ?bool  $allowDiscountCodes
      * @param  ?bool  $requireBillingAddress
+     * @param  ?bool  $isBusinessCustomer
      * @param  ?array<string, string|int|float|bool>  $customerMetadata
      * @param  ?string  $discountId
      * @param  ?int  $amount
@@ -215,6 +233,7 @@ class CheckoutCreate
      * @param  ?string  $customerName
      * @param  ?string  $customerEmail
      * @param  ?string  $customerIpAddress
+     * @param  ?string  $customerBillingName
      * @param  ?Address  $customerBillingAddress
      * @param  ?string  $customerTaxId
      * @param  ?string  $subscriptionId
@@ -222,7 +241,7 @@ class CheckoutCreate
      * @param  ?string  $embedOrigin
      * @phpstan-pure
      */
-    public function __construct(array $products, ?array $metadata = null, ?array $customFieldData = null, ?array $customerMetadata = null, ?string $discountId = null, ?int $amount = null, ?string $customerId = null, ?string $customerExternalId = null, ?string $customerName = null, ?string $customerEmail = null, ?string $customerIpAddress = null, ?Address $customerBillingAddress = null, ?string $customerTaxId = null, ?string $subscriptionId = null, ?string $successUrl = null, ?string $embedOrigin = null, ?bool $allowDiscountCodes = true, ?bool $requireBillingAddress = false)
+    public function __construct(array $products, ?array $metadata = null, ?array $customFieldData = null, ?array $customerMetadata = null, ?string $discountId = null, ?int $amount = null, ?string $customerId = null, ?string $customerExternalId = null, ?string $customerName = null, ?string $customerEmail = null, ?string $customerIpAddress = null, ?string $customerBillingName = null, ?Address $customerBillingAddress = null, ?string $customerTaxId = null, ?string $subscriptionId = null, ?string $successUrl = null, ?string $embedOrigin = null, ?bool $allowDiscountCodes = true, ?bool $requireBillingAddress = false, ?bool $isBusinessCustomer = false)
     {
         $this->products = $products;
         $this->metadata = $metadata;
@@ -235,6 +254,7 @@ class CheckoutCreate
         $this->customerName = $customerName;
         $this->customerEmail = $customerEmail;
         $this->customerIpAddress = $customerIpAddress;
+        $this->customerBillingName = $customerBillingName;
         $this->customerBillingAddress = $customerBillingAddress;
         $this->customerTaxId = $customerTaxId;
         $this->subscriptionId = $subscriptionId;
@@ -242,5 +262,6 @@ class CheckoutCreate
         $this->embedOrigin = $embedOrigin;
         $this->allowDiscountCodes = $allowDiscountCodes;
         $this->requireBillingAddress = $requireBillingAddress;
+        $this->isBusinessCustomer = $isBusinessCustomer;
     }
 }

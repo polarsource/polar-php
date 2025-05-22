@@ -9,7 +9,8 @@ declare(strict_types=1);
 namespace Polar\Models\Components;
 
 
-class Event
+/** UserEvent - An event you created through the ingestion API. */
+class UserEvent
 {
     /**
      * $metadata
@@ -37,28 +38,20 @@ class Event
     public \DateTime $timestamp;
 
     /**
-     * The name of the event.
-     *
-     * @var string $name
-     */
-    #[\Speakeasy\Serializer\Annotation\SerializedName('name')]
-    public string $name;
-
-    /**
-     *
-     * @var EventSource $source
-     */
-    #[\Speakeasy\Serializer\Annotation\SerializedName('source')]
-    #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\EventSource')]
-    public EventSource $source;
-
-    /**
      * The ID of the organization owning the event.
      *
      * @var string $organizationId
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('organization_id')]
     public string $organizationId;
+
+    /**
+     * The name of the event.
+     *
+     * @var string $name
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('name')]
+    public string $name;
 
     /**
      * ID of the customer in your Polar organization associated with the event.
@@ -86,27 +79,35 @@ class Event
     public ?string $externalCustomerId;
 
     /**
+     * The source of the event. `system` events are created by Polar. `user` events are the one you create through our ingestion API.
+     *
+     * @var string $source
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('source')]
+    public string $source;
+
+    /**
      * @param  array<string, string|int|float|bool>  $metadata
      * @param  string  $id
      * @param  \DateTime  $timestamp
-     * @param  string  $name
-     * @param  EventSource  $source
      * @param  string  $organizationId
+     * @param  string  $name
+     * @param  string  $source
      * @param  ?string  $customerId
      * @param  ?Customer  $customer
      * @param  ?string  $externalCustomerId
      * @phpstan-pure
      */
-    public function __construct(array $metadata, string $id, \DateTime $timestamp, string $name, EventSource $source, string $organizationId, ?string $customerId = null, ?Customer $customer = null, ?string $externalCustomerId = null)
+    public function __construct(array $metadata, string $id, \DateTime $timestamp, string $organizationId, string $name, ?string $customerId = null, ?Customer $customer = null, ?string $externalCustomerId = null, string $source = 'user')
     {
         $this->metadata = $metadata;
         $this->id = $id;
         $this->timestamp = $timestamp;
-        $this->name = $name;
-        $this->source = $source;
         $this->organizationId = $organizationId;
+        $this->name = $name;
         $this->customerId = $customerId;
         $this->customer = $customer;
         $this->externalCustomerId = $externalCustomerId;
+        $this->source = $source;
     }
 }
