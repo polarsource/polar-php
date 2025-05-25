@@ -35,9 +35,7 @@ $sdk = Polar\Polar::builder()
     ->build();
 
 $request = new Operations\BenefitsListRequest(
-    organizationId: [
-        '1dbfc517-0bbf-4301-9ba8-555ca42b9737',
-    ],
+    organizationId: '1dbfc517-0bbf-4301-9ba8-555ca42b9737',
 );
 
 $responses = $sdk->benefits->list(
@@ -93,7 +91,6 @@ $sdk = Polar\Polar::builder()
 
 $request = new Components\BenefitLicenseKeysCreate(
     description: 'mature emergent at outside arrogantly gadzooks zealous equatorial notwithstanding',
-    organizationId: '1dbfc517-0bbf-4301-9ba8-555ca42b9737',
     properties: new Components\BenefitLicenseKeysCreateProperties(),
 );
 
