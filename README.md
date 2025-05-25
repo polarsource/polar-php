@@ -407,7 +407,10 @@ foreach ($responses as $response) {
 * [list](docs/sdks/checkouts/README.md#list) - List Checkout Sessions
 * [create](docs/sdks/checkouts/README.md#create) - Create Checkout Session
 * [get](docs/sdks/checkouts/README.md#get) - Get Checkout Session
+* [update](docs/sdks/checkouts/README.md#update) - Update Checkout Session
 * [clientGet](docs/sdks/checkouts/README.md#clientget) - Get Checkout Session from Client
+* [clientUpdate](docs/sdks/checkouts/README.md#clientupdate) - Update Checkout Session from Client
+* [clientConfirm](docs/sdks/checkouts/README.md#clientconfirm) - Confirm Checkout Session from Client
 
 ### [customerMeters](docs/sdks/customermeters/README.md)
 
