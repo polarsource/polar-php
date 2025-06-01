@@ -46,6 +46,134 @@ class Checkouts
     }
 
     /**
+     * Confirm Checkout Session from Client
+     *
+     * Confirm a checkout session by client secret.
+     *
+     * Orders and subscriptions will be processed.
+     *
+     * @param  Components\CheckoutConfirmStripe  $checkoutConfirmStripe
+     * @param  string  $clientSecret
+     * @return Operations\CheckoutsClientConfirmResponse
+     * @throws \Polar\Models\Errors\APIException
+     */
+    public function clientConfirm(Components\CheckoutConfirmStripe $checkoutConfirmStripe, string $clientSecret, ?Options $options = null): Operations\CheckoutsClientConfirmResponse
+    {
+        $request = new Operations\CheckoutsClientConfirmRequest(
+            clientSecret: $clientSecret,
+            checkoutConfirmStripe: $checkoutConfirmStripe,
+        );
+        $baseUrl = $this->sdkConfiguration->getTemplatedServerUrl();
+        $url = Utils\Utils::generateUrl($baseUrl, '/v1/checkouts/client/{client_secret}/confirm', Operations\CheckoutsClientConfirmRequest::class, $request);
+        $urlOverride = null;
+        $httpOptions = ['http_errors' => false];
+        $body = Utils\Utils::serializeRequestBody($request, 'checkoutConfirmStripe', 'json');
+        if ($body === null) {
+            throw new \Exception('Request body is required');
+        }
+        $httpOptions = array_merge_recursive($httpOptions, $body);
+        $httpOptions['headers']['Accept'] = 'application/json';
+        $httpOptions['headers']['user-agent'] = $this->sdkConfiguration->userAgent;
+        $httpRequest = new \GuzzleHttp\Psr7\Request('POST', $url);
+        $hookContext = new HookContext($this->sdkConfiguration, $baseUrl, 'checkouts:client_confirm', [], $this->sdkConfiguration->securitySource);
+        $httpRequest = $this->sdkConfiguration->hooks->beforeRequest(new Hooks\BeforeRequestContext($hookContext), $httpRequest);
+        $httpOptions = Utils\Utils::convertHeadersToOptions($httpRequest, $httpOptions);
+        $httpRequest = Utils\Utils::removeHeaders($httpRequest);
+        try {
+            $httpResponse = $this->sdkConfiguration->client->send($httpRequest, $httpOptions);
+        } catch (\GuzzleHttp\Exception\GuzzleException $error) {
+            $res = $this->sdkConfiguration->hooks->afterError(new Hooks\AfterErrorContext($hookContext), null, $error);
+            $httpResponse = $res;
+        }
+        $contentType = $httpResponse->getHeader('Content-Type')[0] ?? '';
+
+        $statusCode = $httpResponse->getStatusCode();
+        if (Utils\Utils::matchStatusCodes($statusCode, ['400', '403', '404', '410', '422', '4XX', '5XX'])) {
+            $res = $this->sdkConfiguration->hooks->afterError(new Hooks\AfterErrorContext($hookContext), $httpResponse, null);
+            $httpResponse = $res;
+        }
+        if (Utils\Utils::matchStatusCodes($statusCode, ['200'])) {
+            if (Utils\Utils::matchContentType($contentType, 'application/json')) {
+                $httpResponse = $this->sdkConfiguration->hooks->afterSuccess(new Hooks\AfterSuccessContext($hookContext), $httpResponse);
+
+                $serializer = Utils\JSON::createSerializer();
+                $responseData = (string) $httpResponse->getBody();
+                $obj = $serializer->deserialize($responseData, '\Polar\Models\Components\CheckoutPublicConfirmed', 'json', DeserializationContext::create()->setRequireAllRequiredProperties(true));
+                $response = new Operations\CheckoutsClientConfirmResponse(
+                    statusCode: $statusCode,
+                    contentType: $contentType,
+                    rawResponse: $httpResponse,
+                    checkoutPublicConfirmed: $obj);
+
+                return $response;
+            } else {
+                throw new \Polar\Models\Errors\APIException('Unknown content type received', $statusCode, $httpResponse->getBody()->getContents(), $httpResponse);
+            }
+        } elseif (Utils\Utils::matchStatusCodes($statusCode, ['400'])) {
+            if (Utils\Utils::matchContentType($contentType, 'application/json')) {
+                $httpResponse = $this->sdkConfiguration->hooks->afterSuccess(new Hooks\AfterSuccessContext($hookContext), $httpResponse);
+
+                $serializer = Utils\JSON::createSerializer();
+                $responseData = (string) $httpResponse->getBody();
+                $obj = $serializer->deserialize($responseData, '\Polar\Models\Errors\PaymentError', 'json', DeserializationContext::create()->setRequireAllRequiredProperties(true));
+                throw $obj->toException();
+            } else {
+                throw new \Polar\Models\Errors\APIException('Unknown content type received', $statusCode, $httpResponse->getBody()->getContents(), $httpResponse);
+            }
+        } elseif (Utils\Utils::matchStatusCodes($statusCode, ['403'])) {
+            if (Utils\Utils::matchContentType($contentType, 'application/json')) {
+                $httpResponse = $this->sdkConfiguration->hooks->afterSuccess(new Hooks\AfterSuccessContext($hookContext), $httpResponse);
+
+                $serializer = Utils\JSON::createSerializer();
+                $responseData = (string) $httpResponse->getBody();
+                $obj = $serializer->deserialize($responseData, '\Polar\Models\Errors\AlreadyActiveSubscriptionError|\Polar\Models\Errors\NotOpenCheckout', 'json', DeserializationContext::create()->setRequireAllRequiredProperties(true));
+                throw $obj->toException();
+            } else {
+                throw new \Polar\Models\Errors\APIException('Unknown content type received', $statusCode, $httpResponse->getBody()->getContents(), $httpResponse);
+            }
+        } elseif (Utils\Utils::matchStatusCodes($statusCode, ['404'])) {
+            if (Utils\Utils::matchContentType($contentType, 'application/json')) {
+                $httpResponse = $this->sdkConfiguration->hooks->afterSuccess(new Hooks\AfterSuccessContext($hookContext), $httpResponse);
+
+                $serializer = Utils\JSON::createSerializer();
+                $responseData = (string) $httpResponse->getBody();
+                $obj = $serializer->deserialize($responseData, '\Polar\Models\Errors\ResourceNotFound', 'json', DeserializationContext::create()->setRequireAllRequiredProperties(true));
+                throw $obj->toException();
+            } else {
+                throw new \Polar\Models\Errors\APIException('Unknown content type received', $statusCode, $httpResponse->getBody()->getContents(), $httpResponse);
+            }
+        } elseif (Utils\Utils::matchStatusCodes($statusCode, ['410'])) {
+            if (Utils\Utils::matchContentType($contentType, 'application/json')) {
+                $httpResponse = $this->sdkConfiguration->hooks->afterSuccess(new Hooks\AfterSuccessContext($hookContext), $httpResponse);
+
+                $serializer = Utils\JSON::createSerializer();
+                $responseData = (string) $httpResponse->getBody();
+                $obj = $serializer->deserialize($responseData, '\Polar\Models\Errors\ExpiredCheckoutError', 'json', DeserializationContext::create()->setRequireAllRequiredProperties(true));
+                throw $obj->toException();
+            } else {
+                throw new \Polar\Models\Errors\APIException('Unknown content type received', $statusCode, $httpResponse->getBody()->getContents(), $httpResponse);
+            }
+        } elseif (Utils\Utils::matchStatusCodes($statusCode, ['422'])) {
+            if (Utils\Utils::matchContentType($contentType, 'application/json')) {
+                $httpResponse = $this->sdkConfiguration->hooks->afterSuccess(new Hooks\AfterSuccessContext($hookContext), $httpResponse);
+
+                $serializer = Utils\JSON::createSerializer();
+                $responseData = (string) $httpResponse->getBody();
+                $obj = $serializer->deserialize($responseData, '\Polar\Models\Errors\HTTPValidationError', 'json', DeserializationContext::create()->setRequireAllRequiredProperties(true));
+                throw $obj->toException();
+            } else {
+                throw new \Polar\Models\Errors\APIException('Unknown content type received', $statusCode, $httpResponse->getBody()->getContents(), $httpResponse);
+            }
+        } elseif (Utils\Utils::matchStatusCodes($statusCode, ['4XX'])) {
+            throw new \Polar\Models\Errors\APIException('API error occurred', $statusCode, $httpResponse->getBody()->getContents(), $httpResponse);
+        } elseif (Utils\Utils::matchStatusCodes($statusCode, ['5XX'])) {
+            throw new \Polar\Models\Errors\APIException('API error occurred', $statusCode, $httpResponse->getBody()->getContents(), $httpResponse);
+        } else {
+            throw new \Polar\Models\Errors\APIException('Unknown status code received', $statusCode, $httpResponse->getBody()->getContents(), $httpResponse);
+        }
+    }
+
+    /**
      * Get Checkout Session from Client
      *
      * Get a checkout session by client secret.
@@ -59,14 +187,14 @@ class Checkouts
         $request = new Operations\CheckoutsClientGetRequest(
             clientSecret: $clientSecret,
         );
-        $baseUrl = $this->sdkConfiguration->getServerUrl();
+        $baseUrl = $this->sdkConfiguration->getTemplatedServerUrl();
         $url = Utils\Utils::generateUrl($baseUrl, '/v1/checkouts/client/{client_secret}', Operations\CheckoutsClientGetRequest::class, $request);
         $urlOverride = null;
         $httpOptions = ['http_errors' => false];
         $httpOptions['headers']['Accept'] = 'application/json';
         $httpOptions['headers']['user-agent'] = $this->sdkConfiguration->userAgent;
         $httpRequest = new \GuzzleHttp\Psr7\Request('GET', $url);
-        $hookContext = new HookContext($baseUrl, 'checkouts:client_get', [], null);
+        $hookContext = new HookContext($this->sdkConfiguration, $baseUrl, 'checkouts:client_get', [], null);
         $httpRequest = $this->sdkConfiguration->hooks->beforeRequest(new Hooks\BeforeRequestContext($hookContext), $httpRequest);
         $httpOptions = Utils\Utils::convertHeadersToOptions($httpRequest, $httpOptions);
         $httpRequest = Utils\Utils::removeHeaders($httpRequest);
@@ -143,6 +271,121 @@ class Checkouts
     }
 
     /**
+     * Update Checkout Session from Client
+     *
+     * Update a checkout session by client secret.
+     *
+     * @param  Components\CheckoutUpdatePublic  $checkoutUpdatePublic
+     * @param  string  $clientSecret
+     * @return Operations\CheckoutsClientUpdateResponse
+     * @throws \Polar\Models\Errors\APIException
+     */
+    public function clientUpdate(Components\CheckoutUpdatePublic $checkoutUpdatePublic, string $clientSecret, ?Options $options = null): Operations\CheckoutsClientUpdateResponse
+    {
+        $request = new Operations\CheckoutsClientUpdateRequest(
+            clientSecret: $clientSecret,
+            checkoutUpdatePublic: $checkoutUpdatePublic,
+        );
+        $baseUrl = $this->sdkConfiguration->getTemplatedServerUrl();
+        $url = Utils\Utils::generateUrl($baseUrl, '/v1/checkouts/client/{client_secret}', Operations\CheckoutsClientUpdateRequest::class, $request);
+        $urlOverride = null;
+        $httpOptions = ['http_errors' => false];
+        $body = Utils\Utils::serializeRequestBody($request, 'checkoutUpdatePublic', 'json');
+        if ($body === null) {
+            throw new \Exception('Request body is required');
+        }
+        $httpOptions = array_merge_recursive($httpOptions, $body);
+        $httpOptions['headers']['Accept'] = 'application/json';
+        $httpOptions['headers']['user-agent'] = $this->sdkConfiguration->userAgent;
+        $httpRequest = new \GuzzleHttp\Psr7\Request('PATCH', $url);
+        $hookContext = new HookContext($this->sdkConfiguration, $baseUrl, 'checkouts:client_update', [], null);
+        $httpRequest = $this->sdkConfiguration->hooks->beforeRequest(new Hooks\BeforeRequestContext($hookContext), $httpRequest);
+        $httpOptions = Utils\Utils::convertHeadersToOptions($httpRequest, $httpOptions);
+        $httpRequest = Utils\Utils::removeHeaders($httpRequest);
+        try {
+            $httpResponse = $this->sdkConfiguration->client->send($httpRequest, $httpOptions);
+        } catch (\GuzzleHttp\Exception\GuzzleException $error) {
+            $res = $this->sdkConfiguration->hooks->afterError(new Hooks\AfterErrorContext($hookContext), null, $error);
+            $httpResponse = $res;
+        }
+        $contentType = $httpResponse->getHeader('Content-Type')[0] ?? '';
+
+        $statusCode = $httpResponse->getStatusCode();
+        if (Utils\Utils::matchStatusCodes($statusCode, ['403', '404', '410', '422', '4XX', '5XX'])) {
+            $res = $this->sdkConfiguration->hooks->afterError(new Hooks\AfterErrorContext($hookContext), $httpResponse, null);
+            $httpResponse = $res;
+        }
+        if (Utils\Utils::matchStatusCodes($statusCode, ['200'])) {
+            if (Utils\Utils::matchContentType($contentType, 'application/json')) {
+                $httpResponse = $this->sdkConfiguration->hooks->afterSuccess(new Hooks\AfterSuccessContext($hookContext), $httpResponse);
+
+                $serializer = Utils\JSON::createSerializer();
+                $responseData = (string) $httpResponse->getBody();
+                $obj = $serializer->deserialize($responseData, '\Polar\Models\Components\CheckoutPublic', 'json', DeserializationContext::create()->setRequireAllRequiredProperties(true));
+                $response = new Operations\CheckoutsClientUpdateResponse(
+                    statusCode: $statusCode,
+                    contentType: $contentType,
+                    rawResponse: $httpResponse,
+                    checkoutPublic: $obj);
+
+                return $response;
+            } else {
+                throw new \Polar\Models\Errors\APIException('Unknown content type received', $statusCode, $httpResponse->getBody()->getContents(), $httpResponse);
+            }
+        } elseif (Utils\Utils::matchStatusCodes($statusCode, ['403'])) {
+            if (Utils\Utils::matchContentType($contentType, 'application/json')) {
+                $httpResponse = $this->sdkConfiguration->hooks->afterSuccess(new Hooks\AfterSuccessContext($hookContext), $httpResponse);
+
+                $serializer = Utils\JSON::createSerializer();
+                $responseData = (string) $httpResponse->getBody();
+                $obj = $serializer->deserialize($responseData, '\Polar\Models\Errors\AlreadyActiveSubscriptionError|\Polar\Models\Errors\NotOpenCheckout', 'json', DeserializationContext::create()->setRequireAllRequiredProperties(true));
+                throw $obj->toException();
+            } else {
+                throw new \Polar\Models\Errors\APIException('Unknown content type received', $statusCode, $httpResponse->getBody()->getContents(), $httpResponse);
+            }
+        } elseif (Utils\Utils::matchStatusCodes($statusCode, ['404'])) {
+            if (Utils\Utils::matchContentType($contentType, 'application/json')) {
+                $httpResponse = $this->sdkConfiguration->hooks->afterSuccess(new Hooks\AfterSuccessContext($hookContext), $httpResponse);
+
+                $serializer = Utils\JSON::createSerializer();
+                $responseData = (string) $httpResponse->getBody();
+                $obj = $serializer->deserialize($responseData, '\Polar\Models\Errors\ResourceNotFound', 'json', DeserializationContext::create()->setRequireAllRequiredProperties(true));
+                throw $obj->toException();
+            } else {
+                throw new \Polar\Models\Errors\APIException('Unknown content type received', $statusCode, $httpResponse->getBody()->getContents(), $httpResponse);
+            }
+        } elseif (Utils\Utils::matchStatusCodes($statusCode, ['410'])) {
+            if (Utils\Utils::matchContentType($contentType, 'application/json')) {
+                $httpResponse = $this->sdkConfiguration->hooks->afterSuccess(new Hooks\AfterSuccessContext($hookContext), $httpResponse);
+
+                $serializer = Utils\JSON::createSerializer();
+                $responseData = (string) $httpResponse->getBody();
+                $obj = $serializer->deserialize($responseData, '\Polar\Models\Errors\ExpiredCheckoutError', 'json', DeserializationContext::create()->setRequireAllRequiredProperties(true));
+                throw $obj->toException();
+            } else {
+                throw new \Polar\Models\Errors\APIException('Unknown content type received', $statusCode, $httpResponse->getBody()->getContents(), $httpResponse);
+            }
+        } elseif (Utils\Utils::matchStatusCodes($statusCode, ['422'])) {
+            if (Utils\Utils::matchContentType($contentType, 'application/json')) {
+                $httpResponse = $this->sdkConfiguration->hooks->afterSuccess(new Hooks\AfterSuccessContext($hookContext), $httpResponse);
+
+                $serializer = Utils\JSON::createSerializer();
+                $responseData = (string) $httpResponse->getBody();
+                $obj = $serializer->deserialize($responseData, '\Polar\Models\Errors\HTTPValidationError', 'json', DeserializationContext::create()->setRequireAllRequiredProperties(true));
+                throw $obj->toException();
+            } else {
+                throw new \Polar\Models\Errors\APIException('Unknown content type received', $statusCode, $httpResponse->getBody()->getContents(), $httpResponse);
+            }
+        } elseif (Utils\Utils::matchStatusCodes($statusCode, ['4XX'])) {
+            throw new \Polar\Models\Errors\APIException('API error occurred', $statusCode, $httpResponse->getBody()->getContents(), $httpResponse);
+        } elseif (Utils\Utils::matchStatusCodes($statusCode, ['5XX'])) {
+            throw new \Polar\Models\Errors\APIException('API error occurred', $statusCode, $httpResponse->getBody()->getContents(), $httpResponse);
+        } else {
+            throw new \Polar\Models\Errors\APIException('Unknown status code received', $statusCode, $httpResponse->getBody()->getContents(), $httpResponse);
+        }
+    }
+
+    /**
      * Create Checkout Session
      *
      * Create a checkout session.
@@ -155,7 +398,7 @@ class Checkouts
      */
     public function create(Components\CheckoutCreate $request, ?Options $options = null): Operations\CheckoutsCreateResponse
     {
-        $baseUrl = $this->sdkConfiguration->getServerUrl();
+        $baseUrl = $this->sdkConfiguration->getTemplatedServerUrl();
         $url = Utils\Utils::generateUrl($baseUrl, '/v1/checkouts/');
         $urlOverride = null;
         $httpOptions = ['http_errors' => false];
@@ -167,7 +410,7 @@ class Checkouts
         $httpOptions['headers']['Accept'] = 'application/json';
         $httpOptions['headers']['user-agent'] = $this->sdkConfiguration->userAgent;
         $httpRequest = new \GuzzleHttp\Psr7\Request('POST', $url);
-        $hookContext = new HookContext($baseUrl, 'checkouts:create', [], $this->sdkConfiguration->securitySource);
+        $hookContext = new HookContext($this->sdkConfiguration, $baseUrl, 'checkouts:create', [], $this->sdkConfiguration->securitySource);
         $httpRequest = $this->sdkConfiguration->hooks->beforeRequest(new Hooks\BeforeRequestContext($hookContext), $httpRequest);
         $httpOptions = Utils\Utils::convertHeadersToOptions($httpRequest, $httpOptions);
         $httpRequest = Utils\Utils::removeHeaders($httpRequest);
@@ -237,14 +480,14 @@ class Checkouts
         $request = new Operations\CheckoutsGetRequest(
             id: $id,
         );
-        $baseUrl = $this->sdkConfiguration->getServerUrl();
+        $baseUrl = $this->sdkConfiguration->getTemplatedServerUrl();
         $url = Utils\Utils::generateUrl($baseUrl, '/v1/checkouts/{id}', Operations\CheckoutsGetRequest::class, $request);
         $urlOverride = null;
         $httpOptions = ['http_errors' => false];
         $httpOptions['headers']['Accept'] = 'application/json';
         $httpOptions['headers']['user-agent'] = $this->sdkConfiguration->userAgent;
         $httpRequest = new \GuzzleHttp\Psr7\Request('GET', $url);
-        $hookContext = new HookContext($baseUrl, 'checkouts:get', [], $this->sdkConfiguration->securitySource);
+        $hookContext = new HookContext($this->sdkConfiguration, $baseUrl, 'checkouts:get', [], $this->sdkConfiguration->securitySource);
         $httpRequest = $this->sdkConfiguration->hooks->beforeRequest(new Hooks\BeforeRequestContext($hookContext), $httpRequest);
         $httpOptions = Utils\Utils::convertHeadersToOptions($httpRequest, $httpOptions);
         $httpRequest = Utils\Utils::removeHeaders($httpRequest);
@@ -322,7 +565,7 @@ class Checkouts
      */
     private function listIndividual(?Operations\CheckoutsListRequest $request = null, ?Options $options = null): Operations\CheckoutsListResponse
     {
-        $baseUrl = $this->sdkConfiguration->getServerUrl();
+        $baseUrl = $this->sdkConfiguration->getTemplatedServerUrl();
         $url = Utils\Utils::generateUrl($baseUrl, '/v1/checkouts/');
         $urlOverride = null;
         $httpOptions = ['http_errors' => false];
@@ -331,7 +574,7 @@ class Checkouts
         $httpOptions['headers']['Accept'] = 'application/json';
         $httpOptions['headers']['user-agent'] = $this->sdkConfiguration->userAgent;
         $httpRequest = new \GuzzleHttp\Psr7\Request('GET', $url);
-        $hookContext = new HookContext($baseUrl, 'checkouts:list', [], $this->sdkConfiguration->securitySource);
+        $hookContext = new HookContext($this->sdkConfiguration, $baseUrl, 'checkouts:list', [], $this->sdkConfiguration->securitySource);
         $httpRequest = $this->sdkConfiguration->hooks->beforeRequest(new Hooks\BeforeRequestContext($hookContext), $httpRequest);
         $httpOptions['query'] = Utils\QueryParameters::standardizeQueryParams($httpRequest, $qp);
         $httpOptions = Utils\Utils::convertHeadersToOptions($httpRequest, $httpOptions);
@@ -443,6 +686,112 @@ class Checkouts
         while ($res !== null) {
             yield $res;
             $res = $res->next($res);
+        }
+    }
+
+    /**
+     * Update Checkout Session
+     *
+     * Update a checkout session.
+     *
+     * **Scopes**: `checkouts:write`
+     *
+     * @param  Components\CheckoutUpdate  $checkoutUpdate
+     * @param  string  $id
+     * @return Operations\CheckoutsUpdateResponse
+     * @throws \Polar\Models\Errors\APIException
+     */
+    public function update(Components\CheckoutUpdate $checkoutUpdate, string $id, ?Options $options = null): Operations\CheckoutsUpdateResponse
+    {
+        $request = new Operations\CheckoutsUpdateRequest(
+            id: $id,
+            checkoutUpdate: $checkoutUpdate,
+        );
+        $baseUrl = $this->sdkConfiguration->getTemplatedServerUrl();
+        $url = Utils\Utils::generateUrl($baseUrl, '/v1/checkouts/{id}', Operations\CheckoutsUpdateRequest::class, $request);
+        $urlOverride = null;
+        $httpOptions = ['http_errors' => false];
+        $body = Utils\Utils::serializeRequestBody($request, 'checkoutUpdate', 'json');
+        if ($body === null) {
+            throw new \Exception('Request body is required');
+        }
+        $httpOptions = array_merge_recursive($httpOptions, $body);
+        $httpOptions['headers']['Accept'] = 'application/json';
+        $httpOptions['headers']['user-agent'] = $this->sdkConfiguration->userAgent;
+        $httpRequest = new \GuzzleHttp\Psr7\Request('PATCH', $url);
+        $hookContext = new HookContext($this->sdkConfiguration, $baseUrl, 'checkouts:update', [], $this->sdkConfiguration->securitySource);
+        $httpRequest = $this->sdkConfiguration->hooks->beforeRequest(new Hooks\BeforeRequestContext($hookContext), $httpRequest);
+        $httpOptions = Utils\Utils::convertHeadersToOptions($httpRequest, $httpOptions);
+        $httpRequest = Utils\Utils::removeHeaders($httpRequest);
+        try {
+            $httpResponse = $this->sdkConfiguration->client->send($httpRequest, $httpOptions);
+        } catch (\GuzzleHttp\Exception\GuzzleException $error) {
+            $res = $this->sdkConfiguration->hooks->afterError(new Hooks\AfterErrorContext($hookContext), null, $error);
+            $httpResponse = $res;
+        }
+        $contentType = $httpResponse->getHeader('Content-Type')[0] ?? '';
+
+        $statusCode = $httpResponse->getStatusCode();
+        if (Utils\Utils::matchStatusCodes($statusCode, ['403', '404', '422', '4XX', '5XX'])) {
+            $res = $this->sdkConfiguration->hooks->afterError(new Hooks\AfterErrorContext($hookContext), $httpResponse, null);
+            $httpResponse = $res;
+        }
+        if (Utils\Utils::matchStatusCodes($statusCode, ['200'])) {
+            if (Utils\Utils::matchContentType($contentType, 'application/json')) {
+                $httpResponse = $this->sdkConfiguration->hooks->afterSuccess(new Hooks\AfterSuccessContext($hookContext), $httpResponse);
+
+                $serializer = Utils\JSON::createSerializer();
+                $responseData = (string) $httpResponse->getBody();
+                $obj = $serializer->deserialize($responseData, '\Polar\Models\Components\Checkout', 'json', DeserializationContext::create()->setRequireAllRequiredProperties(true));
+                $response = new Operations\CheckoutsUpdateResponse(
+                    statusCode: $statusCode,
+                    contentType: $contentType,
+                    rawResponse: $httpResponse,
+                    checkout: $obj);
+
+                return $response;
+            } else {
+                throw new \Polar\Models\Errors\APIException('Unknown content type received', $statusCode, $httpResponse->getBody()->getContents(), $httpResponse);
+            }
+        } elseif (Utils\Utils::matchStatusCodes($statusCode, ['403'])) {
+            if (Utils\Utils::matchContentType($contentType, 'application/json')) {
+                $httpResponse = $this->sdkConfiguration->hooks->afterSuccess(new Hooks\AfterSuccessContext($hookContext), $httpResponse);
+
+                $serializer = Utils\JSON::createSerializer();
+                $responseData = (string) $httpResponse->getBody();
+                $obj = $serializer->deserialize($responseData, '\Polar\Models\Errors\AlreadyActiveSubscriptionError|\Polar\Models\Errors\NotOpenCheckout', 'json', DeserializationContext::create()->setRequireAllRequiredProperties(true));
+                throw $obj->toException();
+            } else {
+                throw new \Polar\Models\Errors\APIException('Unknown content type received', $statusCode, $httpResponse->getBody()->getContents(), $httpResponse);
+            }
+        } elseif (Utils\Utils::matchStatusCodes($statusCode, ['404'])) {
+            if (Utils\Utils::matchContentType($contentType, 'application/json')) {
+                $httpResponse = $this->sdkConfiguration->hooks->afterSuccess(new Hooks\AfterSuccessContext($hookContext), $httpResponse);
+
+                $serializer = Utils\JSON::createSerializer();
+                $responseData = (string) $httpResponse->getBody();
+                $obj = $serializer->deserialize($responseData, '\Polar\Models\Errors\ResourceNotFound', 'json', DeserializationContext::create()->setRequireAllRequiredProperties(true));
+                throw $obj->toException();
+            } else {
+                throw new \Polar\Models\Errors\APIException('Unknown content type received', $statusCode, $httpResponse->getBody()->getContents(), $httpResponse);
+            }
+        } elseif (Utils\Utils::matchStatusCodes($statusCode, ['422'])) {
+            if (Utils\Utils::matchContentType($contentType, 'application/json')) {
+                $httpResponse = $this->sdkConfiguration->hooks->afterSuccess(new Hooks\AfterSuccessContext($hookContext), $httpResponse);
+
+                $serializer = Utils\JSON::createSerializer();
+                $responseData = (string) $httpResponse->getBody();
+                $obj = $serializer->deserialize($responseData, '\Polar\Models\Errors\HTTPValidationError', 'json', DeserializationContext::create()->setRequireAllRequiredProperties(true));
+                throw $obj->toException();
+            } else {
+                throw new \Polar\Models\Errors\APIException('Unknown content type received', $statusCode, $httpResponse->getBody()->getContents(), $httpResponse);
+            }
+        } elseif (Utils\Utils::matchStatusCodes($statusCode, ['4XX'])) {
+            throw new \Polar\Models\Errors\APIException('API error occurred', $statusCode, $httpResponse->getBody()->getContents(), $httpResponse);
+        } elseif (Utils\Utils::matchStatusCodes($statusCode, ['5XX'])) {
+            throw new \Polar\Models\Errors\APIException('API error occurred', $statusCode, $httpResponse->getBody()->getContents(), $httpResponse);
+        } else {
+            throw new \Polar\Models\Errors\APIException('Unknown status code received', $statusCode, $httpResponse->getBody()->getContents(), $httpResponse);
         }
     }
 

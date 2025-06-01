@@ -9,6 +9,7 @@ declare(strict_types=1);
 namespace Polar;
 
 use Polar\Hooks\HookContext;
+use Polar\Models\Components;
 use Polar\Models\Operations;
 use Polar\Utils\Options;
 use Speakeasy\Serializer\DeserializationContext;
@@ -45,6 +46,95 @@ class Orders
     }
 
     /**
+     * Generate Order Invoice
+     *
+     * Trigger generation of an order's invoice.
+     *
+     * **Scopes**: `orders:read`
+     *
+     * @param  string  $id
+     * @return Operations\OrdersGenerateInvoiceResponse
+     * @throws \Polar\Models\Errors\APIException
+     */
+    public function generateInvoice(string $id, ?Options $options = null): Operations\OrdersGenerateInvoiceResponse
+    {
+        $request = new Operations\OrdersGenerateInvoiceRequest(
+            id: $id,
+        );
+        $baseUrl = $this->sdkConfiguration->getTemplatedServerUrl();
+        $url = Utils\Utils::generateUrl($baseUrl, '/v1/orders/{id}/invoice', Operations\OrdersGenerateInvoiceRequest::class, $request);
+        $urlOverride = null;
+        $httpOptions = ['http_errors' => false];
+        $httpOptions['headers']['Accept'] = 'application/json';
+        $httpOptions['headers']['user-agent'] = $this->sdkConfiguration->userAgent;
+        $httpRequest = new \GuzzleHttp\Psr7\Request('POST', $url);
+        $hookContext = new HookContext($this->sdkConfiguration, $baseUrl, 'orders:generate_invoice', [], $this->sdkConfiguration->securitySource);
+        $httpRequest = $this->sdkConfiguration->hooks->beforeRequest(new Hooks\BeforeRequestContext($hookContext), $httpRequest);
+        $httpOptions = Utils\Utils::convertHeadersToOptions($httpRequest, $httpOptions);
+        $httpRequest = Utils\Utils::removeHeaders($httpRequest);
+        try {
+            $httpResponse = $this->sdkConfiguration->client->send($httpRequest, $httpOptions);
+        } catch (\GuzzleHttp\Exception\GuzzleException $error) {
+            $res = $this->sdkConfiguration->hooks->afterError(new Hooks\AfterErrorContext($hookContext), null, $error);
+            $httpResponse = $res;
+        }
+        $contentType = $httpResponse->getHeader('Content-Type')[0] ?? '';
+
+        $statusCode = $httpResponse->getStatusCode();
+        if (Utils\Utils::matchStatusCodes($statusCode, ['409', '422', '4XX', '5XX'])) {
+            $res = $this->sdkConfiguration->hooks->afterError(new Hooks\AfterErrorContext($hookContext), $httpResponse, null);
+            $httpResponse = $res;
+        }
+        if (Utils\Utils::matchStatusCodes($statusCode, ['202'])) {
+            if (Utils\Utils::matchContentType($contentType, 'application/json')) {
+                $httpResponse = $this->sdkConfiguration->hooks->afterSuccess(new Hooks\AfterSuccessContext($hookContext), $httpResponse);
+
+                $serializer = Utils\JSON::createSerializer();
+                $responseData = (string) $httpResponse->getBody();
+                $obj = $serializer->deserialize($responseData, 'mixed', 'json', DeserializationContext::create()->setRequireAllRequiredProperties(true));
+                $response = new Operations\OrdersGenerateInvoiceResponse(
+                    statusCode: $statusCode,
+                    contentType: $contentType,
+                    rawResponse: $httpResponse,
+                    any: $obj);
+
+                return $response;
+            } else {
+                throw new \Polar\Models\Errors\APIException('Unknown content type received', $statusCode, $httpResponse->getBody()->getContents(), $httpResponse);
+            }
+        } elseif (Utils\Utils::matchStatusCodes($statusCode, ['409'])) {
+            if (Utils\Utils::matchContentType($contentType, 'application/json')) {
+                $httpResponse = $this->sdkConfiguration->hooks->afterSuccess(new Hooks\AfterSuccessContext($hookContext), $httpResponse);
+
+                $serializer = Utils\JSON::createSerializer();
+                $responseData = (string) $httpResponse->getBody();
+                $obj = $serializer->deserialize($responseData, '\Polar\Models\Errors\InvoiceAlreadyExists', 'json', DeserializationContext::create()->setRequireAllRequiredProperties(true));
+                throw $obj->toException();
+            } else {
+                throw new \Polar\Models\Errors\APIException('Unknown content type received', $statusCode, $httpResponse->getBody()->getContents(), $httpResponse);
+            }
+        } elseif (Utils\Utils::matchStatusCodes($statusCode, ['422'])) {
+            if (Utils\Utils::matchContentType($contentType, 'application/json')) {
+                $httpResponse = $this->sdkConfiguration->hooks->afterSuccess(new Hooks\AfterSuccessContext($hookContext), $httpResponse);
+
+                $serializer = Utils\JSON::createSerializer();
+                $responseData = (string) $httpResponse->getBody();
+                $obj = $serializer->deserialize($responseData, '\Polar\Models\Errors\MissingInvoiceBillingDetails|\Polar\Models\Errors\NotPaidOrder', 'json', DeserializationContext::create()->setRequireAllRequiredProperties(true));
+                $obj->rawResponse = $httpResponse;
+                throw $obj->toException();
+            } else {
+                throw new \Polar\Models\Errors\APIException('Unknown content type received', $statusCode, $httpResponse->getBody()->getContents(), $httpResponse);
+            }
+        } elseif (Utils\Utils::matchStatusCodes($statusCode, ['4XX'])) {
+            throw new \Polar\Models\Errors\APIException('API error occurred', $statusCode, $httpResponse->getBody()->getContents(), $httpResponse);
+        } elseif (Utils\Utils::matchStatusCodes($statusCode, ['5XX'])) {
+            throw new \Polar\Models\Errors\APIException('API error occurred', $statusCode, $httpResponse->getBody()->getContents(), $httpResponse);
+        } else {
+            throw new \Polar\Models\Errors\APIException('Unknown status code received', $statusCode, $httpResponse->getBody()->getContents(), $httpResponse);
+        }
+    }
+
+    /**
      * Get Order
      *
      * Get an order by ID.
@@ -60,14 +150,14 @@ class Orders
         $request = new Operations\OrdersGetRequest(
             id: $id,
         );
-        $baseUrl = $this->sdkConfiguration->getServerUrl();
+        $baseUrl = $this->sdkConfiguration->getTemplatedServerUrl();
         $url = Utils\Utils::generateUrl($baseUrl, '/v1/orders/{id}', Operations\OrdersGetRequest::class, $request);
         $urlOverride = null;
         $httpOptions = ['http_errors' => false];
         $httpOptions['headers']['Accept'] = 'application/json';
         $httpOptions['headers']['user-agent'] = $this->sdkConfiguration->userAgent;
         $httpRequest = new \GuzzleHttp\Psr7\Request('GET', $url);
-        $hookContext = new HookContext($baseUrl, 'orders:get', [], $this->sdkConfiguration->securitySource);
+        $hookContext = new HookContext($this->sdkConfiguration, $baseUrl, 'orders:get', [], $this->sdkConfiguration->securitySource);
         $httpRequest = $this->sdkConfiguration->hooks->beforeRequest(new Hooks\BeforeRequestContext($hookContext), $httpRequest);
         $httpOptions = Utils\Utils::convertHeadersToOptions($httpRequest, $httpOptions);
         $httpRequest = Utils\Utils::removeHeaders($httpRequest);
@@ -148,14 +238,14 @@ class Orders
         $request = new Operations\OrdersInvoiceRequest(
             id: $id,
         );
-        $baseUrl = $this->sdkConfiguration->getServerUrl();
+        $baseUrl = $this->sdkConfiguration->getTemplatedServerUrl();
         $url = Utils\Utils::generateUrl($baseUrl, '/v1/orders/{id}/invoice', Operations\OrdersInvoiceRequest::class, $request);
         $urlOverride = null;
         $httpOptions = ['http_errors' => false];
         $httpOptions['headers']['Accept'] = 'application/json';
         $httpOptions['headers']['user-agent'] = $this->sdkConfiguration->userAgent;
         $httpRequest = new \GuzzleHttp\Psr7\Request('GET', $url);
-        $hookContext = new HookContext($baseUrl, 'orders:invoice', [], $this->sdkConfiguration->securitySource);
+        $hookContext = new HookContext($this->sdkConfiguration, $baseUrl, 'orders:invoice', [], $this->sdkConfiguration->securitySource);
         $httpRequest = $this->sdkConfiguration->hooks->beforeRequest(new Hooks\BeforeRequestContext($hookContext), $httpRequest);
         $httpOptions = Utils\Utils::convertHeadersToOptions($httpRequest, $httpOptions);
         $httpRequest = Utils\Utils::removeHeaders($httpRequest);
@@ -233,7 +323,7 @@ class Orders
      */
     private function listIndividual(?Operations\OrdersListRequest $request = null, ?Options $options = null): Operations\OrdersListResponse
     {
-        $baseUrl = $this->sdkConfiguration->getServerUrl();
+        $baseUrl = $this->sdkConfiguration->getTemplatedServerUrl();
         $url = Utils\Utils::generateUrl($baseUrl, '/v1/orders/');
         $urlOverride = null;
         $httpOptions = ['http_errors' => false];
@@ -242,7 +332,7 @@ class Orders
         $httpOptions['headers']['Accept'] = 'application/json';
         $httpOptions['headers']['user-agent'] = $this->sdkConfiguration->userAgent;
         $httpRequest = new \GuzzleHttp\Psr7\Request('GET', $url);
-        $hookContext = new HookContext($baseUrl, 'orders:list', [], $this->sdkConfiguration->securitySource);
+        $hookContext = new HookContext($this->sdkConfiguration, $baseUrl, 'orders:list', [], $this->sdkConfiguration->securitySource);
         $httpRequest = $this->sdkConfiguration->hooks->beforeRequest(new Hooks\BeforeRequestContext($hookContext), $httpRequest);
         $httpOptions['query'] = Utils\QueryParameters::standardizeQueryParams($httpRequest, $qp);
         $httpOptions = Utils\Utils::convertHeadersToOptions($httpRequest, $httpOptions);
@@ -356,6 +446,101 @@ class Orders
         while ($res !== null) {
             yield $res;
             $res = $res->next($res);
+        }
+    }
+
+    /**
+     * Update Order
+     *
+     * Update an order.
+     *
+     * **Scopes**: `orders:write`
+     *
+     * @param  Components\OrderUpdate  $orderUpdate
+     * @param  string  $id
+     * @return Operations\OrdersUpdateResponse
+     * @throws \Polar\Models\Errors\APIException
+     */
+    public function update(Components\OrderUpdate $orderUpdate, string $id, ?Options $options = null): Operations\OrdersUpdateResponse
+    {
+        $request = new Operations\OrdersUpdateRequest(
+            id: $id,
+            orderUpdate: $orderUpdate,
+        );
+        $baseUrl = $this->sdkConfiguration->getTemplatedServerUrl();
+        $url = Utils\Utils::generateUrl($baseUrl, '/v1/orders/{id}', Operations\OrdersUpdateRequest::class, $request);
+        $urlOverride = null;
+        $httpOptions = ['http_errors' => false];
+        $body = Utils\Utils::serializeRequestBody($request, 'orderUpdate', 'json');
+        if ($body === null) {
+            throw new \Exception('Request body is required');
+        }
+        $httpOptions = array_merge_recursive($httpOptions, $body);
+        $httpOptions['headers']['Accept'] = 'application/json';
+        $httpOptions['headers']['user-agent'] = $this->sdkConfiguration->userAgent;
+        $httpRequest = new \GuzzleHttp\Psr7\Request('PATCH', $url);
+        $hookContext = new HookContext($this->sdkConfiguration, $baseUrl, 'orders:update', [], $this->sdkConfiguration->securitySource);
+        $httpRequest = $this->sdkConfiguration->hooks->beforeRequest(new Hooks\BeforeRequestContext($hookContext), $httpRequest);
+        $httpOptions = Utils\Utils::convertHeadersToOptions($httpRequest, $httpOptions);
+        $httpRequest = Utils\Utils::removeHeaders($httpRequest);
+        try {
+            $httpResponse = $this->sdkConfiguration->client->send($httpRequest, $httpOptions);
+        } catch (\GuzzleHttp\Exception\GuzzleException $error) {
+            $res = $this->sdkConfiguration->hooks->afterError(new Hooks\AfterErrorContext($hookContext), null, $error);
+            $httpResponse = $res;
+        }
+        $contentType = $httpResponse->getHeader('Content-Type')[0] ?? '';
+
+        $statusCode = $httpResponse->getStatusCode();
+        if (Utils\Utils::matchStatusCodes($statusCode, ['404', '422', '4XX', '5XX'])) {
+            $res = $this->sdkConfiguration->hooks->afterError(new Hooks\AfterErrorContext($hookContext), $httpResponse, null);
+            $httpResponse = $res;
+        }
+        if (Utils\Utils::matchStatusCodes($statusCode, ['200'])) {
+            if (Utils\Utils::matchContentType($contentType, 'application/json')) {
+                $httpResponse = $this->sdkConfiguration->hooks->afterSuccess(new Hooks\AfterSuccessContext($hookContext), $httpResponse);
+
+                $serializer = Utils\JSON::createSerializer();
+                $responseData = (string) $httpResponse->getBody();
+                $obj = $serializer->deserialize($responseData, '\Polar\Models\Components\Order', 'json', DeserializationContext::create()->setRequireAllRequiredProperties(true));
+                $response = new Operations\OrdersUpdateResponse(
+                    statusCode: $statusCode,
+                    contentType: $contentType,
+                    rawResponse: $httpResponse,
+                    order: $obj);
+
+                return $response;
+            } else {
+                throw new \Polar\Models\Errors\APIException('Unknown content type received', $statusCode, $httpResponse->getBody()->getContents(), $httpResponse);
+            }
+        } elseif (Utils\Utils::matchStatusCodes($statusCode, ['404'])) {
+            if (Utils\Utils::matchContentType($contentType, 'application/json')) {
+                $httpResponse = $this->sdkConfiguration->hooks->afterSuccess(new Hooks\AfterSuccessContext($hookContext), $httpResponse);
+
+                $serializer = Utils\JSON::createSerializer();
+                $responseData = (string) $httpResponse->getBody();
+                $obj = $serializer->deserialize($responseData, '\Polar\Models\Errors\ResourceNotFound', 'json', DeserializationContext::create()->setRequireAllRequiredProperties(true));
+                throw $obj->toException();
+            } else {
+                throw new \Polar\Models\Errors\APIException('Unknown content type received', $statusCode, $httpResponse->getBody()->getContents(), $httpResponse);
+            }
+        } elseif (Utils\Utils::matchStatusCodes($statusCode, ['422'])) {
+            if (Utils\Utils::matchContentType($contentType, 'application/json')) {
+                $httpResponse = $this->sdkConfiguration->hooks->afterSuccess(new Hooks\AfterSuccessContext($hookContext), $httpResponse);
+
+                $serializer = Utils\JSON::createSerializer();
+                $responseData = (string) $httpResponse->getBody();
+                $obj = $serializer->deserialize($responseData, '\Polar\Models\Errors\HTTPValidationError', 'json', DeserializationContext::create()->setRequireAllRequiredProperties(true));
+                throw $obj->toException();
+            } else {
+                throw new \Polar\Models\Errors\APIException('Unknown content type received', $statusCode, $httpResponse->getBody()->getContents(), $httpResponse);
+            }
+        } elseif (Utils\Utils::matchStatusCodes($statusCode, ['4XX'])) {
+            throw new \Polar\Models\Errors\APIException('API error occurred', $statusCode, $httpResponse->getBody()->getContents(), $httpResponse);
+        } elseif (Utils\Utils::matchStatusCodes($statusCode, ['5XX'])) {
+            throw new \Polar\Models\Errors\APIException('API error occurred', $statusCode, $httpResponse->getBody()->getContents(), $httpResponse);
+        } else {
+            throw new \Polar\Models\Errors\APIException('Unknown status code received', $statusCode, $httpResponse->getBody()->getContents(), $httpResponse);
         }
     }
 

@@ -124,6 +124,14 @@ class CustomerOrder
     public OrderBillingReason $billingReason;
 
     /**
+     * Whether an invoice has been generated for this order.
+     *
+     * @var bool $isInvoiceGenerated
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('is_invoice_generated')]
+    public bool $isInvoiceGenerated;
+
+    /**
      *
      * @var string $customerId
      */
@@ -169,6 +177,14 @@ class CustomerOrder
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('modified_at')]
     public ?\DateTime $modifiedAt;
+
+    /**
+     * The name of the customer that should appear on the invoice. 
+     *
+     * @var ?string $billingName
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('billing_name')]
+    public ?string $billingName;
 
     /**
      *
@@ -222,12 +238,14 @@ class CustomerOrder
      * @param  int  $refundedTaxAmount
      * @param  string  $currency
      * @param  OrderBillingReason  $billingReason
+     * @param  bool  $isInvoiceGenerated
      * @param  string  $customerId
      * @param  string  $productId
      * @param  string  $userId
      * @param  CustomerOrderProduct  $product
      * @param  array<OrderItemSchema>  $items
      * @param  ?\DateTime  $modifiedAt
+     * @param  ?string  $billingName
      * @param  ?Address  $billingAddress
      * @param  ?string  $discountId
      * @param  ?string  $subscriptionId
@@ -235,7 +253,7 @@ class CustomerOrder
      * @param  ?CustomerOrderSubscription  $subscription
      * @phpstan-pure
      */
-    public function __construct(string $id, \DateTime $createdAt, OrderStatus $status, bool $paid, int $subtotalAmount, int $discountAmount, int $netAmount, int $amount, int $taxAmount, int $totalAmount, int $refundedAmount, int $refundedTaxAmount, string $currency, OrderBillingReason $billingReason, string $customerId, string $productId, string $userId, CustomerOrderProduct $product, array $items, ?\DateTime $modifiedAt = null, ?Address $billingAddress = null, ?string $discountId = null, ?string $subscriptionId = null, ?string $checkoutId = null, ?CustomerOrderSubscription $subscription = null)
+    public function __construct(string $id, \DateTime $createdAt, OrderStatus $status, bool $paid, int $subtotalAmount, int $discountAmount, int $netAmount, int $amount, int $taxAmount, int $totalAmount, int $refundedAmount, int $refundedTaxAmount, string $currency, OrderBillingReason $billingReason, bool $isInvoiceGenerated, string $customerId, string $productId, string $userId, CustomerOrderProduct $product, array $items, ?\DateTime $modifiedAt = null, ?string $billingName = null, ?Address $billingAddress = null, ?string $discountId = null, ?string $subscriptionId = null, ?string $checkoutId = null, ?CustomerOrderSubscription $subscription = null)
     {
         $this->id = $id;
         $this->createdAt = $createdAt;
@@ -251,12 +269,14 @@ class CustomerOrder
         $this->refundedTaxAmount = $refundedTaxAmount;
         $this->currency = $currency;
         $this->billingReason = $billingReason;
+        $this->isInvoiceGenerated = $isInvoiceGenerated;
         $this->customerId = $customerId;
         $this->productId = $productId;
         $this->userId = $userId;
         $this->product = $product;
         $this->items = $items;
         $this->modifiedAt = $modifiedAt;
+        $this->billingName = $billingName;
         $this->billingAddress = $billingAddress;
         $this->discountId = $discountId;
         $this->subscriptionId = $subscriptionId;
