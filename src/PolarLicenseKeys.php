@@ -56,7 +56,7 @@ class PolarLicenseKeys
      */
     public function activate(Components\LicenseKeyActivate $request, ?Options $options = null): Operations\CustomerPortalLicenseKeysActivateResponse
     {
-        $baseUrl = $this->sdkConfiguration->getServerUrl();
+        $baseUrl = $this->sdkConfiguration->getTemplatedServerUrl();
         $url = Utils\Utils::generateUrl($baseUrl, '/v1/customer-portal/license-keys/activate');
         $urlOverride = null;
         $httpOptions = ['http_errors' => false];
@@ -68,7 +68,7 @@ class PolarLicenseKeys
         $httpOptions['headers']['Accept'] = 'application/json';
         $httpOptions['headers']['user-agent'] = $this->sdkConfiguration->userAgent;
         $httpRequest = new \GuzzleHttp\Psr7\Request('POST', $url);
-        $hookContext = new HookContext($baseUrl, 'customer_portal:license_keys:activate', [], null);
+        $hookContext = new HookContext($this->sdkConfiguration, $baseUrl, 'customer_portal:license_keys:activate', [], null);
         $httpRequest = $this->sdkConfiguration->hooks->beforeRequest(new Hooks\BeforeRequestContext($hookContext), $httpRequest);
         $httpOptions = Utils\Utils::convertHeadersToOptions($httpRequest, $httpOptions);
         $httpRequest = Utils\Utils::removeHeaders($httpRequest);
@@ -155,7 +155,7 @@ class PolarLicenseKeys
      */
     public function deactivate(Components\LicenseKeyDeactivate $request, ?Options $options = null): Operations\CustomerPortalLicenseKeysDeactivateResponse
     {
-        $baseUrl = $this->sdkConfiguration->getServerUrl();
+        $baseUrl = $this->sdkConfiguration->getTemplatedServerUrl();
         $url = Utils\Utils::generateUrl($baseUrl, '/v1/customer-portal/license-keys/deactivate');
         $urlOverride = null;
         $httpOptions = ['http_errors' => false];
@@ -167,7 +167,7 @@ class PolarLicenseKeys
         $httpOptions['headers']['Accept'] = 'application/json';
         $httpOptions['headers']['user-agent'] = $this->sdkConfiguration->userAgent;
         $httpRequest = new \GuzzleHttp\Psr7\Request('POST', $url);
-        $hookContext = new HookContext($baseUrl, 'customer_portal:license_keys:deactivate', [], null);
+        $hookContext = new HookContext($this->sdkConfiguration, $baseUrl, 'customer_portal:license_keys:deactivate', [], null);
         $httpRequest = $this->sdkConfiguration->hooks->beforeRequest(new Hooks\BeforeRequestContext($hookContext), $httpRequest);
         $httpOptions = Utils\Utils::convertHeadersToOptions($httpRequest, $httpOptions);
         $httpRequest = Utils\Utils::removeHeaders($httpRequest);
@@ -240,7 +240,7 @@ class PolarLicenseKeys
         $request = new Operations\CustomerPortalLicenseKeysGetRequest(
             id: $id,
         );
-        $baseUrl = $this->sdkConfiguration->getServerUrl();
+        $baseUrl = $this->sdkConfiguration->getTemplatedServerUrl();
         $url = Utils\Utils::generateUrl($baseUrl, '/v1/customer-portal/license-keys/{id}', Operations\CustomerPortalLicenseKeysGetRequest::class, $request);
         $urlOverride = null;
         $httpOptions = ['http_errors' => false];
@@ -253,7 +253,7 @@ class PolarLicenseKeys
             $client = $this->sdkConfiguration->client;
         }
 
-        $hookContext = new HookContext($baseUrl, 'customer_portal:license_keys:get', null, fn () => $security);
+        $hookContext = new HookContext($this->sdkConfiguration, $baseUrl, 'customer_portal:license_keys:get', null, fn () => $security);
         $httpRequest = $this->sdkConfiguration->hooks->beforeRequest(new Hooks\BeforeRequestContext($hookContext), $httpRequest);
         $httpOptions = Utils\Utils::convertHeadersToOptions($httpRequest, $httpOptions);
         $httpRequest = Utils\Utils::removeHeaders($httpRequest);
@@ -339,7 +339,7 @@ class PolarLicenseKeys
             page: $page,
             limit: $limit,
         );
-        $baseUrl = $this->sdkConfiguration->getServerUrl();
+        $baseUrl = $this->sdkConfiguration->getTemplatedServerUrl();
         $url = Utils\Utils::generateUrl($baseUrl, '/v1/customer-portal/license-keys/');
         $urlOverride = null;
         $httpOptions = ['http_errors' => false];
@@ -354,7 +354,7 @@ class PolarLicenseKeys
             $client = $this->sdkConfiguration->client;
         }
 
-        $hookContext = new HookContext($baseUrl, 'customer_portal:license_keys:list', null, fn () => $security);
+        $hookContext = new HookContext($this->sdkConfiguration, $baseUrl, 'customer_portal:license_keys:list', null, fn () => $security);
         $httpRequest = $this->sdkConfiguration->hooks->beforeRequest(new Hooks\BeforeRequestContext($hookContext), $httpRequest);
         $httpOptions['query'] = Utils\QueryParameters::standardizeQueryParams($httpRequest, $qp);
         $httpOptions = Utils\Utils::convertHeadersToOptions($httpRequest, $httpOptions);
@@ -499,7 +499,7 @@ class PolarLicenseKeys
      */
     public function validate(Components\LicenseKeyValidate $request, ?Options $options = null): Operations\CustomerPortalLicenseKeysValidateResponse
     {
-        $baseUrl = $this->sdkConfiguration->getServerUrl();
+        $baseUrl = $this->sdkConfiguration->getTemplatedServerUrl();
         $url = Utils\Utils::generateUrl($baseUrl, '/v1/customer-portal/license-keys/validate');
         $urlOverride = null;
         $httpOptions = ['http_errors' => false];
@@ -511,7 +511,7 @@ class PolarLicenseKeys
         $httpOptions['headers']['Accept'] = 'application/json';
         $httpOptions['headers']['user-agent'] = $this->sdkConfiguration->userAgent;
         $httpRequest = new \GuzzleHttp\Psr7\Request('POST', $url);
-        $hookContext = new HookContext($baseUrl, 'customer_portal:license_keys:validate', [], null);
+        $hookContext = new HookContext($this->sdkConfiguration, $baseUrl, 'customer_portal:license_keys:validate', [], null);
         $httpRequest = $this->sdkConfiguration->hooks->beforeRequest(new Hooks\BeforeRequestContext($hookContext), $httpRequest);
         $httpOptions = Utils\Utils::convertHeadersToOptions($httpRequest, $httpOptions);
         $httpRequest = Utils\Utils::removeHeaders($httpRequest);

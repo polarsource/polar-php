@@ -38,6 +38,7 @@
 | `CustomerMetersRead`          | customer_meters:read          |
 | `CustomerSessionsWrite`       | customer_sessions:write       |
 | `OrdersRead`                  | orders:read                   |
+| `OrdersWrite`                 | orders:write                  |
 | `RefundsRead`                 | refunds:read                  |
 | `RefundsWrite`                | refunds:write                 |
 | `PaymentsRead`                | payments:read                 |
@@ -53,5 +54,7 @@
 | `IssuesWrite`                 | issues:write                  |
 | `CustomerPortalRead`          | customer_portal:read          |
 | `CustomerPortalWrite`         | customer_portal:write         |
+| `NotificationsRead`           | notifications:read            |
+| `NotificationsWrite`          | notifications:write           |
 | `NotificationRecipientsRead`  | notification_recipients:read  |
 | `NotificationRecipientsWrite` | notification_recipients:write |

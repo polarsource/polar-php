@@ -407,7 +407,10 @@ foreach ($responses as $response) {
 * [list](docs/sdks/checkouts/README.md#list) - List Checkout Sessions
 * [create](docs/sdks/checkouts/README.md#create) - Create Checkout Session
 * [get](docs/sdks/checkouts/README.md#get) - Get Checkout Session
+* [update](docs/sdks/checkouts/README.md#update) - Update Checkout Session
 * [clientGet](docs/sdks/checkouts/README.md#clientget) - Get Checkout Session from Client
+* [clientUpdate](docs/sdks/checkouts/README.md#clientupdate) - Update Checkout Session from Client
+* [clientConfirm](docs/sdks/checkouts/README.md#clientconfirm) - Confirm Checkout Session from Client
 
 ### [customerMeters](docs/sdks/customermeters/README.md)
 
@@ -453,6 +456,8 @@ foreach ($responses as $response) {
 
 * [list](docs/sdks/polarorders/README.md#list) - List Orders
 * [get](docs/sdks/polarorders/README.md#get) - Get Order
+* [update](docs/sdks/polarorders/README.md#update) - Update Order
+* [generateInvoice](docs/sdks/polarorders/README.md#generateinvoice) - Generate Order Invoice
 * [invoice](docs/sdks/polarorders/README.md#invoice) - Get Order Invoice
 
 #### [customerPortal->organizations](docs/sdks/polarorganizations/README.md)
@@ -554,6 +559,8 @@ foreach ($responses as $response) {
 
 * [list](docs/sdks/orders/README.md#list) - List Orders
 * [get](docs/sdks/orders/README.md#get) - Get Order
+* [update](docs/sdks/orders/README.md#update) - Update Order
+* [generateInvoice](docs/sdks/orders/README.md#generateinvoice) - Generate Order Invoice
 * [invoice](docs/sdks/orders/README.md#invoice) - Get Order Invoice
 
 ### [organizations](docs/sdks/organizations/README.md)
