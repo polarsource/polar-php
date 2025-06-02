@@ -93,7 +93,6 @@ $sdk = Polar\Polar::builder()
     ->build();
 
 $request = new Components\DownloadableFileCreate(
-    organizationId: '1dbfc517-0bbf-4301-9ba8-555ca42b9737',
     name: '<value>',
     mimeType: '<value>',
     size: 612128,

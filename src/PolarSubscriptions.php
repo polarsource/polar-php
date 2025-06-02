@@ -62,7 +62,7 @@ class PolarSubscriptions
         $request = new Operations\CustomerPortalSubscriptionsCancelRequest(
             id: $id,
         );
-        $baseUrl = $this->sdkConfiguration->getServerUrl();
+        $baseUrl = $this->sdkConfiguration->getTemplatedServerUrl();
         $url = Utils\Utils::generateUrl($baseUrl, '/v1/customer-portal/subscriptions/{id}', Operations\CustomerPortalSubscriptionsCancelRequest::class, $request);
         $urlOverride = null;
         $httpOptions = ['http_errors' => false];
@@ -75,7 +75,7 @@ class PolarSubscriptions
             $client = $this->sdkConfiguration->client;
         }
 
-        $hookContext = new HookContext($baseUrl, 'customer_portal:subscriptions:cancel', null, fn () => $security);
+        $hookContext = new HookContext($this->sdkConfiguration, $baseUrl, 'customer_portal:subscriptions:cancel', null, fn () => $security);
         $httpRequest = $this->sdkConfiguration->hooks->beforeRequest(new Hooks\BeforeRequestContext($hookContext), $httpRequest);
         $httpOptions = Utils\Utils::convertHeadersToOptions($httpRequest, $httpOptions);
         $httpRequest = Utils\Utils::removeHeaders($httpRequest);
@@ -168,7 +168,7 @@ class PolarSubscriptions
         $request = new Operations\CustomerPortalSubscriptionsGetRequest(
             id: $id,
         );
-        $baseUrl = $this->sdkConfiguration->getServerUrl();
+        $baseUrl = $this->sdkConfiguration->getTemplatedServerUrl();
         $url = Utils\Utils::generateUrl($baseUrl, '/v1/customer-portal/subscriptions/{id}', Operations\CustomerPortalSubscriptionsGetRequest::class, $request);
         $urlOverride = null;
         $httpOptions = ['http_errors' => false];
@@ -181,7 +181,7 @@ class PolarSubscriptions
             $client = $this->sdkConfiguration->client;
         }
 
-        $hookContext = new HookContext($baseUrl, 'customer_portal:subscriptions:get', null, fn () => $security);
+        $hookContext = new HookContext($this->sdkConfiguration, $baseUrl, 'customer_portal:subscriptions:get', null, fn () => $security);
         $httpRequest = $this->sdkConfiguration->hooks->beforeRequest(new Hooks\BeforeRequestContext($hookContext), $httpRequest);
         $httpOptions = Utils\Utils::convertHeadersToOptions($httpRequest, $httpOptions);
         $httpRequest = Utils\Utils::removeHeaders($httpRequest);
@@ -260,7 +260,7 @@ class PolarSubscriptions
      */
     private function listIndividual(Operations\CustomerPortalSubscriptionsListSecurity $security, ?Operations\CustomerPortalSubscriptionsListRequest $request = null, ?Options $options = null): Operations\CustomerPortalSubscriptionsListResponse
     {
-        $baseUrl = $this->sdkConfiguration->getServerUrl();
+        $baseUrl = $this->sdkConfiguration->getTemplatedServerUrl();
         $url = Utils\Utils::generateUrl($baseUrl, '/v1/customer-portal/subscriptions/');
         $urlOverride = null;
         $httpOptions = ['http_errors' => false];
@@ -275,7 +275,7 @@ class PolarSubscriptions
             $client = $this->sdkConfiguration->client;
         }
 
-        $hookContext = new HookContext($baseUrl, 'customer_portal:subscriptions:list', null, fn () => $security);
+        $hookContext = new HookContext($this->sdkConfiguration, $baseUrl, 'customer_portal:subscriptions:list', null, fn () => $security);
         $httpRequest = $this->sdkConfiguration->hooks->beforeRequest(new Hooks\BeforeRequestContext($hookContext), $httpRequest);
         $httpOptions['query'] = Utils\QueryParameters::standardizeQueryParams($httpRequest, $qp);
         $httpOptions = Utils\Utils::convertHeadersToOptions($httpRequest, $httpOptions);
@@ -410,7 +410,7 @@ class PolarSubscriptions
             id: $id,
             customerSubscriptionUpdate: $customerSubscriptionUpdate,
         );
-        $baseUrl = $this->sdkConfiguration->getServerUrl();
+        $baseUrl = $this->sdkConfiguration->getTemplatedServerUrl();
         $url = Utils\Utils::generateUrl($baseUrl, '/v1/customer-portal/subscriptions/{id}', Operations\CustomerPortalSubscriptionsUpdateRequest::class, $request);
         $urlOverride = null;
         $httpOptions = ['http_errors' => false];
@@ -428,7 +428,7 @@ class PolarSubscriptions
             $client = $this->sdkConfiguration->client;
         }
 
-        $hookContext = new HookContext($baseUrl, 'customer_portal:subscriptions:update', null, fn () => $security);
+        $hookContext = new HookContext($this->sdkConfiguration, $baseUrl, 'customer_portal:subscriptions:update', null, fn () => $security);
         $httpRequest = $this->sdkConfiguration->hooks->beforeRequest(new Hooks\BeforeRequestContext($hookContext), $httpRequest);
         $httpOptions = Utils\Utils::convertHeadersToOptions($httpRequest, $httpOptions);
         $httpRequest = Utils\Utils::removeHeaders($httpRequest);

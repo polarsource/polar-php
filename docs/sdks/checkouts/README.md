@@ -8,7 +8,10 @@
 * [list](#list) - List Checkout Sessions
 * [create](#create) - Create Checkout Session
 * [get](#get) - Get Checkout Session
+* [update](#update) - Update Checkout Session
 * [clientGet](#clientget) - Get Checkout Session from Client
+* [clientUpdate](#clientupdate) - Update Checkout Session from Client
+* [clientConfirm](#clientconfirm) - Confirm Checkout Session from Client
 
 ## list
 
@@ -172,6 +175,66 @@ if ($response->checkout !== null) {
 | Errors\HTTPValidationError | 422                        | application/json           |
 | Errors\APIException        | 4XX, 5XX                   | \*/\*                      |
 
+## update
+
+Update a checkout session.
+
+**Scopes**: `checkouts:write`
+
+### Example Usage
+
+```php
+declare(strict_types=1);
+
+require 'vendor/autoload.php';
+
+use Polar;
+use Polar\Models\Components;
+
+$sdk = Polar\Polar::builder()
+    ->setSecurity(
+        '<YOUR_BEARER_TOKEN_HERE>'
+    )
+    ->build();
+
+$checkoutUpdate = new Components\CheckoutUpdate(
+    customerBillingAddress: new Components\Address(
+        country: 'US',
+    ),
+);
+
+$response = $sdk->checkouts->update(
+    id: '<value>',
+    checkoutUpdate: $checkoutUpdate
+
+);
+
+if ($response->checkout !== null) {
+    // handle response
+}
+```
+
+### Parameters
+
+| Parameter                                                              | Type                                                                   | Required                                                               | Description                                                            |
+| ---------------------------------------------------------------------- | ---------------------------------------------------------------------- | ---------------------------------------------------------------------- | ---------------------------------------------------------------------- |
+| `id`                                                                   | *string*                                                               | :heavy_check_mark:                                                     | The checkout session ID.                                               |
+| `checkoutUpdate`                                                       | [Components\CheckoutUpdate](../../Models/Components/CheckoutUpdate.md) | :heavy_check_mark:                                                     | N/A                                                                    |
+
+### Response
+
+**[?Operations\CheckoutsUpdateResponse](../../Models/Operations/CheckoutsUpdateResponse.md)**
+
+### Errors
+
+| Error Type                            | Status Code                           | Content Type                          |
+| ------------------------------------- | ------------------------------------- | ------------------------------------- |
+| Errors\AlreadyActiveSubscriptionError | 403                                   | application/json                      |
+| Errors\NotOpenCheckout                | 403                                   | application/json                      |
+| Errors\ResourceNotFound               | 404                                   | application/json                      |
+| Errors\HTTPValidationError            | 422                                   | application/json                      |
+| Errors\APIException                   | 4XX, 5XX                              | \*/\*                                 |
+
 ## clientGet
 
 Get a checkout session by client secret.
@@ -216,3 +279,120 @@ if ($response->checkoutPublic !== null) {
 | Errors\ExpiredCheckoutError | 410                         | application/json            |
 | Errors\HTTPValidationError  | 422                         | application/json            |
 | Errors\APIException         | 4XX, 5XX                    | \*/\*                       |
+
+## clientUpdate
+
+Update a checkout session by client secret.
+
+### Example Usage
+
+```php
+declare(strict_types=1);
+
+require 'vendor/autoload.php';
+
+use Polar;
+use Polar\Models\Components;
+
+$sdk = Polar\Polar::builder()->build();
+
+$checkoutUpdatePublic = new Components\CheckoutUpdatePublic(
+    customerBillingAddress: new Components\Address(
+        country: 'US',
+    ),
+);
+
+$response = $sdk->checkouts->clientUpdate(
+    clientSecret: '<value>',
+    checkoutUpdatePublic: $checkoutUpdatePublic
+
+);
+
+if ($response->checkoutPublic !== null) {
+    // handle response
+}
+```
+
+### Parameters
+
+| Parameter                                                                          | Type                                                                               | Required                                                                           | Description                                                                        |
+| ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- |
+| `clientSecret`                                                                     | *string*                                                                           | :heavy_check_mark:                                                                 | The checkout session client secret.                                                |
+| `checkoutUpdatePublic`                                                             | [Components\CheckoutUpdatePublic](../../Models/Components/CheckoutUpdatePublic.md) | :heavy_check_mark:                                                                 | N/A                                                                                |
+
+### Response
+
+**[?Operations\CheckoutsClientUpdateResponse](../../Models/Operations/CheckoutsClientUpdateResponse.md)**
+
+### Errors
+
+| Error Type                            | Status Code                           | Content Type                          |
+| ------------------------------------- | ------------------------------------- | ------------------------------------- |
+| Errors\AlreadyActiveSubscriptionError | 403                                   | application/json                      |
+| Errors\NotOpenCheckout                | 403                                   | application/json                      |
+| Errors\ResourceNotFound               | 404                                   | application/json                      |
+| Errors\ExpiredCheckoutError           | 410                                   | application/json                      |
+| Errors\HTTPValidationError            | 422                                   | application/json                      |
+| Errors\APIException                   | 4XX, 5XX                              | \*/\*                                 |
+
+## clientConfirm
+
+Confirm a checkout session by client secret.
+
+Orders and subscriptions will be processed.
+
+### Example Usage
+
+```php
+declare(strict_types=1);
+
+require 'vendor/autoload.php';
+
+use Polar;
+use Polar\Models\Components;
+
+$sdk = Polar\Polar::builder()
+    ->setSecurity(
+        '<YOUR_BEARER_TOKEN_HERE>'
+    )
+    ->build();
+
+$checkoutConfirmStripe = new Components\CheckoutConfirmStripe(
+    customerBillingAddress: new Components\Address(
+        country: 'US',
+    ),
+);
+
+$response = $sdk->checkouts->clientConfirm(
+    clientSecret: '<value>',
+    checkoutConfirmStripe: $checkoutConfirmStripe
+
+);
+
+if ($response->checkoutPublicConfirmed !== null) {
+    // handle response
+}
+```
+
+### Parameters
+
+| Parameter                                                                            | Type                                                                                 | Required                                                                             | Description                                                                          |
+| ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------ |
+| `clientSecret`                                                                       | *string*                                                                             | :heavy_check_mark:                                                                   | The checkout session client secret.                                                  |
+| `checkoutConfirmStripe`                                                              | [Components\CheckoutConfirmStripe](../../Models/Components/CheckoutConfirmStripe.md) | :heavy_check_mark:                                                                   | N/A                                                                                  |
+
+### Response
+
+**[?Operations\CheckoutsClientConfirmResponse](../../Models/Operations/CheckoutsClientConfirmResponse.md)**
+
+### Errors
+
+| Error Type                            | Status Code                           | Content Type                          |
+| ------------------------------------- | ------------------------------------- | ------------------------------------- |
+| Errors\PaymentError                   | 400                                   | application/json                      |
+| Errors\AlreadyActiveSubscriptionError | 403                                   | application/json                      |
+| Errors\NotOpenCheckout                | 403                                   | application/json                      |
+| Errors\ResourceNotFound               | 404                                   | application/json                      |
+| Errors\ExpiredCheckoutError           | 410                                   | application/json                      |
+| Errors\HTTPValidationError            | 422                                   | application/json                      |
+| Errors\APIException                   | 4XX, 5XX                              | \*/\*                                 |

@@ -61,7 +61,7 @@ class PolarCustomerMeters
         $request = new Operations\CustomerPortalCustomerMetersGetRequest(
             id: $id,
         );
-        $baseUrl = $this->sdkConfiguration->getServerUrl();
+        $baseUrl = $this->sdkConfiguration->getTemplatedServerUrl();
         $url = Utils\Utils::generateUrl($baseUrl, '/v1/customer-portal/meters/{id}', Operations\CustomerPortalCustomerMetersGetRequest::class, $request);
         $urlOverride = null;
         $httpOptions = ['http_errors' => false];
@@ -74,7 +74,7 @@ class PolarCustomerMeters
             $client = $this->sdkConfiguration->client;
         }
 
-        $hookContext = new HookContext($baseUrl, 'customer_portal:customer_meters:get', null, fn () => $security);
+        $hookContext = new HookContext($this->sdkConfiguration, $baseUrl, 'customer_portal:customer_meters:get', null, fn () => $security);
         $httpRequest = $this->sdkConfiguration->hooks->beforeRequest(new Hooks\BeforeRequestContext($hookContext), $httpRequest);
         $httpOptions = Utils\Utils::convertHeadersToOptions($httpRequest, $httpOptions);
         $httpRequest = Utils\Utils::removeHeaders($httpRequest);
@@ -153,7 +153,7 @@ class PolarCustomerMeters
      */
     private function listIndividual(Operations\CustomerPortalCustomerMetersListSecurity $security, ?Operations\CustomerPortalCustomerMetersListRequest $request = null, ?Options $options = null): Operations\CustomerPortalCustomerMetersListResponse
     {
-        $baseUrl = $this->sdkConfiguration->getServerUrl();
+        $baseUrl = $this->sdkConfiguration->getTemplatedServerUrl();
         $url = Utils\Utils::generateUrl($baseUrl, '/v1/customer-portal/meters/');
         $urlOverride = null;
         $httpOptions = ['http_errors' => false];
@@ -168,7 +168,7 @@ class PolarCustomerMeters
             $client = $this->sdkConfiguration->client;
         }
 
-        $hookContext = new HookContext($baseUrl, 'customer_portal:customer_meters:list', null, fn () => $security);
+        $hookContext = new HookContext($this->sdkConfiguration, $baseUrl, 'customer_portal:customer_meters:list', null, fn () => $security);
         $httpRequest = $this->sdkConfiguration->hooks->beforeRequest(new Hooks\BeforeRequestContext($hookContext), $httpRequest);
         $httpOptions['query'] = Utils\QueryParameters::standardizeQueryParams($httpRequest, $qp);
         $httpOptions = Utils\Utils::convertHeadersToOptions($httpRequest, $httpOptions);

@@ -13,6 +13,14 @@ namespace Polar\Models\Components;
 class CustomerStateMeter
 {
     /**
+     * The ID of the object.
+     *
+     * @var string $id
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('id')]
+    public string $id;
+
+    /**
      * Creation timestamp of the object.
      *
      * @var \DateTime $createdAt
@@ -61,6 +69,7 @@ class CustomerStateMeter
     public ?\DateTime $modifiedAt;
 
     /**
+     * @param  string  $id
      * @param  \DateTime  $createdAt
      * @param  string  $meterId
      * @param  float  $consumedUnits
@@ -69,8 +78,9 @@ class CustomerStateMeter
      * @param  ?\DateTime  $modifiedAt
      * @phpstan-pure
      */
-    public function __construct(\DateTime $createdAt, string $meterId, float $consumedUnits, int $creditedUnits, float $balance, ?\DateTime $modifiedAt = null)
+    public function __construct(string $id, \DateTime $createdAt, string $meterId, float $consumedUnits, int $creditedUnits, float $balance, ?\DateTime $modifiedAt = null)
     {
+        $this->id = $id;
         $this->createdAt = $createdAt;
         $this->meterId = $meterId;
         $this->consumedUnits = $consumedUnits;

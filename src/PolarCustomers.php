@@ -59,7 +59,7 @@ class PolarCustomers
      */
     public function addPaymentMethod(Operations\CustomerPortalCustomersAddPaymentMethodSecurity $security, Components\CustomerPaymentMethodCreate $request, ?Options $options = null): Operations\CustomerPortalCustomersAddPaymentMethodResponse
     {
-        $baseUrl = $this->sdkConfiguration->getServerUrl();
+        $baseUrl = $this->sdkConfiguration->getTemplatedServerUrl();
         $url = Utils\Utils::generateUrl($baseUrl, '/v1/customer-portal/customers/me/payment-methods');
         $urlOverride = null;
         $httpOptions = ['http_errors' => false];
@@ -77,7 +77,7 @@ class PolarCustomers
             $client = $this->sdkConfiguration->client;
         }
 
-        $hookContext = new HookContext($baseUrl, 'customer_portal:customers:add_payment_method', null, fn () => $security);
+        $hookContext = new HookContext($this->sdkConfiguration, $baseUrl, 'customer_portal:customers:add_payment_method', null, fn () => $security);
         $httpRequest = $this->sdkConfiguration->hooks->beforeRequest(new Hooks\BeforeRequestContext($hookContext), $httpRequest);
         $httpOptions = Utils\Utils::convertHeadersToOptions($httpRequest, $httpOptions);
         $httpRequest = Utils\Utils::removeHeaders($httpRequest);
@@ -148,7 +148,7 @@ class PolarCustomers
         $request = new Operations\CustomerPortalCustomersDeletePaymentMethodRequest(
             id: $id,
         );
-        $baseUrl = $this->sdkConfiguration->getServerUrl();
+        $baseUrl = $this->sdkConfiguration->getTemplatedServerUrl();
         $url = Utils\Utils::generateUrl($baseUrl, '/v1/customer-portal/customers/me/payment-methods/{id}', Operations\CustomerPortalCustomersDeletePaymentMethodRequest::class, $request);
         $urlOverride = null;
         $httpOptions = ['http_errors' => false];
@@ -161,7 +161,7 @@ class PolarCustomers
             $client = $this->sdkConfiguration->client;
         }
 
-        $hookContext = new HookContext($baseUrl, 'customer_portal:customers:delete_payment_method', null, fn () => $security);
+        $hookContext = new HookContext($this->sdkConfiguration, $baseUrl, 'customer_portal:customers:delete_payment_method', null, fn () => $security);
         $httpRequest = $this->sdkConfiguration->hooks->beforeRequest(new Hooks\BeforeRequestContext($hookContext), $httpRequest);
         $httpOptions = Utils\Utils::convertHeadersToOptions($httpRequest, $httpOptions);
         $httpRequest = Utils\Utils::removeHeaders($httpRequest);
@@ -230,7 +230,7 @@ class PolarCustomers
      */
     public function get(Operations\CustomerPortalCustomersGetSecurity $security, ?Options $options = null): Operations\CustomerPortalCustomersGetResponse
     {
-        $baseUrl = $this->sdkConfiguration->getServerUrl();
+        $baseUrl = $this->sdkConfiguration->getTemplatedServerUrl();
         $url = Utils\Utils::generateUrl($baseUrl, '/v1/customer-portal/customers/me');
         $urlOverride = null;
         $httpOptions = ['http_errors' => false];
@@ -243,7 +243,7 @@ class PolarCustomers
             $client = $this->sdkConfiguration->client;
         }
 
-        $hookContext = new HookContext($baseUrl, 'customer_portal:customers:get', null, fn () => $security);
+        $hookContext = new HookContext($this->sdkConfiguration, $baseUrl, 'customer_portal:customers:get', null, fn () => $security);
         $httpRequest = $this->sdkConfiguration->hooks->beforeRequest(new Hooks\BeforeRequestContext($hookContext), $httpRequest);
         $httpOptions = Utils\Utils::convertHeadersToOptions($httpRequest, $httpOptions);
         $httpRequest = Utils\Utils::removeHeaders($httpRequest);
@@ -305,7 +305,7 @@ class PolarCustomers
             page: $page,
             limit: $limit,
         );
-        $baseUrl = $this->sdkConfiguration->getServerUrl();
+        $baseUrl = $this->sdkConfiguration->getTemplatedServerUrl();
         $url = Utils\Utils::generateUrl($baseUrl, '/v1/customer-portal/customers/me/payment-methods');
         $urlOverride = null;
         $httpOptions = ['http_errors' => false];
@@ -320,7 +320,7 @@ class PolarCustomers
             $client = $this->sdkConfiguration->client;
         }
 
-        $hookContext = new HookContext($baseUrl, 'customer_portal:customers:get_payment_methods', null, fn () => $security);
+        $hookContext = new HookContext($this->sdkConfiguration, $baseUrl, 'customer_portal:customers:get_payment_methods', null, fn () => $security);
         $httpRequest = $this->sdkConfiguration->hooks->beforeRequest(new Hooks\BeforeRequestContext($hookContext), $httpRequest);
         $httpOptions['query'] = Utils\QueryParameters::standardizeQueryParams($httpRequest, $qp);
         $httpOptions = Utils\Utils::convertHeadersToOptions($httpRequest, $httpOptions);
@@ -444,7 +444,7 @@ class PolarCustomers
      */
     public function update(Operations\CustomerPortalCustomersUpdateSecurity $security, ?Components\CustomerPortalCustomerUpdate $request = null, ?Options $options = null): Operations\CustomerPortalCustomersUpdateResponse
     {
-        $baseUrl = $this->sdkConfiguration->getServerUrl();
+        $baseUrl = $this->sdkConfiguration->getTemplatedServerUrl();
         $url = Utils\Utils::generateUrl($baseUrl, '/v1/customer-portal/customers/me');
         $urlOverride = null;
         $httpOptions = ['http_errors' => false];
@@ -461,7 +461,7 @@ class PolarCustomers
             $client = $this->sdkConfiguration->client;
         }
 
-        $hookContext = new HookContext($baseUrl, 'customer_portal:customers:update', null, fn () => $security);
+        $hookContext = new HookContext($this->sdkConfiguration, $baseUrl, 'customer_portal:customers:update', null, fn () => $security);
         $httpRequest = $this->sdkConfiguration->hooks->beforeRequest(new Hooks\BeforeRequestContext($hookContext), $httpRequest);
         $httpOptions = Utils\Utils::convertHeadersToOptions($httpRequest, $httpOptions);
         $httpRequest = Utils\Utils::removeHeaders($httpRequest);

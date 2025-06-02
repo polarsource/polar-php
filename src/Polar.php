@@ -109,7 +109,16 @@ class Polar
         $this->meters = new Meters($this->sdkConfiguration);
         $this->customerMeters = new CustomerMeters($this->sdkConfiguration);
         $this->payments = new Payments($this->sdkConfiguration);
-        $this->sdkConfiguration->client = $this->sdkConfiguration->initHooks($this->sdkConfiguration->client);
+        $this->initHooks();
 
+    }
+
+    private function initHooks(): void
+    {
+        $preHooksUrl = $this->sdkConfiguration->getTemplatedServerUrl();
+        $ret = $this->sdkConfiguration->hooks->sdkInit($preHooksUrl, $this->sdkConfiguration->client);
+        if ($preHooksUrl != $ret->url) {
+            $this->sdkConfiguration->serverUrl = $ret->url;
+        }
     }
 }

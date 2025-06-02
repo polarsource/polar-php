@@ -56,14 +56,14 @@ class Downloadables
         $request = new Operations\CustomerPortalDownloadablesCustomerPortalDownloadablesGetRequest(
             token: $token,
         );
-        $baseUrl = $this->sdkConfiguration->getServerUrl();
+        $baseUrl = $this->sdkConfiguration->getTemplatedServerUrl();
         $url = Utils\Utils::generateUrl($baseUrl, '/v1/customer-portal/downloadables/{token}', Operations\CustomerPortalDownloadablesCustomerPortalDownloadablesGetRequest::class, $request);
         $urlOverride = null;
         $httpOptions = ['http_errors' => false];
         $httpOptions['headers']['Accept'] = 'application/json';
         $httpOptions['headers']['user-agent'] = $this->sdkConfiguration->userAgent;
         $httpRequest = new \GuzzleHttp\Psr7\Request('GET', $url);
-        $hookContext = new HookContext($baseUrl, 'customer_portal:downloadables:customer_portal.downloadables.get', [], null);
+        $hookContext = new HookContext($this->sdkConfiguration, $baseUrl, 'customer_portal:downloadables:customer_portal.downloadables.get', [], null);
         $httpRequest = $this->sdkConfiguration->hooks->beforeRequest(new Hooks\BeforeRequestContext($hookContext), $httpRequest);
         $httpOptions = Utils\Utils::convertHeadersToOptions($httpRequest, $httpOptions);
         $httpRequest = Utils\Utils::removeHeaders($httpRequest);
@@ -146,7 +146,7 @@ class Downloadables
             page: $page,
             limit: $limit,
         );
-        $baseUrl = $this->sdkConfiguration->getServerUrl();
+        $baseUrl = $this->sdkConfiguration->getTemplatedServerUrl();
         $url = Utils\Utils::generateUrl($baseUrl, '/v1/customer-portal/downloadables/');
         $urlOverride = null;
         $httpOptions = ['http_errors' => false];
@@ -161,7 +161,7 @@ class Downloadables
             $client = $this->sdkConfiguration->client;
         }
 
-        $hookContext = new HookContext($baseUrl, 'customer_portal:downloadables:list', null, fn () => $security);
+        $hookContext = new HookContext($this->sdkConfiguration, $baseUrl, 'customer_portal:downloadables:list', null, fn () => $security);
         $httpRequest = $this->sdkConfiguration->hooks->beforeRequest(new Hooks\BeforeRequestContext($hookContext), $httpRequest);
         $httpOptions['query'] = Utils\QueryParameters::standardizeQueryParams($httpRequest, $qp);
         $httpOptions = Utils\Utils::convertHeadersToOptions($httpRequest, $httpOptions);
