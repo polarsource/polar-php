@@ -34,9 +34,7 @@ $sdk = Polar\Polar::builder()
     ->build();
 
 $request = new Operations\SubscriptionsListRequest(
-    organizationId: [
-        '1dbfc517-0bbf-4301-9ba8-555ca42b9737',
-    ],
+    organizationId: '1dbfc517-0bbf-4301-9ba8-555ca42b9737',
 );
 
 $responses = $sdk->subscriptions->list(
@@ -92,9 +90,7 @@ $sdk = Polar\Polar::builder()
 
 
 $response = $sdk->subscriptions->export(
-    organizationId: [
-        '1dbfc517-0bbf-4301-9ba8-555ca42b9737',
-    ]
+    organizationId: '1dbfc517-0bbf-4301-9ba8-555ca42b9737'
 );
 
 if ($response->any !== null) {
