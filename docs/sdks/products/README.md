@@ -92,7 +92,10 @@ $request = new Components\ProductCreate(
     name: '<value>',
     recurringInterval: Components\SubscriptionRecurringInterval::Year,
     prices: [
-        new Components\ProductPriceFreeCreate(),
+        new Components\ProductPriceFixedCreate(
+            priceAmount: 677078,
+        ),
+        new Components\ProductPriceCustomCreate(),
     ],
     organizationId: '1dbfc517-0bbf-4301-9ba8-555ca42b9737',
 );
@@ -252,7 +255,9 @@ $sdk = Polar\Polar::builder()
 
 $productBenefitsUpdate = new Components\ProductBenefitsUpdate(
     benefits: [
-        '<value>',
+        '<value 1>',
+        '<value 2>',
+        '<value 3>',
     ],
 );
 

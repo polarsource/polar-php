@@ -5,7 +5,6 @@ declare(strict_types=1);
 require 'vendor/autoload.php';
 
 use Polar;
-use Polar\Models\Components;
 
 $sdk = Polar\Polar::builder()
     ->setSecurity(
@@ -16,12 +15,8 @@ $sdk = Polar\Polar::builder()
 
 
 $responses = $sdk->organizations->list(
-    slug: '<value>',
     page: 1,
-    limit: 10,
-    sorting: [
-        Components\OrganizationSortProperty::CreatedAt,
-    ]
+    limit: 10
 
 );
 

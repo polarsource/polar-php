@@ -87,15 +87,15 @@ $request = new Components\WebhookCheckoutCreatedPayload(
         productId: '<value>',
         productPriceId: '<value>',
         discountId: '<value>',
-        allowDiscountCodes: false,
+        allowDiscountCodes: true,
         requireBillingAddress: false,
-        isDiscountApplicable: false,
-        isFreeProductPrice: false,
-        isPaymentRequired: false,
-        isPaymentSetupRequired: false,
-        isPaymentFormRequired: false,
+        isDiscountApplicable: true,
+        isFreeProductPrice: true,
+        isPaymentRequired: true,
+        isPaymentSetupRequired: true,
+        isPaymentFormRequired: true,
         customerId: '<value>',
-        isBusinessCustomer: false,
+        isBusinessCustomer: true,
         customerName: '<value>',
         customerEmail: '<value>',
         customerIpAddress: '<value>',
@@ -105,145 +105,119 @@ $request = new Components\WebhookCheckoutCreatedPayload(
         ),
         customerTaxId: '<id>',
         paymentProcessorMetadata: [
-            'key' => '<value>',
+
         ],
         metadata: [
-            'key' => false,
+            'key' => '<value>',
         ],
         customerExternalId: '<id>',
-        products: [
-            new Components\CheckoutProduct(
-                createdAt: Utils\Utils::parseDateTime('2023-10-30T00:08:39.161Z'),
-                modifiedAt: Utils\Utils::parseDateTime('2023-01-11T22:31:47.320Z'),
-                id: '<value>',
-                name: '<value>',
-                description: 'commodity woefully thick scarper replacement',
-                recurringInterval: Components\SubscriptionRecurringInterval::Month,
-                isRecurring: false,
-                isArchived: false,
-                organizationId: '<value>',
-                prices: [
-                    new Components\ProductPriceFree(
-                        createdAt: Utils\Utils::parseDateTime('2025-04-06T21:19:53.791Z'),
-                        modifiedAt: Utils\Utils::parseDateTime('2025-11-01T17:42:17.316Z'),
-                        id: '<value>',
-                        isArchived: false,
-                        productId: '<value>',
-                        type: Components\ProductPriceType::OneTime,
-                        recurringInterval: Components\SubscriptionRecurringInterval::Month,
-                    ),
-                ],
-                benefits: [
-                    new Components\BenefitPublic(
-                        id: '<value>',
-                        createdAt: Utils\Utils::parseDateTime('2023-06-01T15:28:54.615Z'),
-                        modifiedAt: Utils\Utils::parseDateTime('2024-08-02T17:12:30.950Z'),
-                        type: Components\BenefitType::Custom,
-                        description: 'graceful structure tenderly dirty colon though faithfully how next accomplished',
-                        selectable: false,
-                        deletable: false,
-                        organizationId: '<value>',
-                    ),
-                ],
-                medias: [
-                    new Components\ProductMediaFileRead(
-                        id: '<value>',
-                        organizationId: '<value>',
-                        name: '<value>',
-                        path: '/Applications',
-                        mimeType: '<value>',
-                        size: 572714,
-                        storageVersion: '<value>',
-                        checksumEtag: '<value>',
-                        checksumSha256Base64: '<value>',
-                        checksumSha256Hex: '<value>',
-                        lastModifiedAt: Utils\Utils::parseDateTime('2023-10-22T16:07:40.109Z'),
-                        version: '<value>',
-                        isUploaded: false,
-                        createdAt: Utils\Utils::parseDateTime('2025-01-26T05:36:04.109Z'),
-                        sizeReadable: '<value>',
-                        publicUrl: 'https://joyous-midwife.org/',
-                    ),
-                ],
-            ),
-        ],
+        products: [],
         product: new Components\CheckoutProduct(
-            createdAt: Utils\Utils::parseDateTime('2025-09-23T14:09:57.086Z'),
-            modifiedAt: Utils\Utils::parseDateTime('2023-11-12T23:35:10.131Z'),
+            createdAt: Utils\Utils::parseDateTime('2025-03-29T00:34:40.708Z'),
+            modifiedAt: Utils\Utils::parseDateTime('2024-04-06T18:48:21.449Z'),
             id: '<value>',
             name: '<value>',
-            description: 'glaring home indolent',
+            description: 'stall for mousse',
             recurringInterval: Components\SubscriptionRecurringInterval::Year,
             isRecurring: false,
-            isArchived: false,
+            isArchived: true,
             organizationId: '<value>',
             prices: [
-                new Components\ProductPriceMeteredUnit(
-                    createdAt: Utils\Utils::parseDateTime('2023-12-27T05:27:05.016Z'),
-                    modifiedAt: Utils\Utils::parseDateTime('2024-08-27T14:04:32.879Z'),
+                new Components\LegacyRecurringProductPriceFree(
+                    createdAt: Utils\Utils::parseDateTime('2023-09-13T08:36:46.434Z'),
+                    modifiedAt: Utils\Utils::parseDateTime('2023-10-05T12:55:46.428Z'),
+                    id: '<value>',
+                    isArchived: false,
+                    productId: '<value>',
+                    recurringInterval: Components\SubscriptionRecurringInterval::Month,
+                ),
+                new Components\ProductPriceFixed(
+                    createdAt: Utils\Utils::parseDateTime('2024-05-02T18:25:33.974Z'),
+                    modifiedAt: Utils\Utils::parseDateTime('2025-02-06T12:55:07.640Z'),
                     id: '<value>',
                     isArchived: false,
                     productId: '<value>',
                     type: Components\ProductPriceType::Recurring,
                     recurringInterval: Components\SubscriptionRecurringInterval::Month,
                     priceCurrency: '<value>',
-                    unitAmount: '<value>',
-                    capAmount: 503783,
-                    meterId: '<value>',
-                    meter: new Components\ProductPriceMeter(
-                        id: '<value>',
-                        name: '<value>',
-                    ),
+                    priceAmount: 115799,
                 ),
             ],
-            benefits: [
-                new Components\BenefitPublic(
-                    id: '<value>',
-                    createdAt: Utils\Utils::parseDateTime('2025-09-17T18:38:51.288Z'),
-                    modifiedAt: Utils\Utils::parseDateTime('2023-07-11T10:52:20.563Z'),
-                    type: Components\BenefitType::Custom,
-                    description: 'tenement whose discontinue duh limp',
-                    selectable: false,
-                    deletable: false,
-                    organizationId: '<value>',
-                ),
-            ],
+            benefits: [],
             medias: [
                 new Components\ProductMediaFileRead(
                     id: '<value>',
                     organizationId: '<value>',
                     name: '<value>',
-                    path: '/etc/periodic',
+                    path: '/private/tmp',
                     mimeType: '<value>',
-                    size: 567071,
+                    size: 225502,
                     storageVersion: '<value>',
                     checksumEtag: '<value>',
                     checksumSha256Base64: '<value>',
                     checksumSha256Hex: '<value>',
-                    lastModifiedAt: Utils\Utils::parseDateTime('2024-03-23T13:16:28.157Z'),
+                    lastModifiedAt: Utils\Utils::parseDateTime('2024-07-06T07:35:44.280Z'),
                     version: '<value>',
-                    isUploaded: false,
-                    createdAt: Utils\Utils::parseDateTime('2025-07-11T07:27:27.079Z'),
+                    isUploaded: true,
+                    createdAt: Utils\Utils::parseDateTime('2024-10-08T20:45:26.653Z'),
                     sizeReadable: '<value>',
-                    publicUrl: 'https://nautical-formation.name',
+                    publicUrl: 'https://graceful-battle.info',
+                ),
+                new Components\ProductMediaFileRead(
+                    id: '<value>',
+                    organizationId: '<value>',
+                    name: '<value>',
+                    path: '/private/tmp',
+                    mimeType: '<value>',
+                    size: 225502,
+                    storageVersion: '<value>',
+                    checksumEtag: '<value>',
+                    checksumSha256Base64: '<value>',
+                    checksumSha256Hex: '<value>',
+                    lastModifiedAt: Utils\Utils::parseDateTime('2024-07-06T07:35:44.280Z'),
+                    version: '<value>',
+                    isUploaded: true,
+                    createdAt: Utils\Utils::parseDateTime('2024-10-08T20:45:26.653Z'),
+                    sizeReadable: '<value>',
+                    publicUrl: 'https://graceful-battle.info',
+                ),
+                new Components\ProductMediaFileRead(
+                    id: '<value>',
+                    organizationId: '<value>',
+                    name: '<value>',
+                    path: '/private/tmp',
+                    mimeType: '<value>',
+                    size: 225502,
+                    storageVersion: '<value>',
+                    checksumEtag: '<value>',
+                    checksumSha256Base64: '<value>',
+                    checksumSha256Hex: '<value>',
+                    lastModifiedAt: Utils\Utils::parseDateTime('2024-07-06T07:35:44.280Z'),
+                    version: '<value>',
+                    isUploaded: true,
+                    createdAt: Utils\Utils::parseDateTime('2024-10-08T20:45:26.653Z'),
+                    sizeReadable: '<value>',
+                    publicUrl: 'https://graceful-battle.info',
                 ),
             ],
         ),
-        productPrice: new Components\LegacyRecurringProductPriceFixed(
-            createdAt: Utils\Utils::parseDateTime('2024-01-27T18:07:00.005Z'),
-            modifiedAt: Utils\Utils::parseDateTime('2025-07-02T13:05:31.034Z'),
+        productPrice: new Components\LegacyRecurringProductPriceCustom(
+            createdAt: Utils\Utils::parseDateTime('2025-07-31T12:54:47.590Z'),
+            modifiedAt: Utils\Utils::parseDateTime('2023-01-11T22:31:47.320Z'),
             id: '<value>',
-            isArchived: false,
+            isArchived: true,
             productId: '<value>',
-            recurringInterval: Components\SubscriptionRecurringInterval::Year,
+            recurringInterval: Components\SubscriptionRecurringInterval::Month,
             priceCurrency: '<value>',
-            priceAmount: 721380,
+            minimumAmount: 203013,
+            maximumAmount: null,
+            presetAmount: 119260,
         ),
-        discount: new Components\CheckoutDiscountPercentageRepeatDuration(
-            duration: Components\DiscountDuration::Repeating,
-            durationInMonths: 232529,
+        discount: new Components\CheckoutDiscountFixedOnceForeverDuration(
+            duration: Components\DiscountDuration::Once,
             type: Components\DiscountType::Fixed,
-            basisPoints: 874811,
+            amount: 405691,
+            currency: 'Dobra',
             id: '<value>',
             name: '<value>',
             code: '<value>',
@@ -252,38 +226,35 @@ $request = new Components\WebhookCheckoutCreatedPayload(
         attachedCustomFields: [
             new Components\AttachedCustomField(
                 customFieldId: '<value>',
-                customField: new Components\CustomFieldSelect(
-                    createdAt: Utils\Utils::parseDateTime('2023-04-26T15:28:45.523Z'),
-                    modifiedAt: Utils\Utils::parseDateTime('2023-01-04T08:21:13.484Z'),
+                customField: new Components\CustomFieldText(
+                    createdAt: Utils\Utils::parseDateTime('2025-06-07T12:37:50.969Z'),
+                    modifiedAt: Utils\Utils::parseDateTime('2023-11-20T09:37:39.033Z'),
                     id: '<value>',
                     metadata: [
-                        'key' => false,
+                        'key' => true,
+                        'key1' => '<value>',
+                        'key2' => '<value>',
                     ],
                     slug: '<value>',
                     name: '<value>',
                     organizationId: '1dbfc517-0bbf-4301-9ba8-555ca42b9737',
-                    properties: new Components\CustomFieldSelectProperties(
-                        options: [
-                            new Components\CustomFieldSelectOption(
-                                value: '<value>',
-                                label: '<value>',
-                            ),
-                        ],
-                    ),
+                    properties: new Components\CustomFieldTextProperties(),
                 ),
-                order: 800933,
+                order: 168537,
                 required: false,
             ),
         ],
         customerMetadata: [
-            'key' => false,
+            'key' => true,
+            'key1' => 203013,
+            'key2' => 851435,
         ],
         customerBillingAddressFields: new Components\CheckoutCustomerBillingAddressFields(
             country: false,
-            state: false,
+            state: true,
             city: false,
-            postalCode: false,
-            line1: false,
+            postalCode: true,
+            line1: true,
             line2: false,
         ),
     ),
@@ -317,7 +288,6 @@ declare(strict_types=1);
 require 'vendor/autoload.php';
 
 use Polar;
-use Polar\Models\Components;
 
 $sdk = Polar\Polar::builder()
     ->setSecurity(
@@ -328,12 +298,8 @@ $sdk = Polar\Polar::builder()
 
 
 $responses = $sdk->organizations->list(
-    slug: '<value>',
     page: 1,
-    limit: 10,
-    sorting: [
-        Components\OrganizationSortProperty::CreatedAt,
-    ]
+    limit: 10
 
 );
 
@@ -613,7 +579,6 @@ declare(strict_types=1);
 require 'vendor/autoload.php';
 
 use Polar;
-use Polar\Models\Components;
 
 $sdk = Polar\Polar::builder()
     ->setSecurity(
@@ -624,12 +589,8 @@ $sdk = Polar\Polar::builder()
 
 
 $responses = $sdk->organizations->list(
-    slug: '<value>',
     page: 1,
-    limit: 10,
-    sorting: [
-        Components\OrganizationSortProperty::CreatedAt,
-    ]
+    limit: 10
 
 );
 
@@ -671,7 +632,6 @@ declare(strict_types=1);
 require 'vendor/autoload.php';
 
 use Polar;
-use Polar\Models\Components;
 use Polar\Models\Errors;
 
 $sdk = Polar\Polar::builder()
@@ -682,12 +642,8 @@ $sdk = Polar\Polar::builder()
 
 try {
     $responses = $sdk->organizations->list(
-        slug: '<value>',
         page: 1,
-        limit: 10,
-        sorting: [
-            Components\OrganizationSortProperty::CreatedAt,
-        ]
+        limit: 10
 
     );
 
@@ -726,7 +682,6 @@ declare(strict_types=1);
 require 'vendor/autoload.php';
 
 use Polar;
-use Polar\Models\Components;
 
 $sdk = Polar\Polar::builder()
     ->setServer('sandbox')
@@ -738,12 +693,8 @@ $sdk = Polar\Polar::builder()
 
 
 $responses = $sdk->organizations->list(
-    slug: '<value>',
     page: 1,
-    limit: 10,
-    sorting: [
-        Components\OrganizationSortProperty::CreatedAt,
-    ]
+    limit: 10
 
 );
 
@@ -764,7 +715,6 @@ declare(strict_types=1);
 require 'vendor/autoload.php';
 
 use Polar;
-use Polar\Models\Components;
 
 $sdk = Polar\Polar::builder()
     ->setServerURL('https://api.polar.sh')
@@ -776,12 +726,8 @@ $sdk = Polar\Polar::builder()
 
 
 $responses = $sdk->organizations->list(
-    slug: '<value>',
     page: 1,
-    limit: 10,
-    sorting: [
-        Components\OrganizationSortProperty::CreatedAt,
-    ]
+    limit: 10
 
 );
 

@@ -21,6 +21,8 @@
 | `CheckoutLinksWrite`          | checkout_links:write          |
 | `CheckoutsRead`               | checkouts:read                |
 | `CheckoutsWrite`              | checkouts:write               |
+| `TransactionsRead`            | transactions:read             |
+| `TransactionsWrite`           | transactions:write            |
 | `ProductsRead`                | products:read                 |
 | `ProductsWrite`               | products:write                |
 | `BenefitsRead`                | benefits:read                 |

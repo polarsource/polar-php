@@ -92,9 +92,18 @@ $request = new Components\MeterCreate(
     name: '<value>',
     filter: new Components\Filter(
         conjunction: Components\FilterConjunction::Or,
-        clauses: [],
+        clauses: [
+            new Components\FilterClause(
+                property: '<value>',
+                operator: Components\FilterOperator::Ne,
+                value: '<value>',
+            ),
+        ],
     ),
-    aggregation: new Components\CountAggregation(),
+    aggregation: new Components\PropertyAggregation(
+        func: Components\Func::Max,
+        property: '<value>',
+    ),
     organizationId: '1dbfc517-0bbf-4301-9ba8-555ca42b9737',
 );
 

@@ -27,6 +27,8 @@ enum Scope: string
     case CheckoutLinksWrite = 'checkout_links:write';
     case CheckoutsRead = 'checkouts:read';
     case CheckoutsWrite = 'checkouts:write';
+    case TransactionsRead = 'transactions:read';
+    case TransactionsWrite = 'transactions:write';
     case ProductsRead = 'products:read';
     case ProductsWrite = 'products:write';
     case BenefitsRead = 'benefits:read';

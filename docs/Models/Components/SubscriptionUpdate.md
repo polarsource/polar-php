@@ -12,6 +12,15 @@
 Components\SubscriptionUpdateProduct $value = /* values here */
 ```
 
+### `Components\SubscriptionUpdateDiscount`
+
+```php
+/**
+* @var Components\SubscriptionUpdateDiscount
+*/
+Components\SubscriptionUpdateDiscount $value = /* values here */
+```
+
 ### `Components\SubscriptionCancel`
 
 ```php

@@ -194,7 +194,7 @@ $sdk = Polar\Polar::builder()->build();
 $request = new Components\CustomerPaymentMethodCreate(
     confirmationTokenId: '<id>',
     setDefault: false,
-    returnUrl: 'https://jubilant-worth.biz',
+    returnUrl: 'https://yearly-custom.net/',
 );
 $requestSecurity = new Operations\CustomerPortalCustomersAddPaymentMethodSecurity(
     customerSession: '<YOUR_BEARER_TOKEN_HERE>',

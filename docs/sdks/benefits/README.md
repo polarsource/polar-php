@@ -91,6 +91,7 @@ $sdk = Polar\Polar::builder()
 
 $request = new Components\BenefitLicenseKeysCreate(
     description: 'mature emergent at outside arrogantly gadzooks zealous equatorial notwithstanding',
+    organizationId: '1dbfc517-0bbf-4301-9ba8-555ca42b9737',
     properties: new Components\BenefitLicenseKeysCreateProperties(),
 );
 
@@ -196,7 +197,7 @@ $sdk = Polar\Polar::builder()
 
 $response = $sdk->benefits->update(
     id: '<value>',
-    requestBody: new Components\BenefitMeterCreditUpdate()
+    requestBody: new Components\BenefitCustomUpdate()
 
 );
 

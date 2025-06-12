@@ -105,7 +105,13 @@ class RequestBodies
             }
 
             if ($metadata->file) {
-                $options['multipart'][] = $this->serializeMultipartFile($metadata->name, $val);
+                if (gettype($val) === 'array' && array_is_list($val)) {
+                    foreach ($val as $item) {
+                        $options['multipart'][] = $this->serializeMultipartFile($metadata->name.'[]', $item);
+                    }
+                } else {
+                    $options['multipart'][] = $this->serializeMultipartFile($metadata->name, $val);
+                }
             } elseif ($metadata->json) {
                 $serializer = JSON::createSerializer();
                 $options['multipart'][] = [
