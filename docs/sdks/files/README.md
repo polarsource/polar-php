@@ -36,7 +36,6 @@ $sdk = Polar\Polar::builder()
 
 $responses = $sdk->files->list(
     organizationId: '1dbfc517-0bbf-4301-9ba8-555ca42b9737',
-    ids: '<value>',
     page: 1,
     limit: 10
 
@@ -93,17 +92,12 @@ $sdk = Polar\Polar::builder()
     ->build();
 
 $request = new Components\DownloadableFileCreate(
+    organizationId: '1dbfc517-0bbf-4301-9ba8-555ca42b9737',
     name: '<value>',
     mimeType: '<value>',
     size: 612128,
     upload: new Components\S3FileCreateMultipart(
-        parts: [
-            new Components\S3FileCreatePart(
-                number: 3303,
-                chunkStart: 703026,
-                chunkEnd: 476601,
-            ),
-        ],
+        parts: [],
     ),
 );
 
@@ -160,7 +154,17 @@ $fileUploadCompleted = new Components\FileUploadCompleted(
     path: '/boot',
     parts: [
         new Components\S3FileUploadCompletedPart(
-            number: 859084,
+            number: 979613,
+            checksumEtag: '<value>',
+            checksumSha256Base64: '<value>',
+        ),
+        new Components\S3FileUploadCompletedPart(
+            number: 979613,
+            checksumEtag: '<value>',
+            checksumSha256Base64: '<value>',
+        ),
+        new Components\S3FileUploadCompletedPart(
+            number: 979613,
             checksumEtag: '<value>',
             checksumSha256Base64: '<value>',
         ),

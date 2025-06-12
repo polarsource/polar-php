@@ -35,7 +35,6 @@ $sdk = Polar\Polar::builder()
 
 $responses = $sdk->licenseKeys->list(
     organizationId: '1dbfc517-0bbf-4301-9ba8-555ca42b9737',
-    benefitId: '<value>',
     page: 1,
     limit: 10
 

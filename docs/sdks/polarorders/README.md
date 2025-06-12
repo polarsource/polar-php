@@ -142,7 +142,7 @@ $sdk = Polar\Polar::builder()->build();
 $customerOrderUpdate = new Components\CustomerOrderUpdate(
     billingName: '<value>',
     billingAddress: new Components\Address(
-        country: 'FR',
+        country: 'US',
     ),
 );
 $requestSecurity = new Operations\CustomerPortalOrdersUpdateSecurity(

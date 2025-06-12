@@ -17,12 +17,13 @@ generation:
     oAuth2ClientCredentialsEnabled: true
     oAuth2PasswordEnabled: true
 php:
-  version: 0.3.0
+  version: 0.3.1
   additionalDependencies:
     autoload: {}
     autoload-dev: {}
     require: {}
     require-dev: {}
+  baseErrorName: PolarError
   clientServerStatusCodesAsErrors: true
   defaultErrorName: APIException
   flattenGlobalSecurity: true

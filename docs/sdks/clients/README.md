@@ -86,7 +86,8 @@ $sdk = Polar\Polar::builder()
 
 $request = new Components\OAuth2ClientConfiguration(
     redirectUris: [
-        'https://expert-guidance.info',
+        'https://impolite-hippodrome.com/',
+        'https://acidic-tomography.net/',
     ],
     clientName: '<value>',
 );
@@ -186,7 +187,8 @@ $sdk = Polar\Polar::builder()
 
 $oAuth2ClientConfigurationUpdate = new Components\OAuth2ClientConfigurationUpdate(
     redirectUris: [
-        'https://putrid-cappelletti.com',
+        'https://classic-cantaloupe.org',
+        'https://corrupt-status.biz/',
     ],
     clientName: '<value>',
     clientId: '<id>',

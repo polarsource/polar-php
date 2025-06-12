@@ -92,10 +92,12 @@ $sdk = Polar\Polar::builder()
 
 $request = new Components\CheckoutCreate(
     customerBillingAddress: new Components\Address(
-        country: 'FR',
+        country: 'US',
     ),
     products: [
-        '<value>',
+        '<value 1>',
+        '<value 2>',
+        '<value 3>',
     ],
 );
 
@@ -297,9 +299,7 @@ use Polar\Models\Components;
 $sdk = Polar\Polar::builder()->build();
 
 $checkoutUpdatePublic = new Components\CheckoutUpdatePublic(
-    customerBillingAddress: new Components\Address(
-        country: 'US',
-    ),
+    customerBillingAddress: null,
 );
 
 $response = $sdk->checkouts->clientUpdate(
