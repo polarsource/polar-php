@@ -55,7 +55,7 @@ class LegacyRecurringProductPriceCustom
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('recurring_interval')]
     #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\SubscriptionRecurringInterval')]
-    public SubscriptionRecurringInterval $recurringInterval;
+    public ?SubscriptionRecurringInterval $recurringInterval;
 
     /**
      * The currency.
