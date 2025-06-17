@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: bd003db9-613a-4093-838e-6d19bf5f76d7
 management:
-  docChecksum: 21c56dd1f80881176eb591fbc35a6f38
+  docChecksum: 6628cb0f0d77f375778bc6c286cb8fd1
   docVersion: 0.1.0
-  speakeasyVersion: 1.561.0
-  generationVersion: 2.628.0
-  releaseVersion: 0.3.1
-  configChecksum: 45d0f1df884c95476fa80c62fd5acd7f
+  speakeasyVersion: 1.563.4
+  generationVersion: 2.630.6
+  releaseVersion: 0.3.2
+  configChecksum: 464f3bc1f88660a5d72e76828001aabc
   repoURL: https://github.com/polarsource/polar-php.git
   installationURL: https://github.com/polarsource/polar-php
   published: true
@@ -423,6 +423,8 @@ generatedFiles:
   - docs/Models/Components/ListResourceRefund.md
   - docs/Models/Components/ListResourceSubscription.md
   - docs/Models/Components/ListResourceUnionPaymentMethodCardPaymentMethodGeneric.md
+  - docs/Models/Components/ListResourceWebhookDelivery.md
+  - docs/Models/Components/ListResourceWebhookEndpoint.md
   - docs/Models/Components/Loc.md
   - docs/Models/Components/Meta.md
   - docs/Models/Components/Metadata.md
@@ -613,6 +615,13 @@ generatedFiles:
   - docs/Models/Components/WebhookCustomerDeletedPayload.md
   - docs/Models/Components/WebhookCustomerStateChangedPayload.md
   - docs/Models/Components/WebhookCustomerUpdatedPayload.md
+  - docs/Models/Components/WebhookDelivery.md
+  - docs/Models/Components/WebhookEndpoint.md
+  - docs/Models/Components/WebhookEndpointCreate.md
+  - docs/Models/Components/WebhookEndpointUpdate.md
+  - docs/Models/Components/WebhookEvent.md
+  - docs/Models/Components/WebhookEventType.md
+  - docs/Models/Components/WebhookFormat.md
   - docs/Models/Components/WebhookOrderCreatedPayload.md
   - docs/Models/Components/WebhookOrderPaidPayload.md
   - docs/Models/Components/WebhookOrderRefundedPayload.md
@@ -823,6 +832,7 @@ generatedFiles:
   - docs/Models/Operations/DiscountsListResponse.md
   - docs/Models/Operations/DiscountsUpdateRequest.md
   - docs/Models/Operations/DiscountsUpdateResponse.md
+  - docs/Models/Operations/EndpointId.md
   - docs/Models/Operations/EventsGetRequest.md
   - docs/Models/Operations/EventsGetResponse.md
   - docs/Models/Operations/EventsIngestResponse.md
@@ -946,6 +956,7 @@ generatedFiles:
   - docs/Models/Operations/QueryParamMeterIDFilter.md
   - docs/Models/Operations/QueryParamOrderIDFilter.md
   - docs/Models/Operations/QueryParamOrganizationIDFilter.md
+  - docs/Models/Operations/QueryParamOrganizationId.md
   - docs/Models/Operations/QueryParamProductBillingTypeFilter.md
   - docs/Models/Operations/QueryParamProductIDFilter.md
   - docs/Models/Operations/QueryParamSourceFilter.md
@@ -970,6 +981,19 @@ generatedFiles:
   - docs/Models/Operations/SubscriptionsRevokeResponse.md
   - docs/Models/Operations/SubscriptionsUpdateRequest.md
   - docs/Models/Operations/SubscriptionsUpdateResponse.md
+  - docs/Models/Operations/WebhooksCreateWebhookEndpointResponse.md
+  - docs/Models/Operations/WebhooksDeleteWebhookEndpointRequest.md
+  - docs/Models/Operations/WebhooksDeleteWebhookEndpointResponse.md
+  - docs/Models/Operations/WebhooksGetWebhookEndpointRequest.md
+  - docs/Models/Operations/WebhooksGetWebhookEndpointResponse.md
+  - docs/Models/Operations/WebhooksListWebhookDeliveriesRequest.md
+  - docs/Models/Operations/WebhooksListWebhookDeliveriesResponse.md
+  - docs/Models/Operations/WebhooksListWebhookEndpointsRequest.md
+  - docs/Models/Operations/WebhooksListWebhookEndpointsResponse.md
+  - docs/Models/Operations/WebhooksRedeliverWebhookEventRequest.md
+  - docs/Models/Operations/WebhooksRedeliverWebhookEventResponse.md
+  - docs/Models/Operations/WebhooksUpdateWebhookEndpointRequest.md
+  - docs/Models/Operations/WebhooksUpdateWebhookEndpointResponse.md
   - docs/Models/Webhooks/EndpointbenefitCreatedPostResponse.md
   - docs/Models/Webhooks/EndpointbenefitGrantCreatedPostResponse.md
   - docs/Models/Webhooks/EndpointbenefitGrantCycledPostResponse.md
@@ -1028,6 +1052,7 @@ generatedFiles:
   - docs/sdks/products/README.md
   - docs/sdks/refunds/README.md
   - docs/sdks/subscriptions/README.md
+  - docs/sdks/webhooks/README.md
   - phpstan.neon
   - phpunit.xml
   - pint.json
@@ -1321,6 +1346,8 @@ generatedFiles:
   - src/Models/Components/ListResourceRefund.php
   - src/Models/Components/ListResourceSubscription.php
   - src/Models/Components/ListResourceUnionPaymentMethodCardPaymentMethodGeneric.php
+  - src/Models/Components/ListResourceWebhookDelivery.php
+  - src/Models/Components/ListResourceWebhookEndpoint.php
   - src/Models/Components/Meter.php
   - src/Models/Components/MeterCreate.php
   - src/Models/Components/MeterCreditEvent.php
@@ -1449,6 +1476,13 @@ generatedFiles:
   - src/Models/Components/WebhookCustomerDeletedPayload.php
   - src/Models/Components/WebhookCustomerStateChangedPayload.php
   - src/Models/Components/WebhookCustomerUpdatedPayload.php
+  - src/Models/Components/WebhookDelivery.php
+  - src/Models/Components/WebhookEndpoint.php
+  - src/Models/Components/WebhookEndpointCreate.php
+  - src/Models/Components/WebhookEndpointUpdate.php
+  - src/Models/Components/WebhookEvent.php
+  - src/Models/Components/WebhookEventType.php
+  - src/Models/Components/WebhookFormat.php
   - src/Models/Components/WebhookOrderCreatedPayload.php
   - src/Models/Components/WebhookOrderPaidPayload.php
   - src/Models/Components/WebhookOrderRefundedPayload.php
@@ -1731,6 +1765,19 @@ generatedFiles:
   - src/Models/Operations/SubscriptionsRevokeResponse.php
   - src/Models/Operations/SubscriptionsUpdateRequest.php
   - src/Models/Operations/SubscriptionsUpdateResponse.php
+  - src/Models/Operations/WebhooksCreateWebhookEndpointResponse.php
+  - src/Models/Operations/WebhooksDeleteWebhookEndpointRequest.php
+  - src/Models/Operations/WebhooksDeleteWebhookEndpointResponse.php
+  - src/Models/Operations/WebhooksGetWebhookEndpointRequest.php
+  - src/Models/Operations/WebhooksGetWebhookEndpointResponse.php
+  - src/Models/Operations/WebhooksListWebhookDeliveriesRequest.php
+  - src/Models/Operations/WebhooksListWebhookDeliveriesResponse.php
+  - src/Models/Operations/WebhooksListWebhookEndpointsRequest.php
+  - src/Models/Operations/WebhooksListWebhookEndpointsResponse.php
+  - src/Models/Operations/WebhooksRedeliverWebhookEventRequest.php
+  - src/Models/Operations/WebhooksRedeliverWebhookEventResponse.php
+  - src/Models/Operations/WebhooksUpdateWebhookEndpointRequest.php
+  - src/Models/Operations/WebhooksUpdateWebhookEndpointResponse.php
   - src/Models/Webhooks/EndpointbenefitCreatedPostResponse.php
   - src/Models/Webhooks/EndpointbenefitGrantCreatedPostResponse.php
   - src/Models/Webhooks/EndpointbenefitGrantCycledPostResponse.php
@@ -1810,6 +1857,7 @@ generatedFiles:
   - src/Utils/SpeakeasyMetadata.php
   - src/Utils/UnionHandler.php
   - src/Utils/Utils.php
+  - src/Webhooks.php
 examples:
   _endpointcheckout_created_post:
     speakeasy-default-endpointcheckout-created-post:
@@ -2211,7 +2259,7 @@ examples:
   oauth2:clients:oauth2:create_client:
     speakeasy-default-oauth2-:clients:oauth2-:create-client:
       requestBody:
-        application/json: {"redirect_uris": ["https://impolite-hippodrome.com/", "https://acidic-tomography.net/"], "token_endpoint_auth_method": "client_secret_post", "scope": "openid profile email user:read organizations:read organizations:write custom_fields:read custom_fields:write discounts:read discounts:write checkout_links:read checkout_links:write checkouts:read checkouts:write transactions:read transactions:write products:read products:write benefits:read benefits:write events:read events:write meters:read meters:write files:read files:write subscriptions:read subscriptions:write customers:read customers:write customer_meters:read customer_sessions:write orders:read orders:write refunds:read refunds:write payments:read metrics:read webhooks:read webhooks:write external_organizations:read license_keys:read license_keys:write repositories:read repositories:write issues:read issues:write customer_portal:read customer_portal:write notifications:read notifications:write notification_recipients:read notification_recipients:write", "client_name": "<value>"}
+        application/json: {"redirect_uris": ["https://impolite-hippodrome.com/", "https://acidic-tomography.net/"], "token_endpoint_auth_method": "client_secret_post", "scope": "openid profile email user:read organizations:read organizations:write custom_fields:read custom_fields:write discounts:read discounts:write checkout_links:read checkout_links:write checkouts:read checkouts:write transactions:read transactions:write payouts:read payouts:write products:read products:write benefits:read benefits:write events:read events:write meters:read meters:write files:read files:write subscriptions:read subscriptions:write customers:read customers:write customer_meters:read customer_sessions:write orders:read orders:write refunds:read refunds:write payments:read metrics:read webhooks:read webhooks:write external_organizations:read license_keys:read license_keys:write repositories:read repositories:write issues:read issues:write customer_portal:read customer_portal:write notifications:read notifications:write notification_recipients:read notification_recipients:write", "client_name": "<value>"}
       responses:
         "200":
           application/json: "<value>"
@@ -2233,7 +2281,7 @@ examples:
         path:
           client_id: "<id>"
       requestBody:
-        application/json: {"redirect_uris": ["https://classic-cantaloupe.org", "https://corrupt-status.biz/"], "token_endpoint_auth_method": "client_secret_post", "scope": "openid profile email user:read organizations:read organizations:write custom_fields:read custom_fields:write discounts:read discounts:write checkout_links:read checkout_links:write checkouts:read checkouts:write transactions:read transactions:write products:read products:write benefits:read benefits:write events:read events:write meters:read meters:write files:read files:write subscriptions:read subscriptions:write customers:read customers:write customer_meters:read customer_sessions:write orders:read orders:write refunds:read refunds:write payments:read metrics:read webhooks:read webhooks:write external_organizations:read license_keys:read license_keys:write repositories:read repositories:write issues:read issues:write customer_portal:read customer_portal:write notifications:read notifications:write notification_recipients:read notification_recipients:write", "client_name": "<value>", "client_id": "<id>"}
+        application/json: {"redirect_uris": ["https://classic-cantaloupe.org", "https://corrupt-status.biz/"], "token_endpoint_auth_method": "client_secret_post", "scope": "openid profile email user:read organizations:read organizations:write custom_fields:read custom_fields:write discounts:read discounts:write checkout_links:read checkout_links:write checkouts:read checkouts:write transactions:read transactions:write payouts:read payouts:write products:read products:write benefits:read benefits:write events:read events:write meters:read meters:write files:read files:write subscriptions:read subscriptions:write customers:read customers:write customer_meters:read customer_sessions:write orders:read orders:write refunds:read refunds:write payments:read metrics:read webhooks:read webhooks:write external_organizations:read license_keys:read license_keys:write repositories:read repositories:write issues:read issues:write customer_portal:read customer_portal:write notifications:read notifications:write notification_recipients:read notification_recipients:write", "client_name": "<value>", "client_id": "<id>"}
       responses:
         "200":
           application/json: "<value>"
@@ -3491,5 +3539,85 @@ examples:
           application/json: {"error": "InvoiceAlreadyExists", "detail": "<value>"}
         "422":
           application/json: {"error": "MissingInvoiceBillingDetails", "detail": "<value>"}
+  webhooks:list_webhook_endpoints:
+    speakeasy-default-webhooks:list-webhook-endpoints:
+      parameters:
+        query:
+          organization_id: "1dbfc517-0bbf-4301-9ba8-555ca42b9737"
+          page: 1
+          limit: 10
+      responses:
+        "200":
+          application/json: {"items": [{"created_at": "2023-07-05T09:44:10.221Z", "modified_at": null, "id": "<value>", "url": "https://webhook.site/cb791d80-f26e-4f8c-be88-6e56054192b0", "format": "discord", "organization_id": "<value>", "events": ["order.created"]}], "pagination": {"total_count": 849585, "max_page": 594288}}
+        "422":
+          application/json: {}
+  webhooks:create_webhook_endpoint:
+    speakeasy-default-webhooks:create-webhook-endpoint:
+      requestBody:
+        application/json: {"url": "https://webhook.site/cb791d80-f26e-4f8c-be88-6e56054192b0", "format": "slack", "secret": "f_z6mfSpxkjogyw3FkA2aH2gYE5huxruNf34MpdWMcA", "events": ["subscription.uncanceled"], "organization_id": "1dbfc517-0bbf-4301-9ba8-555ca42b9737"}
+      responses:
+        "201":
+          application/json: {"created_at": "2023-03-20T06:36:18.270Z", "modified_at": "2023-08-13T00:46:23.703Z", "id": "<value>", "url": "https://webhook.site/cb791d80-f26e-4f8c-be88-6e56054192b0", "format": "slack", "organization_id": "<value>", "events": []}
+        "422":
+          application/json: {}
+  webhooks:get_webhook_endpoint:
+    speakeasy-default-webhooks:get-webhook-endpoint:
+      parameters:
+        path:
+          id: "<value>"
+      responses:
+        "200":
+          application/json: {"created_at": "2023-03-03T22:08:56.417Z", "modified_at": "2023-01-08T15:26:21.241Z", "id": "<value>", "url": "https://webhook.site/cb791d80-f26e-4f8c-be88-6e56054192b0", "format": "slack", "organization_id": "<value>", "events": []}
+        "404":
+          application/json: {"error": "ResourceNotFound", "detail": "<value>"}
+        "422":
+          application/json: {}
+  webhooks:update_webhook_endpoint:
+    speakeasy-default-webhooks:update-webhook-endpoint:
+      parameters:
+        path:
+          id: "<value>"
+      requestBody:
+        application/json: {"url": "https://webhook.site/cb791d80-f26e-4f8c-be88-6e56054192b0", "secret": "f_z6mfSpxkjogyw3FkA2aH2gYE5huxruNf34MpdWMcA"}
+      responses:
+        "200":
+          application/json: {"created_at": "2023-03-16T20:44:41.718Z", "modified_at": "2023-02-18T12:18:32.442Z", "id": "<value>", "url": "https://webhook.site/cb791d80-f26e-4f8c-be88-6e56054192b0", "format": "slack", "organization_id": "<value>", "events": ["customer.updated"]}
+        "404":
+          application/json: {"error": "ResourceNotFound", "detail": "<value>"}
+        "422":
+          application/json: {}
+  webhooks:delete_webhook_endpoint:
+    speakeasy-default-webhooks:delete-webhook-endpoint:
+      parameters:
+        path:
+          id: "<value>"
+      responses:
+        "404":
+          application/json: {"error": "ResourceNotFound", "detail": "<value>"}
+        "422":
+          application/json: {}
+  webhooks:list_webhook_deliveries:
+    speakeasy-default-webhooks:list-webhook-deliveries:
+      parameters:
+        query:
+          page: 1
+          limit: 10
+      responses:
+        "200":
+          application/json: {"items": [], "pagination": {"total_count": 237575, "max_page": 794757}}
+        "422":
+          application/json: {}
+  webhooks:redeliver_webhook_event:
+    speakeasy-default-webhooks:redeliver-webhook-event:
+      parameters:
+        path:
+          id: "<value>"
+      responses:
+        "202":
+          application/json: "<value>"
+        "404":
+          application/json: {"error": "ResourceNotFound", "detail": "<value>"}
+        "422":
+          application/json: {}
 examplesVersion: 1.0.2
 generatedTests: {}
