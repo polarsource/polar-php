@@ -38,6 +38,8 @@ class Polar
 
     public Benefits $benefits;
 
+    public Webhooks $webhooks;
+
     public Products $products;
 
     public Orders $orders;
@@ -92,6 +94,7 @@ class Polar
         $this->subscriptions = new Subscriptions($this->sdkConfiguration);
         $this->oauth2 = new Oauth2($this->sdkConfiguration);
         $this->benefits = new Benefits($this->sdkConfiguration);
+        $this->webhooks = new Webhooks($this->sdkConfiguration);
         $this->products = new Products($this->sdkConfiguration);
         $this->orders = new Orders($this->sdkConfiguration);
         $this->refunds = new Refunds($this->sdkConfiguration);

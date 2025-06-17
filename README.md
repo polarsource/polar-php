@@ -563,6 +563,16 @@ foreach ($responses as $response) {
 * [update](docs/sdks/subscriptions/README.md#update) - Update Subscription
 * [revoke](docs/sdks/subscriptions/README.md#revoke) - Revoke Subscription
 
+### [webhooks](docs/sdks/webhooks/README.md)
+
+* [listWebhookEndpoints](docs/sdks/webhooks/README.md#listwebhookendpoints) - List Webhook Endpoints
+* [createWebhookEndpoint](docs/sdks/webhooks/README.md#createwebhookendpoint) - Create Webhook Endpoint
+* [getWebhookEndpoint](docs/sdks/webhooks/README.md#getwebhookendpoint) - Get Webhook Endpoint
+* [updateWebhookEndpoint](docs/sdks/webhooks/README.md#updatewebhookendpoint) - Update Webhook Endpoint
+* [deleteWebhookEndpoint](docs/sdks/webhooks/README.md#deletewebhookendpoint) - Delete Webhook Endpoint
+* [listWebhookDeliveries](docs/sdks/webhooks/README.md#listwebhookdeliveries) - List Webhook Deliveries
+* [redeliverWebhookEvent](docs/sdks/webhooks/README.md#redeliverwebhookevent) - Redeliver Webhook Event
+
 </details>
 <!-- End Available Resources and Operations [operations] -->
 
