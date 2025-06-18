@@ -53,6 +53,15 @@ class CustomerStateBenefitGrant
     public BenefitType $benefitType;
 
     /**
+     * The metadata of the benefit concerned by this grant.
+     *
+     * @var array<string, string|int|float|bool> $benefitMetadata
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('benefit_metadata')]
+    #[\Speakeasy\Serializer\Annotation\Type('array<string, string|int|float|bool>')]
+    public array $benefitMetadata;
+
+    /**
      *
      * @var BenefitGrantDiscordProperties|BenefitGrantGitHubRepositoryProperties|BenefitGrantDownloadablesProperties|BenefitGrantLicenseKeysProperties|BenefitGrantCustomProperties $properties
      */
@@ -74,17 +83,19 @@ class CustomerStateBenefitGrant
      * @param  \DateTime  $grantedAt
      * @param  string  $benefitId
      * @param  BenefitType  $benefitType
+     * @param  array<string, string|int|float|bool>  $benefitMetadata
      * @param  BenefitGrantDiscordProperties|BenefitGrantGitHubRepositoryProperties|BenefitGrantDownloadablesProperties|BenefitGrantLicenseKeysProperties|BenefitGrantCustomProperties  $properties
      * @param  ?\DateTime  $modifiedAt
      * @phpstan-pure
      */
-    public function __construct(string $id, \DateTime $createdAt, \DateTime $grantedAt, string $benefitId, BenefitType $benefitType, BenefitGrantDiscordProperties|BenefitGrantGitHubRepositoryProperties|BenefitGrantDownloadablesProperties|BenefitGrantLicenseKeysProperties|BenefitGrantCustomProperties $properties, ?\DateTime $modifiedAt = null)
+    public function __construct(string $id, \DateTime $createdAt, \DateTime $grantedAt, string $benefitId, BenefitType $benefitType, array $benefitMetadata, BenefitGrantDiscordProperties|BenefitGrantGitHubRepositoryProperties|BenefitGrantDownloadablesProperties|BenefitGrantLicenseKeysProperties|BenefitGrantCustomProperties $properties, ?\DateTime $modifiedAt = null)
     {
         $this->id = $id;
         $this->createdAt = $createdAt;
         $this->grantedAt = $grantedAt;
         $this->benefitId = $benefitId;
         $this->benefitType = $benefitType;
+        $this->benefitMetadata = $benefitMetadata;
         $this->properties = $properties;
         $this->modifiedAt = $modifiedAt;
     }

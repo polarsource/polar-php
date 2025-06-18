@@ -15,17 +15,17 @@ class CustomerSessionCustomerExternalIDCreate
     /**
      * External ID of the customer to create a session for.
      *
-     * @var string $customerExternalId
+     * @var string $externalCustomerId
      */
-    #[\Speakeasy\Serializer\Annotation\SerializedName('customer_external_id')]
-    public string $customerExternalId;
+    #[\Speakeasy\Serializer\Annotation\SerializedName('external_customer_id')]
+    public string $externalCustomerId;
 
     /**
-     * @param  string  $customerExternalId
+     * @param  string  $externalCustomerId
      * @phpstan-pure
      */
-    public function __construct(string $customerExternalId)
+    public function __construct(string $externalCustomerId)
     {
-        $this->customerExternalId = $customerExternalId;
+        $this->externalCustomerId = $externalCustomerId;
     }
 }

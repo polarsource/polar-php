@@ -109,11 +109,11 @@ class CheckoutCreate
     /**
      * ID of the customer in your system. If a matching customer exists on Polar, the resulting order will be linked to this customer. Otherwise, a new customer will be created with this external ID set.
      *
-     * @var ?string $customerExternalId
+     * @var ?string $externalCustomerId
      */
-    #[\Speakeasy\Serializer\Annotation\SerializedName('customer_external_id')]
+    #[\Speakeasy\Serializer\Annotation\SerializedName('external_customer_id')]
     #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
-    public ?string $customerExternalId = null;
+    public ?string $externalCustomerId = null;
 
     /**
      *
@@ -229,7 +229,7 @@ class CheckoutCreate
      * @param  ?string  $discountId
      * @param  ?int  $amount
      * @param  ?string  $customerId
-     * @param  ?string  $customerExternalId
+     * @param  ?string  $externalCustomerId
      * @param  ?string  $customerName
      * @param  ?string  $customerEmail
      * @param  ?string  $customerIpAddress
@@ -241,7 +241,7 @@ class CheckoutCreate
      * @param  ?string  $embedOrigin
      * @phpstan-pure
      */
-    public function __construct(array $products, ?array $metadata = null, ?array $customFieldData = null, ?array $customerMetadata = null, ?string $discountId = null, ?int $amount = null, ?string $customerId = null, ?string $customerExternalId = null, ?string $customerName = null, ?string $customerEmail = null, ?string $customerIpAddress = null, ?string $customerBillingName = null, ?Address $customerBillingAddress = null, ?string $customerTaxId = null, ?string $subscriptionId = null, ?string $successUrl = null, ?string $embedOrigin = null, ?bool $allowDiscountCodes = true, ?bool $requireBillingAddress = false, ?bool $isBusinessCustomer = false)
+    public function __construct(array $products, ?array $metadata = null, ?array $customFieldData = null, ?array $customerMetadata = null, ?string $discountId = null, ?int $amount = null, ?string $customerId = null, ?string $externalCustomerId = null, ?string $customerName = null, ?string $customerEmail = null, ?string $customerIpAddress = null, ?string $customerBillingName = null, ?Address $customerBillingAddress = null, ?string $customerTaxId = null, ?string $subscriptionId = null, ?string $successUrl = null, ?string $embedOrigin = null, ?bool $allowDiscountCodes = true, ?bool $requireBillingAddress = false, ?bool $isBusinessCustomer = false)
     {
         $this->products = $products;
         $this->metadata = $metadata;
@@ -250,7 +250,7 @@ class CheckoutCreate
         $this->discountId = $discountId;
         $this->amount = $amount;
         $this->customerId = $customerId;
-        $this->customerExternalId = $customerExternalId;
+        $this->externalCustomerId = $externalCustomerId;
         $this->customerName = $customerName;
         $this->customerEmail = $customerEmail;
         $this->customerIpAddress = $customerIpAddress;

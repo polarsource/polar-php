@@ -10,9 +10,6 @@ namespace Polar\Utils;
 
 use Speakeasy\Serializer\Context;
 use Speakeasy\Serializer\DeserializationContext;
-use Speakeasy\Serializer\Exception\NonFloatCastableTypeException;
-use Speakeasy\Serializer\Exception\NonIntCastableTypeException;
-use Speakeasy\Serializer\Exception\NonStringCastableTypeException;
 use Speakeasy\Serializer\Exception\NonVisitableTypeException;
 use Speakeasy\Serializer\Exception\PropertyMissingException;
 use Speakeasy\Serializer\Exception\RuntimeException;
@@ -132,6 +129,7 @@ final class UnionHandler implements SubscribingHandlerInterface
             return $context->getNavigator()->accept($data, $finalType);
         }
 
+        $exceptions = '';
         foreach ($this->reorderTypes($type)['params'] as $possibleType) {
 
             $typeToTry = $possibleType['name'];
@@ -161,26 +159,18 @@ final class UnionHandler implements SubscribingHandlerInterface
                 $accept = $serializer->deserialize($json_encoded_data, $typeToTry, 'json', DeserializationContext::create()->setRequireAllRequiredProperties(true));
 
                 return $accept;
-            } catch (NonVisitableTypeException $e) {
+            } catch (\Error $e) {
+                $exceptions .= $e.'\n';
+
                 continue;
-            } catch (PropertyMissingException $e) {
-                continue;
-            } catch (NonStringCastableTypeException $e) {
-                continue;
-            } catch (NonIntCastableTypeException $e) {
-                continue;
-            } catch (NonFloatCastableTypeException $e) {
-                continue;
-            } catch (\Brick\Math\Exception\NumberFormatException $e) {
-                continue;
-            } catch (\Brick\Math\Exception\RoundingNecessaryException $e) {
-                continue;
-            } catch (RuntimeException $e) {
+            } catch (\Exception $e) {
+                $exceptions .= $e.'\n';
+
                 continue;
             }
         }
-
-        return null;
+        $unionName = implode('|', $type['params']);
+        throw new RuntimeException("Could not deserialize into union $unionName. \n".$exceptions);
     }
 
     /**
