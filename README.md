@@ -110,6 +110,7 @@ $request = new Components\WebhookCheckoutCreatedPayload(
         metadata: [
             'key' => '<value>',
         ],
+        externalCustomerId: null,
         customerExternalId: '<id>',
         products: [],
         product: new Components\CheckoutProduct(

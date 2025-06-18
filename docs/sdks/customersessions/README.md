@@ -30,7 +30,7 @@ $sdk = Polar\Polar::builder()
     ->build();
 
 $request = new Components\CustomerSessionCustomerExternalIDCreate(
-    customerExternalId: '<id>',
+    externalCustomerId: '<id>',
 );
 
 $response = $sdk->customerSessions->create(
