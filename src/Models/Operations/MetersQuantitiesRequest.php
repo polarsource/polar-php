@@ -61,15 +61,24 @@ class MetersQuantitiesRequest
     public string|array|null $externalCustomerId = null;
 
     /**
+     * Filter by metadata key-value pairs. It uses the `deepObject` style, e.g. `?metadata[key]=value`.
+     *
+     * @var ?array<string, string|int|bool|array<string>|array<int>|array<bool>> $metadata
+     */
+    #[SpeakeasyMetadata('queryParam:style=deepObject,explode=true,name=metadata')]
+    public ?array $metadata = null;
+
+    /**
      * @param  string  $id
      * @param  \DateTime  $startTimestamp
      * @param  \DateTime  $endTimestamp
      * @param  Components\TimeInterval  $interval
      * @param  string|array<string>|null  $customerId
      * @param  string|array<string>|null  $externalCustomerId
+     * @param  ?array<string, string|int|bool|array<string>|array<int>|array<bool>>  $metadata
      * @phpstan-pure
      */
-    public function __construct(string $id, \DateTime $startTimestamp, \DateTime $endTimestamp, Components\TimeInterval $interval, string|array|null $customerId = null, string|array|null $externalCustomerId = null)
+    public function __construct(string $id, \DateTime $startTimestamp, \DateTime $endTimestamp, Components\TimeInterval $interval, string|array|null $customerId = null, string|array|null $externalCustomerId = null, ?array $metadata = null)
     {
         $this->id = $id;
         $this->startTimestamp = $startTimestamp;
@@ -77,5 +86,6 @@ class MetersQuantitiesRequest
         $this->interval = $interval;
         $this->customerId = $customerId;
         $this->externalCustomerId = $externalCustomerId;
+        $this->metadata = $metadata;
     }
 }

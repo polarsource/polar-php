@@ -107,6 +107,14 @@ $request = new Components\WebhookCheckoutCreatedPayload(
         paymentProcessorMetadata: [
 
         ],
+        customerBillingAddressFields: new Components\CheckoutCustomerBillingAddressFields(
+            country: false,
+            state: true,
+            city: false,
+            postalCode: true,
+            line1: true,
+            line2: false,
+        ),
         metadata: [
             'key' => '<value>',
         ],
@@ -250,14 +258,6 @@ $request = new Components\WebhookCheckoutCreatedPayload(
             'key1' => 203013,
             'key2' => 851435,
         ],
-        customerBillingAddressFields: new Components\CheckoutCustomerBillingAddressFields(
-            country: false,
-            state: true,
-            city: false,
-            postalCode: true,
-            line1: true,
-            line2: false,
-        ),
     ),
 );
 
