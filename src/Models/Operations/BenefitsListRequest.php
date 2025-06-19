@@ -45,6 +45,14 @@ class BenefitsListRequest
     public ?array $sorting = null;
 
     /**
+     * Filter by metadata key-value pairs. It uses the `deepObject` style, e.g. `?metadata[key]=value`.
+     *
+     * @var ?array<string, string|int|bool|array<string>|array<int>|array<bool>> $metadata
+     */
+    #[SpeakeasyMetadata('queryParam:style=deepObject,explode=true,name=metadata')]
+    public ?array $metadata = null;
+
+    /**
      * Page number, defaults to 1.
      *
      * @var ?int $page
@@ -67,14 +75,16 @@ class BenefitsListRequest
      * @param  Components\BenefitType|array<Components\BenefitType>|null  $typeFilter
      * @param  ?string  $query
      * @param  ?array<Components\BenefitSortProperty>  $sorting
+     * @param  ?array<string, string|int|bool|array<string>|array<int>|array<bool>>  $metadata
      * @phpstan-pure
      */
-    public function __construct(string|array|null $organizationId = null, Components\BenefitType|array|null $typeFilter = null, ?string $query = null, ?array $sorting = null, ?int $page = 1, ?int $limit = 10)
+    public function __construct(string|array|null $organizationId = null, Components\BenefitType|array|null $typeFilter = null, ?string $query = null, ?array $sorting = null, ?array $metadata = null, ?int $page = 1, ?int $limit = 10)
     {
         $this->organizationId = $organizationId;
         $this->typeFilter = $typeFilter;
         $this->query = $query;
         $this->sorting = $sorting;
+        $this->metadata = $metadata;
         $this->page = $page;
         $this->limit = $limit;
     }

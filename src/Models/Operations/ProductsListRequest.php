@@ -69,6 +69,14 @@ class ProductsListRequest
     public ?array $sorting = null;
 
     /**
+     * Filter by metadata key-value pairs. It uses the `deepObject` style, e.g. `?metadata[key]=value`.
+     *
+     * @var ?array<string, string|int|bool|array<string>|array<int>|array<bool>> $metadata
+     */
+    #[SpeakeasyMetadata('queryParam:style=deepObject,explode=true,name=metadata')]
+    public ?array $metadata = null;
+
+    /**
      * Page number, defaults to 1.
      *
      * @var ?int $page
@@ -94,9 +102,10 @@ class ProductsListRequest
      * @param  ?bool  $isRecurring
      * @param  string|array<string>|null  $benefitId
      * @param  ?array<Components\ProductSortProperty>  $sorting
+     * @param  ?array<string, string|int|bool|array<string>|array<int>|array<bool>>  $metadata
      * @phpstan-pure
      */
-    public function __construct(string|array|null $id = null, string|array|null $organizationId = null, ?string $query = null, ?bool $isArchived = null, ?bool $isRecurring = null, string|array|null $benefitId = null, ?array $sorting = null, ?int $page = 1, ?int $limit = 10)
+    public function __construct(string|array|null $id = null, string|array|null $organizationId = null, ?string $query = null, ?bool $isArchived = null, ?bool $isRecurring = null, string|array|null $benefitId = null, ?array $sorting = null, ?array $metadata = null, ?int $page = 1, ?int $limit = 10)
     {
         $this->id = $id;
         $this->organizationId = $organizationId;
@@ -105,6 +114,7 @@ class ProductsListRequest
         $this->isRecurring = $isRecurring;
         $this->benefitId = $benefitId;
         $this->sorting = $sorting;
+        $this->metadata = $metadata;
         $this->page = $page;
         $this->limit = $limit;
     }

@@ -206,6 +206,14 @@ class CheckoutPublic
     public array $paymentProcessorMetadata;
 
     /**
+     *
+     * @var CheckoutCustomerBillingAddressFields $customerBillingAddressFields
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('customer_billing_address_fields')]
+    #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\CheckoutCustomerBillingAddressFields')]
+    public CheckoutCustomerBillingAddressFields $customerBillingAddressFields;
+
+    /**
      * List of products available to select.
      *
      * @var array<CheckoutProduct> $products
@@ -248,14 +256,6 @@ class CheckoutPublic
     #[\Speakeasy\Serializer\Annotation\SerializedName('attached_custom_fields')]
     #[\Speakeasy\Serializer\Annotation\Type('array<\Polar\Models\Components\AttachedCustomField>')]
     public array $attachedCustomFields;
-
-    /**
-     *
-     * @var CheckoutCustomerBillingAddressFields $customerBillingAddressFields
-     */
-    #[\Speakeasy\Serializer\Annotation\SerializedName('customer_billing_address_fields')]
-    #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\CheckoutCustomerBillingAddressFields')]
-    public CheckoutCustomerBillingAddressFields $customerBillingAddressFields;
 
     /**
      * Last modification timestamp of the object.
@@ -384,12 +384,12 @@ class CheckoutPublic
      * @param  bool  $isPaymentFormRequired
      * @param  bool  $isBusinessCustomer
      * @param  array<string, string>  $paymentProcessorMetadata
+     * @param  CheckoutCustomerBillingAddressFields  $customerBillingAddressFields
      * @param  array<CheckoutProduct>  $products
      * @param  CheckoutProduct  $product
      * @param  LegacyRecurringProductPriceFixed|LegacyRecurringProductPriceCustom|LegacyRecurringProductPriceFree|ProductPriceFixed|ProductPriceCustom|ProductPriceFree|ProductPriceMeteredUnit  $productPrice
      * @param  Organization  $organization
      * @param  array<AttachedCustomField>  $attachedCustomFields
-     * @param  CheckoutCustomerBillingAddressFields  $customerBillingAddressFields
      * @param  ?\DateTime  $modifiedAt
      * @param  ?array<string, string|int|bool|\DateTime|null>  $customFieldData
      * @param  ?string  $embedOrigin
@@ -405,7 +405,7 @@ class CheckoutPublic
      * @param  CheckoutDiscountFixedOnceForeverDuration|CheckoutDiscountFixedRepeatDuration|CheckoutDiscountPercentageOnceForeverDuration|CheckoutDiscountPercentageRepeatDuration|null  $discount
      * @phpstan-pure
      */
-    public function __construct(\DateTime $createdAt, string $id, PaymentProcessor $paymentProcessor, CheckoutStatus $status, string $clientSecret, string $url, \DateTime $expiresAt, string $successUrl, int $amount, int $discountAmount, int $netAmount, int $totalAmount, string $currency, string $productId, string $productPriceId, bool $allowDiscountCodes, bool $requireBillingAddress, bool $isDiscountApplicable, bool $isFreeProductPrice, bool $isPaymentRequired, bool $isPaymentSetupRequired, bool $isPaymentFormRequired, bool $isBusinessCustomer, array $paymentProcessorMetadata, array $products, CheckoutProduct $product, LegacyRecurringProductPriceFixed|LegacyRecurringProductPriceCustom|LegacyRecurringProductPriceFree|ProductPriceFixed|ProductPriceCustom|ProductPriceFree|ProductPriceMeteredUnit $productPrice, Organization $organization, array $attachedCustomFields, CheckoutCustomerBillingAddressFields $customerBillingAddressFields, ?\DateTime $modifiedAt = null, ?array $customFieldData = null, ?string $embedOrigin = null, ?int $taxAmount = null, ?string $discountId = null, ?string $customerId = null, ?string $customerName = null, ?string $customerEmail = null, ?string $customerIpAddress = null, ?string $customerBillingName = null, ?Address $customerBillingAddress = null, ?string $customerTaxId = null, CheckoutDiscountFixedOnceForeverDuration|CheckoutDiscountFixedRepeatDuration|CheckoutDiscountPercentageOnceForeverDuration|CheckoutDiscountPercentageRepeatDuration|null $discount = null)
+    public function __construct(\DateTime $createdAt, string $id, PaymentProcessor $paymentProcessor, CheckoutStatus $status, string $clientSecret, string $url, \DateTime $expiresAt, string $successUrl, int $amount, int $discountAmount, int $netAmount, int $totalAmount, string $currency, string $productId, string $productPriceId, bool $allowDiscountCodes, bool $requireBillingAddress, bool $isDiscountApplicable, bool $isFreeProductPrice, bool $isPaymentRequired, bool $isPaymentSetupRequired, bool $isPaymentFormRequired, bool $isBusinessCustomer, array $paymentProcessorMetadata, CheckoutCustomerBillingAddressFields $customerBillingAddressFields, array $products, CheckoutProduct $product, LegacyRecurringProductPriceFixed|LegacyRecurringProductPriceCustom|LegacyRecurringProductPriceFree|ProductPriceFixed|ProductPriceCustom|ProductPriceFree|ProductPriceMeteredUnit $productPrice, Organization $organization, array $attachedCustomFields, ?\DateTime $modifiedAt = null, ?array $customFieldData = null, ?string $embedOrigin = null, ?int $taxAmount = null, ?string $discountId = null, ?string $customerId = null, ?string $customerName = null, ?string $customerEmail = null, ?string $customerIpAddress = null, ?string $customerBillingName = null, ?Address $customerBillingAddress = null, ?string $customerTaxId = null, CheckoutDiscountFixedOnceForeverDuration|CheckoutDiscountFixedRepeatDuration|CheckoutDiscountPercentageOnceForeverDuration|CheckoutDiscountPercentageRepeatDuration|null $discount = null)
     {
         $this->createdAt = $createdAt;
         $this->id = $id;
@@ -431,12 +431,12 @@ class CheckoutPublic
         $this->isPaymentFormRequired = $isPaymentFormRequired;
         $this->isBusinessCustomer = $isBusinessCustomer;
         $this->paymentProcessorMetadata = $paymentProcessorMetadata;
+        $this->customerBillingAddressFields = $customerBillingAddressFields;
         $this->products = $products;
         $this->product = $product;
         $this->productPrice = $productPrice;
         $this->organization = $organization;
         $this->attachedCustomFields = $attachedCustomFields;
-        $this->customerBillingAddressFields = $customerBillingAddressFields;
         $this->modifiedAt = $modifiedAt;
         $this->customFieldData = $customFieldData;
         $this->embedOrigin = $embedOrigin;
