@@ -12,11 +12,35 @@ namespace Polar\Models\Components;
 class PaymentMethodGeneric
 {
     /**
+     * The ID of the object.
      *
      * @var string $id
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('id')]
     public string $id;
+
+    /**
+     * Creation timestamp of the object.
+     *
+     * @var \DateTime $createdAt
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('created_at')]
+    public \DateTime $createdAt;
+
+    /**
+     *
+     * @var PaymentProcessor $processor
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('processor')]
+    #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\PaymentProcessor')]
+    public PaymentProcessor $processor;
+
+    /**
+     *
+     * @var string $customerId
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('customer_id')]
+    public string $customerId;
 
     /**
      *
@@ -26,31 +50,29 @@ class PaymentMethodGeneric
     public string $type;
 
     /**
+     * Last modification timestamp of the object.
      *
-     * @var \DateTime $createdAt
+     * @var ?\DateTime $modifiedAt
      */
-    #[\Speakeasy\Serializer\Annotation\SerializedName('created_at')]
-    public \DateTime $createdAt;
-
-    /**
-     *
-     * @var bool $default
-     */
-    #[\Speakeasy\Serializer\Annotation\SerializedName('default')]
-    public bool $default;
+    #[\Speakeasy\Serializer\Annotation\SerializedName('modified_at')]
+    public ?\DateTime $modifiedAt;
 
     /**
      * @param  string  $id
-     * @param  string  $type
      * @param  \DateTime  $createdAt
-     * @param  bool  $default
+     * @param  PaymentProcessor  $processor
+     * @param  string  $customerId
+     * @param  string  $type
+     * @param  ?\DateTime  $modifiedAt
      * @phpstan-pure
      */
-    public function __construct(string $id, string $type, \DateTime $createdAt, bool $default)
+    public function __construct(string $id, \DateTime $createdAt, PaymentProcessor $processor, string $customerId, string $type, ?\DateTime $modifiedAt = null)
     {
         $this->id = $id;
-        $this->type = $type;
         $this->createdAt = $createdAt;
-        $this->default = $default;
+        $this->processor = $processor;
+        $this->customerId = $customerId;
+        $this->type = $type;
+        $this->modifiedAt = $modifiedAt;
     }
 }

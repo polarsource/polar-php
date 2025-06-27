@@ -402,7 +402,7 @@ foreach ($responses as $response) {
 
 * [get](docs/sdks/polarcustomers/README.md#get) - Get Customer
 * [update](docs/sdks/polarcustomers/README.md#update) - Update Customer
-* [getPaymentMethods](docs/sdks/polarcustomers/README.md#getpaymentmethods) - Get Customer Payment Methods
+* [listPaymentMethods](docs/sdks/polarcustomers/README.md#listpaymentmethods) - List Customer Payment Methods
 * [addPaymentMethod](docs/sdks/polarcustomers/README.md#addpaymentmethod) - Add Customer Payment Method
 * [deletePaymentMethod](docs/sdks/polarcustomers/README.md#deletepaymentmethod) - Delete Customer Payment Method
 
