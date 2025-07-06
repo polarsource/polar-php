@@ -83,6 +83,14 @@ class CustomerPortalCustomer
     public ?array $taxId;
 
     /**
+     *
+     * @var ?string $defaultPaymentMethodId
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('default_payment_method_id')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
+    public ?string $defaultPaymentMethodId = null;
+
+    /**
      * @param  \DateTime  $createdAt
      * @param  string  $id
      * @param  string  $email
@@ -92,9 +100,10 @@ class CustomerPortalCustomer
      * @param  ?string  $name
      * @param  ?Address  $billingAddress
      * @param  ?array<string|TaxIDFormat|null>  $taxId
+     * @param  ?string  $defaultPaymentMethodId
      * @phpstan-pure
      */
-    public function __construct(\DateTime $createdAt, string $id, string $email, bool $emailVerified, array $oauthAccounts, ?\DateTime $modifiedAt = null, ?string $name = null, ?Address $billingAddress = null, ?array $taxId = null)
+    public function __construct(\DateTime $createdAt, string $id, string $email, bool $emailVerified, array $oauthAccounts, ?\DateTime $modifiedAt = null, ?string $name = null, ?Address $billingAddress = null, ?array $taxId = null, ?string $defaultPaymentMethodId = null)
     {
         $this->createdAt = $createdAt;
         $this->id = $id;
@@ -105,5 +114,6 @@ class CustomerPortalCustomer
         $this->name = $name;
         $this->billingAddress = $billingAddress;
         $this->taxId = $taxId;
+        $this->defaultPaymentMethodId = $defaultPaymentMethodId;
     }
 }

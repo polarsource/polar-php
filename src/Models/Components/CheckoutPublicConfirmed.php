@@ -205,11 +205,11 @@ class CheckoutPublicConfirmed
 
     /**
      *
-     * @var CheckoutCustomerBillingAddressFields $customerBillingAddressFields
+     * @var CheckoutBillingAddressFields $billingAddressFields
      */
-    #[\Speakeasy\Serializer\Annotation\SerializedName('customer_billing_address_fields')]
-    #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\CheckoutCustomerBillingAddressFields')]
-    public CheckoutCustomerBillingAddressFields $customerBillingAddressFields;
+    #[\Speakeasy\Serializer\Annotation\SerializedName('billing_address_fields')]
+    #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\CheckoutBillingAddressFields')]
+    public CheckoutBillingAddressFields $billingAddressFields;
 
     /**
      * List of products available to select.
@@ -396,7 +396,7 @@ class CheckoutPublicConfirmed
      * @param  bool  $isPaymentFormRequired
      * @param  bool  $isBusinessCustomer
      * @param  array<string, string>  $paymentProcessorMetadata
-     * @param  CheckoutCustomerBillingAddressFields  $customerBillingAddressFields
+     * @param  CheckoutBillingAddressFields  $billingAddressFields
      * @param  array<CheckoutProduct>  $products
      * @param  CheckoutProduct  $product
      * @param  LegacyRecurringProductPriceFixed|LegacyRecurringProductPriceCustom|LegacyRecurringProductPriceFree|ProductPriceFixed|ProductPriceCustom|ProductPriceFree|ProductPriceMeteredUnit  $productPrice
@@ -418,7 +418,7 @@ class CheckoutPublicConfirmed
      * @param  CheckoutDiscountFixedOnceForeverDuration|CheckoutDiscountFixedRepeatDuration|CheckoutDiscountPercentageOnceForeverDuration|CheckoutDiscountPercentageRepeatDuration|null  $discount
      * @phpstan-pure
      */
-    public function __construct(\DateTime $createdAt, string $id, PaymentProcessor $paymentProcessor, string $clientSecret, string $url, \DateTime $expiresAt, string $successUrl, int $amount, int $discountAmount, int $netAmount, int $totalAmount, string $currency, string $productId, string $productPriceId, bool $allowDiscountCodes, bool $requireBillingAddress, bool $isDiscountApplicable, bool $isFreeProductPrice, bool $isPaymentRequired, bool $isPaymentSetupRequired, bool $isPaymentFormRequired, bool $isBusinessCustomer, array $paymentProcessorMetadata, CheckoutCustomerBillingAddressFields $customerBillingAddressFields, array $products, CheckoutProduct $product, LegacyRecurringProductPriceFixed|LegacyRecurringProductPriceCustom|LegacyRecurringProductPriceFree|ProductPriceFixed|ProductPriceCustom|ProductPriceFree|ProductPriceMeteredUnit $productPrice, Organization $organization, array $attachedCustomFields, string $customerSessionToken, ?\DateTime $modifiedAt = null, ?array $customFieldData = null, ?string $embedOrigin = null, ?int $taxAmount = null, ?string $discountId = null, ?string $customerId = null, ?string $customerName = null, ?string $customerEmail = null, ?string $customerIpAddress = null, ?string $customerBillingName = null, ?Address $customerBillingAddress = null, ?string $customerTaxId = null, CheckoutDiscountFixedOnceForeverDuration|CheckoutDiscountFixedRepeatDuration|CheckoutDiscountPercentageOnceForeverDuration|CheckoutDiscountPercentageRepeatDuration|null $discount = null, string $status = 'confirmed')
+    public function __construct(\DateTime $createdAt, string $id, PaymentProcessor $paymentProcessor, string $clientSecret, string $url, \DateTime $expiresAt, string $successUrl, int $amount, int $discountAmount, int $netAmount, int $totalAmount, string $currency, string $productId, string $productPriceId, bool $allowDiscountCodes, bool $requireBillingAddress, bool $isDiscountApplicable, bool $isFreeProductPrice, bool $isPaymentRequired, bool $isPaymentSetupRequired, bool $isPaymentFormRequired, bool $isBusinessCustomer, array $paymentProcessorMetadata, CheckoutBillingAddressFields $billingAddressFields, array $products, CheckoutProduct $product, LegacyRecurringProductPriceFixed|LegacyRecurringProductPriceCustom|LegacyRecurringProductPriceFree|ProductPriceFixed|ProductPriceCustom|ProductPriceFree|ProductPriceMeteredUnit $productPrice, Organization $organization, array $attachedCustomFields, string $customerSessionToken, ?\DateTime $modifiedAt = null, ?array $customFieldData = null, ?string $embedOrigin = null, ?int $taxAmount = null, ?string $discountId = null, ?string $customerId = null, ?string $customerName = null, ?string $customerEmail = null, ?string $customerIpAddress = null, ?string $customerBillingName = null, ?Address $customerBillingAddress = null, ?string $customerTaxId = null, CheckoutDiscountFixedOnceForeverDuration|CheckoutDiscountFixedRepeatDuration|CheckoutDiscountPercentageOnceForeverDuration|CheckoutDiscountPercentageRepeatDuration|null $discount = null, string $status = 'confirmed')
     {
         $this->createdAt = $createdAt;
         $this->id = $id;
@@ -443,7 +443,7 @@ class CheckoutPublicConfirmed
         $this->isPaymentFormRequired = $isPaymentFormRequired;
         $this->isBusinessCustomer = $isBusinessCustomer;
         $this->paymentProcessorMetadata = $paymentProcessorMetadata;
-        $this->customerBillingAddressFields = $customerBillingAddressFields;
+        $this->billingAddressFields = $billingAddressFields;
         $this->products = $products;
         $this->product = $product;
         $this->productPrice = $productPrice;

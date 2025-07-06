@@ -6,7 +6,6 @@
 ### Available Operations
 
 * [list](#list) - List Downloadables
-* [get](#get) - Get Downloadable
 
 ## list
 
@@ -58,49 +57,6 @@ foreach ($responses as $response) {
 ### Response
 
 **[?Operations\CustomerPortalDownloadablesListResponse](../../Models/Operations/CustomerPortalDownloadablesListResponse.md)**
-
-### Errors
-
-| Error Type                 | Status Code                | Content Type               |
-| -------------------------- | -------------------------- | -------------------------- |
-| Errors\HTTPValidationError | 422                        | application/json           |
-| Errors\APIException        | 4XX, 5XX                   | \*/\*                      |
-
-## get
-
-Get Downloadable
-
-### Example Usage
-
-```php
-declare(strict_types=1);
-
-require 'vendor/autoload.php';
-
-use Polar;
-
-$sdk = Polar\Polar::builder()->build();
-
-
-
-$response = $sdk->customerPortal->downloadables->get(
-    token: '<value>'
-);
-
-if ($response->any !== null) {
-    // handle response
-}
-```
-
-### Parameters
-
-| Parameter          | Type               | Required           | Description        |
-| ------------------ | ------------------ | ------------------ | ------------------ |
-| `token`            | *string*           | :heavy_check_mark: | N/A                |
-
-### Response
-
-**[?Operations\CustomerPortalDownloadablesCustomerPortalDownloadablesGetResponse](../../Models/Operations/CustomerPortalDownloadablesCustomerPortalDownloadablesGetResponse.md)**
 
 ### Errors
 
