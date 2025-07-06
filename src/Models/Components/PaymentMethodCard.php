@@ -12,6 +12,7 @@ namespace Polar\Models\Components;
 class PaymentMethodCard
 {
     /**
+     * The ID of the object.
      *
      * @var string $id
      */
@@ -19,6 +20,7 @@ class PaymentMethodCard
     public string $id;
 
     /**
+     * Creation timestamp of the object.
      *
      * @var \DateTime $createdAt
      */
@@ -27,18 +29,34 @@ class PaymentMethodCard
 
     /**
      *
-     * @var bool $default
+     * @var PaymentProcessor $processor
      */
-    #[\Speakeasy\Serializer\Annotation\SerializedName('default')]
-    public bool $default;
+    #[\Speakeasy\Serializer\Annotation\SerializedName('processor')]
+    #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\PaymentProcessor')]
+    public PaymentProcessor $processor;
 
     /**
      *
-     * @var PaymentMethodCardData $card
+     * @var string $customerId
      */
-    #[\Speakeasy\Serializer\Annotation\SerializedName('card')]
-    #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\PaymentMethodCardData')]
-    public PaymentMethodCardData $card;
+    #[\Speakeasy\Serializer\Annotation\SerializedName('customer_id')]
+    public string $customerId;
+
+    /**
+     *
+     * @var PaymentMethodCardMetadata $methodMetadata
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('method_metadata')]
+    #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\PaymentMethodCardMetadata')]
+    public PaymentMethodCardMetadata $methodMetadata;
+
+    /**
+     * Last modification timestamp of the object.
+     *
+     * @var ?\DateTime $modifiedAt
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('modified_at')]
+    public ?\DateTime $modifiedAt;
 
     /**
      *
@@ -49,18 +67,22 @@ class PaymentMethodCard
 
     /**
      * @param  string  $id
-     * @param  string  $type
      * @param  \DateTime  $createdAt
-     * @param  bool  $default
-     * @param  PaymentMethodCardData  $card
+     * @param  PaymentProcessor  $processor
+     * @param  string  $customerId
+     * @param  string  $type
+     * @param  PaymentMethodCardMetadata  $methodMetadata
+     * @param  ?\DateTime  $modifiedAt
      * @phpstan-pure
      */
-    public function __construct(string $id, \DateTime $createdAt, bool $default, PaymentMethodCardData $card, string $type = 'card')
+    public function __construct(string $id, \DateTime $createdAt, PaymentProcessor $processor, string $customerId, PaymentMethodCardMetadata $methodMetadata, ?\DateTime $modifiedAt = null, string $type = 'card')
     {
         $this->id = $id;
         $this->createdAt = $createdAt;
-        $this->default = $default;
-        $this->card = $card;
+        $this->processor = $processor;
+        $this->customerId = $customerId;
+        $this->methodMetadata = $methodMetadata;
+        $this->modifiedAt = $modifiedAt;
         $this->type = $type;
     }
 }

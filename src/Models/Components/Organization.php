@@ -61,6 +61,14 @@ class Organization
     public OrganizationSubscriptionSettings $subscriptionSettings;
 
     /**
+     *
+     * @var OrganizationNotificationSettings $notificationSettings
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('notification_settings')]
+    #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\OrganizationNotificationSettings')]
+    public OrganizationNotificationSettings $notificationSettings;
+
+    /**
      * Last modification timestamp of the object.
      *
      * @var ?\DateTime $modifiedAt
@@ -116,6 +124,7 @@ class Organization
      * @param  string  $slug
      * @param  array<OrganizationSocialLink>  $socials
      * @param  OrganizationSubscriptionSettings  $subscriptionSettings
+     * @param  OrganizationNotificationSettings  $notificationSettings
      * @param  ?\DateTime  $modifiedAt
      * @param  ?string  $avatarUrl
      * @param  ?string  $email
@@ -124,7 +133,7 @@ class Organization
      * @param  ?OrganizationFeatureSettings  $featureSettings
      * @phpstan-pure
      */
-    public function __construct(\DateTime $createdAt, string $id, string $name, string $slug, array $socials, OrganizationSubscriptionSettings $subscriptionSettings, ?\DateTime $modifiedAt = null, ?string $avatarUrl = null, ?string $email = null, ?string $website = null, ?\DateTime $detailsSubmittedAt = null, ?OrganizationFeatureSettings $featureSettings = null)
+    public function __construct(\DateTime $createdAt, string $id, string $name, string $slug, array $socials, OrganizationSubscriptionSettings $subscriptionSettings, OrganizationNotificationSettings $notificationSettings, ?\DateTime $modifiedAt = null, ?string $avatarUrl = null, ?string $email = null, ?string $website = null, ?\DateTime $detailsSubmittedAt = null, ?OrganizationFeatureSettings $featureSettings = null)
     {
         $this->createdAt = $createdAt;
         $this->id = $id;
@@ -132,6 +141,7 @@ class Organization
         $this->slug = $slug;
         $this->socials = $socials;
         $this->subscriptionSettings = $subscriptionSettings;
+        $this->notificationSettings = $notificationSettings;
         $this->modifiedAt = $modifiedAt;
         $this->avatarUrl = $avatarUrl;
         $this->email = $email;

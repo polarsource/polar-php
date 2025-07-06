@@ -90,6 +90,15 @@ class OrganizationCreate
     public ?OrganizationSubscriptionSettings $subscriptionSettings = null;
 
     /**
+     *
+     * @var ?OrganizationNotificationSettings $notificationSettings
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('notification_settings')]
+    #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\OrganizationNotificationSettings|null')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
+    public ?OrganizationNotificationSettings $notificationSettings = null;
+
+    /**
      * @param  string  $name
      * @param  string  $slug
      * @param  ?string  $avatarUrl
@@ -99,9 +108,10 @@ class OrganizationCreate
      * @param  ?OrganizationDetails  $details
      * @param  ?OrganizationFeatureSettings  $featureSettings
      * @param  ?OrganizationSubscriptionSettings  $subscriptionSettings
+     * @param  ?OrganizationNotificationSettings  $notificationSettings
      * @phpstan-pure
      */
-    public function __construct(string $name, string $slug, ?string $avatarUrl = null, ?string $email = null, ?string $website = null, ?array $socials = null, ?OrganizationDetails $details = null, ?OrganizationFeatureSettings $featureSettings = null, ?OrganizationSubscriptionSettings $subscriptionSettings = null)
+    public function __construct(string $name, string $slug, ?string $avatarUrl = null, ?string $email = null, ?string $website = null, ?array $socials = null, ?OrganizationDetails $details = null, ?OrganizationFeatureSettings $featureSettings = null, ?OrganizationSubscriptionSettings $subscriptionSettings = null, ?OrganizationNotificationSettings $notificationSettings = null)
     {
         $this->name = $name;
         $this->slug = $slug;
@@ -112,5 +122,6 @@ class OrganizationCreate
         $this->details = $details;
         $this->featureSettings = $featureSettings;
         $this->subscriptionSettings = $subscriptionSettings;
+        $this->notificationSettings = $notificationSettings;
     }
 }

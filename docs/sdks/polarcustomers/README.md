@@ -7,7 +7,7 @@
 
 * [get](#get) - Get Customer
 * [update](#update) - Update Customer
-* [getPaymentMethods](#getpaymentmethods) - Get Customer Payment Methods
+* [listPaymentMethods](#listpaymentmethods) - List Customer Payment Methods
 * [addPaymentMethod](#addpaymentmethod) - Add Customer Payment Method
 * [deletePaymentMethod](#deletepaymentmethod) - Delete Customer Payment Method
 
@@ -115,7 +115,7 @@ if ($response->customerPortalCustomer !== null) {
 | Errors\HTTPValidationError | 422                        | application/json           |
 | Errors\APIException        | 4XX, 5XX                   | \*/\*                      |
 
-## getPaymentMethods
+## listPaymentMethods
 
 Get saved payment methods of the authenticated customer.
 
@@ -134,11 +134,11 @@ use Polar\Models\Operations;
 $sdk = Polar\Polar::builder()->build();
 
 
-$requestSecurity = new Operations\CustomerPortalCustomersGetPaymentMethodsSecurity(
+$requestSecurity = new Operations\CustomerPortalCustomersListPaymentMethodsSecurity(
     customerSession: '<YOUR_BEARER_TOKEN_HERE>',
 );
 
-$responses = $sdk->customerPortal->customers->getPaymentMethods(
+$responses = $sdk->customerPortal->customers->listPaymentMethods(
     security: $requestSecurity,
     page: 1,
     limit: 10
@@ -155,15 +155,15 @@ foreach ($responses as $response) {
 
 ### Parameters
 
-| Parameter                                                                                                                                  | Type                                                                                                                                       | Required                                                                                                                                   | Description                                                                                                                                |
-| ------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------ |
-| `security`                                                                                                                                 | [Operations\CustomerPortalCustomersGetPaymentMethodsSecurity](../../Models/Operations/CustomerPortalCustomersGetPaymentMethodsSecurity.md) | :heavy_check_mark:                                                                                                                         | The security requirements to use for the request.                                                                                          |
-| `page`                                                                                                                                     | *?int*                                                                                                                                     | :heavy_minus_sign:                                                                                                                         | Page number, defaults to 1.                                                                                                                |
-| `limit`                                                                                                                                    | *?int*                                                                                                                                     | :heavy_minus_sign:                                                                                                                         | Size of a page, defaults to 10. Maximum is 100.                                                                                            |
+| Parameter                                                                                                                                    | Type                                                                                                                                         | Required                                                                                                                                     | Description                                                                                                                                  |
+| -------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------- |
+| `security`                                                                                                                                   | [Operations\CustomerPortalCustomersListPaymentMethodsSecurity](../../Models/Operations/CustomerPortalCustomersListPaymentMethodsSecurity.md) | :heavy_check_mark:                                                                                                                           | The security requirements to use for the request.                                                                                            |
+| `page`                                                                                                                                       | *?int*                                                                                                                                       | :heavy_minus_sign:                                                                                                                           | Page number, defaults to 1.                                                                                                                  |
+| `limit`                                                                                                                                      | *?int*                                                                                                                                       | :heavy_minus_sign:                                                                                                                           | Size of a page, defaults to 10. Maximum is 100.                                                                                              |
 
 ### Response
 
-**[?Operations\CustomerPortalCustomersGetPaymentMethodsResponse](../../Models/Operations/CustomerPortalCustomersGetPaymentMethodsResponse.md)**
+**[?Operations\CustomerPortalCustomersListPaymentMethodsResponse](../../Models/Operations/CustomerPortalCustomersListPaymentMethodsResponse.md)**
 
 ### Errors
 
