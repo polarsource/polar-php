@@ -9,7 +9,7 @@ declare(strict_types=1);
 namespace Polar\Models\Operations;
 
 use Polar\Utils\SpeakeasyMetadata;
-class CustomerPortalCustomersGetPaymentMethodsSecurity
+class CustomerPortalCustomersListPaymentMethodsSecurity
 {
     /**
      *

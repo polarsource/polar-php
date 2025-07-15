@@ -9,8 +9,9 @@ declare(strict_types=1);
 namespace Polar\Models\Components;
 
 
-enum GrantTypes: string
+enum BillingAddressFieldMode: string
 {
-    case AuthorizationCode = 'authorization_code';
-    case RefreshToken = 'refresh_token';
+    case Required = 'required';
+    case Optional = 'optional';
+    case Disabled = 'disabled';
 }

@@ -287,21 +287,21 @@ class PolarCustomers
     }
 
     /**
-     * Get Customer Payment Methods
+     * List Customer Payment Methods
      *
      * Get saved payment methods of the authenticated customer.
      *
      * **Scopes**: `customer_portal:read` `customer_portal:write`
      *
-     * @param  Operations\CustomerPortalCustomersGetPaymentMethodsSecurity  $security
+     * @param  Operations\CustomerPortalCustomersListPaymentMethodsSecurity  $security
      * @param  ?int  $page
      * @param  ?int  $limit
-     * @return Operations\CustomerPortalCustomersGetPaymentMethodsResponse
+     * @return Operations\CustomerPortalCustomersListPaymentMethodsResponse
      * @throws \Polar\Models\Errors\APIException
      */
-    private function getPaymentMethodsIndividual(Operations\CustomerPortalCustomersGetPaymentMethodsSecurity $security, ?int $page = null, ?int $limit = null, ?Options $options = null): Operations\CustomerPortalCustomersGetPaymentMethodsResponse
+    private function listPaymentMethodsIndividual(Operations\CustomerPortalCustomersListPaymentMethodsSecurity $security, ?int $page = null, ?int $limit = null, ?Options $options = null): Operations\CustomerPortalCustomersListPaymentMethodsResponse
     {
-        $request = new Operations\CustomerPortalCustomersGetPaymentMethodsRequest(
+        $request = new Operations\CustomerPortalCustomersListPaymentMethodsRequest(
             page: $page,
             limit: $limit,
         );
@@ -310,7 +310,7 @@ class PolarCustomers
         $urlOverride = null;
         $httpOptions = ['http_errors' => false];
 
-        $qp = Utils\Utils::getQueryParams(Operations\CustomerPortalCustomersGetPaymentMethodsRequest::class, $request, $urlOverride);
+        $qp = Utils\Utils::getQueryParams(Operations\CustomerPortalCustomersListPaymentMethodsRequest::class, $request, $urlOverride);
         $httpOptions['headers']['Accept'] = 'application/json';
         $httpOptions['headers']['user-agent'] = $this->sdkConfiguration->userAgent;
         $httpRequest = new \GuzzleHttp\Psr7\Request('GET', $url);
@@ -320,7 +320,7 @@ class PolarCustomers
             $client = $this->sdkConfiguration->client;
         }
 
-        $hookContext = new HookContext($this->sdkConfiguration, $baseUrl, 'customer_portal:customers:get_payment_methods', null, fn () => $security);
+        $hookContext = new HookContext($this->sdkConfiguration, $baseUrl, 'customer_portal:customers:list_payment_methods', null, fn () => $security);
         $httpRequest = $this->sdkConfiguration->hooks->beforeRequest(new Hooks\BeforeRequestContext($hookContext), $httpRequest);
         $httpOptions['query'] = Utils\QueryParameters::standardizeQueryParams($httpRequest, $qp);
         $httpOptions = Utils\Utils::convertHeadersToOptions($httpRequest, $httpOptions);
@@ -345,14 +345,14 @@ class PolarCustomers
                 $serializer = Utils\JSON::createSerializer();
                 $responseData = (string) $httpResponse->getBody();
                 $obj = $serializer->deserialize($responseData, '\Polar\Models\Components\ListResourceUnionPaymentMethodCardPaymentMethodGeneric', 'json', DeserializationContext::create()->setRequireAllRequiredProperties(true));
-                $response = new Operations\CustomerPortalCustomersGetPaymentMethodsResponse(
+                $response = new Operations\CustomerPortalCustomersListPaymentMethodsResponse(
                     statusCode: $statusCode,
                     contentType: $contentType,
                     rawResponse: $httpResponse,
                     listResourceUnionPaymentMethodCardPaymentMethodGeneric: $obj);
                 $sdk = $this;
 
-                $response->next = function () use ($sdk, $request, $responseData, $security, $limit): ?Operations\CustomerPortalCustomersGetPaymentMethodsResponse {
+                $response->next = function () use ($sdk, $request, $responseData, $security, $limit): ?Operations\CustomerPortalCustomersListPaymentMethodsResponse {
                     $page = $request != null ? $request->page : 0;
                     $nextPage = $page + 1;
                     $jsonObject = new \JsonPath\JsonObject($responseData);
@@ -377,7 +377,7 @@ class PolarCustomers
                         return null;
                     }
 
-                    return $sdk->getPaymentMethodsIndividual(
+                    return $sdk->listPaymentMethodsIndividual(
                         security: $security,
                         page: $nextPage,
                         limit: $limit,
@@ -409,21 +409,21 @@ class PolarCustomers
         }
     }
     /**
-     * Get Customer Payment Methods
+     * List Customer Payment Methods
      *
      * Get saved payment methods of the authenticated customer.
      *
      * **Scopes**: `customer_portal:read` `customer_portal:write`
      *
-     * @param  Operations\CustomerPortalCustomersGetPaymentMethodsSecurity  $security
+     * @param  Operations\CustomerPortalCustomersListPaymentMethodsSecurity  $security
      * @param  ?int  $page
      * @param  ?int  $limit
-     * @return \Generator<Operations\CustomerPortalCustomersGetPaymentMethodsResponse>
+     * @return \Generator<Operations\CustomerPortalCustomersListPaymentMethodsResponse>
      * @throws \Polar\Models\Errors\APIException
      */
-    public function getPaymentMethods(Operations\CustomerPortalCustomersGetPaymentMethodsSecurity $security, ?int $page = null, ?int $limit = null, ?Options $options = null): \Generator
+    public function listPaymentMethods(Operations\CustomerPortalCustomersListPaymentMethodsSecurity $security, ?int $page = null, ?int $limit = null, ?Options $options = null): \Generator
     {
-        $res = $this->getPaymentMethodsIndividual($security, $page, $limit, $options);
+        $res = $this->listPaymentMethodsIndividual($security, $page, $limit, $options);
         while ($res !== null) {
             yield $res;
             $res = $res->next($res);

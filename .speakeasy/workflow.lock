@@ -1,21 +1,21 @@
-speakeasyVersion: 1.567.1
+speakeasyVersion: 1.581.2
 sources:
     Polar-OAS:
         sourceNamespace: polar-oas
-        sourceRevisionDigest: sha256:c9fb7fc9ca8bf060b9ccb0d1fe531f6506b973f7700e5ab260dc148d9a75720e
-        sourceBlobDigest: sha256:d8b25963e07c3aed89cf253001044af257ac0ebeaffd44140c1b68ce369d9dd9
+        sourceRevisionDigest: sha256:9e4f29b476148b87dbcbc39c978d6d860e8a025f5ceb2380aed27feab0e7d176
+        sourceBlobDigest: sha256:c1808c03b5c463281affcfcd41c77346f92cd1c4faa37fe2c66d98ed30b2bc6e
         tags:
             - latest
-            - speakeasy-sdk-regen-1750333063
+            - speakeasy-sdk-regen-1751329366
             - 0.1.0
 targets:
     polar:
         source: Polar-OAS
         sourceNamespace: polar-oas
-        sourceRevisionDigest: sha256:c9fb7fc9ca8bf060b9ccb0d1fe531f6506b973f7700e5ab260dc148d9a75720e
-        sourceBlobDigest: sha256:d8b25963e07c3aed89cf253001044af257ac0ebeaffd44140c1b68ce369d9dd9
+        sourceRevisionDigest: sha256:9e4f29b476148b87dbcbc39c978d6d860e8a025f5ceb2380aed27feab0e7d176
+        sourceBlobDigest: sha256:c1808c03b5c463281affcfcd41c77346f92cd1c4faa37fe2c66d98ed30b2bc6e
         codeSamplesNamespace: polar-api-php-code-samples
-        codeSamplesRevisionDigest: sha256:168895b255de4d9fdad4edfaf8eff57f28abf774730f48cf5a2062cee786ec26
+        codeSamplesRevisionDigest: sha256:bbe68b87da0d44e66e32999ab76d8d768a0c43b690f7870700727db7f59802ff
 workflow:
     workflowVersion: 1.0.0
     speakeasyVersion: latest
@@ -28,6 +28,7 @@ workflow:
                 - location: https://raw.githubusercontent.com/polarsource/polar/main/sdk/overlays/type_parameter.yml
                 - location: https://raw.githubusercontent.com/polarsource/polar/main/sdk/overlays/read_only.yml
                 - location: https://raw.githubusercontent.com/polarsource/polar/main/sdk/overlays/event_discriminator.yml
+                - location: https://raw.githubusercontent.com/polarsource/polar/main/sdk/overlays/timezone_enum.yml
             registry:
                 location: registry.speakeasyapi.dev/polar/polar/polar-oas
     targets:

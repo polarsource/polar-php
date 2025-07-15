@@ -37,6 +37,14 @@ class SubscriptionsListRequest
     public string|array|null $customerId = null;
 
     /**
+     * Filter by customer external ID.
+     *
+     * @var string|array<string>|null $externalCustomerId
+     */
+    #[SpeakeasyMetadata('queryParam:style=form,explode=true,name=external_customer_id')]
+    public string|array|null $externalCustomerId = null;
+
+    /**
      * Filter by discount ID.
      *
      * @var string|array<string>|null $discountId
@@ -90,17 +98,19 @@ class SubscriptionsListRequest
      * @param  string|array<string>|null  $organizationId
      * @param  string|array<string>|null  $productId
      * @param  string|array<string>|null  $customerId
+     * @param  string|array<string>|null  $externalCustomerId
      * @param  string|array<string>|null  $discountId
      * @param  ?bool  $active
      * @param  ?array<Components\SubscriptionSortProperty>  $sorting
      * @param  ?array<string, string|int|bool|array<string>|array<int>|array<bool>>  $metadata
      * @phpstan-pure
      */
-    public function __construct(string|array|null $organizationId = null, string|array|null $productId = null, string|array|null $customerId = null, string|array|null $discountId = null, ?bool $active = null, ?array $sorting = null, ?array $metadata = null, ?int $page = 1, ?int $limit = 10)
+    public function __construct(string|array|null $organizationId = null, string|array|null $productId = null, string|array|null $customerId = null, string|array|null $externalCustomerId = null, string|array|null $discountId = null, ?bool $active = null, ?array $sorting = null, ?array $metadata = null, ?int $page = 1, ?int $limit = 10)
     {
         $this->organizationId = $organizationId;
         $this->productId = $productId;
         $this->customerId = $customerId;
+        $this->externalCustomerId = $externalCustomerId;
         $this->discountId = $discountId;
         $this->active = $active;
         $this->sorting = $sorting;

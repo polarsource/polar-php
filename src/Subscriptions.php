@@ -297,6 +297,7 @@ class Subscriptions
                             organizationId: $request != null ? $request->organizationId : null,
                             productId: $request != null ? $request->productId : null,
                             customerId: $request != null ? $request->customerId : null,
+                            externalCustomerId: $request != null ? $request->externalCustomerId : null,
                             discountId: $request != null ? $request->discountId : null,
                             active: $request != null ? $request->active : null,
                             page: $nextPage,
