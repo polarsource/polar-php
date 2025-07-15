@@ -250,7 +250,11 @@ require 'vendor/autoload.php';
 
 use Polar;
 
-$sdk = Polar\Polar::builder()->build();
+$sdk = Polar\Polar::builder()
+    ->setSecurity(
+        '<YOUR_BEARER_TOKEN_HERE>'
+    )
+    ->build();
 
 
 
@@ -296,7 +300,11 @@ require 'vendor/autoload.php';
 use Polar;
 use Polar\Models\Components;
 
-$sdk = Polar\Polar::builder()->build();
+$sdk = Polar\Polar::builder()
+    ->setSecurity(
+        '<YOUR_BEARER_TOKEN_HERE>'
+    )
+    ->build();
 
 $checkoutUpdatePublic = new Components\CheckoutUpdatePublic(
     customerBillingAddress: null,

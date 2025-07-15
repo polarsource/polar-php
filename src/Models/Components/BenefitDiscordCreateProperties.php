@@ -28,13 +28,23 @@ class BenefitDiscordCreateProperties
     public string $roleId;
 
     /**
+     * Whether to kick the member from the Discord server on revocation.
+     *
+     * @var bool $kickMember
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('kick_member')]
+    public bool $kickMember;
+
+    /**
      * @param  string  $guildToken
      * @param  string  $roleId
+     * @param  bool  $kickMember
      * @phpstan-pure
      */
-    public function __construct(string $guildToken, string $roleId)
+    public function __construct(string $guildToken, string $roleId, bool $kickMember)
     {
         $this->guildToken = $guildToken;
         $this->roleId = $roleId;
+        $this->kickMember = $kickMember;
     }
 }

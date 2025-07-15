@@ -107,13 +107,13 @@ $request = new Components\WebhookCheckoutCreatedPayload(
         paymentProcessorMetadata: [
 
         ],
-        customerBillingAddressFields: new Components\CheckoutCustomerBillingAddressFields(
-            country: false,
-            state: true,
-            city: false,
-            postalCode: true,
-            line1: true,
-            line2: false,
+        billingAddressFields: new Components\CheckoutBillingAddressFields(
+            country: Components\BillingAddressFieldMode::Required,
+            state: Components\BillingAddressFieldMode::Disabled,
+            city: Components\BillingAddressFieldMode::Required,
+            postalCode: Components\BillingAddressFieldMode::Required,
+            line1: Components\BillingAddressFieldMode::Required,
+            line2: Components\BillingAddressFieldMode::Disabled,
         ),
         metadata: [
             'key' => '<value>',
@@ -140,13 +140,12 @@ $request = new Components\WebhookCheckoutCreatedPayload(
                     productId: '<value>',
                     recurringInterval: Components\SubscriptionRecurringInterval::Month,
                 ),
-                new Components\ProductPriceFixed(
+                new Components\LegacyRecurringProductPriceFixed(
                     createdAt: Utils\Utils::parseDateTime('2024-05-02T18:25:33.974Z'),
                     modifiedAt: Utils\Utils::parseDateTime('2025-02-06T12:55:07.640Z'),
                     id: '<value>',
                     isArchived: false,
                     productId: '<value>',
-                    type: Components\ProductPriceType::Recurring,
                     recurringInterval: Components\SubscriptionRecurringInterval::Month,
                     priceCurrency: '<value>',
                     priceAmount: 115799,
@@ -210,17 +209,13 @@ $request = new Components\WebhookCheckoutCreatedPayload(
                 ),
             ],
         ),
-        productPrice: new Components\LegacyRecurringProductPriceCustom(
-            createdAt: Utils\Utils::parseDateTime('2025-07-31T12:54:47.590Z'),
+        productPrice: new Components\LegacyRecurringProductPriceFree(
+            createdAt: Utils\Utils::parseDateTime('2023-10-30T00:08:39.161Z'),
             modifiedAt: Utils\Utils::parseDateTime('2023-01-11T22:31:47.320Z'),
             id: '<value>',
             isArchived: true,
             productId: '<value>',
             recurringInterval: Components\SubscriptionRecurringInterval::Month,
-            priceCurrency: '<value>',
-            minimumAmount: 203013,
-            maximumAmount: null,
-            presetAmount: 119260,
         ),
         discount: new Components\CheckoutDiscountFixedOnceForeverDuration(
             duration: Components\DiscountDuration::Once,
@@ -402,14 +397,13 @@ foreach ($responses as $response) {
 
 * [get](docs/sdks/polarcustomers/README.md#get) - Get Customer
 * [update](docs/sdks/polarcustomers/README.md#update) - Update Customer
-* [getPaymentMethods](docs/sdks/polarcustomers/README.md#getpaymentmethods) - Get Customer Payment Methods
+* [listPaymentMethods](docs/sdks/polarcustomers/README.md#listpaymentmethods) - List Customer Payment Methods
 * [addPaymentMethod](docs/sdks/polarcustomers/README.md#addpaymentmethod) - Add Customer Payment Method
 * [deletePaymentMethod](docs/sdks/polarcustomers/README.md#deletepaymentmethod) - Delete Customer Payment Method
 
 #### [customerPortal->downloadables](docs/sdks/downloadables/README.md)
 
 * [list](docs/sdks/downloadables/README.md#list) - List Downloadables
-* [get](docs/sdks/downloadables/README.md#get) - Get Downloadable
 
 #### [customerPortal->licenseKeys](docs/sdks/polarlicensekeys/README.md)
 
@@ -513,14 +507,6 @@ foreach ($responses as $response) {
 * [revoke](docs/sdks/oauth2/README.md#revoke) - Revoke Token
 * [introspect](docs/sdks/oauth2/README.md#introspect) - Introspect Token
 * [userinfo](docs/sdks/oauth2/README.md#userinfo) - Get User Info
-
-#### [oauth2->clients](docs/sdks/clients/README.md)
-
-* [list](docs/sdks/clients/README.md#list) - List Clients
-* [create](docs/sdks/clients/README.md#create) - Create Client
-* [get](docs/sdks/clients/README.md#get) - Get Client
-* [update](docs/sdks/clients/README.md#update) - Update Client
-* [delete](docs/sdks/clients/README.md#delete) - Delete Client
 
 ### [orders](docs/sdks/orders/README.md)
 

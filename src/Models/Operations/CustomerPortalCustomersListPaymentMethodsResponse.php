@@ -9,7 +9,7 @@ declare(strict_types=1);
 namespace Polar\Models\Operations;
 
 use Polar\Models\Components;
-class CustomerPortalCustomersGetPaymentMethodsResponse
+class CustomerPortalCustomersListPaymentMethodsResponse
 {
     /**
      * HTTP response content type for this operation
@@ -40,7 +40,7 @@ class CustomerPortalCustomersGetPaymentMethodsResponse
     public ?Components\ListResourceUnionPaymentMethodCardPaymentMethodGeneric $listResourceUnionPaymentMethodCardPaymentMethodGeneric = null;
 
     /**
-     * @var \Closure(string): ?CustomerPortalCustomersGetPaymentMethodsResponse $next
+     * @var \Closure(string): ?CustomerPortalCustomersListPaymentMethodsResponse $next
      */
     public \Closure $next;
     /**
@@ -60,9 +60,9 @@ class CustomerPortalCustomersGetPaymentMethodsResponse
     /**
      * @param  string  $name
      * @param  array<mixed>  $args
-     * @return ?CustomerPortalCustomersGetPaymentMethodsResponse
+     * @return ?CustomerPortalCustomersListPaymentMethodsResponse
      */
-    public function __call($name, $args): ?CustomerPortalCustomersGetPaymentMethodsResponse
+    public function __call($name, $args): ?CustomerPortalCustomersListPaymentMethodsResponse
     {
         if ($name === 'next') {
             return call_user_func_array($this->next, $args);
