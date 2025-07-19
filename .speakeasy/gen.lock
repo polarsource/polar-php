@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: bd003db9-613a-4093-838e-6d19bf5f76d7
 management:
-  docChecksum: 70f4b001216eeab70ec5d029d5e430c3
+  docChecksum: cf5e534bdba6ff57dc6032008e63746c
   docVersion: 0.1.0
-  speakeasyVersion: 1.581.2
-  generationVersion: 2.656.9
-  releaseVersion: 0.4.2
-  configChecksum: 10cc0158cda40eadaeff4ed6e616a91a
+  speakeasyVersion: 1.583.0
+  generationVersion: 2.658.3
+  releaseVersion: 0.4.3
+  configChecksum: 51029e9710af04f836bc662263cd8131
   repoURL: https://github.com/polarsource/polar-php.git
   installationURL: https://github.com/polarsource/polar-php
   published: true

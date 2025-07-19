@@ -119,7 +119,7 @@ if ($response->any !== null) {
 
 Get a subscription by ID.
 
-**Scopes**: `subscriptions:write`
+**Scopes**: `subscriptions:read` `subscriptions:write`
 
 ### Example Usage
 
