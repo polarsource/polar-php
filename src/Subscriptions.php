@@ -130,7 +130,7 @@ class Subscriptions
      *
      * Get a subscription by ID.
      *
-     * **Scopes**: `subscriptions:write`
+     * **Scopes**: `subscriptions:read` `subscriptions:write`
      *
      * @param  string  $id
      * @return Operations\SubscriptionsGetResponse
