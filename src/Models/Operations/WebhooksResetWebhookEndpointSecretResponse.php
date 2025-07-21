@@ -9,7 +9,7 @@ declare(strict_types=1);
 namespace Polar\Models\Operations;
 
 use Polar\Models\Components;
-class CustomerPortalCustomersAddPaymentMethodResponse
+class WebhooksResetWebhookEndpointSecretResponse
 {
     /**
      * HTTP response content type for this operation
@@ -33,24 +33,24 @@ class CustomerPortalCustomersAddPaymentMethodResponse
     public \Psr\Http\Message\ResponseInterface $rawResponse;
 
     /**
-     * Payment method created.
+     * Webhook endpoint secret reset.
      *
-     * @var Components\PaymentMethodCard|Components\PaymentMethodGeneric|null $customerPaymentMethod
+     * @var ?Components\WebhookEndpoint $webhookEndpoint
      */
-    public Components\PaymentMethodCard|Components\PaymentMethodGeneric|null $customerPaymentMethod = null;
+    public ?Components\WebhookEndpoint $webhookEndpoint = null;
 
     /**
      * @param  string  $contentType
      * @param  int  $statusCode
      * @param  \Psr\Http\Message\ResponseInterface  $rawResponse
-     * @param  Components\PaymentMethodCard|Components\PaymentMethodGeneric|null  $customerPaymentMethod
+     * @param  ?Components\WebhookEndpoint  $webhookEndpoint
      * @phpstan-pure
      */
-    public function __construct(string $contentType, int $statusCode, \Psr\Http\Message\ResponseInterface $rawResponse, Components\PaymentMethodCard|Components\PaymentMethodGeneric|null $customerPaymentMethod = null)
+    public function __construct(string $contentType, int $statusCode, \Psr\Http\Message\ResponseInterface $rawResponse, ?Components\WebhookEndpoint $webhookEndpoint = null)
     {
         $this->contentType = $contentType;
         $this->statusCode = $statusCode;
         $this->rawResponse = $rawResponse;
-        $this->customerPaymentMethod = $customerPaymentMethod;
+        $this->webhookEndpoint = $webhookEndpoint;
     }
 }

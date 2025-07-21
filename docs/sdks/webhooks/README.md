@@ -10,6 +10,7 @@
 * [getWebhookEndpoint](#getwebhookendpoint) - Get Webhook Endpoint
 * [updateWebhookEndpoint](#updatewebhookendpoint) - Update Webhook Endpoint
 * [deleteWebhookEndpoint](#deletewebhookendpoint) - Delete Webhook Endpoint
+* [resetWebhookEndpointSecret](#resetwebhookendpointsecret) - Reset Webhook Endpoint Secret
 * [listWebhookDeliveries](#listwebhookdeliveries) - List Webhook Deliveries
 * [redeliverWebhookEvent](#redeliverwebhookevent) - Redeliver Webhook Event
 
@@ -95,7 +96,6 @@ $sdk = Polar\Polar::builder()
 $request = new Components\WebhookEndpointCreate(
     url: 'https://webhook.site/cb791d80-f26e-4f8c-be88-6e56054192b0',
     format: Components\WebhookFormat::Slack,
-    secret: 'f_z6mfSpxkjogyw3FkA2aH2gYE5huxruNf34MpdWMcA',
     events: [
         Components\WebhookEventType::SubscriptionUncanceled,
     ],
@@ -202,7 +202,6 @@ $sdk = Polar\Polar::builder()
 
 $webhookEndpointUpdate = new Components\WebhookEndpointUpdate(
     url: 'https://webhook.site/cb791d80-f26e-4f8c-be88-6e56054192b0',
-    secret: 'f_z6mfSpxkjogyw3FkA2aH2gYE5huxruNf34MpdWMcA',
 );
 
 $response = $sdk->webhooks->updateWebhookEndpoint(
@@ -276,6 +275,56 @@ if ($response->statusCode === 200) {
 ### Response
 
 **[?Operations\WebhooksDeleteWebhookEndpointResponse](../../Models/Operations/WebhooksDeleteWebhookEndpointResponse.md)**
+
+### Errors
+
+| Error Type                 | Status Code                | Content Type               |
+| -------------------------- | -------------------------- | -------------------------- |
+| Errors\ResourceNotFound    | 404                        | application/json           |
+| Errors\HTTPValidationError | 422                        | application/json           |
+| Errors\APIException        | 4XX, 5XX                   | \*/\*                      |
+
+## resetWebhookEndpointSecret
+
+Regenerate a webhook endpoint secret.
+
+**Scopes**: `webhooks:write`
+
+### Example Usage
+
+```php
+declare(strict_types=1);
+
+require 'vendor/autoload.php';
+
+use Polar;
+
+$sdk = Polar\Polar::builder()
+    ->setSecurity(
+        '<YOUR_BEARER_TOKEN_HERE>'
+    )
+    ->build();
+
+
+
+$response = $sdk->webhooks->resetWebhookEndpointSecret(
+    id: '<value>'
+);
+
+if ($response->webhookEndpoint !== null) {
+    // handle response
+}
+```
+
+### Parameters
+
+| Parameter                | Type                     | Required                 | Description              |
+| ------------------------ | ------------------------ | ------------------------ | ------------------------ |
+| `id`                     | *string*                 | :heavy_check_mark:       | The webhook endpoint ID. |
+
+### Response
+
+**[?Operations\WebhooksResetWebhookEndpointSecretResponse](../../Models/Operations/WebhooksResetWebhookEndpointSecretResponse.md)**
 
 ### Errors
 

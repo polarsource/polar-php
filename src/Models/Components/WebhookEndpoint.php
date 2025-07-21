@@ -45,6 +45,14 @@ class WebhookEndpoint
     public WebhookFormat $format;
 
     /**
+     * The secret used to sign the webhook events.
+     *
+     * @var string $secret
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('secret')]
+    public string $secret;
+
+    /**
      * The organization ID associated with the webhook endpoint.
      *
      * @var string $organizationId
@@ -74,17 +82,19 @@ class WebhookEndpoint
      * @param  string  $id
      * @param  string  $url
      * @param  WebhookFormat  $format
+     * @param  string  $secret
      * @param  string  $organizationId
      * @param  array<WebhookEventType>  $events
      * @param  ?\DateTime  $modifiedAt
      * @phpstan-pure
      */
-    public function __construct(\DateTime $createdAt, string $id, string $url, WebhookFormat $format, string $organizationId, array $events, ?\DateTime $modifiedAt = null)
+    public function __construct(\DateTime $createdAt, string $id, string $url, WebhookFormat $format, string $secret, string $organizationId, array $events, ?\DateTime $modifiedAt = null)
     {
         $this->createdAt = $createdAt;
         $this->id = $id;
         $this->url = $url;
         $this->format = $format;
+        $this->secret = $secret;
         $this->organizationId = $organizationId;
         $this->events = $events;
         $this->modifiedAt = $modifiedAt;

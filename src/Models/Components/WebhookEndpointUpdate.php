@@ -22,20 +22,21 @@ class WebhookEndpointUpdate
 
     /**
      *
+     * @var ?string $secret
+     * @deprecated  field: This will be removed in a future release, please migrate away from it as soon as possible.
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('secret')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
+    public ?string $secret = null;
+
+    /**
+     *
      * @var ?WebhookFormat $format
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('format')]
     #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\WebhookFormat|null')]
     #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
     public ?WebhookFormat $format = null;
-
-    /**
-     *
-     * @var ?string $secret
-     */
-    #[\Speakeasy\Serializer\Annotation\SerializedName('secret')]
-    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
-    public ?string $secret = null;
 
     /**
      * $events
@@ -49,16 +50,16 @@ class WebhookEndpointUpdate
 
     /**
      * @param  ?string  $url
-     * @param  ?WebhookFormat  $format
      * @param  ?string  $secret
+     * @param  ?WebhookFormat  $format
      * @param  ?array<WebhookEventType>  $events
      * @phpstan-pure
      */
-    public function __construct(?string $url = null, ?WebhookFormat $format = null, ?string $secret = null, ?array $events = null)
+    public function __construct(?string $url = null, ?string $secret = null, ?WebhookFormat $format = null, ?array $events = null)
     {
         $this->url = $url;
-        $this->format = $format;
         $this->secret = $secret;
+        $this->format = $format;
         $this->events = $events;
     }
 }

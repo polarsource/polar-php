@@ -9,7 +9,7 @@ declare(strict_types=1);
 namespace Polar\Models\Components;
 
 
-class ListResourceUnionPaymentMethodCardPaymentMethodGeneric
+class ListResourceCustomerPaymentMethod
 {
     /**
      * $items
