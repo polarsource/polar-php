@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: bd003db9-613a-4093-838e-6d19bf5f76d7
 management:
-  docChecksum: 70f4b001216eeab70ec5d029d5e430c3
+  docChecksum: b0f01aec457cc91ea8f087c1cb410d91
   docVersion: 0.1.0
-  speakeasyVersion: 1.581.2
-  generationVersion: 2.656.9
-  releaseVersion: 0.4.2
-  configChecksum: 10cc0158cda40eadaeff4ed6e616a91a
+  speakeasyVersion: 1.583.1
+  generationVersion: 2.658.3
+  releaseVersion: 0.4.3
+  configChecksum: 51029e9710af04f836bc662263cd8131
   repoURL: https://github.com/polarsource/polar-php.git
   installationURL: https://github.com/polarsource/polar-php
   published: true
@@ -275,6 +275,7 @@ generatedFiles:
   - docs/Models/Components/CustomerOrderSubscription.md
   - docs/Models/Components/CustomerOrderUpdate.md
   - docs/Models/Components/CustomerOrganization.md
+  - docs/Models/Components/CustomerPaymentMethod.md
   - docs/Models/Components/CustomerPaymentMethodCreate.md
   - docs/Models/Components/CustomerPortalCustomer.md
   - docs/Models/Components/CustomerPortalCustomerTaxId.md
@@ -378,7 +379,6 @@ generatedFiles:
   - docs/Models/Components/IntrospectTokenRequest.md
   - docs/Models/Components/IntrospectTokenRequestTokenTypeHint.md
   - docs/Models/Components/IntrospectTokenResponse.md
-  - docs/Models/Components/Items.md
   - docs/Models/Components/LegacyRecurringProductPrice.md
   - docs/Models/Components/LegacyRecurringProductPriceCustom.md
   - docs/Models/Components/LegacyRecurringProductPriceFixed.md
@@ -409,6 +409,7 @@ generatedFiles:
   - docs/Models/Components/ListResourceCustomerCustomerMeter.md
   - docs/Models/Components/ListResourceCustomerMeter.md
   - docs/Models/Components/ListResourceCustomerOrder.md
+  - docs/Models/Components/ListResourceCustomerPaymentMethod.md
   - docs/Models/Components/ListResourceCustomerSubscription.md
   - docs/Models/Components/ListResourceDiscount.md
   - docs/Models/Components/ListResourceDownloadableRead.md
@@ -422,7 +423,6 @@ generatedFiles:
   - docs/Models/Components/ListResourceProduct.md
   - docs/Models/Components/ListResourceRefund.md
   - docs/Models/Components/ListResourceSubscription.md
-  - docs/Models/Components/ListResourceUnionPaymentMethodCardPaymentMethodGeneric.md
   - docs/Models/Components/ListResourceWebhookDelivery.md
   - docs/Models/Components/ListResourceWebhookEndpoint.md
   - docs/Models/Components/Loc.md
@@ -728,7 +728,6 @@ generatedFiles:
   - docs/Models/Operations/CustomerPortalCustomerMetersListResponse.md
   - docs/Models/Operations/CustomerPortalCustomerMetersListSecurity.md
   - docs/Models/Operations/CustomerPortalCustomersAddPaymentMethodResponse.md
-  - docs/Models/Operations/CustomerPortalCustomersAddPaymentMethodResponseCustomerPortalCustomersAddPaymentMethod.md
   - docs/Models/Operations/CustomerPortalCustomersAddPaymentMethodSecurity.md
   - docs/Models/Operations/CustomerPortalCustomersDeletePaymentMethodRequest.md
   - docs/Models/Operations/CustomerPortalCustomersDeletePaymentMethodResponse.md
@@ -975,6 +974,8 @@ generatedFiles:
   - docs/Models/Operations/WebhooksListWebhookEndpointsResponse.md
   - docs/Models/Operations/WebhooksRedeliverWebhookEventRequest.md
   - docs/Models/Operations/WebhooksRedeliverWebhookEventResponse.md
+  - docs/Models/Operations/WebhooksResetWebhookEndpointSecretRequest.md
+  - docs/Models/Operations/WebhooksResetWebhookEndpointSecretResponse.md
   - docs/Models/Operations/WebhooksUpdateWebhookEndpointRequest.md
   - docs/Models/Operations/WebhooksUpdateWebhookEndpointResponse.md
   - docs/Models/Webhooks/EndpointbenefitCreatedPostResponse.md
@@ -1312,6 +1313,7 @@ generatedFiles:
   - src/Models/Components/ListResourceCustomerCustomerMeter.php
   - src/Models/Components/ListResourceCustomerMeter.php
   - src/Models/Components/ListResourceCustomerOrder.php
+  - src/Models/Components/ListResourceCustomerPaymentMethod.php
   - src/Models/Components/ListResourceCustomerSubscription.php
   - src/Models/Components/ListResourceDiscount.php
   - src/Models/Components/ListResourceDownloadableRead.php
@@ -1325,7 +1327,6 @@ generatedFiles:
   - src/Models/Components/ListResourceProduct.php
   - src/Models/Components/ListResourceRefund.php
   - src/Models/Components/ListResourceSubscription.php
-  - src/Models/Components/ListResourceUnionPaymentMethodCardPaymentMethodGeneric.php
   - src/Models/Components/ListResourceWebhookDelivery.php
   - src/Models/Components/ListResourceWebhookEndpoint.php
   - src/Models/Components/Meter.php
@@ -1738,6 +1739,8 @@ generatedFiles:
   - src/Models/Operations/WebhooksListWebhookEndpointsResponse.php
   - src/Models/Operations/WebhooksRedeliverWebhookEventRequest.php
   - src/Models/Operations/WebhooksRedeliverWebhookEventResponse.php
+  - src/Models/Operations/WebhooksResetWebhookEndpointSecretRequest.php
+  - src/Models/Operations/WebhooksResetWebhookEndpointSecretResponse.php
   - src/Models/Operations/WebhooksUpdateWebhookEndpointRequest.php
   - src/Models/Operations/WebhooksUpdateWebhookEndpointResponse.php
   - src/Models/Webhooks/EndpointbenefitCreatedPostResponse.php
@@ -3511,16 +3514,16 @@ examples:
           limit: 10
       responses:
         "200":
-          application/json: {"items": [{"created_at": "2023-07-05T09:44:10.221Z", "modified_at": null, "id": "<value>", "url": "https://webhook.site/cb791d80-f26e-4f8c-be88-6e56054192b0", "format": "discord", "organization_id": "<value>", "events": ["order.created"]}], "pagination": {"total_count": 849585, "max_page": 594288}}
+          application/json: {"items": [{"created_at": "2023-07-05T09:44:10.221Z", "modified_at": null, "id": "<value>", "url": "https://webhook.site/cb791d80-f26e-4f8c-be88-6e56054192b0", "format": "discord", "secret": "polar_whs_ovyN6cPrTv56AApvzCaJno08SSmGJmgbWilb33N2JuK", "organization_id": "<value>", "events": ["order.created"]}], "pagination": {"total_count": 849585, "max_page": 594288}}
         "422":
           application/json: {}
   webhooks:create_webhook_endpoint:
     speakeasy-default-webhooks:create-webhook-endpoint:
       requestBody:
-        application/json: {"url": "https://webhook.site/cb791d80-f26e-4f8c-be88-6e56054192b0", "format": "slack", "secret": "f_z6mfSpxkjogyw3FkA2aH2gYE5huxruNf34MpdWMcA", "events": ["subscription.uncanceled"], "organization_id": "1dbfc517-0bbf-4301-9ba8-555ca42b9737"}
+        application/json: {"url": "https://webhook.site/cb791d80-f26e-4f8c-be88-6e56054192b0", "format": "slack", "events": ["subscription.uncanceled"], "organization_id": "1dbfc517-0bbf-4301-9ba8-555ca42b9737"}
       responses:
         "201":
-          application/json: {"created_at": "2023-03-20T06:36:18.270Z", "modified_at": "2023-08-13T00:46:23.703Z", "id": "<value>", "url": "https://webhook.site/cb791d80-f26e-4f8c-be88-6e56054192b0", "format": "slack", "organization_id": "<value>", "events": []}
+          application/json: {"created_at": "2023-03-20T06:36:18.270Z", "modified_at": "2023-08-13T00:46:23.703Z", "id": "<value>", "url": "https://webhook.site/cb791d80-f26e-4f8c-be88-6e56054192b0", "format": "slack", "secret": "polar_whs_ovyN6cPrTv56AApvzCaJno08SSmGJmgbWilb33N2JuK", "organization_id": "<value>", "events": []}
         "422":
           application/json: {}
   webhooks:get_webhook_endpoint:
@@ -3530,7 +3533,7 @@ examples:
           id: "<value>"
       responses:
         "200":
-          application/json: {"created_at": "2023-03-03T22:08:56.417Z", "modified_at": "2023-01-08T15:26:21.241Z", "id": "<value>", "url": "https://webhook.site/cb791d80-f26e-4f8c-be88-6e56054192b0", "format": "slack", "organization_id": "<value>", "events": []}
+          application/json: {"created_at": "2023-03-03T22:08:56.417Z", "modified_at": "2023-01-08T15:26:21.241Z", "id": "<value>", "url": "https://webhook.site/cb791d80-f26e-4f8c-be88-6e56054192b0", "format": "slack", "secret": "polar_whs_ovyN6cPrTv56AApvzCaJno08SSmGJmgbWilb33N2JuK", "organization_id": "<value>", "events": []}
         "404":
           application/json: {"error": "ResourceNotFound", "detail": "<value>"}
         "422":
@@ -3541,10 +3544,10 @@ examples:
         path:
           id: "<value>"
       requestBody:
-        application/json: {"url": "https://webhook.site/cb791d80-f26e-4f8c-be88-6e56054192b0", "secret": "f_z6mfSpxkjogyw3FkA2aH2gYE5huxruNf34MpdWMcA"}
+        application/json: {"url": "https://webhook.site/cb791d80-f26e-4f8c-be88-6e56054192b0"}
       responses:
         "200":
-          application/json: {"created_at": "2023-03-16T20:44:41.718Z", "modified_at": "2023-02-18T12:18:32.442Z", "id": "<value>", "url": "https://webhook.site/cb791d80-f26e-4f8c-be88-6e56054192b0", "format": "slack", "organization_id": "<value>", "events": ["customer.updated"]}
+          application/json: {"created_at": "2023-03-16T20:44:41.718Z", "modified_at": "2023-02-18T12:18:32.442Z", "id": "<value>", "url": "https://webhook.site/cb791d80-f26e-4f8c-be88-6e56054192b0", "format": "slack", "secret": "polar_whs_ovyN6cPrTv56AApvzCaJno08SSmGJmgbWilb33N2JuK", "organization_id": "<value>", "events": ["customer.updated"]}
         "404":
           application/json: {"error": "ResourceNotFound", "detail": "<value>"}
         "422":
@@ -3591,6 +3594,18 @@ examples:
       responses:
         "200":
           application/json: {"items": [{"id": "<value>", "created_at": "2024-05-30T20:57:40.238Z", "modified_at": "2024-08-27T22:17:32.042Z", "processor": "stripe", "customer_id": "<value>", "type": "<value>"}], "pagination": {"total_count": 429718, "max_page": 448702}}
+        "422":
+          application/json: {}
+  webhooks:reset_webhook_endpoint_secret:
+    speakeasy-default-webhooks:reset-webhook-endpoint-secret:
+      parameters:
+        path:
+          id: "<value>"
+      responses:
+        "200":
+          application/json: {"created_at": "2025-06-29T10:59:52.479Z", "modified_at": "2025-03-25T12:04:45.812Z", "id": "<value>", "url": "https://webhook.site/cb791d80-f26e-4f8c-be88-6e56054192b0", "format": "slack", "secret": "polar_whs_ovyN6cPrTv56AApvzCaJno08SSmGJmgbWilb33N2JuK", "organization_id": "<value>", "events": []}
+        "404":
+          application/json: {"error": "ResourceNotFound", "detail": "<value>"}
         "422":
           application/json: {}
 examplesVersion: 1.0.2

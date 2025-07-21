@@ -1,9 +1,0 @@
-# ListResourceUnionPaymentMethodCardPaymentMethodGeneric
-
-
-## Fields
-
-| Field                                                                                                   | Type                                                                                                    | Required                                                                                                | Description                                                                                             |
-| ------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------- |
-| `items`                                                                                                 | array<[Components\PaymentMethodCard\|Components\PaymentMethodGeneric](../../Models/Components/Items.md)> | :heavy_check_mark:                                                                                      | N/A                                                                                                     |
-| `pagination`                                                                                            | [Components\Pagination](../../Models/Components/Pagination.md)                                          | :heavy_check_mark:                                                                                      | N/A                                                                                                     |

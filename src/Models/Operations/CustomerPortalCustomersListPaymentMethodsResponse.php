@@ -35,9 +35,9 @@ class CustomerPortalCustomersListPaymentMethodsResponse
     /**
      * Successful Response
      *
-     * @var ?Components\ListResourceUnionPaymentMethodCardPaymentMethodGeneric $listResourceUnionPaymentMethodCardPaymentMethodGeneric
+     * @var ?Components\ListResourceCustomerPaymentMethod $listResourceCustomerPaymentMethod
      */
-    public ?Components\ListResourceUnionPaymentMethodCardPaymentMethodGeneric $listResourceUnionPaymentMethodCardPaymentMethodGeneric = null;
+    public ?Components\ListResourceCustomerPaymentMethod $listResourceCustomerPaymentMethod = null;
 
     /**
      * @var \Closure(string): ?CustomerPortalCustomersListPaymentMethodsResponse $next
@@ -47,15 +47,15 @@ class CustomerPortalCustomersListPaymentMethodsResponse
      * @param  string  $contentType
      * @param  int  $statusCode
      * @param  \Psr\Http\Message\ResponseInterface  $rawResponse
-     * @param  ?Components\ListResourceUnionPaymentMethodCardPaymentMethodGeneric  $listResourceUnionPaymentMethodCardPaymentMethodGeneric
+     * @param  ?Components\ListResourceCustomerPaymentMethod  $listResourceCustomerPaymentMethod
      * @phpstan-pure
      */
-    public function __construct(string $contentType, int $statusCode, \Psr\Http\Message\ResponseInterface $rawResponse, ?Components\ListResourceUnionPaymentMethodCardPaymentMethodGeneric $listResourceUnionPaymentMethodCardPaymentMethodGeneric = null)
+    public function __construct(string $contentType, int $statusCode, \Psr\Http\Message\ResponseInterface $rawResponse, ?Components\ListResourceCustomerPaymentMethod $listResourceCustomerPaymentMethod = null)
     {
         $this->contentType = $contentType;
         $this->statusCode = $statusCode;
         $this->rawResponse = $rawResponse;
-        $this->listResourceUnionPaymentMethodCardPaymentMethodGeneric = $listResourceUnionPaymentMethodCardPaymentMethodGeneric;
+        $this->listResourceCustomerPaymentMethod = $listResourceCustomerPaymentMethod;
     }
     /**
      * @param  string  $name

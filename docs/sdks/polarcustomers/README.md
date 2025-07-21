@@ -205,7 +205,7 @@ $response = $sdk->customerPortal->customers->addPaymentMethod(
     security: $requestSecurity
 );
 
-if ($response->responseCustomerPortalCustomersAddPaymentMethod !== null) {
+if ($response->customerPaymentMethod !== null) {
     // handle response
 }
 ```

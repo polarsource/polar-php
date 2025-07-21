@@ -105,7 +105,7 @@ class PolarCustomers
                     statusCode: $statusCode,
                     contentType: $contentType,
                     rawResponse: $httpResponse,
-                    responseCustomerPortalCustomersAddPaymentMethod: $obj);
+                    customerPaymentMethod: $obj);
 
                 return $response;
             } else {
@@ -344,12 +344,12 @@ class PolarCustomers
 
                 $serializer = Utils\JSON::createSerializer();
                 $responseData = (string) $httpResponse->getBody();
-                $obj = $serializer->deserialize($responseData, '\Polar\Models\Components\ListResourceUnionPaymentMethodCardPaymentMethodGeneric', 'json', DeserializationContext::create()->setRequireAllRequiredProperties(true));
+                $obj = $serializer->deserialize($responseData, '\Polar\Models\Components\ListResourceCustomerPaymentMethod', 'json', DeserializationContext::create()->setRequireAllRequiredProperties(true));
                 $response = new Operations\CustomerPortalCustomersListPaymentMethodsResponse(
                     statusCode: $statusCode,
                     contentType: $contentType,
                     rawResponse: $httpResponse,
-                    listResourceUnionPaymentMethodCardPaymentMethodGeneric: $obj);
+                    listResourceCustomerPaymentMethod: $obj);
                 $sdk = $this;
 
                 $response->next = function () use ($sdk, $request, $responseData, $security, $limit): ?Operations\CustomerPortalCustomersListPaymentMethodsResponse {
