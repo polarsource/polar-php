@@ -224,6 +224,15 @@ class CustomerOrder
     public ?CustomerOrderSubscription $subscription;
 
     /**
+     * When the next payment retry is scheduled
+     *
+     * @var ?\DateTime $nextPaymentAttemptAt
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('next_payment_attempt_at')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
+    public ?\DateTime $nextPaymentAttemptAt = null;
+
+    /**
      * @param  string  $id
      * @param  \DateTime  $createdAt
      * @param  OrderStatus  $status
@@ -251,9 +260,10 @@ class CustomerOrder
      * @param  ?string  $subscriptionId
      * @param  ?string  $checkoutId
      * @param  ?CustomerOrderSubscription  $subscription
+     * @param  ?\DateTime  $nextPaymentAttemptAt
      * @phpstan-pure
      */
-    public function __construct(string $id, \DateTime $createdAt, OrderStatus $status, bool $paid, int $subtotalAmount, int $discountAmount, int $netAmount, int $amount, int $taxAmount, int $totalAmount, int $refundedAmount, int $refundedTaxAmount, string $currency, OrderBillingReason $billingReason, bool $isInvoiceGenerated, string $customerId, string $productId, string $userId, CustomerOrderProduct $product, array $items, ?\DateTime $modifiedAt = null, ?string $billingName = null, ?Address $billingAddress = null, ?string $discountId = null, ?string $subscriptionId = null, ?string $checkoutId = null, ?CustomerOrderSubscription $subscription = null)
+    public function __construct(string $id, \DateTime $createdAt, OrderStatus $status, bool $paid, int $subtotalAmount, int $discountAmount, int $netAmount, int $amount, int $taxAmount, int $totalAmount, int $refundedAmount, int $refundedTaxAmount, string $currency, OrderBillingReason $billingReason, bool $isInvoiceGenerated, string $customerId, string $productId, string $userId, CustomerOrderProduct $product, array $items, ?\DateTime $modifiedAt = null, ?string $billingName = null, ?Address $billingAddress = null, ?string $discountId = null, ?string $subscriptionId = null, ?string $checkoutId = null, ?CustomerOrderSubscription $subscription = null, ?\DateTime $nextPaymentAttemptAt = null)
     {
         $this->id = $id;
         $this->createdAt = $createdAt;
@@ -282,5 +292,6 @@ class CustomerOrder
         $this->subscriptionId = $subscriptionId;
         $this->checkoutId = $checkoutId;
         $this->subscription = $subscription;
+        $this->nextPaymentAttemptAt = $nextPaymentAttemptAt;
     }
 }
