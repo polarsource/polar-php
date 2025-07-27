@@ -8,20 +8,20 @@
   },
   "license": "MIT",
   "require": {
-    "php": "^8.2",
-    "galbar/jsonpath": "^3.0",
+    "php": ">=8.2",
+    "galbar/jsonpath": ">=3.0",
     "guzzlehttp/guzzle": "^7.0",
     "speakeasy/serializer": "^4.0.3",
-    "brick/date-time": "^0.7.0",
-    "phpdocumentor/type-resolver": "^1.8",
-    "brick/math": "^0.12.1"
+    "brick/date-time": ">=0.7.0",
+    "phpdocumentor/type-resolver": ">=1.8",
+    "brick/math": ">=0.12.1"
   },
   "require-dev": {
-    "laravel/pint": "^1.21.2",
-    "phpstan/phpstan": "^2.1.0",
-    "phpunit/phpunit": "^10",
+    "laravel/pint": ">=1.21.2",
+    "phpstan/phpstan": ">=2.1.0",
+    "phpunit/phpunit": ">=10",
     "roave/security-advisories": "dev-latest",
-    "orchestra/testbench": "^9.6"
+    "orchestra/testbench": ">=9.6"
   },
   "minimum-stability": "stable",
   "prefer-stable": true,
