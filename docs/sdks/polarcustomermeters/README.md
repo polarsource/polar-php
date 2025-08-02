@@ -16,6 +16,7 @@ List meters of the authenticated customer.
 
 ### Example Usage
 
+<!-- UsageSnippet language="php" operationID="customer_portal:customer_meters:list" method="get" path="/v1/customer-portal/meters/" -->
 ```php
 declare(strict_types=1);
 
@@ -70,6 +71,7 @@ Get a meter by ID for the authenticated customer.
 
 ### Example Usage
 
+<!-- UsageSnippet language="php" operationID="customer_portal:customer_meters:get" method="get" path="/v1/customer-portal/meters/{id}" -->
 ```php
 declare(strict_types=1);
 

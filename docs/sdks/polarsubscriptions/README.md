@@ -18,6 +18,7 @@ List subscriptions of the authenticated customer.
 
 ### Example Usage
 
+<!-- UsageSnippet language="php" operationID="customer_portal:subscriptions:list" method="get" path="/v1/customer-portal/subscriptions/" -->
 ```php
 declare(strict_types=1);
 
@@ -74,6 +75,7 @@ Get a subscription for the authenticated customer.
 
 ### Example Usage
 
+<!-- UsageSnippet language="php" operationID="customer_portal:subscriptions:get" method="get" path="/v1/customer-portal/subscriptions/{id}" -->
 ```php
 declare(strict_types=1);
 
@@ -127,6 +129,7 @@ Update a subscription of the authenticated customer.
 
 ### Example Usage
 
+<!-- UsageSnippet language="php" operationID="customer_portal:subscriptions:update" method="patch" path="/v1/customer-portal/subscriptions/{id}" -->
 ```php
 declare(strict_types=1);
 
@@ -184,6 +187,7 @@ Cancel a subscription of the authenticated customer.
 
 ### Example Usage
 
+<!-- UsageSnippet language="php" operationID="customer_portal:subscriptions:cancel" method="delete" path="/v1/customer-portal/subscriptions/{id}" -->
 ```php
 declare(strict_types=1);
 

@@ -18,6 +18,7 @@ List events.
 
 ### Example Usage
 
+<!-- UsageSnippet language="php" operationID="events:list" method="get" path="/v1/events/" -->
 ```php
 declare(strict_types=1);
 
@@ -73,6 +74,7 @@ List event names.
 
 ### Example Usage
 
+<!-- UsageSnippet language="php" operationID="events:list_names" method="get" path="/v1/events/names" -->
 ```php
 declare(strict_types=1);
 
@@ -128,6 +130,7 @@ Get an event by ID.
 
 ### Example Usage
 
+<!-- UsageSnippet language="php" operationID="events:get" method="get" path="/v1/events/{id}" -->
 ```php
 declare(strict_types=1);
 
@@ -178,6 +181,7 @@ Ingest batch of events.
 
 ### Example Usage
 
+<!-- UsageSnippet language="php" operationID="events:ingest" method="post" path="/v1/events/ingest" -->
 ```php
 declare(strict_types=1);
 
