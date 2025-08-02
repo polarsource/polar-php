@@ -18,6 +18,7 @@ Currency values are output in cents.
 
 ### Example Usage
 
+<!-- UsageSnippet language="php" operationID="metrics:get" method="get" path="/v1/metrics/" -->
 ```php
 declare(strict_types=1);
 
@@ -75,6 +76,7 @@ Get the interval limits for the metrics endpoint.
 
 ### Example Usage
 
+<!-- UsageSnippet language="php" operationID="metrics:limits" method="get" path="/v1/metrics/limits" -->
 ```php
 declare(strict_types=1);
 

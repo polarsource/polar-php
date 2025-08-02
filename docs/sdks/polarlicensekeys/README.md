@@ -17,6 +17,7 @@
 
 ### Example Usage
 
+<!-- UsageSnippet language="php" operationID="customer_portal:license_keys:list" method="get" path="/v1/customer-portal/license-keys/" -->
 ```php
 declare(strict_types=1);
 
@@ -79,6 +80,7 @@ Get a license key.
 
 ### Example Usage
 
+<!-- UsageSnippet language="php" operationID="customer_portal:license_keys:get" method="get" path="/v1/customer-portal/license-keys/{id}" -->
 ```php
 declare(strict_types=1);
 
@@ -130,6 +132,7 @@ Validate a license key.
 
 ### Example Usage
 
+<!-- UsageSnippet language="php" operationID="customer_portal:license_keys:validate" method="post" path="/v1/customer-portal/license-keys/validate" -->
 ```php
 declare(strict_types=1);
 
@@ -182,6 +185,7 @@ Activate a license key instance.
 
 ### Example Usage
 
+<!-- UsageSnippet language="php" operationID="customer_portal:license_keys:activate" method="post" path="/v1/customer-portal/license-keys/activate" -->
 ```php
 declare(strict_types=1);
 
@@ -236,6 +240,7 @@ Deactivate a license key instance.
 
 ### Example Usage
 
+<!-- UsageSnippet language="php" operationID="customer_portal:license_keys:deactivate" method="post" path="/v1/customer-portal/license-keys/deactivate" -->
 ```php
 declare(strict_types=1);
 

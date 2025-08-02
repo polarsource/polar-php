@@ -19,6 +19,7 @@ List meters.
 
 ### Example Usage
 
+<!-- UsageSnippet language="php" operationID="meters:list" method="get" path="/v1/meters/" -->
 ```php
 declare(strict_types=1);
 
@@ -74,6 +75,7 @@ Create a meter.
 
 ### Example Usage
 
+<!-- UsageSnippet language="php" operationID="meters:create" method="post" path="/v1/meters/" -->
 ```php
 declare(strict_types=1);
 
@@ -141,6 +143,7 @@ Get a meter by ID.
 
 ### Example Usage
 
+<!-- UsageSnippet language="php" operationID="meters:get" method="get" path="/v1/meters/{id}" -->
 ```php
 declare(strict_types=1);
 
@@ -191,6 +194,7 @@ Update a meter.
 
 ### Example Usage
 
+<!-- UsageSnippet language="php" operationID="meters:update" method="patch" path="/v1/meters/{id}" -->
 ```php
 declare(strict_types=1);
 
@@ -245,6 +249,7 @@ Get quantities of a meter over a time period.
 
 ### Example Usage
 
+<!-- UsageSnippet language="php" operationID="meters:quantities" method="get" path="/v1/meters/{id}/quantities" -->
 ```php
 declare(strict_types=1);
 

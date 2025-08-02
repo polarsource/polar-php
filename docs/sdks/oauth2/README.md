@@ -17,6 +17,7 @@ Authorize
 
 ### Example Usage
 
+<!-- UsageSnippet language="php" operationID="oauth2:authorize" method="get" path="/v1/oauth2/authorize" -->
 ```php
 declare(strict_types=1);
 
@@ -57,6 +58,7 @@ Request an access token using a valid grant.
 
 ### Example Usage
 
+<!-- UsageSnippet language="php" operationID="oauth2:request_token" method="post" path="/v1/oauth2/token" -->
 ```php
 declare(strict_types=1);
 
@@ -109,6 +111,7 @@ Revoke an access token or a refresh token.
 
 ### Example Usage
 
+<!-- UsageSnippet language="php" operationID="oauth2:revoke_token" method="post" path="/v1/oauth2/revoke" -->
 ```php
 declare(strict_types=1);
 
@@ -160,6 +163,7 @@ Get information about an access token.
 
 ### Example Usage
 
+<!-- UsageSnippet language="php" operationID="oauth2:introspect_token" method="post" path="/v1/oauth2/introspect" -->
 ```php
 declare(strict_types=1);
 
@@ -211,6 +215,7 @@ Get information about the authenticated user.
 
 ### Example Usage
 
+<!-- UsageSnippet language="php" operationID="oauth2:userinfo" method="get" path="/v1/oauth2/userinfo" -->
 ```php
 declare(strict_types=1);
 

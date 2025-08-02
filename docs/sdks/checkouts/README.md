@@ -21,6 +21,7 @@ List checkout sessions.
 
 ### Example Usage
 
+<!-- UsageSnippet language="php" operationID="checkouts:list" method="get" path="/v1/checkouts/" -->
 ```php
 declare(strict_types=1);
 
@@ -76,6 +77,7 @@ Create a checkout session.
 
 ### Example Usage
 
+<!-- UsageSnippet language="php" operationID="checkouts:create" method="post" path="/v1/checkouts/" -->
 ```php
 declare(strict_types=1);
 
@@ -135,6 +137,7 @@ Get a checkout session by ID.
 
 ### Example Usage
 
+<!-- UsageSnippet language="php" operationID="checkouts:get" method="get" path="/v1/checkouts/{id}" -->
 ```php
 declare(strict_types=1);
 
@@ -185,6 +188,7 @@ Update a checkout session.
 
 ### Example Usage
 
+<!-- UsageSnippet language="php" operationID="checkouts:update" method="patch" path="/v1/checkouts/{id}" -->
 ```php
 declare(strict_types=1);
 
@@ -233,6 +237,7 @@ if ($response->checkout !== null) {
 | ------------------------------------- | ------------------------------------- | ------------------------------------- |
 | Errors\AlreadyActiveSubscriptionError | 403                                   | application/json                      |
 | Errors\NotOpenCheckout                | 403                                   | application/json                      |
+| Errors\PaymentNotReady                | 403                                   | application/json                      |
 | Errors\ResourceNotFound               | 404                                   | application/json                      |
 | Errors\HTTPValidationError            | 422                                   | application/json                      |
 | Errors\APIException                   | 4XX, 5XX                              | \*/\*                                 |
@@ -243,6 +248,7 @@ Get a checkout session by client secret.
 
 ### Example Usage
 
+<!-- UsageSnippet language="php" operationID="checkouts:client_get" method="get" path="/v1/checkouts/client/{client_secret}" -->
 ```php
 declare(strict_types=1);
 
@@ -292,6 +298,7 @@ Update a checkout session by client secret.
 
 ### Example Usage
 
+<!-- UsageSnippet language="php" operationID="checkouts:client_update" method="patch" path="/v1/checkouts/client/{client_secret}" -->
 ```php
 declare(strict_types=1);
 
@@ -338,6 +345,7 @@ if ($response->checkoutPublic !== null) {
 | ------------------------------------- | ------------------------------------- | ------------------------------------- |
 | Errors\AlreadyActiveSubscriptionError | 403                                   | application/json                      |
 | Errors\NotOpenCheckout                | 403                                   | application/json                      |
+| Errors\PaymentNotReady                | 403                                   | application/json                      |
 | Errors\ResourceNotFound               | 404                                   | application/json                      |
 | Errors\ExpiredCheckoutError           | 410                                   | application/json                      |
 | Errors\HTTPValidationError            | 422                                   | application/json                      |
@@ -351,6 +359,7 @@ Orders and subscriptions will be processed.
 
 ### Example Usage
 
+<!-- UsageSnippet language="php" operationID="checkouts:client_confirm" method="post" path="/v1/checkouts/client/{client_secret}/confirm" -->
 ```php
 declare(strict_types=1);
 
@@ -400,6 +409,7 @@ if ($response->checkoutPublicConfirmed !== null) {
 | Errors\PaymentError                   | 400                                   | application/json                      |
 | Errors\AlreadyActiveSubscriptionError | 403                                   | application/json                      |
 | Errors\NotOpenCheckout                | 403                                   | application/json                      |
+| Errors\PaymentNotReady                | 403                                   | application/json                      |
 | Errors\ResourceNotFound               | 404                                   | application/json                      |
 | Errors\ExpiredCheckoutError           | 410                                   | application/json                      |
 | Errors\HTTPValidationError            | 422                                   | application/json                      |
