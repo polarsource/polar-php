@@ -18,6 +18,7 @@ List organizations.
 
 ### Example Usage
 
+<!-- UsageSnippet language="php" operationID="organizations:list" method="get" path="/v1/organizations/" -->
 ```php
 declare(strict_types=1);
 
@@ -75,6 +76,7 @@ Create an organization.
 
 ### Example Usage
 
+<!-- UsageSnippet language="php" operationID="organizations:create" method="post" path="/v1/organizations/" -->
 ```php
 declare(strict_types=1);
 
@@ -128,6 +130,7 @@ Get an organization by ID.
 
 ### Example Usage
 
+<!-- UsageSnippet language="php" operationID="organizations:get" method="get" path="/v1/organizations/{id}" -->
 ```php
 declare(strict_types=1);
 
@@ -178,6 +181,7 @@ Update an organization.
 
 ### Example Usage
 
+<!-- UsageSnippet language="php" operationID="organizations:update" method="patch" path="/v1/organizations/{id}" -->
 ```php
 declare(strict_types=1);
 

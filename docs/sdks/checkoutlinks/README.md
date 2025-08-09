@@ -19,6 +19,7 @@ List checkout links.
 
 ### Example Usage
 
+<!-- UsageSnippet language="php" operationID="checkout-links:list" method="get" path="/v1/checkout-links/" -->
 ```php
 declare(strict_types=1);
 
@@ -74,6 +75,7 @@ Create a checkout link.
 
 ### Example Usage
 
+<!-- UsageSnippet language="php" operationID="checkout-links:create" method="post" path="/v1/checkout-links/" -->
 ```php
 declare(strict_types=1);
 
@@ -126,6 +128,7 @@ Get a checkout link by ID.
 
 ### Example Usage
 
+<!-- UsageSnippet language="php" operationID="checkout-links:get" method="get" path="/v1/checkout-links/{id}" -->
 ```php
 declare(strict_types=1);
 
@@ -176,6 +179,7 @@ Update a checkout link.
 
 ### Example Usage
 
+<!-- UsageSnippet language="php" operationID="checkout-links:update" method="patch" path="/v1/checkout-links/{id}" -->
 ```php
 declare(strict_types=1);
 
@@ -230,6 +234,7 @@ Delete a checkout link.
 
 ### Example Usage
 
+<!-- UsageSnippet language="php" operationID="checkout-links:delete" method="delete" path="/v1/checkout-links/{id}" -->
 ```php
 declare(strict_types=1);
 

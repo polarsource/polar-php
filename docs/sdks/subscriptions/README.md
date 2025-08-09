@@ -19,6 +19,7 @@ List subscriptions.
 
 ### Example Usage
 
+<!-- UsageSnippet language="php" operationID="subscriptions:list" method="get" path="/v1/subscriptions/" -->
 ```php
 declare(strict_types=1);
 
@@ -74,6 +75,7 @@ Export subscriptions as a CSV file.
 
 ### Example Usage
 
+<!-- UsageSnippet language="php" operationID="subscriptions:export" method="get" path="/v1/subscriptions/export" -->
 ```php
 declare(strict_types=1);
 
@@ -123,6 +125,7 @@ Get a subscription by ID.
 
 ### Example Usage
 
+<!-- UsageSnippet language="php" operationID="subscriptions:get" method="get" path="/v1/subscriptions/{id}" -->
 ```php
 declare(strict_types=1);
 
@@ -173,6 +176,7 @@ Update a subscription.
 
 ### Example Usage
 
+<!-- UsageSnippet language="php" operationID="subscriptions:update" method="patch" path="/v1/subscriptions/{id}" -->
 ```php
 declare(strict_types=1);
 
@@ -230,6 +234,7 @@ Revoke a subscription, i.e cancel immediately.
 
 ### Example Usage
 
+<!-- UsageSnippet language="php" operationID="subscriptions:revoke" method="delete" path="/v1/subscriptions/{id}" -->
 ```php
 declare(strict_types=1);
 

@@ -19,6 +19,7 @@ List files.
 
 ### Example Usage
 
+<!-- UsageSnippet language="php" operationID="files:list" method="get" path="/v1/files/" -->
 ```php
 declare(strict_types=1);
 
@@ -77,6 +78,7 @@ Create a file.
 
 ### Example Usage
 
+<!-- UsageSnippet language="php" operationID="files:create" method="post" path="/v1/files/" -->
 ```php
 declare(strict_types=1);
 
@@ -135,6 +137,7 @@ Complete a file upload.
 
 ### Example Usage
 
+<!-- UsageSnippet language="php" operationID="files:uploaded" method="post" path="/v1/files/{id}/uploaded" -->
 ```php
 declare(strict_types=1);
 
@@ -210,6 +213,7 @@ Update a file.
 
 ### Example Usage
 
+<!-- UsageSnippet language="php" operationID="files:update" method="patch" path="/v1/files/{id}" -->
 ```php
 declare(strict_types=1);
 
@@ -265,6 +269,7 @@ Delete a file.
 
 ### Example Usage
 
+<!-- UsageSnippet language="php" operationID="files:delete" method="delete" path="/v1/files/{id}" -->
 ```php
 declare(strict_types=1);
 

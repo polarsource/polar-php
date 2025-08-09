@@ -117,6 +117,14 @@ class MetricPeriod
 
     /**
      *
+     * @var int|float $committedMonthlyRecurringRevenue
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('committed_monthly_recurring_revenue')]
+    #[\Speakeasy\Serializer\Annotation\Type('int|float')]
+    public int|float $committedMonthlyRecurringRevenue;
+
+    /**
+     *
      * @var int|float $checkouts
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('checkouts')]
@@ -153,12 +161,13 @@ class MetricPeriod
      * @param  int|float  $renewedSubscriptionsRevenue
      * @param  int|float  $activeSubscriptions
      * @param  int|float  $monthlyRecurringRevenue
+     * @param  int|float  $committedMonthlyRecurringRevenue
      * @param  int|float  $checkouts
      * @param  int|float  $succeededCheckouts
      * @param  int|float  $checkoutsConversion
      * @phpstan-pure
      */
-    public function __construct(\DateTime $timestamp, int|float $orders, int|float $revenue, int|float $cumulativeRevenue, int|float $averageOrderValue, int|float $oneTimeProducts, int|float $oneTimeProductsRevenue, int|float $newSubscriptions, int|float $newSubscriptionsRevenue, int|float $renewedSubscriptions, int|float $renewedSubscriptionsRevenue, int|float $activeSubscriptions, int|float $monthlyRecurringRevenue, int|float $checkouts, int|float $succeededCheckouts, int|float $checkoutsConversion)
+    public function __construct(\DateTime $timestamp, int|float $orders, int|float $revenue, int|float $cumulativeRevenue, int|float $averageOrderValue, int|float $oneTimeProducts, int|float $oneTimeProductsRevenue, int|float $newSubscriptions, int|float $newSubscriptionsRevenue, int|float $renewedSubscriptions, int|float $renewedSubscriptionsRevenue, int|float $activeSubscriptions, int|float $monthlyRecurringRevenue, int|float $committedMonthlyRecurringRevenue, int|float $checkouts, int|float $succeededCheckouts, int|float $checkoutsConversion)
     {
         $this->timestamp = $timestamp;
         $this->orders = $orders;
@@ -173,6 +182,7 @@ class MetricPeriod
         $this->renewedSubscriptionsRevenue = $renewedSubscriptionsRevenue;
         $this->activeSubscriptions = $activeSubscriptions;
         $this->monthlyRecurringRevenue = $monthlyRecurringRevenue;
+        $this->committedMonthlyRecurringRevenue = $committedMonthlyRecurringRevenue;
         $this->checkouts = $checkouts;
         $this->succeededCheckouts = $succeededCheckouts;
         $this->checkoutsConversion = $checkoutsConversion;
