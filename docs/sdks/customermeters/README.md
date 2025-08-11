@@ -16,6 +16,7 @@ List customer meters.
 
 ### Example Usage
 
+<!-- UsageSnippet language="php" operationID="customer_meters:list" method="get" path="/v1/customer-meters/" -->
 ```php
 declare(strict_types=1);
 
@@ -71,6 +72,7 @@ Get a customer meter by ID.
 
 ### Example Usage
 
+<!-- UsageSnippet language="php" operationID="customer_meters:get" method="get" path="/v1/customer-meters/{id}" -->
 ```php
 declare(strict_types=1);
 

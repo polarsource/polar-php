@@ -420,6 +420,7 @@ foreach ($responses as $response) {
 * [update](docs/sdks/polarorders/README.md#update) - Update Order
 * [generateInvoice](docs/sdks/polarorders/README.md#generateinvoice) - Generate Order Invoice
 * [invoice](docs/sdks/polarorders/README.md#invoice) - Get Order Invoice
+* [retryPayment](docs/sdks/polarorders/README.md#retrypayment) - Retry Payment
 
 #### [customerPortal->organizations](docs/sdks/polarorganizations/README.md)
 

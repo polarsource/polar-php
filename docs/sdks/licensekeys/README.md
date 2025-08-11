@@ -18,6 +18,7 @@ Get license keys connected to the given organization & filters.
 
 ### Example Usage
 
+<!-- UsageSnippet language="php" operationID="license_keys:list" method="get" path="/v1/license-keys/" -->
 ```php
 declare(strict_types=1);
 
@@ -78,6 +79,7 @@ Get a license key.
 
 ### Example Usage
 
+<!-- UsageSnippet language="php" operationID="license_keys:get" method="get" path="/v1/license-keys/{id}" -->
 ```php
 declare(strict_types=1);
 
@@ -129,6 +131,7 @@ Update a license key.
 
 ### Example Usage
 
+<!-- UsageSnippet language="php" operationID="license_keys:update" method="patch" path="/v1/license-keys/{id}" -->
 ```php
 declare(strict_types=1);
 
@@ -184,6 +187,7 @@ Get a license key activation.
 
 ### Example Usage
 
+<!-- UsageSnippet language="php" operationID="license_keys:get_activation" method="get" path="/v1/license-keys/{id}/activations/{activation_id}" -->
 ```php
 declare(strict_types=1);
 

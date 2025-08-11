@@ -13,6 +13,10 @@ enum OrderSortProperty: string
 {
     case CreatedAt = 'created_at';
     case MinusCreatedAt = '-created_at';
+    case Status = 'status';
+    case MinusStatus = '-status';
+    case InvoiceNumber = 'invoice_number';
+    case MinusInvoiceNumber = '-invoice_number';
     case Amount = 'amount';
     case MinusAmount = '-amount';
     case NetAmount = 'net_amount';

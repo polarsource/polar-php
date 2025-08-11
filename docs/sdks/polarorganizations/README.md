@@ -13,6 +13,7 @@ Get a customer portal's organization by slug.
 
 ### Example Usage
 
+<!-- UsageSnippet language="php" operationID="customer_portal:organizations:get" method="get" path="/v1/customer-portal/organizations/{slug}" -->
 ```php
 declare(strict_types=1);
 

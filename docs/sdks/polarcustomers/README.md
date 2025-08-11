@@ -19,6 +19,7 @@ Get authenticated customer.
 
 ### Example Usage
 
+<!-- UsageSnippet language="php" operationID="customer_portal:customers:get" method="get" path="/v1/customer-portal/customers/me" -->
 ```php
 declare(strict_types=1);
 
@@ -67,6 +68,7 @@ Update authenticated customer.
 
 ### Example Usage
 
+<!-- UsageSnippet language="php" operationID="customer_portal:customers:update" method="patch" path="/v1/customer-portal/customers/me" -->
 ```php
 declare(strict_types=1);
 
@@ -123,6 +125,7 @@ Get saved payment methods of the authenticated customer.
 
 ### Example Usage
 
+<!-- UsageSnippet language="php" operationID="customer_portal:customers:list_payment_methods" method="get" path="/v1/customer-portal/customers/me/payment-methods" -->
 ```php
 declare(strict_types=1);
 
@@ -180,6 +183,7 @@ Add a payment method to the authenticated customer.
 
 ### Example Usage
 
+<!-- UsageSnippet language="php" operationID="customer_portal:customers:add_payment_method" method="post" path="/v1/customer-portal/customers/me/payment-methods" -->
 ```php
 declare(strict_types=1);
 
@@ -236,6 +240,7 @@ Delete a payment method from the authenticated customer.
 
 ### Example Usage
 
+<!-- UsageSnippet language="php" operationID="customer_portal:customers:delete_payment_method" method="delete" path="/v1/customer-portal/customers/me/payment-methods/{id}" -->
 ```php
 declare(strict_types=1);
 

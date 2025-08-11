@@ -19,6 +19,7 @@ List products.
 
 ### Example Usage
 
+<!-- UsageSnippet language="php" operationID="products:list" method="get" path="/v1/products/" -->
 ```php
 declare(strict_types=1);
 
@@ -74,6 +75,7 @@ Create a product.
 
 ### Example Usage
 
+<!-- UsageSnippet language="php" operationID="products:create" method="post" path="/v1/products/" -->
 ```php
 declare(strict_types=1);
 
@@ -134,6 +136,7 @@ Get a product by ID.
 
 ### Example Usage
 
+<!-- UsageSnippet language="php" operationID="products:get" method="get" path="/v1/products/{id}" -->
 ```php
 declare(strict_types=1);
 
@@ -184,6 +187,7 @@ Update a product.
 
 ### Example Usage
 
+<!-- UsageSnippet language="php" operationID="products:update" method="patch" path="/v1/products/{id}" -->
 ```php
 declare(strict_types=1);
 
@@ -239,6 +243,7 @@ Update benefits granted by a product.
 
 ### Example Usage
 
+<!-- UsageSnippet language="php" operationID="products:update_benefits" method="post" path="/v1/products/{id}/benefits" -->
 ```php
 declare(strict_types=1);
 

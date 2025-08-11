@@ -16,6 +16,7 @@ List products.
 
 ### Example Usage
 
+<!-- UsageSnippet language="php" operationID="refunds:list" method="get" path="/v1/refunds/" -->
 ```php
 declare(strict_types=1);
 
@@ -71,6 +72,7 @@ Create a refund.
 
 ### Example Usage
 
+<!-- UsageSnippet language="php" operationID="refunds:create" method="post" path="/v1/refunds/" -->
 ```php
 declare(strict_types=1);
 
