@@ -15,6 +15,7 @@ Create a customer session.
 
 ### Example Usage
 
+<!-- UsageSnippet language="php" operationID="customer-sessions:create" method="post" path="/v1/customer-sessions/" -->
 ```php
 declare(strict_types=1);
 

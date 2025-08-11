@@ -19,6 +19,7 @@ List discounts.
 
 ### Example Usage
 
+<!-- UsageSnippet language="php" operationID="discounts:list" method="get" path="/v1/discounts/" -->
 ```php
 declare(strict_types=1);
 
@@ -74,6 +75,7 @@ Create a discount.
 
 ### Example Usage
 
+<!-- UsageSnippet language="php" operationID="discounts:create" method="post" path="/v1/discounts/" -->
 ```php
 declare(strict_types=1);
 
@@ -130,6 +132,7 @@ Get a discount by ID.
 
 ### Example Usage
 
+<!-- UsageSnippet language="php" operationID="discounts:get" method="get" path="/v1/discounts/{id}" -->
 ```php
 declare(strict_types=1);
 
@@ -180,6 +183,7 @@ Update a discount.
 
 ### Example Usage
 
+<!-- UsageSnippet language="php" operationID="discounts:update" method="patch" path="/v1/discounts/{id}" -->
 ```php
 declare(strict_types=1);
 
@@ -234,6 +238,7 @@ Delete a discount.
 
 ### Example Usage
 
+<!-- UsageSnippet language="php" operationID="discounts:delete" method="delete" path="/v1/discounts/{id}" -->
 ```php
 declare(strict_types=1);
 

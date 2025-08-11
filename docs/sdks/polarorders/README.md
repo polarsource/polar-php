@@ -10,6 +10,7 @@
 * [update](#update) - Update Order
 * [generateInvoice](#generateinvoice) - Generate Order Invoice
 * [invoice](#invoice) - Get Order Invoice
+* [retryPayment](#retrypayment) - Retry Payment
 
 ## list
 
@@ -19,6 +20,7 @@ List orders of the authenticated customer.
 
 ### Example Usage
 
+<!-- UsageSnippet language="php" operationID="customer_portal:orders:list" method="get" path="/v1/customer-portal/orders/" -->
 ```php
 declare(strict_types=1);
 
@@ -75,6 +77,7 @@ Get an order by ID for the authenticated customer.
 
 ### Example Usage
 
+<!-- UsageSnippet language="php" operationID="customer_portal:orders:get" method="get" path="/v1/customer-portal/orders/{id}" -->
 ```php
 declare(strict_types=1);
 
@@ -128,6 +131,7 @@ Update an order for the authenticated customer.
 
 ### Example Usage
 
+<!-- UsageSnippet language="php" operationID="customer_portal:orders:update" method="patch" path="/v1/customer-portal/orders/{id}" -->
 ```php
 declare(strict_types=1);
 
@@ -189,6 +193,7 @@ Trigger generation of an order's invoice.
 
 ### Example Usage
 
+<!-- UsageSnippet language="php" operationID="customer_portal:orders:generate_invoice" method="post" path="/v1/customer-portal/orders/{id}/invoice" -->
 ```php
 declare(strict_types=1);
 
@@ -243,6 +248,7 @@ Get an order's invoice data.
 
 ### Example Usage
 
+<!-- UsageSnippet language="php" operationID="customer_portal:orders:invoice" method="get" path="/v1/customer-portal/orders/{id}/invoice" -->
 ```php
 declare(strict_types=1);
 
@@ -287,3 +293,58 @@ if ($response->customerOrderInvoice !== null) {
 | Errors\ResourceNotFound    | 404                        | application/json           |
 | Errors\HTTPValidationError | 422                        | application/json           |
 | Errors\APIException        | 4XX, 5XX                   | \*/\*                      |
+
+## retryPayment
+
+Manually retry payment for a failed order.
+
+**Scopes**: `customer_portal:write`
+
+### Example Usage
+
+<!-- UsageSnippet language="php" operationID="customer_portal:orders:retry_payment" method="post" path="/v1/customer-portal/orders/{id}/retry-payment" -->
+```php
+declare(strict_types=1);
+
+require 'vendor/autoload.php';
+
+use Polar;
+use Polar\Models\Operations;
+
+$sdk = Polar\Polar::builder()->build();
+
+
+$requestSecurity = new Operations\CustomerPortalOrdersRetryPaymentSecurity(
+    customerSession: '<YOUR_BEARER_TOKEN_HERE>',
+);
+
+$response = $sdk->customerPortal->orders->retryPayment(
+    security: $requestSecurity,
+    id: '<value>'
+
+);
+
+if ($response->any !== null) {
+    // handle response
+}
+```
+
+### Parameters
+
+| Parameter                                                                                                                  | Type                                                                                                                       | Required                                                                                                                   | Description                                                                                                                |
+| -------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------- |
+| `security`                                                                                                                 | [Operations\CustomerPortalOrdersRetryPaymentSecurity](../../Models/Operations/CustomerPortalOrdersRetryPaymentSecurity.md) | :heavy_check_mark:                                                                                                         | The security requirements to use for the request.                                                                          |
+| `id`                                                                                                                       | *string*                                                                                                                   | :heavy_check_mark:                                                                                                         | The order ID.                                                                                                              |
+
+### Response
+
+**[?Operations\CustomerPortalOrdersRetryPaymentResponse](../../Models/Operations/CustomerPortalOrdersRetryPaymentResponse.md)**
+
+### Errors
+
+| Error Type                      | Status Code                     | Content Type                    |
+| ------------------------------- | ------------------------------- | ------------------------------- |
+| Errors\ResourceNotFound         | 404                             | application/json                |
+| Errors\PaymentAlreadyInProgress | 409                             | application/json                |
+| Errors\OrderNotEligibleForRetry | 422                             | application/json                |
+| Errors\APIException             | 4XX, 5XX                        | \*/\*                           |

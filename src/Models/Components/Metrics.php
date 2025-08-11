@@ -122,6 +122,15 @@ class Metrics
     /**
      * Information about a metric.
      *
+     * @var Metric $committedMonthlyRecurringRevenue
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('committed_monthly_recurring_revenue')]
+    #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\Metric')]
+    public Metric $committedMonthlyRecurringRevenue;
+
+    /**
+     * Information about a metric.
+     *
      * @var Metric $checkouts
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('checkouts')]
@@ -159,12 +168,13 @@ class Metrics
      * @param  Metric  $renewedSubscriptionsRevenue
      * @param  Metric  $activeSubscriptions
      * @param  Metric  $monthlyRecurringRevenue
+     * @param  Metric  $committedMonthlyRecurringRevenue
      * @param  Metric  $checkouts
      * @param  Metric  $succeededCheckouts
      * @param  Metric  $checkoutsConversion
      * @phpstan-pure
      */
-    public function __construct(Metric $orders, Metric $revenue, Metric $cumulativeRevenue, Metric $averageOrderValue, Metric $oneTimeProducts, Metric $oneTimeProductsRevenue, Metric $newSubscriptions, Metric $newSubscriptionsRevenue, Metric $renewedSubscriptions, Metric $renewedSubscriptionsRevenue, Metric $activeSubscriptions, Metric $monthlyRecurringRevenue, Metric $checkouts, Metric $succeededCheckouts, Metric $checkoutsConversion)
+    public function __construct(Metric $orders, Metric $revenue, Metric $cumulativeRevenue, Metric $averageOrderValue, Metric $oneTimeProducts, Metric $oneTimeProductsRevenue, Metric $newSubscriptions, Metric $newSubscriptionsRevenue, Metric $renewedSubscriptions, Metric $renewedSubscriptionsRevenue, Metric $activeSubscriptions, Metric $monthlyRecurringRevenue, Metric $committedMonthlyRecurringRevenue, Metric $checkouts, Metric $succeededCheckouts, Metric $checkoutsConversion)
     {
         $this->orders = $orders;
         $this->revenue = $revenue;
@@ -178,6 +188,7 @@ class Metrics
         $this->renewedSubscriptionsRevenue = $renewedSubscriptionsRevenue;
         $this->activeSubscriptions = $activeSubscriptions;
         $this->monthlyRecurringRevenue = $monthlyRecurringRevenue;
+        $this->committedMonthlyRecurringRevenue = $committedMonthlyRecurringRevenue;
         $this->checkouts = $checkouts;
         $this->succeededCheckouts = $succeededCheckouts;
         $this->checkoutsConversion = $checkoutsConversion;

@@ -24,6 +24,7 @@ List customers.
 
 ### Example Usage
 
+<!-- UsageSnippet language="php" operationID="customers:list" method="get" path="/v1/customers/" -->
 ```php
 declare(strict_types=1);
 
@@ -79,6 +80,7 @@ Create a customer.
 
 ### Example Usage
 
+<!-- UsageSnippet language="php" operationID="customers:create" method="post" path="/v1/customers/" -->
 ```php
 declare(strict_types=1);
 
@@ -141,6 +143,7 @@ Get a customer by ID.
 
 ### Example Usage
 
+<!-- UsageSnippet language="php" operationID="customers:get" method="get" path="/v1/customers/{id}" -->
 ```php
 declare(strict_types=1);
 
@@ -191,6 +194,7 @@ Update a customer.
 
 ### Example Usage
 
+<!-- UsageSnippet language="php" operationID="customers:update" method="patch" path="/v1/customers/{id}" -->
 ```php
 declare(strict_types=1);
 
@@ -268,6 +272,7 @@ orders and subscriptions.
 
 ### Example Usage
 
+<!-- UsageSnippet language="php" operationID="customers:delete" method="delete" path="/v1/customers/{id}" -->
 ```php
 declare(strict_types=1);
 
@@ -318,6 +323,7 @@ Get a customer by external ID.
 
 ### Example Usage
 
+<!-- UsageSnippet language="php" operationID="customers:get_external" method="get" path="/v1/customers/external/{external_id}" -->
 ```php
 declare(strict_types=1);
 
@@ -368,6 +374,7 @@ Update a customer by external ID.
 
 ### Example Usage
 
+<!-- UsageSnippet language="php" operationID="customers:update_external" method="patch" path="/v1/customers/external/{external_id}" -->
 ```php
 declare(strict_types=1);
 
@@ -434,6 +441,7 @@ Immediately cancels any active subscriptions and revokes any active benefits.
 
 ### Example Usage
 
+<!-- UsageSnippet language="php" operationID="customers:delete_external" method="delete" path="/v1/customers/external/{external_id}" -->
 ```php
 declare(strict_types=1);
 
@@ -490,6 +498,7 @@ of a customer's status.
 
 ### Example Usage
 
+<!-- UsageSnippet language="php" operationID="customers:get_state" method="get" path="/v1/customers/{id}/state" -->
 ```php
 declare(strict_types=1);
 
@@ -546,6 +555,7 @@ of a customer's status.
 
 ### Example Usage
 
+<!-- UsageSnippet language="php" operationID="customers:get_state_external" method="get" path="/v1/customers/external/{external_id}/state" -->
 ```php
 declare(strict_types=1);
 

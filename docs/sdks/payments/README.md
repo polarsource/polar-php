@@ -16,6 +16,7 @@ List payments.
 
 ### Example Usage
 
+<!-- UsageSnippet language="php" operationID="payments:list" method="get" path="/v1/payments/" -->
 ```php
 declare(strict_types=1);
 
@@ -71,6 +72,7 @@ Get a payment by ID.
 
 ### Example Usage
 
+<!-- UsageSnippet language="php" operationID="payments:get" method="get" path="/v1/payments/{id}" -->
 ```php
 declare(strict_types=1);
 

@@ -19,6 +19,7 @@ List orders.
 
 ### Example Usage
 
+<!-- UsageSnippet language="php" operationID="orders:list" method="get" path="/v1/orders/" -->
 ```php
 declare(strict_types=1);
 
@@ -74,6 +75,7 @@ Get an order by ID.
 
 ### Example Usage
 
+<!-- UsageSnippet language="php" operationID="orders:get" method="get" path="/v1/orders/{id}" -->
 ```php
 declare(strict_types=1);
 
@@ -124,6 +126,7 @@ Update an order.
 
 ### Example Usage
 
+<!-- UsageSnippet language="php" operationID="orders:update" method="patch" path="/v1/orders/{id}" -->
 ```php
 declare(strict_types=1);
 
@@ -183,6 +186,7 @@ Trigger generation of an order's invoice.
 
 ### Example Usage
 
+<!-- UsageSnippet language="php" operationID="orders:generate_invoice" method="post" path="/v1/orders/{id}/invoice" -->
 ```php
 declare(strict_types=1);
 
@@ -234,6 +238,7 @@ Get an order's invoice data.
 
 ### Example Usage
 
+<!-- UsageSnippet language="php" operationID="orders:invoice" method="get" path="/v1/orders/{id}/invoice" -->
 ```php
 declare(strict_types=1);
 

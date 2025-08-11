@@ -19,6 +19,7 @@ List custom fields.
 
 ### Example Usage
 
+<!-- UsageSnippet language="php" operationID="custom-fields:list" method="get" path="/v1/custom-fields/" -->
 ```php
 declare(strict_types=1);
 
@@ -74,6 +75,7 @@ Create a custom field.
 
 ### Example Usage
 
+<!-- UsageSnippet language="php" operationID="custom-fields:create" method="post" path="/v1/custom-fields/" -->
 ```php
 declare(strict_types=1);
 
@@ -131,6 +133,7 @@ Get a custom field by ID.
 
 ### Example Usage
 
+<!-- UsageSnippet language="php" operationID="custom-fields:get" method="get" path="/v1/custom-fields/{id}" -->
 ```php
 declare(strict_types=1);
 
@@ -181,6 +184,7 @@ Update a custom field.
 
 ### Example Usage
 
+<!-- UsageSnippet language="php" operationID="custom-fields:update" method="patch" path="/v1/custom-fields/{id}" -->
 ```php
 declare(strict_types=1);
 
@@ -235,6 +239,7 @@ Delete a custom field.
 
 ### Example Usage
 
+<!-- UsageSnippet language="php" operationID="custom-fields:delete" method="delete" path="/v1/custom-fields/{id}" -->
 ```php
 declare(strict_types=1);
 

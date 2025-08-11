@@ -22,6 +22,7 @@ List webhook endpoints.
 
 ### Example Usage
 
+<!-- UsageSnippet language="php" operationID="webhooks:list_webhook_endpoints" method="get" path="/v1/webhooks/endpoints" -->
 ```php
 declare(strict_types=1);
 
@@ -79,6 +80,7 @@ Create a webhook endpoint.
 
 ### Example Usage
 
+<!-- UsageSnippet language="php" operationID="webhooks:create_webhook_endpoint" method="post" path="/v1/webhooks/endpoints" -->
 ```php
 declare(strict_types=1);
 
@@ -136,6 +138,7 @@ Get a webhook endpoint by ID.
 
 ### Example Usage
 
+<!-- UsageSnippet language="php" operationID="webhooks:get_webhook_endpoint" method="get" path="/v1/webhooks/endpoints/{id}" -->
 ```php
 declare(strict_types=1);
 
@@ -186,6 +189,7 @@ Update a webhook endpoint.
 
 ### Example Usage
 
+<!-- UsageSnippet language="php" operationID="webhooks:update_webhook_endpoint" method="patch" path="/v1/webhooks/endpoints/{id}" -->
 ```php
 declare(strict_types=1);
 
@@ -242,6 +246,7 @@ Delete a webhook endpoint.
 
 ### Example Usage
 
+<!-- UsageSnippet language="php" operationID="webhooks:delete_webhook_endpoint" method="delete" path="/v1/webhooks/endpoints/{id}" -->
 ```php
 declare(strict_types=1);
 
@@ -292,6 +297,7 @@ Regenerate a webhook endpoint secret.
 
 ### Example Usage
 
+<!-- UsageSnippet language="php" operationID="webhooks:reset_webhook_endpoint_secret" method="patch" path="/v1/webhooks/endpoints/{id}/secret" -->
 ```php
 declare(strict_types=1);
 
@@ -344,6 +350,7 @@ Deliveries are all the attempts to deliver a webhook event to an endpoint.
 
 ### Example Usage
 
+<!-- UsageSnippet language="php" operationID="webhooks:list_webhook_deliveries" method="get" path="/v1/webhooks/deliveries" -->
 ```php
 declare(strict_types=1);
 
@@ -400,6 +407,7 @@ Schedule the re-delivery of a webhook event.
 
 ### Example Usage
 
+<!-- UsageSnippet language="php" operationID="webhooks:redeliver_webhook_event" method="post" path="/v1/webhooks/events/{id}/redeliver" -->
 ```php
 declare(strict_types=1);
 

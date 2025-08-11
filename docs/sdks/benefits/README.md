@@ -20,6 +20,7 @@ List benefits.
 
 ### Example Usage
 
+<!-- UsageSnippet language="php" operationID="benefits:list" method="get" path="/v1/benefits/" -->
 ```php
 declare(strict_types=1);
 
@@ -75,6 +76,7 @@ Create a benefit.
 
 ### Example Usage
 
+<!-- UsageSnippet language="php" operationID="benefits:create" method="post" path="/v1/benefits/" -->
 ```php
 declare(strict_types=1);
 
@@ -129,6 +131,7 @@ Get a benefit by ID.
 
 ### Example Usage
 
+<!-- UsageSnippet language="php" operationID="benefits:get" method="get" path="/v1/benefits/{id}" -->
 ```php
 declare(strict_types=1);
 
@@ -179,6 +182,7 @@ Update a benefit.
 
 ### Example Usage
 
+<!-- UsageSnippet language="php" operationID="benefits:update" method="patch" path="/v1/benefits/{id}" -->
 ```php
 declare(strict_types=1);
 
@@ -237,6 +241,7 @@ Delete a benefit.
 
 ### Example Usage
 
+<!-- UsageSnippet language="php" operationID="benefits:delete" method="delete" path="/v1/benefits/{id}" -->
 ```php
 declare(strict_types=1);
 
@@ -290,6 +295,7 @@ It's especially useful to check if a user has been granted a benefit.
 
 ### Example Usage
 
+<!-- UsageSnippet language="php" operationID="benefits:grants" method="get" path="/v1/benefits/{id}/grants" -->
 ```php
 declare(strict_types=1);
 
