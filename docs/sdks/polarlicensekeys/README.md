@@ -141,11 +141,7 @@ require 'vendor/autoload.php';
 use Polar;
 use Polar\Models\Components;
 
-$sdk = Polar\Polar::builder()
-    ->setSecurity(
-        '<YOUR_BEARER_TOKEN_HERE>'
-    )
-    ->build();
+$sdk = Polar\Polar::builder()->build();
 
 $request = new Components\LicenseKeyValidate(
     key: '<key>',
@@ -194,11 +190,7 @@ require 'vendor/autoload.php';
 use Polar;
 use Polar\Models\Components;
 
-$sdk = Polar\Polar::builder()
-    ->setSecurity(
-        '<YOUR_BEARER_TOKEN_HERE>'
-    )
-    ->build();
+$sdk = Polar\Polar::builder()->build();
 
 $request = new Components\LicenseKeyActivate(
     key: '<key>',
@@ -249,11 +241,7 @@ require 'vendor/autoload.php';
 use Polar;
 use Polar\Models\Components;
 
-$sdk = Polar\Polar::builder()
-    ->setSecurity(
-        '<YOUR_BEARER_TOKEN_HERE>'
-    )
-    ->build();
+$sdk = Polar\Polar::builder()->build();
 
 $request = new Components\LicenseKeyDeactivate(
     key: '<key>',
