@@ -37,6 +37,14 @@ class MetricPeriod
 
     /**
      *
+     * @var int|float $netRevenue
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('net_revenue')]
+    #[\Speakeasy\Serializer\Annotation\Type('int|float')]
+    public int|float $netRevenue;
+
+    /**
+     *
      * @var int|float $cumulativeRevenue
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('cumulative_revenue')]
@@ -45,11 +53,27 @@ class MetricPeriod
 
     /**
      *
+     * @var int|float $netCumulativeRevenue
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('net_cumulative_revenue')]
+    #[\Speakeasy\Serializer\Annotation\Type('int|float')]
+    public int|float $netCumulativeRevenue;
+
+    /**
+     *
      * @var int|float $averageOrderValue
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('average_order_value')]
     #[\Speakeasy\Serializer\Annotation\Type('int|float')]
     public int|float $averageOrderValue;
+
+    /**
+     *
+     * @var int|float $netAverageOrderValue
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('net_average_order_value')]
+    #[\Speakeasy\Serializer\Annotation\Type('int|float')]
+    public int|float $netAverageOrderValue;
 
     /**
      *
@@ -69,6 +93,14 @@ class MetricPeriod
 
     /**
      *
+     * @var int|float $oneTimeProductsNetRevenue
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('one_time_products_net_revenue')]
+    #[\Speakeasy\Serializer\Annotation\Type('int|float')]
+    public int|float $oneTimeProductsNetRevenue;
+
+    /**
+     *
      * @var int|float $newSubscriptions
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('new_subscriptions')]
@@ -85,6 +117,14 @@ class MetricPeriod
 
     /**
      *
+     * @var int|float $newSubscriptionsNetRevenue
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('new_subscriptions_net_revenue')]
+    #[\Speakeasy\Serializer\Annotation\Type('int|float')]
+    public int|float $newSubscriptionsNetRevenue;
+
+    /**
+     *
      * @var int|float $renewedSubscriptions
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('renewed_subscriptions')]
@@ -98,6 +138,14 @@ class MetricPeriod
     #[\Speakeasy\Serializer\Annotation\SerializedName('renewed_subscriptions_revenue')]
     #[\Speakeasy\Serializer\Annotation\Type('int|float')]
     public int|float $renewedSubscriptionsRevenue;
+
+    /**
+     *
+     * @var int|float $renewedSubscriptionsNetRevenue
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('renewed_subscriptions_net_revenue')]
+    #[\Speakeasy\Serializer\Annotation\Type('int|float')]
+    public int|float $renewedSubscriptionsNetRevenue;
 
     /**
      *
@@ -151,14 +199,20 @@ class MetricPeriod
      * @param  \DateTime  $timestamp
      * @param  int|float  $orders
      * @param  int|float  $revenue
+     * @param  int|float  $netRevenue
      * @param  int|float  $cumulativeRevenue
+     * @param  int|float  $netCumulativeRevenue
      * @param  int|float  $averageOrderValue
+     * @param  int|float  $netAverageOrderValue
      * @param  int|float  $oneTimeProducts
      * @param  int|float  $oneTimeProductsRevenue
+     * @param  int|float  $oneTimeProductsNetRevenue
      * @param  int|float  $newSubscriptions
      * @param  int|float  $newSubscriptionsRevenue
+     * @param  int|float  $newSubscriptionsNetRevenue
      * @param  int|float  $renewedSubscriptions
      * @param  int|float  $renewedSubscriptionsRevenue
+     * @param  int|float  $renewedSubscriptionsNetRevenue
      * @param  int|float  $activeSubscriptions
      * @param  int|float  $monthlyRecurringRevenue
      * @param  int|float  $committedMonthlyRecurringRevenue
@@ -167,19 +221,25 @@ class MetricPeriod
      * @param  int|float  $checkoutsConversion
      * @phpstan-pure
      */
-    public function __construct(\DateTime $timestamp, int|float $orders, int|float $revenue, int|float $cumulativeRevenue, int|float $averageOrderValue, int|float $oneTimeProducts, int|float $oneTimeProductsRevenue, int|float $newSubscriptions, int|float $newSubscriptionsRevenue, int|float $renewedSubscriptions, int|float $renewedSubscriptionsRevenue, int|float $activeSubscriptions, int|float $monthlyRecurringRevenue, int|float $committedMonthlyRecurringRevenue, int|float $checkouts, int|float $succeededCheckouts, int|float $checkoutsConversion)
+    public function __construct(\DateTime $timestamp, int|float $orders, int|float $revenue, int|float $netRevenue, int|float $cumulativeRevenue, int|float $netCumulativeRevenue, int|float $averageOrderValue, int|float $netAverageOrderValue, int|float $oneTimeProducts, int|float $oneTimeProductsRevenue, int|float $oneTimeProductsNetRevenue, int|float $newSubscriptions, int|float $newSubscriptionsRevenue, int|float $newSubscriptionsNetRevenue, int|float $renewedSubscriptions, int|float $renewedSubscriptionsRevenue, int|float $renewedSubscriptionsNetRevenue, int|float $activeSubscriptions, int|float $monthlyRecurringRevenue, int|float $committedMonthlyRecurringRevenue, int|float $checkouts, int|float $succeededCheckouts, int|float $checkoutsConversion)
     {
         $this->timestamp = $timestamp;
         $this->orders = $orders;
         $this->revenue = $revenue;
+        $this->netRevenue = $netRevenue;
         $this->cumulativeRevenue = $cumulativeRevenue;
+        $this->netCumulativeRevenue = $netCumulativeRevenue;
         $this->averageOrderValue = $averageOrderValue;
+        $this->netAverageOrderValue = $netAverageOrderValue;
         $this->oneTimeProducts = $oneTimeProducts;
         $this->oneTimeProductsRevenue = $oneTimeProductsRevenue;
+        $this->oneTimeProductsNetRevenue = $oneTimeProductsNetRevenue;
         $this->newSubscriptions = $newSubscriptions;
         $this->newSubscriptionsRevenue = $newSubscriptionsRevenue;
+        $this->newSubscriptionsNetRevenue = $newSubscriptionsNetRevenue;
         $this->renewedSubscriptions = $renewedSubscriptions;
         $this->renewedSubscriptionsRevenue = $renewedSubscriptionsRevenue;
+        $this->renewedSubscriptionsNetRevenue = $renewedSubscriptionsNetRevenue;
         $this->activeSubscriptions = $activeSubscriptions;
         $this->monthlyRecurringRevenue = $monthlyRecurringRevenue;
         $this->committedMonthlyRecurringRevenue = $committedMonthlyRecurringRevenue;

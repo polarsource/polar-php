@@ -118,6 +118,16 @@ class CardPayment
     public ?string $orderId;
 
     /**
+     * Additional metadata from the payment processor for internal use.
+     *
+     * @var ?ProcessorMetadata $processorMetadata
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('processor_metadata')]
+    #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\ProcessorMetadata|null')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
+    public ?ProcessorMetadata $processorMetadata = null;
+
+    /**
      * The payment method used.
      *
      * @var string $method
@@ -140,9 +150,10 @@ class CardPayment
      * @param  ?string  $declineMessage
      * @param  ?string  $checkoutId
      * @param  ?string  $orderId
+     * @param  ?ProcessorMetadata  $processorMetadata
      * @phpstan-pure
      */
-    public function __construct(\DateTime $createdAt, string $id, PaymentProcessor $processor, PaymentStatus $status, int $amount, string $currency, string $organizationId, CardPaymentMetadata $methodMetadata, ?\DateTime $modifiedAt = null, ?string $declineReason = null, ?string $declineMessage = null, ?string $checkoutId = null, ?string $orderId = null, string $method = 'card')
+    public function __construct(\DateTime $createdAt, string $id, PaymentProcessor $processor, PaymentStatus $status, int $amount, string $currency, string $organizationId, CardPaymentMetadata $methodMetadata, ?\DateTime $modifiedAt = null, ?string $declineReason = null, ?string $declineMessage = null, ?string $checkoutId = null, ?string $orderId = null, ?ProcessorMetadata $processorMetadata = null, string $method = 'card')
     {
         $this->createdAt = $createdAt;
         $this->id = $id;
@@ -157,6 +168,7 @@ class CardPayment
         $this->declineMessage = $declineMessage;
         $this->checkoutId = $checkoutId;
         $this->orderId = $orderId;
+        $this->processorMetadata = $processorMetadata;
         $this->method = $method;
     }
 }

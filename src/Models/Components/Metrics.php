@@ -32,6 +32,15 @@ class Metrics
     /**
      * Information about a metric.
      *
+     * @var Metric $netRevenue
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('net_revenue')]
+    #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\Metric')]
+    public Metric $netRevenue;
+
+    /**
+     * Information about a metric.
+     *
      * @var Metric $cumulativeRevenue
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('cumulative_revenue')]
@@ -41,11 +50,29 @@ class Metrics
     /**
      * Information about a metric.
      *
+     * @var Metric $netCumulativeRevenue
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('net_cumulative_revenue')]
+    #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\Metric')]
+    public Metric $netCumulativeRevenue;
+
+    /**
+     * Information about a metric.
+     *
      * @var Metric $averageOrderValue
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('average_order_value')]
     #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\Metric')]
     public Metric $averageOrderValue;
+
+    /**
+     * Information about a metric.
+     *
+     * @var Metric $netAverageOrderValue
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('net_average_order_value')]
+    #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\Metric')]
+    public Metric $netAverageOrderValue;
 
     /**
      * Information about a metric.
@@ -68,6 +95,15 @@ class Metrics
     /**
      * Information about a metric.
      *
+     * @var Metric $oneTimeProductsNetRevenue
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('one_time_products_net_revenue')]
+    #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\Metric')]
+    public Metric $oneTimeProductsNetRevenue;
+
+    /**
+     * Information about a metric.
+     *
      * @var Metric $newSubscriptions
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('new_subscriptions')]
@@ -86,6 +122,15 @@ class Metrics
     /**
      * Information about a metric.
      *
+     * @var Metric $newSubscriptionsNetRevenue
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('new_subscriptions_net_revenue')]
+    #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\Metric')]
+    public Metric $newSubscriptionsNetRevenue;
+
+    /**
+     * Information about a metric.
+     *
      * @var Metric $renewedSubscriptions
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('renewed_subscriptions')]
@@ -100,6 +145,15 @@ class Metrics
     #[\Speakeasy\Serializer\Annotation\SerializedName('renewed_subscriptions_revenue')]
     #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\Metric')]
     public Metric $renewedSubscriptionsRevenue;
+
+    /**
+     * Information about a metric.
+     *
+     * @var Metric $renewedSubscriptionsNetRevenue
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('renewed_subscriptions_net_revenue')]
+    #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\Metric')]
+    public Metric $renewedSubscriptionsNetRevenue;
 
     /**
      * Information about a metric.
@@ -158,14 +212,20 @@ class Metrics
     /**
      * @param  Metric  $orders
      * @param  Metric  $revenue
+     * @param  Metric  $netRevenue
      * @param  Metric  $cumulativeRevenue
+     * @param  Metric  $netCumulativeRevenue
      * @param  Metric  $averageOrderValue
+     * @param  Metric  $netAverageOrderValue
      * @param  Metric  $oneTimeProducts
      * @param  Metric  $oneTimeProductsRevenue
+     * @param  Metric  $oneTimeProductsNetRevenue
      * @param  Metric  $newSubscriptions
      * @param  Metric  $newSubscriptionsRevenue
+     * @param  Metric  $newSubscriptionsNetRevenue
      * @param  Metric  $renewedSubscriptions
      * @param  Metric  $renewedSubscriptionsRevenue
+     * @param  Metric  $renewedSubscriptionsNetRevenue
      * @param  Metric  $activeSubscriptions
      * @param  Metric  $monthlyRecurringRevenue
      * @param  Metric  $committedMonthlyRecurringRevenue
@@ -174,18 +234,24 @@ class Metrics
      * @param  Metric  $checkoutsConversion
      * @phpstan-pure
      */
-    public function __construct(Metric $orders, Metric $revenue, Metric $cumulativeRevenue, Metric $averageOrderValue, Metric $oneTimeProducts, Metric $oneTimeProductsRevenue, Metric $newSubscriptions, Metric $newSubscriptionsRevenue, Metric $renewedSubscriptions, Metric $renewedSubscriptionsRevenue, Metric $activeSubscriptions, Metric $monthlyRecurringRevenue, Metric $committedMonthlyRecurringRevenue, Metric $checkouts, Metric $succeededCheckouts, Metric $checkoutsConversion)
+    public function __construct(Metric $orders, Metric $revenue, Metric $netRevenue, Metric $cumulativeRevenue, Metric $netCumulativeRevenue, Metric $averageOrderValue, Metric $netAverageOrderValue, Metric $oneTimeProducts, Metric $oneTimeProductsRevenue, Metric $oneTimeProductsNetRevenue, Metric $newSubscriptions, Metric $newSubscriptionsRevenue, Metric $newSubscriptionsNetRevenue, Metric $renewedSubscriptions, Metric $renewedSubscriptionsRevenue, Metric $renewedSubscriptionsNetRevenue, Metric $activeSubscriptions, Metric $monthlyRecurringRevenue, Metric $committedMonthlyRecurringRevenue, Metric $checkouts, Metric $succeededCheckouts, Metric $checkoutsConversion)
     {
         $this->orders = $orders;
         $this->revenue = $revenue;
+        $this->netRevenue = $netRevenue;
         $this->cumulativeRevenue = $cumulativeRevenue;
+        $this->netCumulativeRevenue = $netCumulativeRevenue;
         $this->averageOrderValue = $averageOrderValue;
+        $this->netAverageOrderValue = $netAverageOrderValue;
         $this->oneTimeProducts = $oneTimeProducts;
         $this->oneTimeProductsRevenue = $oneTimeProductsRevenue;
+        $this->oneTimeProductsNetRevenue = $oneTimeProductsNetRevenue;
         $this->newSubscriptions = $newSubscriptions;
         $this->newSubscriptionsRevenue = $newSubscriptionsRevenue;
+        $this->newSubscriptionsNetRevenue = $newSubscriptionsNetRevenue;
         $this->renewedSubscriptions = $renewedSubscriptions;
         $this->renewedSubscriptionsRevenue = $renewedSubscriptionsRevenue;
+        $this->renewedSubscriptionsNetRevenue = $renewedSubscriptionsNetRevenue;
         $this->activeSubscriptions = $activeSubscriptions;
         $this->monthlyRecurringRevenue = $monthlyRecurringRevenue;
         $this->committedMonthlyRecurringRevenue = $committedMonthlyRecurringRevenue;
