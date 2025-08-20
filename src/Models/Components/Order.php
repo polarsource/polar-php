@@ -68,15 +68,6 @@ class Order
     public int $netAmount;
 
     /**
-     * Amount in cents, after discounts but before taxes.
-     *
-     * @var int $amount
-     * @deprecated  field: This will be removed in a future release, please migrate away from it as soon as possible.
-     */
-    #[\Speakeasy\Serializer\Annotation\SerializedName('amount')]
-    public int $amount;
-
-    /**
      * Sales tax amount in cents.
      *
      * @var int $taxAmount
@@ -266,7 +257,6 @@ class Order
      * @param  int  $subtotalAmount
      * @param  int  $discountAmount
      * @param  int  $netAmount
-     * @param  int  $amount
      * @param  int  $taxAmount
      * @param  int  $totalAmount
      * @param  int  $refundedAmount
@@ -292,7 +282,7 @@ class Order
      * @param  ?OrderSubscription  $subscription
      * @phpstan-pure
      */
-    public function __construct(string $id, \DateTime $createdAt, OrderStatus $status, bool $paid, int $subtotalAmount, int $discountAmount, int $netAmount, int $amount, int $taxAmount, int $totalAmount, int $refundedAmount, int $refundedTaxAmount, string $currency, OrderBillingReason $billingReason, bool $isInvoiceGenerated, string $customerId, string $productId, array $metadata, OrderCustomer $customer, string $userId, OrderProduct $product, array $items, ?\DateTime $modifiedAt = null, ?string $billingName = null, ?Address $billingAddress = null, ?string $discountId = null, ?string $subscriptionId = null, ?string $checkoutId = null, ?array $customFieldData = null, DiscountFixedOnceForeverDurationBase|DiscountFixedRepeatDurationBase|DiscountPercentageOnceForeverDurationBase|DiscountPercentageRepeatDurationBase|null $discount = null, ?OrderSubscription $subscription = null)
+    public function __construct(string $id, \DateTime $createdAt, OrderStatus $status, bool $paid, int $subtotalAmount, int $discountAmount, int $netAmount, int $taxAmount, int $totalAmount, int $refundedAmount, int $refundedTaxAmount, string $currency, OrderBillingReason $billingReason, bool $isInvoiceGenerated, string $customerId, string $productId, array $metadata, OrderCustomer $customer, string $userId, OrderProduct $product, array $items, ?\DateTime $modifiedAt = null, ?string $billingName = null, ?Address $billingAddress = null, ?string $discountId = null, ?string $subscriptionId = null, ?string $checkoutId = null, ?array $customFieldData = null, DiscountFixedOnceForeverDurationBase|DiscountFixedRepeatDurationBase|DiscountPercentageOnceForeverDurationBase|DiscountPercentageRepeatDurationBase|null $discount = null, ?OrderSubscription $subscription = null)
     {
         $this->id = $id;
         $this->createdAt = $createdAt;
@@ -301,7 +291,6 @@ class Order
         $this->subtotalAmount = $subtotalAmount;
         $this->discountAmount = $discountAmount;
         $this->netAmount = $netAmount;
-        $this->amount = $amount;
         $this->taxAmount = $taxAmount;
         $this->totalAmount = $totalAmount;
         $this->refundedAmount = $refundedAmount;

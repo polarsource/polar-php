@@ -50,6 +50,11 @@ class PolarLicenseKeys
      *
      * Activate a license key instance.
      *
+     * > This endpoint doesn't require authentication and can be safely used on a public
+     * > client, like a desktop application or a mobile app.
+     * > If you plan to validate a license key on a server, use the `/v1/license-keys/activate`
+     * > endpoint instead.
+     *
      * @param  Components\LicenseKeyActivate  $request
      * @return Operations\CustomerPortalLicenseKeysActivateResponse
      * @throws \Polar\Models\Errors\APIException
@@ -148,6 +153,11 @@ class PolarLicenseKeys
      * Deactivate License Key
      *
      * Deactivate a license key instance.
+     *
+     * > This endpoint doesn't require authentication and can be safely used on a public
+     * > client, like a desktop application or a mobile app.
+     * > If you plan to validate a license key on a server, use the `/v1/license-keys/deactivate`
+     * > endpoint instead.
      *
      * @param  Components\LicenseKeyDeactivate  $request
      * @return Operations\CustomerPortalLicenseKeysDeactivateResponse
@@ -492,6 +502,11 @@ class PolarLicenseKeys
      * Validate License Key
      *
      * Validate a license key.
+     *
+     * > This endpoint doesn't require authentication and can be safely used on a public
+     * > client, like a desktop application or a mobile app.
+     * > If you plan to validate a license key on a server, use the `/v1/license-keys/validate`
+     * > endpoint instead.
      *
      * @param  Components\LicenseKeyValidate  $request
      * @return Operations\CustomerPortalLicenseKeysValidateResponse
