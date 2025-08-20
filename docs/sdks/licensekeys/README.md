@@ -9,6 +9,9 @@
 * [get](#get) - Get License Key
 * [update](#update) - Update License Key
 * [getActivation](#getactivation) - Get Activation
+* [validate](#validate) - Validate License Key
+* [activate](#activate) - Activate License Key
+* [deactivate](#deactivate) - Deactivate License Key
 
 ## list
 
@@ -230,6 +233,174 @@ if ($response->licenseKeyActivationRead !== null) {
 | Error Type                 | Status Code                | Content Type               |
 | -------------------------- | -------------------------- | -------------------------- |
 | Errors\Unauthorized        | 401                        | application/json           |
+| Errors\ResourceNotFound    | 404                        | application/json           |
+| Errors\HTTPValidationError | 422                        | application/json           |
+| Errors\APIException        | 4XX, 5XX                   | \*/\*                      |
+
+## validate
+
+Validate a license key.
+
+**Scopes**: `license_keys:write`
+
+### Example Usage
+
+<!-- UsageSnippet language="php" operationID="license_keys:validate" method="post" path="/v1/license-keys/validate" -->
+```php
+declare(strict_types=1);
+
+require 'vendor/autoload.php';
+
+use Polar;
+use Polar\Models\Components;
+
+$sdk = Polar\Polar::builder()
+    ->setSecurity(
+        '<YOUR_BEARER_TOKEN_HERE>'
+    )
+    ->build();
+
+$request = new Components\LicenseKeyValidate(
+    key: '<key>',
+    organizationId: '<value>',
+);
+
+$response = $sdk->licenseKeys->validate(
+    request: $request
+);
+
+if ($response->validatedLicenseKey !== null) {
+    // handle response
+}
+```
+
+### Parameters
+
+| Parameter                                                                      | Type                                                                           | Required                                                                       | Description                                                                    |
+| ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ |
+| `$request`                                                                     | [Components\LicenseKeyValidate](../../Models/Components/LicenseKeyValidate.md) | :heavy_check_mark:                                                             | The request object to use for the request.                                     |
+
+### Response
+
+**[?Operations\LicenseKeysValidateResponse](../../Models/Operations/LicenseKeysValidateResponse.md)**
+
+### Errors
+
+| Error Type                 | Status Code                | Content Type               |
+| -------------------------- | -------------------------- | -------------------------- |
+| Errors\ResourceNotFound    | 404                        | application/json           |
+| Errors\HTTPValidationError | 422                        | application/json           |
+| Errors\APIException        | 4XX, 5XX                   | \*/\*                      |
+
+## activate
+
+Activate a license key instance.
+
+**Scopes**: `license_keys:write`
+
+### Example Usage
+
+<!-- UsageSnippet language="php" operationID="license_keys:activate" method="post" path="/v1/license-keys/activate" -->
+```php
+declare(strict_types=1);
+
+require 'vendor/autoload.php';
+
+use Polar;
+use Polar\Models\Components;
+
+$sdk = Polar\Polar::builder()
+    ->setSecurity(
+        '<YOUR_BEARER_TOKEN_HERE>'
+    )
+    ->build();
+
+$request = new Components\LicenseKeyActivate(
+    key: '<key>',
+    organizationId: '<value>',
+    label: '<value>',
+);
+
+$response = $sdk->licenseKeys->activate(
+    request: $request
+);
+
+if ($response->licenseKeyActivationRead !== null) {
+    // handle response
+}
+```
+
+### Parameters
+
+| Parameter                                                                      | Type                                                                           | Required                                                                       | Description                                                                    |
+| ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ |
+| `$request`                                                                     | [Components\LicenseKeyActivate](../../Models/Components/LicenseKeyActivate.md) | :heavy_check_mark:                                                             | The request object to use for the request.                                     |
+
+### Response
+
+**[?Operations\LicenseKeysActivateResponse](../../Models/Operations/LicenseKeysActivateResponse.md)**
+
+### Errors
+
+| Error Type                 | Status Code                | Content Type               |
+| -------------------------- | -------------------------- | -------------------------- |
+| Errors\NotPermitted        | 403                        | application/json           |
+| Errors\ResourceNotFound    | 404                        | application/json           |
+| Errors\HTTPValidationError | 422                        | application/json           |
+| Errors\APIException        | 4XX, 5XX                   | \*/\*                      |
+
+## deactivate
+
+Deactivate a license key instance.
+
+**Scopes**: `license_keys:write`
+
+### Example Usage
+
+<!-- UsageSnippet language="php" operationID="license_keys:deactivate" method="post" path="/v1/license-keys/deactivate" -->
+```php
+declare(strict_types=1);
+
+require 'vendor/autoload.php';
+
+use Polar;
+use Polar\Models\Components;
+
+$sdk = Polar\Polar::builder()
+    ->setSecurity(
+        '<YOUR_BEARER_TOKEN_HERE>'
+    )
+    ->build();
+
+$request = new Components\LicenseKeyDeactivate(
+    key: '<key>',
+    organizationId: '<value>',
+    activationId: '<value>',
+);
+
+$response = $sdk->licenseKeys->deactivate(
+    request: $request
+);
+
+if ($response->statusCode === 200) {
+    // handle response
+}
+```
+
+### Parameters
+
+| Parameter                                                                          | Type                                                                               | Required                                                                           | Description                                                                        |
+| ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- |
+| `$request`                                                                         | [Components\LicenseKeyDeactivate](../../Models/Components/LicenseKeyDeactivate.md) | :heavy_check_mark:                                                                 | The request object to use for the request.                                         |
+
+### Response
+
+**[?Operations\LicenseKeysDeactivateResponse](../../Models/Operations/LicenseKeysDeactivateResponse.md)**
+
+### Errors
+
+| Error Type                 | Status Code                | Content Type               |
+| -------------------------- | -------------------------- | -------------------------- |
 | Errors\ResourceNotFound    | 404                        | application/json           |
 | Errors\HTTPValidationError | 422                        | application/json           |
 | Errors\APIException        | 4XX, 5XX                   | \*/\*                      |

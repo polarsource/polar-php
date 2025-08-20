@@ -10,7 +10,8 @@
 * [update](#update) - Update Order
 * [generateInvoice](#generateinvoice) - Generate Order Invoice
 * [invoice](#invoice) - Get Order Invoice
-* [retryPayment](#retrypayment) - Retry Payment
+* [getPaymentStatus](#getpaymentstatus) - Get Order Payment Status
+* [confirmRetryPayment](#confirmretrypayment) - Confirm Retry Payment
 
 ## list
 
@@ -294,15 +295,15 @@ if ($response->customerOrderInvoice !== null) {
 | Errors\HTTPValidationError | 422                        | application/json           |
 | Errors\APIException        | 4XX, 5XX                   | \*/\*                      |
 
-## retryPayment
+## getPaymentStatus
 
-Manually retry payment for a failed order.
+Get the current payment status for an order.
 
-**Scopes**: `customer_portal:write`
+**Scopes**: `customer_portal:read` `customer_portal:write`
 
 ### Example Usage
 
-<!-- UsageSnippet language="php" operationID="customer_portal:orders:retry_payment" method="post" path="/v1/customer-portal/orders/{id}/retry-payment" -->
+<!-- UsageSnippet language="php" operationID="customer_portal:orders:get_payment_status" method="get" path="/v1/customer-portal/orders/{id}/payment-status" -->
 ```php
 declare(strict_types=1);
 
@@ -314,31 +315,90 @@ use Polar\Models\Operations;
 $sdk = Polar\Polar::builder()->build();
 
 
-$requestSecurity = new Operations\CustomerPortalOrdersRetryPaymentSecurity(
+$requestSecurity = new Operations\CustomerPortalOrdersGetPaymentStatusSecurity(
     customerSession: '<YOUR_BEARER_TOKEN_HERE>',
 );
 
-$response = $sdk->customerPortal->orders->retryPayment(
+$response = $sdk->customerPortal->orders->getPaymentStatus(
     security: $requestSecurity,
     id: '<value>'
 
 );
 
-if ($response->any !== null) {
+if ($response->customerOrderPaymentStatus !== null) {
     // handle response
 }
 ```
 
 ### Parameters
 
-| Parameter                                                                                                                  | Type                                                                                                                       | Required                                                                                                                   | Description                                                                                                                |
-| -------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------- |
-| `security`                                                                                                                 | [Operations\CustomerPortalOrdersRetryPaymentSecurity](../../Models/Operations/CustomerPortalOrdersRetryPaymentSecurity.md) | :heavy_check_mark:                                                                                                         | The security requirements to use for the request.                                                                          |
-| `id`                                                                                                                       | *string*                                                                                                                   | :heavy_check_mark:                                                                                                         | The order ID.                                                                                                              |
+| Parameter                                                                                                                          | Type                                                                                                                               | Required                                                                                                                           | Description                                                                                                                        |
+| ---------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------- |
+| `security`                                                                                                                         | [Operations\CustomerPortalOrdersGetPaymentStatusSecurity](../../Models/Operations/CustomerPortalOrdersGetPaymentStatusSecurity.md) | :heavy_check_mark:                                                                                                                 | The security requirements to use for the request.                                                                                  |
+| `id`                                                                                                                               | *string*                                                                                                                           | :heavy_check_mark:                                                                                                                 | The order ID.                                                                                                                      |
 
 ### Response
 
-**[?Operations\CustomerPortalOrdersRetryPaymentResponse](../../Models/Operations/CustomerPortalOrdersRetryPaymentResponse.md)**
+**[?Operations\CustomerPortalOrdersGetPaymentStatusResponse](../../Models/Operations/CustomerPortalOrdersGetPaymentStatusResponse.md)**
+
+### Errors
+
+| Error Type                 | Status Code                | Content Type               |
+| -------------------------- | -------------------------- | -------------------------- |
+| Errors\ResourceNotFound    | 404                        | application/json           |
+| Errors\HTTPValidationError | 422                        | application/json           |
+| Errors\APIException        | 4XX, 5XX                   | \*/\*                      |
+
+## confirmRetryPayment
+
+Confirm a retry payment using a Stripe confirmation token.
+
+**Scopes**: `customer_portal:write`
+
+### Example Usage
+
+<!-- UsageSnippet language="php" operationID="customer_portal:orders:confirm_retry_payment" method="post" path="/v1/customer-portal/orders/{id}/confirm-payment" -->
+```php
+declare(strict_types=1);
+
+require 'vendor/autoload.php';
+
+use Polar;
+use Polar\Models\Components;
+use Polar\Models\Operations;
+
+$sdk = Polar\Polar::builder()->build();
+
+$customerOrderConfirmPayment = new Components\CustomerOrderConfirmPayment(
+    confirmationTokenId: '<id>',
+);
+$requestSecurity = new Operations\CustomerPortalOrdersConfirmRetryPaymentSecurity(
+    customerSession: '<YOUR_BEARER_TOKEN_HERE>',
+);
+
+$response = $sdk->customerPortal->orders->confirmRetryPayment(
+    security: $requestSecurity,
+    id: '<value>',
+    customerOrderConfirmPayment: $customerOrderConfirmPayment
+
+);
+
+if ($response->customerOrderPaymentConfirmation !== null) {
+    // handle response
+}
+```
+
+### Parameters
+
+| Parameter                                                                                                                                | Type                                                                                                                                     | Required                                                                                                                                 | Description                                                                                                                              |
+| ---------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------- |
+| `security`                                                                                                                               | [Operations\CustomerPortalOrdersConfirmRetryPaymentSecurity](../../Models/Operations/CustomerPortalOrdersConfirmRetryPaymentSecurity.md) | :heavy_check_mark:                                                                                                                       | The security requirements to use for the request.                                                                                        |
+| `id`                                                                                                                                     | *string*                                                                                                                                 | :heavy_check_mark:                                                                                                                       | The order ID.                                                                                                                            |
+| `customerOrderConfirmPayment`                                                                                                            | [Components\CustomerOrderConfirmPayment](../../Models/Components/CustomerOrderConfirmPayment.md)                                         | :heavy_check_mark:                                                                                                                       | N/A                                                                                                                                      |
+
+### Response
+
+**[?Operations\CustomerPortalOrdersConfirmRetryPaymentResponse](../../Models/Operations/CustomerPortalOrdersConfirmRetryPaymentResponse.md)**
 
 ### Errors
 

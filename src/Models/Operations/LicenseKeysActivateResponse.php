@@ -8,8 +8,8 @@ declare(strict_types=1);
 
 namespace Polar\Models\Operations;
 
-
-class CustomerPortalOrdersRetryPaymentResponse
+use Polar\Models\Components;
+class LicenseKeysActivateResponse
 {
     /**
      * HTTP response content type for this operation
@@ -35,22 +35,22 @@ class CustomerPortalOrdersRetryPaymentResponse
     /**
      * Successful Response
      *
-     * @var mixed $any
+     * @var ?Components\LicenseKeyActivationRead $licenseKeyActivationRead
      */
-    public mixed $any = null;
+    public ?Components\LicenseKeyActivationRead $licenseKeyActivationRead = null;
 
     /**
      * @param  string  $contentType
      * @param  int  $statusCode
      * @param  \Psr\Http\Message\ResponseInterface  $rawResponse
-     * @param  mixed  $any
+     * @param  ?Components\LicenseKeyActivationRead  $licenseKeyActivationRead
      * @phpstan-pure
      */
-    public function __construct(string $contentType, int $statusCode, \Psr\Http\Message\ResponseInterface $rawResponse, mixed $any = null)
+    public function __construct(string $contentType, int $statusCode, \Psr\Http\Message\ResponseInterface $rawResponse, ?Components\LicenseKeyActivationRead $licenseKeyActivationRead = null)
     {
         $this->contentType = $contentType;
         $this->statusCode = $statusCode;
         $this->rawResponse = $rawResponse;
-        $this->any = $any;
+        $this->licenseKeyActivationRead = $licenseKeyActivationRead;
     }
 }

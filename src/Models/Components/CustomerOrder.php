@@ -68,15 +68,6 @@ class CustomerOrder
     public int $netAmount;
 
     /**
-     * Amount in cents, after discounts but before taxes.
-     *
-     * @var int $amount
-     * @deprecated  field: This will be removed in a future release, please migrate away from it as soon as possible.
-     */
-    #[\Speakeasy\Serializer\Annotation\SerializedName('amount')]
-    public int $amount;
-
-    /**
      * Sales tax amount in cents.
      *
      * @var int $taxAmount
@@ -240,7 +231,6 @@ class CustomerOrder
      * @param  int  $subtotalAmount
      * @param  int  $discountAmount
      * @param  int  $netAmount
-     * @param  int  $amount
      * @param  int  $taxAmount
      * @param  int  $totalAmount
      * @param  int  $refundedAmount
@@ -263,7 +253,7 @@ class CustomerOrder
      * @param  ?\DateTime  $nextPaymentAttemptAt
      * @phpstan-pure
      */
-    public function __construct(string $id, \DateTime $createdAt, OrderStatus $status, bool $paid, int $subtotalAmount, int $discountAmount, int $netAmount, int $amount, int $taxAmount, int $totalAmount, int $refundedAmount, int $refundedTaxAmount, string $currency, OrderBillingReason $billingReason, bool $isInvoiceGenerated, string $customerId, string $productId, string $userId, CustomerOrderProduct $product, array $items, ?\DateTime $modifiedAt = null, ?string $billingName = null, ?Address $billingAddress = null, ?string $discountId = null, ?string $subscriptionId = null, ?string $checkoutId = null, ?CustomerOrderSubscription $subscription = null, ?\DateTime $nextPaymentAttemptAt = null)
+    public function __construct(string $id, \DateTime $createdAt, OrderStatus $status, bool $paid, int $subtotalAmount, int $discountAmount, int $netAmount, int $taxAmount, int $totalAmount, int $refundedAmount, int $refundedTaxAmount, string $currency, OrderBillingReason $billingReason, bool $isInvoiceGenerated, string $customerId, string $productId, string $userId, CustomerOrderProduct $product, array $items, ?\DateTime $modifiedAt = null, ?string $billingName = null, ?Address $billingAddress = null, ?string $discountId = null, ?string $subscriptionId = null, ?string $checkoutId = null, ?CustomerOrderSubscription $subscription = null, ?\DateTime $nextPaymentAttemptAt = null)
     {
         $this->id = $id;
         $this->createdAt = $createdAt;
@@ -272,7 +262,6 @@ class CustomerOrder
         $this->subtotalAmount = $subtotalAmount;
         $this->discountAmount = $discountAmount;
         $this->netAmount = $netAmount;
-        $this->amount = $amount;
         $this->taxAmount = $taxAmount;
         $this->totalAmount = $totalAmount;
         $this->refundedAmount = $refundedAmount;

@@ -130,6 +130,11 @@ if ($response->licenseKeyWithActivations !== null) {
 
 Validate a license key.
 
+> This endpoint doesn't require authentication and can be safely used on a public
+> client, like a desktop application or a mobile app.
+> If you plan to validate a license key on a server, use the `/v1/license-keys/validate`
+> endpoint instead.
+
 ### Example Usage
 
 <!-- UsageSnippet language="php" operationID="customer_portal:license_keys:validate" method="post" path="/v1/customer-portal/license-keys/validate" -->
@@ -178,6 +183,11 @@ if ($response->validatedLicenseKey !== null) {
 ## activate
 
 Activate a license key instance.
+
+> This endpoint doesn't require authentication and can be safely used on a public
+> client, like a desktop application or a mobile app.
+> If you plan to validate a license key on a server, use the `/v1/license-keys/activate`
+> endpoint instead.
 
 ### Example Usage
 
@@ -229,6 +239,11 @@ if ($response->licenseKeyActivationRead !== null) {
 ## deactivate
 
 Deactivate a license key instance.
+
+> This endpoint doesn't require authentication and can be safely used on a public
+> client, like a desktop application or a mobile app.
+> If you plan to validate a license key on a server, use the `/v1/license-keys/deactivate`
+> endpoint instead.
 
 ### Example Usage
 

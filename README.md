@@ -420,7 +420,8 @@ foreach ($responses as $response) {
 * [update](docs/sdks/polarorders/README.md#update) - Update Order
 * [generateInvoice](docs/sdks/polarorders/README.md#generateinvoice) - Generate Order Invoice
 * [invoice](docs/sdks/polarorders/README.md#invoice) - Get Order Invoice
-* [retryPayment](docs/sdks/polarorders/README.md#retrypayment) - Retry Payment
+* [getPaymentStatus](docs/sdks/polarorders/README.md#getpaymentstatus) - Get Order Payment Status
+* [confirmRetryPayment](docs/sdks/polarorders/README.md#confirmretrypayment) - Confirm Retry Payment
 
 #### [customerPortal->organizations](docs/sdks/polarorganizations/README.md)
 
@@ -487,6 +488,9 @@ foreach ($responses as $response) {
 * [get](docs/sdks/licensekeys/README.md#get) - Get License Key
 * [update](docs/sdks/licensekeys/README.md#update) - Update License Key
 * [getActivation](docs/sdks/licensekeys/README.md#getactivation) - Get Activation
+* [validate](docs/sdks/licensekeys/README.md#validate) - Validate License Key
+* [activate](docs/sdks/licensekeys/README.md#activate) - Activate License Key
+* [deactivate](docs/sdks/licensekeys/README.md#deactivate) - Deactivate License Key
 
 ### [meters](docs/sdks/meters/README.md)
 
