@@ -55,12 +55,12 @@ class Meter
     /**
      * The aggregation to apply on the filtered events to calculate the meter.
      *
-     * @var CountAggregation|PropertyAggregation $aggregation
+     * @var CountAggregation|PropertyAggregation|UniqueAggregation $aggregation
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('aggregation')]
-    #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\CountAggregation|\Polar\Models\Components\PropertyAggregation')]
-    #[\Speakeasy\Serializer\Annotation\UnionDiscriminator(field: 'func', map: ['CountAggregation' => '\Polar\Models\Components\CountAggregation', 'PropertyAggregation' => '\Polar\Models\Components\PropertyAggregation'])]
-    public CountAggregation|PropertyAggregation $aggregation;
+    #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\CountAggregation|\Polar\Models\Components\PropertyAggregation|\Polar\Models\Components\UniqueAggregation')]
+    #[\Speakeasy\Serializer\Annotation\UnionDiscriminator(field: 'func', map: ['CountAggregation' => '\Polar\Models\Components\CountAggregation', 'PropertyAggregation' => '\Polar\Models\Components\PropertyAggregation', 'UniqueAggregation' => '\Polar\Models\Components\UniqueAggregation'])]
+    public CountAggregation|PropertyAggregation|UniqueAggregation $aggregation;
 
     /**
      * The ID of the organization owning the meter.
@@ -84,12 +84,12 @@ class Meter
      * @param  string  $id
      * @param  string  $name
      * @param  Filter  $filter
-     * @param  CountAggregation|PropertyAggregation  $aggregation
+     * @param  CountAggregation|PropertyAggregation|UniqueAggregation  $aggregation
      * @param  string  $organizationId
      * @param  ?\DateTime  $modifiedAt
      * @phpstan-pure
      */
-    public function __construct(array $metadata, \DateTime $createdAt, string $id, string $name, Filter $filter, CountAggregation|PropertyAggregation $aggregation, string $organizationId, ?\DateTime $modifiedAt = null)
+    public function __construct(array $metadata, \DateTime $createdAt, string $id, string $name, Filter $filter, CountAggregation|PropertyAggregation|UniqueAggregation $aggregation, string $organizationId, ?\DateTime $modifiedAt = null)
     {
         $this->metadata = $metadata;
         $this->createdAt = $createdAt;

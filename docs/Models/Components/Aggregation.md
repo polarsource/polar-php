@@ -48,3 +48,12 @@ Components\PropertyAggregation $value = /* values here */
 Components\PropertyAggregation $value = /* values here */
 ```
 
+### `Components\UniqueAggregation`
+
+```php
+/**
+* @var Components\UniqueAggregation
+*/
+Components\UniqueAggregation $value = /* values here */
+```
+

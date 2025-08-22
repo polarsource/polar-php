@@ -369,9 +369,7 @@ use Polar\Models\Operations;
 
 $sdk = Polar\Polar::builder()->build();
 
-$customerOrderConfirmPayment = new Components\CustomerOrderConfirmPayment(
-    confirmationTokenId: '<id>',
-);
+$customerOrderConfirmPayment = new Components\CustomerOrderConfirmPayment();
 $requestSecurity = new Operations\CustomerPortalOrdersConfirmRetryPaymentSecurity(
     customerSession: '<YOUR_BEARER_TOKEN_HERE>',
 );
