@@ -54,22 +54,22 @@ class MeterUpdate
     /**
      * The aggregation to apply on the filtered events to calculate the meter.
      *
-     * @var CountAggregation|PropertyAggregation|null $aggregation
+     * @var CountAggregation|PropertyAggregation|UniqueAggregation|null $aggregation
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('aggregation')]
-    #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\CountAggregation|\Polar\Models\Components\PropertyAggregation|null')]
-    #[\Speakeasy\Serializer\Annotation\UnionDiscriminator(field: 'func', map: ['CountAggregation' => '\Polar\Models\Components\CountAggregation', 'PropertyAggregation' => '\Polar\Models\Components\PropertyAggregation'])]
+    #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\CountAggregation|\Polar\Models\Components\PropertyAggregation|\Polar\Models\Components\UniqueAggregation|null')]
+    #[\Speakeasy\Serializer\Annotation\UnionDiscriminator(field: 'func', map: ['CountAggregation' => '\Polar\Models\Components\CountAggregation', 'PropertyAggregation' => '\Polar\Models\Components\PropertyAggregation', 'UniqueAggregation' => '\Polar\Models\Components\UniqueAggregation'])]
     #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
-    public CountAggregation|PropertyAggregation|null $aggregation = null;
+    public CountAggregation|PropertyAggregation|UniqueAggregation|null $aggregation = null;
 
     /**
      * @param  ?array<string, string|int|float|bool>  $metadata
      * @param  ?string  $name
      * @param  ?Filter  $filter
-     * @param  CountAggregation|PropertyAggregation|null  $aggregation
+     * @param  CountAggregation|PropertyAggregation|UniqueAggregation|null  $aggregation
      * @phpstan-pure
      */
-    public function __construct(?array $metadata = null, ?string $name = null, ?Filter $filter = null, CountAggregation|PropertyAggregation|null $aggregation = null)
+    public function __construct(?array $metadata = null, ?string $name = null, ?Filter $filter = null, CountAggregation|PropertyAggregation|UniqueAggregation|null $aggregation = null)
     {
         $this->metadata = $metadata;
         $this->name = $name;

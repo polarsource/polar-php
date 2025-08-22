@@ -67,6 +67,13 @@ class CustomerPortalCustomer
 
     /**
      *
+     * @var ?string $billingName
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('billing_name')]
+    public ?string $billingName;
+
+    /**
+     *
      * @var ?Address $billingAddress
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('billing_address')]
@@ -98,12 +105,13 @@ class CustomerPortalCustomer
      * @param  array<string, CustomerPortalOAuthAccount>  $oauthAccounts
      * @param  ?\DateTime  $modifiedAt
      * @param  ?string  $name
+     * @param  ?string  $billingName
      * @param  ?Address  $billingAddress
      * @param  ?array<string|TaxIDFormat|null>  $taxId
      * @param  ?string  $defaultPaymentMethodId
      * @phpstan-pure
      */
-    public function __construct(\DateTime $createdAt, string $id, string $email, bool $emailVerified, array $oauthAccounts, ?\DateTime $modifiedAt = null, ?string $name = null, ?Address $billingAddress = null, ?array $taxId = null, ?string $defaultPaymentMethodId = null)
+    public function __construct(\DateTime $createdAt, string $id, string $email, bool $emailVerified, array $oauthAccounts, ?\DateTime $modifiedAt = null, ?string $name = null, ?string $billingName = null, ?Address $billingAddress = null, ?array $taxId = null, ?string $defaultPaymentMethodId = null)
     {
         $this->createdAt = $createdAt;
         $this->id = $id;
@@ -112,6 +120,7 @@ class CustomerPortalCustomer
         $this->oauthAccounts = $oauthAccounts;
         $this->modifiedAt = $modifiedAt;
         $this->name = $name;
+        $this->billingName = $billingName;
         $this->billingAddress = $billingAddress;
         $this->taxId = $taxId;
         $this->defaultPaymentMethodId = $defaultPaymentMethodId;

@@ -9,17 +9,9 @@ declare(strict_types=1);
 namespace Polar\Models\Components;
 
 
-/** CustomerOrderConfirmPayment - Schema to confirm a retry payment using a Stripe confirmation token. */
+/** CustomerOrderConfirmPayment - Schema to confirm a retry payment using either a saved payment method or a new confirmation token. */
 class CustomerOrderConfirmPayment
 {
-    /**
-     * ID of the Stripe confirmation token.
-     *
-     * @var string $confirmationTokenId
-     */
-    #[\Speakeasy\Serializer\Annotation\SerializedName('confirmation_token_id')]
-    public string $confirmationTokenId;
-
     /**
      *
      * @var ?PaymentProcessor $paymentProcessor
@@ -30,13 +22,33 @@ class CustomerOrderConfirmPayment
     public ?PaymentProcessor $paymentProcessor = null;
 
     /**
-     * @param  string  $confirmationTokenId
+     * ID of the Stripe confirmation token for new payment methods.
+     *
+     * @var ?string $confirmationTokenId
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('confirmation_token_id')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
+    public ?string $confirmationTokenId = null;
+
+    /**
+     * ID of an existing saved payment method.
+     *
+     * @var ?string $paymentMethodId
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('payment_method_id')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
+    public ?string $paymentMethodId = null;
+
+    /**
      * @param  ?PaymentProcessor  $paymentProcessor
+     * @param  ?string  $confirmationTokenId
+     * @param  ?string  $paymentMethodId
      * @phpstan-pure
      */
-    public function __construct(string $confirmationTokenId, ?PaymentProcessor $paymentProcessor = null)
+    public function __construct(?PaymentProcessor $paymentProcessor = null, ?string $confirmationTokenId = null, ?string $paymentMethodId = null)
     {
-        $this->confirmationTokenId = $confirmationTokenId;
         $this->paymentProcessor = $paymentProcessor;
+        $this->confirmationTokenId = $confirmationTokenId;
+        $this->paymentMethodId = $paymentMethodId;
     }
 }
