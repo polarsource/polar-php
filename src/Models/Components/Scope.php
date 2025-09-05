@@ -15,7 +15,8 @@ enum Scope: string
     case Profile = 'profile';
     case Email = 'email';
     case UserRead = 'user:read';
-    case WebDefault = 'web_default';
+    case WebRead = 'web:read';
+    case WebWrite = 'web:write';
     case OrganizationsRead = 'organizations:read';
     case OrganizationsWrite = 'organizations:write';
     case CustomFieldsRead = 'custom_fields:read';

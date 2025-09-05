@@ -223,6 +223,7 @@ if ($response->subscription !== null) {
 | ---------------------------------- | ---------------------------------- | ---------------------------------- |
 | Errors\AlreadyCanceledSubscription | 403                                | application/json                   |
 | Errors\ResourceNotFound            | 404                                | application/json                   |
+| Errors\SubscriptionLocked          | 409                                | application/json                   |
 | Errors\HTTPValidationError         | 422                                | application/json                   |
 | Errors\APIException                | 4XX, 5XX                           | \*/\*                              |
 
@@ -275,5 +276,6 @@ if ($response->subscription !== null) {
 | ---------------------------------- | ---------------------------------- | ---------------------------------- |
 | Errors\AlreadyCanceledSubscription | 403                                | application/json                   |
 | Errors\ResourceNotFound            | 404                                | application/json                   |
+| Errors\SubscriptionLocked          | 409                                | application/json                   |
 | Errors\HTTPValidationError         | 422                                | application/json                   |
 | Errors\APIException                | 4XX, 5XX                           | \*/\*                              |

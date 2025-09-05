@@ -79,6 +79,15 @@ class Meter
     public ?\DateTime $modifiedAt;
 
     /**
+     * Whether the meter is archived and the time it was archived.
+     *
+     * @var ?\DateTime $archivedAt
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('archived_at')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
+    public ?\DateTime $archivedAt = null;
+
+    /**
      * @param  array<string, string|int|float|bool>  $metadata
      * @param  \DateTime  $createdAt
      * @param  string  $id
@@ -87,9 +96,10 @@ class Meter
      * @param  CountAggregation|PropertyAggregation|UniqueAggregation  $aggregation
      * @param  string  $organizationId
      * @param  ?\DateTime  $modifiedAt
+     * @param  ?\DateTime  $archivedAt
      * @phpstan-pure
      */
-    public function __construct(array $metadata, \DateTime $createdAt, string $id, string $name, Filter $filter, CountAggregation|PropertyAggregation|UniqueAggregation $aggregation, string $organizationId, ?\DateTime $modifiedAt = null)
+    public function __construct(array $metadata, \DateTime $createdAt, string $id, string $name, Filter $filter, CountAggregation|PropertyAggregation|UniqueAggregation $aggregation, string $organizationId, ?\DateTime $modifiedAt = null, ?\DateTime $archivedAt = null)
     {
         $this->metadata = $metadata;
         $this->createdAt = $createdAt;
@@ -99,5 +109,6 @@ class Meter
         $this->aggregation = $aggregation;
         $this->organizationId = $organizationId;
         $this->modifiedAt = $modifiedAt;
+        $this->archivedAt = $archivedAt;
     }
 }

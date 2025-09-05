@@ -295,6 +295,7 @@ class Meters
                         request: new Operations\MetersListRequest(
                             organizationId: $request != null ? $request->organizationId : null,
                             query: $request != null ? $request->query : null,
+                            isArchived: $request != null ? $request->isArchived : null,
                             page: $nextPage,
                             limit: $request != null ? $request->limit : null,
                             sorting: $request != null ? $request->sorting : null,

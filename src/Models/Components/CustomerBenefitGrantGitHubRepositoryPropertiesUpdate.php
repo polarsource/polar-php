@@ -13,16 +13,16 @@ class CustomerBenefitGrantGitHubRepositoryPropertiesUpdate
 {
     /**
      *
-     * @var string $accountId
+     * @var ?string $accountId
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('account_id')]
-    public string $accountId;
+    public ?string $accountId;
 
     /**
-     * @param  string  $accountId
+     * @param  ?string  $accountId
      * @phpstan-pure
      */
-    public function __construct(string $accountId)
+    public function __construct(?string $accountId = null)
     {
         $this->accountId = $accountId;
     }

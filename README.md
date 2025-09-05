@@ -61,207 +61,26 @@ declare(strict_types=1);
 require 'vendor/autoload.php';
 
 use Polar;
-use Polar\Models\Components;
-use Polar\Utils;
 
-$sdk = Polar\Polar::builder()->build();
+$sdk = Polar\Polar::builder()
+    ->setSecurity(
+        '<YOUR_BEARER_TOKEN_HERE>'
+    )
+    ->build();
 
-$request = new Components\WebhookCheckoutCreatedPayload(
-    data: new Components\Checkout(
-        createdAt: Utils\Utils::parseDateTime('2023-02-15T15:44:21.478Z'),
-        modifiedAt: Utils\Utils::parseDateTime('2025-09-12T19:48:15.814Z'),
-        id: '<value>',
-        paymentProcessor: Components\PaymentProcessor::Stripe,
-        status: Components\CheckoutStatus::Expired,
-        clientSecret: '<value>',
-        url: 'https://fair-veto.com/',
-        expiresAt: Utils\Utils::parseDateTime('2025-03-15T14:26:53.109Z'),
-        successUrl: 'https://junior-linseed.net/',
-        embedOrigin: '<value>',
-        amount: 631188,
-        discountAmount: 968968,
-        netAmount: 929514,
-        taxAmount: 323773,
-        totalAmount: 115799,
-        currency: 'Som',
-        productId: '<value>',
-        productPriceId: '<value>',
-        discountId: '<value>',
-        allowDiscountCodes: true,
-        requireBillingAddress: false,
-        isDiscountApplicable: true,
-        isFreeProductPrice: true,
-        isPaymentRequired: true,
-        isPaymentSetupRequired: true,
-        isPaymentFormRequired: true,
-        customerId: '<value>',
-        isBusinessCustomer: true,
-        customerName: '<value>',
-        customerEmail: '<value>',
-        customerIpAddress: '<value>',
-        customerBillingName: '<value>',
-        customerBillingAddress: new Components\Address(
-            country: 'US',
-        ),
-        customerTaxId: '<id>',
-        paymentProcessorMetadata: [
 
-        ],
-        billingAddressFields: new Components\CheckoutBillingAddressFields(
-            country: Components\BillingAddressFieldMode::Required,
-            state: Components\BillingAddressFieldMode::Disabled,
-            city: Components\BillingAddressFieldMode::Required,
-            postalCode: Components\BillingAddressFieldMode::Required,
-            line1: Components\BillingAddressFieldMode::Required,
-            line2: Components\BillingAddressFieldMode::Disabled,
-        ),
-        metadata: [
-            'key' => '<value>',
-        ],
-        externalCustomerId: null,
-        customerExternalId: '<id>',
-        products: [],
-        product: new Components\CheckoutProduct(
-            createdAt: Utils\Utils::parseDateTime('2025-03-29T00:34:40.708Z'),
-            modifiedAt: Utils\Utils::parseDateTime('2024-04-06T18:48:21.449Z'),
-            id: '<value>',
-            name: '<value>',
-            description: 'stall for mousse',
-            recurringInterval: Components\SubscriptionRecurringInterval::Year,
-            isRecurring: false,
-            isArchived: true,
-            organizationId: '<value>',
-            prices: [
-                new Components\LegacyRecurringProductPriceFree(
-                    createdAt: Utils\Utils::parseDateTime('2023-09-13T08:36:46.434Z'),
-                    modifiedAt: Utils\Utils::parseDateTime('2023-10-05T12:55:46.428Z'),
-                    id: '<value>',
-                    isArchived: false,
-                    productId: '<value>',
-                    recurringInterval: Components\SubscriptionRecurringInterval::Month,
-                ),
-                new Components\LegacyRecurringProductPriceFixed(
-                    createdAt: Utils\Utils::parseDateTime('2024-05-02T18:25:33.974Z'),
-                    modifiedAt: Utils\Utils::parseDateTime('2025-02-06T12:55:07.640Z'),
-                    id: '<value>',
-                    isArchived: false,
-                    productId: '<value>',
-                    recurringInterval: Components\SubscriptionRecurringInterval::Month,
-                    priceCurrency: '<value>',
-                    priceAmount: 115799,
-                ),
-            ],
-            benefits: [],
-            medias: [
-                new Components\ProductMediaFileRead(
-                    id: '<value>',
-                    organizationId: '<value>',
-                    name: '<value>',
-                    path: '/private/tmp',
-                    mimeType: '<value>',
-                    size: 225502,
-                    storageVersion: '<value>',
-                    checksumEtag: '<value>',
-                    checksumSha256Base64: '<value>',
-                    checksumSha256Hex: '<value>',
-                    lastModifiedAt: Utils\Utils::parseDateTime('2024-07-06T07:35:44.280Z'),
-                    version: '<value>',
-                    isUploaded: true,
-                    createdAt: Utils\Utils::parseDateTime('2024-10-08T20:45:26.653Z'),
-                    sizeReadable: '<value>',
-                    publicUrl: 'https://graceful-battle.info',
-                ),
-                new Components\ProductMediaFileRead(
-                    id: '<value>',
-                    organizationId: '<value>',
-                    name: '<value>',
-                    path: '/private/tmp',
-                    mimeType: '<value>',
-                    size: 225502,
-                    storageVersion: '<value>',
-                    checksumEtag: '<value>',
-                    checksumSha256Base64: '<value>',
-                    checksumSha256Hex: '<value>',
-                    lastModifiedAt: Utils\Utils::parseDateTime('2024-07-06T07:35:44.280Z'),
-                    version: '<value>',
-                    isUploaded: true,
-                    createdAt: Utils\Utils::parseDateTime('2024-10-08T20:45:26.653Z'),
-                    sizeReadable: '<value>',
-                    publicUrl: 'https://graceful-battle.info',
-                ),
-                new Components\ProductMediaFileRead(
-                    id: '<value>',
-                    organizationId: '<value>',
-                    name: '<value>',
-                    path: '/private/tmp',
-                    mimeType: '<value>',
-                    size: 225502,
-                    storageVersion: '<value>',
-                    checksumEtag: '<value>',
-                    checksumSha256Base64: '<value>',
-                    checksumSha256Hex: '<value>',
-                    lastModifiedAt: Utils\Utils::parseDateTime('2024-07-06T07:35:44.280Z'),
-                    version: '<value>',
-                    isUploaded: true,
-                    createdAt: Utils\Utils::parseDateTime('2024-10-08T20:45:26.653Z'),
-                    sizeReadable: '<value>',
-                    publicUrl: 'https://graceful-battle.info',
-                ),
-            ],
-        ),
-        productPrice: new Components\LegacyRecurringProductPriceFree(
-            createdAt: Utils\Utils::parseDateTime('2023-10-30T00:08:39.161Z'),
-            modifiedAt: Utils\Utils::parseDateTime('2023-01-11T22:31:47.320Z'),
-            id: '<value>',
-            isArchived: true,
-            productId: '<value>',
-            recurringInterval: Components\SubscriptionRecurringInterval::Month,
-        ),
-        discount: new Components\CheckoutDiscountFixedOnceForeverDuration(
-            duration: Components\DiscountDuration::Once,
-            type: Components\DiscountType::Fixed,
-            amount: 405691,
-            currency: 'Dobra',
-            id: '<value>',
-            name: '<value>',
-            code: '<value>',
-        ),
-        subscriptionId: '<value>',
-        attachedCustomFields: [
-            new Components\AttachedCustomField(
-                customFieldId: '<value>',
-                customField: new Components\CustomFieldText(
-                    createdAt: Utils\Utils::parseDateTime('2025-06-07T12:37:50.969Z'),
-                    modifiedAt: Utils\Utils::parseDateTime('2023-11-20T09:37:39.033Z'),
-                    id: '<value>',
-                    metadata: [
-                        'key' => true,
-                        'key1' => '<value>',
-                        'key2' => '<value>',
-                    ],
-                    slug: '<value>',
-                    name: '<value>',
-                    organizationId: '1dbfc517-0bbf-4301-9ba8-555ca42b9737',
-                    properties: new Components\CustomFieldTextProperties(),
-                ),
-                order: 168537,
-                required: false,
-            ),
-        ],
-        customerMetadata: [
-            'key' => true,
-            'key1' => 203013,
-            'key2' => 851435,
-        ],
-    ),
+
+$responses = $sdk->organizations->list(
+    page: 1,
+    limit: 10
+
 );
 
-$response = $sdk->endpointcheckoutCreatedPost(
-    request: $request
-);
 
-if ($response->any !== null) {
-    // handle response
+foreach ($responses as $response) {
+    if ($response->statusCode === 200) {
+        // handle response
+    }
 }
 ```
 <!-- End SDK Example Usage [usage] -->

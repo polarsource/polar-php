@@ -13,14 +13,6 @@ class BenefitGrantDiscordProperties
 {
     /**
      *
-     * @var ?string $accountId
-     */
-    #[\Speakeasy\Serializer\Annotation\SerializedName('account_id')]
-    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
-    public ?string $accountId = null;
-
-    /**
-     *
      * @var ?string $guildId
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('guild_id')]
@@ -36,15 +28,33 @@ class BenefitGrantDiscordProperties
     public ?string $roleId = null;
 
     /**
-     * @param  ?string  $accountId
+     *
+     * @var ?string $grantedAccountId
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('granted_account_id')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
+    public ?string $grantedAccountId = null;
+
+    /**
+     *
+     * @var ?string $accountId
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('account_id')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
+    public ?string $accountId = null;
+
+    /**
      * @param  ?string  $guildId
      * @param  ?string  $roleId
+     * @param  ?string  $grantedAccountId
+     * @param  ?string  $accountId
      * @phpstan-pure
      */
-    public function __construct(?string $accountId = null, ?string $guildId = null, ?string $roleId = null)
+    public function __construct(?string $guildId = null, ?string $roleId = null, ?string $grantedAccountId = null, ?string $accountId = null)
     {
-        $this->accountId = $accountId;
         $this->guildId = $guildId;
         $this->roleId = $roleId;
+        $this->grantedAccountId = $grantedAccountId;
+        $this->accountId = $accountId;
     }
 }
