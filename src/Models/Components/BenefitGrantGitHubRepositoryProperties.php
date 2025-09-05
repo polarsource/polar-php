@@ -13,14 +13,6 @@ class BenefitGrantGitHubRepositoryProperties
 {
     /**
      *
-     * @var ?string $accountId
-     */
-    #[\Speakeasy\Serializer\Annotation\SerializedName('account_id')]
-    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
-    public ?string $accountId = null;
-
-    /**
-     *
      * @var ?string $repositoryOwner
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('repository_owner')]
@@ -45,17 +37,35 @@ class BenefitGrantGitHubRepositoryProperties
     public ?BenefitGrantGitHubRepositoryPropertiesPermission $permission = null;
 
     /**
-     * @param  ?string  $accountId
+     *
+     * @var ?string $grantedAccountId
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('granted_account_id')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
+    public ?string $grantedAccountId = null;
+
+    /**
+     *
+     * @var ?string $accountId
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('account_id')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
+    public ?string $accountId = null;
+
+    /**
      * @param  ?string  $repositoryOwner
      * @param  ?string  $repositoryName
      * @param  ?BenefitGrantGitHubRepositoryPropertiesPermission  $permission
+     * @param  ?string  $grantedAccountId
+     * @param  ?string  $accountId
      * @phpstan-pure
      */
-    public function __construct(?string $accountId = null, ?string $repositoryOwner = null, ?string $repositoryName = null, ?BenefitGrantGitHubRepositoryPropertiesPermission $permission = null)
+    public function __construct(?string $repositoryOwner = null, ?string $repositoryName = null, ?BenefitGrantGitHubRepositoryPropertiesPermission $permission = null, ?string $grantedAccountId = null, ?string $accountId = null)
     {
-        $this->accountId = $accountId;
         $this->repositoryOwner = $repositoryOwner;
         $this->repositoryName = $repositoryName;
         $this->permission = $permission;
+        $this->grantedAccountId = $grantedAccountId;
+        $this->accountId = $accountId;
     }
 }

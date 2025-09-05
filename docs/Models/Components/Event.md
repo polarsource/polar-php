@@ -3,13 +3,13 @@
 
 ## Supported Types
 
-### `Components\MeterCreditEvent|Components\MeterResetEvent|Components\BenefitGrantedEvent|Components\BenefitCycledEvent|Components\BenefitUpdatedEvent|Components\BenefitRevokedEvent`
+### `Components\MeterCreditEvent|Components\MeterResetEvent|Components\BenefitGrantedEvent|Components\BenefitCycledEvent|Components\BenefitUpdatedEvent|Components\BenefitRevokedEvent|Components\SubscriptionCycledEvent|Components\SubscriptionRevokedEvent|Components\SubscriptionProductUpdatedEvent`
 
 ```php
 /**
-* @var Components\MeterCreditEvent|Components\MeterResetEvent|Components\BenefitGrantedEvent|Components\BenefitCycledEvent|Components\BenefitUpdatedEvent|Components\BenefitRevokedEvent
+* @var Components\MeterCreditEvent|Components\MeterResetEvent|Components\BenefitGrantedEvent|Components\BenefitCycledEvent|Components\BenefitUpdatedEvent|Components\BenefitRevokedEvent|Components\SubscriptionCycledEvent|Components\SubscriptionRevokedEvent|Components\SubscriptionProductUpdatedEvent
 */
-Components\MeterCreditEvent|Components\MeterResetEvent|Components\BenefitGrantedEvent|Components\BenefitCycledEvent|Components\BenefitUpdatedEvent|Components\BenefitRevokedEvent $value = /* values here */
+Components\MeterCreditEvent|Components\MeterResetEvent|Components\BenefitGrantedEvent|Components\BenefitCycledEvent|Components\BenefitUpdatedEvent|Components\BenefitRevokedEvent|Components\SubscriptionCycledEvent|Components\SubscriptionRevokedEvent|Components\SubscriptionProductUpdatedEvent $value = /* values here */
 ```
 
 ### `Components\UserEvent`

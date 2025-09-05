@@ -63,17 +63,28 @@ class MeterUpdate
     public CountAggregation|PropertyAggregation|UniqueAggregation|null $aggregation = null;
 
     /**
+     * Whether the meter is archived. Archived meters are no longer used for billing.
+     *
+     * @var ?bool $isArchived
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('is_archived')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
+    public ?bool $isArchived = null;
+
+    /**
      * @param  ?array<string, string|int|float|bool>  $metadata
      * @param  ?string  $name
      * @param  ?Filter  $filter
      * @param  CountAggregation|PropertyAggregation|UniqueAggregation|null  $aggregation
+     * @param  ?bool  $isArchived
      * @phpstan-pure
      */
-    public function __construct(?array $metadata = null, ?string $name = null, ?Filter $filter = null, CountAggregation|PropertyAggregation|UniqueAggregation|null $aggregation = null)
+    public function __construct(?array $metadata = null, ?string $name = null, ?Filter $filter = null, CountAggregation|PropertyAggregation|UniqueAggregation|null $aggregation = null, ?bool $isArchived = null)
     {
         $this->metadata = $metadata;
         $this->name = $name;
         $this->filter = $filter;
         $this->aggregation = $aggregation;
+        $this->isArchived = $isArchived;
     }
 }

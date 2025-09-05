@@ -1,19 +1,19 @@
 lockVersion: 2.0.0
 id: bd003db9-613a-4093-838e-6d19bf5f76d7
 management:
-  docChecksum: 325f9072ad8465148f22517ea0de69e4
+  docChecksum: 3721564a1db1b7a536d00f0f876a4abc
   docVersion: 0.1.0
-  speakeasyVersion: 1.606.2
-  generationVersion: 2.687.1
-  releaseVersion: 0.4.7
-  configChecksum: c8237f198b998a8788d649a5bd7d7fc2
+  speakeasyVersion: 1.609.0
+  generationVersion: 2.692.0
+  releaseVersion: 0.4.8
+  configChecksum: 97fa5089776ef77779182244e3491890
   repoURL: https://github.com/polarsource/polar-php.git
   installationURL: https://github.com/polarsource/polar-php
   published: true
 features:
   php:
     constsAndDefaults: 0.2.0
-    core: 3.8.9
+    core: 3.8.10
     deprecations: 2.81.1
     errorUnions: 0.1.0
     flattening: 2.81.1
@@ -585,12 +585,18 @@ generatedFiles:
   - docs/Models/Components/SubscriptionCancel.md
   - docs/Models/Components/SubscriptionCustomer.md
   - docs/Models/Components/SubscriptionCustomerMetadata.md
+  - docs/Models/Components/SubscriptionCycledEvent.md
+  - docs/Models/Components/SubscriptionCycledMetadata.md
   - docs/Models/Components/SubscriptionDiscount.md
   - docs/Models/Components/SubscriptionMeter.md
   - docs/Models/Components/SubscriptionPrices.md
+  - docs/Models/Components/SubscriptionProductUpdatedEvent.md
+  - docs/Models/Components/SubscriptionProductUpdatedMetadata.md
   - docs/Models/Components/SubscriptionProrationBehavior.md
   - docs/Models/Components/SubscriptionRecurringInterval.md
   - docs/Models/Components/SubscriptionRevoke.md
+  - docs/Models/Components/SubscriptionRevokedEvent.md
+  - docs/Models/Components/SubscriptionRevokedMetadata.md
   - docs/Models/Components/SubscriptionSortProperty.md
   - docs/Models/Components/SubscriptionStatus.md
   - docs/Models/Components/SubscriptionUpdate.md
@@ -664,10 +670,12 @@ generatedFiles:
   - docs/Models/Errors/OrdersGenerateInvoiceResponse422OrdersGenerateInvoice.md
   - docs/Models/Errors/PaymentAlreadyInProgress.md
   - docs/Models/Errors/PaymentError.md
+  - docs/Models/Errors/PaymentMethodInUseByActiveSubscription.md
   - docs/Models/Errors/PaymentNotReady.md
   - docs/Models/Errors/RefundAmountTooHigh.md
   - docs/Models/Errors/RefundedAlready.md
   - docs/Models/Errors/ResourceNotFound.md
+  - docs/Models/Errors/SubscriptionLocked.md
   - docs/Models/Errors/Unauthorized.md
   - docs/Models/Operations/BenefitIDFilter.md
   - docs/Models/Operations/BenefitTypeFilter.md
@@ -1453,10 +1461,16 @@ generatedFiles:
   - src/Models/Components/Subscription.php
   - src/Models/Components/SubscriptionCancel.php
   - src/Models/Components/SubscriptionCustomer.php
+  - src/Models/Components/SubscriptionCycledEvent.php
+  - src/Models/Components/SubscriptionCycledMetadata.php
   - src/Models/Components/SubscriptionMeter.php
+  - src/Models/Components/SubscriptionProductUpdatedEvent.php
+  - src/Models/Components/SubscriptionProductUpdatedMetadata.php
   - src/Models/Components/SubscriptionProrationBehavior.php
   - src/Models/Components/SubscriptionRecurringInterval.php
   - src/Models/Components/SubscriptionRevoke.php
+  - src/Models/Components/SubscriptionRevokedEvent.php
+  - src/Models/Components/SubscriptionRevokedMetadata.php
   - src/Models/Components/SubscriptionSortProperty.php
   - src/Models/Components/SubscriptionStatus.php
   - src/Models/Components/SubscriptionUpdateDiscount.php
@@ -1533,6 +1547,8 @@ generatedFiles:
   - src/Models/Errors/PaymentAlreadyInProgressThrowable.php
   - src/Models/Errors/PaymentError.php
   - src/Models/Errors/PaymentErrorThrowable.php
+  - src/Models/Errors/PaymentMethodInUseByActiveSubscription.php
+  - src/Models/Errors/PaymentMethodInUseByActiveSubscriptionThrowable.php
   - src/Models/Errors/PaymentNotReady.php
   - src/Models/Errors/PaymentNotReadyThrowable.php
   - src/Models/Errors/RefundAmountTooHigh.php
@@ -1541,6 +1557,8 @@ generatedFiles:
   - src/Models/Errors/RefundedAlreadyThrowable.php
   - src/Models/Errors/ResourceNotFound.php
   - src/Models/Errors/ResourceNotFoundThrowable.php
+  - src/Models/Errors/SubscriptionLocked.php
+  - src/Models/Errors/SubscriptionLockedThrowable.php
   - src/Models/Errors/Unauthorized.php
   - src/Models/Errors/UnauthorizedThrowable.php
   - src/Models/Operations/BenefitsCreateResponse.php
@@ -2216,6 +2234,8 @@ examples:
           application/json: {"error": "ResourceNotFound", "detail": "<value>"}
         "422":
           application/json: {}
+        "409":
+          application/json: {"error": "SubscriptionLocked", "detail": "<value>"}
   subscriptions:revoke:
     speakeasy-default-subscriptions:revoke:
       parameters:
@@ -2230,6 +2250,8 @@ examples:
           application/json: {"error": "ResourceNotFound", "detail": "<value>"}
         "422":
           application/json: {}
+        "409":
+          application/json: {"error": "SubscriptionLocked", "detail": "<value>"}
   oauth2:authorize:
     speakeasy-default-oauth2-:authorize:
       responses:
@@ -3077,6 +3099,8 @@ examples:
           application/json: {"error": "ResourceNotFound", "detail": "<value>"}
         "422":
           application/json: {}
+        "400":
+          application/json: {"error": "PaymentMethodInUseByActiveSubscription", "detail": "<value>"}
   customer_portal:customer_meters:list:
     speakeasy-default-customer-portal:customer-meters:list:
       parameters:
@@ -3736,4 +3760,4 @@ examples:
           application/json: {"error": "OrderNotEligibleForRetry", "detail": "<value>"}
 examplesVersion: 1.0.2
 generatedTests: {}
-releaseNotes: "## SDK Changes Detected:\n* `polar->customer_portal->customers->update()`: \n  *  `request` **Changed** **Breaking** :warning:\n  *  `response.billingName` **Added**\n* `polar->customer_portal->customers->get()`:  `response.billingName` **Added**\n* `polar->customer_portal->subscriptions->list()`:  `response.items->[]->product->organization->status` **Added**\n* `polar->organizations->update()`:  `response.status` **Added**\n* `polar->subscriptions->list()`:  `response.items->[]->meters->[]->meter->aggregation->[max]` **Added**\n* `polar->subscriptions->get()`:  `response.meters->[]->meter->aggregation->[max]` **Added**\n* `polar->subscriptions->revoke()`:  `response.meters->[]->meter->aggregation->[max]` **Added**\n* `polar->subscriptions->update()`:  `response.meters->[]->meter->aggregation->[max]` **Added**\n* `polar->checkouts->clientGet()`:  `response.organization->status` **Added**\n* `polar->checkouts->clientUpdate()`:  `response.organization->status` **Added**\n* `polar->checkouts->clientConfirm()`:  `response.organization->status` **Added**\n* `polar->customer_portal->benefit-grants->list()`:  `response.items->[]->[customerBenefitGrantDiscord]` **Changed**\n* `polar->customer_portal->benefit-grants->get()`:  `response.[customerBenefitGrantDiscord]` **Changed**\n* `polar->customer_portal->benefit-grants->update()`:  `response.[customerBenefitGrantGitHubRepository]` **Changed**\n* `polar->organizations->list()`:  `response.items->[]->status` **Added**\n* `polar->organizations->get()`:  `response.status` **Added**\n* `polar->organizations->create()`:  `response.status` **Added**\n* `polar->customer_portal->subscriptions->cancel()`:  `response.product->organization->status` **Added**\n* `polar->customer_portal->orders->update()`:  `response.product->organization->status` **Added**\n* `polar->customer_portal->orders->confirmRetryPayment()`:  `request.customerOrderConfirmPayment` **Changed**\n* `polar->customer_portal->organizations->get()`:  `response.organization->status` **Added**\n* `polar->customer_portal->orders->list()`:  `response.items->[]->product->organization->status` **Added**\n* `polar->customer_portal->subscriptions->get()`:  `response.product->organization->status` **Added**\n* `polar->customer_portal->orders->get()`:  `response.product->organization->status` **Added**\n* `polar->customer_portal->subscriptions->update()`:  `response.product->organization->status` **Added**\n* `polar->meters->list()`:  `response.items->[]->aggregation->[max]` **Added**\n* `polar->meters->create()`: \n  *  `request->aggregation->[max]` **Added**\n  *  `response.aggregation->[max]` **Added**\n* `polar->meters->get()`:  `response.aggregation->[max]` **Added**\n* `polar->meters->update()`: \n  *  `request.meterUpdate->aggregation->[max]` **Added**\n  *  `response.aggregation->[max]` **Added**\n* `polar->customer_meters->list()`:  `response.items->[]->meter->aggregation->[max]` **Added**\n* `polar->customer_meters->get()`:  `response.meter->aggregation->[max]` **Added**\n"
+releaseNotes: "## Php SDK Changes Detected:\n* `polar->customer_portal->benefit-grants->get()`:  `response` **Changed** **Breaking** :warning:\n* `polar->customers->getStateExternal()`:  `response.grantedBenefits->[]->properties` **Changed** **Breaking** :warning:\n* `polar->customer_portal->benefit-grants->list()`:  `response.items->[]` **Changed** **Breaking** :warning:\n* `polar->customer_portal->benefit-grants->update()`: \n  *  `request.customerBenefitGrantUpdate` **Changed**\n  *  `response` **Changed** **Breaking** :warning:\n* `polar->benefits->grants()`:  `response.items->[]->properties` **Changed** **Breaking** :warning:\n* `polar->customers->getState()`:  `response.grantedBenefits->[]->properties` **Changed** **Breaking** :warning:\n* `polar->customer_portal->customers->deletePaymentMethod()`:  `error.status[400]` **Added**\n* `polar->subscriptions->revoke()`: \n  *  `response.meters->[]->meter->archivedAt` **Added**\n  *  `error.status[409]` **Added**\n* `polar->subscriptions->get()`:  `response.meters->[]->meter->archivedAt` **Added**\n* `polar->subscriptions->list()`:  `response.items->[]->meters->[]->meter->archivedAt` **Added**\n* `polar->subscriptions->update()`: \n  *  `response.meters->[]->meter->archivedAt` **Added**\n  *  `error.status[409]` **Added**\n* `polar->events->list()`:  `response.items->[]->[systemEvent]` **Changed**\n* `polar->events->get()`:  `response.[systemEvent]` **Changed**\n* `polar->meters->list()`: \n  *  `request->isArchived` **Added**\n  *  `response.items->[]->archivedAt` **Added**\n* `polar->meters->create()`:  `response.archivedAt` **Added**\n* `polar->meters->get()`:  `response.archivedAt` **Added**\n* `polar->meters->update()`: \n  *  `request.meterUpdate->isArchived` **Added**\n  *  `response.archivedAt` **Added**\n* `polar->customer_meters->list()`:  `response.items->[]->meter->archivedAt` **Added**\n* `polar->customer_meters->get()`:  `response.meter->archivedAt` **Added**\n"

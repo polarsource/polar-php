@@ -104,7 +104,7 @@ class CheckoutProduct
     public ?string $description;
 
     /**
-     * The recurring interval of the product. If `None`, the product is a one-time purchase.
+     * The recurring interval of the product. If `None`, the product is a one-time purchase.Note that the `day` and `week` values are for internal Polar staff use only.
      *
      * @var ?SubscriptionRecurringInterval $recurringInterval
      */

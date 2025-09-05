@@ -57,3 +57,30 @@ Components\MeterCreditEvent $value = /* values here */
 Components\MeterResetEvent $value = /* values here */
 ```
 
+### `Components\SubscriptionCycledEvent`
+
+```php
+/**
+* @var Components\SubscriptionCycledEvent
+*/
+Components\SubscriptionCycledEvent $value = /* values here */
+```
+
+### `Components\SubscriptionProductUpdatedEvent`
+
+```php
+/**
+* @var Components\SubscriptionProductUpdatedEvent
+*/
+Components\SubscriptionProductUpdatedEvent $value = /* values here */
+```
+
+### `Components\SubscriptionRevokedEvent`
+
+```php
+/**
+* @var Components\SubscriptionRevokedEvent
+*/
+Components\SubscriptionRevokedEvent $value = /* values here */
+```
+

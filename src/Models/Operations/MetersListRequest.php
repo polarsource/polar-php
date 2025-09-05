@@ -29,6 +29,14 @@ class MetersListRequest
     public ?string $query = null;
 
     /**
+     * Filter on archived meters.
+     *
+     * @var ?bool $isArchived
+     */
+    #[SpeakeasyMetadata('queryParam:style=form,explode=true,name=is_archived')]
+    public ?bool $isArchived = null;
+
+    /**
      * Sorting criterion. Several criteria can be used simultaneously and will be applied in order. Add a minus sign `-` before the criteria name to sort by descending order.
      *
      * @var ?array<Components\MeterSortProperty> $sorting
@@ -65,14 +73,16 @@ class MetersListRequest
      * @param  ?int  $limit
      * @param  string|array<string>|null  $organizationId
      * @param  ?string  $query
+     * @param  ?bool  $isArchived
      * @param  ?array<Components\MeterSortProperty>  $sorting
      * @param  ?array<string, string|int|bool|array<string>|array<int>|array<bool>>  $metadata
      * @phpstan-pure
      */
-    public function __construct(string|array|null $organizationId = null, ?string $query = null, ?array $sorting = null, ?array $metadata = null, ?int $page = 1, ?int $limit = 10)
+    public function __construct(string|array|null $organizationId = null, ?string $query = null, ?bool $isArchived = null, ?array $sorting = null, ?array $metadata = null, ?int $page = 1, ?int $limit = 10)
     {
         $this->organizationId = $organizationId;
         $this->query = $query;
+        $this->isArchived = $isArchived;
         $this->sorting = $sorting;
         $this->metadata = $metadata;
         $this->page = $page;
