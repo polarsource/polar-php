@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: bd003db9-613a-4093-838e-6d19bf5f76d7
 management:
-  docChecksum: 3721564a1db1b7a536d00f0f876a4abc
+  docChecksum: 2f08c9e6e2d99b9c5c9fba4ae89aa858
   docVersion: 0.1.0
-  speakeasyVersion: 1.609.0
-  generationVersion: 2.692.0
-  releaseVersion: 0.4.8
-  configChecksum: 97fa5089776ef77779182244e3491890
+  speakeasyVersion: 1.611.0
+  generationVersion: 2.694.1
+  releaseVersion: 0.4.9
+  configChecksum: 8b2deca01fb9d806d18d59b0ddb8b89d
   repoURL: https://github.com/polarsource/polar-php.git
   installationURL: https://github.com/polarsource/polar-php
   published: true
@@ -3760,4 +3760,3 @@ examples:
           application/json: {"error": "OrderNotEligibleForRetry", "detail": "<value>"}
 examplesVersion: 1.0.2
 generatedTests: {}
-releaseNotes: "## Php SDK Changes Detected:\n* `polar->customer_portal->benefit-grants->get()`:  `response` **Changed** **Breaking** :warning:\n* `polar->customers->getStateExternal()`:  `response.grantedBenefits->[]->properties` **Changed** **Breaking** :warning:\n* `polar->customer_portal->benefit-grants->list()`:  `response.items->[]` **Changed** **Breaking** :warning:\n* `polar->customer_portal->benefit-grants->update()`: \n  *  `request.customerBenefitGrantUpdate` **Changed**\n  *  `response` **Changed** **Breaking** :warning:\n* `polar->benefits->grants()`:  `response.items->[]->properties` **Changed** **Breaking** :warning:\n* `polar->customers->getState()`:  `response.grantedBenefits->[]->properties` **Changed** **Breaking** :warning:\n* `polar->customer_portal->customers->deletePaymentMethod()`:  `error.status[400]` **Added**\n* `polar->subscriptions->revoke()`: \n  *  `response.meters->[]->meter->archivedAt` **Added**\n  *  `error.status[409]` **Added**\n* `polar->subscriptions->get()`:  `response.meters->[]->meter->archivedAt` **Added**\n* `polar->subscriptions->list()`:  `response.items->[]->meters->[]->meter->archivedAt` **Added**\n* `polar->subscriptions->update()`: \n  *  `response.meters->[]->meter->archivedAt` **Added**\n  *  `error.status[409]` **Added**\n* `polar->events->list()`:  `response.items->[]->[systemEvent]` **Changed**\n* `polar->events->get()`:  `response.[systemEvent]` **Changed**\n* `polar->meters->list()`: \n  *  `request->isArchived` **Added**\n  *  `response.items->[]->archivedAt` **Added**\n* `polar->meters->create()`:  `response.archivedAt` **Added**\n* `polar->meters->get()`:  `response.archivedAt` **Added**\n* `polar->meters->update()`: \n  *  `request.meterUpdate->isArchived` **Added**\n  *  `response.archivedAt` **Added**\n* `polar->customer_meters->list()`:  `response.items->[]->meter->archivedAt` **Added**\n* `polar->customer_meters->get()`:  `response.meter->archivedAt` **Added**\n"
