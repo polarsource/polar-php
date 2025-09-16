@@ -18,6 +18,13 @@ namespace Polar\Models\Components;
 class WebhookCustomerDeletedPayload
 {
     /**
+     *
+     * @var \DateTime $timestamp
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('timestamp')]
+    public \DateTime $timestamp;
+
+    /**
      * A customer in an organization.
      *
      * @var Customer $data
@@ -35,11 +42,13 @@ class WebhookCustomerDeletedPayload
 
     /**
      * @param  string  $type
+     * @param  \DateTime  $timestamp
      * @param  Customer  $data
      * @phpstan-pure
      */
-    public function __construct(Customer $data, string $type = 'customer.deleted')
+    public function __construct(\DateTime $timestamp, Customer $data, string $type = 'customer.deleted')
     {
+        $this->timestamp = $timestamp;
         $this->data = $data;
         $this->type = $type;
     }

@@ -20,11 +20,18 @@ class WebhookBenefitGrantCycledPayload
 {
     /**
      *
-     * @var BenefitGrantWebhook $data
+     * @var \DateTime $timestamp
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('timestamp')]
+    public \DateTime $timestamp;
+
+    /**
+     *
+     * @var BenefitGrantDiscordWebhook|BenefitGrantCustomWebhook|BenefitGrantGitHubRepositoryWebhook|BenefitGrantDownloadablesWebhook|BenefitGrantLicenseKeysWebhook|BenefitGrantMeterCreditWebhook $data
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('data')]
-    #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\BenefitGrantWebhook')]
-    public BenefitGrantWebhook $data;
+    #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\BenefitGrantDiscordWebhook|\Polar\Models\Components\BenefitGrantCustomWebhook|\Polar\Models\Components\BenefitGrantGitHubRepositoryWebhook|\Polar\Models\Components\BenefitGrantDownloadablesWebhook|\Polar\Models\Components\BenefitGrantLicenseKeysWebhook|\Polar\Models\Components\BenefitGrantMeterCreditWebhook')]
+    public BenefitGrantDiscordWebhook|BenefitGrantCustomWebhook|BenefitGrantGitHubRepositoryWebhook|BenefitGrantDownloadablesWebhook|BenefitGrantLicenseKeysWebhook|BenefitGrantMeterCreditWebhook $data;
 
     /**
      *
@@ -35,11 +42,13 @@ class WebhookBenefitGrantCycledPayload
 
     /**
      * @param  string  $type
-     * @param  BenefitGrantWebhook  $data
+     * @param  \DateTime  $timestamp
+     * @param  BenefitGrantDiscordWebhook|BenefitGrantCustomWebhook|BenefitGrantGitHubRepositoryWebhook|BenefitGrantDownloadablesWebhook|BenefitGrantLicenseKeysWebhook|BenefitGrantMeterCreditWebhook  $data
      * @phpstan-pure
      */
-    public function __construct(BenefitGrantWebhook $data, string $type = 'benefit_grant.cycled')
+    public function __construct(\DateTime $timestamp, BenefitGrantDiscordWebhook|BenefitGrantCustomWebhook|BenefitGrantGitHubRepositoryWebhook|BenefitGrantDownloadablesWebhook|BenefitGrantLicenseKeysWebhook|BenefitGrantMeterCreditWebhook $data, string $type = 'benefit_grant.cycled')
     {
+        $this->timestamp = $timestamp;
         $this->data = $data;
         $this->type = $type;
     }

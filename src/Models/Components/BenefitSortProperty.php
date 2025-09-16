@@ -15,4 +15,6 @@ enum BenefitSortProperty: string
     case MinusCreatedAt = '-created_at';
     case Description = 'description';
     case MinusDescription = '-description';
+    case Type = 'type';
+    case MinusType = '-type';
 }

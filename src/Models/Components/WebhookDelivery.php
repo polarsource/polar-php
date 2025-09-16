@@ -66,8 +66,15 @@ class WebhookDelivery
      * @var ?int $httpCode
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('http_code')]
-    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
-    public ?int $httpCode = null;
+    public ?int $httpCode;
+
+    /**
+     * The response body returned by the URL, or the error message if the endpoint was unreachable.
+     *
+     * @var ?string $response
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('response')]
+    public ?string $response;
 
     /**
      * @param  \DateTime  $createdAt
@@ -76,9 +83,10 @@ class WebhookDelivery
      * @param  WebhookEvent  $webhookEvent
      * @param  ?\DateTime  $modifiedAt
      * @param  ?int  $httpCode
+     * @param  ?string  $response
      * @phpstan-pure
      */
-    public function __construct(\DateTime $createdAt, string $id, bool $succeeded, WebhookEvent $webhookEvent, ?\DateTime $modifiedAt = null, ?int $httpCode = null)
+    public function __construct(\DateTime $createdAt, string $id, bool $succeeded, WebhookEvent $webhookEvent, ?\DateTime $modifiedAt = null, ?int $httpCode = null, ?string $response = null)
     {
         $this->createdAt = $createdAt;
         $this->id = $id;
@@ -86,5 +94,6 @@ class WebhookDelivery
         $this->webhookEvent = $webhookEvent;
         $this->modifiedAt = $modifiedAt;
         $this->httpCode = $httpCode;
+        $this->response = $response;
     }
 }

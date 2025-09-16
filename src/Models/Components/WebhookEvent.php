@@ -38,12 +38,20 @@ class WebhookEvent
     public string $id;
 
     /**
-     * The payload of the webhook event.
      *
-     * @var string $payload
+     * @var WebhookEventType $type
      */
-    #[\Speakeasy\Serializer\Annotation\SerializedName('payload')]
-    public string $payload;
+    #[\Speakeasy\Serializer\Annotation\SerializedName('type')]
+    #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\WebhookEventType')]
+    public WebhookEventType $type;
+
+    /**
+     * Whether this event is archived. Archived events can't be redelivered, and the payload is not accessible anymore.
+     *
+     * @var bool $isArchived
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('is_archived')]
+    public bool $isArchived;
 
     /**
      * Last modification timestamp of the object.
@@ -52,6 +60,14 @@ class WebhookEvent
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('modified_at')]
     public ?\DateTime $modifiedAt;
+
+    /**
+     * The payload of the webhook event.
+     *
+     * @var ?string $payload
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('payload')]
+    public ?string $payload;
 
     /**
      * Last HTTP code returned by the URL. `null` if no delviery has been attempted or if the endpoint was unreachable.
@@ -74,18 +90,22 @@ class WebhookEvent
     /**
      * @param  \DateTime  $createdAt
      * @param  string  $id
-     * @param  string  $payload
+     * @param  WebhookEventType  $type
+     * @param  bool  $isArchived
      * @param  ?\DateTime  $modifiedAt
+     * @param  ?string  $payload
      * @param  ?int  $lastHttpCode
      * @param  ?bool  $succeeded
      * @phpstan-pure
      */
-    public function __construct(\DateTime $createdAt, string $id, string $payload, ?\DateTime $modifiedAt = null, ?int $lastHttpCode = null, ?bool $succeeded = null)
+    public function __construct(\DateTime $createdAt, string $id, WebhookEventType $type, bool $isArchived, ?\DateTime $modifiedAt = null, ?string $payload = null, ?int $lastHttpCode = null, ?bool $succeeded = null)
     {
         $this->createdAt = $createdAt;
         $this->id = $id;
-        $this->payload = $payload;
+        $this->type = $type;
+        $this->isArchived = $isArchived;
         $this->modifiedAt = $modifiedAt;
+        $this->payload = $payload;
         $this->lastHttpCode = $lastHttpCode;
         $this->succeeded = $succeeded;
     }

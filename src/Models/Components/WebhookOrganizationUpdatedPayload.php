@@ -19,6 +19,13 @@ class WebhookOrganizationUpdatedPayload
 {
     /**
      *
+     * @var \DateTime $timestamp
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('timestamp')]
+    public \DateTime $timestamp;
+
+    /**
+     *
      * @var Organization $data
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('data')]
@@ -34,11 +41,13 @@ class WebhookOrganizationUpdatedPayload
 
     /**
      * @param  string  $type
+     * @param  \DateTime  $timestamp
      * @param  Organization  $data
      * @phpstan-pure
      */
-    public function __construct(Organization $data, string $type = 'organization.updated')
+    public function __construct(\DateTime $timestamp, Organization $data, string $type = 'organization.updated')
     {
+        $this->timestamp = $timestamp;
         $this->data = $data;
         $this->type = $type;
     }
