@@ -21,6 +21,13 @@ class WebhookSubscriptionCreatedPayload
 {
     /**
      *
+     * @var \DateTime $timestamp
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('timestamp')]
+    public \DateTime $timestamp;
+
+    /**
+     *
      * @var Subscription $data
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('data')]
@@ -36,11 +43,13 @@ class WebhookSubscriptionCreatedPayload
 
     /**
      * @param  string  $type
+     * @param  \DateTime  $timestamp
      * @param  Subscription  $data
      * @phpstan-pure
      */
-    public function __construct(Subscription $data, string $type = 'subscription.created')
+    public function __construct(\DateTime $timestamp, Subscription $data, string $type = 'subscription.created')
     {
+        $this->timestamp = $timestamp;
         $this->data = $data;
         $this->type = $type;
     }

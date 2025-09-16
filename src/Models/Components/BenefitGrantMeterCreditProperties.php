@@ -13,32 +13,35 @@ class BenefitGrantMeterCreditProperties
 {
     /**
      *
-     * @var string $lastCreditedMeterId
+     * @var ?string $lastCreditedMeterId
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('last_credited_meter_id')]
-    public string $lastCreditedMeterId;
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
+    public ?string $lastCreditedMeterId = null;
 
     /**
      *
-     * @var int $lastCreditedUnits
+     * @var ?int $lastCreditedUnits
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('last_credited_units')]
-    public int $lastCreditedUnits;
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
+    public ?int $lastCreditedUnits = null;
 
     /**
      *
-     * @var string $lastCreditedAt
+     * @var ?string $lastCreditedAt
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('last_credited_at')]
-    public string $lastCreditedAt;
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
+    public ?string $lastCreditedAt = null;
 
     /**
-     * @param  string  $lastCreditedMeterId
-     * @param  int  $lastCreditedUnits
-     * @param  string  $lastCreditedAt
+     * @param  ?string  $lastCreditedMeterId
+     * @param  ?int  $lastCreditedUnits
+     * @param  ?string  $lastCreditedAt
      * @phpstan-pure
      */
-    public function __construct(string $lastCreditedMeterId, int $lastCreditedUnits, string $lastCreditedAt)
+    public function __construct(?string $lastCreditedMeterId = null, ?int $lastCreditedUnits = null, ?string $lastCreditedAt = null)
     {
         $this->lastCreditedMeterId = $lastCreditedMeterId;
         $this->lastCreditedUnits = $lastCreditedUnits;

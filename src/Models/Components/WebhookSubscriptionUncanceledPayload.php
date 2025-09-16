@@ -19,6 +19,13 @@ class WebhookSubscriptionUncanceledPayload
 {
     /**
      *
+     * @var \DateTime $timestamp
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('timestamp')]
+    public \DateTime $timestamp;
+
+    /**
+     *
      * @var Subscription $data
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('data')]
@@ -34,11 +41,13 @@ class WebhookSubscriptionUncanceledPayload
 
     /**
      * @param  string  $type
+     * @param  \DateTime  $timestamp
      * @param  Subscription  $data
      * @phpstan-pure
      */
-    public function __construct(Subscription $data, string $type = 'subscription.uncanceled')
+    public function __construct(\DateTime $timestamp, Subscription $data, string $type = 'subscription.uncanceled')
     {
+        $this->timestamp = $timestamp;
         $this->data = $data;
         $this->type = $type;
     }

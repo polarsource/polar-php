@@ -24,6 +24,13 @@ namespace Polar\Models\Components;
 class WebhookCustomerStateChangedPayload
 {
     /**
+     *
+     * @var \DateTime $timestamp
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('timestamp')]
+    public \DateTime $timestamp;
+
+    /**
      * A customer along with additional state information:
      *
      *
@@ -46,11 +53,13 @@ class WebhookCustomerStateChangedPayload
 
     /**
      * @param  string  $type
+     * @param  \DateTime  $timestamp
      * @param  CustomerState  $data
      * @phpstan-pure
      */
-    public function __construct(CustomerState $data, string $type = 'customer.state_changed')
+    public function __construct(\DateTime $timestamp, CustomerState $data, string $type = 'customer.state_changed')
     {
+        $this->timestamp = $timestamp;
         $this->data = $data;
         $this->type = $type;
     }

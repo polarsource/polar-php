@@ -18,6 +18,13 @@ namespace Polar\Models\Components;
 class WebhookProductCreatedPayload
 {
     /**
+     *
+     * @var \DateTime $timestamp
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('timestamp')]
+    public \DateTime $timestamp;
+
+    /**
      * A product.
      *
      * @var Product $data
@@ -35,11 +42,13 @@ class WebhookProductCreatedPayload
 
     /**
      * @param  string  $type
+     * @param  \DateTime  $timestamp
      * @param  Product  $data
      * @phpstan-pure
      */
-    public function __construct(Product $data, string $type = 'product.created')
+    public function __construct(\DateTime $timestamp, Product $data, string $type = 'product.created')
     {
+        $this->timestamp = $timestamp;
         $this->data = $data;
         $this->type = $type;
     }

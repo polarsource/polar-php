@@ -18,6 +18,13 @@ namespace Polar\Models\Components;
 class WebhookCheckoutCreatedPayload
 {
     /**
+     *
+     * @var \DateTime $timestamp
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('timestamp')]
+    public \DateTime $timestamp;
+
+    /**
      * Checkout session data retrieved using an access token.
      *
      * @var Checkout $data
@@ -35,11 +42,13 @@ class WebhookCheckoutCreatedPayload
 
     /**
      * @param  string  $type
+     * @param  \DateTime  $timestamp
      * @param  Checkout  $data
      * @phpstan-pure
      */
-    public function __construct(Checkout $data, string $type = 'checkout.created')
+    public function __construct(\DateTime $timestamp, Checkout $data, string $type = 'checkout.created')
     {
+        $this->timestamp = $timestamp;
         $this->data = $data;
         $this->type = $type;
     }

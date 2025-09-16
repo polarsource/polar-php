@@ -28,6 +28,13 @@ class WebhookOrderCreatedPayload
 {
     /**
      *
+     * @var \DateTime $timestamp
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('timestamp')]
+    public \DateTime $timestamp;
+
+    /**
+     *
      * @var Order $data
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('data')]
@@ -43,11 +50,13 @@ class WebhookOrderCreatedPayload
 
     /**
      * @param  string  $type
+     * @param  \DateTime  $timestamp
      * @param  Order  $data
      * @phpstan-pure
      */
-    public function __construct(Order $data, string $type = 'order.created')
+    public function __construct(\DateTime $timestamp, Order $data, string $type = 'order.created')
     {
+        $this->timestamp = $timestamp;
         $this->data = $data;
         $this->type = $type;
     }

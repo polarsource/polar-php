@@ -9,3 +9,5 @@
 | `MinusCreatedAt`   | -created_at        |
 | `Description`      | description        |
 | `MinusDescription` | -description       |
+| `Type`             | type               |
+| `MinusType`        | -type              |

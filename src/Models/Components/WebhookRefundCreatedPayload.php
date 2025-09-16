@@ -19,6 +19,13 @@ class WebhookRefundCreatedPayload
 {
     /**
      *
+     * @var \DateTime $timestamp
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('timestamp')]
+    public \DateTime $timestamp;
+
+    /**
+     *
      * @var Refund $data
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('data')]
@@ -34,11 +41,13 @@ class WebhookRefundCreatedPayload
 
     /**
      * @param  string  $type
+     * @param  \DateTime  $timestamp
      * @param  Refund  $data
      * @phpstan-pure
      */
-    public function __construct(Refund $data, string $type = 'refund.created')
+    public function __construct(\DateTime $timestamp, Refund $data, string $type = 'refund.created')
     {
+        $this->timestamp = $timestamp;
         $this->data = $data;
         $this->type = $type;
     }
