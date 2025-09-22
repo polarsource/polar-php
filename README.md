@@ -19,7 +19,7 @@ Developer-friendly & type-safe Php SDK specifically catered to leverage *polar-s
 
 Polar API: Polar HTTP and Webhooks API
 
-Read the docs at https://docs.polar.sh/api-reference
+Read the docs at https://polar.sh/docs/api-reference
 <!-- End Summary [summary] -->
 
 <!-- Start Table of Contents [toc] -->
@@ -166,6 +166,10 @@ foreach ($responses as $response) {
 <details open>
 <summary>Available methods</summary>
 
+### [benefitGrants](docs/sdks/benefitgrants/README.md)
+
+* [list](docs/sdks/benefitgrants/README.md#list) - List Benefit Grants
+
 ### [benefits](docs/sdks/benefits/README.md)
 
 * [list](docs/sdks/benefits/README.md#list) - List Benefits
@@ -201,11 +205,11 @@ foreach ($responses as $response) {
 ### [customerPortal](docs/sdks/customerportal/README.md)
 
 
-#### [customerPortal->benefitGrants](docs/sdks/benefitgrants/README.md)
+#### [customerPortal->benefitGrants](docs/sdks/polarbenefitgrants/README.md)
 
-* [list](docs/sdks/benefitgrants/README.md#list) - List Benefit Grants
-* [get](docs/sdks/benefitgrants/README.md#get) - Get Benefit Grant
-* [update](docs/sdks/benefitgrants/README.md#update) - Update Benefit Grant
+* [list](docs/sdks/polarbenefitgrants/README.md#list) - List Benefit Grants
+* [get](docs/sdks/polarbenefitgrants/README.md#get) - Get Benefit Grant
+* [update](docs/sdks/polarbenefitgrants/README.md#update) - Update Benefit Grant
 
 #### [customerPortal->customerMeters](docs/sdks/polarcustomermeters/README.md)
 
@@ -257,6 +261,7 @@ foreach ($responses as $response) {
 
 * [list](docs/sdks/customers/README.md#list) - List Customers
 * [create](docs/sdks/customers/README.md#create) - Create Customer
+* [export](docs/sdks/customers/README.md#export) - Export Customers
 * [get](docs/sdks/customers/README.md#get) - Get Customer
 * [update](docs/sdks/customers/README.md#update) - Update Customer
 * [delete](docs/sdks/customers/README.md#delete) - Delete Customer

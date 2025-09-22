@@ -300,19 +300,12 @@ class Webhooks
      *
      * **Scopes**: `webhooks:read` `webhooks:write`
      *
-     * @param  string|array<string>|null  $endpointId
-     * @param  ?int  $page
-     * @param  ?int  $limit
+     * @param  ?Operations\WebhooksListWebhookDeliveriesRequest  $request
      * @return Operations\WebhooksListWebhookDeliveriesResponse
      * @throws \Polar\Models\Errors\APIException
      */
-    private function listWebhookDeliveriesIndividual(string|array|null $endpointId = null, ?int $page = null, ?int $limit = null, ?Options $options = null): Operations\WebhooksListWebhookDeliveriesResponse
+    private function listWebhookDeliveriesIndividual(?Operations\WebhooksListWebhookDeliveriesRequest $request = null, ?Options $options = null): Operations\WebhooksListWebhookDeliveriesResponse
     {
-        $request = new Operations\WebhooksListWebhookDeliveriesRequest(
-            endpointId: $endpointId,
-            page: $page,
-            limit: $limit,
-        );
         $baseUrl = $this->sdkConfiguration->getTemplatedServerUrl();
         $url = Utils\Utils::generateUrl($baseUrl, '/v1/webhooks/deliveries');
         $urlOverride = null;
@@ -354,7 +347,7 @@ class Webhooks
                     listResourceWebhookDelivery: $obj);
                 $sdk = $this;
 
-                $response->next = function () use ($sdk, $request, $responseData, $endpointId, $limit): ?Operations\WebhooksListWebhookDeliveriesResponse {
+                $response->next = function () use ($sdk, $request, $responseData): ?Operations\WebhooksListWebhookDeliveriesResponse {
                     $page = $request != null ? $request->page : 0;
                     $nextPage = $page + 1;
                     $jsonObject = new \JsonPath\JsonObject($responseData);
@@ -380,9 +373,13 @@ class Webhooks
                     }
 
                     return $sdk->listWebhookDeliveriesIndividual(
-                        endpointId: $endpointId,
-                        page: $nextPage,
-                        limit: $limit,
+                        request: new Operations\WebhooksListWebhookDeliveriesRequest(
+                            endpointId: $request != null ? $request->endpointId : null,
+                            startTimestamp: $request != null ? $request->startTimestamp : null,
+                            endTimestamp: $request != null ? $request->endTimestamp : null,
+                            page: $nextPage,
+                            limit: $request != null ? $request->limit : null,
+                        ),
                     );
                 };
 
@@ -419,15 +416,13 @@ class Webhooks
      *
      * **Scopes**: `webhooks:read` `webhooks:write`
      *
-     * @param  string|array<string>|null  $endpointId
-     * @param  ?int  $page
-     * @param  ?int  $limit
+     * @param  ?Operations\WebhooksListWebhookDeliveriesRequest  $request
      * @return \Generator<Operations\WebhooksListWebhookDeliveriesResponse>
      * @throws \Polar\Models\Errors\APIException
      */
-    public function listWebhookDeliveries(string|array|null $endpointId = null, ?int $page = null, ?int $limit = null, ?Options $options = null): \Generator
+    public function listWebhookDeliveries(?Operations\WebhooksListWebhookDeliveriesRequest $request = null, ?Options $options = null): \Generator
     {
-        $res = $this->listWebhookDeliveriesIndividual($endpointId, $page, $limit, $options);
+        $res = $this->listWebhookDeliveriesIndividual($request, $options);
         while ($res !== null) {
             yield $res;
             $res = $res->next($res);

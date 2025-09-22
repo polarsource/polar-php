@@ -188,6 +188,78 @@ class MetricsTotals
     public int|float $checkoutsConversion;
 
     /**
+     *
+     * @var int|float $canceledSubscriptions
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('canceled_subscriptions')]
+    #[\Speakeasy\Serializer\Annotation\Type('int|float')]
+    public int|float $canceledSubscriptions;
+
+    /**
+     *
+     * @var int|float $canceledSubscriptionsCustomerService
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('canceled_subscriptions_customer_service')]
+    #[\Speakeasy\Serializer\Annotation\Type('int|float')]
+    public int|float $canceledSubscriptionsCustomerService;
+
+    /**
+     *
+     * @var int|float $canceledSubscriptionsLowQuality
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('canceled_subscriptions_low_quality')]
+    #[\Speakeasy\Serializer\Annotation\Type('int|float')]
+    public int|float $canceledSubscriptionsLowQuality;
+
+    /**
+     *
+     * @var int|float $canceledSubscriptionsMissingFeatures
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('canceled_subscriptions_missing_features')]
+    #[\Speakeasy\Serializer\Annotation\Type('int|float')]
+    public int|float $canceledSubscriptionsMissingFeatures;
+
+    /**
+     *
+     * @var int|float $canceledSubscriptionsSwitchedService
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('canceled_subscriptions_switched_service')]
+    #[\Speakeasy\Serializer\Annotation\Type('int|float')]
+    public int|float $canceledSubscriptionsSwitchedService;
+
+    /**
+     *
+     * @var int|float $canceledSubscriptionsTooComplex
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('canceled_subscriptions_too_complex')]
+    #[\Speakeasy\Serializer\Annotation\Type('int|float')]
+    public int|float $canceledSubscriptionsTooComplex;
+
+    /**
+     *
+     * @var int|float $canceledSubscriptionsTooExpensive
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('canceled_subscriptions_too_expensive')]
+    #[\Speakeasy\Serializer\Annotation\Type('int|float')]
+    public int|float $canceledSubscriptionsTooExpensive;
+
+    /**
+     *
+     * @var int|float $canceledSubscriptionsUnused
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('canceled_subscriptions_unused')]
+    #[\Speakeasy\Serializer\Annotation\Type('int|float')]
+    public int|float $canceledSubscriptionsUnused;
+
+    /**
+     *
+     * @var int|float $canceledSubscriptionsOther
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('canceled_subscriptions_other')]
+    #[\Speakeasy\Serializer\Annotation\Type('int|float')]
+    public int|float $canceledSubscriptionsOther;
+
+    /**
      * @param  int|float  $orders
      * @param  int|float  $revenue
      * @param  int|float  $netRevenue
@@ -210,9 +282,18 @@ class MetricsTotals
      * @param  int|float  $checkouts
      * @param  int|float  $succeededCheckouts
      * @param  int|float  $checkoutsConversion
+     * @param  int|float  $canceledSubscriptions
+     * @param  int|float  $canceledSubscriptionsCustomerService
+     * @param  int|float  $canceledSubscriptionsLowQuality
+     * @param  int|float  $canceledSubscriptionsMissingFeatures
+     * @param  int|float  $canceledSubscriptionsSwitchedService
+     * @param  int|float  $canceledSubscriptionsTooComplex
+     * @param  int|float  $canceledSubscriptionsTooExpensive
+     * @param  int|float  $canceledSubscriptionsUnused
+     * @param  int|float  $canceledSubscriptionsOther
      * @phpstan-pure
      */
-    public function __construct(int|float $orders, int|float $revenue, int|float $netRevenue, int|float $cumulativeRevenue, int|float $netCumulativeRevenue, int|float $averageOrderValue, int|float $netAverageOrderValue, int|float $oneTimeProducts, int|float $oneTimeProductsRevenue, int|float $oneTimeProductsNetRevenue, int|float $newSubscriptions, int|float $newSubscriptionsRevenue, int|float $newSubscriptionsNetRevenue, int|float $renewedSubscriptions, int|float $renewedSubscriptionsRevenue, int|float $renewedSubscriptionsNetRevenue, int|float $activeSubscriptions, int|float $monthlyRecurringRevenue, int|float $committedMonthlyRecurringRevenue, int|float $checkouts, int|float $succeededCheckouts, int|float $checkoutsConversion)
+    public function __construct(int|float $orders, int|float $revenue, int|float $netRevenue, int|float $cumulativeRevenue, int|float $netCumulativeRevenue, int|float $averageOrderValue, int|float $netAverageOrderValue, int|float $oneTimeProducts, int|float $oneTimeProductsRevenue, int|float $oneTimeProductsNetRevenue, int|float $newSubscriptions, int|float $newSubscriptionsRevenue, int|float $newSubscriptionsNetRevenue, int|float $renewedSubscriptions, int|float $renewedSubscriptionsRevenue, int|float $renewedSubscriptionsNetRevenue, int|float $activeSubscriptions, int|float $monthlyRecurringRevenue, int|float $committedMonthlyRecurringRevenue, int|float $checkouts, int|float $succeededCheckouts, int|float $checkoutsConversion, int|float $canceledSubscriptions, int|float $canceledSubscriptionsCustomerService, int|float $canceledSubscriptionsLowQuality, int|float $canceledSubscriptionsMissingFeatures, int|float $canceledSubscriptionsSwitchedService, int|float $canceledSubscriptionsTooComplex, int|float $canceledSubscriptionsTooExpensive, int|float $canceledSubscriptionsUnused, int|float $canceledSubscriptionsOther)
     {
         $this->orders = $orders;
         $this->revenue = $revenue;
@@ -236,5 +317,14 @@ class MetricsTotals
         $this->checkouts = $checkouts;
         $this->succeededCheckouts = $succeededCheckouts;
         $this->checkoutsConversion = $checkoutsConversion;
+        $this->canceledSubscriptions = $canceledSubscriptions;
+        $this->canceledSubscriptionsCustomerService = $canceledSubscriptionsCustomerService;
+        $this->canceledSubscriptionsLowQuality = $canceledSubscriptionsLowQuality;
+        $this->canceledSubscriptionsMissingFeatures = $canceledSubscriptionsMissingFeatures;
+        $this->canceledSubscriptionsSwitchedService = $canceledSubscriptionsSwitchedService;
+        $this->canceledSubscriptionsTooComplex = $canceledSubscriptionsTooComplex;
+        $this->canceledSubscriptionsTooExpensive = $canceledSubscriptionsTooExpensive;
+        $this->canceledSubscriptionsUnused = $canceledSubscriptionsUnused;
+        $this->canceledSubscriptionsOther = $canceledSubscriptionsOther;
     }
 }

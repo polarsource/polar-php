@@ -13,7 +13,7 @@ namespace Polar;
 /**
  * Polar - Polar API: Polar HTTP and Webhooks API
  *
- * Read the docs at https://docs.polar.sh/api-reference
+ * Read the docs at https://polar.sh/docs/api-reference
  */
 class Polar
 {
@@ -37,6 +37,8 @@ class Polar
     public Oauth2 $oauth2;
 
     public Benefits $benefits;
+
+    public BenefitGrants $benefitGrants;
 
     public Webhooks $webhooks;
 
@@ -94,6 +96,7 @@ class Polar
         $this->subscriptions = new Subscriptions($this->sdkConfiguration);
         $this->oauth2 = new Oauth2($this->sdkConfiguration);
         $this->benefits = new Benefits($this->sdkConfiguration);
+        $this->benefitGrants = new BenefitGrants($this->sdkConfiguration);
         $this->webhooks = new Webhooks($this->sdkConfiguration);
         $this->products = new Products($this->sdkConfiguration);
         $this->orders = new Orders($this->sdkConfiguration);

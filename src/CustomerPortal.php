@@ -13,7 +13,7 @@ namespace Polar;
 class CustomerPortal
 {
     private SDKConfiguration $sdkConfiguration;
-    public BenefitGrants $benefitGrants;
+    public PolarBenefitGrants $benefitGrants;
 
     public PolarCustomers $customers;
 
@@ -35,7 +35,7 @@ class CustomerPortal
     public function __construct(public SDKConfiguration $sdkConfig)
     {
         $this->sdkConfiguration = $sdkConfig;
-        $this->benefitGrants = new BenefitGrants($this->sdkConfiguration);
+        $this->benefitGrants = new PolarBenefitGrants($this->sdkConfiguration);
         $this->customers = new PolarCustomers($this->sdkConfiguration);
         $this->customerMeters = new PolarCustomerMeters($this->sdkConfiguration);
         $this->downloadables = new Downloadables($this->sdkConfiguration);

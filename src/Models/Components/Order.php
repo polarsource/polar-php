@@ -84,6 +84,14 @@ class Order
     public int $totalAmount;
 
     /**
+     * How much of this invoice was paid using the customer's balance. Amount in cents.
+     *
+     * @var int $fromBalanceAmount
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('from_balance_amount')]
+    public int $fromBalanceAmount;
+
+    /**
      * Amount refunded in cents.
      *
      * @var int $refundedAmount
@@ -259,6 +267,7 @@ class Order
      * @param  int  $netAmount
      * @param  int  $taxAmount
      * @param  int  $totalAmount
+     * @param  int  $fromBalanceAmount
      * @param  int  $refundedAmount
      * @param  int  $refundedTaxAmount
      * @param  string  $currency
@@ -282,7 +291,7 @@ class Order
      * @param  ?OrderSubscription  $subscription
      * @phpstan-pure
      */
-    public function __construct(string $id, \DateTime $createdAt, OrderStatus $status, bool $paid, int $subtotalAmount, int $discountAmount, int $netAmount, int $taxAmount, int $totalAmount, int $refundedAmount, int $refundedTaxAmount, string $currency, OrderBillingReason $billingReason, bool $isInvoiceGenerated, string $customerId, string $productId, array $metadata, OrderCustomer $customer, string $userId, OrderProduct $product, array $items, ?\DateTime $modifiedAt = null, ?string $billingName = null, ?Address $billingAddress = null, ?string $discountId = null, ?string $subscriptionId = null, ?string $checkoutId = null, ?array $customFieldData = null, DiscountFixedOnceForeverDurationBase|DiscountFixedRepeatDurationBase|DiscountPercentageOnceForeverDurationBase|DiscountPercentageRepeatDurationBase|null $discount = null, ?OrderSubscription $subscription = null)
+    public function __construct(string $id, \DateTime $createdAt, OrderStatus $status, bool $paid, int $subtotalAmount, int $discountAmount, int $netAmount, int $taxAmount, int $totalAmount, int $fromBalanceAmount, int $refundedAmount, int $refundedTaxAmount, string $currency, OrderBillingReason $billingReason, bool $isInvoiceGenerated, string $customerId, string $productId, array $metadata, OrderCustomer $customer, string $userId, OrderProduct $product, array $items, ?\DateTime $modifiedAt = null, ?string $billingName = null, ?Address $billingAddress = null, ?string $discountId = null, ?string $subscriptionId = null, ?string $checkoutId = null, ?array $customFieldData = null, DiscountFixedOnceForeverDurationBase|DiscountFixedRepeatDurationBase|DiscountPercentageOnceForeverDurationBase|DiscountPercentageRepeatDurationBase|null $discount = null, ?OrderSubscription $subscription = null)
     {
         $this->id = $id;
         $this->createdAt = $createdAt;
@@ -293,6 +302,7 @@ class Order
         $this->netAmount = $netAmount;
         $this->taxAmount = $taxAmount;
         $this->totalAmount = $totalAmount;
+        $this->fromBalanceAmount = $fromBalanceAmount;
         $this->refundedAmount = $refundedAmount;
         $this->refundedTaxAmount = $refundedTaxAmount;
         $this->currency = $currency;

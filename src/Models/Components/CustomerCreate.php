@@ -60,12 +60,12 @@ class CustomerCreate
 
     /**
      *
-     * @var ?Address $billingAddress
+     * @var ?AddressInput $billingAddress
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('billing_address')]
-    #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\Address|null')]
+    #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\AddressInput|null')]
     #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
-    public ?Address $billingAddress = null;
+    public ?AddressInput $billingAddress = null;
 
     /**
      * $taxId
@@ -91,12 +91,12 @@ class CustomerCreate
      * @param  ?array<string, string|int|float|bool>  $metadata
      * @param  ?string  $externalId
      * @param  ?string  $name
-     * @param  ?Address  $billingAddress
+     * @param  ?AddressInput  $billingAddress
      * @param  ?array<string|TaxIDFormat|null>  $taxId
      * @param  ?string  $organizationId
      * @phpstan-pure
      */
-    public function __construct(string $email, ?array $metadata = null, ?string $externalId = null, ?string $name = null, ?Address $billingAddress = null, ?array $taxId = null, ?string $organizationId = null)
+    public function __construct(string $email, ?array $metadata = null, ?string $externalId = null, ?string $name = null, ?AddressInput $billingAddress = null, ?array $taxId = null, ?string $organizationId = null)
     {
         $this->email = $email;
         $this->metadata = $metadata;

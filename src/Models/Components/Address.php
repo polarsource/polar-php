@@ -13,10 +13,11 @@ class Address
 {
     /**
      *
-     * @var string $country
+     * @var CountryAlpha2 $country
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('country')]
-    public string $country;
+    #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\CountryAlpha2')]
+    public CountryAlpha2 $country;
 
     /**
      *
@@ -59,7 +60,7 @@ class Address
     public ?string $state = null;
 
     /**
-     * @param  string  $country
+     * @param  CountryAlpha2  $country
      * @param  ?string  $line1
      * @param  ?string  $line2
      * @param  ?string  $postalCode
@@ -67,7 +68,7 @@ class Address
      * @param  ?string  $state
      * @phpstan-pure
      */
-    public function __construct(string $country, ?string $line1 = null, ?string $line2 = null, ?string $postalCode = null, ?string $city = null, ?string $state = null)
+    public function __construct(CountryAlpha2 $country, ?string $line1 = null, ?string $line2 = null, ?string $postalCode = null, ?string $city = null, ?string $state = null)
     {
         $this->country = $country;
         $this->line1 = $line1;

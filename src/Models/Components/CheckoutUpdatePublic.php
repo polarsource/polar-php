@@ -83,12 +83,12 @@ class CheckoutUpdatePublic
 
     /**
      *
-     * @var ?Address $customerBillingAddress
+     * @var ?AddressInput $customerBillingAddress
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('customer_billing_address')]
-    #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\Address|null')]
+    #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\AddressInput|null')]
     #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
-    public ?Address $customerBillingAddress = null;
+    public ?AddressInput $customerBillingAddress = null;
 
     /**
      *
@@ -116,12 +116,12 @@ class CheckoutUpdatePublic
      * @param  ?string  $customerName
      * @param  ?string  $customerEmail
      * @param  ?string  $customerBillingName
-     * @param  ?Address  $customerBillingAddress
+     * @param  ?AddressInput  $customerBillingAddress
      * @param  ?string  $customerTaxId
      * @param  ?string  $discountCode
      * @phpstan-pure
      */
-    public function __construct(?array $customFieldData = null, ?string $productId = null, ?string $productPriceId = null, ?int $amount = null, ?bool $isBusinessCustomer = null, ?string $customerName = null, ?string $customerEmail = null, ?string $customerBillingName = null, ?Address $customerBillingAddress = null, ?string $customerTaxId = null, ?string $discountCode = null)
+    public function __construct(?array $customFieldData = null, ?string $productId = null, ?string $productPriceId = null, ?int $amount = null, ?bool $isBusinessCustomer = null, ?string $customerName = null, ?string $customerEmail = null, ?string $customerBillingName = null, ?AddressInput $customerBillingAddress = null, ?string $customerTaxId = null, ?string $discountCode = null)
     {
         $this->customFieldData = $customFieldData;
         $this->productId = $productId;

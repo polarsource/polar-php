@@ -23,18 +23,18 @@ class CustomerOrderUpdate
     /**
      * The address of the customer that should appear on the invoice. Can't be updated after the invoice is generated.
      *
-     * @var ?Address $billingAddress
+     * @var ?AddressInput $billingAddress
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('billing_address')]
-    #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\Address|null')]
-    public ?Address $billingAddress;
+    #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\AddressInput|null')]
+    public ?AddressInput $billingAddress;
 
     /**
      * @param  ?string  $billingName
-     * @param  ?Address  $billingAddress
+     * @param  ?AddressInput  $billingAddress
      * @phpstan-pure
      */
-    public function __construct(?string $billingName = null, ?Address $billingAddress = null)
+    public function __construct(?string $billingName = null, ?AddressInput $billingAddress = null)
     {
         $this->billingName = $billingName;
         $this->billingAddress = $billingAddress;

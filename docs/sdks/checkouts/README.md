@@ -93,8 +93,8 @@ $sdk = Polar\Polar::builder()
     ->build();
 
 $request = new Components\CheckoutCreate(
-    customerBillingAddress: new Components\Address(
-        country: 'US',
+    customerBillingAddress: new Components\AddressInput(
+        country: Components\CountryAlpha2Input::Us,
     ),
     products: [
         '<value 1>',
@@ -204,8 +204,8 @@ $sdk = Polar\Polar::builder()
     ->build();
 
 $checkoutUpdate = new Components\CheckoutUpdate(
-    customerBillingAddress: new Components\Address(
-        country: 'US',
+    customerBillingAddress: new Components\AddressInput(
+        country: Components\CountryAlpha2Input::Us,
     ),
 );
 
@@ -367,8 +367,8 @@ $sdk = Polar\Polar::builder()
     ->build();
 
 $checkoutConfirmStripe = new Components\CheckoutConfirmStripe(
-    customerBillingAddress: new Components\Address(
-        country: 'US',
+    customerBillingAddress: new Components\AddressInput(
+        country: Components\CountryAlpha2Input::Us,
     ),
 );
 

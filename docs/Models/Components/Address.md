@@ -3,11 +3,11 @@
 
 ## Fields
 
-| Field              | Type               | Required           | Description        | Example            |
-| ------------------ | ------------------ | ------------------ | ------------------ | ------------------ |
-| `line1`            | *?string*          | :heavy_minus_sign: | N/A                |                    |
-| `line2`            | *?string*          | :heavy_minus_sign: | N/A                |                    |
-| `postalCode`       | *?string*          | :heavy_minus_sign: | N/A                |                    |
-| `city`             | *?string*          | :heavy_minus_sign: | N/A                |                    |
-| `state`            | *?string*          | :heavy_minus_sign: | N/A                |                    |
-| `country`          | *string*           | :heavy_check_mark: | N/A                | US                 |
+| Field                                                                | Type                                                                 | Required                                                             | Description                                                          | Example                                                              |
+| -------------------------------------------------------------------- | -------------------------------------------------------------------- | -------------------------------------------------------------------- | -------------------------------------------------------------------- | -------------------------------------------------------------------- |
+| `line1`                                                              | *?string*                                                            | :heavy_minus_sign:                                                   | N/A                                                                  |                                                                      |
+| `line2`                                                              | *?string*                                                            | :heavy_minus_sign:                                                   | N/A                                                                  |                                                                      |
+| `postalCode`                                                         | *?string*                                                            | :heavy_minus_sign:                                                   | N/A                                                                  |                                                                      |
+| `city`                                                               | *?string*                                                            | :heavy_minus_sign:                                                   | N/A                                                                  |                                                                      |
+| `state`                                                              | *?string*                                                            | :heavy_minus_sign:                                                   | N/A                                                                  |                                                                      |
+| `country`                                                            | [Components\CountryAlpha2](../../Models/Components/CountryAlpha2.md) | :heavy_check_mark:                                                   | N/A                                                                  | US                                                                   |
