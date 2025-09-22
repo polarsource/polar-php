@@ -210,6 +210,87 @@ class Metrics
     public Metric $checkoutsConversion;
 
     /**
+     * Information about a metric.
+     *
+     * @var Metric $canceledSubscriptions
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('canceled_subscriptions')]
+    #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\Metric')]
+    public Metric $canceledSubscriptions;
+
+    /**
+     * Information about a metric.
+     *
+     * @var Metric $canceledSubscriptionsCustomerService
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('canceled_subscriptions_customer_service')]
+    #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\Metric')]
+    public Metric $canceledSubscriptionsCustomerService;
+
+    /**
+     * Information about a metric.
+     *
+     * @var Metric $canceledSubscriptionsLowQuality
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('canceled_subscriptions_low_quality')]
+    #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\Metric')]
+    public Metric $canceledSubscriptionsLowQuality;
+
+    /**
+     * Information about a metric.
+     *
+     * @var Metric $canceledSubscriptionsMissingFeatures
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('canceled_subscriptions_missing_features')]
+    #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\Metric')]
+    public Metric $canceledSubscriptionsMissingFeatures;
+
+    /**
+     * Information about a metric.
+     *
+     * @var Metric $canceledSubscriptionsSwitchedService
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('canceled_subscriptions_switched_service')]
+    #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\Metric')]
+    public Metric $canceledSubscriptionsSwitchedService;
+
+    /**
+     * Information about a metric.
+     *
+     * @var Metric $canceledSubscriptionsTooComplex
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('canceled_subscriptions_too_complex')]
+    #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\Metric')]
+    public Metric $canceledSubscriptionsTooComplex;
+
+    /**
+     * Information about a metric.
+     *
+     * @var Metric $canceledSubscriptionsTooExpensive
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('canceled_subscriptions_too_expensive')]
+    #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\Metric')]
+    public Metric $canceledSubscriptionsTooExpensive;
+
+    /**
+     * Information about a metric.
+     *
+     * @var Metric $canceledSubscriptionsUnused
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('canceled_subscriptions_unused')]
+    #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\Metric')]
+    public Metric $canceledSubscriptionsUnused;
+
+    /**
+     * Information about a metric.
+     *
+     * @var Metric $canceledSubscriptionsOther
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('canceled_subscriptions_other')]
+    #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\Metric')]
+    public Metric $canceledSubscriptionsOther;
+
+    /**
      * @param  Metric  $orders
      * @param  Metric  $revenue
      * @param  Metric  $netRevenue
@@ -232,9 +313,18 @@ class Metrics
      * @param  Metric  $checkouts
      * @param  Metric  $succeededCheckouts
      * @param  Metric  $checkoutsConversion
+     * @param  Metric  $canceledSubscriptions
+     * @param  Metric  $canceledSubscriptionsCustomerService
+     * @param  Metric  $canceledSubscriptionsLowQuality
+     * @param  Metric  $canceledSubscriptionsMissingFeatures
+     * @param  Metric  $canceledSubscriptionsSwitchedService
+     * @param  Metric  $canceledSubscriptionsTooComplex
+     * @param  Metric  $canceledSubscriptionsTooExpensive
+     * @param  Metric  $canceledSubscriptionsUnused
+     * @param  Metric  $canceledSubscriptionsOther
      * @phpstan-pure
      */
-    public function __construct(Metric $orders, Metric $revenue, Metric $netRevenue, Metric $cumulativeRevenue, Metric $netCumulativeRevenue, Metric $averageOrderValue, Metric $netAverageOrderValue, Metric $oneTimeProducts, Metric $oneTimeProductsRevenue, Metric $oneTimeProductsNetRevenue, Metric $newSubscriptions, Metric $newSubscriptionsRevenue, Metric $newSubscriptionsNetRevenue, Metric $renewedSubscriptions, Metric $renewedSubscriptionsRevenue, Metric $renewedSubscriptionsNetRevenue, Metric $activeSubscriptions, Metric $monthlyRecurringRevenue, Metric $committedMonthlyRecurringRevenue, Metric $checkouts, Metric $succeededCheckouts, Metric $checkoutsConversion)
+    public function __construct(Metric $orders, Metric $revenue, Metric $netRevenue, Metric $cumulativeRevenue, Metric $netCumulativeRevenue, Metric $averageOrderValue, Metric $netAverageOrderValue, Metric $oneTimeProducts, Metric $oneTimeProductsRevenue, Metric $oneTimeProductsNetRevenue, Metric $newSubscriptions, Metric $newSubscriptionsRevenue, Metric $newSubscriptionsNetRevenue, Metric $renewedSubscriptions, Metric $renewedSubscriptionsRevenue, Metric $renewedSubscriptionsNetRevenue, Metric $activeSubscriptions, Metric $monthlyRecurringRevenue, Metric $committedMonthlyRecurringRevenue, Metric $checkouts, Metric $succeededCheckouts, Metric $checkoutsConversion, Metric $canceledSubscriptions, Metric $canceledSubscriptionsCustomerService, Metric $canceledSubscriptionsLowQuality, Metric $canceledSubscriptionsMissingFeatures, Metric $canceledSubscriptionsSwitchedService, Metric $canceledSubscriptionsTooComplex, Metric $canceledSubscriptionsTooExpensive, Metric $canceledSubscriptionsUnused, Metric $canceledSubscriptionsOther)
     {
         $this->orders = $orders;
         $this->revenue = $revenue;
@@ -258,5 +348,14 @@ class Metrics
         $this->checkouts = $checkouts;
         $this->succeededCheckouts = $succeededCheckouts;
         $this->checkoutsConversion = $checkoutsConversion;
+        $this->canceledSubscriptions = $canceledSubscriptions;
+        $this->canceledSubscriptionsCustomerService = $canceledSubscriptionsCustomerService;
+        $this->canceledSubscriptionsLowQuality = $canceledSubscriptionsLowQuality;
+        $this->canceledSubscriptionsMissingFeatures = $canceledSubscriptionsMissingFeatures;
+        $this->canceledSubscriptionsSwitchedService = $canceledSubscriptionsSwitchedService;
+        $this->canceledSubscriptionsTooComplex = $canceledSubscriptionsTooComplex;
+        $this->canceledSubscriptionsTooExpensive = $canceledSubscriptionsTooExpensive;
+        $this->canceledSubscriptionsUnused = $canceledSubscriptionsUnused;
+        $this->canceledSubscriptionsOther = $canceledSubscriptionsOther;
     }
 }

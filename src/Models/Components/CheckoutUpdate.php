@@ -104,12 +104,12 @@ class CheckoutUpdate
 
     /**
      *
-     * @var ?Address $customerBillingAddress
+     * @var ?AddressInput $customerBillingAddress
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('customer_billing_address')]
-    #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\Address|null')]
+    #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\AddressInput|null')]
     #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
-    public ?Address $customerBillingAddress = null;
+    public ?AddressInput $customerBillingAddress = null;
 
     /**
      *
@@ -203,7 +203,7 @@ class CheckoutUpdate
      * @param  ?string  $customerName
      * @param  ?string  $customerEmail
      * @param  ?string  $customerBillingName
-     * @param  ?Address  $customerBillingAddress
+     * @param  ?AddressInput  $customerBillingAddress
      * @param  ?string  $customerTaxId
      * @param  ?string  $discountId
      * @param  ?bool  $allowDiscountCodes
@@ -214,7 +214,7 @@ class CheckoutUpdate
      * @param  ?string  $embedOrigin
      * @phpstan-pure
      */
-    public function __construct(?array $customFieldData = null, ?array $metadata = null, ?string $productId = null, ?string $productPriceId = null, ?int $amount = null, ?bool $isBusinessCustomer = null, ?string $customerName = null, ?string $customerEmail = null, ?string $customerBillingName = null, ?Address $customerBillingAddress = null, ?string $customerTaxId = null, ?string $discountId = null, ?bool $allowDiscountCodes = null, ?bool $requireBillingAddress = null, ?string $customerIpAddress = null, ?array $customerMetadata = null, ?string $successUrl = null, ?string $embedOrigin = null)
+    public function __construct(?array $customFieldData = null, ?array $metadata = null, ?string $productId = null, ?string $productPriceId = null, ?int $amount = null, ?bool $isBusinessCustomer = null, ?string $customerName = null, ?string $customerEmail = null, ?string $customerBillingName = null, ?AddressInput $customerBillingAddress = null, ?string $customerTaxId = null, ?string $discountId = null, ?bool $allowDiscountCodes = null, ?bool $requireBillingAddress = null, ?string $customerIpAddress = null, ?array $customerMetadata = null, ?string $successUrl = null, ?string $embedOrigin = null)
     {
         $this->customFieldData = $customFieldData;
         $this->metadata = $metadata;

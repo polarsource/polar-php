@@ -7,6 +7,7 @@
 
 * [list](#list) - List Customers
 * [create](#create) - Create Customer
+* [export](#export) - Export Customers
 * [get](#get) - Get Customer
 * [update](#update) - Update Customer
 * [delete](#delete) - Delete Customer
@@ -99,8 +100,8 @@ $request = new Components\CustomerCreate(
     externalId: 'usr_1337',
     email: 'customer@example.com',
     name: 'John Doe',
-    billingAddress: new Components\Address(
-        country: 'US',
+    billingAddress: new Components\AddressInput(
+        country: Components\CountryAlpha2Input::Us,
     ),
     taxId: [
         '911144442',
@@ -127,6 +128,56 @@ if ($response->customer !== null) {
 ### Response
 
 **[?Operations\CustomersCreateResponse](../../Models/Operations/CustomersCreateResponse.md)**
+
+### Errors
+
+| Error Type                 | Status Code                | Content Type               |
+| -------------------------- | -------------------------- | -------------------------- |
+| Errors\HTTPValidationError | 422                        | application/json           |
+| Errors\APIException        | 4XX, 5XX                   | \*/\*                      |
+
+## export
+
+Export customers as a CSV file.
+
+**Scopes**: `customers:read` `customers:write`
+
+### Example Usage
+
+<!-- UsageSnippet language="php" operationID="customers:export" method="get" path="/v1/customers/export" -->
+```php
+declare(strict_types=1);
+
+require 'vendor/autoload.php';
+
+use Polar;
+
+$sdk = Polar\Polar::builder()
+    ->setSecurity(
+        '<YOUR_BEARER_TOKEN_HERE>'
+    )
+    ->build();
+
+
+
+$response = $sdk->customers->export(
+    organizationId: '1dbfc517-0bbf-4301-9ba8-555ca42b9737'
+);
+
+if ($response->any !== null) {
+    // handle response
+}
+```
+
+### Parameters
+
+| Parameter                                                                               | Type                                                                                    | Required                                                                                | Description                                                                             |
+| --------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------- |
+| `organizationId`                                                                        | [string\|array\|null](../../Models/Operations/CustomersExportQueryParamOrganizationId.md) | :heavy_minus_sign:                                                                      | Filter by organization ID.                                                              |
+
+### Response
+
+**[?Operations\CustomersExportResponse](../../Models/Operations/CustomersExportResponse.md)**
 
 ### Errors
 
@@ -212,8 +263,8 @@ $sdk = Polar\Polar::builder()
 $customerUpdate = new Components\CustomerUpdate(
     email: 'customer@example.com',
     name: 'John Doe',
-    billingAddress: new Components\Address(
-        country: 'US',
+    billingAddress: new Components\AddressInput(
+        country: Components\CountryAlpha2Input::Us,
     ),
     taxId: [
         '911144442',
@@ -392,8 +443,8 @@ $sdk = Polar\Polar::builder()
 $customerUpdateExternalID = new Components\CustomerUpdateExternalID(
     email: 'customer@example.com',
     name: 'John Doe',
-    billingAddress: new Components\Address(
-        country: 'US',
+    billingAddress: new Components\AddressInput(
+        country: Components\CountryAlpha2Input::Us,
     ),
     taxId: [
         '911144442',

@@ -81,8 +81,8 @@ use Polar\Models\Operations;
 $sdk = Polar\Polar::builder()->build();
 
 $request = new Components\CustomerPortalCustomerUpdate(
-    billingAddress: new Components\Address(
-        country: 'US',
+    billingAddress: new Components\AddressInput(
+        country: Components\CountryAlpha2Input::Us,
     ),
 );
 $requestSecurity = new Operations\CustomerPortalCustomersUpdateSecurity(

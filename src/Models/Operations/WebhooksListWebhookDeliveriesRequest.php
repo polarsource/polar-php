@@ -20,6 +20,22 @@ class WebhooksListWebhookDeliveriesRequest
     public string|array|null $endpointId = null;
 
     /**
+     * Filter deliveries after this timestamp.
+     *
+     * @var ?\DateTime $startTimestamp
+     */
+    #[SpeakeasyMetadata('queryParam:style=form,explode=true,name=start_timestamp,dateTimeFormat=Y-m-d\TH:i:s.up')]
+    public ?\DateTime $startTimestamp = null;
+
+    /**
+     * Filter deliveries before this timestamp.
+     *
+     * @var ?\DateTime $endTimestamp
+     */
+    #[SpeakeasyMetadata('queryParam:style=form,explode=true,name=end_timestamp,dateTimeFormat=Y-m-d\TH:i:s.up')]
+    public ?\DateTime $endTimestamp = null;
+
+    /**
      * Page number, defaults to 1.
      *
      * @var ?int $page
@@ -39,11 +55,15 @@ class WebhooksListWebhookDeliveriesRequest
      * @param  ?int  $page
      * @param  ?int  $limit
      * @param  string|array<string>|null  $endpointId
+     * @param  ?\DateTime  $startTimestamp
+     * @param  ?\DateTime  $endTimestamp
      * @phpstan-pure
      */
-    public function __construct(string|array|null $endpointId = null, ?int $page = 1, ?int $limit = 10)
+    public function __construct(string|array|null $endpointId = null, ?\DateTime $startTimestamp = null, ?\DateTime $endTimestamp = null, ?int $page = 1, ?int $limit = 10)
     {
         $this->endpointId = $endpointId;
+        $this->startTimestamp = $startTimestamp;
+        $this->endTimestamp = $endTimestamp;
         $this->page = $page;
         $this->limit = $limit;
     }

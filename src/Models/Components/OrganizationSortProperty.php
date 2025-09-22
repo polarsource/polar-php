@@ -17,4 +17,8 @@ enum OrganizationSortProperty: string
     case MinusSlug = '-slug';
     case Name = 'name';
     case MinusName = '-name';
+    case NextReviewThreshold = 'next_review_threshold';
+    case MinusNextReviewThreshold = '-next_review_threshold';
+    case DaysInStatus = 'days_in_status';
+    case MinusDaysInStatus = '-days_in_status';
 }

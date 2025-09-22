@@ -21,12 +21,12 @@ class CustomerPortalCustomerUpdate
 
     /**
      *
-     * @var ?Address $billingAddress
+     * @var ?AddressInput $billingAddress
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('billing_address')]
-    #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\Address|null')]
+    #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\AddressInput|null')]
     #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
-    public ?Address $billingAddress = null;
+    public ?AddressInput $billingAddress = null;
 
     /**
      *
@@ -38,11 +38,11 @@ class CustomerPortalCustomerUpdate
 
     /**
      * @param  ?string  $billingName
-     * @param  ?Address  $billingAddress
+     * @param  ?AddressInput  $billingAddress
      * @param  ?string  $taxId
      * @phpstan-pure
      */
-    public function __construct(?string $billingName = null, ?Address $billingAddress = null, ?string $taxId = null)
+    public function __construct(?string $billingName = null, ?AddressInput $billingAddress = null, ?string $taxId = null)
     {
         $this->billingName = $billingName;
         $this->billingAddress = $billingAddress;

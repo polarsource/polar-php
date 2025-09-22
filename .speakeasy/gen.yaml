@@ -22,7 +22,7 @@ generation:
     generateNewTests: false
     skipResponseBodyAssertions: false
 php:
-  version: 0.4.9
+  version: 0.5.0
   additionalDependencies:
     autoload: {}
     autoload-dev: {}
