@@ -22,20 +22,20 @@ class DiscountProduct
     public array $metadata;
 
     /**
+     * The ID of the object.
+     *
+     * @var string $id
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('id')]
+    public string $id;
+
+    /**
      * Creation timestamp of the object.
      *
      * @var \DateTime $createdAt
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('created_at')]
     public \DateTime $createdAt;
-
-    /**
-     * The ID of the product.
-     *
-     * @var string $id
-     */
-    #[\Speakeasy\Serializer\Annotation\SerializedName('id')]
-    public string $id;
 
     /**
      * The name of the product.
@@ -78,6 +78,23 @@ class DiscountProduct
     public ?\DateTime $modifiedAt;
 
     /**
+     * The interval unit for the trial period.
+     *
+     * @var ?TrialInterval $trialInterval
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('trial_interval')]
+    #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\TrialInterval|null')]
+    public ?TrialInterval $trialInterval;
+
+    /**
+     * The number of interval units for the trial period.
+     *
+     * @var ?int $trialIntervalCount
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('trial_interval_count')]
+    public ?int $trialIntervalCount;
+
+    /**
      * The description of the product.
      *
      * @var ?string $description
@@ -96,27 +113,31 @@ class DiscountProduct
 
     /**
      * @param  array<string, string|int|float|bool>  $metadata
-     * @param  \DateTime  $createdAt
      * @param  string  $id
+     * @param  \DateTime  $createdAt
      * @param  string  $name
      * @param  bool  $isRecurring
      * @param  bool  $isArchived
      * @param  string  $organizationId
      * @param  ?\DateTime  $modifiedAt
+     * @param  ?TrialInterval  $trialInterval
+     * @param  ?int  $trialIntervalCount
      * @param  ?string  $description
      * @param  ?SubscriptionRecurringInterval  $recurringInterval
      * @phpstan-pure
      */
-    public function __construct(array $metadata, \DateTime $createdAt, string $id, string $name, bool $isRecurring, bool $isArchived, string $organizationId, ?\DateTime $modifiedAt = null, ?string $description = null, ?SubscriptionRecurringInterval $recurringInterval = null)
+    public function __construct(array $metadata, string $id, \DateTime $createdAt, string $name, bool $isRecurring, bool $isArchived, string $organizationId, ?\DateTime $modifiedAt = null, ?TrialInterval $trialInterval = null, ?int $trialIntervalCount = null, ?string $description = null, ?SubscriptionRecurringInterval $recurringInterval = null)
     {
         $this->metadata = $metadata;
-        $this->createdAt = $createdAt;
         $this->id = $id;
+        $this->createdAt = $createdAt;
         $this->name = $name;
         $this->isRecurring = $isRecurring;
         $this->isArchived = $isArchived;
         $this->organizationId = $organizationId;
         $this->modifiedAt = $modifiedAt;
+        $this->trialInterval = $trialInterval;
+        $this->trialIntervalCount = $trialIntervalCount;
         $this->description = $description;
         $this->recurringInterval = $recurringInterval;
     }

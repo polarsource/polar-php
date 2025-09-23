@@ -34,6 +34,25 @@ class CheckoutLinkUpdate
     public ?array $metadata = null;
 
     /**
+     * The interval unit for the trial period.
+     *
+     * @var ?TrialInterval $trialInterval
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('trial_interval')]
+    #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\TrialInterval|null')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
+    public ?TrialInterval $trialInterval = null;
+
+    /**
+     * The number of interval units for the trial period.
+     *
+     * @var ?int $trialIntervalCount
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('trial_interval_count')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
+    public ?int $trialIntervalCount = null;
+
+    /**
      * List of products that will be available to select at checkout.
      *
      * @var ?array<string> $products
@@ -89,6 +108,8 @@ class CheckoutLinkUpdate
 
     /**
      * @param  ?array<string, string|int|float|bool>  $metadata
+     * @param  ?TrialInterval  $trialInterval
+     * @param  ?int  $trialIntervalCount
      * @param  ?array<string>  $products
      * @param  ?string  $label
      * @param  ?bool  $allowDiscountCodes
@@ -97,9 +118,11 @@ class CheckoutLinkUpdate
      * @param  ?string  $successUrl
      * @phpstan-pure
      */
-    public function __construct(?array $metadata = null, ?array $products = null, ?string $label = null, ?bool $allowDiscountCodes = null, ?bool $requireBillingAddress = null, ?string $discountId = null, ?string $successUrl = null)
+    public function __construct(?array $metadata = null, ?TrialInterval $trialInterval = null, ?int $trialIntervalCount = null, ?array $products = null, ?string $label = null, ?bool $allowDiscountCodes = null, ?bool $requireBillingAddress = null, ?string $discountId = null, ?string $successUrl = null)
     {
         $this->metadata = $metadata;
+        $this->trialInterval = $trialInterval;
+        $this->trialIntervalCount = $trialIntervalCount;
         $this->products = $products;
         $this->label = $label;
         $this->allowDiscountCodes = $allowDiscountCodes;

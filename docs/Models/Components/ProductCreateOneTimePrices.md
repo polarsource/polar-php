@@ -1,4 +1,4 @@
-# ProductCreatePrices
+# ProductCreateOneTimePrices
 
 
 ## Supported Types

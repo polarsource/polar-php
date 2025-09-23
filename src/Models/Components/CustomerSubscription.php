@@ -134,6 +134,22 @@ class CustomerSubscription
     public ?\DateTime $currentPeriodEnd;
 
     /**
+     * The start timestamp of the trial period, if any.
+     *
+     * @var ?\DateTime $trialStart
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('trial_start')]
+    public ?\DateTime $trialStart;
+
+    /**
+     * The end timestamp of the trial period, if any.
+     *
+     * @var ?\DateTime $trialEnd
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('trial_end')]
+    public ?\DateTime $trialEnd;
+
+    /**
      * The timestamp when the subscription was canceled. The subscription might still be active if `cancel_at_period_end` is `true`.
      *
      * @var ?\DateTime $canceledAt
@@ -211,6 +227,8 @@ class CustomerSubscription
      * @param  array<CustomerSubscriptionMeter>  $meters
      * @param  ?\DateTime  $modifiedAt
      * @param  ?\DateTime  $currentPeriodEnd
+     * @param  ?\DateTime  $trialStart
+     * @param  ?\DateTime  $trialEnd
      * @param  ?\DateTime  $canceledAt
      * @param  ?\DateTime  $startedAt
      * @param  ?\DateTime  $endsAt
@@ -221,7 +239,7 @@ class CustomerSubscription
      * @param  ?string  $customerCancellationComment
      * @phpstan-pure
      */
-    public function __construct(\DateTime $createdAt, string $id, int $amount, string $currency, SubscriptionRecurringInterval $recurringInterval, SubscriptionStatus $status, \DateTime $currentPeriodStart, bool $cancelAtPeriodEnd, string $customerId, string $productId, CustomerSubscriptionProduct $product, array $prices, array $meters, ?\DateTime $modifiedAt = null, ?\DateTime $currentPeriodEnd = null, ?\DateTime $canceledAt = null, ?\DateTime $startedAt = null, ?\DateTime $endsAt = null, ?\DateTime $endedAt = null, ?string $discountId = null, ?string $checkoutId = null, ?CustomerCancellationReason $customerCancellationReason = null, ?string $customerCancellationComment = null)
+    public function __construct(\DateTime $createdAt, string $id, int $amount, string $currency, SubscriptionRecurringInterval $recurringInterval, SubscriptionStatus $status, \DateTime $currentPeriodStart, bool $cancelAtPeriodEnd, string $customerId, string $productId, CustomerSubscriptionProduct $product, array $prices, array $meters, ?\DateTime $modifiedAt = null, ?\DateTime $currentPeriodEnd = null, ?\DateTime $trialStart = null, ?\DateTime $trialEnd = null, ?\DateTime $canceledAt = null, ?\DateTime $startedAt = null, ?\DateTime $endsAt = null, ?\DateTime $endedAt = null, ?string $discountId = null, ?string $checkoutId = null, ?CustomerCancellationReason $customerCancellationReason = null, ?string $customerCancellationComment = null)
     {
         $this->createdAt = $createdAt;
         $this->id = $id;
@@ -238,6 +256,8 @@ class CustomerSubscription
         $this->meters = $meters;
         $this->modifiedAt = $modifiedAt;
         $this->currentPeriodEnd = $currentPeriodEnd;
+        $this->trialStart = $trialStart;
+        $this->trialEnd = $trialEnd;
         $this->canceledAt = $canceledAt;
         $this->startedAt = $startedAt;
         $this->endsAt = $endsAt;

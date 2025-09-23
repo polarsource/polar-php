@@ -52,11 +52,11 @@ class Products
      *
      * **Scopes**: `products:write`
      *
-     * @param  Components\ProductCreate  $request
+     * @param  Components\ProductCreateRecurring|Components\ProductCreateOneTime  $request
      * @return Operations\ProductsCreateResponse
      * @throws \Polar\Models\Errors\APIException
      */
-    public function create(Components\ProductCreate $request, ?Options $options = null): Operations\ProductsCreateResponse
+    public function create(Components\ProductCreateRecurring|Components\ProductCreateOneTime $request, ?Options $options = null): Operations\ProductsCreateResponse
     {
         $baseUrl = $this->sdkConfiguration->getTemplatedServerUrl();
         $url = Utils\Utils::generateUrl($baseUrl, '/v1/products/');
