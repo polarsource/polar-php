@@ -81,6 +81,25 @@ class CheckoutCreate
     public ?array $customerMetadata = null;
 
     /**
+     * The interval unit for the trial period.
+     *
+     * @var ?TrialInterval $trialInterval
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('trial_interval')]
+    #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\TrialInterval|null')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
+    public ?TrialInterval $trialInterval = null;
+
+    /**
+     * The number of interval units for the trial period.
+     *
+     * @var ?int $trialIntervalCount
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('trial_interval_count')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
+    public ?int $trialIntervalCount = null;
+
+    /**
      * ID of the discount to apply to the checkout.
      *
      * @var ?string $discountId
@@ -226,6 +245,8 @@ class CheckoutCreate
      * @param  ?bool  $requireBillingAddress
      * @param  ?bool  $isBusinessCustomer
      * @param  ?array<string, string|int|float|bool>  $customerMetadata
+     * @param  ?TrialInterval  $trialInterval
+     * @param  ?int  $trialIntervalCount
      * @param  ?string  $discountId
      * @param  ?int  $amount
      * @param  ?string  $customerId
@@ -241,12 +262,14 @@ class CheckoutCreate
      * @param  ?string  $embedOrigin
      * @phpstan-pure
      */
-    public function __construct(array $products, ?array $metadata = null, ?array $customFieldData = null, ?array $customerMetadata = null, ?string $discountId = null, ?int $amount = null, ?string $customerId = null, ?string $externalCustomerId = null, ?string $customerName = null, ?string $customerEmail = null, ?string $customerIpAddress = null, ?string $customerBillingName = null, ?AddressInput $customerBillingAddress = null, ?string $customerTaxId = null, ?string $subscriptionId = null, ?string $successUrl = null, ?string $embedOrigin = null, ?bool $allowDiscountCodes = true, ?bool $requireBillingAddress = false, ?bool $isBusinessCustomer = false)
+    public function __construct(array $products, ?array $metadata = null, ?array $customFieldData = null, ?array $customerMetadata = null, ?TrialInterval $trialInterval = null, ?int $trialIntervalCount = null, ?string $discountId = null, ?int $amount = null, ?string $customerId = null, ?string $externalCustomerId = null, ?string $customerName = null, ?string $customerEmail = null, ?string $customerIpAddress = null, ?string $customerBillingName = null, ?AddressInput $customerBillingAddress = null, ?string $customerTaxId = null, ?string $subscriptionId = null, ?string $successUrl = null, ?string $embedOrigin = null, ?bool $allowDiscountCodes = true, ?bool $requireBillingAddress = false, ?bool $isBusinessCustomer = false)
     {
         $this->products = $products;
         $this->metadata = $metadata;
         $this->customFieldData = $customFieldData;
         $this->customerMetadata = $customerMetadata;
+        $this->trialInterval = $trialInterval;
+        $this->trialIntervalCount = $trialIntervalCount;
         $this->discountId = $discountId;
         $this->amount = $amount;
         $this->customerId = $customerId;

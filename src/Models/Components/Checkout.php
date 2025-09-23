@@ -13,20 +13,20 @@ namespace Polar\Models\Components;
 class Checkout
 {
     /**
-     * Creation timestamp of the object.
-     *
-     * @var \DateTime $createdAt
-     */
-    #[\Speakeasy\Serializer\Annotation\SerializedName('created_at')]
-    public \DateTime $createdAt;
-
-    /**
      * The ID of the object.
      *
      * @var string $id
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('id')]
     public string $id;
+
+    /**
+     * Creation timestamp of the object.
+     *
+     * @var \DateTime $createdAt
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('created_at')]
+    public \DateTime $createdAt;
 
     /**
      *
@@ -302,6 +302,31 @@ class Checkout
     public ?int $taxAmount;
 
     /**
+     * Interval unit of the trial period, if any. This value is either set from the checkout, if `trial_interval` is set, or from the selected product.
+     *
+     * @var ?TrialInterval $activeTrialInterval
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('active_trial_interval')]
+    #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\TrialInterval|null')]
+    public ?TrialInterval $activeTrialInterval;
+
+    /**
+     * Number of interval units of the trial period, if any. This value is either set from the checkout, if `trial_interval_count` is set, or from the selected product.
+     *
+     * @var ?int $activeTrialIntervalCount
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('active_trial_interval_count')]
+    public ?int $activeTrialIntervalCount;
+
+    /**
+     * End date and time of the trial period, if any.
+     *
+     * @var ?\DateTime $trialEnd
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('trial_end')]
+    public ?\DateTime $trialEnd;
+
+    /**
      * ID of the discount applied to the checkout.
      *
      * @var ?string $discountId
@@ -362,6 +387,23 @@ class Checkout
     public ?string $customerTaxId;
 
     /**
+     * The interval unit for the trial period.
+     *
+     * @var ?TrialInterval $trialInterval
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('trial_interval')]
+    #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\TrialInterval|null')]
+    public ?TrialInterval $trialInterval;
+
+    /**
+     * The number of interval units for the trial period.
+     *
+     * @var ?int $trialIntervalCount
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('trial_interval_count')]
+    public ?int $trialIntervalCount;
+
+    /**
      * ID of the customer in your system. If a matching customer exists on Polar, the resulting order will be linked to this customer. Otherwise, a new customer will be created with this external ID set.
      *
      * @var ?string $externalCustomerId
@@ -393,8 +435,8 @@ class Checkout
     public ?string $subscriptionId;
 
     /**
-     * @param  \DateTime  $createdAt
      * @param  string  $id
+     * @param  \DateTime  $createdAt
      * @param  PaymentProcessor  $paymentProcessor
      * @param  CheckoutStatus  $status
      * @param  string  $clientSecret
@@ -428,6 +470,9 @@ class Checkout
      * @param  ?array<string, string|int|bool|\DateTime|null>  $customFieldData
      * @param  ?string  $embedOrigin
      * @param  ?int  $taxAmount
+     * @param  ?TrialInterval  $activeTrialInterval
+     * @param  ?int  $activeTrialIntervalCount
+     * @param  ?\DateTime  $trialEnd
      * @param  ?string  $discountId
      * @param  ?string  $customerId
      * @param  ?string  $customerName
@@ -436,16 +481,18 @@ class Checkout
      * @param  ?string  $customerBillingName
      * @param  ?Address  $customerBillingAddress
      * @param  ?string  $customerTaxId
+     * @param  ?TrialInterval  $trialInterval
+     * @param  ?int  $trialIntervalCount
      * @param  ?string  $externalCustomerId
      * @param  ?string  $customerExternalId
      * @param  CheckoutDiscountFixedOnceForeverDuration|CheckoutDiscountFixedRepeatDuration|CheckoutDiscountPercentageOnceForeverDuration|CheckoutDiscountPercentageRepeatDuration|null  $discount
      * @param  ?string  $subscriptionId
      * @phpstan-pure
      */
-    public function __construct(\DateTime $createdAt, string $id, PaymentProcessor $paymentProcessor, CheckoutStatus $status, string $clientSecret, string $url, \DateTime $expiresAt, string $successUrl, int $amount, int $discountAmount, int $netAmount, int $totalAmount, string $currency, string $productId, string $productPriceId, bool $allowDiscountCodes, bool $requireBillingAddress, bool $isDiscountApplicable, bool $isFreeProductPrice, bool $isPaymentRequired, bool $isPaymentSetupRequired, bool $isPaymentFormRequired, bool $isBusinessCustomer, array $paymentProcessorMetadata, CheckoutBillingAddressFields $billingAddressFields, array $metadata, array $products, CheckoutProduct $product, LegacyRecurringProductPriceFixed|LegacyRecurringProductPriceCustom|LegacyRecurringProductPriceFree|ProductPriceFixed|ProductPriceCustom|ProductPriceFree|ProductPriceMeteredUnit $productPrice, array $attachedCustomFields, array $customerMetadata, ?\DateTime $modifiedAt = null, ?array $customFieldData = null, ?string $embedOrigin = null, ?int $taxAmount = null, ?string $discountId = null, ?string $customerId = null, ?string $customerName = null, ?string $customerEmail = null, ?string $customerIpAddress = null, ?string $customerBillingName = null, ?Address $customerBillingAddress = null, ?string $customerTaxId = null, ?string $externalCustomerId = null, ?string $customerExternalId = null, CheckoutDiscountFixedOnceForeverDuration|CheckoutDiscountFixedRepeatDuration|CheckoutDiscountPercentageOnceForeverDuration|CheckoutDiscountPercentageRepeatDuration|null $discount = null, ?string $subscriptionId = null)
+    public function __construct(string $id, \DateTime $createdAt, PaymentProcessor $paymentProcessor, CheckoutStatus $status, string $clientSecret, string $url, \DateTime $expiresAt, string $successUrl, int $amount, int $discountAmount, int $netAmount, int $totalAmount, string $currency, string $productId, string $productPriceId, bool $allowDiscountCodes, bool $requireBillingAddress, bool $isDiscountApplicable, bool $isFreeProductPrice, bool $isPaymentRequired, bool $isPaymentSetupRequired, bool $isPaymentFormRequired, bool $isBusinessCustomer, array $paymentProcessorMetadata, CheckoutBillingAddressFields $billingAddressFields, array $metadata, array $products, CheckoutProduct $product, LegacyRecurringProductPriceFixed|LegacyRecurringProductPriceCustom|LegacyRecurringProductPriceFree|ProductPriceFixed|ProductPriceCustom|ProductPriceFree|ProductPriceMeteredUnit $productPrice, array $attachedCustomFields, array $customerMetadata, ?\DateTime $modifiedAt = null, ?array $customFieldData = null, ?string $embedOrigin = null, ?int $taxAmount = null, ?TrialInterval $activeTrialInterval = null, ?int $activeTrialIntervalCount = null, ?\DateTime $trialEnd = null, ?string $discountId = null, ?string $customerId = null, ?string $customerName = null, ?string $customerEmail = null, ?string $customerIpAddress = null, ?string $customerBillingName = null, ?Address $customerBillingAddress = null, ?string $customerTaxId = null, ?TrialInterval $trialInterval = null, ?int $trialIntervalCount = null, ?string $externalCustomerId = null, ?string $customerExternalId = null, CheckoutDiscountFixedOnceForeverDuration|CheckoutDiscountFixedRepeatDuration|CheckoutDiscountPercentageOnceForeverDuration|CheckoutDiscountPercentageRepeatDuration|null $discount = null, ?string $subscriptionId = null)
     {
-        $this->createdAt = $createdAt;
         $this->id = $id;
+        $this->createdAt = $createdAt;
         $this->paymentProcessor = $paymentProcessor;
         $this->status = $status;
         $this->clientSecret = $clientSecret;
@@ -479,6 +526,9 @@ class Checkout
         $this->customFieldData = $customFieldData;
         $this->embedOrigin = $embedOrigin;
         $this->taxAmount = $taxAmount;
+        $this->activeTrialInterval = $activeTrialInterval;
+        $this->activeTrialIntervalCount = $activeTrialIntervalCount;
+        $this->trialEnd = $trialEnd;
         $this->discountId = $discountId;
         $this->customerId = $customerId;
         $this->customerName = $customerName;
@@ -487,6 +537,8 @@ class Checkout
         $this->customerBillingName = $customerBillingName;
         $this->customerBillingAddress = $customerBillingAddress;
         $this->customerTaxId = $customerTaxId;
+        $this->trialInterval = $trialInterval;
+        $this->trialIntervalCount = $trialIntervalCount;
         $this->externalCustomerId = $externalCustomerId;
         $this->customerExternalId = $customerExternalId;
         $this->discount = $discount;

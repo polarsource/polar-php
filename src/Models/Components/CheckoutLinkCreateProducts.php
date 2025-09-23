@@ -43,6 +43,25 @@ class CheckoutLinkCreateProducts
     public ?array $metadata = null;
 
     /**
+     * The interval unit for the trial period.
+     *
+     * @var ?TrialInterval $trialInterval
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('trial_interval')]
+    #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\TrialInterval|null')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
+    public ?TrialInterval $trialInterval = null;
+
+    /**
+     * The number of interval units for the trial period.
+     *
+     * @var ?int $trialIntervalCount
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('trial_interval_count')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
+    public ?int $trialIntervalCount = null;
+
+    /**
      * Optional label to distinguish links internally
      *
      * @var ?string $label
@@ -101,15 +120,19 @@ class CheckoutLinkCreateProducts
      * @param  ?array<string, string|int|float|bool>  $metadata
      * @param  ?bool  $allowDiscountCodes
      * @param  ?bool  $requireBillingAddress
+     * @param  ?TrialInterval  $trialInterval
+     * @param  ?int  $trialIntervalCount
      * @param  ?string  $label
      * @param  ?string  $discountId
      * @param  ?string  $successUrl
      * @phpstan-pure
      */
-    public function __construct(array $products, ?array $metadata = null, ?string $label = null, ?string $discountId = null, ?string $successUrl = null, string $paymentProcessor = 'stripe', ?bool $allowDiscountCodes = true, ?bool $requireBillingAddress = false)
+    public function __construct(array $products, ?array $metadata = null, ?TrialInterval $trialInterval = null, ?int $trialIntervalCount = null, ?string $label = null, ?string $discountId = null, ?string $successUrl = null, string $paymentProcessor = 'stripe', ?bool $allowDiscountCodes = true, ?bool $requireBillingAddress = false)
     {
         $this->products = $products;
         $this->metadata = $metadata;
+        $this->trialInterval = $trialInterval;
+        $this->trialIntervalCount = $trialIntervalCount;
         $this->label = $label;
         $this->discountId = $discountId;
         $this->successUrl = $successUrl;

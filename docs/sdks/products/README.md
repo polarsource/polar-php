@@ -90,9 +90,8 @@ $sdk = Polar\Polar::builder()
     )
     ->build();
 
-$request = new Components\ProductCreate(
+$request = new Components\ProductCreateOneTime(
     name: '<value>',
-    recurringInterval: Components\SubscriptionRecurringInterval::Year,
     prices: [
         new Components\ProductPriceFixedCreate(
             priceAmount: 677078,
@@ -100,6 +99,7 @@ $request = new Components\ProductCreate(
         new Components\ProductPriceCustomCreate(),
     ],
     organizationId: '1dbfc517-0bbf-4301-9ba8-555ca42b9737',
+    recurringInterval: 'year',
 );
 
 $response = $sdk->products->create(
@@ -113,9 +113,9 @@ if ($response->product !== null) {
 
 ### Parameters
 
-| Parameter                                                            | Type                                                                 | Required                                                             | Description                                                          |
-| -------------------------------------------------------------------- | -------------------------------------------------------------------- | -------------------------------------------------------------------- | -------------------------------------------------------------------- |
-| `$request`                                                           | [Components\ProductCreate](../../Models/Components/ProductCreate.md) | :heavy_check_mark:                                                   | The request object to use for the request.                           |
+| Parameter                                                                                                     | Type                                                                                                          | Required                                                                                                      | Description                                                                                                   |
+| ------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------- |
+| `$request`                                                                                                    | [Components\ProductCreateRecurring\|Components\ProductCreateOneTime](../../Models/Components/ProductCreate.md) | :heavy_check_mark:                                                                                            | The request object to use for the request.                                                                    |
 
 ### Response
 

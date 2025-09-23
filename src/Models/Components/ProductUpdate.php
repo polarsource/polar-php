@@ -34,6 +34,25 @@ class ProductUpdate
     public ?array $metadata = null;
 
     /**
+     * The interval unit for the trial period.
+     *
+     * @var ?TrialInterval $trialInterval
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('trial_interval')]
+    #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\TrialInterval|null')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
+    public ?TrialInterval $trialInterval = null;
+
+    /**
+     * The number of interval units for the trial period.
+     *
+     * @var ?int $trialIntervalCount
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('trial_interval_count')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
+    public ?int $trialIntervalCount = null;
+
+    /**
      *
      * @var ?string $name
      */
@@ -101,6 +120,8 @@ class ProductUpdate
 
     /**
      * @param  ?array<string, string|int|float|bool>  $metadata
+     * @param  ?TrialInterval  $trialInterval
+     * @param  ?int  $trialIntervalCount
      * @param  ?string  $name
      * @param  ?string  $description
      * @param  ?SubscriptionRecurringInterval  $recurringInterval
@@ -110,9 +131,11 @@ class ProductUpdate
      * @param  ?array<AttachedCustomFieldCreate>  $attachedCustomFields
      * @phpstan-pure
      */
-    public function __construct(?array $metadata = null, ?string $name = null, ?string $description = null, ?SubscriptionRecurringInterval $recurringInterval = null, ?bool $isArchived = null, ?array $prices = null, ?array $medias = null, ?array $attachedCustomFields = null)
+    public function __construct(?array $metadata = null, ?TrialInterval $trialInterval = null, ?int $trialIntervalCount = null, ?string $name = null, ?string $description = null, ?SubscriptionRecurringInterval $recurringInterval = null, ?bool $isArchived = null, ?array $prices = null, ?array $medias = null, ?array $attachedCustomFields = null)
     {
         $this->metadata = $metadata;
+        $this->trialInterval = $trialInterval;
+        $this->trialIntervalCount = $trialIntervalCount;
         $this->name = $name;
         $this->description = $description;
         $this->recurringInterval = $recurringInterval;

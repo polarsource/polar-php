@@ -38,6 +38,14 @@ class CustomerStateSubscription
     public array $metadata;
 
     /**
+     *
+     * @var CustomerStateSubscriptionStatus $status
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('status')]
+    #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\CustomerStateSubscriptionStatus')]
+    public CustomerStateSubscriptionStatus $status;
+
+    /**
      * The amount of the subscription.
      *
      * @var int $amount
@@ -121,6 +129,22 @@ class CustomerStateSubscription
     public ?\DateTime $currentPeriodEnd;
 
     /**
+     * The start timestamp of the trial period, if any.
+     *
+     * @var ?\DateTime $trialStart
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('trial_start')]
+    public ?\DateTime $trialStart;
+
+    /**
+     * The end timestamp of the trial period, if any.
+     *
+     * @var ?\DateTime $trialEnd
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('trial_end')]
+    public ?\DateTime $trialEnd;
+
+    /**
      * The timestamp when the subscription was canceled. The subscription might still be active if `cancel_at_period_end` is `true`.
      *
      * @var ?\DateTime $canceledAt
@@ -153,17 +177,10 @@ class CustomerStateSubscription
     public ?string $discountId;
 
     /**
-     *
-     * @var string $status
-     */
-    #[\Speakeasy\Serializer\Annotation\SerializedName('status')]
-    public string $status;
-
-    /**
      * @param  string  $id
      * @param  \DateTime  $createdAt
      * @param  array<string, string|int|float|bool>  $metadata
-     * @param  string  $status
+     * @param  CustomerStateSubscriptionStatus  $status
      * @param  int  $amount
      * @param  string  $currency
      * @param  SubscriptionRecurringInterval  $recurringInterval
@@ -174,17 +191,20 @@ class CustomerStateSubscription
      * @param  ?\DateTime  $modifiedAt
      * @param  ?array<string, string|int|bool|\DateTime|null>  $customFieldData
      * @param  ?\DateTime  $currentPeriodEnd
+     * @param  ?\DateTime  $trialStart
+     * @param  ?\DateTime  $trialEnd
      * @param  ?\DateTime  $canceledAt
      * @param  ?\DateTime  $startedAt
      * @param  ?\DateTime  $endsAt
      * @param  ?string  $discountId
      * @phpstan-pure
      */
-    public function __construct(string $id, \DateTime $createdAt, array $metadata, int $amount, string $currency, SubscriptionRecurringInterval $recurringInterval, \DateTime $currentPeriodStart, bool $cancelAtPeriodEnd, string $productId, array $meters, ?\DateTime $modifiedAt = null, ?array $customFieldData = null, ?\DateTime $currentPeriodEnd = null, ?\DateTime $canceledAt = null, ?\DateTime $startedAt = null, ?\DateTime $endsAt = null, ?string $discountId = null, string $status = 'active')
+    public function __construct(string $id, \DateTime $createdAt, array $metadata, CustomerStateSubscriptionStatus $status, int $amount, string $currency, SubscriptionRecurringInterval $recurringInterval, \DateTime $currentPeriodStart, bool $cancelAtPeriodEnd, string $productId, array $meters, ?\DateTime $modifiedAt = null, ?array $customFieldData = null, ?\DateTime $currentPeriodEnd = null, ?\DateTime $trialStart = null, ?\DateTime $trialEnd = null, ?\DateTime $canceledAt = null, ?\DateTime $startedAt = null, ?\DateTime $endsAt = null, ?string $discountId = null)
     {
         $this->id = $id;
         $this->createdAt = $createdAt;
         $this->metadata = $metadata;
+        $this->status = $status;
         $this->amount = $amount;
         $this->currency = $currency;
         $this->recurringInterval = $recurringInterval;
@@ -195,10 +215,11 @@ class CustomerStateSubscription
         $this->modifiedAt = $modifiedAt;
         $this->customFieldData = $customFieldData;
         $this->currentPeriodEnd = $currentPeriodEnd;
+        $this->trialStart = $trialStart;
+        $this->trialEnd = $trialEnd;
         $this->canceledAt = $canceledAt;
         $this->startedAt = $startedAt;
         $this->endsAt = $endsAt;
         $this->discountId = $discountId;
-        $this->status = $status;
     }
 }

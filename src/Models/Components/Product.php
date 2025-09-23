@@ -13,20 +13,20 @@ namespace Polar\Models\Components;
 class Product
 {
     /**
+     * The ID of the object.
+     *
+     * @var string $id
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('id')]
+    public string $id;
+
+    /**
      * Creation timestamp of the object.
      *
      * @var \DateTime $createdAt
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('created_at')]
     public \DateTime $createdAt;
-
-    /**
-     * The ID of the product.
-     *
-     * @var string $id
-     */
-    #[\Speakeasy\Serializer\Annotation\SerializedName('id')]
-    public string $id;
 
     /**
      * The name of the product.
@@ -114,6 +114,23 @@ class Product
     public ?\DateTime $modifiedAt;
 
     /**
+     * The interval unit for the trial period.
+     *
+     * @var ?TrialInterval $trialInterval
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('trial_interval')]
+    #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\TrialInterval|null')]
+    public ?TrialInterval $trialInterval;
+
+    /**
+     * The number of interval units for the trial period.
+     *
+     * @var ?int $trialIntervalCount
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('trial_interval_count')]
+    public ?int $trialIntervalCount;
+
+    /**
      * The description of the product.
      *
      * @var ?string $description
@@ -131,8 +148,8 @@ class Product
     public ?SubscriptionRecurringInterval $recurringInterval;
 
     /**
-     * @param  \DateTime  $createdAt
      * @param  string  $id
+     * @param  \DateTime  $createdAt
      * @param  string  $name
      * @param  bool  $isRecurring
      * @param  bool  $isArchived
@@ -143,14 +160,16 @@ class Product
      * @param  array<ProductMediaFileRead>  $medias
      * @param  array<AttachedCustomField>  $attachedCustomFields
      * @param  ?\DateTime  $modifiedAt
+     * @param  ?TrialInterval  $trialInterval
+     * @param  ?int  $trialIntervalCount
      * @param  ?string  $description
      * @param  ?SubscriptionRecurringInterval  $recurringInterval
      * @phpstan-pure
      */
-    public function __construct(\DateTime $createdAt, string $id, string $name, bool $isRecurring, bool $isArchived, string $organizationId, array $metadata, array $prices, array $benefits, array $medias, array $attachedCustomFields, ?\DateTime $modifiedAt = null, ?string $description = null, ?SubscriptionRecurringInterval $recurringInterval = null)
+    public function __construct(string $id, \DateTime $createdAt, string $name, bool $isRecurring, bool $isArchived, string $organizationId, array $metadata, array $prices, array $benefits, array $medias, array $attachedCustomFields, ?\DateTime $modifiedAt = null, ?TrialInterval $trialInterval = null, ?int $trialIntervalCount = null, ?string $description = null, ?SubscriptionRecurringInterval $recurringInterval = null)
     {
-        $this->createdAt = $createdAt;
         $this->id = $id;
+        $this->createdAt = $createdAt;
         $this->name = $name;
         $this->isRecurring = $isRecurring;
         $this->isArchived = $isArchived;
@@ -161,6 +180,8 @@ class Product
         $this->medias = $medias;
         $this->attachedCustomFields = $attachedCustomFields;
         $this->modifiedAt = $modifiedAt;
+        $this->trialInterval = $trialInterval;
+        $this->trialIntervalCount = $trialIntervalCount;
         $this->description = $description;
         $this->recurringInterval = $recurringInterval;
     }

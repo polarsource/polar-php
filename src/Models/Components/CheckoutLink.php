@@ -13,20 +13,20 @@ namespace Polar\Models\Components;
 class CheckoutLink
 {
     /**
-     * Creation timestamp of the object.
-     *
-     * @var \DateTime $createdAt
-     */
-    #[\Speakeasy\Serializer\Annotation\SerializedName('created_at')]
-    public \DateTime $createdAt;
-
-    /**
      * The ID of the object.
      *
      * @var string $id
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('id')]
     public string $id;
+
+    /**
+     * Creation timestamp of the object.
+     *
+     * @var \DateTime $createdAt
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('created_at')]
+    public \DateTime $createdAt;
 
     /**
      * $metadata
@@ -102,6 +102,23 @@ class CheckoutLink
     public ?\DateTime $modifiedAt;
 
     /**
+     * The interval unit for the trial period.
+     *
+     * @var ?TrialInterval $trialInterval
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('trial_interval')]
+    #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\TrialInterval|null')]
+    public ?TrialInterval $trialInterval;
+
+    /**
+     * The number of interval units for the trial period.
+     *
+     * @var ?int $trialIntervalCount
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('trial_interval_count')]
+    public ?int $trialIntervalCount;
+
+    /**
      * URL where the customer will be redirected after a successful payment.
      *
      * @var ?string $successUrl
@@ -134,8 +151,8 @@ class CheckoutLink
     public DiscountFixedOnceForeverDurationBase|DiscountFixedRepeatDurationBase|DiscountPercentageOnceForeverDurationBase|DiscountPercentageRepeatDurationBase|null $discount;
 
     /**
-     * @param  \DateTime  $createdAt
      * @param  string  $id
+     * @param  \DateTime  $createdAt
      * @param  array<string, string|int|float|bool>  $metadata
      * @param  PaymentProcessor  $paymentProcessor
      * @param  string  $clientSecret
@@ -145,16 +162,18 @@ class CheckoutLink
      * @param  array<CheckoutLinkProduct>  $products
      * @param  string  $url
      * @param  ?\DateTime  $modifiedAt
+     * @param  ?TrialInterval  $trialInterval
+     * @param  ?int  $trialIntervalCount
      * @param  ?string  $successUrl
      * @param  ?string  $label
      * @param  ?string  $discountId
      * @param  DiscountFixedOnceForeverDurationBase|DiscountFixedRepeatDurationBase|DiscountPercentageOnceForeverDurationBase|DiscountPercentageRepeatDurationBase|null  $discount
      * @phpstan-pure
      */
-    public function __construct(\DateTime $createdAt, string $id, array $metadata, PaymentProcessor $paymentProcessor, string $clientSecret, bool $allowDiscountCodes, bool $requireBillingAddress, string $organizationId, array $products, string $url, ?\DateTime $modifiedAt = null, ?string $successUrl = null, ?string $label = null, ?string $discountId = null, DiscountFixedOnceForeverDurationBase|DiscountFixedRepeatDurationBase|DiscountPercentageOnceForeverDurationBase|DiscountPercentageRepeatDurationBase|null $discount = null)
+    public function __construct(string $id, \DateTime $createdAt, array $metadata, PaymentProcessor $paymentProcessor, string $clientSecret, bool $allowDiscountCodes, bool $requireBillingAddress, string $organizationId, array $products, string $url, ?\DateTime $modifiedAt = null, ?TrialInterval $trialInterval = null, ?int $trialIntervalCount = null, ?string $successUrl = null, ?string $label = null, ?string $discountId = null, DiscountFixedOnceForeverDurationBase|DiscountFixedRepeatDurationBase|DiscountPercentageOnceForeverDurationBase|DiscountPercentageRepeatDurationBase|null $discount = null)
     {
-        $this->createdAt = $createdAt;
         $this->id = $id;
+        $this->createdAt = $createdAt;
         $this->metadata = $metadata;
         $this->paymentProcessor = $paymentProcessor;
         $this->clientSecret = $clientSecret;
@@ -164,6 +183,8 @@ class CheckoutLink
         $this->products = $products;
         $this->url = $url;
         $this->modifiedAt = $modifiedAt;
+        $this->trialInterval = $trialInterval;
+        $this->trialIntervalCount = $trialIntervalCount;
         $this->successUrl = $successUrl;
         $this->label = $label;
         $this->discountId = $discountId;

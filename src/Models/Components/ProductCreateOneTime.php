@@ -9,8 +9,7 @@ declare(strict_types=1);
 namespace Polar\Models\Components;
 
 
-/** ProductCreate - Schema to create a product. */
-class ProductCreate
+class ProductCreateOneTime
 {
     /**
      * The name of the product.
@@ -51,15 +50,6 @@ class ProductCreate
     public ?array $metadata = null;
 
     /**
-     * The recurring interval of the product. If `None`, the product is a one-time purchase.Note that the `day` and `week` values are for internal Polar staff use only.
-     *
-     * @var ?SubscriptionRecurringInterval $recurringInterval
-     */
-    #[\Speakeasy\Serializer\Annotation\SerializedName('recurring_interval')]
-    #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\SubscriptionRecurringInterval|null')]
-    public ?SubscriptionRecurringInterval $recurringInterval;
-
-    /**
      * List of custom fields to attach.
      *
      * @var ?array<AttachedCustomFieldCreate> $attachedCustomFields
@@ -98,25 +88,35 @@ class ProductCreate
     public ?string $organizationId = null;
 
     /**
+     * States that the product is a one-time purchase.
+     *
+     * @var mixed $recurringInterval
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('recurring_interval')]
+    #[\Speakeasy\Serializer\Annotation\Type('mixed')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
+    public mixed $recurringInterval = null;
+
+    /**
      * @param  string  $name
      * @param  array<ProductPriceFixedCreate|ProductPriceCustomCreate|ProductPriceFreeCreate|ProductPriceMeteredUnitCreate>  $prices
      * @param  ?array<string, string|int|float|bool>  $metadata
-     * @param  ?SubscriptionRecurringInterval  $recurringInterval
      * @param  ?array<AttachedCustomFieldCreate>  $attachedCustomFields
      * @param  ?string  $description
      * @param  ?array<string>  $medias
      * @param  ?string  $organizationId
+     * @param  mixed  $recurringInterval
      * @phpstan-pure
      */
-    public function __construct(string $name, array $prices, ?array $metadata = null, ?SubscriptionRecurringInterval $recurringInterval = null, ?array $attachedCustomFields = null, ?string $description = null, ?array $medias = null, ?string $organizationId = null)
+    public function __construct(string $name, array $prices, ?array $metadata = null, ?array $attachedCustomFields = null, ?string $description = null, ?array $medias = null, ?string $organizationId = null, mixed $recurringInterval = null)
     {
         $this->name = $name;
         $this->prices = $prices;
         $this->metadata = $metadata;
-        $this->recurringInterval = $recurringInterval;
         $this->attachedCustomFields = $attachedCustomFields;
         $this->description = $description;
         $this->medias = $medias;
         $this->organizationId = $organizationId;
+        $this->recurringInterval = $recurringInterval;
     }
 }
