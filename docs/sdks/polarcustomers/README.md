@@ -9,6 +9,7 @@
 * [update](#update) - Update Customer
 * [listPaymentMethods](#listpaymentmethods) - List Customer Payment Methods
 * [addPaymentMethod](#addpaymentmethod) - Add Customer Payment Method
+* [confirmPaymentMethod](#confirmpaymentmethod) - Confirm Customer Payment Method
 * [deletePaymentMethod](#deletepaymentmethod) - Delete Customer Payment Method
 
 ## get
@@ -209,7 +210,7 @@ $response = $sdk->customerPortal->customers->addPaymentMethod(
     security: $requestSecurity
 );
 
-if ($response->customerPaymentMethod !== null) {
+if ($response->customerPaymentMethodCreateResponse !== null) {
     // handle response
 }
 ```
@@ -229,6 +230,63 @@ if ($response->customerPaymentMethod !== null) {
 
 | Error Type                 | Status Code                | Content Type               |
 | -------------------------- | -------------------------- | -------------------------- |
+| Errors\HTTPValidationError | 422                        | application/json           |
+| Errors\APIException        | 4XX, 5XX                   | \*/\*                      |
+
+## confirmPaymentMethod
+
+Confirm a payment method for the authenticated customer.
+
+**Scopes**: `customer_portal:read` `customer_portal:write`
+
+### Example Usage
+
+<!-- UsageSnippet language="php" operationID="customer_portal:customers:confirm_payment_method" method="post" path="/v1/customer-portal/customers/me/payment-methods/confirm" -->
+```php
+declare(strict_types=1);
+
+require 'vendor/autoload.php';
+
+use Polar;
+use Polar\Models\Components;
+use Polar\Models\Operations;
+
+$sdk = Polar\Polar::builder()->build();
+
+$request = new Components\CustomerPaymentMethodConfirm(
+    setupIntentId: '<id>',
+    setDefault: true,
+);
+$requestSecurity = new Operations\CustomerPortalCustomersConfirmPaymentMethodSecurity(
+    customerSession: '<YOUR_BEARER_TOKEN_HERE>',
+);
+
+$response = $sdk->customerPortal->customers->confirmPaymentMethod(
+    request: $request,
+    security: $requestSecurity
+);
+
+if ($response->customerPaymentMethodCreateResponse !== null) {
+    // handle response
+}
+```
+
+### Parameters
+
+| Parameter                                                                                                                                        | Type                                                                                                                                             | Required                                                                                                                                         | Description                                                                                                                                      |
+| ------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `$request`                                                                                                                                       | [Components\CustomerPaymentMethodConfirm](../../Models/Components/CustomerPaymentMethodConfirm.md)                                               | :heavy_check_mark:                                                                                                                               | The request object to use for the request.                                                                                                       |
+| `security`                                                                                                                                       | [Operations\CustomerPortalCustomersConfirmPaymentMethodSecurity](../../Models/Operations/CustomerPortalCustomersConfirmPaymentMethodSecurity.md) | :heavy_check_mark:                                                                                                                               | The security requirements to use for the request.                                                                                                |
+
+### Response
+
+**[?Operations\CustomerPortalCustomersConfirmPaymentMethodResponse](../../Models/Operations/CustomerPortalCustomersConfirmPaymentMethodResponse.md)**
+
+### Errors
+
+| Error Type                 | Status Code                | Content Type               |
+| -------------------------- | -------------------------- | -------------------------- |
+| Errors\CustomerNotReady    | 400                        | application/json           |
 | Errors\HTTPValidationError | 422                        | application/json           |
 | Errors\APIException        | 4XX, 5XX                   | \*/\*                      |
 

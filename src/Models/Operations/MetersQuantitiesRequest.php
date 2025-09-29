@@ -61,6 +61,14 @@ class MetersQuantitiesRequest
     public string|array|null $externalCustomerId = null;
 
     /**
+     * If set, will first compute the quantities per customer before aggregating them using the given function. If not set, the quantities will be aggregated across all events.
+     *
+     * @var ?Components\AggregationFunction $customerAggregationFunction
+     */
+    #[SpeakeasyMetadata('queryParam:style=form,explode=true,name=customer_aggregation_function')]
+    public ?Components\AggregationFunction $customerAggregationFunction = null;
+
+    /**
      * Filter by metadata key-value pairs. It uses the `deepObject` style, e.g. `?metadata[key]=value`.
      *
      * @var ?array<string, string|int|bool|array<string>|array<int>|array<bool>> $metadata
@@ -75,10 +83,11 @@ class MetersQuantitiesRequest
      * @param  Components\TimeInterval  $interval
      * @param  string|array<string>|null  $customerId
      * @param  string|array<string>|null  $externalCustomerId
+     * @param  ?Components\AggregationFunction  $customerAggregationFunction
      * @param  ?array<string, string|int|bool|array<string>|array<int>|array<bool>>  $metadata
      * @phpstan-pure
      */
-    public function __construct(string $id, \DateTime $startTimestamp, \DateTime $endTimestamp, Components\TimeInterval $interval, string|array|null $customerId = null, string|array|null $externalCustomerId = null, ?array $metadata = null)
+    public function __construct(string $id, \DateTime $startTimestamp, \DateTime $endTimestamp, Components\TimeInterval $interval, string|array|null $customerId = null, string|array|null $externalCustomerId = null, ?Components\AggregationFunction $customerAggregationFunction = null, ?array $metadata = null)
     {
         $this->id = $id;
         $this->startTimestamp = $startTimestamp;
@@ -86,6 +95,7 @@ class MetersQuantitiesRequest
         $this->interval = $interval;
         $this->customerId = $customerId;
         $this->externalCustomerId = $externalCustomerId;
+        $this->customerAggregationFunction = $customerAggregationFunction;
         $this->metadata = $metadata;
     }
 }

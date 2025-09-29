@@ -9,7 +9,7 @@ declare(strict_types=1);
 namespace Polar\Models\Operations;
 
 use Polar\Models\Components;
-class CustomerPortalCustomersAddPaymentMethodResponse
+class CustomerPortalCustomersConfirmPaymentMethodResponse
 {
     /**
      * HTTP response content type for this operation
