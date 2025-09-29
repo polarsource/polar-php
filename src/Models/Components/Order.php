@@ -123,6 +123,14 @@ class Order
     public OrderBillingReason $billingReason;
 
     /**
+     * The invoice number associated with this order.
+     *
+     * @var string $invoiceNumber
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('invoice_number')]
+    public string $invoiceNumber;
+
+    /**
      * Whether an invoice has been generated for this order.
      *
      * @var bool $isInvoiceGenerated
@@ -272,6 +280,7 @@ class Order
      * @param  int  $refundedTaxAmount
      * @param  string  $currency
      * @param  OrderBillingReason  $billingReason
+     * @param  string  $invoiceNumber
      * @param  bool  $isInvoiceGenerated
      * @param  string  $customerId
      * @param  string  $productId
@@ -291,7 +300,7 @@ class Order
      * @param  ?OrderSubscription  $subscription
      * @phpstan-pure
      */
-    public function __construct(string $id, \DateTime $createdAt, OrderStatus $status, bool $paid, int $subtotalAmount, int $discountAmount, int $netAmount, int $taxAmount, int $totalAmount, int $fromBalanceAmount, int $refundedAmount, int $refundedTaxAmount, string $currency, OrderBillingReason $billingReason, bool $isInvoiceGenerated, string $customerId, string $productId, array $metadata, OrderCustomer $customer, string $userId, OrderProduct $product, array $items, ?\DateTime $modifiedAt = null, ?string $billingName = null, ?Address $billingAddress = null, ?string $discountId = null, ?string $subscriptionId = null, ?string $checkoutId = null, ?array $customFieldData = null, DiscountFixedOnceForeverDurationBase|DiscountFixedRepeatDurationBase|DiscountPercentageOnceForeverDurationBase|DiscountPercentageRepeatDurationBase|null $discount = null, ?OrderSubscription $subscription = null)
+    public function __construct(string $id, \DateTime $createdAt, OrderStatus $status, bool $paid, int $subtotalAmount, int $discountAmount, int $netAmount, int $taxAmount, int $totalAmount, int $fromBalanceAmount, int $refundedAmount, int $refundedTaxAmount, string $currency, OrderBillingReason $billingReason, string $invoiceNumber, bool $isInvoiceGenerated, string $customerId, string $productId, array $metadata, OrderCustomer $customer, string $userId, OrderProduct $product, array $items, ?\DateTime $modifiedAt = null, ?string $billingName = null, ?Address $billingAddress = null, ?string $discountId = null, ?string $subscriptionId = null, ?string $checkoutId = null, ?array $customFieldData = null, DiscountFixedOnceForeverDurationBase|DiscountFixedRepeatDurationBase|DiscountPercentageOnceForeverDurationBase|DiscountPercentageRepeatDurationBase|null $discount = null, ?OrderSubscription $subscription = null)
     {
         $this->id = $id;
         $this->createdAt = $createdAt;
@@ -307,6 +316,7 @@ class Order
         $this->refundedTaxAmount = $refundedTaxAmount;
         $this->currency = $currency;
         $this->billingReason = $billingReason;
+        $this->invoiceNumber = $invoiceNumber;
         $this->isInvoiceGenerated = $isInvoiceGenerated;
         $this->customerId = $customerId;
         $this->productId = $productId;

@@ -1,21 +1,21 @@
-speakeasyVersion: 1.622.1
+speakeasyVersion: 1.631.4
 sources:
     Polar-OAS:
         sourceNamespace: polar-oas
-        sourceRevisionDigest: sha256:ac3d9faff19674be058ff84bebed00fd8cbe3f8bc49d3dcafa82a540dc7b8c14
-        sourceBlobDigest: sha256:b68a1a6f197674bea669c03362f20738c0e0ae58c1cafade147d6e43ff49d613
+        sourceRevisionDigest: sha256:1892991b5bcde6ddaa85ab053285b4b16032e0abd39596d3904bcfd4b0f2b9b5
+        sourceBlobDigest: sha256:3d99dbf80059f5861879922b94bf7f2ebee0dd1e8c0acdfc80eed643f31aa1f0
         tags:
             - latest
-            - speakeasy-sdk-regen-1758586707
+            - speakeasy-sdk-regen-1758673098
             - 0.1.0
 targets:
     polar:
         source: Polar-OAS
         sourceNamespace: polar-oas
-        sourceRevisionDigest: sha256:ac3d9faff19674be058ff84bebed00fd8cbe3f8bc49d3dcafa82a540dc7b8c14
-        sourceBlobDigest: sha256:b68a1a6f197674bea669c03362f20738c0e0ae58c1cafade147d6e43ff49d613
+        sourceRevisionDigest: sha256:1892991b5bcde6ddaa85ab053285b4b16032e0abd39596d3904bcfd4b0f2b9b5
+        sourceBlobDigest: sha256:3d99dbf80059f5861879922b94bf7f2ebee0dd1e8c0acdfc80eed643f31aa1f0
         codeSamplesNamespace: polar-api-php-code-samples
-        codeSamplesRevisionDigest: sha256:766cc92ee81caa5dc7d4fe9c6ebd3588efac0399e2e4fbb0c2eba8c6da59a3ef
+        codeSamplesRevisionDigest: sha256:05735902b1dce4624dcf0deb760a35b095c3bc5998bfa66b55a6f8b0d8660c9a
 workflow:
     workflowVersion: 1.0.0
     speakeasyVersion: latest

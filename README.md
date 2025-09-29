@@ -222,6 +222,7 @@ foreach ($responses as $response) {
 * [update](docs/sdks/polarcustomers/README.md#update) - Update Customer
 * [listPaymentMethods](docs/sdks/polarcustomers/README.md#listpaymentmethods) - List Customer Payment Methods
 * [addPaymentMethod](docs/sdks/polarcustomers/README.md#addpaymentmethod) - Add Customer Payment Method
+* [confirmPaymentMethod](docs/sdks/polarcustomers/README.md#confirmpaymentmethod) - Confirm Customer Payment Method
 * [deletePaymentMethod](docs/sdks/polarcustomers/README.md#deletepaymentmethod) - Delete Customer Payment Method
 
 #### [customerPortal->downloadables](docs/sdks/downloadables/README.md)
@@ -270,6 +271,7 @@ foreach ($responses as $response) {
 * [deleteExternal](docs/sdks/customers/README.md#deleteexternal) - Delete Customer by External ID
 * [getState](docs/sdks/customers/README.md#getstate) - Get Customer State
 * [getStateExternal](docs/sdks/customers/README.md#getstateexternal) - Get Customer State by External ID
+* [getBalance](docs/sdks/customers/README.md#getbalance) - Get Customer Balance
 
 ### [customerSessions](docs/sdks/customersessions/README.md)
 
