@@ -77,6 +77,14 @@ class Organization
     public OrganizationNotificationSettings $notificationSettings;
 
     /**
+     *
+     * @var OrganizationCustomerEmailSettings $customerEmailSettings
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('customer_email_settings')]
+    #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\OrganizationCustomerEmailSettings')]
+    public OrganizationCustomerEmailSettings $customerEmailSettings;
+
+    /**
      * Last modification timestamp of the object.
      *
      * @var ?\DateTime $modifiedAt
@@ -134,6 +142,7 @@ class Organization
      * @param  Status  $status
      * @param  OrganizationSubscriptionSettings  $subscriptionSettings
      * @param  OrganizationNotificationSettings  $notificationSettings
+     * @param  OrganizationCustomerEmailSettings  $customerEmailSettings
      * @param  ?\DateTime  $modifiedAt
      * @param  ?string  $avatarUrl
      * @param  ?string  $email
@@ -142,7 +151,7 @@ class Organization
      * @param  ?OrganizationFeatureSettings  $featureSettings
      * @phpstan-pure
      */
-    public function __construct(\DateTime $createdAt, string $id, string $name, string $slug, array $socials, Status $status, OrganizationSubscriptionSettings $subscriptionSettings, OrganizationNotificationSettings $notificationSettings, ?\DateTime $modifiedAt = null, ?string $avatarUrl = null, ?string $email = null, ?string $website = null, ?\DateTime $detailsSubmittedAt = null, ?OrganizationFeatureSettings $featureSettings = null)
+    public function __construct(\DateTime $createdAt, string $id, string $name, string $slug, array $socials, Status $status, OrganizationSubscriptionSettings $subscriptionSettings, OrganizationNotificationSettings $notificationSettings, OrganizationCustomerEmailSettings $customerEmailSettings, ?\DateTime $modifiedAt = null, ?string $avatarUrl = null, ?string $email = null, ?string $website = null, ?\DateTime $detailsSubmittedAt = null, ?OrganizationFeatureSettings $featureSettings = null)
     {
         $this->createdAt = $createdAt;
         $this->id = $id;
@@ -152,6 +161,7 @@ class Organization
         $this->status = $status;
         $this->subscriptionSettings = $subscriptionSettings;
         $this->notificationSettings = $notificationSettings;
+        $this->customerEmailSettings = $customerEmailSettings;
         $this->modifiedAt = $modifiedAt;
         $this->avatarUrl = $avatarUrl;
         $this->email = $email;
