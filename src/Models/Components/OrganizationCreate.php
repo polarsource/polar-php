@@ -99,6 +99,15 @@ class OrganizationCreate
     public ?OrganizationNotificationSettings $notificationSettings = null;
 
     /**
+     *
+     * @var ?OrganizationCustomerEmailSettings $customerEmailSettings
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('customer_email_settings')]
+    #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\OrganizationCustomerEmailSettings|null')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
+    public ?OrganizationCustomerEmailSettings $customerEmailSettings = null;
+
+    /**
      * @param  string  $name
      * @param  string  $slug
      * @param  ?string  $avatarUrl
@@ -109,9 +118,10 @@ class OrganizationCreate
      * @param  ?OrganizationFeatureSettings  $featureSettings
      * @param  ?OrganizationSubscriptionSettings  $subscriptionSettings
      * @param  ?OrganizationNotificationSettings  $notificationSettings
+     * @param  ?OrganizationCustomerEmailSettings  $customerEmailSettings
      * @phpstan-pure
      */
-    public function __construct(string $name, string $slug, ?string $avatarUrl = null, ?string $email = null, ?string $website = null, ?array $socials = null, ?OrganizationDetails $details = null, ?OrganizationFeatureSettings $featureSettings = null, ?OrganizationSubscriptionSettings $subscriptionSettings = null, ?OrganizationNotificationSettings $notificationSettings = null)
+    public function __construct(string $name, string $slug, ?string $avatarUrl = null, ?string $email = null, ?string $website = null, ?array $socials = null, ?OrganizationDetails $details = null, ?OrganizationFeatureSettings $featureSettings = null, ?OrganizationSubscriptionSettings $subscriptionSettings = null, ?OrganizationNotificationSettings $notificationSettings = null, ?OrganizationCustomerEmailSettings $customerEmailSettings = null)
     {
         $this->name = $name;
         $this->slug = $slug;
@@ -123,5 +133,6 @@ class OrganizationCreate
         $this->featureSettings = $featureSettings;
         $this->subscriptionSettings = $subscriptionSettings;
         $this->notificationSettings = $notificationSettings;
+        $this->customerEmailSettings = $customerEmailSettings;
     }
 }

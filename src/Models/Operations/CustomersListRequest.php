@@ -29,7 +29,7 @@ class CustomersListRequest
     public ?string $email = null;
 
     /**
-     * Filter by name or email.
+     * Filter by name, email, or external ID.
      *
      * @var ?string $query
      */

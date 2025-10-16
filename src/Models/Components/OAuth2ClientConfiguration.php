@@ -49,6 +49,15 @@ class OAuth2ClientConfiguration
 
     /**
      *
+     * @var ?SubType $defaultSubType
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('default_sub_type')]
+    #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\SubType|null')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
+    public ?SubType $defaultSubType = null;
+
+    /**
+     *
      * @var ?string $clientUri
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('client_uri')]
@@ -103,18 +112,20 @@ class OAuth2ClientConfiguration
      * @param  ?array<GrantTypes>  $grantTypes
      * @param  ?array<string>  $responseTypes
      * @param  ?string  $scope
+     * @param  ?SubType  $defaultSubType
      * @param  ?string  $clientUri
      * @param  ?string  $logoUri
      * @param  ?string  $tosUri
      * @param  ?string  $policyUri
      * @phpstan-pure
      */
-    public function __construct(array $redirectUris, string $clientName, ?array $grantTypes = null, ?array $responseTypes = null, ?string $clientUri = null, ?string $logoUri = null, ?string $tosUri = null, ?string $policyUri = null, ?TokenEndpointAuthMethod $tokenEndpointAuthMethod = TokenEndpointAuthMethod::ClientSecretPost, ?string $scope = 'openid profile email user:read organizations:read organizations:write custom_fields:read custom_fields:write discounts:read discounts:write checkout_links:read checkout_links:write checkouts:read checkouts:write transactions:read transactions:write payouts:read payouts:write products:read products:write benefits:read benefits:write events:read events:write meters:read meters:write files:read files:write subscriptions:read subscriptions:write customers:read customers:write customer_meters:read customer_sessions:write orders:read orders:write refunds:read refunds:write payments:read metrics:read webhooks:read webhooks:write external_organizations:read license_keys:read license_keys:write repositories:read repositories:write issues:read issues:write customer_portal:read customer_portal:write notifications:read notifications:write notification_recipients:read notification_recipients:write')
+    public function __construct(array $redirectUris, string $clientName, ?array $grantTypes = null, ?array $responseTypes = null, ?SubType $defaultSubType = null, ?string $clientUri = null, ?string $logoUri = null, ?string $tosUri = null, ?string $policyUri = null, ?TokenEndpointAuthMethod $tokenEndpointAuthMethod = TokenEndpointAuthMethod::ClientSecretPost, ?string $scope = 'openid profile email user:read organizations:read organizations:write custom_fields:read custom_fields:write discounts:read discounts:write checkout_links:read checkout_links:write checkouts:read checkouts:write transactions:read transactions:write payouts:read payouts:write products:read products:write benefits:read benefits:write events:read events:write meters:read meters:write files:read files:write subscriptions:read subscriptions:write customers:read customers:write customer_meters:read customer_sessions:write orders:read orders:write refunds:read refunds:write payments:read metrics:read webhooks:read webhooks:write external_organizations:read license_keys:read license_keys:write repositories:read repositories:write issues:read issues:write customer_portal:read customer_portal:write notifications:read notifications:write notification_recipients:read notification_recipients:write')
     {
         $this->redirectUris = $redirectUris;
         $this->clientName = $clientName;
         $this->grantTypes = $grantTypes;
         $this->responseTypes = $responseTypes;
+        $this->defaultSubType = $defaultSubType;
         $this->clientUri = $clientUri;
         $this->logoUri = $logoUri;
         $this->tosUri = $tosUri;
