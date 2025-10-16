@@ -12,39 +12,12 @@
 Components\ExistingProductPrice $value = /* values here */
 ```
 
-### `Components\ProductPriceFixedCreate`
+### `Components\ProductPriceFixedCreate|Components\ProductPriceCustomCreate|Components\ProductPriceFreeCreate|Components\ProductPriceSeatBasedCreate|Components\ProductPriceMeteredUnitCreate`
 
 ```php
 /**
-* @var Components\ProductPriceFixedCreate
+* @var Components\ProductPriceFixedCreate|Components\ProductPriceCustomCreate|Components\ProductPriceFreeCreate|Components\ProductPriceSeatBasedCreate|Components\ProductPriceMeteredUnitCreate
 */
-Components\ProductPriceFixedCreate $value = /* values here */
-```
-
-### `Components\ProductPriceCustomCreate`
-
-```php
-/**
-* @var Components\ProductPriceCustomCreate
-*/
-Components\ProductPriceCustomCreate $value = /* values here */
-```
-
-### `Components\ProductPriceFreeCreate`
-
-```php
-/**
-* @var Components\ProductPriceFreeCreate
-*/
-Components\ProductPriceFreeCreate $value = /* values here */
-```
-
-### `Components\ProductPriceMeteredUnitCreate`
-
-```php
-/**
-* @var Components\ProductPriceMeteredUnitCreate
-*/
-Components\ProductPriceMeteredUnitCreate $value = /* values here */
+Components\ProductPriceFixedCreate|Components\ProductPriceCustomCreate|Components\ProductPriceFreeCreate|Components\ProductPriceSeatBasedCreate|Components\ProductPriceMeteredUnitCreate $value = /* values here */
 ```
 

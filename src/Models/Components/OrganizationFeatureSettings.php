@@ -21,11 +21,22 @@ class OrganizationFeatureSettings
     public ?bool $issueFundingEnabled = null;
 
     /**
+     * If this organization has seat-based pricing enabled
+     *
+     * @var ?bool $seatBasedPricingEnabled
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('seat_based_pricing_enabled')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
+    public ?bool $seatBasedPricingEnabled = null;
+
+    /**
      * @param  ?bool  $issueFundingEnabled
+     * @param  ?bool  $seatBasedPricingEnabled
      * @phpstan-pure
      */
-    public function __construct(?bool $issueFundingEnabled = false)
+    public function __construct(?bool $issueFundingEnabled = false, ?bool $seatBasedPricingEnabled = false)
     {
         $this->issueFundingEnabled = $issueFundingEnabled;
+        $this->seatBasedPricingEnabled = $seatBasedPricingEnabled;
     }
 }

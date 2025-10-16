@@ -104,9 +104,13 @@ class RetryUtils
 
         $final = false;
         foreach ($statusCodes as $code) {
-            $matches = [];
-            if (! preg_match('/^[0-9]xx$/', $code, $matches)) {
-                return $code === $actual;
+            if (! preg_match('/^[0-9]xx$/', $code)) {
+                $final = $code === $actual;
+                if ($final) {
+                    break;
+                }
+
+                continue;
             }
 
             $expectFamily = mb_substr($code, 0, 1);
@@ -121,6 +125,7 @@ class RetryUtils
 
             if ($actualFamily === $expectFamily) {
                 $final = true;
+                break;
             }
         }
 

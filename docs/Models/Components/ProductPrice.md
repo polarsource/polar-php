@@ -39,3 +39,12 @@ Components\ProductPriceFree $value = /* values here */
 Components\ProductPriceMeteredUnit $value = /* values here */
 ```
 
+### `Components\ProductPriceSeatBased`
+
+```php
+/**
+* @var Components\ProductPriceSeatBased
+*/
+Components\ProductPriceSeatBased $value = /* values here */
+```
+

@@ -84,12 +84,20 @@ class CustomerOrder
     public int $totalAmount;
 
     /**
-     * How much of this invoice was paid using the customer's balance. Amount in cents.
+     * Customer's balance amount applied to this invoice. Can increase the total amount paid, if the customer has a negative balance,  or decrease it, if the customer has a positive balance.Amount in cents.
      *
-     * @var int $fromBalanceAmount
+     * @var int $appliedBalanceAmount
      */
-    #[\Speakeasy\Serializer\Annotation\SerializedName('from_balance_amount')]
-    public int $fromBalanceAmount;
+    #[\Speakeasy\Serializer\Annotation\SerializedName('applied_balance_amount')]
+    public int $appliedBalanceAmount;
+
+    /**
+     * Amount in cents that is due for this order.
+     *
+     * @var int $dueAmount
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('due_amount')]
+    public int $dueAmount;
 
     /**
      * Amount refunded in cents.
@@ -249,7 +257,8 @@ class CustomerOrder
      * @param  int  $netAmount
      * @param  int  $taxAmount
      * @param  int  $totalAmount
-     * @param  int  $fromBalanceAmount
+     * @param  int  $appliedBalanceAmount
+     * @param  int  $dueAmount
      * @param  int  $refundedAmount
      * @param  int  $refundedTaxAmount
      * @param  string  $currency
@@ -271,7 +280,7 @@ class CustomerOrder
      * @param  ?\DateTime  $nextPaymentAttemptAt
      * @phpstan-pure
      */
-    public function __construct(string $id, \DateTime $createdAt, OrderStatus $status, bool $paid, int $subtotalAmount, int $discountAmount, int $netAmount, int $taxAmount, int $totalAmount, int $fromBalanceAmount, int $refundedAmount, int $refundedTaxAmount, string $currency, OrderBillingReason $billingReason, string $invoiceNumber, bool $isInvoiceGenerated, string $customerId, string $productId, string $userId, CustomerOrderProduct $product, array $items, ?\DateTime $modifiedAt = null, ?string $billingName = null, ?Address $billingAddress = null, ?string $discountId = null, ?string $subscriptionId = null, ?string $checkoutId = null, ?CustomerOrderSubscription $subscription = null, ?\DateTime $nextPaymentAttemptAt = null)
+    public function __construct(string $id, \DateTime $createdAt, OrderStatus $status, bool $paid, int $subtotalAmount, int $discountAmount, int $netAmount, int $taxAmount, int $totalAmount, int $appliedBalanceAmount, int $dueAmount, int $refundedAmount, int $refundedTaxAmount, string $currency, OrderBillingReason $billingReason, string $invoiceNumber, bool $isInvoiceGenerated, string $customerId, string $productId, string $userId, CustomerOrderProduct $product, array $items, ?\DateTime $modifiedAt = null, ?string $billingName = null, ?Address $billingAddress = null, ?string $discountId = null, ?string $subscriptionId = null, ?string $checkoutId = null, ?CustomerOrderSubscription $subscription = null, ?\DateTime $nextPaymentAttemptAt = null)
     {
         $this->id = $id;
         $this->createdAt = $createdAt;
@@ -282,7 +291,8 @@ class CustomerOrder
         $this->netAmount = $netAmount;
         $this->taxAmount = $taxAmount;
         $this->totalAmount = $totalAmount;
-        $this->fromBalanceAmount = $fromBalanceAmount;
+        $this->appliedBalanceAmount = $appliedBalanceAmount;
+        $this->dueAmount = $dueAmount;
         $this->refundedAmount = $refundedAmount;
         $this->refundedTaxAmount = $refundedTaxAmount;
         $this->currency = $currency;

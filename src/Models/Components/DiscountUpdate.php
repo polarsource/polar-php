@@ -42,6 +42,7 @@ class DiscountUpdate
     public ?string $name = null;
 
     /**
+     * Code customers can use to apply the discount during checkout. Must be between 3 and 256 characters long and contain only alphanumeric characters.If not provided, the discount can only be applied via the API.
      *
      * @var ?string $code
      */
@@ -50,6 +51,7 @@ class DiscountUpdate
     public ?string $code = null;
 
     /**
+     * Optional timestamp after which the discount is redeemable.
      *
      * @var ?\DateTime $startsAt
      */
@@ -58,6 +60,7 @@ class DiscountUpdate
     public ?\DateTime $startsAt = null;
 
     /**
+     * Optional timestamp after which the discount is no longer redeemable.
      *
      * @var ?\DateTime $endsAt
      */
@@ -66,6 +69,7 @@ class DiscountUpdate
     public ?\DateTime $endsAt = null;
 
     /**
+     * Optional maximum number of times the discount can be redeemed.
      *
      * @var ?int $maxRedemptions
      */
@@ -109,6 +113,14 @@ class DiscountUpdate
 
     /**
      *
+     * @var ?string $currency
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('currency')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
+    public ?string $currency = null;
+
+    /**
+     *
      * @var ?int $basisPoints
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('basis_points')]
@@ -126,14 +138,6 @@ class DiscountUpdate
     public ?array $products = null;
 
     /**
-     *
-     * @var ?string $currency
-     */
-    #[\Speakeasy\Serializer\Annotation\SerializedName('currency')]
-    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
-    public ?string $currency = null;
-
-    /**
      * @param  ?array<string, string|int|float|bool>  $metadata
      * @param  ?string  $name
      * @param  ?string  $code
@@ -149,7 +153,7 @@ class DiscountUpdate
      * @param  ?array<string>  $products
      * @phpstan-pure
      */
-    public function __construct(?array $metadata = null, ?string $name = null, ?string $code = null, ?\DateTime $startsAt = null, ?\DateTime $endsAt = null, ?int $maxRedemptions = null, ?DiscountDuration $duration = null, ?int $durationInMonths = null, ?DiscountType $type = null, ?int $amount = null, ?int $basisPoints = null, ?array $products = null, ?string $currency = 'usd')
+    public function __construct(?array $metadata = null, ?string $name = null, ?string $code = null, ?\DateTime $startsAt = null, ?\DateTime $endsAt = null, ?int $maxRedemptions = null, ?DiscountDuration $duration = null, ?int $durationInMonths = null, ?DiscountType $type = null, ?int $amount = null, ?string $currency = null, ?int $basisPoints = null, ?array $products = null)
     {
         $this->metadata = $metadata;
         $this->name = $name;
@@ -161,8 +165,8 @@ class DiscountUpdate
         $this->durationInMonths = $durationInMonths;
         $this->type = $type;
         $this->amount = $amount;
+        $this->currency = $currency;
         $this->basisPoints = $basisPoints;
         $this->products = $products;
-        $this->currency = $currency;
     }
 }

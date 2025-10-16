@@ -71,6 +71,15 @@ class CheckoutUpdate
     public ?int $amount = null;
 
     /**
+     * Number of seats for seat-based pricing.
+     *
+     * @var ?int $seats
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('seats')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
+    public ?int $seats = null;
+
+    /**
      *
      * @var ?bool $isBusinessCustomer
      */
@@ -204,6 +213,15 @@ class CheckoutUpdate
     public ?string $successUrl = null;
 
     /**
+     * When set, a back button will be shown in the checkout to return to this URL.
+     *
+     * @var ?string $returnUrl
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('return_url')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
+    public ?string $returnUrl = null;
+
+    /**
      * If you plan to embed the checkout session, set this to the Origin of the embedding page. It'll allow the Polar iframe to communicate with the parent page.
      *
      * @var ?string $embedOrigin
@@ -218,6 +236,7 @@ class CheckoutUpdate
      * @param  ?string  $productId
      * @param  ?string  $productPriceId
      * @param  ?int  $amount
+     * @param  ?int  $seats
      * @param  ?bool  $isBusinessCustomer
      * @param  ?string  $customerName
      * @param  ?string  $customerEmail
@@ -232,16 +251,18 @@ class CheckoutUpdate
      * @param  ?string  $customerIpAddress
      * @param  ?array<string, string|int|float|bool>  $customerMetadata
      * @param  ?string  $successUrl
+     * @param  ?string  $returnUrl
      * @param  ?string  $embedOrigin
      * @phpstan-pure
      */
-    public function __construct(?array $customFieldData = null, ?array $metadata = null, ?string $productId = null, ?string $productPriceId = null, ?int $amount = null, ?bool $isBusinessCustomer = null, ?string $customerName = null, ?string $customerEmail = null, ?string $customerBillingName = null, ?AddressInput $customerBillingAddress = null, ?string $customerTaxId = null, ?TrialInterval $trialInterval = null, ?int $trialIntervalCount = null, ?string $discountId = null, ?bool $allowDiscountCodes = null, ?bool $requireBillingAddress = null, ?string $customerIpAddress = null, ?array $customerMetadata = null, ?string $successUrl = null, ?string $embedOrigin = null)
+    public function __construct(?array $customFieldData = null, ?array $metadata = null, ?string $productId = null, ?string $productPriceId = null, ?int $amount = null, ?int $seats = null, ?bool $isBusinessCustomer = null, ?string $customerName = null, ?string $customerEmail = null, ?string $customerBillingName = null, ?AddressInput $customerBillingAddress = null, ?string $customerTaxId = null, ?TrialInterval $trialInterval = null, ?int $trialIntervalCount = null, ?string $discountId = null, ?bool $allowDiscountCodes = null, ?bool $requireBillingAddress = null, ?string $customerIpAddress = null, ?array $customerMetadata = null, ?string $successUrl = null, ?string $returnUrl = null, ?string $embedOrigin = null)
     {
         $this->customFieldData = $customFieldData;
         $this->metadata = $metadata;
         $this->productId = $productId;
         $this->productPriceId = $productPriceId;
         $this->amount = $amount;
+        $this->seats = $seats;
         $this->isBusinessCustomer = $isBusinessCustomer;
         $this->customerName = $customerName;
         $this->customerEmail = $customerEmail;
@@ -256,6 +277,7 @@ class CheckoutUpdate
         $this->customerIpAddress = $customerIpAddress;
         $this->customerMetadata = $customerMetadata;
         $this->successUrl = $successUrl;
+        $this->returnUrl = $returnUrl;
         $this->embedOrigin = $embedOrigin;
     }
 }

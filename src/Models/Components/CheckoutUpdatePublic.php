@@ -50,6 +50,15 @@ class CheckoutUpdatePublic
     public ?int $amount = null;
 
     /**
+     * Number of seats for seat-based pricing.
+     *
+     * @var ?int $seats
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('seats')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
+    public ?int $seats = null;
+
+    /**
      *
      * @var ?bool $isBusinessCustomer
      */
@@ -112,6 +121,7 @@ class CheckoutUpdatePublic
      * @param  ?string  $productId
      * @param  ?string  $productPriceId
      * @param  ?int  $amount
+     * @param  ?int  $seats
      * @param  ?bool  $isBusinessCustomer
      * @param  ?string  $customerName
      * @param  ?string  $customerEmail
@@ -121,12 +131,13 @@ class CheckoutUpdatePublic
      * @param  ?string  $discountCode
      * @phpstan-pure
      */
-    public function __construct(?array $customFieldData = null, ?string $productId = null, ?string $productPriceId = null, ?int $amount = null, ?bool $isBusinessCustomer = null, ?string $customerName = null, ?string $customerEmail = null, ?string $customerBillingName = null, ?AddressInput $customerBillingAddress = null, ?string $customerTaxId = null, ?string $discountCode = null)
+    public function __construct(?array $customFieldData = null, ?string $productId = null, ?string $productPriceId = null, ?int $amount = null, ?int $seats = null, ?bool $isBusinessCustomer = null, ?string $customerName = null, ?string $customerEmail = null, ?string $customerBillingName = null, ?AddressInput $customerBillingAddress = null, ?string $customerTaxId = null, ?string $discountCode = null)
     {
         $this->customFieldData = $customFieldData;
         $this->productId = $productId;
         $this->productPriceId = $productPriceId;
         $this->amount = $amount;
+        $this->seats = $seats;
         $this->isBusinessCustomer = $isBusinessCustomer;
         $this->customerName = $customerName;
         $this->customerEmail = $customerEmail;
