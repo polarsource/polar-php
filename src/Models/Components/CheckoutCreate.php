@@ -117,6 +117,15 @@ class CheckoutCreate
     public ?int $amount = null;
 
     /**
+     * Number of seats for seat-based pricing. Required for seat-based products.
+     *
+     * @var ?int $seats
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('seats')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
+    public ?int $seats = null;
+
+    /**
      * ID of an existing customer in the organization. The customer data will be pre-filled in the checkout form. The resulting order will be linked to this customer.
      *
      * @var ?string $customerId
@@ -202,6 +211,15 @@ class CheckoutCreate
     public ?string $successUrl = null;
 
     /**
+     * When set, a back button will be shown in the checkout to return to this URL.
+     *
+     * @var ?string $returnUrl
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('return_url')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
+    public ?string $returnUrl = null;
+
+    /**
      * If you plan to embed the checkout session, set this to the Origin of the embedding page. It'll allow the Polar iframe to communicate with the parent page.
      *
      * @var ?string $embedOrigin
@@ -249,6 +267,7 @@ class CheckoutCreate
      * @param  ?int  $trialIntervalCount
      * @param  ?string  $discountId
      * @param  ?int  $amount
+     * @param  ?int  $seats
      * @param  ?string  $customerId
      * @param  ?string  $externalCustomerId
      * @param  ?string  $customerName
@@ -259,10 +278,11 @@ class CheckoutCreate
      * @param  ?string  $customerTaxId
      * @param  ?string  $subscriptionId
      * @param  ?string  $successUrl
+     * @param  ?string  $returnUrl
      * @param  ?string  $embedOrigin
      * @phpstan-pure
      */
-    public function __construct(array $products, ?array $metadata = null, ?array $customFieldData = null, ?array $customerMetadata = null, ?TrialInterval $trialInterval = null, ?int $trialIntervalCount = null, ?string $discountId = null, ?int $amount = null, ?string $customerId = null, ?string $externalCustomerId = null, ?string $customerName = null, ?string $customerEmail = null, ?string $customerIpAddress = null, ?string $customerBillingName = null, ?AddressInput $customerBillingAddress = null, ?string $customerTaxId = null, ?string $subscriptionId = null, ?string $successUrl = null, ?string $embedOrigin = null, ?bool $allowDiscountCodes = true, ?bool $requireBillingAddress = false, ?bool $isBusinessCustomer = false)
+    public function __construct(array $products, ?array $metadata = null, ?array $customFieldData = null, ?array $customerMetadata = null, ?TrialInterval $trialInterval = null, ?int $trialIntervalCount = null, ?string $discountId = null, ?int $amount = null, ?int $seats = null, ?string $customerId = null, ?string $externalCustomerId = null, ?string $customerName = null, ?string $customerEmail = null, ?string $customerIpAddress = null, ?string $customerBillingName = null, ?AddressInput $customerBillingAddress = null, ?string $customerTaxId = null, ?string $subscriptionId = null, ?string $successUrl = null, ?string $returnUrl = null, ?string $embedOrigin = null, ?bool $allowDiscountCodes = true, ?bool $requireBillingAddress = false, ?bool $isBusinessCustomer = false)
     {
         $this->products = $products;
         $this->metadata = $metadata;
@@ -272,6 +292,7 @@ class CheckoutCreate
         $this->trialIntervalCount = $trialIntervalCount;
         $this->discountId = $discountId;
         $this->amount = $amount;
+        $this->seats = $seats;
         $this->customerId = $customerId;
         $this->externalCustomerId = $externalCustomerId;
         $this->customerName = $customerName;
@@ -282,6 +303,7 @@ class CheckoutCreate
         $this->customerTaxId = $customerTaxId;
         $this->subscriptionId = $subscriptionId;
         $this->successUrl = $successUrl;
+        $this->returnUrl = $returnUrl;
         $this->embedOrigin = $embedOrigin;
         $this->allowDiscountCodes = $allowDiscountCodes;
         $this->requireBillingAddress = $requireBillingAddress;

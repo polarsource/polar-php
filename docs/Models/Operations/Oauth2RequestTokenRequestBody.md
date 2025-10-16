@@ -21,3 +21,12 @@ Components\AuthorizationCodeTokenRequest $value = /* values here */
 Components\RefreshTokenRequest $value = /* values here */
 ```
 
+### `Components\WebTokenRequest`
+
+```php
+/**
+* @var Components\WebTokenRequest
+*/
+Components\WebTokenRequest $value = /* values here */
+```
+

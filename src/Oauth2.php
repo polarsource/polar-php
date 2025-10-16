@@ -17,12 +17,15 @@ use Speakeasy\Serializer\DeserializationContext;
 class Oauth2
 {
     private SDKConfiguration $sdkConfiguration;
+    public Clients $clients;
+
     /**
      * @param  SDKConfiguration  $sdkConfig
      */
     public function __construct(public SDKConfiguration $sdkConfig)
     {
         $this->sdkConfiguration = $sdkConfig;
+        $this->clients = new Clients($this->sdkConfiguration);
     }
     /**
      * @param  string  $baseUrl
@@ -60,7 +63,7 @@ class Oauth2
         $httpOptions['headers']['Accept'] = 'application/json';
         $httpOptions['headers']['user-agent'] = $this->sdkConfiguration->userAgent;
         $httpRequest = new \GuzzleHttp\Psr7\Request('GET', $url);
-        $hookContext = new HookContext($this->sdkConfiguration, $baseUrl, 'oauth2:authorize', [], $this->sdkConfiguration->securitySource);
+        $hookContext = new HookContext($this->sdkConfiguration, $baseUrl, 'oauth2:authorize', null, $this->sdkConfiguration->securitySource);
         $httpRequest = $this->sdkConfiguration->hooks->beforeRequest(new Hooks\BeforeRequestContext($hookContext), $httpRequest);
         $httpOptions = Utils\Utils::convertHeadersToOptions($httpRequest, $httpOptions);
         $httpRequest = Utils\Utils::removeHeaders($httpRequest);
@@ -126,7 +129,7 @@ class Oauth2
         $httpOptions['headers']['Accept'] = 'application/json';
         $httpOptions['headers']['user-agent'] = $this->sdkConfiguration->userAgent;
         $httpRequest = new \GuzzleHttp\Psr7\Request('POST', $url);
-        $hookContext = new HookContext($this->sdkConfiguration, $baseUrl, 'oauth2:introspect_token', [], null);
+        $hookContext = new HookContext($this->sdkConfiguration, $baseUrl, 'oauth2:introspect_token', null, null);
         $httpRequest = $this->sdkConfiguration->hooks->beforeRequest(new Hooks\BeforeRequestContext($hookContext), $httpRequest);
         $httpOptions = Utils\Utils::convertHeadersToOptions($httpRequest, $httpOptions);
         $httpRequest = Utils\Utils::removeHeaders($httpRequest);
@@ -174,11 +177,11 @@ class Oauth2
      *
      * Request an access token using a valid grant.
      *
-     * @param  Components\AuthorizationCodeTokenRequest|Components\RefreshTokenRequest  $request
+     * @param  Components\AuthorizationCodeTokenRequest|Components\RefreshTokenRequest|Components\WebTokenRequest  $request
      * @return Operations\Oauth2RequestTokenResponse
      * @throws \Polar\Models\Errors\APIException
      */
-    public function token(Components\AuthorizationCodeTokenRequest|Components\RefreshTokenRequest $request, ?Options $options = null): Operations\Oauth2RequestTokenResponse
+    public function token(Components\AuthorizationCodeTokenRequest|Components\RefreshTokenRequest|Components\WebTokenRequest $request, ?Options $options = null): Operations\Oauth2RequestTokenResponse
     {
         $baseUrl = $this->sdkConfiguration->getTemplatedServerUrl();
         $url = Utils\Utils::generateUrl($baseUrl, '/v1/oauth2/token');
@@ -192,7 +195,7 @@ class Oauth2
         $httpOptions['headers']['Accept'] = 'application/json';
         $httpOptions['headers']['user-agent'] = $this->sdkConfiguration->userAgent;
         $httpRequest = new \GuzzleHttp\Psr7\Request('POST', $url);
-        $hookContext = new HookContext($this->sdkConfiguration, $baseUrl, 'oauth2:request_token', [], null);
+        $hookContext = new HookContext($this->sdkConfiguration, $baseUrl, 'oauth2:request_token', null, null);
         $httpRequest = $this->sdkConfiguration->hooks->beforeRequest(new Hooks\BeforeRequestContext($hookContext), $httpRequest);
         $httpOptions = Utils\Utils::convertHeadersToOptions($httpRequest, $httpOptions);
         $httpRequest = Utils\Utils::removeHeaders($httpRequest);
@@ -258,7 +261,7 @@ class Oauth2
         $httpOptions['headers']['Accept'] = 'application/json';
         $httpOptions['headers']['user-agent'] = $this->sdkConfiguration->userAgent;
         $httpRequest = new \GuzzleHttp\Psr7\Request('POST', $url);
-        $hookContext = new HookContext($this->sdkConfiguration, $baseUrl, 'oauth2:revoke_token', [], null);
+        $hookContext = new HookContext($this->sdkConfiguration, $baseUrl, 'oauth2:revoke_token', null, null);
         $httpRequest = $this->sdkConfiguration->hooks->beforeRequest(new Hooks\BeforeRequestContext($hookContext), $httpRequest);
         $httpOptions = Utils\Utils::convertHeadersToOptions($httpRequest, $httpOptions);
         $httpRequest = Utils\Utils::removeHeaders($httpRequest);
@@ -318,7 +321,7 @@ class Oauth2
         $httpOptions['headers']['Accept'] = 'application/json';
         $httpOptions['headers']['user-agent'] = $this->sdkConfiguration->userAgent;
         $httpRequest = new \GuzzleHttp\Psr7\Request('GET', $url);
-        $hookContext = new HookContext($this->sdkConfiguration, $baseUrl, 'oauth2:userinfo', [], $this->sdkConfiguration->securitySource);
+        $hookContext = new HookContext($this->sdkConfiguration, $baseUrl, 'oauth2:userinfo', null, $this->sdkConfiguration->securitySource);
         $httpRequest = $this->sdkConfiguration->hooks->beforeRequest(new Hooks\BeforeRequestContext($hookContext), $httpRequest);
         $httpOptions = Utils\Utils::convertHeadersToOptions($httpRequest, $httpOptions);
         $httpRequest = Utils\Utils::removeHeaders($httpRequest);

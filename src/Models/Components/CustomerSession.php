@@ -74,6 +74,13 @@ class CustomerSession
     public ?\DateTime $modifiedAt;
 
     /**
+     *
+     * @var ?string $returnUrl
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('return_url')]
+    public ?string $returnUrl;
+
+    /**
      * @param  \DateTime  $createdAt
      * @param  string  $id
      * @param  string  $token
@@ -82,9 +89,10 @@ class CustomerSession
      * @param  string  $customerId
      * @param  Customer  $customer
      * @param  ?\DateTime  $modifiedAt
+     * @param  ?string  $returnUrl
      * @phpstan-pure
      */
-    public function __construct(\DateTime $createdAt, string $id, string $token, \DateTime $expiresAt, string $customerPortalUrl, string $customerId, Customer $customer, ?\DateTime $modifiedAt = null)
+    public function __construct(\DateTime $createdAt, string $id, string $token, \DateTime $expiresAt, string $customerPortalUrl, string $customerId, Customer $customer, ?\DateTime $modifiedAt = null, ?string $returnUrl = null)
     {
         $this->createdAt = $createdAt;
         $this->id = $id;
@@ -94,5 +102,6 @@ class CustomerSession
         $this->customerId = $customerId;
         $this->customer = $customer;
         $this->modifiedAt = $modifiedAt;
+        $this->returnUrl = $returnUrl;
     }
 }

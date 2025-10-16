@@ -1,0 +1,18 @@
+# CustomerSeat
+
+
+## Fields
+
+| Field                                                          | Type                                                           | Required                                                       | Description                                                    |
+| -------------------------------------------------------------- | -------------------------------------------------------------- | -------------------------------------------------------------- | -------------------------------------------------------------- |
+| `createdAt`                                                    | [\DateTime](https://www.php.net/manual/en/class.datetime.php)  | :heavy_check_mark:                                             | Creation timestamp of the object.                              |
+| `modifiedAt`                                                   | [\DateTime](https://www.php.net/manual/en/class.datetime.php)  | :heavy_check_mark:                                             | Last modification timestamp of the object.                     |
+| `id`                                                           | *string*                                                       | :heavy_check_mark:                                             | The seat ID                                                    |
+| `subscriptionId`                                               | *string*                                                       | :heavy_check_mark:                                             | The subscription ID                                            |
+| `status`                                                       | [Components\SeatStatus](../../Models/Components/SeatStatus.md) | :heavy_check_mark:                                             | N/A                                                            |
+| `customerId`                                                   | *?string*                                                      | :heavy_minus_sign:                                             | The assigned customer ID                                       |
+| `customerEmail`                                                | *?string*                                                      | :heavy_minus_sign:                                             | The assigned customer email                                    |
+| `invitationTokenExpiresAt`                                     | [\DateTime](https://www.php.net/manual/en/class.datetime.php)  | :heavy_minus_sign:                                             | When the invitation token expires                              |
+| `claimedAt`                                                    | [\DateTime](https://www.php.net/manual/en/class.datetime.php)  | :heavy_minus_sign:                                             | When the seat was claimed                                      |
+| `revokedAt`                                                    | [\DateTime](https://www.php.net/manual/en/class.datetime.php)  | :heavy_minus_sign:                                             | When the seat was revoked                                      |
+| `seatMetadata`                                                 | array<string, *mixed*>                                         | :heavy_minus_sign:                                             | Additional metadata for the seat                               |

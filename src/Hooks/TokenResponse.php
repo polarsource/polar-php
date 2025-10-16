@@ -13,5 +13,5 @@ class TokenResponse
 {
     public ?string $accessToken;
     public ?string $tokenType;
-    public ?float $expiresIn;
+    public ?int $expiresIn;
 }

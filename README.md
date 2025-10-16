@@ -202,9 +202,6 @@ foreach ($responses as $response) {
 * [list](docs/sdks/customermeters/README.md#list) - List Customer Meters
 * [get](docs/sdks/customermeters/README.md#get) - Get Customer Meter
 
-### [customerPortal](docs/sdks/customerportal/README.md)
-
-
 #### [customerPortal->benefitGrants](docs/sdks/polarbenefitgrants/README.md)
 
 * [list](docs/sdks/polarbenefitgrants/README.md#list) - List Benefit Grants
@@ -224,6 +221,10 @@ foreach ($responses as $response) {
 * [addPaymentMethod](docs/sdks/polarcustomers/README.md#addpaymentmethod) - Add Customer Payment Method
 * [confirmPaymentMethod](docs/sdks/polarcustomers/README.md#confirmpaymentmethod) - Confirm Customer Payment Method
 * [deletePaymentMethod](docs/sdks/polarcustomers/README.md#deletepaymentmethod) - Delete Customer Payment Method
+
+#### [customerPortal->customerSession](docs/sdks/customersession/README.md)
+
+* [introspect](docs/sdks/customersession/README.md#introspect) - Introspect Customer Session
 
 #### [customerPortal->downloadables](docs/sdks/downloadables/README.md)
 
@@ -250,6 +251,14 @@ foreach ($responses as $response) {
 #### [customerPortal->organizations](docs/sdks/polarorganizations/README.md)
 
 * [get](docs/sdks/polarorganizations/README.md#get) - Get Organization
+
+#### [customerPortal->seats](docs/sdks/seats/README.md)
+
+* [listSeats](docs/sdks/seats/README.md#listseats) - List Seats
+* [assignSeat](docs/sdks/seats/README.md#assignseat) - Assign Seat
+* [revokeSeat](docs/sdks/seats/README.md#revokeseat) - Revoke Seat
+* [resendInvitation](docs/sdks/seats/README.md#resendinvitation) - Resend Invitation
+* [listClaimedSubscriptions](docs/sdks/seats/README.md#listclaimedsubscriptions) - List Claimed Subscriptions
 
 #### [customerPortal->subscriptions](docs/sdks/polarsubscriptions/README.md)
 
@@ -339,6 +348,13 @@ foreach ($responses as $response) {
 * [introspect](docs/sdks/oauth2/README.md#introspect) - Introspect Token
 * [userinfo](docs/sdks/oauth2/README.md#userinfo) - Get User Info
 
+#### [oauth2->clients](docs/sdks/clients/README.md)
+
+* [create](docs/sdks/clients/README.md#create) - Create Client
+* [get](docs/sdks/clients/README.md#get) - Get Client
+* [update](docs/sdks/clients/README.md#update) - Update Client
+* [delete](docs/sdks/clients/README.md#delete) - Delete Client
+
 ### [orders](docs/sdks/orders/README.md)
 
 * [list](docs/sdks/orders/README.md#list) - List Orders
@@ -358,7 +374,6 @@ foreach ($responses as $response) {
 
 * [list](docs/sdks/payments/README.md#list) - List Payments
 * [get](docs/sdks/payments/README.md#get) - Get Payment
-
 
 ### [products](docs/sdks/products/README.md)
 

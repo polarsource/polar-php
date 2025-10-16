@@ -21,11 +21,22 @@ class CustomerSessionCustomerExternalIDCreate
     public string $externalCustomerId;
 
     /**
+     * When set, a back button will be shown in the customer portal to return to this URL.
+     *
+     * @var ?string $returnUrl
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('return_url')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
+    public ?string $returnUrl = null;
+
+    /**
      * @param  string  $externalCustomerId
+     * @param  ?string  $returnUrl
      * @phpstan-pure
      */
-    public function __construct(string $externalCustomerId)
+    public function __construct(string $externalCustomerId, ?string $returnUrl = null)
     {
         $this->externalCustomerId = $externalCustomerId;
+        $this->returnUrl = $returnUrl;
     }
 }
