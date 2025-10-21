@@ -114,11 +114,11 @@ if ($response->customerBenefitGrant !== null) {
 
 ### Errors
 
-| Error Type                 | Status Code                | Content Type               |
-| -------------------------- | -------------------------- | -------------------------- |
-| Errors\ResourceNotFound    | 404                        | application/json           |
-| Errors\HTTPValidationError | 422                        | application/json           |
-| Errors\APIException        | 4XX, 5XX                   | \*/\*                      |
+| Error Type                             | Status Code                            | Content Type                           |
+| -------------------------------------- | -------------------------------------- | -------------------------------------- |
+| Errors\PolarExceptionsResourceNotFound | 404                                    | application/json                       |
+| Errors\HTTPValidationError             | 422                                    | application/json                       |
+| Errors\APIException                    | 4XX, 5XX                               | \*/\*                                  |
 
 ## update
 
@@ -171,9 +171,9 @@ if ($response->customerBenefitGrant !== null) {
 
 ### Errors
 
-| Error Type                 | Status Code                | Content Type               |
-| -------------------------- | -------------------------- | -------------------------- |
-| Errors\NotPermitted        | 403                        | application/json           |
-| Errors\ResourceNotFound    | 404                        | application/json           |
-| Errors\HTTPValidationError | 422                        | application/json           |
-| Errors\APIException        | 4XX, 5XX                   | \*/\*                      |
+| Error Type                             | Status Code                            | Content Type                           |
+| -------------------------------------- | -------------------------------------- | -------------------------------------- |
+| Errors\PolarExceptionsNotPermitted     | 403                                    | application/json                       |
+| Errors\PolarExceptionsResourceNotFound | 404                                    | application/json                       |
+| Errors\HTTPValidationError             | 422                                    | application/json                       |
+| Errors\APIException                    | 4XX, 5XX                               | \*/\*                                  |

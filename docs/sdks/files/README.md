@@ -198,12 +198,12 @@ if ($response->responseFilesUploaded !== null) {
 
 ### Errors
 
-| Error Type                 | Status Code                | Content Type               |
-| -------------------------- | -------------------------- | -------------------------- |
-| Errors\NotPermitted        | 403                        | application/json           |
-| Errors\ResourceNotFound    | 404                        | application/json           |
-| Errors\HTTPValidationError | 422                        | application/json           |
-| Errors\APIException        | 4XX, 5XX                   | \*/\*                      |
+| Error Type                             | Status Code                            | Content Type                           |
+| -------------------------------------- | -------------------------------------- | -------------------------------------- |
+| Errors\PolarExceptionsNotPermitted     | 403                                    | application/json                       |
+| Errors\PolarExceptionsResourceNotFound | 404                                    | application/json                       |
+| Errors\HTTPValidationError             | 422                                    | application/json                       |
+| Errors\APIException                    | 4XX, 5XX                               | \*/\*                                  |
 
 ## update
 
@@ -254,12 +254,12 @@ if ($response->responseFilesUpdate !== null) {
 
 ### Errors
 
-| Error Type                 | Status Code                | Content Type               |
-| -------------------------- | -------------------------- | -------------------------- |
-| Errors\NotPermitted        | 403                        | application/json           |
-| Errors\ResourceNotFound    | 404                        | application/json           |
-| Errors\HTTPValidationError | 422                        | application/json           |
-| Errors\APIException        | 4XX, 5XX                   | \*/\*                      |
+| Error Type                             | Status Code                            | Content Type                           |
+| -------------------------------------- | -------------------------------------- | -------------------------------------- |
+| Errors\PolarExceptionsNotPermitted     | 403                                    | application/json                       |
+| Errors\PolarExceptionsResourceNotFound | 404                                    | application/json                       |
+| Errors\HTTPValidationError             | 422                                    | application/json                       |
+| Errors\APIException                    | 4XX, 5XX                               | \*/\*                                  |
 
 ## delete
 
@@ -306,9 +306,9 @@ if ($response->statusCode === 200) {
 
 ### Errors
 
-| Error Type                 | Status Code                | Content Type               |
-| -------------------------- | -------------------------- | -------------------------- |
-| Errors\NotPermitted        | 403                        | application/json           |
-| Errors\ResourceNotFound    | 404                        | application/json           |
-| Errors\HTTPValidationError | 422                        | application/json           |
-| Errors\APIException        | 4XX, 5XX                   | \*/\*                      |
+| Error Type                             | Status Code                            | Content Type                           |
+| -------------------------------------- | -------------------------------------- | -------------------------------------- |
+| Errors\PolarExceptionsNotPermitted     | 403                                    | application/json                       |
+| Errors\PolarExceptionsResourceNotFound | 404                                    | application/json                       |
+| Errors\HTTPValidationError             | 422                                    | application/json                       |
+| Errors\APIException                    | 4XX, 5XX                               | \*/\*                                  |

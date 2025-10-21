@@ -5,21 +5,21 @@ Price of the selected product.
 
 ## Supported Types
 
-### `Components\LegacyRecurringProductPriceFixed|Components\LegacyRecurringProductPriceCustom|Components\LegacyRecurringProductPriceFree`
+### `Components\LegacyRecurringProductPriceFixedOutput|Components\LegacyRecurringProductPriceCustomOutput|Components\LegacyRecurringProductPriceFreeOutput`
 
 ```php
 /**
-* @var Components\LegacyRecurringProductPriceFixed|Components\LegacyRecurringProductPriceCustom|Components\LegacyRecurringProductPriceFree
+* @var Components\LegacyRecurringProductPriceFixedOutput|Components\LegacyRecurringProductPriceCustomOutput|Components\LegacyRecurringProductPriceFreeOutput
 */
-Components\LegacyRecurringProductPriceFixed|Components\LegacyRecurringProductPriceCustom|Components\LegacyRecurringProductPriceFree $value = /* values here */
+Components\LegacyRecurringProductPriceFixedOutput|Components\LegacyRecurringProductPriceCustomOutput|Components\LegacyRecurringProductPriceFreeOutput $value = /* values here */
 ```
 
-### `Components\ProductPriceFixed|Components\ProductPriceCustom|Components\ProductPriceFree|Components\ProductPriceSeatBased|Components\ProductPriceMeteredUnit`
+### `Components\ProductPriceFixedOutput|Components\ProductPriceCustomOutput|Components\ProductPriceFreeOutput|Components\ProductPriceSeatBasedOutput|Components\ProductPriceMeteredUnitOutput`
 
 ```php
 /**
-* @var Components\ProductPriceFixed|Components\ProductPriceCustom|Components\ProductPriceFree|Components\ProductPriceSeatBased|Components\ProductPriceMeteredUnit
+* @var Components\ProductPriceFixedOutput|Components\ProductPriceCustomOutput|Components\ProductPriceFreeOutput|Components\ProductPriceSeatBasedOutput|Components\ProductPriceMeteredUnitOutput
 */
-Components\ProductPriceFixed|Components\ProductPriceCustom|Components\ProductPriceFree|Components\ProductPriceSeatBased|Components\ProductPriceMeteredUnit $value = /* values here */
+Components\ProductPriceFixedOutput|Components\ProductPriceCustomOutput|Components\ProductPriceFreeOutput|Components\ProductPriceSeatBasedOutput|Components\ProductPriceMeteredUnitOutput $value = /* values here */
 ```
 

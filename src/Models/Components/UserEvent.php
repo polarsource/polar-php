@@ -13,15 +13,6 @@ namespace Polar\Models\Components;
 class UserEvent
 {
     /**
-     * $metadata
-     *
-     * @var array<string, string|int|float|bool> $metadata
-     */
-    #[\Speakeasy\Serializer\Annotation\SerializedName('metadata')]
-    #[\Speakeasy\Serializer\Annotation\Type('array<string, string|int|float|bool>')]
-    public array $metadata;
-
-    /**
      * The ID of the object.
      *
      * @var string $id
@@ -52,6 +43,15 @@ class UserEvent
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('name')]
     public string $name;
+
+    /**
+     * $metadata
+     *
+     * @var array<string, string|int|float|bool> $metadata
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('metadata')]
+    #[\Speakeasy\Serializer\Annotation\Type('array<string, string|int|float|bool>')]
+    public array $metadata;
 
     /**
      * ID of the customer in your Polar organization associated with the event.
@@ -87,24 +87,24 @@ class UserEvent
     public string $source;
 
     /**
-     * @param  array<string, string|int|float|bool>  $metadata
      * @param  string  $id
      * @param  \DateTime  $timestamp
      * @param  string  $organizationId
      * @param  string  $name
      * @param  string  $source
+     * @param  array<string, string|int|float|bool>  $metadata
      * @param  ?string  $customerId
      * @param  ?Customer  $customer
      * @param  ?string  $externalCustomerId
      * @phpstan-pure
      */
-    public function __construct(array $metadata, string $id, \DateTime $timestamp, string $organizationId, string $name, ?string $customerId = null, ?Customer $customer = null, ?string $externalCustomerId = null, string $source = 'user')
+    public function __construct(string $id, \DateTime $timestamp, string $organizationId, string $name, array $metadata, ?string $customerId = null, ?Customer $customer = null, ?string $externalCustomerId = null, string $source = 'user')
     {
-        $this->metadata = $metadata;
         $this->id = $id;
         $this->timestamp = $timestamp;
         $this->organizationId = $organizationId;
         $this->name = $name;
+        $this->metadata = $metadata;
         $this->customerId = $customerId;
         $this->customer = $customer;
         $this->externalCustomerId = $externalCustomerId;
