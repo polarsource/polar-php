@@ -162,11 +162,11 @@ if ($response->subscription !== null) {
 
 ### Errors
 
-| Error Type                             | Status Code                            | Content Type                           |
-| -------------------------------------- | -------------------------------------- | -------------------------------------- |
-| Errors\PolarExceptionsResourceNotFound | 404                                    | application/json                       |
-| Errors\HTTPValidationError             | 422                                    | application/json                       |
-| Errors\APIException                    | 4XX, 5XX                               | \*/\*                                  |
+| Error Type                 | Status Code                | Content Type               |
+| -------------------------- | -------------------------- | -------------------------- |
+| Errors\ResourceNotFound    | 404                        | application/json           |
+| Errors\HTTPValidationError | 422                        | application/json           |
+| Errors\APIException        | 4XX, 5XX                   | \*/\*                      |
 
 ## update
 
@@ -219,13 +219,13 @@ if ($response->subscription !== null) {
 
 ### Errors
 
-| Error Type                                        | Status Code                                       | Content Type                                      |
-| ------------------------------------------------- | ------------------------------------------------- | ------------------------------------------------- |
-| Errors\PolarExceptionsAlreadyCanceledSubscription | 403                                               | application/json                                  |
-| Errors\PolarExceptionsResourceNotFound            | 404                                               | application/json                                  |
-| Errors\PolarExceptionsSubscriptionLocked          | 409                                               | application/json                                  |
-| Errors\HTTPValidationError                        | 422                                               | application/json                                  |
-| Errors\APIException                               | 4XX, 5XX                                          | \*/\*                                             |
+| Error Type                         | Status Code                        | Content Type                       |
+| ---------------------------------- | ---------------------------------- | ---------------------------------- |
+| Errors\AlreadyCanceledSubscription | 403                                | application/json                   |
+| Errors\ResourceNotFound            | 404                                | application/json                   |
+| Errors\SubscriptionLocked          | 409                                | application/json                   |
+| Errors\HTTPValidationError         | 422                                | application/json                   |
+| Errors\APIException                | 4XX, 5XX                           | \*/\*                              |
 
 ## revoke
 
@@ -272,10 +272,10 @@ if ($response->subscription !== null) {
 
 ### Errors
 
-| Error Type                                        | Status Code                                       | Content Type                                      |
-| ------------------------------------------------- | ------------------------------------------------- | ------------------------------------------------- |
-| Errors\PolarExceptionsAlreadyCanceledSubscription | 403                                               | application/json                                  |
-| Errors\PolarExceptionsResourceNotFound            | 404                                               | application/json                                  |
-| Errors\PolarExceptionsSubscriptionLocked          | 409                                               | application/json                                  |
-| Errors\HTTPValidationError                        | 422                                               | application/json                                  |
-| Errors\APIException                               | 4XX, 5XX                                          | \*/\*                                             |
+| Error Type                         | Status Code                        | Content Type                       |
+| ---------------------------------- | ---------------------------------- | ---------------------------------- |
+| Errors\AlreadyCanceledSubscription | 403                                | application/json                   |
+| Errors\ResourceNotFound            | 404                                | application/json                   |
+| Errors\SubscriptionLocked          | 409                                | application/json                   |
+| Errors\HTTPValidationError         | 422                                | application/json                   |
+| Errors\APIException                | 4XX, 5XX                           | \*/\*                              |

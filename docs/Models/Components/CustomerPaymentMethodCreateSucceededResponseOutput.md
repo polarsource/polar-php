@@ -1,9 +1,0 @@
-# CustomerPaymentMethodCreateSucceededResponseOutput
-
-
-## Fields
-
-| Field                                                                                                            | Type                                                                                                             | Required                                                                                                         | Description                                                                                                      |
-| ---------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------- |
-| `status`                                                                                                         | *string*                                                                                                         | :heavy_check_mark:                                                                                               | N/A                                                                                                              |
-| `paymentMethod`                                                                                                  | [Components\PaymentMethodCard\|Components\PaymentMethodGeneric](../../Models/Components/CustomerPaymentMethod.md) | :heavy_check_mark:                                                                                               | N/A                                                                                                              |

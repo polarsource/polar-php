@@ -100,7 +100,7 @@ class PolarCustomers
 
                 $serializer = Utils\JSON::createSerializer();
                 $responseData = (string) $httpResponse->getBody();
-                $obj = $serializer->deserialize($responseData, '\Polar\Models\Components\CustomerPaymentMethodCreateSucceededResponseOutput|\Polar\Models\Components\CustomerPaymentMethodCreateRequiresActionResponse', 'json', DeserializationContext::create()->setRequireAllRequiredProperties(true));
+                $obj = $serializer->deserialize($responseData, '\Polar\Models\Components\CustomerPaymentMethodCreateSucceededResponse|\Polar\Models\Components\CustomerPaymentMethodCreateRequiresActionResponse', 'json', DeserializationContext::create()->setRequireAllRequiredProperties(true));
                 $response = new Operations\CustomerPortalCustomersAddPaymentMethodResponse(
                     statusCode: $statusCode,
                     contentType: $contentType,
@@ -186,7 +186,7 @@ class PolarCustomers
 
                 $serializer = Utils\JSON::createSerializer();
                 $responseData = (string) $httpResponse->getBody();
-                $obj = $serializer->deserialize($responseData, '\Polar\Models\Components\CustomerPaymentMethodCreateSucceededResponseOutput|\Polar\Models\Components\CustomerPaymentMethodCreateRequiresActionResponse', 'json', DeserializationContext::create()->setRequireAllRequiredProperties(true));
+                $obj = $serializer->deserialize($responseData, '\Polar\Models\Components\CustomerPaymentMethodCreateSucceededResponse|\Polar\Models\Components\CustomerPaymentMethodCreateRequiresActionResponse', 'json', DeserializationContext::create()->setRequireAllRequiredProperties(true));
                 $response = new Operations\CustomerPortalCustomersConfirmPaymentMethodResponse(
                     statusCode: $statusCode,
                     contentType: $contentType,
@@ -300,7 +300,7 @@ class PolarCustomers
 
                 $serializer = Utils\JSON::createSerializer();
                 $responseData = (string) $httpResponse->getBody();
-                $obj = $serializer->deserialize($responseData, '\Polar\Models\Errors\PolarExceptionsResourceNotFound', 'json', DeserializationContext::create()->setRequireAllRequiredProperties(true));
+                $obj = $serializer->deserialize($responseData, '\Polar\Models\Errors\ResourceNotFound', 'json', DeserializationContext::create()->setRequireAllRequiredProperties(true));
                 throw $obj->toException();
             } else {
                 throw new \Polar\Models\Errors\APIException('Unknown content type received', $statusCode, $httpResponse->getBody()->getContents(), $httpResponse);

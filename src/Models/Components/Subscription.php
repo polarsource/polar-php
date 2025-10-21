@@ -120,10 +120,10 @@ class Subscription
     /**
      * List of enabled prices for the subscription.
      *
-     * @var array<LegacyRecurringProductPriceFixedOutput|LegacyRecurringProductPriceCustomOutput|LegacyRecurringProductPriceFreeOutput|ProductPriceFixedOutput|ProductPriceCustomOutput|ProductPriceFreeOutput|ProductPriceSeatBasedOutput|ProductPriceMeteredUnitOutput> $prices
+     * @var array<LegacyRecurringProductPriceFixed|LegacyRecurringProductPriceCustom|LegacyRecurringProductPriceFree|ProductPriceFixed|ProductPriceCustom|ProductPriceFree|ProductPriceSeatBased|ProductPriceMeteredUnit> $prices
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('prices')]
-    #[\Speakeasy\Serializer\Annotation\Type('array<\Polar\Models\Components\LegacyRecurringProductPriceFixedOutput|\Polar\Models\Components\LegacyRecurringProductPriceCustomOutput|\Polar\Models\Components\LegacyRecurringProductPriceFreeOutput|\Polar\Models\Components\ProductPriceFixedOutput|\Polar\Models\Components\ProductPriceCustomOutput|\Polar\Models\Components\ProductPriceFreeOutput|\Polar\Models\Components\ProductPriceSeatBasedOutput|\Polar\Models\Components\ProductPriceMeteredUnitOutput>')]
+    #[\Speakeasy\Serializer\Annotation\Type('array<\Polar\Models\Components\LegacyRecurringProductPriceFixed|\Polar\Models\Components\LegacyRecurringProductPriceCustom|\Polar\Models\Components\LegacyRecurringProductPriceFree|\Polar\Models\Components\ProductPriceFixed|\Polar\Models\Components\ProductPriceCustom|\Polar\Models\Components\ProductPriceFree|\Polar\Models\Components\ProductPriceSeatBased|\Polar\Models\Components\ProductPriceMeteredUnit>')]
     public array $prices;
 
     /**
@@ -261,7 +261,7 @@ class Subscription
      * @param  array<string, string|int|float|bool>  $metadata
      * @param  SubscriptionCustomer  $customer
      * @param  Product  $product
-     * @param  array<LegacyRecurringProductPriceFixedOutput|LegacyRecurringProductPriceCustomOutput|LegacyRecurringProductPriceFreeOutput|ProductPriceFixedOutput|ProductPriceCustomOutput|ProductPriceFreeOutput|ProductPriceSeatBasedOutput|ProductPriceMeteredUnitOutput>  $prices
+     * @param  array<LegacyRecurringProductPriceFixed|LegacyRecurringProductPriceCustom|LegacyRecurringProductPriceFree|ProductPriceFixed|ProductPriceCustom|ProductPriceFree|ProductPriceSeatBased|ProductPriceMeteredUnit>  $prices
      * @param  array<SubscriptionMeter>  $meters
      * @param  ?\DateTime  $modifiedAt
      * @param  ?\DateTime  $currentPeriodEnd
