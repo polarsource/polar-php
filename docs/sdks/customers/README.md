@@ -232,11 +232,11 @@ if ($response->customer !== null) {
 
 ### Errors
 
-| Error Type                             | Status Code                            | Content Type                           |
-| -------------------------------------- | -------------------------------------- | -------------------------------------- |
-| Errors\PolarExceptionsResourceNotFound | 404                                    | application/json                       |
-| Errors\HTTPValidationError             | 422                                    | application/json                       |
-| Errors\APIException                    | 4XX, 5XX                               | \*/\*                                  |
+| Error Type                 | Status Code                | Content Type               |
+| -------------------------- | -------------------------- | -------------------------- |
+| Errors\ResourceNotFound    | 404                        | application/json           |
+| Errors\HTTPValidationError | 422                        | application/json           |
+| Errors\APIException        | 4XX, 5XX                   | \*/\*                      |
 
 ## update
 
@@ -298,11 +298,11 @@ if ($response->customer !== null) {
 
 ### Errors
 
-| Error Type                             | Status Code                            | Content Type                           |
-| -------------------------------------- | -------------------------------------- | -------------------------------------- |
-| Errors\PolarExceptionsResourceNotFound | 404                                    | application/json                       |
-| Errors\HTTPValidationError             | 422                                    | application/json                       |
-| Errors\APIException                    | 4XX, 5XX                               | \*/\*                                  |
+| Error Type                 | Status Code                | Content Type               |
+| -------------------------- | -------------------------- | -------------------------- |
+| Errors\ResourceNotFound    | 404                        | application/json           |
+| Errors\HTTPValidationError | 422                        | application/json           |
+| Errors\APIException        | 4XX, 5XX                   | \*/\*                      |
 
 ## delete
 
@@ -361,11 +361,11 @@ if ($response->statusCode === 200) {
 
 ### Errors
 
-| Error Type                             | Status Code                            | Content Type                           |
-| -------------------------------------- | -------------------------------------- | -------------------------------------- |
-| Errors\PolarExceptionsResourceNotFound | 404                                    | application/json                       |
-| Errors\HTTPValidationError             | 422                                    | application/json                       |
-| Errors\APIException                    | 4XX, 5XX                               | \*/\*                                  |
+| Error Type                 | Status Code                | Content Type               |
+| -------------------------- | -------------------------- | -------------------------- |
+| Errors\ResourceNotFound    | 404                        | application/json           |
+| Errors\HTTPValidationError | 422                        | application/json           |
+| Errors\APIException        | 4XX, 5XX                   | \*/\*                      |
 
 ## getExternal
 
@@ -412,11 +412,11 @@ if ($response->customer !== null) {
 
 ### Errors
 
-| Error Type                             | Status Code                            | Content Type                           |
-| -------------------------------------- | -------------------------------------- | -------------------------------------- |
-| Errors\PolarExceptionsResourceNotFound | 404                                    | application/json                       |
-| Errors\HTTPValidationError             | 422                                    | application/json                       |
-| Errors\APIException                    | 4XX, 5XX                               | \*/\*                                  |
+| Error Type                 | Status Code                | Content Type               |
+| -------------------------- | -------------------------- | -------------------------- |
+| Errors\ResourceNotFound    | 404                        | application/json           |
+| Errors\HTTPValidationError | 422                        | application/json           |
+| Errors\APIException        | 4XX, 5XX                   | \*/\*                      |
 
 ## updateExternal
 
@@ -477,11 +477,11 @@ if ($response->customer !== null) {
 
 ### Errors
 
-| Error Type                             | Status Code                            | Content Type                           |
-| -------------------------------------- | -------------------------------------- | -------------------------------------- |
-| Errors\PolarExceptionsResourceNotFound | 404                                    | application/json                       |
-| Errors\HTTPValidationError             | 422                                    | application/json                       |
-| Errors\APIException                    | 4XX, 5XX                               | \*/\*                                  |
+| Error Type                 | Status Code                | Content Type               |
+| -------------------------- | -------------------------- | -------------------------- |
+| Errors\ResourceNotFound    | 404                        | application/json           |
+| Errors\HTTPValidationError | 422                        | application/json           |
+| Errors\APIException        | 4XX, 5XX                   | \*/\*                      |
 
 ## deleteExternal
 
@@ -530,11 +530,11 @@ if ($response->statusCode === 200) {
 
 ### Errors
 
-| Error Type                             | Status Code                            | Content Type                           |
-| -------------------------------------- | -------------------------------------- | -------------------------------------- |
-| Errors\PolarExceptionsResourceNotFound | 404                                    | application/json                       |
-| Errors\HTTPValidationError             | 422                                    | application/json                       |
-| Errors\APIException                    | 4XX, 5XX                               | \*/\*                                  |
+| Error Type                 | Status Code                | Content Type               |
+| -------------------------- | -------------------------- | -------------------------- |
+| Errors\ResourceNotFound    | 404                        | application/json           |
+| Errors\HTTPValidationError | 422                        | application/json           |
+| Errors\APIException        | 4XX, 5XX                   | \*/\*                      |
 
 ## getState
 
@@ -587,11 +587,11 @@ if ($response->customerState !== null) {
 
 ### Errors
 
-| Error Type                             | Status Code                            | Content Type                           |
-| -------------------------------------- | -------------------------------------- | -------------------------------------- |
-| Errors\PolarExceptionsResourceNotFound | 404                                    | application/json                       |
-| Errors\HTTPValidationError             | 422                                    | application/json                       |
-| Errors\APIException                    | 4XX, 5XX                               | \*/\*                                  |
+| Error Type                 | Status Code                | Content Type               |
+| -------------------------- | -------------------------- | -------------------------- |
+| Errors\ResourceNotFound    | 404                        | application/json           |
+| Errors\HTTPValidationError | 422                        | application/json           |
+| Errors\APIException        | 4XX, 5XX                   | \*/\*                      |
 
 ## getStateExternal
 
@@ -644,11 +644,11 @@ if ($response->customerState !== null) {
 
 ### Errors
 
-| Error Type                             | Status Code                            | Content Type                           |
-| -------------------------------------- | -------------------------------------- | -------------------------------------- |
-| Errors\PolarExceptionsResourceNotFound | 404                                    | application/json                       |
-| Errors\HTTPValidationError             | 422                                    | application/json                       |
-| Errors\APIException                    | 4XX, 5XX                               | \*/\*                                  |
+| Error Type                 | Status Code                | Content Type               |
+| -------------------------- | -------------------------- | -------------------------- |
+| Errors\ResourceNotFound    | 404                        | application/json           |
+| Errors\HTTPValidationError | 422                        | application/json           |
+| Errors\APIException        | 4XX, 5XX                   | \*/\*                      |
 
 ## getBalance
 
@@ -695,8 +695,8 @@ if ($response->customerBalance !== null) {
 
 ### Errors
 
-| Error Type                             | Status Code                            | Content Type                           |
-| -------------------------------------- | -------------------------------------- | -------------------------------------- |
-| Errors\PolarExceptionsResourceNotFound | 404                                    | application/json                       |
-| Errors\HTTPValidationError             | 422                                    | application/json                       |
-| Errors\APIException                    | 4XX, 5XX                               | \*/\*                                  |
+| Error Type                 | Status Code                | Content Type               |
+| -------------------------- | -------------------------- | -------------------------- |
+| Errors\ResourceNotFound    | 404                        | application/json           |
+| Errors\HTTPValidationError | 422                        | application/json           |
+| Errors\APIException        | 4XX, 5XX                   | \*/\*                      |

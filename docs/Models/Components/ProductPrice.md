@@ -1,25 +1,50 @@
 # ProductPrice
 
-Price of the selected product.
-
 
 ## Supported Types
 
-### `Components\LegacyRecurringProductPriceFixedOutput|Components\LegacyRecurringProductPriceCustomOutput|Components\LegacyRecurringProductPriceFreeOutput`
+### `Components\ProductPriceCustom`
 
 ```php
 /**
-* @var Components\LegacyRecurringProductPriceFixedOutput|Components\LegacyRecurringProductPriceCustomOutput|Components\LegacyRecurringProductPriceFreeOutput
+* @var Components\ProductPriceCustom
 */
-Components\LegacyRecurringProductPriceFixedOutput|Components\LegacyRecurringProductPriceCustomOutput|Components\LegacyRecurringProductPriceFreeOutput $value = /* values here */
+Components\ProductPriceCustom $value = /* values here */
 ```
 
-### `Components\ProductPriceFixedOutput|Components\ProductPriceCustomOutput|Components\ProductPriceFreeOutput|Components\ProductPriceSeatBasedOutput|Components\ProductPriceMeteredUnitOutput`
+### `Components\ProductPriceFixed`
 
 ```php
 /**
-* @var Components\ProductPriceFixedOutput|Components\ProductPriceCustomOutput|Components\ProductPriceFreeOutput|Components\ProductPriceSeatBasedOutput|Components\ProductPriceMeteredUnitOutput
+* @var Components\ProductPriceFixed
 */
-Components\ProductPriceFixedOutput|Components\ProductPriceCustomOutput|Components\ProductPriceFreeOutput|Components\ProductPriceSeatBasedOutput|Components\ProductPriceMeteredUnitOutput $value = /* values here */
+Components\ProductPriceFixed $value = /* values here */
+```
+
+### `Components\ProductPriceFree`
+
+```php
+/**
+* @var Components\ProductPriceFree
+*/
+Components\ProductPriceFree $value = /* values here */
+```
+
+### `Components\ProductPriceMeteredUnit`
+
+```php
+/**
+* @var Components\ProductPriceMeteredUnit
+*/
+Components\ProductPriceMeteredUnit $value = /* values here */
+```
+
+### `Components\ProductPriceSeatBased`
+
+```php
+/**
+* @var Components\ProductPriceSeatBased
+*/
+Components\ProductPriceSeatBased $value = /* values here */
 ```
 

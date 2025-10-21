@@ -168,11 +168,11 @@ if ($response->benefit !== null) {
 
 ### Errors
 
-| Error Type                             | Status Code                            | Content Type                           |
-| -------------------------------------- | -------------------------------------- | -------------------------------------- |
-| Errors\PolarExceptionsResourceNotFound | 404                                    | application/json                       |
-| Errors\HTTPValidationError             | 422                                    | application/json                       |
-| Errors\APIException                    | 4XX, 5XX                               | \*/\*                                  |
+| Error Type                 | Status Code                | Content Type               |
+| -------------------------- | -------------------------- | -------------------------- |
+| Errors\ResourceNotFound    | 404                        | application/json           |
+| Errors\HTTPValidationError | 422                        | application/json           |
+| Errors\APIException        | 4XX, 5XX                   | \*/\*                      |
 
 ## update
 
@@ -223,11 +223,11 @@ if ($response->benefit !== null) {
 
 ### Errors
 
-| Error Type                             | Status Code                            | Content Type                           |
-| -------------------------------------- | -------------------------------------- | -------------------------------------- |
-| Errors\PolarExceptionsResourceNotFound | 404                                    | application/json                       |
-| Errors\HTTPValidationError             | 422                                    | application/json                       |
-| Errors\APIException                    | 4XX, 5XX                               | \*/\*                                  |
+| Error Type                 | Status Code                | Content Type               |
+| -------------------------- | -------------------------- | -------------------------- |
+| Errors\ResourceNotFound    | 404                        | application/json           |
+| Errors\HTTPValidationError | 422                        | application/json           |
+| Errors\APIException        | 4XX, 5XX                   | \*/\*                      |
 
 ## delete
 
@@ -278,12 +278,12 @@ if ($response->statusCode === 200) {
 
 ### Errors
 
-| Error Type                             | Status Code                            | Content Type                           |
-| -------------------------------------- | -------------------------------------- | -------------------------------------- |
-| Errors\PolarExceptionsNotPermitted     | 403                                    | application/json                       |
-| Errors\PolarExceptionsResourceNotFound | 404                                    | application/json                       |
-| Errors\HTTPValidationError             | 422                                    | application/json                       |
-| Errors\APIException                    | 4XX, 5XX                               | \*/\*                                  |
+| Error Type                 | Status Code                | Content Type               |
+| -------------------------- | -------------------------- | -------------------------- |
+| Errors\NotPermitted        | 403                        | application/json           |
+| Errors\ResourceNotFound    | 404                        | application/json           |
+| Errors\HTTPValidationError | 422                        | application/json           |
+| Errors\APIException        | 4XX, 5XX                   | \*/\*                      |
 
 ## grants
 
@@ -338,8 +338,8 @@ foreach ($responses as $response) {
 
 ### Errors
 
-| Error Type                             | Status Code                            | Content Type                           |
-| -------------------------------------- | -------------------------------------- | -------------------------------------- |
-| Errors\PolarExceptionsResourceNotFound | 404                                    | application/json                       |
-| Errors\HTTPValidationError             | 422                                    | application/json                       |
-| Errors\APIException                    | 4XX, 5XX                               | \*/\*                                  |
+| Error Type                 | Status Code                | Content Type               |
+| -------------------------- | -------------------------- | -------------------------- |
+| Errors\ResourceNotFound    | 404                        | application/json           |
+| Errors\HTTPValidationError | 422                        | application/json           |
+| Errors\APIException        | 4XX, 5XX                   | \*/\*                      |

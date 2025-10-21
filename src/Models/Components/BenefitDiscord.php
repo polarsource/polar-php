@@ -77,11 +77,11 @@ class BenefitDiscord
     /**
      * Properties for a benefit of type `discord`.
      *
-     * @var BenefitDiscordPropertiesOutput $properties
+     * @var BenefitDiscordProperties $properties
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('properties')]
-    #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\BenefitDiscordPropertiesOutput')]
-    public BenefitDiscordPropertiesOutput $properties;
+    #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\BenefitDiscordProperties')]
+    public BenefitDiscordProperties $properties;
 
     /**
      * Last modification timestamp of the object.
@@ -107,11 +107,11 @@ class BenefitDiscord
      * @param  bool  $deletable
      * @param  string  $organizationId
      * @param  array<string, string|int|float|bool>  $metadata
-     * @param  BenefitDiscordPropertiesOutput  $properties
+     * @param  BenefitDiscordProperties  $properties
      * @param  ?\DateTime  $modifiedAt
      * @phpstan-pure
      */
-    public function __construct(string $id, \DateTime $createdAt, string $description, bool $selectable, bool $deletable, string $organizationId, array $metadata, BenefitDiscordPropertiesOutput $properties, ?\DateTime $modifiedAt = null, string $type = 'discord')
+    public function __construct(string $id, \DateTime $createdAt, string $description, bool $selectable, bool $deletable, string $organizationId, array $metadata, BenefitDiscordProperties $properties, ?\DateTime $modifiedAt = null, string $type = 'discord')
     {
         $this->id = $id;
         $this->createdAt = $createdAt;

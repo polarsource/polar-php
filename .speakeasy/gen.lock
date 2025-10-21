@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: bd003db9-613a-4093-838e-6d19bf5f76d7
 management:
-  docChecksum: de7ecdd703b773b4918fdbdffc8a7291
+  docChecksum: d98f0afb6456414d1ff72ca3b167e5fd
   docVersion: 0.1.0
   speakeasyVersion: 1.637.3
   generationVersion: 2.727.9
-  releaseVersion: 0.6.0
-  configChecksum: 5903bd9795f3c8d77bea17add066a781
+  releaseVersion: 0.6.1
+  configChecksum: 6b5d4edb65ebc732433d1ed9b4f62764
   repoURL: https://github.com/polarsource/polar-php.git
   installationURL: https://github.com/polarsource/polar-php
   published: true
@@ -41,8 +41,8 @@ generatedFiles:
   - docs/Models/Components/AddressInput.md
   - docs/Models/Components/Aggregation.md
   - docs/Models/Components/AggregationFunction.md
+  - docs/Models/Components/AttachedCustomField.md
   - docs/Models/Components/AttachedCustomFieldCreate.md
-  - docs/Models/Components/AttachedCustomFieldOutput.md
   - docs/Models/Components/AuthorizationCodeTokenRequest.md
   - docs/Models/Components/AuthorizeOrganization.md
   - docs/Models/Components/AuthorizeResponseOrganization.md
@@ -68,7 +68,7 @@ generatedFiles:
   - docs/Models/Components/BenefitDiscordCreateMetadata.md
   - docs/Models/Components/BenefitDiscordCreateProperties.md
   - docs/Models/Components/BenefitDiscordMetadata.md
-  - docs/Models/Components/BenefitDiscordPropertiesOutput.md
+  - docs/Models/Components/BenefitDiscordProperties.md
   - docs/Models/Components/BenefitDiscordSubscriber.md
   - docs/Models/Components/BenefitDiscordSubscriberMetadata.md
   - docs/Models/Components/BenefitDiscordSubscriberProperties.md
@@ -191,6 +191,7 @@ generatedFiles:
   - docs/Models/Components/CheckoutLinkUpdateMetadata.md
   - docs/Models/Components/CheckoutMetadata.md
   - docs/Models/Components/CheckoutProduct.md
+  - docs/Models/Components/CheckoutProductPrice.md
   - docs/Models/Components/CheckoutProductPrices.md
   - docs/Models/Components/CheckoutPublic.md
   - docs/Models/Components/CheckoutPublicConfirmed.md
@@ -306,7 +307,7 @@ generatedFiles:
   - docs/Models/Components/CustomerPaymentMethodCreate.md
   - docs/Models/Components/CustomerPaymentMethodCreateRequiresActionResponse.md
   - docs/Models/Components/CustomerPaymentMethodCreateResponse.md
-  - docs/Models/Components/CustomerPaymentMethodCreateSucceededResponseOutput.md
+  - docs/Models/Components/CustomerPaymentMethodCreateSucceededResponse.md
   - docs/Models/Components/CustomerPortalCustomer.md
   - docs/Models/Components/CustomerPortalCustomerTaxId.md
   - docs/Models/Components/CustomerPortalCustomerUpdate.md
@@ -412,10 +413,10 @@ generatedFiles:
   - docs/Models/Components/IntrospectTokenRequest.md
   - docs/Models/Components/IntrospectTokenRequestTokenTypeHint.md
   - docs/Models/Components/IntrospectTokenResponse.md
-  - docs/Models/Components/LegacyRecurringProductPriceCustomOutput.md
-  - docs/Models/Components/LegacyRecurringProductPriceFixedOutput.md
-  - docs/Models/Components/LegacyRecurringProductPriceFreeOutput.md
-  - docs/Models/Components/LegacyRecurringProductPriceOutput.md
+  - docs/Models/Components/LegacyRecurringProductPrice.md
+  - docs/Models/Components/LegacyRecurringProductPriceCustom.md
+  - docs/Models/Components/LegacyRecurringProductPriceFixed.md
+  - docs/Models/Components/LegacyRecurringProductPriceFree.md
   - docs/Models/Components/LicenseKeyActivate.md
   - docs/Models/Components/LicenseKeyActivateConditions.md
   - docs/Models/Components/LicenseKeyActivateMeta.md
@@ -480,10 +481,10 @@ generatedFiles:
   - docs/Models/Components/Metric.md
   - docs/Models/Components/MetricPeriod.md
   - docs/Models/Components/MetricType.md
+  - docs/Models/Components/Metrics.md
   - docs/Models/Components/MetricsIntervalLimit.md
   - docs/Models/Components/MetricsIntervalsLimits.md
   - docs/Models/Components/MetricsLimits.md
-  - docs/Models/Components/MetricsOutput.md
   - docs/Models/Components/MetricsResponse.md
   - docs/Models/Components/MetricsTotals.md
   - docs/Models/Components/MetricsTotalsActiveSubscriptions.md
@@ -587,18 +588,17 @@ generatedFiles:
   - docs/Models/Components/ProductMediaFileRead.md
   - docs/Models/Components/ProductMetadata.md
   - docs/Models/Components/ProductPrice.md
+  - docs/Models/Components/ProductPriceCustom.md
   - docs/Models/Components/ProductPriceCustomCreate.md
-  - docs/Models/Components/ProductPriceCustomOutput.md
+  - docs/Models/Components/ProductPriceFixed.md
   - docs/Models/Components/ProductPriceFixedCreate.md
-  - docs/Models/Components/ProductPriceFixedOutput.md
+  - docs/Models/Components/ProductPriceFree.md
   - docs/Models/Components/ProductPriceFreeCreate.md
-  - docs/Models/Components/ProductPriceFreeOutput.md
   - docs/Models/Components/ProductPriceMeter.md
+  - docs/Models/Components/ProductPriceMeteredUnit.md
   - docs/Models/Components/ProductPriceMeteredUnitCreate.md
-  - docs/Models/Components/ProductPriceMeteredUnitOutput.md
-  - docs/Models/Components/ProductPriceOutput.md
+  - docs/Models/Components/ProductPriceSeatBased.md
   - docs/Models/Components/ProductPriceSeatBasedCreate.md
-  - docs/Models/Components/ProductPriceSeatBasedOutput.md
   - docs/Models/Components/ProductPriceSeatTier.md
   - docs/Models/Components/ProductPriceSeatTiers.md
   - docs/Models/Components/ProductPriceType.md
@@ -715,27 +715,27 @@ generatedFiles:
   - docs/Models/Components/WebhookSubscriptionUncanceledPayload.md
   - docs/Models/Components/WebhookSubscriptionUpdatedPayload.md
   - docs/Models/Errors/AlreadyActiveSubscriptionError.md
+  - docs/Models/Errors/AlreadyCanceledSubscription.md
   - docs/Models/Errors/CheckoutForbiddenError.md
   - docs/Models/Errors/CustomerNotReady.md
   - docs/Models/Errors/CustomerPortalOrdersGenerateInvoiceResponse422CustomerPortalOrdersGenerateInvoice.md
   - docs/Models/Errors/ExpiredCheckoutError.md
   - docs/Models/Errors/HTTPValidationError.md
+  - docs/Models/Errors/InvoiceAlreadyExists.md
+  - docs/Models/Errors/MissingInvoiceBillingDetails.md
   - docs/Models/Errors/NotOpenCheckout.md
+  - docs/Models/Errors/NotPaidOrder.md
+  - docs/Models/Errors/NotPermitted.md
   - docs/Models/Errors/OrderNotEligibleForRetry.md
   - docs/Models/Errors/OrdersGenerateInvoiceResponse422OrdersGenerateInvoice.md
   - docs/Models/Errors/PaymentAlreadyInProgress.md
   - docs/Models/Errors/PaymentError.md
   - docs/Models/Errors/PaymentMethodInUseByActiveSubscription.md
   - docs/Models/Errors/PaymentNotReady.md
-  - docs/Models/Errors/PolarExceptionsAlreadyCanceledSubscription.md
-  - docs/Models/Errors/PolarExceptionsInvoiceAlreadyExists.md
-  - docs/Models/Errors/PolarExceptionsMissingInvoiceBillingDetails.md
-  - docs/Models/Errors/PolarExceptionsNotPaidOrder.md
-  - docs/Models/Errors/PolarExceptionsNotPermitted.md
-  - docs/Models/Errors/PolarExceptionsResourceNotFound.md
-  - docs/Models/Errors/PolarExceptionsSubscriptionLocked.md
   - docs/Models/Errors/RefundAmountTooHigh.md
   - docs/Models/Errors/RefundedAlready.md
+  - docs/Models/Errors/ResourceNotFound.md
+  - docs/Models/Errors/SubscriptionLocked.md
   - docs/Models/Errors/Unauthorized.md
   - docs/Models/Operations/BenefitGrantsListQueryParamCustomerIDFilter.md
   - docs/Models/Operations/BenefitGrantsListQueryParamOrganizationIDFilter.md
@@ -1210,8 +1210,8 @@ generatedFiles:
   - src/Models/Components/Address.php
   - src/Models/Components/AddressInput.php
   - src/Models/Components/AggregationFunction.php
+  - src/Models/Components/AttachedCustomField.php
   - src/Models/Components/AttachedCustomFieldCreate.php
-  - src/Models/Components/AttachedCustomFieldOutput.php
   - src/Models/Components/AuthorizationCodeTokenRequest.php
   - src/Models/Components/AuthorizeOrganization.php
   - src/Models/Components/AuthorizeResponseOrganization.php
@@ -1228,7 +1228,7 @@ generatedFiles:
   - src/Models/Components/BenefitDiscord.php
   - src/Models/Components/BenefitDiscordCreate.php
   - src/Models/Components/BenefitDiscordCreateProperties.php
-  - src/Models/Components/BenefitDiscordPropertiesOutput.php
+  - src/Models/Components/BenefitDiscordProperties.php
   - src/Models/Components/BenefitDiscordSubscriber.php
   - src/Models/Components/BenefitDiscordSubscriberProperties.php
   - src/Models/Components/BenefitDiscordUpdate.php
@@ -1376,7 +1376,7 @@ generatedFiles:
   - src/Models/Components/CustomerPaymentMethodConfirm.php
   - src/Models/Components/CustomerPaymentMethodCreate.php
   - src/Models/Components/CustomerPaymentMethodCreateRequiresActionResponse.php
-  - src/Models/Components/CustomerPaymentMethodCreateSucceededResponseOutput.php
+  - src/Models/Components/CustomerPaymentMethodCreateSucceededResponse.php
   - src/Models/Components/CustomerPortalCustomer.php
   - src/Models/Components/CustomerPortalCustomerUpdate.php
   - src/Models/Components/CustomerPortalOAuthAccount.php
@@ -1445,9 +1445,9 @@ generatedFiles:
   - src/Models/Components/IntrospectTokenRequest.php
   - src/Models/Components/IntrospectTokenRequestTokenTypeHint.php
   - src/Models/Components/IntrospectTokenResponse.php
-  - src/Models/Components/LegacyRecurringProductPriceCustomOutput.php
-  - src/Models/Components/LegacyRecurringProductPriceFixedOutput.php
-  - src/Models/Components/LegacyRecurringProductPriceFreeOutput.php
+  - src/Models/Components/LegacyRecurringProductPriceCustom.php
+  - src/Models/Components/LegacyRecurringProductPriceFixed.php
+  - src/Models/Components/LegacyRecurringProductPriceFree.php
   - src/Models/Components/LicenseKeyActivate.php
   - src/Models/Components/LicenseKeyActivationBase.php
   - src/Models/Components/LicenseKeyActivationRead.php
@@ -1498,10 +1498,10 @@ generatedFiles:
   - src/Models/Components/Metric.php
   - src/Models/Components/MetricPeriod.php
   - src/Models/Components/MetricType.php
+  - src/Models/Components/Metrics.php
   - src/Models/Components/MetricsIntervalLimit.php
   - src/Models/Components/MetricsIntervalsLimits.php
   - src/Models/Components/MetricsLimits.php
-  - src/Models/Components/MetricsOutput.php
   - src/Models/Components/MetricsResponse.php
   - src/Models/Components/MetricsTotals.php
   - src/Models/Components/OAuth2ClientConfiguration.php
@@ -1547,17 +1547,17 @@ generatedFiles:
   - src/Models/Components/ProductCreateRecurring.php
   - src/Models/Components/ProductMediaFileCreate.php
   - src/Models/Components/ProductMediaFileRead.php
+  - src/Models/Components/ProductPriceCustom.php
   - src/Models/Components/ProductPriceCustomCreate.php
-  - src/Models/Components/ProductPriceCustomOutput.php
+  - src/Models/Components/ProductPriceFixed.php
   - src/Models/Components/ProductPriceFixedCreate.php
-  - src/Models/Components/ProductPriceFixedOutput.php
+  - src/Models/Components/ProductPriceFree.php
   - src/Models/Components/ProductPriceFreeCreate.php
-  - src/Models/Components/ProductPriceFreeOutput.php
   - src/Models/Components/ProductPriceMeter.php
+  - src/Models/Components/ProductPriceMeteredUnit.php
   - src/Models/Components/ProductPriceMeteredUnitCreate.php
-  - src/Models/Components/ProductPriceMeteredUnitOutput.php
+  - src/Models/Components/ProductPriceSeatBased.php
   - src/Models/Components/ProductPriceSeatBasedCreate.php
-  - src/Models/Components/ProductPriceSeatBasedOutput.php
   - src/Models/Components/ProductPriceSeatTier.php
   - src/Models/Components/ProductPriceSeatTiers.php
   - src/Models/Components/ProductPriceType.php
@@ -1657,14 +1657,24 @@ generatedFiles:
   - src/Models/Errors/APIException.php
   - src/Models/Errors/AlreadyActiveSubscriptionError.php
   - src/Models/Errors/AlreadyActiveSubscriptionErrorThrowable.php
+  - src/Models/Errors/AlreadyCanceledSubscription.php
+  - src/Models/Errors/AlreadyCanceledSubscriptionThrowable.php
   - src/Models/Errors/CustomerNotReady.php
   - src/Models/Errors/CustomerNotReadyThrowable.php
   - src/Models/Errors/ExpiredCheckoutError.php
   - src/Models/Errors/ExpiredCheckoutErrorThrowable.php
   - src/Models/Errors/HTTPValidationError.php
   - src/Models/Errors/HTTPValidationErrorThrowable.php
+  - src/Models/Errors/InvoiceAlreadyExists.php
+  - src/Models/Errors/InvoiceAlreadyExistsThrowable.php
+  - src/Models/Errors/MissingInvoiceBillingDetails.php
+  - src/Models/Errors/MissingInvoiceBillingDetailsThrowable.php
   - src/Models/Errors/NotOpenCheckout.php
   - src/Models/Errors/NotOpenCheckoutThrowable.php
+  - src/Models/Errors/NotPaidOrder.php
+  - src/Models/Errors/NotPaidOrderThrowable.php
+  - src/Models/Errors/NotPermitted.php
+  - src/Models/Errors/NotPermittedThrowable.php
   - src/Models/Errors/OrderNotEligibleForRetry.php
   - src/Models/Errors/OrderNotEligibleForRetryThrowable.php
   - src/Models/Errors/PaymentAlreadyInProgress.php
@@ -1675,24 +1685,14 @@ generatedFiles:
   - src/Models/Errors/PaymentMethodInUseByActiveSubscriptionThrowable.php
   - src/Models/Errors/PaymentNotReady.php
   - src/Models/Errors/PaymentNotReadyThrowable.php
-  - src/Models/Errors/PolarExceptionsAlreadyCanceledSubscription.php
-  - src/Models/Errors/PolarExceptionsAlreadyCanceledSubscriptionThrowable.php
-  - src/Models/Errors/PolarExceptionsInvoiceAlreadyExists.php
-  - src/Models/Errors/PolarExceptionsInvoiceAlreadyExistsThrowable.php
-  - src/Models/Errors/PolarExceptionsMissingInvoiceBillingDetails.php
-  - src/Models/Errors/PolarExceptionsMissingInvoiceBillingDetailsThrowable.php
-  - src/Models/Errors/PolarExceptionsNotPaidOrder.php
-  - src/Models/Errors/PolarExceptionsNotPaidOrderThrowable.php
-  - src/Models/Errors/PolarExceptionsNotPermitted.php
-  - src/Models/Errors/PolarExceptionsNotPermittedThrowable.php
-  - src/Models/Errors/PolarExceptionsResourceNotFound.php
-  - src/Models/Errors/PolarExceptionsResourceNotFoundThrowable.php
-  - src/Models/Errors/PolarExceptionsSubscriptionLocked.php
-  - src/Models/Errors/PolarExceptionsSubscriptionLockedThrowable.php
   - src/Models/Errors/RefundAmountTooHigh.php
   - src/Models/Errors/RefundAmountTooHighThrowable.php
   - src/Models/Errors/RefundedAlready.php
   - src/Models/Errors/RefundedAlreadyThrowable.php
+  - src/Models/Errors/ResourceNotFound.php
+  - src/Models/Errors/ResourceNotFoundThrowable.php
+  - src/Models/Errors/SubscriptionLocked.php
+  - src/Models/Errors/SubscriptionLockedThrowable.php
   - src/Models/Errors/Unauthorized.php
   - src/Models/Errors/UnauthorizedThrowable.php
   - src/Models/Operations/BenefitGrantsListRequest.php

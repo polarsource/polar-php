@@ -63,10 +63,10 @@ class CustomerProduct
     /**
      * List of available prices for this product.
      *
-     * @var array<LegacyRecurringProductPriceFixedOutput|LegacyRecurringProductPriceCustomOutput|LegacyRecurringProductPriceFreeOutput|ProductPriceFixedOutput|ProductPriceCustomOutput|ProductPriceFreeOutput|ProductPriceSeatBasedOutput|ProductPriceMeteredUnitOutput> $prices
+     * @var array<LegacyRecurringProductPriceFixed|LegacyRecurringProductPriceCustom|LegacyRecurringProductPriceFree|ProductPriceFixed|ProductPriceCustom|ProductPriceFree|ProductPriceSeatBased|ProductPriceMeteredUnit> $prices
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('prices')]
-    #[\Speakeasy\Serializer\Annotation\Type('array<\Polar\Models\Components\LegacyRecurringProductPriceFixedOutput|\Polar\Models\Components\LegacyRecurringProductPriceCustomOutput|\Polar\Models\Components\LegacyRecurringProductPriceFreeOutput|\Polar\Models\Components\ProductPriceFixedOutput|\Polar\Models\Components\ProductPriceCustomOutput|\Polar\Models\Components\ProductPriceFreeOutput|\Polar\Models\Components\ProductPriceSeatBasedOutput|\Polar\Models\Components\ProductPriceMeteredUnitOutput>')]
+    #[\Speakeasy\Serializer\Annotation\Type('array<\Polar\Models\Components\LegacyRecurringProductPriceFixed|\Polar\Models\Components\LegacyRecurringProductPriceCustom|\Polar\Models\Components\LegacyRecurringProductPriceFree|\Polar\Models\Components\ProductPriceFixed|\Polar\Models\Components\ProductPriceCustom|\Polar\Models\Components\ProductPriceFree|\Polar\Models\Components\ProductPriceSeatBased|\Polar\Models\Components\ProductPriceMeteredUnit>')]
     public array $prices;
 
     /**
@@ -136,7 +136,7 @@ class CustomerProduct
      * @param  bool  $isRecurring
      * @param  bool  $isArchived
      * @param  string  $organizationId
-     * @param  array<LegacyRecurringProductPriceFixedOutput|LegacyRecurringProductPriceCustomOutput|LegacyRecurringProductPriceFreeOutput|ProductPriceFixedOutput|ProductPriceCustomOutput|ProductPriceFreeOutput|ProductPriceSeatBasedOutput|ProductPriceMeteredUnitOutput>  $prices
+     * @param  array<LegacyRecurringProductPriceFixed|LegacyRecurringProductPriceCustom|LegacyRecurringProductPriceFree|ProductPriceFixed|ProductPriceCustom|ProductPriceFree|ProductPriceSeatBased|ProductPriceMeteredUnit>  $prices
      * @param  array<BenefitPublic>  $benefits
      * @param  array<ProductMediaFileRead>  $medias
      * @param  ?\DateTime  $modifiedAt
