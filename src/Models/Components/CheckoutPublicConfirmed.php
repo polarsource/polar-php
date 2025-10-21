@@ -232,11 +232,11 @@ class CheckoutPublicConfirmed
     /**
      * Price of the selected product.
      *
-     * @var LegacyRecurringProductPriceFixed|LegacyRecurringProductPriceCustom|LegacyRecurringProductPriceFree|ProductPriceFixed|ProductPriceCustom|ProductPriceFree|ProductPriceSeatBased|ProductPriceMeteredUnit $productPrice
+     * @var LegacyRecurringProductPriceFixedOutput|LegacyRecurringProductPriceCustomOutput|LegacyRecurringProductPriceFreeOutput|ProductPriceFixedOutput|ProductPriceCustomOutput|ProductPriceFreeOutput|ProductPriceSeatBasedOutput|ProductPriceMeteredUnitOutput $productPrice
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('product_price')]
-    #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\LegacyRecurringProductPriceFixed|\Polar\Models\Components\LegacyRecurringProductPriceCustom|\Polar\Models\Components\LegacyRecurringProductPriceFree|\Polar\Models\Components\ProductPriceFixed|\Polar\Models\Components\ProductPriceCustom|\Polar\Models\Components\ProductPriceFree|\Polar\Models\Components\ProductPriceSeatBased|\Polar\Models\Components\ProductPriceMeteredUnit')]
-    public LegacyRecurringProductPriceFixed|LegacyRecurringProductPriceCustom|LegacyRecurringProductPriceFree|ProductPriceFixed|ProductPriceCustom|ProductPriceFree|ProductPriceSeatBased|ProductPriceMeteredUnit $productPrice;
+    #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\LegacyRecurringProductPriceFixedOutput|\Polar\Models\Components\LegacyRecurringProductPriceCustomOutput|\Polar\Models\Components\LegacyRecurringProductPriceFreeOutput|\Polar\Models\Components\ProductPriceFixedOutput|\Polar\Models\Components\ProductPriceCustomOutput|\Polar\Models\Components\ProductPriceFreeOutput|\Polar\Models\Components\ProductPriceSeatBasedOutput|\Polar\Models\Components\ProductPriceMeteredUnitOutput')]
+    public LegacyRecurringProductPriceFixedOutput|LegacyRecurringProductPriceCustomOutput|LegacyRecurringProductPriceFreeOutput|ProductPriceFixedOutput|ProductPriceCustomOutput|ProductPriceFreeOutput|ProductPriceSeatBasedOutput|ProductPriceMeteredUnitOutput $productPrice;
 
     /**
      *
@@ -249,10 +249,10 @@ class CheckoutPublicConfirmed
     /**
      * $attachedCustomFields
      *
-     * @var array<AttachedCustomField> $attachedCustomFields
+     * @var array<AttachedCustomFieldOutput> $attachedCustomFields
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('attached_custom_fields')]
-    #[\Speakeasy\Serializer\Annotation\Type('array<\Polar\Models\Components\AttachedCustomField>')]
+    #[\Speakeasy\Serializer\Annotation\Type('array<\Polar\Models\Components\AttachedCustomFieldOutput>')]
     public array $attachedCustomFields;
 
     /**
@@ -450,9 +450,9 @@ class CheckoutPublicConfirmed
      * @param  CheckoutBillingAddressFields  $billingAddressFields
      * @param  array<CheckoutProduct>  $products
      * @param  CheckoutProduct  $product
-     * @param  LegacyRecurringProductPriceFixed|LegacyRecurringProductPriceCustom|LegacyRecurringProductPriceFree|ProductPriceFixed|ProductPriceCustom|ProductPriceFree|ProductPriceSeatBased|ProductPriceMeteredUnit  $productPrice
+     * @param  LegacyRecurringProductPriceFixedOutput|LegacyRecurringProductPriceCustomOutput|LegacyRecurringProductPriceFreeOutput|ProductPriceFixedOutput|ProductPriceCustomOutput|ProductPriceFreeOutput|ProductPriceSeatBasedOutput|ProductPriceMeteredUnitOutput  $productPrice
      * @param  Organization  $organization
-     * @param  array<AttachedCustomField>  $attachedCustomFields
+     * @param  array<AttachedCustomFieldOutput>  $attachedCustomFields
      * @param  string  $customerSessionToken
      * @param  ?\DateTime  $modifiedAt
      * @param  ?array<string, string|int|bool|\DateTime|null>  $customFieldData
@@ -475,7 +475,7 @@ class CheckoutPublicConfirmed
      * @param  ?int  $pricePerSeat
      * @phpstan-pure
      */
-    public function __construct(string $id, \DateTime $createdAt, PaymentProcessor $paymentProcessor, string $clientSecret, string $url, \DateTime $expiresAt, string $successUrl, int $amount, int $discountAmount, int $netAmount, int $totalAmount, string $currency, string $productId, string $productPriceId, bool $allowDiscountCodes, bool $requireBillingAddress, bool $isDiscountApplicable, bool $isFreeProductPrice, bool $isPaymentRequired, bool $isPaymentSetupRequired, bool $isPaymentFormRequired, bool $isBusinessCustomer, array $paymentProcessorMetadata, CheckoutBillingAddressFields $billingAddressFields, array $products, CheckoutProduct $product, LegacyRecurringProductPriceFixed|LegacyRecurringProductPriceCustom|LegacyRecurringProductPriceFree|ProductPriceFixed|ProductPriceCustom|ProductPriceFree|ProductPriceSeatBased|ProductPriceMeteredUnit $productPrice, Organization $organization, array $attachedCustomFields, string $customerSessionToken, ?\DateTime $modifiedAt = null, ?array $customFieldData = null, ?string $returnUrl = null, ?string $embedOrigin = null, ?int $taxAmount = null, ?TrialInterval $activeTrialInterval = null, ?int $activeTrialIntervalCount = null, ?\DateTime $trialEnd = null, ?string $discountId = null, ?string $customerId = null, ?string $customerName = null, ?string $customerEmail = null, ?string $customerIpAddress = null, ?string $customerBillingName = null, ?Address $customerBillingAddress = null, ?string $customerTaxId = null, CheckoutDiscountFixedOnceForeverDuration|CheckoutDiscountFixedRepeatDuration|CheckoutDiscountPercentageOnceForeverDuration|CheckoutDiscountPercentageRepeatDuration|null $discount = null, ?int $seats = null, ?int $pricePerSeat = null, string $status = 'confirmed')
+    public function __construct(string $id, \DateTime $createdAt, PaymentProcessor $paymentProcessor, string $clientSecret, string $url, \DateTime $expiresAt, string $successUrl, int $amount, int $discountAmount, int $netAmount, int $totalAmount, string $currency, string $productId, string $productPriceId, bool $allowDiscountCodes, bool $requireBillingAddress, bool $isDiscountApplicable, bool $isFreeProductPrice, bool $isPaymentRequired, bool $isPaymentSetupRequired, bool $isPaymentFormRequired, bool $isBusinessCustomer, array $paymentProcessorMetadata, CheckoutBillingAddressFields $billingAddressFields, array $products, CheckoutProduct $product, LegacyRecurringProductPriceFixedOutput|LegacyRecurringProductPriceCustomOutput|LegacyRecurringProductPriceFreeOutput|ProductPriceFixedOutput|ProductPriceCustomOutput|ProductPriceFreeOutput|ProductPriceSeatBasedOutput|ProductPriceMeteredUnitOutput $productPrice, Organization $organization, array $attachedCustomFields, string $customerSessionToken, ?\DateTime $modifiedAt = null, ?array $customFieldData = null, ?string $returnUrl = null, ?string $embedOrigin = null, ?int $taxAmount = null, ?TrialInterval $activeTrialInterval = null, ?int $activeTrialIntervalCount = null, ?\DateTime $trialEnd = null, ?string $discountId = null, ?string $customerId = null, ?string $customerName = null, ?string $customerEmail = null, ?string $customerIpAddress = null, ?string $customerBillingName = null, ?Address $customerBillingAddress = null, ?string $customerTaxId = null, CheckoutDiscountFixedOnceForeverDuration|CheckoutDiscountFixedRepeatDuration|CheckoutDiscountPercentageOnceForeverDuration|CheckoutDiscountPercentageRepeatDuration|null $discount = null, ?int $seats = null, ?int $pricePerSeat = null, string $status = 'confirmed')
     {
         $this->id = $id;
         $this->createdAt = $createdAt;

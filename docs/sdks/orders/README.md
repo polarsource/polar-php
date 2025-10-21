@@ -112,11 +112,11 @@ if ($response->order !== null) {
 
 ### Errors
 
-| Error Type                 | Status Code                | Content Type               |
-| -------------------------- | -------------------------- | -------------------------- |
-| Errors\ResourceNotFound    | 404                        | application/json           |
-| Errors\HTTPValidationError | 422                        | application/json           |
-| Errors\APIException        | 4XX, 5XX                   | \*/\*                      |
+| Error Type                             | Status Code                            | Content Type                           |
+| -------------------------------------- | -------------------------------------- | -------------------------------------- |
+| Errors\PolarExceptionsResourceNotFound | 404                                    | application/json                       |
+| Errors\HTTPValidationError             | 422                                    | application/json                       |
+| Errors\APIException                    | 4XX, 5XX                               | \*/\*                                  |
 
 ## update
 
@@ -172,11 +172,11 @@ if ($response->order !== null) {
 
 ### Errors
 
-| Error Type                 | Status Code                | Content Type               |
-| -------------------------- | -------------------------- | -------------------------- |
-| Errors\ResourceNotFound    | 404                        | application/json           |
-| Errors\HTTPValidationError | 422                        | application/json           |
-| Errors\APIException        | 4XX, 5XX                   | \*/\*                      |
+| Error Type                             | Status Code                            | Content Type                           |
+| -------------------------------------- | -------------------------------------- | -------------------------------------- |
+| Errors\PolarExceptionsResourceNotFound | 404                                    | application/json                       |
+| Errors\HTTPValidationError             | 422                                    | application/json                       |
+| Errors\APIException                    | 4XX, 5XX                               | \*/\*                                  |
 
 ## generateInvoice
 
@@ -223,12 +223,12 @@ if ($response->any !== null) {
 
 ### Errors
 
-| Error Type                          | Status Code                         | Content Type                        |
-| ----------------------------------- | ----------------------------------- | ----------------------------------- |
-| Errors\InvoiceAlreadyExists         | 409                                 | application/json                    |
-| Errors\MissingInvoiceBillingDetails | 422                                 | application/json                    |
-| Errors\NotPaidOrder                 | 422                                 | application/json                    |
-| Errors\APIException                 | 4XX, 5XX                            | \*/\*                               |
+| Error Type                                         | Status Code                                        | Content Type                                       |
+| -------------------------------------------------- | -------------------------------------------------- | -------------------------------------------------- |
+| Errors\PolarExceptionsInvoiceAlreadyExists         | 409                                                | application/json                                   |
+| Errors\PolarExceptionsMissingInvoiceBillingDetails | 422                                                | application/json                                   |
+| Errors\PolarExceptionsNotPaidOrder                 | 422                                                | application/json                                   |
+| Errors\APIException                                | 4XX, 5XX                                           | \*/\*                                              |
 
 ## invoice
 
@@ -275,8 +275,8 @@ if ($response->orderInvoice !== null) {
 
 ### Errors
 
-| Error Type                 | Status Code                | Content Type               |
-| -------------------------- | -------------------------- | -------------------------- |
-| Errors\ResourceNotFound    | 404                        | application/json           |
-| Errors\HTTPValidationError | 422                        | application/json           |
-| Errors\APIException        | 4XX, 5XX                   | \*/\*                      |
+| Error Type                             | Status Code                            | Content Type                           |
+| -------------------------------------- | -------------------------------------- | -------------------------------------- |
+| Errors\PolarExceptionsResourceNotFound | 404                                    | application/json                       |
+| Errors\HTTPValidationError             | 422                                    | application/json                       |
+| Errors\APIException                    | 4XX, 5XX                               | \*/\*                                  |

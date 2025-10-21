@@ -12,12 +12,12 @@
 Components\CustomerPaymentMethodCreateRequiresActionResponse $value = /* values here */
 ```
 
-### `Components\CustomerPaymentMethodCreateSucceededResponse`
+### `Components\CustomerPaymentMethodCreateSucceededResponseOutput`
 
 ```php
 /**
-* @var Components\CustomerPaymentMethodCreateSucceededResponse
+* @var Components\CustomerPaymentMethodCreateSucceededResponseOutput
 */
-Components\CustomerPaymentMethodCreateSucceededResponse $value = /* values here */
+Components\CustomerPaymentMethodCreateSucceededResponseOutput $value = /* values here */
 ```
 

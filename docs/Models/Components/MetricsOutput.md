@@ -1,0 +1,38 @@
+# MetricsOutput
+
+
+## Fields
+
+| Field                                                  | Type                                                   | Required                                               | Description                                            |
+| ------------------------------------------------------ | ------------------------------------------------------ | ------------------------------------------------------ | ------------------------------------------------------ |
+| `orders`                                               | [Components\Metric](../../Models/Components/Metric.md) | :heavy_check_mark:                                     | Information about a metric.                            |
+| `revenue`                                              | [Components\Metric](../../Models/Components/Metric.md) | :heavy_check_mark:                                     | Information about a metric.                            |
+| `netRevenue`                                           | [Components\Metric](../../Models/Components/Metric.md) | :heavy_check_mark:                                     | Information about a metric.                            |
+| `cumulativeRevenue`                                    | [Components\Metric](../../Models/Components/Metric.md) | :heavy_check_mark:                                     | Information about a metric.                            |
+| `netCumulativeRevenue`                                 | [Components\Metric](../../Models/Components/Metric.md) | :heavy_check_mark:                                     | Information about a metric.                            |
+| `averageOrderValue`                                    | [Components\Metric](../../Models/Components/Metric.md) | :heavy_check_mark:                                     | Information about a metric.                            |
+| `netAverageOrderValue`                                 | [Components\Metric](../../Models/Components/Metric.md) | :heavy_check_mark:                                     | Information about a metric.                            |
+| `oneTimeProducts`                                      | [Components\Metric](../../Models/Components/Metric.md) | :heavy_check_mark:                                     | Information about a metric.                            |
+| `oneTimeProductsRevenue`                               | [Components\Metric](../../Models/Components/Metric.md) | :heavy_check_mark:                                     | Information about a metric.                            |
+| `oneTimeProductsNetRevenue`                            | [Components\Metric](../../Models/Components/Metric.md) | :heavy_check_mark:                                     | Information about a metric.                            |
+| `newSubscriptions`                                     | [Components\Metric](../../Models/Components/Metric.md) | :heavy_check_mark:                                     | Information about a metric.                            |
+| `newSubscriptionsRevenue`                              | [Components\Metric](../../Models/Components/Metric.md) | :heavy_check_mark:                                     | Information about a metric.                            |
+| `newSubscriptionsNetRevenue`                           | [Components\Metric](../../Models/Components/Metric.md) | :heavy_check_mark:                                     | Information about a metric.                            |
+| `renewedSubscriptions`                                 | [Components\Metric](../../Models/Components/Metric.md) | :heavy_check_mark:                                     | Information about a metric.                            |
+| `renewedSubscriptionsRevenue`                          | [Components\Metric](../../Models/Components/Metric.md) | :heavy_check_mark:                                     | Information about a metric.                            |
+| `renewedSubscriptionsNetRevenue`                       | [Components\Metric](../../Models/Components/Metric.md) | :heavy_check_mark:                                     | Information about a metric.                            |
+| `activeSubscriptions`                                  | [Components\Metric](../../Models/Components/Metric.md) | :heavy_check_mark:                                     | Information about a metric.                            |
+| `monthlyRecurringRevenue`                              | [Components\Metric](../../Models/Components/Metric.md) | :heavy_check_mark:                                     | Information about a metric.                            |
+| `committedMonthlyRecurringRevenue`                     | [Components\Metric](../../Models/Components/Metric.md) | :heavy_check_mark:                                     | Information about a metric.                            |
+| `checkouts`                                            | [Components\Metric](../../Models/Components/Metric.md) | :heavy_check_mark:                                     | Information about a metric.                            |
+| `succeededCheckouts`                                   | [Components\Metric](../../Models/Components/Metric.md) | :heavy_check_mark:                                     | Information about a metric.                            |
+| `checkoutsConversion`                                  | [Components\Metric](../../Models/Components/Metric.md) | :heavy_check_mark:                                     | Information about a metric.                            |
+| `canceledSubscriptions`                                | [Components\Metric](../../Models/Components/Metric.md) | :heavy_check_mark:                                     | Information about a metric.                            |
+| `canceledSubscriptionsCustomerService`                 | [Components\Metric](../../Models/Components/Metric.md) | :heavy_check_mark:                                     | Information about a metric.                            |
+| `canceledSubscriptionsLowQuality`                      | [Components\Metric](../../Models/Components/Metric.md) | :heavy_check_mark:                                     | Information about a metric.                            |
+| `canceledSubscriptionsMissingFeatures`                 | [Components\Metric](../../Models/Components/Metric.md) | :heavy_check_mark:                                     | Information about a metric.                            |
+| `canceledSubscriptionsSwitchedService`                 | [Components\Metric](../../Models/Components/Metric.md) | :heavy_check_mark:                                     | Information about a metric.                            |
+| `canceledSubscriptionsTooComplex`                      | [Components\Metric](../../Models/Components/Metric.md) | :heavy_check_mark:                                     | Information about a metric.                            |
+| `canceledSubscriptionsTooExpensive`                    | [Components\Metric](../../Models/Components/Metric.md) | :heavy_check_mark:                                     | Information about a metric.                            |
+| `canceledSubscriptionsUnused`                          | [Components\Metric](../../Models/Components/Metric.md) | :heavy_check_mark:                                     | Information about a metric.                            |
+| `canceledSubscriptionsOther`                           | [Components\Metric](../../Models/Components/Metric.md) | :heavy_check_mark:                                     | Information about a metric.                            |

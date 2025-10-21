@@ -174,11 +174,11 @@ if ($response->checkout !== null) {
 
 ### Errors
 
-| Error Type                 | Status Code                | Content Type               |
-| -------------------------- | -------------------------- | -------------------------- |
-| Errors\ResourceNotFound    | 404                        | application/json           |
-| Errors\HTTPValidationError | 422                        | application/json           |
-| Errors\APIException        | 4XX, 5XX                   | \*/\*                      |
+| Error Type                             | Status Code                            | Content Type                           |
+| -------------------------------------- | -------------------------------------- | -------------------------------------- |
+| Errors\PolarExceptionsResourceNotFound | 404                                    | application/json                       |
+| Errors\HTTPValidationError             | 422                                    | application/json                       |
+| Errors\APIException                    | 4XX, 5XX                               | \*/\*                                  |
 
 ## update
 
@@ -233,14 +233,14 @@ if ($response->checkout !== null) {
 
 ### Errors
 
-| Error Type                            | Status Code                           | Content Type                          |
-| ------------------------------------- | ------------------------------------- | ------------------------------------- |
-| Errors\AlreadyActiveSubscriptionError | 403                                   | application/json                      |
-| Errors\NotOpenCheckout                | 403                                   | application/json                      |
-| Errors\PaymentNotReady                | 403                                   | application/json                      |
-| Errors\ResourceNotFound               | 404                                   | application/json                      |
-| Errors\HTTPValidationError            | 422                                   | application/json                      |
-| Errors\APIException                   | 4XX, 5XX                              | \*/\*                                 |
+| Error Type                             | Status Code                            | Content Type                           |
+| -------------------------------------- | -------------------------------------- | -------------------------------------- |
+| Errors\AlreadyActiveSubscriptionError  | 403                                    | application/json                       |
+| Errors\NotOpenCheckout                 | 403                                    | application/json                       |
+| Errors\PaymentNotReady                 | 403                                    | application/json                       |
+| Errors\PolarExceptionsResourceNotFound | 404                                    | application/json                       |
+| Errors\HTTPValidationError             | 422                                    | application/json                       |
+| Errors\APIException                    | 4XX, 5XX                               | \*/\*                                  |
 
 ## clientGet
 
@@ -281,12 +281,12 @@ if ($response->checkoutPublic !== null) {
 
 ### Errors
 
-| Error Type                  | Status Code                 | Content Type                |
-| --------------------------- | --------------------------- | --------------------------- |
-| Errors\ResourceNotFound     | 404                         | application/json            |
-| Errors\ExpiredCheckoutError | 410                         | application/json            |
-| Errors\HTTPValidationError  | 422                         | application/json            |
-| Errors\APIException         | 4XX, 5XX                    | \*/\*                       |
+| Error Type                             | Status Code                            | Content Type                           |
+| -------------------------------------- | -------------------------------------- | -------------------------------------- |
+| Errors\PolarExceptionsResourceNotFound | 404                                    | application/json                       |
+| Errors\ExpiredCheckoutError            | 410                                    | application/json                       |
+| Errors\HTTPValidationError             | 422                                    | application/json                       |
+| Errors\APIException                    | 4XX, 5XX                               | \*/\*                                  |
 
 ## clientUpdate
 
@@ -333,15 +333,15 @@ if ($response->checkoutPublic !== null) {
 
 ### Errors
 
-| Error Type                            | Status Code                           | Content Type                          |
-| ------------------------------------- | ------------------------------------- | ------------------------------------- |
-| Errors\AlreadyActiveSubscriptionError | 403                                   | application/json                      |
-| Errors\NotOpenCheckout                | 403                                   | application/json                      |
-| Errors\PaymentNotReady                | 403                                   | application/json                      |
-| Errors\ResourceNotFound               | 404                                   | application/json                      |
-| Errors\ExpiredCheckoutError           | 410                                   | application/json                      |
-| Errors\HTTPValidationError            | 422                                   | application/json                      |
-| Errors\APIException                   | 4XX, 5XX                              | \*/\*                                 |
+| Error Type                             | Status Code                            | Content Type                           |
+| -------------------------------------- | -------------------------------------- | -------------------------------------- |
+| Errors\AlreadyActiveSubscriptionError  | 403                                    | application/json                       |
+| Errors\NotOpenCheckout                 | 403                                    | application/json                       |
+| Errors\PaymentNotReady                 | 403                                    | application/json                       |
+| Errors\PolarExceptionsResourceNotFound | 404                                    | application/json                       |
+| Errors\ExpiredCheckoutError            | 410                                    | application/json                       |
+| Errors\HTTPValidationError             | 422                                    | application/json                       |
+| Errors\APIException                    | 4XX, 5XX                               | \*/\*                                  |
 
 ## clientConfirm
 
@@ -396,13 +396,13 @@ if ($response->checkoutPublicConfirmed !== null) {
 
 ### Errors
 
-| Error Type                            | Status Code                           | Content Type                          |
-| ------------------------------------- | ------------------------------------- | ------------------------------------- |
-| Errors\PaymentError                   | 400                                   | application/json                      |
-| Errors\AlreadyActiveSubscriptionError | 403                                   | application/json                      |
-| Errors\NotOpenCheckout                | 403                                   | application/json                      |
-| Errors\PaymentNotReady                | 403                                   | application/json                      |
-| Errors\ResourceNotFound               | 404                                   | application/json                      |
-| Errors\ExpiredCheckoutError           | 410                                   | application/json                      |
-| Errors\HTTPValidationError            | 422                                   | application/json                      |
-| Errors\APIException                   | 4XX, 5XX                              | \*/\*                                 |
+| Error Type                             | Status Code                            | Content Type                           |
+| -------------------------------------- | -------------------------------------- | -------------------------------------- |
+| Errors\PaymentError                    | 400                                    | application/json                       |
+| Errors\AlreadyActiveSubscriptionError  | 403                                    | application/json                       |
+| Errors\NotOpenCheckout                 | 403                                    | application/json                       |
+| Errors\PaymentNotReady                 | 403                                    | application/json                       |
+| Errors\PolarExceptionsResourceNotFound | 404                                    | application/json                       |
+| Errors\ExpiredCheckoutError            | 410                                    | application/json                       |
+| Errors\HTTPValidationError             | 422                                    | application/json                       |
+| Errors\APIException                    | 4XX, 5XX                               | \*/\*                                  |

@@ -72,10 +72,10 @@ class Product
     /**
      * List of prices for this product.
      *
-     * @var array<LegacyRecurringProductPriceFixed|LegacyRecurringProductPriceCustom|LegacyRecurringProductPriceFree|ProductPriceFixed|ProductPriceCustom|ProductPriceFree|ProductPriceSeatBased|ProductPriceMeteredUnit> $prices
+     * @var array<LegacyRecurringProductPriceFixedOutput|LegacyRecurringProductPriceCustomOutput|LegacyRecurringProductPriceFreeOutput|ProductPriceFixedOutput|ProductPriceCustomOutput|ProductPriceFreeOutput|ProductPriceSeatBasedOutput|ProductPriceMeteredUnitOutput> $prices
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('prices')]
-    #[\Speakeasy\Serializer\Annotation\Type('array<\Polar\Models\Components\LegacyRecurringProductPriceFixed|\Polar\Models\Components\LegacyRecurringProductPriceCustom|\Polar\Models\Components\LegacyRecurringProductPriceFree|\Polar\Models\Components\ProductPriceFixed|\Polar\Models\Components\ProductPriceCustom|\Polar\Models\Components\ProductPriceFree|\Polar\Models\Components\ProductPriceSeatBased|\Polar\Models\Components\ProductPriceMeteredUnit>')]
+    #[\Speakeasy\Serializer\Annotation\Type('array<\Polar\Models\Components\LegacyRecurringProductPriceFixedOutput|\Polar\Models\Components\LegacyRecurringProductPriceCustomOutput|\Polar\Models\Components\LegacyRecurringProductPriceFreeOutput|\Polar\Models\Components\ProductPriceFixedOutput|\Polar\Models\Components\ProductPriceCustomOutput|\Polar\Models\Components\ProductPriceFreeOutput|\Polar\Models\Components\ProductPriceSeatBasedOutput|\Polar\Models\Components\ProductPriceMeteredUnitOutput>')]
     public array $prices;
 
     /**
@@ -99,10 +99,10 @@ class Product
     /**
      * List of custom fields attached to the product.
      *
-     * @var array<AttachedCustomField> $attachedCustomFields
+     * @var array<AttachedCustomFieldOutput> $attachedCustomFields
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('attached_custom_fields')]
-    #[\Speakeasy\Serializer\Annotation\Type('array<\Polar\Models\Components\AttachedCustomField>')]
+    #[\Speakeasy\Serializer\Annotation\Type('array<\Polar\Models\Components\AttachedCustomFieldOutput>')]
     public array $attachedCustomFields;
 
     /**
@@ -155,10 +155,10 @@ class Product
      * @param  bool  $isArchived
      * @param  string  $organizationId
      * @param  array<string, string|int|float|bool>  $metadata
-     * @param  array<LegacyRecurringProductPriceFixed|LegacyRecurringProductPriceCustom|LegacyRecurringProductPriceFree|ProductPriceFixed|ProductPriceCustom|ProductPriceFree|ProductPriceSeatBased|ProductPriceMeteredUnit>  $prices
+     * @param  array<LegacyRecurringProductPriceFixedOutput|LegacyRecurringProductPriceCustomOutput|LegacyRecurringProductPriceFreeOutput|ProductPriceFixedOutput|ProductPriceCustomOutput|ProductPriceFreeOutput|ProductPriceSeatBasedOutput|ProductPriceMeteredUnitOutput>  $prices
      * @param  array<BenefitCustom|BenefitDiscord|BenefitGitHubRepository|BenefitDownloadables|BenefitLicenseKeys|BenefitMeterCredit>  $benefits
      * @param  array<ProductMediaFileRead>  $medias
-     * @param  array<AttachedCustomField>  $attachedCustomFields
+     * @param  array<AttachedCustomFieldOutput>  $attachedCustomFields
      * @param  ?\DateTime  $modifiedAt
      * @param  ?TrialInterval  $trialInterval
      * @param  ?int  $trialIntervalCount

@@ -31,19 +31,19 @@ class MetricsResponse
 
     /**
      *
-     * @var Metrics $metrics
+     * @var MetricsOutput $metrics
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('metrics')]
-    #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\Metrics')]
-    public Metrics $metrics;
+    #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\MetricsOutput')]
+    public MetricsOutput $metrics;
 
     /**
      * @param  array<MetricPeriod>  $periods
      * @param  MetricsTotals  $totals
-     * @param  Metrics  $metrics
+     * @param  MetricsOutput  $metrics
      * @phpstan-pure
      */
-    public function __construct(array $periods, MetricsTotals $totals, Metrics $metrics)
+    public function __construct(array $periods, MetricsTotals $totals, MetricsOutput $metrics)
     {
         $this->periods = $periods;
         $this->totals = $totals;

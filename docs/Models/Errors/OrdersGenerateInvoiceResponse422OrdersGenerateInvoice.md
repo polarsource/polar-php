@@ -5,21 +5,21 @@ Order is not paid or is missing billing name or address.
 
 ## Supported Types
 
-### `Errors\MissingInvoiceBillingDetails`
+### `Errors\PolarExceptionsMissingInvoiceBillingDetails`
 
 ```php
 /**
-* @var Errors\MissingInvoiceBillingDetails
+* @var Errors\PolarExceptionsMissingInvoiceBillingDetails
 */
-Errors\MissingInvoiceBillingDetails $value = /* values here */
+Errors\PolarExceptionsMissingInvoiceBillingDetails $value = /* values here */
 ```
 
-### `Errors\NotPaidOrder`
+### `Errors\PolarExceptionsNotPaidOrder`
 
 ```php
 /**
-* @var Errors\NotPaidOrder
+* @var Errors\PolarExceptionsNotPaidOrder
 */
-Errors\NotPaidOrder $value = /* values here */
+Errors\PolarExceptionsNotPaidOrder $value = /* values here */
 ```
 
