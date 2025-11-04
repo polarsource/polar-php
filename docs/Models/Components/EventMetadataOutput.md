@@ -39,3 +39,21 @@ float $value = /* values here */
 bool $value = /* values here */
 ```
 
+### `Components\CostMetadataOutput`
+
+```php
+/**
+* @var Components\CostMetadataOutput
+*/
+Components\CostMetadataOutput $value = /* values here */
+```
+
+### `Components\LLMMetadata`
+
+```php
+/**
+* @var Components\LLMMetadata
+*/
+Components\LLMMetadata $value = /* values here */
+```
+

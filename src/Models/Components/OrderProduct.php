@@ -102,13 +102,21 @@ class OrderProduct
     public ?string $description;
 
     /**
-     * The recurring interval of the product. If `None`, the product is a one-time purchase.Note that the `day` and `week` values are for internal Polar staff use only.
+     * The recurring interval of the product. If `None`, the product is a one-time purchase.
      *
      * @var ?SubscriptionRecurringInterval $recurringInterval
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('recurring_interval')]
     #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\SubscriptionRecurringInterval|null')]
     public ?SubscriptionRecurringInterval $recurringInterval;
+
+    /**
+     * Number of interval units of the subscription. If this is set to 1 the charge will happen every interval (e.g. every month), if set to 2 it will be every other month, and so on. None for one-time products.
+     *
+     * @var ?int $recurringIntervalCount
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('recurring_interval_count')]
+    public ?int $recurringIntervalCount;
 
     /**
      * @param  array<string, string|int|float|bool>  $metadata
@@ -123,9 +131,10 @@ class OrderProduct
      * @param  ?int  $trialIntervalCount
      * @param  ?string  $description
      * @param  ?SubscriptionRecurringInterval  $recurringInterval
+     * @param  ?int  $recurringIntervalCount
      * @phpstan-pure
      */
-    public function __construct(array $metadata, string $id, \DateTime $createdAt, string $name, bool $isRecurring, bool $isArchived, string $organizationId, ?\DateTime $modifiedAt = null, ?TrialInterval $trialInterval = null, ?int $trialIntervalCount = null, ?string $description = null, ?SubscriptionRecurringInterval $recurringInterval = null)
+    public function __construct(array $metadata, string $id, \DateTime $createdAt, string $name, bool $isRecurring, bool $isArchived, string $organizationId, ?\DateTime $modifiedAt = null, ?TrialInterval $trialInterval = null, ?int $trialIntervalCount = null, ?string $description = null, ?SubscriptionRecurringInterval $recurringInterval = null, ?int $recurringIntervalCount = null)
     {
         $this->metadata = $metadata;
         $this->id = $id;
@@ -139,5 +148,6 @@ class OrderProduct
         $this->trialIntervalCount = $trialIntervalCount;
         $this->description = $description;
         $this->recurringInterval = $recurringInterval;
+        $this->recurringIntervalCount = $recurringIntervalCount;
     }
 }

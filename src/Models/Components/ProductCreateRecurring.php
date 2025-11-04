@@ -115,11 +115,21 @@ class ProductCreateRecurring
     public ?int $trialIntervalCount = null;
 
     /**
+     * Number of interval units of the subscription. If this is set to 1 the charge will happen every interval (e.g. every month), if set to 2 it will be every other month, and so on.
+     *
+     * @var ?int $recurringIntervalCount
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('recurring_interval_count')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
+    public ?int $recurringIntervalCount = null;
+
+    /**
      * @param  string  $name
      * @param  array<ProductPriceFixedCreate|ProductPriceCustomCreate|ProductPriceFreeCreate|ProductPriceSeatBasedCreate|ProductPriceMeteredUnitCreate>  $prices
      * @param  SubscriptionRecurringInterval  $recurringInterval
      * @param  ?array<string, string|int|float|bool>  $metadata
      * @param  ?array<AttachedCustomFieldCreate>  $attachedCustomFields
+     * @param  ?int  $recurringIntervalCount
      * @param  ?string  $description
      * @param  ?array<string>  $medias
      * @param  ?string  $organizationId
@@ -127,7 +137,7 @@ class ProductCreateRecurring
      * @param  ?int  $trialIntervalCount
      * @phpstan-pure
      */
-    public function __construct(string $name, array $prices, SubscriptionRecurringInterval $recurringInterval, ?array $metadata = null, ?array $attachedCustomFields = null, ?string $description = null, ?array $medias = null, ?string $organizationId = null, ?TrialInterval $trialInterval = null, ?int $trialIntervalCount = null)
+    public function __construct(string $name, array $prices, SubscriptionRecurringInterval $recurringInterval, ?array $metadata = null, ?array $attachedCustomFields = null, ?string $description = null, ?array $medias = null, ?string $organizationId = null, ?TrialInterval $trialInterval = null, ?int $trialIntervalCount = null, ?int $recurringIntervalCount = 1)
     {
         $this->name = $name;
         $this->prices = $prices;
@@ -139,5 +149,6 @@ class ProductCreateRecurring
         $this->organizationId = $organizationId;
         $this->trialInterval = $trialInterval;
         $this->trialIntervalCount = $trialIntervalCount;
+        $this->recurringIntervalCount = $recurringIntervalCount;
     }
 }

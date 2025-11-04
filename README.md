@@ -139,9 +139,7 @@ use Polar\Models\Operations;
 
 $sdk = Polar\Polar::builder()->build();
 
-$request = new Operations\CustomerPortalBenefitGrantsListRequest(
-    organizationId: '1dbfc517-0bbf-4301-9ba8-555ca42b9737',
-);
+$request = new Operations\CustomerPortalBenefitGrantsListRequest();
 $requestSecurity = new Operations\CustomerPortalBenefitGrantsListSecurity(
     customerSession: '<YOUR_BEARER_TOKEN_HERE>',
 );
@@ -267,6 +265,11 @@ foreach ($responses as $response) {
 * [update](docs/sdks/polarsubscriptions/README.md#update) - Update Subscription
 * [cancel](docs/sdks/polarsubscriptions/README.md#cancel) - Cancel Subscription
 
+#### [customerPortal->wallets](docs/sdks/polarwallets/README.md)
+
+* [list](docs/sdks/polarwallets/README.md#list) - List Wallets
+* [get](docs/sdks/polarwallets/README.md#get) - Get Wallet
+
 ### [customers](docs/sdks/customers/README.md)
 
 * [list](docs/sdks/customers/README.md#list) - List Customers
@@ -281,6 +284,15 @@ foreach ($responses as $response) {
 * [getState](docs/sdks/customers/README.md#getstate) - Get Customer State
 * [getStateExternal](docs/sdks/customers/README.md#getstateexternal) - Get Customer State by External ID
 * [getBalance](docs/sdks/customers/README.md#getbalance) - Get Customer Balance
+
+### [customerSeats](docs/sdks/customerseats/README.md)
+
+* [assignSeat](docs/sdks/customerseats/README.md#assignseat) - Assign Seat
+* [listSeats](docs/sdks/customerseats/README.md#listseats) - List Seats
+* [revokeSeat](docs/sdks/customerseats/README.md#revokeseat) - Revoke Seat
+* [resendInvitation](docs/sdks/customerseats/README.md#resendinvitation) - Resend Invitation
+* [getClaimInfo](docs/sdks/customerseats/README.md#getclaiminfo) - Get Claim Info
+* [claimSeat](docs/sdks/customerseats/README.md#claimseat) - Claim Seat
 
 ### [customerSessions](docs/sdks/customersessions/README.md)
 
@@ -358,6 +370,7 @@ foreach ($responses as $response) {
 ### [orders](docs/sdks/orders/README.md)
 
 * [list](docs/sdks/orders/README.md#list) - List Orders
+* [export](docs/sdks/orders/README.md#export) - Export Subscriptions
 * [get](docs/sdks/orders/README.md#get) - Get Order
 * [update](docs/sdks/orders/README.md#update) - Update Order
 * [generateInvoice](docs/sdks/orders/README.md#generateinvoice) - Generate Order Invoice
@@ -391,10 +404,17 @@ foreach ($responses as $response) {
 ### [subscriptions](docs/sdks/subscriptions/README.md)
 
 * [list](docs/sdks/subscriptions/README.md#list) - List Subscriptions
+* [create](docs/sdks/subscriptions/README.md#create) - Create Subscription
 * [export](docs/sdks/subscriptions/README.md#export) - Export Subscriptions
 * [get](docs/sdks/subscriptions/README.md#get) - Get Subscription
 * [update](docs/sdks/subscriptions/README.md#update) - Update Subscription
 * [revoke](docs/sdks/subscriptions/README.md#revoke) - Revoke Subscription
+
+### [wallets](docs/sdks/wallets/README.md)
+
+* [list](docs/sdks/wallets/README.md#list) - List Wallets
+* [get](docs/sdks/wallets/README.md#get) - Get Wallet
+* [topUp](docs/sdks/wallets/README.md#topup) - Top-Up Wallet
 
 ### [webhooks](docs/sdks/webhooks/README.md)
 
@@ -528,7 +548,7 @@ require 'vendor/autoload.php';
 use Polar;
 
 $sdk = Polar\Polar::builder()
-    ->setServer('sandbox')
+    ->setServer('production')
     ->setSecurity(
         '<YOUR_BEARER_TOKEN_HERE>'
     )

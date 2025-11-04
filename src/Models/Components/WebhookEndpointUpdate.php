@@ -49,17 +49,28 @@ class WebhookEndpointUpdate
     public ?array $events = null;
 
     /**
+     * Whether the webhook endpoint is enabled.
+     *
+     * @var ?bool $enabled
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('enabled')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
+    public ?bool $enabled = null;
+
+    /**
      * @param  ?string  $url
      * @param  ?string  $secret
      * @param  ?WebhookFormat  $format
      * @param  ?array<WebhookEventType>  $events
+     * @param  ?bool  $enabled
      * @phpstan-pure
      */
-    public function __construct(?string $url = null, ?string $secret = null, ?WebhookFormat $format = null, ?array $events = null)
+    public function __construct(?string $url = null, ?string $secret = null, ?WebhookFormat $format = null, ?array $events = null, ?bool $enabled = null)
     {
         $this->url = $url;
         $this->secret = $secret;
         $this->format = $format;
         $this->events = $events;
+        $this->enabled = $enabled;
     }
 }

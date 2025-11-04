@@ -50,7 +50,6 @@ class CustomerCreate
     public ?string $externalId = null;
 
     /**
-     * The name of the customer.
      *
      * @var ?string $name
      */

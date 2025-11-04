@@ -334,17 +334,15 @@ class PolarLicenseKeys
      * **Scopes**: `customer_portal:read` `customer_portal:write`
      *
      * @param  Operations\CustomerPortalLicenseKeysListSecurity  $security
-     * @param  string|array<string>|null  $organizationId
      * @param  ?string  $benefitId
      * @param  ?int  $page
      * @param  ?int  $limit
      * @return Operations\CustomerPortalLicenseKeysListResponse
      * @throws \Polar\Models\Errors\APIException
      */
-    private function listIndividual(Operations\CustomerPortalLicenseKeysListSecurity $security, string|array|null $organizationId = null, ?string $benefitId = null, ?int $page = null, ?int $limit = null, ?Options $options = null): Operations\CustomerPortalLicenseKeysListResponse
+    private function listIndividual(Operations\CustomerPortalLicenseKeysListSecurity $security, ?string $benefitId = null, ?int $page = null, ?int $limit = null, ?Options $options = null): Operations\CustomerPortalLicenseKeysListResponse
     {
         $request = new Operations\CustomerPortalLicenseKeysListRequest(
-            organizationId: $organizationId,
             benefitId: $benefitId,
             page: $page,
             limit: $limit,
@@ -396,7 +394,7 @@ class PolarLicenseKeys
                     listResourceLicenseKeyRead: $obj);
                 $sdk = $this;
 
-                $response->next = function () use ($sdk, $request, $responseData, $security, $organizationId, $benefitId, $limit): ?Operations\CustomerPortalLicenseKeysListResponse {
+                $response->next = function () use ($sdk, $request, $responseData, $security, $benefitId, $limit): ?Operations\CustomerPortalLicenseKeysListResponse {
                     $page = $request != null ? $request->page : 0;
                     $nextPage = $page + 1;
                     $jsonObject = new \JsonPath\JsonObject($responseData);
@@ -423,7 +421,6 @@ class PolarLicenseKeys
 
                     return $sdk->listIndividual(
                         security: $security,
-                        organizationId: $organizationId,
                         benefitId: $benefitId,
                         page: $nextPage,
                         limit: $limit,
@@ -482,16 +479,15 @@ class PolarLicenseKeys
      * **Scopes**: `customer_portal:read` `customer_portal:write`
      *
      * @param  Operations\CustomerPortalLicenseKeysListSecurity  $security
-     * @param  string|array<string>|null  $organizationId
      * @param  ?string  $benefitId
      * @param  ?int  $page
      * @param  ?int  $limit
      * @return \Generator<Operations\CustomerPortalLicenseKeysListResponse>
      * @throws \Polar\Models\Errors\APIException
      */
-    public function list(Operations\CustomerPortalLicenseKeysListSecurity $security, string|array|null $organizationId = null, ?string $benefitId = null, ?int $page = null, ?int $limit = null, ?Options $options = null): \Generator
+    public function list(Operations\CustomerPortalLicenseKeysListSecurity $security, ?string $benefitId = null, ?int $page = null, ?int $limit = null, ?Options $options = null): \Generator
     {
-        $res = $this->listIndividual($security, $organizationId, $benefitId, $page, $limit, $options);
+        $res = $this->listIndividual($security, $benefitId, $page, $limit, $options);
         while ($res !== null) {
             yield $res;
             $res = $res->next($res);

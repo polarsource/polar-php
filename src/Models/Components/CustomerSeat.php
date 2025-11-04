@@ -28,14 +28,6 @@ class CustomerSeat
     public string $id;
 
     /**
-     * The subscription ID
-     *
-     * @var string $subscriptionId
-     */
-    #[\Speakeasy\Serializer\Annotation\SerializedName('subscription_id')]
-    public string $subscriptionId;
-
-    /**
      *
      * @var SeatStatus $status
      */
@@ -50,6 +42,24 @@ class CustomerSeat
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('modified_at')]
     public ?\DateTime $modifiedAt;
+
+    /**
+     * The subscription ID (for recurring seats)
+     *
+     * @var ?string $subscriptionId
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('subscription_id')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
+    public ?string $subscriptionId = null;
+
+    /**
+     * The order ID (for one-time purchase seats)
+     *
+     * @var ?string $orderId
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('order_id')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
+    public ?string $orderId = null;
 
     /**
      * The assigned customer ID
@@ -109,9 +119,10 @@ class CustomerSeat
     /**
      * @param  \DateTime  $createdAt
      * @param  string  $id
-     * @param  string  $subscriptionId
      * @param  SeatStatus  $status
      * @param  ?\DateTime  $modifiedAt
+     * @param  ?string  $subscriptionId
+     * @param  ?string  $orderId
      * @param  ?string  $customerId
      * @param  ?string  $customerEmail
      * @param  ?\DateTime  $invitationTokenExpiresAt
@@ -120,13 +131,14 @@ class CustomerSeat
      * @param  ?array<string, mixed>  $seatMetadata
      * @phpstan-pure
      */
-    public function __construct(\DateTime $createdAt, string $id, string $subscriptionId, SeatStatus $status, ?\DateTime $modifiedAt = null, ?string $customerId = null, ?string $customerEmail = null, ?\DateTime $invitationTokenExpiresAt = null, ?\DateTime $claimedAt = null, ?\DateTime $revokedAt = null, ?array $seatMetadata = null)
+    public function __construct(\DateTime $createdAt, string $id, SeatStatus $status, ?\DateTime $modifiedAt = null, ?string $subscriptionId = null, ?string $orderId = null, ?string $customerId = null, ?string $customerEmail = null, ?\DateTime $invitationTokenExpiresAt = null, ?\DateTime $claimedAt = null, ?\DateTime $revokedAt = null, ?array $seatMetadata = null)
     {
         $this->createdAt = $createdAt;
         $this->id = $id;
-        $this->subscriptionId = $subscriptionId;
         $this->status = $status;
         $this->modifiedAt = $modifiedAt;
+        $this->subscriptionId = $subscriptionId;
+        $this->orderId = $orderId;
         $this->customerId = $customerId;
         $this->customerEmail = $customerEmail;
         $this->invitationTokenExpiresAt = $invitationTokenExpiresAt;

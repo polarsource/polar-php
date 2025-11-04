@@ -11,9 +11,6 @@ namespace Polar\Models\Components;
 
 enum Status: string
 {
-    case Created = 'created';
-    case OnboardingStarted = 'onboarding_started';
-    case UnderReview = 'under_review';
-    case Denied = 'denied';
     case Active = 'active';
+    case Trialing = 'trialing';
 }

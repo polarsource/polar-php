@@ -80,6 +80,15 @@ class ProductUpdate
     public ?SubscriptionRecurringInterval $recurringInterval = null;
 
     /**
+     * Number of interval units of the subscription. If this is set to 1 the charge will happen every interval (e.g. every month), if set to 2 it will be every other month, and so on. Once set, it can't be changed.**
+     *
+     * @var ?int $recurringIntervalCount
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('recurring_interval_count')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
+    public ?int $recurringIntervalCount = null;
+
+    /**
      * Whether the product is archived. If `true`, the product won't be available for purchase anymore. Existing customers will still have access to their benefits, and subscriptions will continue normally.
      *
      * @var ?bool $isArchived
@@ -125,13 +134,14 @@ class ProductUpdate
      * @param  ?string  $name
      * @param  ?string  $description
      * @param  ?SubscriptionRecurringInterval  $recurringInterval
+     * @param  ?int  $recurringIntervalCount
      * @param  ?bool  $isArchived
      * @param  ?array<ExistingProductPrice|ProductPriceFixedCreate|ProductPriceCustomCreate|ProductPriceFreeCreate|ProductPriceSeatBasedCreate|ProductPriceMeteredUnitCreate>  $prices
      * @param  ?array<string>  $medias
      * @param  ?array<AttachedCustomFieldCreate>  $attachedCustomFields
      * @phpstan-pure
      */
-    public function __construct(?array $metadata = null, ?TrialInterval $trialInterval = null, ?int $trialIntervalCount = null, ?string $name = null, ?string $description = null, ?SubscriptionRecurringInterval $recurringInterval = null, ?bool $isArchived = null, ?array $prices = null, ?array $medias = null, ?array $attachedCustomFields = null)
+    public function __construct(?array $metadata = null, ?TrialInterval $trialInterval = null, ?int $trialIntervalCount = null, ?string $name = null, ?string $description = null, ?SubscriptionRecurringInterval $recurringInterval = null, ?int $recurringIntervalCount = null, ?bool $isArchived = null, ?array $prices = null, ?array $medias = null, ?array $attachedCustomFields = null)
     {
         $this->metadata = $metadata;
         $this->trialInterval = $trialInterval;
@@ -139,6 +149,7 @@ class ProductUpdate
         $this->name = $name;
         $this->description = $description;
         $this->recurringInterval = $recurringInterval;
+        $this->recurringIntervalCount = $recurringIntervalCount;
         $this->isArchived = $isArchived;
         $this->prices = $prices;
         $this->medias = $medias;

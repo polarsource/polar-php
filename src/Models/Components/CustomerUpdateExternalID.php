@@ -42,7 +42,6 @@ class CustomerUpdateExternalID
     public ?string $email = null;
 
     /**
-     * The name of the customer.
      *
      * @var ?string $name
      */

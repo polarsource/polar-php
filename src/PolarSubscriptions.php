@@ -334,7 +334,6 @@ class PolarSubscriptions
 
                     return $sdk->listIndividual(
                         request: new Operations\CustomerPortalSubscriptionsListRequest(
-                            organizationId: $request != null ? $request->organizationId : null,
                             productId: $request != null ? $request->productId : null,
                             active: $request != null ? $request->active : null,
                             query: $request != null ? $request->query : null,
@@ -399,12 +398,12 @@ class PolarSubscriptions
      * **Scopes**: `customer_portal:write`
      *
      * @param  Operations\CustomerPortalSubscriptionsUpdateSecurity  $security
-     * @param  Components\CustomerSubscriptionUpdateProduct|Components\CustomerSubscriptionCancel  $customerSubscriptionUpdate
+     * @param  Components\CustomerSubscriptionUpdateProduct|Components\CustomerSubscriptionUpdateSeats|Components\CustomerSubscriptionCancel  $customerSubscriptionUpdate
      * @param  string  $id
      * @return Operations\CustomerPortalSubscriptionsUpdateResponse
      * @throws \Polar\Models\Errors\APIException
      */
-    public function update(Operations\CustomerPortalSubscriptionsUpdateSecurity $security, Components\CustomerSubscriptionUpdateProduct|Components\CustomerSubscriptionCancel $customerSubscriptionUpdate, string $id, ?Options $options = null): Operations\CustomerPortalSubscriptionsUpdateResponse
+    public function update(Operations\CustomerPortalSubscriptionsUpdateSecurity $security, Components\CustomerSubscriptionUpdateProduct|Components\CustomerSubscriptionUpdateSeats|Components\CustomerSubscriptionCancel $customerSubscriptionUpdate, string $id, ?Options $options = null): Operations\CustomerPortalSubscriptionsUpdateResponse
     {
         $request = new Operations\CustomerPortalSubscriptionsUpdateRequest(
             id: $id,

@@ -115,20 +115,12 @@ class CheckoutPublicConfirmed
     public string $currency;
 
     /**
-     * ID of the product to checkout.
+     * ID of the organization owning the checkout session.
      *
-     * @var string $productId
+     * @var string $organizationId
      */
-    #[\Speakeasy\Serializer\Annotation\SerializedName('product_id')]
-    public string $productId;
-
-    /**
-     * ID of the product price to checkout.
-     *
-     * @var string $productPriceId
-     */
-    #[\Speakeasy\Serializer\Annotation\SerializedName('product_price_id')]
-    public string $productPriceId;
+    #[\Speakeasy\Serializer\Annotation\SerializedName('organization_id')]
+    public string $organizationId;
 
     /**
      * Whether to allow the customer to apply discount codes. If you apply a discount through `discount_id`, it'll still be applied, but the customer won't be able to change it.
@@ -221,39 +213,12 @@ class CheckoutPublicConfirmed
     public array $products;
 
     /**
-     * Product data for a checkout session.
-     *
-     * @var CheckoutProduct $product
-     */
-    #[\Speakeasy\Serializer\Annotation\SerializedName('product')]
-    #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\CheckoutProduct')]
-    public CheckoutProduct $product;
-
-    /**
-     * Price of the selected product.
-     *
-     * @var LegacyRecurringProductPriceFixed|LegacyRecurringProductPriceCustom|LegacyRecurringProductPriceFree|ProductPriceFixed|ProductPriceCustom|ProductPriceFree|ProductPriceSeatBased|ProductPriceMeteredUnit $productPrice
-     */
-    #[\Speakeasy\Serializer\Annotation\SerializedName('product_price')]
-    #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\LegacyRecurringProductPriceFixed|\Polar\Models\Components\LegacyRecurringProductPriceCustom|\Polar\Models\Components\LegacyRecurringProductPriceFree|\Polar\Models\Components\ProductPriceFixed|\Polar\Models\Components\ProductPriceCustom|\Polar\Models\Components\ProductPriceFree|\Polar\Models\Components\ProductPriceSeatBased|\Polar\Models\Components\ProductPriceMeteredUnit')]
-    public LegacyRecurringProductPriceFixed|LegacyRecurringProductPriceCustom|LegacyRecurringProductPriceFree|ProductPriceFixed|ProductPriceCustom|ProductPriceFree|ProductPriceSeatBased|ProductPriceMeteredUnit $productPrice;
-
-    /**
      *
      * @var Organization $organization
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('organization')]
     #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\Organization')]
     public Organization $organization;
-
-    /**
-     * $attachedCustomFields
-     *
-     * @var array<AttachedCustomField> $attachedCustomFields
-     */
-    #[\Speakeasy\Serializer\Annotation\SerializedName('attached_custom_fields')]
-    #[\Speakeasy\Serializer\Annotation\Type('array<\Polar\Models\Components\AttachedCustomField>')]
-    public array $attachedCustomFields;
 
     /**
      *
@@ -330,6 +295,22 @@ class CheckoutPublicConfirmed
     public ?\DateTime $trialEnd;
 
     /**
+     * ID of the product to checkout.
+     *
+     * @var ?string $productId
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('product_id')]
+    public ?string $productId;
+
+    /**
+     * ID of the product price to checkout.
+     *
+     * @var ?string $productPriceId
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('product_price_id')]
+    public ?string $productPriceId;
+
+    /**
      * ID of the discount applied to the checkout.
      *
      * @var ?string $discountId
@@ -390,12 +371,39 @@ class CheckoutPublicConfirmed
     public ?string $customerTaxId;
 
     /**
+     * Product selected to checkout.
+     *
+     * @var ?CheckoutProduct $product
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('product')]
+    #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\CheckoutProduct|null')]
+    public ?CheckoutProduct $product;
+
+    /**
+     * Price of the selected product.
+     *
+     * @var LegacyRecurringProductPriceFixed|LegacyRecurringProductPriceCustom|LegacyRecurringProductPriceFree|ProductPriceFixed|ProductPriceCustom|ProductPriceFree|ProductPriceSeatBased|ProductPriceMeteredUnit|null $productPrice
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('product_price')]
+    #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\LegacyRecurringProductPriceFixed|\Polar\Models\Components\LegacyRecurringProductPriceCustom|\Polar\Models\Components\LegacyRecurringProductPriceFree|\Polar\Models\Components\ProductPriceFixed|\Polar\Models\Components\ProductPriceCustom|\Polar\Models\Components\ProductPriceFree|\Polar\Models\Components\ProductPriceSeatBased|\Polar\Models\Components\ProductPriceMeteredUnit|null')]
+    public LegacyRecurringProductPriceFixed|LegacyRecurringProductPriceCustom|LegacyRecurringProductPriceFree|ProductPriceFixed|ProductPriceCustom|ProductPriceFree|ProductPriceSeatBased|ProductPriceMeteredUnit|null $productPrice;
+
+    /**
      *
      * @var CheckoutDiscountFixedOnceForeverDuration|CheckoutDiscountFixedRepeatDuration|CheckoutDiscountPercentageOnceForeverDuration|CheckoutDiscountPercentageRepeatDuration|null $discount
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('discount')]
     #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\CheckoutDiscountFixedOnceForeverDuration|\Polar\Models\Components\CheckoutDiscountFixedRepeatDuration|\Polar\Models\Components\CheckoutDiscountPercentageOnceForeverDuration|\Polar\Models\Components\CheckoutDiscountPercentageRepeatDuration|null')]
     public CheckoutDiscountFixedOnceForeverDuration|CheckoutDiscountFixedRepeatDuration|CheckoutDiscountPercentageOnceForeverDuration|CheckoutDiscountPercentageRepeatDuration|null $discount;
+
+    /**
+     * $attachedCustomFields
+     *
+     * @var ?array<AttachedCustomField> $attachedCustomFields
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('attached_custom_fields')]
+    #[\Speakeasy\Serializer\Annotation\Type('array<\Polar\Models\Components\AttachedCustomField>|null')]
+    public ?array $attachedCustomFields;
 
     /**
      * Number of seats for seat-based pricing.
@@ -436,8 +444,7 @@ class CheckoutPublicConfirmed
      * @param  int  $netAmount
      * @param  int  $totalAmount
      * @param  string  $currency
-     * @param  string  $productId
-     * @param  string  $productPriceId
+     * @param  string  $organizationId
      * @param  bool  $allowDiscountCodes
      * @param  bool  $requireBillingAddress
      * @param  bool  $isDiscountApplicable
@@ -449,10 +456,7 @@ class CheckoutPublicConfirmed
      * @param  array<string, string>  $paymentProcessorMetadata
      * @param  CheckoutBillingAddressFields  $billingAddressFields
      * @param  array<CheckoutProduct>  $products
-     * @param  CheckoutProduct  $product
-     * @param  LegacyRecurringProductPriceFixed|LegacyRecurringProductPriceCustom|LegacyRecurringProductPriceFree|ProductPriceFixed|ProductPriceCustom|ProductPriceFree|ProductPriceSeatBased|ProductPriceMeteredUnit  $productPrice
      * @param  Organization  $organization
-     * @param  array<AttachedCustomField>  $attachedCustomFields
      * @param  string  $customerSessionToken
      * @param  ?\DateTime  $modifiedAt
      * @param  ?array<string, string|int|bool|\DateTime|null>  $customFieldData
@@ -462,6 +466,8 @@ class CheckoutPublicConfirmed
      * @param  ?TrialInterval  $activeTrialInterval
      * @param  ?int  $activeTrialIntervalCount
      * @param  ?\DateTime  $trialEnd
+     * @param  ?string  $productId
+     * @param  ?string  $productPriceId
      * @param  ?string  $discountId
      * @param  ?string  $customerId
      * @param  ?string  $customerName
@@ -470,12 +476,15 @@ class CheckoutPublicConfirmed
      * @param  ?string  $customerBillingName
      * @param  ?Address  $customerBillingAddress
      * @param  ?string  $customerTaxId
+     * @param  ?CheckoutProduct  $product
+     * @param  LegacyRecurringProductPriceFixed|LegacyRecurringProductPriceCustom|LegacyRecurringProductPriceFree|ProductPriceFixed|ProductPriceCustom|ProductPriceFree|ProductPriceSeatBased|ProductPriceMeteredUnit|null  $productPrice
      * @param  CheckoutDiscountFixedOnceForeverDuration|CheckoutDiscountFixedRepeatDuration|CheckoutDiscountPercentageOnceForeverDuration|CheckoutDiscountPercentageRepeatDuration|null  $discount
+     * @param  ?array<AttachedCustomField>  $attachedCustomFields
      * @param  ?int  $seats
      * @param  ?int  $pricePerSeat
      * @phpstan-pure
      */
-    public function __construct(string $id, \DateTime $createdAt, PaymentProcessor $paymentProcessor, string $clientSecret, string $url, \DateTime $expiresAt, string $successUrl, int $amount, int $discountAmount, int $netAmount, int $totalAmount, string $currency, string $productId, string $productPriceId, bool $allowDiscountCodes, bool $requireBillingAddress, bool $isDiscountApplicable, bool $isFreeProductPrice, bool $isPaymentRequired, bool $isPaymentSetupRequired, bool $isPaymentFormRequired, bool $isBusinessCustomer, array $paymentProcessorMetadata, CheckoutBillingAddressFields $billingAddressFields, array $products, CheckoutProduct $product, LegacyRecurringProductPriceFixed|LegacyRecurringProductPriceCustom|LegacyRecurringProductPriceFree|ProductPriceFixed|ProductPriceCustom|ProductPriceFree|ProductPriceSeatBased|ProductPriceMeteredUnit $productPrice, Organization $organization, array $attachedCustomFields, string $customerSessionToken, ?\DateTime $modifiedAt = null, ?array $customFieldData = null, ?string $returnUrl = null, ?string $embedOrigin = null, ?int $taxAmount = null, ?TrialInterval $activeTrialInterval = null, ?int $activeTrialIntervalCount = null, ?\DateTime $trialEnd = null, ?string $discountId = null, ?string $customerId = null, ?string $customerName = null, ?string $customerEmail = null, ?string $customerIpAddress = null, ?string $customerBillingName = null, ?Address $customerBillingAddress = null, ?string $customerTaxId = null, CheckoutDiscountFixedOnceForeverDuration|CheckoutDiscountFixedRepeatDuration|CheckoutDiscountPercentageOnceForeverDuration|CheckoutDiscountPercentageRepeatDuration|null $discount = null, ?int $seats = null, ?int $pricePerSeat = null, string $status = 'confirmed')
+    public function __construct(string $id, \DateTime $createdAt, PaymentProcessor $paymentProcessor, string $clientSecret, string $url, \DateTime $expiresAt, string $successUrl, int $amount, int $discountAmount, int $netAmount, int $totalAmount, string $currency, string $organizationId, bool $allowDiscountCodes, bool $requireBillingAddress, bool $isDiscountApplicable, bool $isFreeProductPrice, bool $isPaymentRequired, bool $isPaymentSetupRequired, bool $isPaymentFormRequired, bool $isBusinessCustomer, array $paymentProcessorMetadata, CheckoutBillingAddressFields $billingAddressFields, array $products, Organization $organization, string $customerSessionToken, ?\DateTime $modifiedAt = null, ?array $customFieldData = null, ?string $returnUrl = null, ?string $embedOrigin = null, ?int $taxAmount = null, ?TrialInterval $activeTrialInterval = null, ?int $activeTrialIntervalCount = null, ?\DateTime $trialEnd = null, ?string $productId = null, ?string $productPriceId = null, ?string $discountId = null, ?string $customerId = null, ?string $customerName = null, ?string $customerEmail = null, ?string $customerIpAddress = null, ?string $customerBillingName = null, ?Address $customerBillingAddress = null, ?string $customerTaxId = null, ?CheckoutProduct $product = null, LegacyRecurringProductPriceFixed|LegacyRecurringProductPriceCustom|LegacyRecurringProductPriceFree|ProductPriceFixed|ProductPriceCustom|ProductPriceFree|ProductPriceSeatBased|ProductPriceMeteredUnit|null $productPrice = null, CheckoutDiscountFixedOnceForeverDuration|CheckoutDiscountFixedRepeatDuration|CheckoutDiscountPercentageOnceForeverDuration|CheckoutDiscountPercentageRepeatDuration|null $discount = null, ?array $attachedCustomFields = null, ?int $seats = null, ?int $pricePerSeat = null, string $status = 'confirmed')
     {
         $this->id = $id;
         $this->createdAt = $createdAt;
@@ -489,8 +498,7 @@ class CheckoutPublicConfirmed
         $this->netAmount = $netAmount;
         $this->totalAmount = $totalAmount;
         $this->currency = $currency;
-        $this->productId = $productId;
-        $this->productPriceId = $productPriceId;
+        $this->organizationId = $organizationId;
         $this->allowDiscountCodes = $allowDiscountCodes;
         $this->requireBillingAddress = $requireBillingAddress;
         $this->isDiscountApplicable = $isDiscountApplicable;
@@ -502,10 +510,7 @@ class CheckoutPublicConfirmed
         $this->paymentProcessorMetadata = $paymentProcessorMetadata;
         $this->billingAddressFields = $billingAddressFields;
         $this->products = $products;
-        $this->product = $product;
-        $this->productPrice = $productPrice;
         $this->organization = $organization;
-        $this->attachedCustomFields = $attachedCustomFields;
         $this->customerSessionToken = $customerSessionToken;
         $this->modifiedAt = $modifiedAt;
         $this->customFieldData = $customFieldData;
@@ -515,6 +520,8 @@ class CheckoutPublicConfirmed
         $this->activeTrialInterval = $activeTrialInterval;
         $this->activeTrialIntervalCount = $activeTrialIntervalCount;
         $this->trialEnd = $trialEnd;
+        $this->productId = $productId;
+        $this->productPriceId = $productPriceId;
         $this->discountId = $discountId;
         $this->customerId = $customerId;
         $this->customerName = $customerName;
@@ -523,7 +530,10 @@ class CheckoutPublicConfirmed
         $this->customerBillingName = $customerBillingName;
         $this->customerBillingAddress = $customerBillingAddress;
         $this->customerTaxId = $customerTaxId;
+        $this->product = $product;
+        $this->productPrice = $productPrice;
         $this->discount = $discount;
+        $this->attachedCustomFields = $attachedCustomFields;
         $this->seats = $seats;
         $this->pricePerSeat = $pricePerSeat;
         $this->status = $status;

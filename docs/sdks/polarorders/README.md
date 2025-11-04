@@ -32,9 +32,7 @@ use Polar\Models\Operations;
 
 $sdk = Polar\Polar::builder()->build();
 
-$request = new Operations\CustomerPortalOrdersListRequest(
-    organizationId: '1dbfc517-0bbf-4301-9ba8-555ca42b9737',
-);
+$request = new Operations\CustomerPortalOrdersListRequest();
 $requestSecurity = new Operations\CustomerPortalOrdersListSecurity(
     customerSession: '<YOUR_BEARER_TOKEN_HERE>',
 );
@@ -236,7 +234,6 @@ if ($response->any !== null) {
 
 | Error Type                          | Status Code                         | Content Type                        |
 | ----------------------------------- | ----------------------------------- | ----------------------------------- |
-| Errors\InvoiceAlreadyExists         | 409                                 | application/json                    |
 | Errors\MissingInvoiceBillingDetails | 422                                 | application/json                    |
 | Errors\NotPaidOrder                 | 422                                 | application/json                    |
 | Errors\APIException                 | 4XX, 5XX                            | \*/\*                               |

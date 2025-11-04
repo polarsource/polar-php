@@ -53,6 +53,22 @@ class MetricsTotals
 
     /**
      *
+     * @var int|float $costs
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('costs')]
+    #[\Speakeasy\Serializer\Annotation\Type('int|float')]
+    public int|float $costs;
+
+    /**
+     *
+     * @var int|float $cumulativeCosts
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('cumulative_costs')]
+    #[\Speakeasy\Serializer\Annotation\Type('int|float')]
+    public int|float $cumulativeCosts;
+
+    /**
+     *
      * @var int|float $averageOrderValue
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('average_order_value')]
@@ -66,6 +82,30 @@ class MetricsTotals
     #[\Speakeasy\Serializer\Annotation\SerializedName('net_average_order_value')]
     #[\Speakeasy\Serializer\Annotation\Type('int|float')]
     public int|float $netAverageOrderValue;
+
+    /**
+     *
+     * @var int|float $averageRevenuePerUser
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('average_revenue_per_user')]
+    #[\Speakeasy\Serializer\Annotation\Type('int|float')]
+    public int|float $averageRevenuePerUser;
+
+    /**
+     *
+     * @var int|float $costPerUser
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('cost_per_user')]
+    #[\Speakeasy\Serializer\Annotation\Type('int|float')]
+    public int|float $costPerUser;
+
+    /**
+     *
+     * @var int|float $activeUserByEvent
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('active_user_by_event')]
+    #[\Speakeasy\Serializer\Annotation\Type('int|float')]
+    public int|float $activeUserByEvent;
 
     /**
      *
@@ -260,13 +300,50 @@ class MetricsTotals
     public int|float $canceledSubscriptionsOther;
 
     /**
+     *
+     * @var int|float $churnRate
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('churn_rate')]
+    #[\Speakeasy\Serializer\Annotation\Type('int|float')]
+    public int|float $churnRate;
+
+    /**
+     *
+     * @var int|float $grossMargin
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('gross_margin')]
+    #[\Speakeasy\Serializer\Annotation\Type('int|float')]
+    public int|float $grossMargin;
+
+    /**
+     *
+     * @var int|float $grossMarginPercentage
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('gross_margin_percentage')]
+    #[\Speakeasy\Serializer\Annotation\Type('int|float')]
+    public int|float $grossMarginPercentage;
+
+    /**
+     *
+     * @var int|float $cashflow
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('cashflow')]
+    #[\Speakeasy\Serializer\Annotation\Type('int|float')]
+    public int|float $cashflow;
+
+    /**
      * @param  int|float  $orders
      * @param  int|float  $revenue
      * @param  int|float  $netRevenue
      * @param  int|float  $cumulativeRevenue
      * @param  int|float  $netCumulativeRevenue
+     * @param  int|float  $costs
+     * @param  int|float  $cumulativeCosts
      * @param  int|float  $averageOrderValue
      * @param  int|float  $netAverageOrderValue
+     * @param  int|float  $averageRevenuePerUser
+     * @param  int|float  $costPerUser
+     * @param  int|float  $activeUserByEvent
      * @param  int|float  $oneTimeProducts
      * @param  int|float  $oneTimeProductsRevenue
      * @param  int|float  $oneTimeProductsNetRevenue
@@ -291,17 +368,26 @@ class MetricsTotals
      * @param  int|float  $canceledSubscriptionsTooExpensive
      * @param  int|float  $canceledSubscriptionsUnused
      * @param  int|float  $canceledSubscriptionsOther
+     * @param  int|float  $churnRate
+     * @param  int|float  $grossMargin
+     * @param  int|float  $grossMarginPercentage
+     * @param  int|float  $cashflow
      * @phpstan-pure
      */
-    public function __construct(int|float $orders, int|float $revenue, int|float $netRevenue, int|float $cumulativeRevenue, int|float $netCumulativeRevenue, int|float $averageOrderValue, int|float $netAverageOrderValue, int|float $oneTimeProducts, int|float $oneTimeProductsRevenue, int|float $oneTimeProductsNetRevenue, int|float $newSubscriptions, int|float $newSubscriptionsRevenue, int|float $newSubscriptionsNetRevenue, int|float $renewedSubscriptions, int|float $renewedSubscriptionsRevenue, int|float $renewedSubscriptionsNetRevenue, int|float $activeSubscriptions, int|float $monthlyRecurringRevenue, int|float $committedMonthlyRecurringRevenue, int|float $checkouts, int|float $succeededCheckouts, int|float $checkoutsConversion, int|float $canceledSubscriptions, int|float $canceledSubscriptionsCustomerService, int|float $canceledSubscriptionsLowQuality, int|float $canceledSubscriptionsMissingFeatures, int|float $canceledSubscriptionsSwitchedService, int|float $canceledSubscriptionsTooComplex, int|float $canceledSubscriptionsTooExpensive, int|float $canceledSubscriptionsUnused, int|float $canceledSubscriptionsOther)
+    public function __construct(int|float $orders, int|float $revenue, int|float $netRevenue, int|float $cumulativeRevenue, int|float $netCumulativeRevenue, int|float $costs, int|float $cumulativeCosts, int|float $averageOrderValue, int|float $netAverageOrderValue, int|float $averageRevenuePerUser, int|float $costPerUser, int|float $activeUserByEvent, int|float $oneTimeProducts, int|float $oneTimeProductsRevenue, int|float $oneTimeProductsNetRevenue, int|float $newSubscriptions, int|float $newSubscriptionsRevenue, int|float $newSubscriptionsNetRevenue, int|float $renewedSubscriptions, int|float $renewedSubscriptionsRevenue, int|float $renewedSubscriptionsNetRevenue, int|float $activeSubscriptions, int|float $monthlyRecurringRevenue, int|float $committedMonthlyRecurringRevenue, int|float $checkouts, int|float $succeededCheckouts, int|float $checkoutsConversion, int|float $canceledSubscriptions, int|float $canceledSubscriptionsCustomerService, int|float $canceledSubscriptionsLowQuality, int|float $canceledSubscriptionsMissingFeatures, int|float $canceledSubscriptionsSwitchedService, int|float $canceledSubscriptionsTooComplex, int|float $canceledSubscriptionsTooExpensive, int|float $canceledSubscriptionsUnused, int|float $canceledSubscriptionsOther, int|float $churnRate, int|float $grossMargin, int|float $grossMarginPercentage, int|float $cashflow)
     {
         $this->orders = $orders;
         $this->revenue = $revenue;
         $this->netRevenue = $netRevenue;
         $this->cumulativeRevenue = $cumulativeRevenue;
         $this->netCumulativeRevenue = $netCumulativeRevenue;
+        $this->costs = $costs;
+        $this->cumulativeCosts = $cumulativeCosts;
         $this->averageOrderValue = $averageOrderValue;
         $this->netAverageOrderValue = $netAverageOrderValue;
+        $this->averageRevenuePerUser = $averageRevenuePerUser;
+        $this->costPerUser = $costPerUser;
+        $this->activeUserByEvent = $activeUserByEvent;
         $this->oneTimeProducts = $oneTimeProducts;
         $this->oneTimeProductsRevenue = $oneTimeProductsRevenue;
         $this->oneTimeProductsNetRevenue = $oneTimeProductsNetRevenue;
@@ -326,5 +412,9 @@ class MetricsTotals
         $this->canceledSubscriptionsTooExpensive = $canceledSubscriptionsTooExpensive;
         $this->canceledSubscriptionsUnused = $canceledSubscriptionsUnused;
         $this->canceledSubscriptionsOther = $canceledSubscriptionsOther;
+        $this->churnRate = $churnRate;
+        $this->grossMargin = $grossMargin;
+        $this->grossMarginPercentage = $grossMarginPercentage;
+        $this->cashflow = $cashflow;
     }
 }

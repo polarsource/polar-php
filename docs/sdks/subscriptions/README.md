@@ -6,6 +6,7 @@
 ### Available Operations
 
 * [list](#list) - List Subscriptions
+* [create](#create) - Create Subscription
 * [export](#export) - Export Subscriptions
 * [get](#get) - Get Subscription
 * [update](#update) - Update Subscription
@@ -59,6 +60,65 @@ foreach ($responses as $response) {
 ### Response
 
 **[?Operations\SubscriptionsListResponse](../../Models/Operations/SubscriptionsListResponse.md)**
+
+### Errors
+
+| Error Type                 | Status Code                | Content Type               |
+| -------------------------- | -------------------------- | -------------------------- |
+| Errors\HTTPValidationError | 422                        | application/json           |
+| Errors\APIException        | 4XX, 5XX                   | \*/\*                      |
+
+## create
+
+Create a subscription programmatically.
+
+This endpoint only allows to create subscription on free products.
+For paid products, use the checkout flow.
+
+No initial order will be created and no confirmation email will be sent.
+
+**Scopes**: `subscriptions:write`
+
+### Example Usage
+
+<!-- UsageSnippet language="php" operationID="subscriptions:create" method="post" path="/v1/subscriptions/" -->
+```php
+declare(strict_types=1);
+
+require 'vendor/autoload.php';
+
+use Polar;
+use Polar\Models\Components;
+
+$sdk = Polar\Polar::builder()
+    ->setSecurity(
+        '<YOUR_BEARER_TOKEN_HERE>'
+    )
+    ->build();
+
+$request = new Components\SubscriptionCreateCustomer(
+    productId: 'd8dd2de1-21b7-4a41-8bc3-ce909c0cfe23',
+    customerId: '992fae2a-2a17-4b7a-8d9e-e287cf90131b',
+);
+
+$response = $sdk->subscriptions->create(
+    request: $request
+);
+
+if ($response->subscription !== null) {
+    // handle response
+}
+```
+
+### Parameters
+
+| Parameter                                                                                                                                               | Type                                                                                                                                                    | Required                                                                                                                                                | Description                                                                                                                                             |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `$request`                                                                                                                                              | [Components\SubscriptionCreateCustomer\|Components\SubscriptionCreateExternalCustomer](../../Models/Operations/SubscriptionsCreateSubscriptionCreate.md) | :heavy_check_mark:                                                                                                                                      | The request object to use for the request.                                                                                                              |
+
+### Response
+
+**[?Operations\SubscriptionsCreateResponse](../../Models/Operations/SubscriptionsCreateResponse.md)**
 
 ### Errors
 
@@ -208,10 +268,10 @@ if ($response->subscription !== null) {
 
 ### Parameters
 
-| Parameter                                                                                                                                                                                                                  | Type                                                                                                                                                                                                                       | Required                                                                                                                                                                                                                   | Description                                                                                                                                                                                                                |
-| -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `id`                                                                                                                                                                                                                       | *string*                                                                                                                                                                                                                   | :heavy_check_mark:                                                                                                                                                                                                         | The subscription ID.                                                                                                                                                                                                       |
-| `subscriptionUpdate`                                                                                                                                                                                                       | [Components\SubscriptionUpdateProduct\|Components\SubscriptionUpdateDiscount\|Components\SubscriptionUpdateTrial\|Components\SubscriptionCancel\|Components\SubscriptionRevoke](../../Models/Components/SubscriptionUpdate.md) | :heavy_check_mark:                                                                                                                                                                                                         | N/A                                                                                                                                                                                                                        |
+| Parameter                                                                                                                                                                                                                                                     | Type                                                                                                                                                                                                                                                          | Required                                                                                                                                                                                                                                                      | Description                                                                                                                                                                                                                                                   |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `id`                                                                                                                                                                                                                                                          | *string*                                                                                                                                                                                                                                                      | :heavy_check_mark:                                                                                                                                                                                                                                            | The subscription ID.                                                                                                                                                                                                                                          |
+| `subscriptionUpdate`                                                                                                                                                                                                                                          | [Components\SubscriptionUpdateProduct\|Components\SubscriptionUpdateDiscount\|Components\SubscriptionUpdateTrial\|Components\SubscriptionUpdateSeats\|Components\SubscriptionCancel\|Components\SubscriptionRevoke](../../Models/Components/SubscriptionUpdate.md) | :heavy_check_mark:                                                                                                                                                                                                                                            | N/A                                                                                                                                                                                                                                                           |
 
 ### Response
 

@@ -34,15 +34,24 @@ class OrganizationSubscriptionSettings
     public SubscriptionProrationBehavior $prorationBehavior;
 
     /**
+     *
+     * @var int $benefitRevocationGracePeriod
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('benefit_revocation_grace_period')]
+    public int $benefitRevocationGracePeriod;
+
+    /**
      * @param  bool  $allowMultipleSubscriptions
      * @param  bool  $allowCustomerUpdates
      * @param  SubscriptionProrationBehavior  $prorationBehavior
+     * @param  int  $benefitRevocationGracePeriod
      * @phpstan-pure
      */
-    public function __construct(bool $allowMultipleSubscriptions, bool $allowCustomerUpdates, SubscriptionProrationBehavior $prorationBehavior)
+    public function __construct(bool $allowMultipleSubscriptions, bool $allowCustomerUpdates, SubscriptionProrationBehavior $prorationBehavior, int $benefitRevocationGracePeriod)
     {
         $this->allowMultipleSubscriptions = $allowMultipleSubscriptions;
         $this->allowCustomerUpdates = $allowCustomerUpdates;
         $this->prorationBehavior = $prorationBehavior;
+        $this->benefitRevocationGracePeriod = $benefitRevocationGracePeriod;
     }
 }

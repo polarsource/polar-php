@@ -1,0 +1,12 @@
+# CustomerUpdatedMetadata
+
+
+## Fields
+
+| Field                                                                                | Type                                                                                 | Required                                                                             | Description                                                                          |
+| ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------ |
+| `customerId`                                                                         | *string*                                                                             | :heavy_check_mark:                                                                   | N/A                                                                                  |
+| `customerEmail`                                                                      | *string*                                                                             | :heavy_check_mark:                                                                   | N/A                                                                                  |
+| `customerName`                                                                       | *string*                                                                             | :heavy_check_mark:                                                                   | N/A                                                                                  |
+| `customerExternalId`                                                                 | *string*                                                                             | :heavy_check_mark:                                                                   | N/A                                                                                  |
+| `updatedFields`                                                                      | [Components\CustomerUpdatedFields](../../Models/Components/CustomerUpdatedFields.md) | :heavy_check_mark:                                                                   | N/A                                                                                  |

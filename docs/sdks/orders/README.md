@@ -6,6 +6,7 @@
 ### Available Operations
 
 * [list](#list) - List Orders
+* [export](#export) - Export Subscriptions
 * [get](#get) - Get Order
 * [update](#update) - Update Order
 * [generateInvoice](#generateinvoice) - Generate Order Invoice
@@ -59,6 +60,57 @@ foreach ($responses as $response) {
 ### Response
 
 **[?Operations\OrdersListResponse](../../Models/Operations/OrdersListResponse.md)**
+
+### Errors
+
+| Error Type                 | Status Code                | Content Type               |
+| -------------------------- | -------------------------- | -------------------------- |
+| Errors\HTTPValidationError | 422                        | application/json           |
+| Errors\APIException        | 4XX, 5XX                   | \*/\*                      |
+
+## export
+
+Export orders as a CSV file.
+
+**Scopes**: `orders:read`
+
+### Example Usage
+
+<!-- UsageSnippet language="php" operationID="orders:export" method="get" path="/v1/orders/export" -->
+```php
+declare(strict_types=1);
+
+require 'vendor/autoload.php';
+
+use Polar;
+
+$sdk = Polar\Polar::builder()
+    ->setSecurity(
+        '<YOUR_BEARER_TOKEN_HERE>'
+    )
+    ->build();
+
+
+
+$response = $sdk->orders->export(
+    organizationId: null
+);
+
+if ($response->any !== null) {
+    // handle response
+}
+```
+
+### Parameters
+
+| Parameter                                                                                  | Type                                                                                       | Required                                                                                   | Description                                                                                |
+| ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------ |
+| `organizationId`                                                                           | [string\|array\|null](../../Models/Operations/OrdersExportQueryParamOrganizationIDFilter.md) | :heavy_minus_sign:                                                                         | Filter by organization ID.                                                                 |
+| `productId`                                                                                | [string\|array\|null](../../Models/Operations/OrdersExportQueryParamProductIDFilter.md)    | :heavy_minus_sign:                                                                         | Filter by product ID.                                                                      |
+
+### Response
+
+**[?Operations\OrdersExportResponse](../../Models/Operations/OrdersExportResponse.md)**
 
 ### Errors
 
@@ -225,7 +277,6 @@ if ($response->any !== null) {
 
 | Error Type                          | Status Code                         | Content Type                        |
 | ----------------------------------- | ----------------------------------- | ----------------------------------- |
-| Errors\InvoiceAlreadyExists         | 409                                 | application/json                    |
 | Errors\MissingInvoiceBillingDetails | 422                                 | application/json                    |
 | Errors\NotPaidOrder                 | 422                                 | application/json                    |
 | Errors\APIException                 | 4XX, 5XX                            | \*/\*                               |

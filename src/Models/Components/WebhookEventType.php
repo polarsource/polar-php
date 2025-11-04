@@ -17,6 +17,9 @@ enum WebhookEventType: string
     case CustomerUpdated = 'customer.updated';
     case CustomerDeleted = 'customer.deleted';
     case CustomerStateChanged = 'customer.state_changed';
+    case CustomerSeatAssigned = 'customer_seat.assigned';
+    case CustomerSeatClaimed = 'customer_seat.claimed';
+    case CustomerSeatRevoked = 'customer_seat.revoked';
     case OrderCreated = 'order.created';
     case OrderUpdated = 'order.updated';
     case OrderPaid = 'order.paid';

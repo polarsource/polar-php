@@ -86,6 +86,15 @@ class BenefitUpdatedEvent
     public string $name;
 
     /**
+     * Number of direct child events linked to this event.
+     *
+     * @var ?int $childCount
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('child_count')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
+    public ?int $childCount = null;
+
+    /**
      * @param  string  $id
      * @param  \DateTime  $timestamp
      * @param  string  $organizationId
@@ -95,9 +104,10 @@ class BenefitUpdatedEvent
      * @param  ?string  $customerId
      * @param  ?Customer  $customer
      * @param  ?string  $externalCustomerId
+     * @param  ?int  $childCount
      * @phpstan-pure
      */
-    public function __construct(string $id, \DateTime $timestamp, string $organizationId, BenefitGrantMetadata $metadata, ?string $customerId = null, ?Customer $customer = null, ?string $externalCustomerId = null, string $source = 'system', string $name = 'benefit.updated')
+    public function __construct(string $id, \DateTime $timestamp, string $organizationId, BenefitGrantMetadata $metadata, ?string $customerId = null, ?Customer $customer = null, ?string $externalCustomerId = null, string $source = 'system', string $name = 'benefit.updated', ?int $childCount = 0)
     {
         $this->id = $id;
         $this->timestamp = $timestamp;
@@ -108,5 +118,6 @@ class BenefitUpdatedEvent
         $this->externalCustomerId = $externalCustomerId;
         $this->source = $source;
         $this->name = $name;
+        $this->childCount = $childCount;
     }
 }

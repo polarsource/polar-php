@@ -13,14 +13,6 @@ use Polar\Utils\SpeakeasyMetadata;
 class CustomerPortalOrdersListRequest
 {
     /**
-     * Filter by organization ID.
-     *
-     * @var string|array<string>|null $organizationId
-     */
-    #[SpeakeasyMetadata('queryParam:style=form,explode=true,name=organization_id')]
-    public string|array|null $organizationId = null;
-
-    /**
      * Filter by product ID.
      *
      * @var string|array<string>|null $productId
@@ -79,7 +71,6 @@ class CustomerPortalOrdersListRequest
     /**
      * @param  ?int  $page
      * @param  ?int  $limit
-     * @param  string|array<string>|null  $organizationId
      * @param  string|array<string>|null  $productId
      * @param  Components\ProductBillingType|array<Components\ProductBillingType>|null  $productBillingType
      * @param  string|array<string>|null  $subscriptionId
@@ -87,9 +78,8 @@ class CustomerPortalOrdersListRequest
      * @param  ?array<Components\CustomerOrderSortProperty>  $sorting
      * @phpstan-pure
      */
-    public function __construct(string|array|null $organizationId = null, string|array|null $productId = null, Components\ProductBillingType|array|null $productBillingType = null, string|array|null $subscriptionId = null, ?string $query = null, ?array $sorting = null, ?int $page = 1, ?int $limit = 10)
+    public function __construct(string|array|null $productId = null, Components\ProductBillingType|array|null $productBillingType = null, string|array|null $subscriptionId = null, ?string $query = null, ?array $sorting = null, ?int $page = 1, ?int $limit = 10)
     {
-        $this->organizationId = $organizationId;
         $this->productId = $productId;
         $this->productBillingType = $productBillingType;
         $this->subscriptionId = $subscriptionId;

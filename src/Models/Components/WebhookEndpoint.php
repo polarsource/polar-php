@@ -70,6 +70,14 @@ class WebhookEndpoint
     public array $events;
 
     /**
+     * Whether the webhook endpoint is enabled and will receive events.
+     *
+     * @var bool $enabled
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('enabled')]
+    public bool $enabled;
+
+    /**
      * Last modification timestamp of the object.
      *
      * @var ?\DateTime $modifiedAt
@@ -85,10 +93,11 @@ class WebhookEndpoint
      * @param  string  $secret
      * @param  string  $organizationId
      * @param  array<WebhookEventType>  $events
+     * @param  bool  $enabled
      * @param  ?\DateTime  $modifiedAt
      * @phpstan-pure
      */
-    public function __construct(\DateTime $createdAt, string $id, string $url, WebhookFormat $format, string $secret, string $organizationId, array $events, ?\DateTime $modifiedAt = null)
+    public function __construct(\DateTime $createdAt, string $id, string $url, WebhookFormat $format, string $secret, string $organizationId, array $events, bool $enabled, ?\DateTime $modifiedAt = null)
     {
         $this->createdAt = $createdAt;
         $this->id = $id;
@@ -97,6 +106,7 @@ class WebhookEndpoint
         $this->secret = $secret;
         $this->organizationId = $organizationId;
         $this->events = $events;
+        $this->enabled = $enabled;
         $this->modifiedAt = $modifiedAt;
     }
 }

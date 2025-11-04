@@ -230,7 +230,6 @@ class PolarBenefitGrants
                         request: new Operations\CustomerPortalBenefitGrantsListRequest(
                             typeFilter: $request != null ? $request->typeFilter : null,
                             benefitId: $request != null ? $request->benefitId : null,
-                            organizationId: $request != null ? $request->organizationId : null,
                             checkoutId: $request != null ? $request->checkoutId : null,
                             orderId: $request != null ? $request->orderId : null,
                             subscriptionId: $request != null ? $request->subscriptionId : null,

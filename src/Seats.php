@@ -204,14 +204,16 @@ class Seats
      * **Scopes**: `customer_portal:read` `customer_portal:write`
      *
      * @param  Operations\CustomerPortalSeatsListSeatsSecurity  $security
-     * @param  string  $subscriptionId
+     * @param  ?string  $subscriptionId
+     * @param  ?string  $orderId
      * @return Operations\CustomerPortalSeatsListSeatsResponse
      * @throws \Polar\Models\Errors\APIException
      */
-    public function listSeats(Operations\CustomerPortalSeatsListSeatsSecurity $security, string $subscriptionId, ?Options $options = null): Operations\CustomerPortalSeatsListSeatsResponse
+    public function listSeats(Operations\CustomerPortalSeatsListSeatsSecurity $security, ?string $subscriptionId = null, ?string $orderId = null, ?Options $options = null): Operations\CustomerPortalSeatsListSeatsResponse
     {
         $request = new Operations\CustomerPortalSeatsListSeatsRequest(
             subscriptionId: $subscriptionId,
+            orderId: $orderId,
         );
         $baseUrl = $this->sdkConfiguration->getTemplatedServerUrl();
         $url = Utils\Utils::generateUrl($baseUrl, '/v1/customer-portal/seats');
