@@ -22,17 +22,17 @@ class CustomerPortalSubscriptionsUpdateRequest
 
     /**
      *
-     * @var Components\CustomerSubscriptionUpdateProduct|Components\CustomerSubscriptionCancel $customerSubscriptionUpdate
+     * @var Components\CustomerSubscriptionUpdateProduct|Components\CustomerSubscriptionUpdateSeats|Components\CustomerSubscriptionCancel $customerSubscriptionUpdate
      */
     #[SpeakeasyMetadata('request:mediaType=application/json')]
-    public Components\CustomerSubscriptionUpdateProduct|Components\CustomerSubscriptionCancel $customerSubscriptionUpdate;
+    public Components\CustomerSubscriptionUpdateProduct|Components\CustomerSubscriptionUpdateSeats|Components\CustomerSubscriptionCancel $customerSubscriptionUpdate;
 
     /**
      * @param  string  $id
-     * @param  Components\CustomerSubscriptionUpdateProduct|Components\CustomerSubscriptionCancel  $customerSubscriptionUpdate
+     * @param  Components\CustomerSubscriptionUpdateProduct|Components\CustomerSubscriptionUpdateSeats|Components\CustomerSubscriptionCancel  $customerSubscriptionUpdate
      * @phpstan-pure
      */
-    public function __construct(string $id, Components\CustomerSubscriptionUpdateProduct|Components\CustomerSubscriptionCancel $customerSubscriptionUpdate)
+    public function __construct(string $id, Components\CustomerSubscriptionUpdateProduct|Components\CustomerSubscriptionUpdateSeats|Components\CustomerSubscriptionCancel $customerSubscriptionUpdate)
     {
         $this->id = $id;
         $this->customerSubscriptionUpdate = $customerSubscriptionUpdate;

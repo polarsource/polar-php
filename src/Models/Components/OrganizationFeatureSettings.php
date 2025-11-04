@@ -30,13 +30,35 @@ class OrganizationFeatureSettings
     public ?bool $seatBasedPricingEnabled = null;
 
     /**
+     * If this organization has RevOps enabled
+     *
+     * @var ?bool $revopsEnabled
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('revops_enabled')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
+    public ?bool $revopsEnabled = null;
+
+    /**
+     * If this organization has Wallets enabled
+     *
+     * @var ?bool $walletsEnabled
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('wallets_enabled')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
+    public ?bool $walletsEnabled = null;
+
+    /**
      * @param  ?bool  $issueFundingEnabled
      * @param  ?bool  $seatBasedPricingEnabled
+     * @param  ?bool  $revopsEnabled
+     * @param  ?bool  $walletsEnabled
      * @phpstan-pure
      */
-    public function __construct(?bool $issueFundingEnabled = false, ?bool $seatBasedPricingEnabled = false)
+    public function __construct(?bool $issueFundingEnabled = false, ?bool $seatBasedPricingEnabled = false, ?bool $revopsEnabled = false, ?bool $walletsEnabled = false)
     {
         $this->issueFundingEnabled = $issueFundingEnabled;
         $this->seatBasedPricingEnabled = $seatBasedPricingEnabled;
+        $this->revopsEnabled = $revopsEnabled;
+        $this->walletsEnabled = $walletsEnabled;
     }
 }

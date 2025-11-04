@@ -155,26 +155,11 @@ class CustomerOrder
 
     /**
      *
-     * @var string $productId
-     */
-    #[\Speakeasy\Serializer\Annotation\SerializedName('product_id')]
-    public string $productId;
-
-    /**
-     *
      * @var string $userId
      * @deprecated  field: This will be removed in a future release, please migrate away from it as soon as possible.
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('user_id')]
     public string $userId;
-
-    /**
-     *
-     * @var CustomerOrderProduct $product
-     */
-    #[\Speakeasy\Serializer\Annotation\SerializedName('product')]
-    #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\CustomerOrderProduct')]
-    public CustomerOrderProduct $product;
 
     /**
      * Line items composing the order.
@@ -184,6 +169,14 @@ class CustomerOrder
     #[\Speakeasy\Serializer\Annotation\SerializedName('items')]
     #[\Speakeasy\Serializer\Annotation\Type('array<\Polar\Models\Components\OrderItemSchema>')]
     public array $items;
+
+    /**
+     * A summary description of the order.
+     *
+     * @var string $description
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('description')]
+    public string $description;
 
     /**
      * Last modification timestamp of the object.
@@ -211,6 +204,13 @@ class CustomerOrder
 
     /**
      *
+     * @var ?string $productId
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('product_id')]
+    public ?string $productId;
+
+    /**
+     *
      * @var ?string $discountId
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('discount_id')]
@@ -232,11 +232,28 @@ class CustomerOrder
 
     /**
      *
+     * @var ?CustomerOrderProduct $product
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('product')]
+    #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\CustomerOrderProduct|null')]
+    public ?CustomerOrderProduct $product;
+
+    /**
+     *
      * @var ?CustomerOrderSubscription $subscription
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('subscription')]
     #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\CustomerOrderSubscription|null')]
     public ?CustomerOrderSubscription $subscription;
+
+    /**
+     * Number of seats purchased (for seat-based one-time orders).
+     *
+     * @var ?int $seats
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('seats')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
+    public ?int $seats = null;
 
     /**
      * When the next payment retry is scheduled
@@ -266,21 +283,23 @@ class CustomerOrder
      * @param  string  $invoiceNumber
      * @param  bool  $isInvoiceGenerated
      * @param  string  $customerId
-     * @param  string  $productId
      * @param  string  $userId
-     * @param  CustomerOrderProduct  $product
      * @param  array<OrderItemSchema>  $items
+     * @param  string  $description
      * @param  ?\DateTime  $modifiedAt
      * @param  ?string  $billingName
      * @param  ?Address  $billingAddress
+     * @param  ?string  $productId
      * @param  ?string  $discountId
      * @param  ?string  $subscriptionId
      * @param  ?string  $checkoutId
+     * @param  ?CustomerOrderProduct  $product
      * @param  ?CustomerOrderSubscription  $subscription
+     * @param  ?int  $seats
      * @param  ?\DateTime  $nextPaymentAttemptAt
      * @phpstan-pure
      */
-    public function __construct(string $id, \DateTime $createdAt, OrderStatus $status, bool $paid, int $subtotalAmount, int $discountAmount, int $netAmount, int $taxAmount, int $totalAmount, int $appliedBalanceAmount, int $dueAmount, int $refundedAmount, int $refundedTaxAmount, string $currency, OrderBillingReason $billingReason, string $invoiceNumber, bool $isInvoiceGenerated, string $customerId, string $productId, string $userId, CustomerOrderProduct $product, array $items, ?\DateTime $modifiedAt = null, ?string $billingName = null, ?Address $billingAddress = null, ?string $discountId = null, ?string $subscriptionId = null, ?string $checkoutId = null, ?CustomerOrderSubscription $subscription = null, ?\DateTime $nextPaymentAttemptAt = null)
+    public function __construct(string $id, \DateTime $createdAt, OrderStatus $status, bool $paid, int $subtotalAmount, int $discountAmount, int $netAmount, int $taxAmount, int $totalAmount, int $appliedBalanceAmount, int $dueAmount, int $refundedAmount, int $refundedTaxAmount, string $currency, OrderBillingReason $billingReason, string $invoiceNumber, bool $isInvoiceGenerated, string $customerId, string $userId, array $items, string $description, ?\DateTime $modifiedAt = null, ?string $billingName = null, ?Address $billingAddress = null, ?string $productId = null, ?string $discountId = null, ?string $subscriptionId = null, ?string $checkoutId = null, ?CustomerOrderProduct $product = null, ?CustomerOrderSubscription $subscription = null, ?int $seats = null, ?\DateTime $nextPaymentAttemptAt = null)
     {
         $this->id = $id;
         $this->createdAt = $createdAt;
@@ -300,17 +319,19 @@ class CustomerOrder
         $this->invoiceNumber = $invoiceNumber;
         $this->isInvoiceGenerated = $isInvoiceGenerated;
         $this->customerId = $customerId;
-        $this->productId = $productId;
         $this->userId = $userId;
-        $this->product = $product;
         $this->items = $items;
+        $this->description = $description;
         $this->modifiedAt = $modifiedAt;
         $this->billingName = $billingName;
         $this->billingAddress = $billingAddress;
+        $this->productId = $productId;
         $this->discountId = $discountId;
         $this->subscriptionId = $subscriptionId;
         $this->checkoutId = $checkoutId;
+        $this->product = $product;
         $this->subscription = $subscription;
+        $this->seats = $seats;
         $this->nextPaymentAttemptAt = $nextPaymentAttemptAt;
     }
 }

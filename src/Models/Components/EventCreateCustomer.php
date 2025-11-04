@@ -39,10 +39,10 @@ class EventCreateCustomer
     /**
      * $metadata
      *
-     * @var ?array<string, string|int|float|bool> $metadata
+     * @var ?array<string, string|int|float|bool|CostMetadataInput|LLMMetadata> $metadata
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('metadata')]
-    #[\Speakeasy\Serializer\Annotation\Type('array<string, string|int|float|bool>|null')]
+    #[\Speakeasy\Serializer\Annotation\Type('array<string, string|int|float|bool|\Polar\Models\Components\CostMetadataInput|\Polar\Models\Components\LLMMetadata>|null')]
     #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
     public ?array $metadata = null;
 
@@ -56,19 +56,41 @@ class EventCreateCustomer
     public ?string $organizationId = null;
 
     /**
+     * Your unique identifier for this event. Useful for deduplication and parent-child relationships.
+     *
+     * @var ?string $externalId
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('external_id')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
+    public ?string $externalId = null;
+
+    /**
+     * The ID of the parent event. Can be either a Polar event ID (UUID) or an external event ID.
+     *
+     * @var ?string $parentId
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('parent_id')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
+    public ?string $parentId = null;
+
+    /**
      * @param  string  $name
      * @param  string  $customerId
      * @param  ?\DateTime  $timestamp
-     * @param  ?array<string, string|int|float|bool>  $metadata
+     * @param  ?array<string, string|int|float|bool|CostMetadataInput|LLMMetadata>  $metadata
      * @param  ?string  $organizationId
+     * @param  ?string  $externalId
+     * @param  ?string  $parentId
      * @phpstan-pure
      */
-    public function __construct(string $name, string $customerId, ?\DateTime $timestamp = null, ?array $metadata = null, ?string $organizationId = null)
+    public function __construct(string $name, string $customerId, ?\DateTime $timestamp = null, ?array $metadata = null, ?string $organizationId = null, ?string $externalId = null, ?string $parentId = null)
     {
         $this->name = $name;
         $this->customerId = $customerId;
         $this->timestamp = $timestamp;
         $this->metadata = $metadata;
         $this->organizationId = $organizationId;
+        $this->externalId = $externalId;
+        $this->parentId = $parentId;
     }
 }

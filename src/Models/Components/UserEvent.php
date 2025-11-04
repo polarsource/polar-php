@@ -47,10 +47,10 @@ class UserEvent
     /**
      * $metadata
      *
-     * @var array<string, string|int|float|bool> $metadata
+     * @var array<string, string|int|float|bool|CostMetadataOutput|LLMMetadata> $metadata
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('metadata')]
-    #[\Speakeasy\Serializer\Annotation\Type('array<string, string|int|float|bool>')]
+    #[\Speakeasy\Serializer\Annotation\Type('array<string, string|int|float|bool|\Polar\Models\Components\CostMetadataOutput|\Polar\Models\Components\LLMMetadata>')]
     public array $metadata;
 
     /**
@@ -87,18 +87,28 @@ class UserEvent
     public string $source;
 
     /**
+     * Number of direct child events linked to this event.
+     *
+     * @var ?int $childCount
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('child_count')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
+    public ?int $childCount = null;
+
+    /**
      * @param  string  $id
      * @param  \DateTime  $timestamp
      * @param  string  $organizationId
      * @param  string  $name
      * @param  string  $source
-     * @param  array<string, string|int|float|bool>  $metadata
+     * @param  array<string, string|int|float|bool|CostMetadataOutput|LLMMetadata>  $metadata
      * @param  ?string  $customerId
      * @param  ?Customer  $customer
      * @param  ?string  $externalCustomerId
+     * @param  ?int  $childCount
      * @phpstan-pure
      */
-    public function __construct(string $id, \DateTime $timestamp, string $organizationId, string $name, array $metadata, ?string $customerId = null, ?Customer $customer = null, ?string $externalCustomerId = null, string $source = 'user')
+    public function __construct(string $id, \DateTime $timestamp, string $organizationId, string $name, array $metadata, ?string $customerId = null, ?Customer $customer = null, ?string $externalCustomerId = null, string $source = 'user', ?int $childCount = 0)
     {
         $this->id = $id;
         $this->timestamp = $timestamp;
@@ -109,5 +119,6 @@ class UserEvent
         $this->customer = $customer;
         $this->externalCustomerId = $externalCustomerId;
         $this->source = $source;
+        $this->childCount = $childCount;
     }
 }

@@ -11,6 +11,9 @@
 | `CustomerUpdated`        | customer.updated         |
 | `CustomerDeleted`        | customer.deleted         |
 | `CustomerStateChanged`   | customer.state_changed   |
+| `CustomerSeatAssigned`   | customer_seat.assigned   |
+| `CustomerSeatClaimed`    | customer_seat.claimed    |
+| `CustomerSeatRevoked`    | customer_seat.revoked    |
 | `OrderCreated`           | order.created            |
 | `OrderUpdated`           | order.updated            |
 | `OrderPaid`              | order.paid               |

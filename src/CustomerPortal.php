@@ -33,6 +33,8 @@ class CustomerPortal
 
     public PolarSubscriptions $subscriptions;
 
+    public PolarWallets $wallets;
+
     /**
      * @param  SDKConfiguration  $sdkConfig
      */
@@ -49,6 +51,7 @@ class CustomerPortal
         $this->orders = new PolarOrders($this->sdkConfiguration);
         $this->organizations = new PolarOrganizations($this->sdkConfiguration);
         $this->subscriptions = new PolarSubscriptions($this->sdkConfiguration);
+        $this->wallets = new PolarWallets($this->sdkConfiguration);
     }
     /**
      * @param  string  $baseUrl

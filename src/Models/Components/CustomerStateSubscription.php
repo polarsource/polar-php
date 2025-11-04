@@ -39,11 +39,11 @@ class CustomerStateSubscription
 
     /**
      *
-     * @var CustomerStateSubscriptionStatus $status
+     * @var Status $status
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('status')]
-    #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\CustomerStateSubscriptionStatus')]
-    public CustomerStateSubscriptionStatus $status;
+    #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\Status')]
+    public Status $status;
 
     /**
      * The amount of the subscription.
@@ -180,7 +180,7 @@ class CustomerStateSubscription
      * @param  string  $id
      * @param  \DateTime  $createdAt
      * @param  array<string, string|int|float|bool>  $metadata
-     * @param  CustomerStateSubscriptionStatus  $status
+     * @param  Status  $status
      * @param  int  $amount
      * @param  string  $currency
      * @param  SubscriptionRecurringInterval  $recurringInterval
@@ -199,7 +199,7 @@ class CustomerStateSubscription
      * @param  ?string  $discountId
      * @phpstan-pure
      */
-    public function __construct(string $id, \DateTime $createdAt, array $metadata, CustomerStateSubscriptionStatus $status, int $amount, string $currency, SubscriptionRecurringInterval $recurringInterval, \DateTime $currentPeriodStart, bool $cancelAtPeriodEnd, string $productId, array $meters, ?\DateTime $modifiedAt = null, ?array $customFieldData = null, ?\DateTime $currentPeriodEnd = null, ?\DateTime $trialStart = null, ?\DateTime $trialEnd = null, ?\DateTime $canceledAt = null, ?\DateTime $startedAt = null, ?\DateTime $endsAt = null, ?string $discountId = null)
+    public function __construct(string $id, \DateTime $createdAt, array $metadata, Status $status, int $amount, string $currency, SubscriptionRecurringInterval $recurringInterval, \DateTime $currentPeriodStart, bool $cancelAtPeriodEnd, string $productId, array $meters, ?\DateTime $modifiedAt = null, ?array $customFieldData = null, ?\DateTime $currentPeriodEnd = null, ?\DateTime $trialStart = null, ?\DateTime $trialEnd = null, ?\DateTime $canceledAt = null, ?\DateTime $startedAt = null, ?\DateTime $endsAt = null, ?string $discountId = null)
     {
         $this->id = $id;
         $this->createdAt = $createdAt;

@@ -29,14 +29,6 @@ class CustomerPortalBenefitGrantsListRequest
     public string|array|null $benefitId = null;
 
     /**
-     * Filter by organization ID.
-     *
-     * @var string|array<string>|null $organizationId
-     */
-    #[SpeakeasyMetadata('queryParam:style=form,explode=true,name=organization_id')]
-    public string|array|null $organizationId = null;
-
-    /**
      * Filter by checkout ID.
      *
      * @var string|array<string>|null $checkoutId
@@ -89,18 +81,16 @@ class CustomerPortalBenefitGrantsListRequest
      * @param  ?int  $limit
      * @param  Components\BenefitType|array<Components\BenefitType>|null  $typeFilter
      * @param  string|array<string>|null  $benefitId
-     * @param  string|array<string>|null  $organizationId
      * @param  string|array<string>|null  $checkoutId
      * @param  string|array<string>|null  $orderId
      * @param  string|array<string>|null  $subscriptionId
      * @param  ?array<Components\CustomerBenefitGrantSortProperty>  $sorting
      * @phpstan-pure
      */
-    public function __construct(Components\BenefitType|array|null $typeFilter = null, string|array|null $benefitId = null, string|array|null $organizationId = null, string|array|null $checkoutId = null, string|array|null $orderId = null, string|array|null $subscriptionId = null, ?array $sorting = null, ?int $page = 1, ?int $limit = 10)
+    public function __construct(Components\BenefitType|array|null $typeFilter = null, string|array|null $benefitId = null, string|array|null $checkoutId = null, string|array|null $orderId = null, string|array|null $subscriptionId = null, ?array $sorting = null, ?int $page = 1, ?int $limit = 10)
     {
         $this->typeFilter = $typeFilter;
         $this->benefitId = $benefitId;
-        $this->organizationId = $organizationId;
         $this->checkoutId = $checkoutId;
         $this->orderId = $orderId;
         $this->subscriptionId = $subscriptionId;

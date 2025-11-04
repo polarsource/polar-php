@@ -59,6 +59,24 @@ class Metrics
     /**
      * Information about a metric.
      *
+     * @var Metric $costs
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('costs')]
+    #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\Metric')]
+    public Metric $costs;
+
+    /**
+     * Information about a metric.
+     *
+     * @var Metric $cumulativeCosts
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('cumulative_costs')]
+    #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\Metric')]
+    public Metric $cumulativeCosts;
+
+    /**
+     * Information about a metric.
+     *
      * @var Metric $averageOrderValue
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('average_order_value')]
@@ -73,6 +91,33 @@ class Metrics
     #[\Speakeasy\Serializer\Annotation\SerializedName('net_average_order_value')]
     #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\Metric')]
     public Metric $netAverageOrderValue;
+
+    /**
+     * Information about a metric.
+     *
+     * @var Metric $averageRevenuePerUser
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('average_revenue_per_user')]
+    #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\Metric')]
+    public Metric $averageRevenuePerUser;
+
+    /**
+     * Information about a metric.
+     *
+     * @var Metric $costPerUser
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('cost_per_user')]
+    #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\Metric')]
+    public Metric $costPerUser;
+
+    /**
+     * Information about a metric.
+     *
+     * @var Metric $activeUserByEvent
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('active_user_by_event')]
+    #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\Metric')]
+    public Metric $activeUserByEvent;
 
     /**
      * Information about a metric.
@@ -291,13 +336,54 @@ class Metrics
     public Metric $canceledSubscriptionsOther;
 
     /**
+     * Information about a metric.
+     *
+     * @var Metric $churnRate
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('churn_rate')]
+    #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\Metric')]
+    public Metric $churnRate;
+
+    /**
+     * Information about a metric.
+     *
+     * @var Metric $grossMargin
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('gross_margin')]
+    #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\Metric')]
+    public Metric $grossMargin;
+
+    /**
+     * Information about a metric.
+     *
+     * @var Metric $grossMarginPercentage
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('gross_margin_percentage')]
+    #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\Metric')]
+    public Metric $grossMarginPercentage;
+
+    /**
+     * Information about a metric.
+     *
+     * @var Metric $cashflow
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('cashflow')]
+    #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\Metric')]
+    public Metric $cashflow;
+
+    /**
      * @param  Metric  $orders
      * @param  Metric  $revenue
      * @param  Metric  $netRevenue
      * @param  Metric  $cumulativeRevenue
      * @param  Metric  $netCumulativeRevenue
+     * @param  Metric  $costs
+     * @param  Metric  $cumulativeCosts
      * @param  Metric  $averageOrderValue
      * @param  Metric  $netAverageOrderValue
+     * @param  Metric  $averageRevenuePerUser
+     * @param  Metric  $costPerUser
+     * @param  Metric  $activeUserByEvent
      * @param  Metric  $oneTimeProducts
      * @param  Metric  $oneTimeProductsRevenue
      * @param  Metric  $oneTimeProductsNetRevenue
@@ -322,17 +408,26 @@ class Metrics
      * @param  Metric  $canceledSubscriptionsTooExpensive
      * @param  Metric  $canceledSubscriptionsUnused
      * @param  Metric  $canceledSubscriptionsOther
+     * @param  Metric  $churnRate
+     * @param  Metric  $grossMargin
+     * @param  Metric  $grossMarginPercentage
+     * @param  Metric  $cashflow
      * @phpstan-pure
      */
-    public function __construct(Metric $orders, Metric $revenue, Metric $netRevenue, Metric $cumulativeRevenue, Metric $netCumulativeRevenue, Metric $averageOrderValue, Metric $netAverageOrderValue, Metric $oneTimeProducts, Metric $oneTimeProductsRevenue, Metric $oneTimeProductsNetRevenue, Metric $newSubscriptions, Metric $newSubscriptionsRevenue, Metric $newSubscriptionsNetRevenue, Metric $renewedSubscriptions, Metric $renewedSubscriptionsRevenue, Metric $renewedSubscriptionsNetRevenue, Metric $activeSubscriptions, Metric $monthlyRecurringRevenue, Metric $committedMonthlyRecurringRevenue, Metric $checkouts, Metric $succeededCheckouts, Metric $checkoutsConversion, Metric $canceledSubscriptions, Metric $canceledSubscriptionsCustomerService, Metric $canceledSubscriptionsLowQuality, Metric $canceledSubscriptionsMissingFeatures, Metric $canceledSubscriptionsSwitchedService, Metric $canceledSubscriptionsTooComplex, Metric $canceledSubscriptionsTooExpensive, Metric $canceledSubscriptionsUnused, Metric $canceledSubscriptionsOther)
+    public function __construct(Metric $orders, Metric $revenue, Metric $netRevenue, Metric $cumulativeRevenue, Metric $netCumulativeRevenue, Metric $costs, Metric $cumulativeCosts, Metric $averageOrderValue, Metric $netAverageOrderValue, Metric $averageRevenuePerUser, Metric $costPerUser, Metric $activeUserByEvent, Metric $oneTimeProducts, Metric $oneTimeProductsRevenue, Metric $oneTimeProductsNetRevenue, Metric $newSubscriptions, Metric $newSubscriptionsRevenue, Metric $newSubscriptionsNetRevenue, Metric $renewedSubscriptions, Metric $renewedSubscriptionsRevenue, Metric $renewedSubscriptionsNetRevenue, Metric $activeSubscriptions, Metric $monthlyRecurringRevenue, Metric $committedMonthlyRecurringRevenue, Metric $checkouts, Metric $succeededCheckouts, Metric $checkoutsConversion, Metric $canceledSubscriptions, Metric $canceledSubscriptionsCustomerService, Metric $canceledSubscriptionsLowQuality, Metric $canceledSubscriptionsMissingFeatures, Metric $canceledSubscriptionsSwitchedService, Metric $canceledSubscriptionsTooComplex, Metric $canceledSubscriptionsTooExpensive, Metric $canceledSubscriptionsUnused, Metric $canceledSubscriptionsOther, Metric $churnRate, Metric $grossMargin, Metric $grossMarginPercentage, Metric $cashflow)
     {
         $this->orders = $orders;
         $this->revenue = $revenue;
         $this->netRevenue = $netRevenue;
         $this->cumulativeRevenue = $cumulativeRevenue;
         $this->netCumulativeRevenue = $netCumulativeRevenue;
+        $this->costs = $costs;
+        $this->cumulativeCosts = $cumulativeCosts;
         $this->averageOrderValue = $averageOrderValue;
         $this->netAverageOrderValue = $netAverageOrderValue;
+        $this->averageRevenuePerUser = $averageRevenuePerUser;
+        $this->costPerUser = $costPerUser;
+        $this->activeUserByEvent = $activeUserByEvent;
         $this->oneTimeProducts = $oneTimeProducts;
         $this->oneTimeProductsRevenue = $oneTimeProductsRevenue;
         $this->oneTimeProductsNetRevenue = $oneTimeProductsNetRevenue;
@@ -357,5 +452,9 @@ class Metrics
         $this->canceledSubscriptionsTooExpensive = $canceledSubscriptionsTooExpensive;
         $this->canceledSubscriptionsUnused = $canceledSubscriptionsUnused;
         $this->canceledSubscriptionsOther = $canceledSubscriptionsOther;
+        $this->churnRate = $churnRate;
+        $this->grossMargin = $grossMargin;
+        $this->grossMarginPercentage = $grossMarginPercentage;
+        $this->cashflow = $cashflow;
     }
 }

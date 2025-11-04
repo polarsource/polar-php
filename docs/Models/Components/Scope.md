@@ -39,8 +39,12 @@
 | `SubscriptionsWrite`          | subscriptions:write           |
 | `CustomersRead`               | customers:read                |
 | `CustomersWrite`              | customers:write               |
+| `WalletsRead`                 | wallets:read                  |
+| `WalletsWrite`                | wallets:write                 |
 | `CustomerMetersRead`          | customer_meters:read          |
 | `CustomerSessionsWrite`       | customer_sessions:write       |
+| `CustomerSeatsRead`           | customer_seats:read           |
+| `CustomerSeatsWrite`          | customer_seats:write          |
 | `OrdersRead`                  | orders:read                   |
 | `OrdersWrite`                 | orders:write                  |
 | `RefundsRead`                 | refunds:read                  |

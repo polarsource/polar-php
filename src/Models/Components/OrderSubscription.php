@@ -61,6 +61,14 @@ class OrderSubscription
     public SubscriptionRecurringInterval $recurringInterval;
 
     /**
+     * Number of interval units of the subscription. If this is set to 1 the charge will happen every interval (e.g. every month), if set to 2 it will be every other month, and so on.
+     *
+     * @var int $recurringIntervalCount
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('recurring_interval_count')]
+    public int $recurringIntervalCount;
+
+    /**
      *
      * @var SubscriptionStatus $status
      */
@@ -195,12 +203,22 @@ class OrderSubscription
     public ?string $customerCancellationComment;
 
     /**
+     * The number of seats for seat-based subscriptions. None for non-seat subscriptions.
+     *
+     * @var ?int $seats
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('seats')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
+    public ?int $seats = null;
+
+    /**
      * @param  array<string, string|int|float|bool>  $metadata
      * @param  \DateTime  $createdAt
      * @param  string  $id
      * @param  int  $amount
      * @param  string  $currency
      * @param  SubscriptionRecurringInterval  $recurringInterval
+     * @param  int  $recurringIntervalCount
      * @param  SubscriptionStatus  $status
      * @param  \DateTime  $currentPeriodStart
      * @param  bool  $cancelAtPeriodEnd
@@ -218,9 +236,10 @@ class OrderSubscription
      * @param  ?string  $checkoutId
      * @param  ?CustomerCancellationReason  $customerCancellationReason
      * @param  ?string  $customerCancellationComment
+     * @param  ?int  $seats
      * @phpstan-pure
      */
-    public function __construct(array $metadata, \DateTime $createdAt, string $id, int $amount, string $currency, SubscriptionRecurringInterval $recurringInterval, SubscriptionStatus $status, \DateTime $currentPeriodStart, bool $cancelAtPeriodEnd, string $customerId, string $productId, ?\DateTime $modifiedAt = null, ?\DateTime $currentPeriodEnd = null, ?\DateTime $trialStart = null, ?\DateTime $trialEnd = null, ?\DateTime $canceledAt = null, ?\DateTime $startedAt = null, ?\DateTime $endsAt = null, ?\DateTime $endedAt = null, ?string $discountId = null, ?string $checkoutId = null, ?CustomerCancellationReason $customerCancellationReason = null, ?string $customerCancellationComment = null)
+    public function __construct(array $metadata, \DateTime $createdAt, string $id, int $amount, string $currency, SubscriptionRecurringInterval $recurringInterval, int $recurringIntervalCount, SubscriptionStatus $status, \DateTime $currentPeriodStart, bool $cancelAtPeriodEnd, string $customerId, string $productId, ?\DateTime $modifiedAt = null, ?\DateTime $currentPeriodEnd = null, ?\DateTime $trialStart = null, ?\DateTime $trialEnd = null, ?\DateTime $canceledAt = null, ?\DateTime $startedAt = null, ?\DateTime $endsAt = null, ?\DateTime $endedAt = null, ?string $discountId = null, ?string $checkoutId = null, ?CustomerCancellationReason $customerCancellationReason = null, ?string $customerCancellationComment = null, ?int $seats = null)
     {
         $this->metadata = $metadata;
         $this->createdAt = $createdAt;
@@ -228,6 +247,7 @@ class OrderSubscription
         $this->amount = $amount;
         $this->currency = $currency;
         $this->recurringInterval = $recurringInterval;
+        $this->recurringIntervalCount = $recurringIntervalCount;
         $this->status = $status;
         $this->currentPeriodStart = $currentPeriodStart;
         $this->cancelAtPeriodEnd = $cancelAtPeriodEnd;
@@ -245,5 +265,6 @@ class OrderSubscription
         $this->checkoutId = $checkoutId;
         $this->customerCancellationReason = $customerCancellationReason;
         $this->customerCancellationComment = $customerCancellationComment;
+        $this->seats = $seats;
     }
 }

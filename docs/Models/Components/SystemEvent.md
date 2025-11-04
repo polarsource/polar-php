@@ -39,6 +39,33 @@ Components\BenefitRevokedEvent $value = /* values here */
 Components\BenefitUpdatedEvent $value = /* values here */
 ```
 
+### `Components\CustomerCreatedEvent`
+
+```php
+/**
+* @var Components\CustomerCreatedEvent
+*/
+Components\CustomerCreatedEvent $value = /* values here */
+```
+
+### `Components\CustomerDeletedEvent`
+
+```php
+/**
+* @var Components\CustomerDeletedEvent
+*/
+Components\CustomerDeletedEvent $value = /* values here */
+```
+
+### `Components\CustomerUpdatedEvent`
+
+```php
+/**
+* @var Components\CustomerUpdatedEvent
+*/
+Components\CustomerUpdatedEvent $value = /* values here */
+```
+
 ### `Components\MeterCreditEvent`
 
 ```php
@@ -55,6 +82,24 @@ Components\MeterCreditEvent $value = /* values here */
 * @var Components\MeterResetEvent
 */
 Components\MeterResetEvent $value = /* values here */
+```
+
+### `Components\OrderPaidEvent`
+
+```php
+/**
+* @var Components\OrderPaidEvent
+*/
+Components\OrderPaidEvent $value = /* values here */
+```
+
+### `Components\OrderRefundedEvent`
+
+```php
+/**
+* @var Components\OrderRefundedEvent
+*/
+Components\OrderRefundedEvent $value = /* values here */
 ```
 
 ### `Components\SubscriptionCycledEvent`

@@ -98,6 +98,16 @@ class ProductCreateOneTime
     public mixed $recurringInterval = null;
 
     /**
+     * One-time products don't have a recurring interval count.
+     *
+     * @var mixed $recurringIntervalCount
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('recurring_interval_count')]
+    #[\Speakeasy\Serializer\Annotation\Type('mixed')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
+    public mixed $recurringIntervalCount = null;
+
+    /**
      * @param  string  $name
      * @param  array<ProductPriceFixedCreate|ProductPriceCustomCreate|ProductPriceFreeCreate|ProductPriceSeatBasedCreate|ProductPriceMeteredUnitCreate>  $prices
      * @param  ?array<string, string|int|float|bool>  $metadata
@@ -106,9 +116,10 @@ class ProductCreateOneTime
      * @param  ?array<string>  $medias
      * @param  ?string  $organizationId
      * @param  mixed  $recurringInterval
+     * @param  mixed  $recurringIntervalCount
      * @phpstan-pure
      */
-    public function __construct(string $name, array $prices, ?array $metadata = null, ?array $attachedCustomFields = null, ?string $description = null, ?array $medias = null, ?string $organizationId = null, mixed $recurringInterval = null)
+    public function __construct(string $name, array $prices, ?array $metadata = null, ?array $attachedCustomFields = null, ?string $description = null, ?array $medias = null, ?string $organizationId = null, mixed $recurringInterval = null, mixed $recurringIntervalCount = null)
     {
         $this->name = $name;
         $this->prices = $prices;
@@ -118,5 +129,6 @@ class ProductCreateOneTime
         $this->medias = $medias;
         $this->organizationId = $organizationId;
         $this->recurringInterval = $recurringInterval;
+        $this->recurringIntervalCount = $recurringIntervalCount;
     }
 }

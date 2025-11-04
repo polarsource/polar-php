@@ -85,6 +85,22 @@ class EventsListRequest
     public Components\EventSource|array|null $source = null;
 
     /**
+     * Query to filter events.
+     *
+     * @var ?string $query
+     */
+    #[SpeakeasyMetadata('queryParam:style=form,explode=true,name=query')]
+    public ?string $query = null;
+
+    /**
+     * Filter events by parent event ID. When not specified, returns root events only.
+     *
+     * @var ?string $parentId
+     */
+    #[SpeakeasyMetadata('queryParam:style=form,explode=true,name=parent_id')]
+    public ?string $parentId = null;
+
+    /**
      * Sorting criterion. Several criteria can be used simultaneously and will be applied in order. Add a minus sign `-` before the criteria name to sort by descending order.
      *
      * @var ?array<Components\EventSortProperty> $sorting
@@ -128,11 +144,13 @@ class EventsListRequest
      * @param  ?string  $meterId
      * @param  string|array<string>|null  $name
      * @param  Components\EventSource|array<Components\EventSource>|null  $source
+     * @param  ?string  $query
+     * @param  ?string  $parentId
      * @param  ?array<Components\EventSortProperty>  $sorting
      * @param  ?array<string, string|int|bool|array<string>|array<int>|array<bool>>  $metadata
      * @phpstan-pure
      */
-    public function __construct(?string $filter = null, ?\DateTime $startTimestamp = null, ?\DateTime $endTimestamp = null, string|array|null $organizationId = null, string|array|null $customerId = null, string|array|null $externalCustomerId = null, ?string $meterId = null, string|array|null $name = null, Components\EventSource|array|null $source = null, ?array $sorting = null, ?array $metadata = null, ?int $page = 1, ?int $limit = 10)
+    public function __construct(?string $filter = null, ?\DateTime $startTimestamp = null, ?\DateTime $endTimestamp = null, string|array|null $organizationId = null, string|array|null $customerId = null, string|array|null $externalCustomerId = null, ?string $meterId = null, string|array|null $name = null, Components\EventSource|array|null $source = null, ?string $query = null, ?string $parentId = null, ?array $sorting = null, ?array $metadata = null, ?int $page = 1, ?int $limit = 10)
     {
         $this->filter = $filter;
         $this->startTimestamp = $startTimestamp;
@@ -143,6 +161,8 @@ class EventsListRequest
         $this->meterId = $meterId;
         $this->name = $name;
         $this->source = $source;
+        $this->query = $query;
+        $this->parentId = $parentId;
         $this->sorting = $sorting;
         $this->metadata = $metadata;
         $this->page = $page;

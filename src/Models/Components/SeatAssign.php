@@ -12,7 +12,7 @@ namespace Polar\Models\Components;
 class SeatAssign
 {
     /**
-     * Subscription ID. Required if checkout_id is not provided.
+     * Subscription ID. Required if checkout_id and order_id are not provided.
      *
      * @var ?string $subscriptionId
      */
@@ -21,13 +21,22 @@ class SeatAssign
     public ?string $subscriptionId = null;
 
     /**
-     * Checkout ID. Used to look up subscription. Required if subscription_id is not provided.
+     * Checkout ID. Used to look up subscription or order from the checkout page.
      *
      * @var ?string $checkoutId
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('checkout_id')]
     #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
     public ?string $checkoutId = null;
+
+    /**
+     * Order ID for one-time purchases. Required if subscription_id and checkout_id are not provided.
+     *
+     * @var ?string $orderId
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('order_id')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
+    public ?string $orderId = null;
 
     /**
      * Email of the customer to assign the seat to
@@ -67,21 +76,34 @@ class SeatAssign
     public ?array $metadata = null;
 
     /**
+     * If true, the seat will be immediately claimed without sending an invitation email. API-only feature.
+     *
+     * @var ?bool $immediateClaim
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('immediate_claim')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
+    public ?bool $immediateClaim = null;
+
+    /**
+     * @param  ?bool  $immediateClaim
      * @param  ?string  $subscriptionId
      * @param  ?string  $checkoutId
+     * @param  ?string  $orderId
      * @param  ?string  $email
      * @param  ?string  $externalCustomerId
      * @param  ?string  $customerId
      * @param  ?array<string, mixed>  $metadata
      * @phpstan-pure
      */
-    public function __construct(?string $subscriptionId = null, ?string $checkoutId = null, ?string $email = null, ?string $externalCustomerId = null, ?string $customerId = null, ?array $metadata = null)
+    public function __construct(?string $subscriptionId = null, ?string $checkoutId = null, ?string $orderId = null, ?string $email = null, ?string $externalCustomerId = null, ?string $customerId = null, ?array $metadata = null, ?bool $immediateClaim = false)
     {
         $this->subscriptionId = $subscriptionId;
         $this->checkoutId = $checkoutId;
+        $this->orderId = $orderId;
         $this->email = $email;
         $this->externalCustomerId = $externalCustomerId;
         $this->customerId = $customerId;
         $this->metadata = $metadata;
+        $this->immediateClaim = $immediateClaim;
     }
 }

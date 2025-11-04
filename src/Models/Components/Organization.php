@@ -54,11 +54,11 @@ class Organization
 
     /**
      *
-     * @var Status $status
+     * @var OrganizationStatus $status
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('status')]
-    #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\Status')]
-    public Status $status;
+    #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\OrganizationStatus')]
+    public OrganizationStatus $status;
 
     /**
      *
@@ -139,7 +139,7 @@ class Organization
      * @param  string  $name
      * @param  string  $slug
      * @param  array<OrganizationSocialLink>  $socials
-     * @param  Status  $status
+     * @param  OrganizationStatus  $status
      * @param  OrganizationSubscriptionSettings  $subscriptionSettings
      * @param  OrganizationNotificationSettings  $notificationSettings
      * @param  OrganizationCustomerEmailSettings  $customerEmailSettings
@@ -151,7 +151,7 @@ class Organization
      * @param  ?OrganizationFeatureSettings  $featureSettings
      * @phpstan-pure
      */
-    public function __construct(\DateTime $createdAt, string $id, string $name, string $slug, array $socials, Status $status, OrganizationSubscriptionSettings $subscriptionSettings, OrganizationNotificationSettings $notificationSettings, OrganizationCustomerEmailSettings $customerEmailSettings, ?\DateTime $modifiedAt = null, ?string $avatarUrl = null, ?string $email = null, ?string $website = null, ?\DateTime $detailsSubmittedAt = null, ?OrganizationFeatureSettings $featureSettings = null)
+    public function __construct(\DateTime $createdAt, string $id, string $name, string $slug, array $socials, OrganizationStatus $status, OrganizationSubscriptionSettings $subscriptionSettings, OrganizationNotificationSettings $notificationSettings, OrganizationCustomerEmailSettings $customerEmailSettings, ?\DateTime $modifiedAt = null, ?string $avatarUrl = null, ?string $email = null, ?string $website = null, ?\DateTime $detailsSubmittedAt = null, ?OrganizationFeatureSettings $featureSettings = null)
     {
         $this->createdAt = $createdAt;
         $this->id = $id;

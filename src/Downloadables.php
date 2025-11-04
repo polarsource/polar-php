@@ -50,17 +50,15 @@ class Downloadables
      * **Scopes**: `customer_portal:read` `customer_portal:write`
      *
      * @param  Operations\CustomerPortalDownloadablesListSecurity  $security
-     * @param  string|array<string>|null  $organizationId
      * @param  string|array<string>|null  $benefitId
      * @param  ?int  $page
      * @param  ?int  $limit
      * @return Operations\CustomerPortalDownloadablesListResponse
      * @throws \Polar\Models\Errors\APIException
      */
-    private function listIndividual(Operations\CustomerPortalDownloadablesListSecurity $security, string|array|null $organizationId = null, string|array|null $benefitId = null, ?int $page = null, ?int $limit = null, ?Options $options = null): Operations\CustomerPortalDownloadablesListResponse
+    private function listIndividual(Operations\CustomerPortalDownloadablesListSecurity $security, string|array|null $benefitId = null, ?int $page = null, ?int $limit = null, ?Options $options = null): Operations\CustomerPortalDownloadablesListResponse
     {
         $request = new Operations\CustomerPortalDownloadablesListRequest(
-            organizationId: $organizationId,
             benefitId: $benefitId,
             page: $page,
             limit: $limit,
@@ -112,7 +110,7 @@ class Downloadables
                     listResourceDownloadableRead: $obj);
                 $sdk = $this;
 
-                $response->next = function () use ($sdk, $request, $responseData, $security, $organizationId, $benefitId, $limit): ?Operations\CustomerPortalDownloadablesListResponse {
+                $response->next = function () use ($sdk, $request, $responseData, $security, $benefitId, $limit): ?Operations\CustomerPortalDownloadablesListResponse {
                     $page = $request != null ? $request->page : 0;
                     $nextPage = $page + 1;
                     $jsonObject = new \JsonPath\JsonObject($responseData);
@@ -139,7 +137,6 @@ class Downloadables
 
                     return $sdk->listIndividual(
                         security: $security,
-                        organizationId: $organizationId,
                         benefitId: $benefitId,
                         page: $nextPage,
                         limit: $limit,
@@ -176,16 +173,15 @@ class Downloadables
      * **Scopes**: `customer_portal:read` `customer_portal:write`
      *
      * @param  Operations\CustomerPortalDownloadablesListSecurity  $security
-     * @param  string|array<string>|null  $organizationId
      * @param  string|array<string>|null  $benefitId
      * @param  ?int  $page
      * @param  ?int  $limit
      * @return \Generator<Operations\CustomerPortalDownloadablesListResponse>
      * @throws \Polar\Models\Errors\APIException
      */
-    public function list(Operations\CustomerPortalDownloadablesListSecurity $security, string|array|null $organizationId = null, string|array|null $benefitId = null, ?int $page = null, ?int $limit = null, ?Options $options = null): \Generator
+    public function list(Operations\CustomerPortalDownloadablesListSecurity $security, string|array|null $benefitId = null, ?int $page = null, ?int $limit = null, ?Options $options = null): \Generator
     {
-        $res = $this->listIndividual($security, $organizationId, $benefitId, $page, $limit, $options);
+        $res = $this->listIndividual($security, $benefitId, $page, $limit, $options);
         while ($res !== null) {
             yield $res;
             $res = $res->next($res);
