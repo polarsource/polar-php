@@ -384,6 +384,7 @@ class Subscriptions
                             externalCustomerId: $request != null ? $request->externalCustomerId : null,
                             discountId: $request != null ? $request->discountId : null,
                             active: $request != null ? $request->active : null,
+                            cancelAtPeriodEnd: $request != null ? $request->cancelAtPeriodEnd : null,
                             page: $nextPage,
                             limit: $request != null ? $request->limit : null,
                             sorting: $request != null ? $request->sorting : null,
@@ -553,12 +554,12 @@ class Subscriptions
      *
      * **Scopes**: `subscriptions:write`
      *
-     * @param  Components\SubscriptionUpdateProduct|Components\SubscriptionUpdateDiscount|Components\SubscriptionUpdateTrial|Components\SubscriptionUpdateSeats|Components\SubscriptionCancel|Components\SubscriptionRevoke  $subscriptionUpdate
+     * @param  Components\SubscriptionUpdateProduct|Components\SubscriptionUpdateDiscount|Components\SubscriptionUpdateTrial|Components\SubscriptionUpdateSeats|Components\SubscriptionUpdateBillingPeriod|Components\SubscriptionCancel|Components\SubscriptionRevoke  $subscriptionUpdate
      * @param  string  $id
      * @return Operations\SubscriptionsUpdateResponse
      * @throws \Polar\Models\Errors\APIException
      */
-    public function update(Components\SubscriptionUpdateProduct|Components\SubscriptionUpdateDiscount|Components\SubscriptionUpdateTrial|Components\SubscriptionUpdateSeats|Components\SubscriptionCancel|Components\SubscriptionRevoke $subscriptionUpdate, string $id, ?Options $options = null): Operations\SubscriptionsUpdateResponse
+    public function update(Components\SubscriptionUpdateProduct|Components\SubscriptionUpdateDiscount|Components\SubscriptionUpdateTrial|Components\SubscriptionUpdateSeats|Components\SubscriptionUpdateBillingPeriod|Components\SubscriptionCancel|Components\SubscriptionRevoke $subscriptionUpdate, string $id, ?Options $options = null): Operations\SubscriptionsUpdateResponse
     {
         $request = new Operations\SubscriptionsUpdateRequest(
             id: $id,

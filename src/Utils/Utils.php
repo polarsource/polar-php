@@ -71,7 +71,7 @@ class Utils
      *
      * @param  string  $url
      * @param  string  $path
-     * @param  string|null  $type
+     * @param  class-string|null  $type
      * @param  mixed|null  $pathParams
      * @param  array<string,array<string,array<string,string>>>|null  $globals
      * @return string
@@ -137,7 +137,7 @@ class Utils
     /**
      * getQueryParams will return serialized query parameters for the given type.
      *
-     * @param  string  $type
+     * @param  class-string  $type
      * @param  mixed  $queryParams
      * @param  array<string,array<string,array<string,string>>>|null  $globals
      * @return array<string,mixed>
