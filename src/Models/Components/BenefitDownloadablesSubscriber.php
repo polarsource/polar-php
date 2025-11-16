@@ -70,11 +70,11 @@ class BenefitDownloadablesSubscriber
 
     /**
      *
-     * @var Organization $organization
+     * @var BenefitSubscriberOrganization $organization
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('organization')]
-    #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\Organization')]
-    public Organization $organization;
+    #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\BenefitSubscriberOrganization')]
+    public BenefitSubscriberOrganization $organization;
 
     /**
      *
@@ -108,12 +108,12 @@ class BenefitDownloadablesSubscriber
      * @param  bool  $deletable
      * @param  string  $organizationId
      * @param  array<string, string|int|float|bool>  $metadata
-     * @param  Organization  $organization
+     * @param  BenefitSubscriberOrganization  $organization
      * @param  BenefitDownloadablesSubscriberProperties  $properties
      * @param  ?\DateTime  $modifiedAt
      * @phpstan-pure
      */
-    public function __construct(string $id, \DateTime $createdAt, string $description, bool $selectable, bool $deletable, string $organizationId, array $metadata, Organization $organization, BenefitDownloadablesSubscriberProperties $properties, ?\DateTime $modifiedAt = null, string $type = 'downloadables')
+    public function __construct(string $id, \DateTime $createdAt, string $description, bool $selectable, bool $deletable, string $organizationId, array $metadata, BenefitSubscriberOrganization $organization, BenefitDownloadablesSubscriberProperties $properties, ?\DateTime $modifiedAt = null, string $type = 'downloadables')
     {
         $this->id = $id;
         $this->createdAt = $createdAt;

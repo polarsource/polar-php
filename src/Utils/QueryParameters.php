@@ -14,7 +14,7 @@ use ReflectionProperty;
 class QueryParameters
 {
     /**
-     * @param  string  $type
+     * @param  class-string  $type
      * @param  mixed  $queryParams
      * @param  array<string,string>  $urlOverride
      * @param  array<string,array<string,array<string,string>>>|null  $globals

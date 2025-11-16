@@ -247,6 +247,15 @@ class CheckoutCreate
     public ?bool $requireBillingAddress = null;
 
     /**
+     * Whether to enable the trial period for the checkout session. If `false`, the trial period will be disabled, even if the selected product has a trial configured.
+     *
+     * @var ?bool $allowTrial
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('allow_trial')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
+    public ?bool $allowTrial = null;
+
+    /**
      * Whether the customer is a business or an individual. If `true`, the customer will be required to fill their full billing address and billing name.
      *
      * @var ?bool $isBusinessCustomer
@@ -261,6 +270,7 @@ class CheckoutCreate
      * @param  ?array<string, string|int|bool|\DateTime|null>  $customFieldData
      * @param  ?bool  $allowDiscountCodes
      * @param  ?bool  $requireBillingAddress
+     * @param  ?bool  $allowTrial
      * @param  ?bool  $isBusinessCustomer
      * @param  ?array<string, string|int|float|bool>  $customerMetadata
      * @param  ?TrialInterval  $trialInterval
@@ -282,7 +292,7 @@ class CheckoutCreate
      * @param  ?string  $embedOrigin
      * @phpstan-pure
      */
-    public function __construct(array $products, ?array $metadata = null, ?array $customFieldData = null, ?array $customerMetadata = null, ?TrialInterval $trialInterval = null, ?int $trialIntervalCount = null, ?string $discountId = null, ?int $amount = null, ?int $seats = null, ?string $customerId = null, ?string $externalCustomerId = null, ?string $customerName = null, ?string $customerEmail = null, ?string $customerIpAddress = null, ?string $customerBillingName = null, ?AddressInput $customerBillingAddress = null, ?string $customerTaxId = null, ?string $subscriptionId = null, ?string $successUrl = null, ?string $returnUrl = null, ?string $embedOrigin = null, ?bool $allowDiscountCodes = true, ?bool $requireBillingAddress = false, ?bool $isBusinessCustomer = false)
+    public function __construct(array $products, ?array $metadata = null, ?array $customFieldData = null, ?array $customerMetadata = null, ?TrialInterval $trialInterval = null, ?int $trialIntervalCount = null, ?string $discountId = null, ?int $amount = null, ?int $seats = null, ?string $customerId = null, ?string $externalCustomerId = null, ?string $customerName = null, ?string $customerEmail = null, ?string $customerIpAddress = null, ?string $customerBillingName = null, ?AddressInput $customerBillingAddress = null, ?string $customerTaxId = null, ?string $subscriptionId = null, ?string $successUrl = null, ?string $returnUrl = null, ?string $embedOrigin = null, ?bool $allowDiscountCodes = true, ?bool $requireBillingAddress = false, ?bool $allowTrial = true, ?bool $isBusinessCustomer = false)
     {
         $this->products = $products;
         $this->metadata = $metadata;
@@ -307,6 +317,7 @@ class CheckoutCreate
         $this->embedOrigin = $embedOrigin;
         $this->allowDiscountCodes = $allowDiscountCodes;
         $this->requireBillingAddress = $requireBillingAddress;
+        $this->allowTrial = $allowTrial;
         $this->isBusinessCustomer = $isBusinessCustomer;
     }
 }

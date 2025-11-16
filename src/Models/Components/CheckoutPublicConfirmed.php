@@ -214,11 +214,11 @@ class CheckoutPublicConfirmed
 
     /**
      *
-     * @var Organization $organization
+     * @var CheckoutOrganization $organization
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('organization')]
-    #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\Organization')]
-    public Organization $organization;
+    #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\CheckoutOrganization')]
+    public CheckoutOrganization $organization;
 
     /**
      *
@@ -268,6 +268,14 @@ class CheckoutPublicConfirmed
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('tax_amount')]
     public ?int $taxAmount;
+
+    /**
+     * Whether to enable the trial period for the checkout session. If `false`, the trial period will be disabled, even if the selected product has a trial configured.
+     *
+     * @var ?bool $allowTrial
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('allow_trial')]
+    public ?bool $allowTrial;
 
     /**
      * Interval unit of the trial period, if any. This value is either set from the checkout, if `trial_interval` is set, or from the selected product.
@@ -456,13 +464,14 @@ class CheckoutPublicConfirmed
      * @param  array<string, string>  $paymentProcessorMetadata
      * @param  CheckoutBillingAddressFields  $billingAddressFields
      * @param  array<CheckoutProduct>  $products
-     * @param  Organization  $organization
+     * @param  CheckoutOrganization  $organization
      * @param  string  $customerSessionToken
      * @param  ?\DateTime  $modifiedAt
      * @param  ?array<string, string|int|bool|\DateTime|null>  $customFieldData
      * @param  ?string  $returnUrl
      * @param  ?string  $embedOrigin
      * @param  ?int  $taxAmount
+     * @param  ?bool  $allowTrial
      * @param  ?TrialInterval  $activeTrialInterval
      * @param  ?int  $activeTrialIntervalCount
      * @param  ?\DateTime  $trialEnd
@@ -484,7 +493,7 @@ class CheckoutPublicConfirmed
      * @param  ?int  $pricePerSeat
      * @phpstan-pure
      */
-    public function __construct(string $id, \DateTime $createdAt, PaymentProcessor $paymentProcessor, string $clientSecret, string $url, \DateTime $expiresAt, string $successUrl, int $amount, int $discountAmount, int $netAmount, int $totalAmount, string $currency, string $organizationId, bool $allowDiscountCodes, bool $requireBillingAddress, bool $isDiscountApplicable, bool $isFreeProductPrice, bool $isPaymentRequired, bool $isPaymentSetupRequired, bool $isPaymentFormRequired, bool $isBusinessCustomer, array $paymentProcessorMetadata, CheckoutBillingAddressFields $billingAddressFields, array $products, Organization $organization, string $customerSessionToken, ?\DateTime $modifiedAt = null, ?array $customFieldData = null, ?string $returnUrl = null, ?string $embedOrigin = null, ?int $taxAmount = null, ?TrialInterval $activeTrialInterval = null, ?int $activeTrialIntervalCount = null, ?\DateTime $trialEnd = null, ?string $productId = null, ?string $productPriceId = null, ?string $discountId = null, ?string $customerId = null, ?string $customerName = null, ?string $customerEmail = null, ?string $customerIpAddress = null, ?string $customerBillingName = null, ?Address $customerBillingAddress = null, ?string $customerTaxId = null, ?CheckoutProduct $product = null, LegacyRecurringProductPriceFixed|LegacyRecurringProductPriceCustom|LegacyRecurringProductPriceFree|ProductPriceFixed|ProductPriceCustom|ProductPriceFree|ProductPriceSeatBased|ProductPriceMeteredUnit|null $productPrice = null, CheckoutDiscountFixedOnceForeverDuration|CheckoutDiscountFixedRepeatDuration|CheckoutDiscountPercentageOnceForeverDuration|CheckoutDiscountPercentageRepeatDuration|null $discount = null, ?array $attachedCustomFields = null, ?int $seats = null, ?int $pricePerSeat = null, string $status = 'confirmed')
+    public function __construct(string $id, \DateTime $createdAt, PaymentProcessor $paymentProcessor, string $clientSecret, string $url, \DateTime $expiresAt, string $successUrl, int $amount, int $discountAmount, int $netAmount, int $totalAmount, string $currency, string $organizationId, bool $allowDiscountCodes, bool $requireBillingAddress, bool $isDiscountApplicable, bool $isFreeProductPrice, bool $isPaymentRequired, bool $isPaymentSetupRequired, bool $isPaymentFormRequired, bool $isBusinessCustomer, array $paymentProcessorMetadata, CheckoutBillingAddressFields $billingAddressFields, array $products, CheckoutOrganization $organization, string $customerSessionToken, ?\DateTime $modifiedAt = null, ?array $customFieldData = null, ?string $returnUrl = null, ?string $embedOrigin = null, ?int $taxAmount = null, ?bool $allowTrial = null, ?TrialInterval $activeTrialInterval = null, ?int $activeTrialIntervalCount = null, ?\DateTime $trialEnd = null, ?string $productId = null, ?string $productPriceId = null, ?string $discountId = null, ?string $customerId = null, ?string $customerName = null, ?string $customerEmail = null, ?string $customerIpAddress = null, ?string $customerBillingName = null, ?Address $customerBillingAddress = null, ?string $customerTaxId = null, ?CheckoutProduct $product = null, LegacyRecurringProductPriceFixed|LegacyRecurringProductPriceCustom|LegacyRecurringProductPriceFree|ProductPriceFixed|ProductPriceCustom|ProductPriceFree|ProductPriceSeatBased|ProductPriceMeteredUnit|null $productPrice = null, CheckoutDiscountFixedOnceForeverDuration|CheckoutDiscountFixedRepeatDuration|CheckoutDiscountPercentageOnceForeverDuration|CheckoutDiscountPercentageRepeatDuration|null $discount = null, ?array $attachedCustomFields = null, ?int $seats = null, ?int $pricePerSeat = null, string $status = 'confirmed')
     {
         $this->id = $id;
         $this->createdAt = $createdAt;
@@ -517,6 +526,7 @@ class CheckoutPublicConfirmed
         $this->returnUrl = $returnUrl;
         $this->embedOrigin = $embedOrigin;
         $this->taxAmount = $taxAmount;
+        $this->allowTrial = $allowTrial;
         $this->activeTrialInterval = $activeTrialInterval;
         $this->activeTrialIntervalCount = $activeTrialIntervalCount;
         $this->trialEnd = $trialEnd;

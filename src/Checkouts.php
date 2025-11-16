@@ -126,7 +126,7 @@ class Checkouts
 
                 $serializer = Utils\JSON::createSerializer();
                 $responseData = (string) $httpResponse->getBody();
-                $obj = $serializer->deserialize($responseData, '\Polar\Models\Errors\AlreadyActiveSubscriptionError|\Polar\Models\Errors\NotOpenCheckout|\Polar\Models\Errors\PaymentNotReady', 'json', DeserializationContext::create()->setRequireAllRequiredProperties(true));
+                $obj = $serializer->deserialize($responseData, '\Polar\Models\Errors\AlreadyActiveSubscriptionError|\Polar\Models\Errors\NotOpenCheckout|\Polar\Models\Errors\PaymentNotReady|\Polar\Models\Errors\TrialAlreadyRedeemed', 'json', DeserializationContext::create()->setRequireAllRequiredProperties(true));
                 throw $obj->toException();
             } else {
                 throw new \Polar\Models\Errors\APIException('Unknown content type received', $statusCode, $httpResponse->getBody()->getContents(), $httpResponse);
@@ -338,7 +338,7 @@ class Checkouts
 
                 $serializer = Utils\JSON::createSerializer();
                 $responseData = (string) $httpResponse->getBody();
-                $obj = $serializer->deserialize($responseData, '\Polar\Models\Errors\AlreadyActiveSubscriptionError|\Polar\Models\Errors\NotOpenCheckout|\Polar\Models\Errors\PaymentNotReady', 'json', DeserializationContext::create()->setRequireAllRequiredProperties(true));
+                $obj = $serializer->deserialize($responseData, '\Polar\Models\Errors\AlreadyActiveSubscriptionError|\Polar\Models\Errors\NotOpenCheckout|\Polar\Models\Errors\PaymentNotReady|\Polar\Models\Errors\TrialAlreadyRedeemed', 'json', DeserializationContext::create()->setRequireAllRequiredProperties(true));
                 throw $obj->toException();
             } else {
                 throw new \Polar\Models\Errors\APIException('Unknown content type received', $statusCode, $httpResponse->getBody()->getContents(), $httpResponse);
@@ -759,7 +759,7 @@ class Checkouts
 
                 $serializer = Utils\JSON::createSerializer();
                 $responseData = (string) $httpResponse->getBody();
-                $obj = $serializer->deserialize($responseData, '\Polar\Models\Errors\AlreadyActiveSubscriptionError|\Polar\Models\Errors\NotOpenCheckout|\Polar\Models\Errors\PaymentNotReady', 'json', DeserializationContext::create()->setRequireAllRequiredProperties(true));
+                $obj = $serializer->deserialize($responseData, '\Polar\Models\Errors\AlreadyActiveSubscriptionError|\Polar\Models\Errors\NotOpenCheckout|\Polar\Models\Errors\PaymentNotReady|\Polar\Models\Errors\TrialAlreadyRedeemed', 'json', DeserializationContext::create()->setRequireAllRequiredProperties(true));
                 throw $obj->toException();
             } else {
                 throw new \Polar\Models\Errors\APIException('Unknown content type received', $statusCode, $httpResponse->getBody()->getContents(), $httpResponse);
