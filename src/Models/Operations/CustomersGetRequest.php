@@ -20,11 +20,21 @@ class CustomersGetRequest
     public string $id;
 
     /**
+     * Include members in the response. Only populated when set to true.
+     *
+     * @var ?bool $includeMembers
+     */
+    #[SpeakeasyMetadata('queryParam:style=form,explode=true,name=include_members')]
+    public ?bool $includeMembers = null;
+
+    /**
      * @param  string  $id
+     * @param  ?bool  $includeMembers
      * @phpstan-pure
      */
-    public function __construct(string $id)
+    public function __construct(string $id, ?bool $includeMembers = false)
     {
         $this->id = $id;
+        $this->includeMembers = $includeMembers;
     }
 }

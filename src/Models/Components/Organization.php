@@ -20,7 +20,7 @@ class Organization
     public \DateTime $createdAt;
 
     /**
-     * The organization ID.
+     * The ID of the object.
      *
      * @var string $id
      */
@@ -42,6 +42,22 @@ class Organization
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('slug')]
     public string $slug;
+
+    /**
+     *
+     * @var SubscriptionProrationBehavior $prorationBehavior
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('proration_behavior')]
+    #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\SubscriptionProrationBehavior')]
+    public SubscriptionProrationBehavior $prorationBehavior;
+
+    /**
+     * Whether customers can update their subscriptions from the customer portal.
+     *
+     * @var bool $allowCustomerUpdates
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('allow_customer_updates')]
+    public bool $allowCustomerUpdates;
 
     /**
      * Links to social profiles.
@@ -138,6 +154,8 @@ class Organization
      * @param  string  $id
      * @param  string  $name
      * @param  string  $slug
+     * @param  SubscriptionProrationBehavior  $prorationBehavior
+     * @param  bool  $allowCustomerUpdates
      * @param  array<OrganizationSocialLink>  $socials
      * @param  OrganizationStatus  $status
      * @param  OrganizationSubscriptionSettings  $subscriptionSettings
@@ -151,12 +169,14 @@ class Organization
      * @param  ?OrganizationFeatureSettings  $featureSettings
      * @phpstan-pure
      */
-    public function __construct(\DateTime $createdAt, string $id, string $name, string $slug, array $socials, OrganizationStatus $status, OrganizationSubscriptionSettings $subscriptionSettings, OrganizationNotificationSettings $notificationSettings, OrganizationCustomerEmailSettings $customerEmailSettings, ?\DateTime $modifiedAt = null, ?string $avatarUrl = null, ?string $email = null, ?string $website = null, ?\DateTime $detailsSubmittedAt = null, ?OrganizationFeatureSettings $featureSettings = null)
+    public function __construct(\DateTime $createdAt, string $id, string $name, string $slug, SubscriptionProrationBehavior $prorationBehavior, bool $allowCustomerUpdates, array $socials, OrganizationStatus $status, OrganizationSubscriptionSettings $subscriptionSettings, OrganizationNotificationSettings $notificationSettings, OrganizationCustomerEmailSettings $customerEmailSettings, ?\DateTime $modifiedAt = null, ?string $avatarUrl = null, ?string $email = null, ?string $website = null, ?\DateTime $detailsSubmittedAt = null, ?OrganizationFeatureSettings $featureSettings = null)
     {
         $this->createdAt = $createdAt;
         $this->id = $id;
         $this->name = $name;
         $this->slug = $slug;
+        $this->prorationBehavior = $prorationBehavior;
+        $this->allowCustomerUpdates = $allowCustomerUpdates;
         $this->socials = $socials;
         $this->status = $status;
         $this->subscriptionSettings = $subscriptionSettings;

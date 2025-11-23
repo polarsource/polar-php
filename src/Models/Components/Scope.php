@@ -45,6 +45,8 @@ enum Scope: string
     case SubscriptionsWrite = 'subscriptions:write';
     case CustomersRead = 'customers:read';
     case CustomersWrite = 'customers:write';
+    case MembersRead = 'members:read';
+    case MembersWrite = 'members:write';
     case WalletsRead = 'wallets:read';
     case WalletsWrite = 'wallets:write';
     case CustomerMetersRead = 'customer_meters:read';
