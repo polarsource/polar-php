@@ -64,6 +64,8 @@ class Polar
 
     public Customers $customers;
 
+    public Members $members;
+
     public CustomerPortal $customerPortal;
 
     public CustomerSeats $customerSeats;
@@ -72,13 +74,13 @@ class Polar
 
     public Events $events;
 
+    public EventTypes $eventTypes;
+
     public Meters $meters;
 
     public CustomerMeters $customerMeters;
 
     public Payments $payments;
-
-    public Wallets $wallets;
 
     /**
      * Returns a new instance of the SDK builder used to configure and create the SDK instance.
@@ -113,14 +115,15 @@ class Polar
         $this->customFields = new CustomFields($this->sdkConfiguration);
         $this->discounts = new Discounts($this->sdkConfiguration);
         $this->customers = new Customers($this->sdkConfiguration);
+        $this->members = new Members($this->sdkConfiguration);
         $this->customerPortal = new CustomerPortal($this->sdkConfiguration);
         $this->customerSeats = new CustomerSeats($this->sdkConfiguration);
         $this->customerSessions = new CustomerSessions($this->sdkConfiguration);
         $this->events = new Events($this->sdkConfiguration);
+        $this->eventTypes = new EventTypes($this->sdkConfiguration);
         $this->meters = new Meters($this->sdkConfiguration);
         $this->customerMeters = new CustomerMeters($this->sdkConfiguration);
         $this->payments = new Payments($this->sdkConfiguration);
-        $this->wallets = new Wallets($this->sdkConfiguration);
         $this->initHooks();
 
     }

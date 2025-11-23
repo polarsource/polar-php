@@ -338,6 +338,15 @@ class Metrics
     /**
      * Information about a metric.
      *
+     * @var Metric $churnedSubscriptions
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('churned_subscriptions')]
+    #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\Metric')]
+    public Metric $churnedSubscriptions;
+
+    /**
+     * Information about a metric.
+     *
      * @var Metric $churnRate
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('churn_rate')]
@@ -408,13 +417,14 @@ class Metrics
      * @param  Metric  $canceledSubscriptionsTooExpensive
      * @param  Metric  $canceledSubscriptionsUnused
      * @param  Metric  $canceledSubscriptionsOther
+     * @param  Metric  $churnedSubscriptions
      * @param  Metric  $churnRate
      * @param  Metric  $grossMargin
      * @param  Metric  $grossMarginPercentage
      * @param  Metric  $cashflow
      * @phpstan-pure
      */
-    public function __construct(Metric $orders, Metric $revenue, Metric $netRevenue, Metric $cumulativeRevenue, Metric $netCumulativeRevenue, Metric $costs, Metric $cumulativeCosts, Metric $averageOrderValue, Metric $netAverageOrderValue, Metric $averageRevenuePerUser, Metric $costPerUser, Metric $activeUserByEvent, Metric $oneTimeProducts, Metric $oneTimeProductsRevenue, Metric $oneTimeProductsNetRevenue, Metric $newSubscriptions, Metric $newSubscriptionsRevenue, Metric $newSubscriptionsNetRevenue, Metric $renewedSubscriptions, Metric $renewedSubscriptionsRevenue, Metric $renewedSubscriptionsNetRevenue, Metric $activeSubscriptions, Metric $monthlyRecurringRevenue, Metric $committedMonthlyRecurringRevenue, Metric $checkouts, Metric $succeededCheckouts, Metric $checkoutsConversion, Metric $canceledSubscriptions, Metric $canceledSubscriptionsCustomerService, Metric $canceledSubscriptionsLowQuality, Metric $canceledSubscriptionsMissingFeatures, Metric $canceledSubscriptionsSwitchedService, Metric $canceledSubscriptionsTooComplex, Metric $canceledSubscriptionsTooExpensive, Metric $canceledSubscriptionsUnused, Metric $canceledSubscriptionsOther, Metric $churnRate, Metric $grossMargin, Metric $grossMarginPercentage, Metric $cashflow)
+    public function __construct(Metric $orders, Metric $revenue, Metric $netRevenue, Metric $cumulativeRevenue, Metric $netCumulativeRevenue, Metric $costs, Metric $cumulativeCosts, Metric $averageOrderValue, Metric $netAverageOrderValue, Metric $averageRevenuePerUser, Metric $costPerUser, Metric $activeUserByEvent, Metric $oneTimeProducts, Metric $oneTimeProductsRevenue, Metric $oneTimeProductsNetRevenue, Metric $newSubscriptions, Metric $newSubscriptionsRevenue, Metric $newSubscriptionsNetRevenue, Metric $renewedSubscriptions, Metric $renewedSubscriptionsRevenue, Metric $renewedSubscriptionsNetRevenue, Metric $activeSubscriptions, Metric $monthlyRecurringRevenue, Metric $committedMonthlyRecurringRevenue, Metric $checkouts, Metric $succeededCheckouts, Metric $checkoutsConversion, Metric $canceledSubscriptions, Metric $canceledSubscriptionsCustomerService, Metric $canceledSubscriptionsLowQuality, Metric $canceledSubscriptionsMissingFeatures, Metric $canceledSubscriptionsSwitchedService, Metric $canceledSubscriptionsTooComplex, Metric $canceledSubscriptionsTooExpensive, Metric $canceledSubscriptionsUnused, Metric $canceledSubscriptionsOther, Metric $churnedSubscriptions, Metric $churnRate, Metric $grossMargin, Metric $grossMarginPercentage, Metric $cashflow)
     {
         $this->orders = $orders;
         $this->revenue = $revenue;
@@ -452,6 +462,7 @@ class Metrics
         $this->canceledSubscriptionsTooExpensive = $canceledSubscriptionsTooExpensive;
         $this->canceledSubscriptionsUnused = $canceledSubscriptionsUnused;
         $this->canceledSubscriptionsOther = $canceledSubscriptionsOther;
+        $this->churnedSubscriptions = $churnedSubscriptions;
         $this->churnRate = $churnRate;
         $this->grossMargin = $grossMargin;
         $this->grossMarginPercentage = $grossMarginPercentage;
