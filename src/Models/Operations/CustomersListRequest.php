@@ -53,6 +53,14 @@ class CustomersListRequest
     public ?array $metadata = null;
 
     /**
+     * Include members in the response. Only populated when set to true.
+     *
+     * @var ?bool $includeMembers
+     */
+    #[SpeakeasyMetadata('queryParam:style=form,explode=true,name=include_members')]
+    public ?bool $includeMembers = null;
+
+    /**
      * Page number, defaults to 1.
      *
      * @var ?int $page
@@ -69,6 +77,7 @@ class CustomersListRequest
     public ?int $limit = null;
 
     /**
+     * @param  ?bool  $includeMembers
      * @param  ?int  $page
      * @param  ?int  $limit
      * @param  string|array<string>|null  $organizationId
@@ -78,13 +87,14 @@ class CustomersListRequest
      * @param  ?array<string, string|int|bool|array<string>|array<int>|array<bool>>  $metadata
      * @phpstan-pure
      */
-    public function __construct(string|array|null $organizationId = null, ?string $email = null, ?string $query = null, ?array $sorting = null, ?array $metadata = null, ?int $page = 1, ?int $limit = 10)
+    public function __construct(string|array|null $organizationId = null, ?string $email = null, ?string $query = null, ?array $sorting = null, ?array $metadata = null, ?bool $includeMembers = false, ?int $page = 1, ?int $limit = 10)
     {
         $this->organizationId = $organizationId;
         $this->email = $email;
         $this->query = $query;
         $this->sorting = $sorting;
         $this->metadata = $metadata;
+        $this->includeMembers = $includeMembers;
         $this->page = $page;
         $this->limit = $limit;
     }

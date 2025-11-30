@@ -93,7 +93,7 @@ class EventsListRequest
     public ?string $query = null;
 
     /**
-     * Filter events by parent event ID. When not specified, returns root events only.
+     * Filter events by parent event ID when hierarchical is set to true. When not specified or null, returns root events only.
      *
      * @var ?string $parentId
      */
@@ -117,6 +117,14 @@ class EventsListRequest
     public ?array $metadata = null;
 
     /**
+     * When true, filters by parent_id (root events if not specified). When false, returns all events regardless of hierarchy.
+     *
+     * @var ?bool $hierarchical
+     */
+    #[SpeakeasyMetadata('queryParam:style=form,explode=true,name=hierarchical')]
+    public ?bool $hierarchical = null;
+
+    /**
      * Page number, defaults to 1.
      *
      * @var ?int $page
@@ -133,6 +141,7 @@ class EventsListRequest
     public ?int $limit = null;
 
     /**
+     * @param  ?bool  $hierarchical
      * @param  ?int  $page
      * @param  ?int  $limit
      * @param  ?string  $filter
@@ -150,7 +159,7 @@ class EventsListRequest
      * @param  ?array<string, string|int|bool|array<string>|array<int>|array<bool>>  $metadata
      * @phpstan-pure
      */
-    public function __construct(?string $filter = null, ?\DateTime $startTimestamp = null, ?\DateTime $endTimestamp = null, string|array|null $organizationId = null, string|array|null $customerId = null, string|array|null $externalCustomerId = null, ?string $meterId = null, string|array|null $name = null, Components\EventSource|array|null $source = null, ?string $query = null, ?string $parentId = null, ?array $sorting = null, ?array $metadata = null, ?int $page = 1, ?int $limit = 10)
+    public function __construct(?string $filter = null, ?\DateTime $startTimestamp = null, ?\DateTime $endTimestamp = null, string|array|null $organizationId = null, string|array|null $customerId = null, string|array|null $externalCustomerId = null, ?string $meterId = null, string|array|null $name = null, Components\EventSource|array|null $source = null, ?string $query = null, ?string $parentId = null, ?array $sorting = null, ?array $metadata = null, ?bool $hierarchical = false, ?int $page = 1, ?int $limit = 10)
     {
         $this->filter = $filter;
         $this->startTimestamp = $startTimestamp;
@@ -165,6 +174,7 @@ class EventsListRequest
         $this->parentId = $parentId;
         $this->sorting = $sorting;
         $this->metadata = $metadata;
+        $this->hierarchical = $hierarchical;
         $this->page = $page;
         $this->limit = $limit;
     }

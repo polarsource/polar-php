@@ -86,6 +86,16 @@ class CustomerCreate
     public ?string $organizationId = null;
 
     /**
+     * Optional owner member to create with the customer. If not provided, an owner member will be automatically created using the customer's email and name.
+     *
+     * @var ?OwnerCreate $owner
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('owner')]
+    #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\OwnerCreate|null')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
+    public ?OwnerCreate $owner = null;
+
+    /**
      * @param  string  $email
      * @param  ?array<string, string|int|float|bool>  $metadata
      * @param  ?string  $externalId
@@ -93,9 +103,10 @@ class CustomerCreate
      * @param  ?AddressInput  $billingAddress
      * @param  ?array<string|TaxIDFormat|null>  $taxId
      * @param  ?string  $organizationId
+     * @param  ?OwnerCreate  $owner
      * @phpstan-pure
      */
-    public function __construct(string $email, ?array $metadata = null, ?string $externalId = null, ?string $name = null, ?AddressInput $billingAddress = null, ?array $taxId = null, ?string $organizationId = null)
+    public function __construct(string $email, ?array $metadata = null, ?string $externalId = null, ?string $name = null, ?AddressInput $billingAddress = null, ?array $taxId = null, ?string $organizationId = null, ?OwnerCreate $owner = null)
     {
         $this->email = $email;
         $this->metadata = $metadata;
@@ -104,5 +115,6 @@ class CustomerCreate
         $this->billingAddress = $billingAddress;
         $this->taxId = $taxId;
         $this->organizationId = $organizationId;
+        $this->owner = $owner;
     }
 }

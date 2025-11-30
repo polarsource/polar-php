@@ -48,17 +48,28 @@ class OrganizationFeatureSettings
     public ?bool $walletsEnabled = null;
 
     /**
+     * If this organization has the Member model enabled
+     *
+     * @var ?bool $memberModelEnabled
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('member_model_enabled')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
+    public ?bool $memberModelEnabled = null;
+
+    /**
      * @param  ?bool  $issueFundingEnabled
      * @param  ?bool  $seatBasedPricingEnabled
      * @param  ?bool  $revopsEnabled
      * @param  ?bool  $walletsEnabled
+     * @param  ?bool  $memberModelEnabled
      * @phpstan-pure
      */
-    public function __construct(?bool $issueFundingEnabled = false, ?bool $seatBasedPricingEnabled = false, ?bool $revopsEnabled = false, ?bool $walletsEnabled = false)
+    public function __construct(?bool $issueFundingEnabled = false, ?bool $seatBasedPricingEnabled = false, ?bool $revopsEnabled = false, ?bool $walletsEnabled = false, ?bool $memberModelEnabled = false)
     {
         $this->issueFundingEnabled = $issueFundingEnabled;
         $this->seatBasedPricingEnabled = $seatBasedPricingEnabled;
         $this->revopsEnabled = $revopsEnabled;
         $this->walletsEnabled = $walletsEnabled;
+        $this->memberModelEnabled = $memberModelEnabled;
     }
 }
