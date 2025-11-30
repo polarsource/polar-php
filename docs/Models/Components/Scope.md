@@ -9,6 +9,7 @@
 | `Profile`                     | profile                       |
 | `Email`                       | email                         |
 | `UserRead`                    | user:read                     |
+| `UserWrite`                   | user:write                    |
 | `WebRead`                     | web:read                      |
 | `WebWrite`                    | web:write                     |
 | `OrganizationsRead`           | organizations:read            |
@@ -39,6 +40,8 @@
 | `SubscriptionsWrite`          | subscriptions:write           |
 | `CustomersRead`               | customers:read                |
 | `CustomersWrite`              | customers:write               |
+| `MembersRead`                 | members:read                  |
+| `MembersWrite`                | members:write                 |
 | `WalletsRead`                 | wallets:read                  |
 | `WalletsWrite`                | wallets:write                 |
 | `CustomerMetersRead`          | customer_meters:read          |

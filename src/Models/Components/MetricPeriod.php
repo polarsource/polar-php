@@ -309,11 +309,27 @@ class MetricPeriod
 
     /**
      *
+     * @var int|float $churnedSubscriptions
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('churned_subscriptions')]
+    #[\Speakeasy\Serializer\Annotation\Type('int|float')]
+    public int|float $churnedSubscriptions;
+
+    /**
+     *
      * @var int|float $churnRate
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('churn_rate')]
     #[\Speakeasy\Serializer\Annotation\Type('int|float')]
     public int|float $churnRate;
+
+    /**
+     *
+     * @var int|float $ltv
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('ltv')]
+    #[\Speakeasy\Serializer\Annotation\Type('int|float')]
+    public int|float $ltv;
 
     /**
      *
@@ -377,13 +393,15 @@ class MetricPeriod
      * @param  int|float  $canceledSubscriptionsTooExpensive
      * @param  int|float  $canceledSubscriptionsUnused
      * @param  int|float  $canceledSubscriptionsOther
+     * @param  int|float  $churnedSubscriptions
      * @param  int|float  $churnRate
+     * @param  int|float  $ltv
      * @param  int|float  $grossMargin
      * @param  int|float  $grossMarginPercentage
      * @param  int|float  $cashflow
      * @phpstan-pure
      */
-    public function __construct(\DateTime $timestamp, int|float $orders, int|float $revenue, int|float $netRevenue, int|float $cumulativeRevenue, int|float $netCumulativeRevenue, int|float $costs, int|float $cumulativeCosts, int|float $averageOrderValue, int|float $netAverageOrderValue, int|float $averageRevenuePerUser, int|float $costPerUser, int|float $activeUserByEvent, int|float $oneTimeProducts, int|float $oneTimeProductsRevenue, int|float $oneTimeProductsNetRevenue, int|float $newSubscriptions, int|float $newSubscriptionsRevenue, int|float $newSubscriptionsNetRevenue, int|float $renewedSubscriptions, int|float $renewedSubscriptionsRevenue, int|float $renewedSubscriptionsNetRevenue, int|float $activeSubscriptions, int|float $monthlyRecurringRevenue, int|float $committedMonthlyRecurringRevenue, int|float $checkouts, int|float $succeededCheckouts, int|float $checkoutsConversion, int|float $canceledSubscriptions, int|float $canceledSubscriptionsCustomerService, int|float $canceledSubscriptionsLowQuality, int|float $canceledSubscriptionsMissingFeatures, int|float $canceledSubscriptionsSwitchedService, int|float $canceledSubscriptionsTooComplex, int|float $canceledSubscriptionsTooExpensive, int|float $canceledSubscriptionsUnused, int|float $canceledSubscriptionsOther, int|float $churnRate, int|float $grossMargin, int|float $grossMarginPercentage, int|float $cashflow)
+    public function __construct(\DateTime $timestamp, int|float $orders, int|float $revenue, int|float $netRevenue, int|float $cumulativeRevenue, int|float $netCumulativeRevenue, int|float $costs, int|float $cumulativeCosts, int|float $averageOrderValue, int|float $netAverageOrderValue, int|float $averageRevenuePerUser, int|float $costPerUser, int|float $activeUserByEvent, int|float $oneTimeProducts, int|float $oneTimeProductsRevenue, int|float $oneTimeProductsNetRevenue, int|float $newSubscriptions, int|float $newSubscriptionsRevenue, int|float $newSubscriptionsNetRevenue, int|float $renewedSubscriptions, int|float $renewedSubscriptionsRevenue, int|float $renewedSubscriptionsNetRevenue, int|float $activeSubscriptions, int|float $monthlyRecurringRevenue, int|float $committedMonthlyRecurringRevenue, int|float $checkouts, int|float $succeededCheckouts, int|float $checkoutsConversion, int|float $canceledSubscriptions, int|float $canceledSubscriptionsCustomerService, int|float $canceledSubscriptionsLowQuality, int|float $canceledSubscriptionsMissingFeatures, int|float $canceledSubscriptionsSwitchedService, int|float $canceledSubscriptionsTooComplex, int|float $canceledSubscriptionsTooExpensive, int|float $canceledSubscriptionsUnused, int|float $canceledSubscriptionsOther, int|float $churnedSubscriptions, int|float $churnRate, int|float $ltv, int|float $grossMargin, int|float $grossMarginPercentage, int|float $cashflow)
     {
         $this->timestamp = $timestamp;
         $this->orders = $orders;
@@ -422,7 +440,9 @@ class MetricPeriod
         $this->canceledSubscriptionsTooExpensive = $canceledSubscriptionsTooExpensive;
         $this->canceledSubscriptionsUnused = $canceledSubscriptionsUnused;
         $this->canceledSubscriptionsOther = $canceledSubscriptionsOther;
+        $this->churnedSubscriptions = $churnedSubscriptions;
         $this->churnRate = $churnRate;
+        $this->ltv = $ltv;
         $this->grossMargin = $grossMargin;
         $this->grossMarginPercentage = $grossMarginPercentage;
         $this->cashflow = $cashflow;

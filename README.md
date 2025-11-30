@@ -265,10 +265,10 @@ foreach ($responses as $response) {
 * [update](docs/sdks/polarsubscriptions/README.md#update) - Update Subscription
 * [cancel](docs/sdks/polarsubscriptions/README.md#cancel) - Cancel Subscription
 
-#### [customerPortal->wallets](docs/sdks/polarwallets/README.md)
+#### [customerPortal->wallets](docs/sdks/wallets/README.md)
 
-* [list](docs/sdks/polarwallets/README.md#list) - List Wallets
-* [get](docs/sdks/polarwallets/README.md#get) - Get Wallet
+* [list](docs/sdks/wallets/README.md#list) - List Wallets
+* [get](docs/sdks/wallets/README.md#get) - Get Wallet
 
 ### [customers](docs/sdks/customers/README.md)
 
@@ -283,7 +283,6 @@ foreach ($responses as $response) {
 * [deleteExternal](docs/sdks/customers/README.md#deleteexternal) - Delete Customer by External ID
 * [getState](docs/sdks/customers/README.md#getstate) - Get Customer State
 * [getStateExternal](docs/sdks/customers/README.md#getstateexternal) - Get Customer State by External ID
-* [getBalance](docs/sdks/customers/README.md#getbalance) - Get Customer Balance
 
 ### [customerSeats](docs/sdks/customerseats/README.md)
 
@@ -321,6 +320,11 @@ foreach ($responses as $response) {
 * [get](docs/sdks/events/README.md#get) - Get Event
 * [ingest](docs/sdks/events/README.md#ingest) - Ingest Events
 
+### [eventTypes](docs/sdks/eventtypes/README.md)
+
+* [list](docs/sdks/eventtypes/README.md#list) - List Event Types
+* [update](docs/sdks/eventtypes/README.md#update) - Update Event Type
+
 ### [files](docs/sdks/files/README.md)
 
 * [list](docs/sdks/files/README.md#list) - List Files
@@ -338,6 +342,10 @@ foreach ($responses as $response) {
 * [validate](docs/sdks/licensekeys/README.md#validate) - Validate License Key
 * [activate](docs/sdks/licensekeys/README.md#activate) - Activate License Key
 * [deactivate](docs/sdks/licensekeys/README.md#deactivate) - Deactivate License Key
+
+### [members](docs/sdks/members/README.md)
+
+* [listMembers](docs/sdks/members/README.md#listmembers) - List Members
 
 ### [meters](docs/sdks/meters/README.md)
 
@@ -409,12 +417,6 @@ foreach ($responses as $response) {
 * [get](docs/sdks/subscriptions/README.md#get) - Get Subscription
 * [update](docs/sdks/subscriptions/README.md#update) - Update Subscription
 * [revoke](docs/sdks/subscriptions/README.md#revoke) - Revoke Subscription
-
-### [wallets](docs/sdks/wallets/README.md)
-
-* [list](docs/sdks/wallets/README.md#list) - List Wallets
-* [get](docs/sdks/wallets/README.md#get) - Get Wallet
-* [topUp](docs/sdks/wallets/README.md#topup) - Top-Up Wallet
 
 ### [webhooks](docs/sdks/webhooks/README.md)
 

@@ -16,7 +16,6 @@
 * [deleteExternal](#deleteexternal) - Delete Customer by External ID
 * [getState](#getstate) - Get Customer State
 * [getStateExternal](#getstateexternal) - Get Customer State by External ID
-* [getBalance](#getbalance) - Get Customer Balance
 
 ## list
 
@@ -97,7 +96,7 @@ $sdk = Polar\Polar::builder()
     )
     ->build();
 
-$request = new Components\CustomerCreate(
+$customerCreate = new Components\CustomerCreate(
     externalId: 'usr_1337',
     email: 'customer@example.com',
     name: 'John Doe',
@@ -109,13 +108,20 @@ $request = new Components\CustomerCreate(
         'us_ein',
     ],
     organizationId: '1dbfc517-0bbf-4301-9ba8-555ca42b9737',
+    owner: new Components\OwnerCreate(
+        email: 'member@example.com',
+        name: 'Jane Doe',
+        externalId: 'usr_1337',
+    ),
 );
 
 $response = $sdk->customers->create(
-    request: $request
+    customerCreate: $customerCreate,
+    includeMembers: false
+
 );
 
-if ($response->customer !== null) {
+if ($response->customerWithMembers !== null) {
     // handle response
 }
 ```
@@ -124,7 +130,8 @@ if ($response->customer !== null) {
 
 | Parameter                                                              | Type                                                                   | Required                                                               | Description                                                            |
 | ---------------------------------------------------------------------- | ---------------------------------------------------------------------- | ---------------------------------------------------------------------- | ---------------------------------------------------------------------- |
-| `$request`                                                             | [Components\CustomerCreate](../../Models/Components/CustomerCreate.md) | :heavy_check_mark:                                                     | The request object to use for the request.                             |
+| `customerCreate`                                                       | [Components\CustomerCreate](../../Models/Components/CustomerCreate.md) | :heavy_check_mark:                                                     | N/A                                                                    |
+| `includeMembers`                                                       | *?bool*                                                                | :heavy_minus_sign:                                                     | Include members in the response. Only populated when set to true.      |
 
 ### Response
 
@@ -212,19 +219,22 @@ $sdk = Polar\Polar::builder()
 
 
 $response = $sdk->customers->get(
-    id: '<value>'
+    id: '<value>',
+    includeMembers: false
+
 );
 
-if ($response->customer !== null) {
+if ($response->customerWithMembers !== null) {
     // handle response
 }
 ```
 
 ### Parameters
 
-| Parameter          | Type               | Required           | Description        |
-| ------------------ | ------------------ | ------------------ | ------------------ |
-| `id`               | *string*           | :heavy_check_mark: | The customer ID.   |
+| Parameter                                                         | Type                                                              | Required                                                          | Description                                                       |
+| ----------------------------------------------------------------- | ----------------------------------------------------------------- | ----------------------------------------------------------------- | ----------------------------------------------------------------- |
+| `id`                                                              | *string*                                                          | :heavy_check_mark:                                                | The customer ID.                                                  |
+| `includeMembers`                                                  | *?bool*                                                           | :heavy_minus_sign:                                                | Include members in the response. Only populated when set to true. |
 
 ### Response
 
@@ -276,11 +286,12 @@ $customerUpdate = new Components\CustomerUpdate(
 
 $response = $sdk->customers->update(
     id: '<value>',
-    customerUpdate: $customerUpdate
+    customerUpdate: $customerUpdate,
+    includeMembers: false
 
 );
 
-if ($response->customer !== null) {
+if ($response->customerWithMembers !== null) {
     // handle response
 }
 ```
@@ -291,6 +302,7 @@ if ($response->customer !== null) {
 | ---------------------------------------------------------------------- | ---------------------------------------------------------------------- | ---------------------------------------------------------------------- | ---------------------------------------------------------------------- |
 | `id`                                                                   | *string*                                                               | :heavy_check_mark:                                                     | The customer ID.                                                       |
 | `customerUpdate`                                                       | [Components\CustomerUpdate](../../Models/Components/CustomerUpdate.md) | :heavy_check_mark:                                                     | N/A                                                                    |
+| `includeMembers`                                                       | *?bool*                                                                | :heavy_minus_sign:                                                     | Include members in the response. Only populated when set to true.      |
 
 ### Response
 
@@ -392,19 +404,22 @@ $sdk = Polar\Polar::builder()
 
 
 $response = $sdk->customers->getExternal(
-    externalId: '<id>'
+    externalId: '<id>',
+    includeMembers: false
+
 );
 
-if ($response->customer !== null) {
+if ($response->customerWithMembers !== null) {
     // handle response
 }
 ```
 
 ### Parameters
 
-| Parameter                 | Type                      | Required                  | Description               |
-| ------------------------- | ------------------------- | ------------------------- | ------------------------- |
-| `externalId`              | *string*                  | :heavy_check_mark:        | The customer external ID. |
+| Parameter                                                         | Type                                                              | Required                                                          | Description                                                       |
+| ----------------------------------------------------------------- | ----------------------------------------------------------------- | ----------------------------------------------------------------- | ----------------------------------------------------------------- |
+| `externalId`                                                      | *string*                                                          | :heavy_check_mark:                                                | The customer external ID.                                         |
+| `includeMembers`                                                  | *?bool*                                                           | :heavy_minus_sign:                                                | Include members in the response. Only populated when set to true. |
 
 ### Response
 
@@ -455,11 +470,12 @@ $customerUpdateExternalID = new Components\CustomerUpdateExternalID(
 
 $response = $sdk->customers->updateExternal(
     externalId: '<id>',
-    customerUpdateExternalID: $customerUpdateExternalID
+    customerUpdateExternalID: $customerUpdateExternalID,
+    includeMembers: false
 
 );
 
-if ($response->customer !== null) {
+if ($response->customerWithMembers !== null) {
     // handle response
 }
 ```
@@ -470,6 +486,7 @@ if ($response->customer !== null) {
 | ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------ |
 | `externalId`                                                                               | *string*                                                                                   | :heavy_check_mark:                                                                         | The customer external ID.                                                                  |
 | `customerUpdateExternalID`                                                                 | [Components\CustomerUpdateExternalID](../../Models/Components/CustomerUpdateExternalID.md) | :heavy_check_mark:                                                                         | N/A                                                                                        |
+| `includeMembers`                                                                           | *?bool*                                                                                    | :heavy_minus_sign:                                                                         | Include members in the response. Only populated when set to true.                          |
 
 ### Response
 
@@ -641,57 +658,6 @@ if ($response->customerState !== null) {
 ### Response
 
 **[?Operations\CustomersGetStateExternalResponse](../../Models/Operations/CustomersGetStateExternalResponse.md)**
-
-### Errors
-
-| Error Type                 | Status Code                | Content Type               |
-| -------------------------- | -------------------------- | -------------------------- |
-| Errors\ResourceNotFound    | 404                        | application/json           |
-| Errors\HTTPValidationError | 422                        | application/json           |
-| Errors\APIException        | 4XX, 5XX                   | \*/\*                      |
-
-## getBalance
-
-Get customer balance information.
-
-**Scopes**: `customers:read` `customers:write`
-
-### Example Usage
-
-<!-- UsageSnippet language="php" operationID="customers:get_balance" method="get" path="/v1/customers/{id}/balance" -->
-```php
-declare(strict_types=1);
-
-require 'vendor/autoload.php';
-
-use Polar;
-
-$sdk = Polar\Polar::builder()
-    ->setSecurity(
-        '<YOUR_BEARER_TOKEN_HERE>'
-    )
-    ->build();
-
-
-
-$response = $sdk->customers->getBalance(
-    id: '<value>'
-);
-
-if ($response->customerBalance !== null) {
-    // handle response
-}
-```
-
-### Parameters
-
-| Parameter          | Type               | Required           | Description        |
-| ------------------ | ------------------ | ------------------ | ------------------ |
-| `id`               | *string*           | :heavy_check_mark: | The customer ID.   |
-
-### Response
-
-**[?Operations\CustomersGetBalanceResponse](../../Models/Operations/CustomersGetBalanceResponse.md)**
 
 ### Errors
 

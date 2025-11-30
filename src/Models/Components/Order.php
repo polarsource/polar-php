@@ -266,6 +266,14 @@ class Order
     public ?array $customFieldData = null;
 
     /**
+     * Currency of the platform fee.
+     *
+     * @var ?string $platformFeeCurrency
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('platform_fee_currency')]
+    public ?string $platformFeeCurrency;
+
+    /**
      *
      * @var ?OrderProduct $product
      */
@@ -331,13 +339,14 @@ class Order
      * @param  ?string  $subscriptionId
      * @param  ?string  $checkoutId
      * @param  ?array<string, string|int|bool|\DateTime|null>  $customFieldData
+     * @param  ?string  $platformFeeCurrency
      * @param  ?OrderProduct  $product
      * @param  DiscountFixedOnceForeverDurationBase|DiscountFixedRepeatDurationBase|DiscountPercentageOnceForeverDurationBase|DiscountPercentageRepeatDurationBase|null  $discount
      * @param  ?OrderSubscription  $subscription
      * @param  ?int  $seats
      * @phpstan-pure
      */
-    public function __construct(string $id, \DateTime $createdAt, OrderStatus $status, bool $paid, int $subtotalAmount, int $discountAmount, int $netAmount, int $taxAmount, int $totalAmount, int $appliedBalanceAmount, int $dueAmount, int $refundedAmount, int $refundedTaxAmount, string $currency, OrderBillingReason $billingReason, string $invoiceNumber, bool $isInvoiceGenerated, string $customerId, array $metadata, int $platformFeeAmount, OrderCustomer $customer, string $userId, array $items, string $description, ?\DateTime $modifiedAt = null, ?string $billingName = null, ?Address $billingAddress = null, ?string $productId = null, ?string $discountId = null, ?string $subscriptionId = null, ?string $checkoutId = null, ?array $customFieldData = null, ?OrderProduct $product = null, DiscountFixedOnceForeverDurationBase|DiscountFixedRepeatDurationBase|DiscountPercentageOnceForeverDurationBase|DiscountPercentageRepeatDurationBase|null $discount = null, ?OrderSubscription $subscription = null, ?int $seats = null)
+    public function __construct(string $id, \DateTime $createdAt, OrderStatus $status, bool $paid, int $subtotalAmount, int $discountAmount, int $netAmount, int $taxAmount, int $totalAmount, int $appliedBalanceAmount, int $dueAmount, int $refundedAmount, int $refundedTaxAmount, string $currency, OrderBillingReason $billingReason, string $invoiceNumber, bool $isInvoiceGenerated, string $customerId, array $metadata, int $platformFeeAmount, OrderCustomer $customer, string $userId, array $items, string $description, ?\DateTime $modifiedAt = null, ?string $billingName = null, ?Address $billingAddress = null, ?string $productId = null, ?string $discountId = null, ?string $subscriptionId = null, ?string $checkoutId = null, ?array $customFieldData = null, ?string $platformFeeCurrency = null, ?OrderProduct $product = null, DiscountFixedOnceForeverDurationBase|DiscountFixedRepeatDurationBase|DiscountPercentageOnceForeverDurationBase|DiscountPercentageRepeatDurationBase|null $discount = null, ?OrderSubscription $subscription = null, ?int $seats = null)
     {
         $this->id = $id;
         $this->createdAt = $createdAt;
@@ -371,6 +380,7 @@ class Order
         $this->subscriptionId = $subscriptionId;
         $this->checkoutId = $checkoutId;
         $this->customFieldData = $customFieldData;
+        $this->platformFeeCurrency = $platformFeeCurrency;
         $this->product = $product;
         $this->discount = $discount;
         $this->subscription = $subscription;

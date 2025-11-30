@@ -29,6 +29,14 @@ class ProductPriceCustom
     public string $id;
 
     /**
+     *
+     * @var ProductPriceSource $source
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('source')]
+    #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\ProductPriceSource')]
+    public ProductPriceSource $source;
+
+    /**
      * Whether the price is archived and no longer available.
      *
      * @var bool $isArchived
@@ -111,6 +119,7 @@ class ProductPriceCustom
     /**
      * @param  \DateTime  $createdAt
      * @param  string  $id
+     * @param  ProductPriceSource  $source
      * @param  string  $amountType
      * @param  bool  $isArchived
      * @param  string  $productId
@@ -123,10 +132,11 @@ class ProductPriceCustom
      * @param  ?int  $presetAmount
      * @phpstan-pure
      */
-    public function __construct(\DateTime $createdAt, string $id, bool $isArchived, string $productId, ProductPriceType $type, string $priceCurrency, ?\DateTime $modifiedAt = null, ?SubscriptionRecurringInterval $recurringInterval = null, ?int $minimumAmount = null, ?int $maximumAmount = null, ?int $presetAmount = null, string $amountType = 'custom')
+    public function __construct(\DateTime $createdAt, string $id, ProductPriceSource $source, bool $isArchived, string $productId, ProductPriceType $type, string $priceCurrency, ?\DateTime $modifiedAt = null, ?SubscriptionRecurringInterval $recurringInterval = null, ?int $minimumAmount = null, ?int $maximumAmount = null, ?int $presetAmount = null, string $amountType = 'custom')
     {
         $this->createdAt = $createdAt;
         $this->id = $id;
+        $this->source = $source;
         $this->isArchived = $isArchived;
         $this->productId = $productId;
         $this->type = $type;
