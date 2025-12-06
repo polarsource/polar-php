@@ -61,6 +61,14 @@ class SubscriptionsListRequest
     public ?bool $active = null;
 
     /**
+     * Filter by subscriptions that are set to cancel at period end.
+     *
+     * @var ?bool $cancelAtPeriodEnd
+     */
+    #[SpeakeasyMetadata('queryParam:style=form,explode=true,name=cancel_at_period_end')]
+    public ?bool $cancelAtPeriodEnd = null;
+
+    /**
      * Sorting criterion. Several criteria can be used simultaneously and will be applied in order. Add a minus sign `-` before the criteria name to sort by descending order.
      *
      * @var ?array<Components\SubscriptionSortProperty> $sorting
@@ -101,11 +109,12 @@ class SubscriptionsListRequest
      * @param  string|array<string>|null  $externalCustomerId
      * @param  string|array<string>|null  $discountId
      * @param  ?bool  $active
+     * @param  ?bool  $cancelAtPeriodEnd
      * @param  ?array<Components\SubscriptionSortProperty>  $sorting
      * @param  ?array<string, string|int|bool|array<string>|array<int>|array<bool>>  $metadata
      * @phpstan-pure
      */
-    public function __construct(string|array|null $organizationId = null, string|array|null $productId = null, string|array|null $customerId = null, string|array|null $externalCustomerId = null, string|array|null $discountId = null, ?bool $active = null, ?array $sorting = null, ?array $metadata = null, ?int $page = 1, ?int $limit = 10)
+    public function __construct(string|array|null $organizationId = null, string|array|null $productId = null, string|array|null $customerId = null, string|array|null $externalCustomerId = null, string|array|null $discountId = null, ?bool $active = null, ?bool $cancelAtPeriodEnd = null, ?array $sorting = null, ?array $metadata = null, ?int $page = 1, ?int $limit = 10)
     {
         $this->organizationId = $organizationId;
         $this->productId = $productId;
@@ -113,6 +122,7 @@ class SubscriptionsListRequest
         $this->externalCustomerId = $externalCustomerId;
         $this->discountId = $discountId;
         $this->active = $active;
+        $this->cancelAtPeriodEnd = $cancelAtPeriodEnd;
         $this->sorting = $sorting;
         $this->metadata = $metadata;
         $this->page = $page;

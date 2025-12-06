@@ -125,7 +125,7 @@ class RequestBodies
                 $dateTimeFormat = $metadata->dateTimeFormat;
 
                 if (gettype($val) === 'array' && array_is_list($val)) {
-                    foreach ($value as $item) {
+                    foreach ($val as $item) {
                         $options['multipart'][] = [
                             'name' => $metadata->name.'[]',
                             'contents' => valToString($item, ['dateTimeFormat' => $dateTimeFormat]),

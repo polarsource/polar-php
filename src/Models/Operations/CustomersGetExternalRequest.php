@@ -20,11 +20,21 @@ class CustomersGetExternalRequest
     public string $externalId;
 
     /**
+     * Include members in the response. Only populated when set to true.
+     *
+     * @var ?bool $includeMembers
+     */
+    #[SpeakeasyMetadata('queryParam:style=form,explode=true,name=include_members')]
+    public ?bool $includeMembers = null;
+
+    /**
      * @param  string  $externalId
+     * @param  ?bool  $includeMembers
      * @phpstan-pure
      */
-    public function __construct(string $externalId)
+    public function __construct(string $externalId, ?bool $includeMembers = false)
     {
         $this->externalId = $externalId;
+        $this->includeMembers = $includeMembers;
     }
 }

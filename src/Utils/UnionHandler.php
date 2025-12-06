@@ -116,6 +116,7 @@ final class UnionHandler implements SubscribingHandlerInterface
             }
 
             $unionMap = $type['params'][2];
+
             $lookupValue = $data[$lookupField];
             if (empty($unionMap[$lookupValue])) {
                 throw new NonVisitableTypeException(sprintf('Union Discriminator Map does not contain key "%s"', $lookupValue));

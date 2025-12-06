@@ -13,6 +13,14 @@ namespace Polar\Models\Components;
 class MetricsIntervalLimit
 {
     /**
+     * Minimum number of days for this interval.
+     *
+     * @var int $minDays
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('min_days')]
+    public int $minDays;
+
+    /**
      * Maximum number of days for this interval.
      *
      * @var int $maxDays
@@ -21,11 +29,13 @@ class MetricsIntervalLimit
     public int $maxDays;
 
     /**
+     * @param  int  $minDays
      * @param  int  $maxDays
      * @phpstan-pure
      */
-    public function __construct(int $maxDays)
+    public function __construct(int $minDays, int $maxDays)
     {
+        $this->minDays = $minDays;
         $this->maxDays = $maxDays;
     }
 }

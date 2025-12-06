@@ -16,5 +16,6 @@ enum RefundReason: string
     case CustomerRequest = 'customer_request';
     case ServiceDisruption = 'service_disruption';
     case SatisfactionGuarantee = 'satisfaction_guarantee';
+    case DisputePrevention = 'dispute_prevention';
     case Other = 'other';
 }
