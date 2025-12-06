@@ -28,13 +28,23 @@ class CustomersUpdateExternalRequest
     public Components\CustomerUpdateExternalID $customerUpdateExternalID;
 
     /**
+     * Include members in the response. Only populated when set to true.
+     *
+     * @var ?bool $includeMembers
+     */
+    #[SpeakeasyMetadata('queryParam:style=form,explode=true,name=include_members')]
+    public ?bool $includeMembers = null;
+
+    /**
      * @param  string  $externalId
      * @param  Components\CustomerUpdateExternalID  $customerUpdateExternalID
+     * @param  ?bool  $includeMembers
      * @phpstan-pure
      */
-    public function __construct(string $externalId, Components\CustomerUpdateExternalID $customerUpdateExternalID)
+    public function __construct(string $externalId, Components\CustomerUpdateExternalID $customerUpdateExternalID, ?bool $includeMembers = false)
     {
         $this->externalId = $externalId;
         $this->customerUpdateExternalID = $customerUpdateExternalID;
+        $this->includeMembers = $includeMembers;
     }
 }

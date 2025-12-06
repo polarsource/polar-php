@@ -126,6 +126,15 @@ class CheckoutConfirmStripe
     public ?string $confirmationTokenId = null;
 
     /**
+     * Disable the trial period for the checkout session. It's mainly useful when the trial is blocked because the customer already redeemed one.
+     *
+     * @var ?bool $allowTrial
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('allow_trial')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
+    public ?bool $allowTrial = null;
+
+    /**
      * @param  ?array<string, string|int|bool|\DateTime|null>  $customFieldData
      * @param  ?string  $productId
      * @param  ?string  $productPriceId
@@ -138,10 +147,11 @@ class CheckoutConfirmStripe
      * @param  ?AddressInput  $customerBillingAddress
      * @param  ?string  $customerTaxId
      * @param  ?string  $discountCode
+     * @param  ?bool  $allowTrial
      * @param  ?string  $confirmationTokenId
      * @phpstan-pure
      */
-    public function __construct(?array $customFieldData = null, ?string $productId = null, ?string $productPriceId = null, ?int $amount = null, ?int $seats = null, ?bool $isBusinessCustomer = null, ?string $customerName = null, ?string $customerEmail = null, ?string $customerBillingName = null, ?AddressInput $customerBillingAddress = null, ?string $customerTaxId = null, ?string $discountCode = null, ?string $confirmationTokenId = null)
+    public function __construct(?array $customFieldData = null, ?string $productId = null, ?string $productPriceId = null, ?int $amount = null, ?int $seats = null, ?bool $isBusinessCustomer = null, ?string $customerName = null, ?string $customerEmail = null, ?string $customerBillingName = null, ?AddressInput $customerBillingAddress = null, ?string $customerTaxId = null, ?string $discountCode = null, ?string $confirmationTokenId = null, ?bool $allowTrial = false)
     {
         $this->customFieldData = $customFieldData;
         $this->productId = $productId;
@@ -156,5 +166,6 @@ class CheckoutConfirmStripe
         $this->customerTaxId = $customerTaxId;
         $this->discountCode = $discountCode;
         $this->confirmationTokenId = $confirmationTokenId;
+        $this->allowTrial = $allowTrial;
     }
 }

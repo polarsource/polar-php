@@ -26,7 +26,7 @@ class AttachedCustomField
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('custom_field')]
     #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\CustomFieldText|\Polar\Models\Components\CustomFieldNumber|\Polar\Models\Components\CustomFieldDate|\Polar\Models\Components\CustomFieldCheckbox|\Polar\Models\Components\CustomFieldSelect')]
-    #[\Speakeasy\Serializer\Annotation\UnionDiscriminator(field: 'type', map: ['CustomFieldText' => '\Polar\Models\Components\CustomFieldText', 'CustomFieldNumber' => '\Polar\Models\Components\CustomFieldNumber', 'CustomFieldDate' => '\Polar\Models\Components\CustomFieldDate', 'CustomFieldCheckbox' => '\Polar\Models\Components\CustomFieldCheckbox', 'CustomFieldSelect' => '\Polar\Models\Components\CustomFieldSelect'])]
+    #[\Speakeasy\Serializer\Annotation\UnionDiscriminator(field: 'type', map: ['checkbox' => '\Polar\Models\Components\CustomFieldCheckbox', 'date' => '\Polar\Models\Components\CustomFieldDate', 'number' => '\Polar\Models\Components\CustomFieldNumber', 'select' => '\Polar\Models\Components\CustomFieldSelect', 'text' => '\Polar\Models\Components\CustomFieldText'])]
     public CustomFieldText|CustomFieldNumber|CustomFieldDate|CustomFieldCheckbox|CustomFieldSelect $customField;
 
     /**

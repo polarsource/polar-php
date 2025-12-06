@@ -1,5 +1,4 @@
-# Wallets
-(*wallets*)
+# CustomerPortal.Wallets
 
 ## Overview
 
@@ -7,17 +6,16 @@
 
 * [list](#list) - List Wallets
 * [get](#get) - Get Wallet
-* [topUp](#topup) - Top-Up Wallet
 
 ## list
 
-List wallets.
+List wallets of the authenticated customer.
 
-**Scopes**: `wallets:read`
+**Scopes**: `customer_portal:read` `customer_portal:write`
 
 ### Example Usage
 
-<!-- UsageSnippet language="php" operationID="wallets:list" method="get" path="/v1/wallets/" -->
+<!-- UsageSnippet language="php" operationID="customer_portal:wallets:list" method="get" path="/v1/customer-portal/wallets/" -->
 ```php
 declare(strict_types=1);
 
@@ -26,18 +24,18 @@ require 'vendor/autoload.php';
 use Polar;
 use Polar\Models\Operations;
 
-$sdk = Polar\Polar::builder()
-    ->setSecurity(
-        '<YOUR_BEARER_TOKEN_HERE>'
-    )
-    ->build();
+$sdk = Polar\Polar::builder()->build();
 
-$request = new Operations\WalletsListRequest(
-    organizationId: '1dbfc517-0bbf-4301-9ba8-555ca42b9737',
+
+$requestSecurity = new Operations\CustomerPortalWalletsListSecurity(
+    customerSession: '<YOUR_BEARER_TOKEN_HERE>',
 );
 
-$responses = $sdk->wallets->list(
-    request: $request
+$responses = $sdk->customerPortal->wallets->list(
+    security: $requestSecurity,
+    page: 1,
+    limit: 10
+
 );
 
 
@@ -50,13 +48,16 @@ foreach ($responses as $response) {
 
 ### Parameters
 
-| Parameter                                                                      | Type                                                                           | Required                                                                       | Description                                                                    |
-| ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ |
-| `$request`                                                                     | [Operations\WalletsListRequest](../../Models/Operations/WalletsListRequest.md) | :heavy_check_mark:                                                             | The request object to use for the request.                                     |
+| Parameter                                                                                                                                                               | Type                                                                                                                                                                    | Required                                                                                                                                                                | Description                                                                                                                                                             |
+| ----------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `security`                                                                                                                                                              | [Operations\CustomerPortalWalletsListSecurity](../../Models/Operations/CustomerPortalWalletsListSecurity.md)                                                            | :heavy_check_mark:                                                                                                                                                      | The security requirements to use for the request.                                                                                                                       |
+| `page`                                                                                                                                                                  | *?int*                                                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                      | Page number, defaults to 1.                                                                                                                                             |
+| `limit`                                                                                                                                                                 | *?int*                                                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                      | Size of a page, defaults to 10. Maximum is 100.                                                                                                                         |
+| `sorting`                                                                                                                                                               | array<[Components\CustomerWalletSortProperty](../../Models/Components/CustomerWalletSortProperty.md)>                                                                   | :heavy_minus_sign:                                                                                                                                                      | Sorting criterion. Several criteria can be used simultaneously and will be applied in order. Add a minus sign `-` before the criteria name to sort by descending order. |
 
 ### Response
 
-**[?Operations\WalletsListResponse](../../Models/Operations/WalletsListResponse.md)**
+**[?Operations\CustomerPortalWalletsListResponse](../../Models/Operations/CustomerPortalWalletsListResponse.md)**
 
 ### Errors
 
@@ -67,46 +68,49 @@ foreach ($responses as $response) {
 
 ## get
 
-Get a wallet by ID.
+Get a wallet by ID for the authenticated customer.
 
-**Scopes**: `wallets:read`
+**Scopes**: `customer_portal:read` `customer_portal:write`
 
 ### Example Usage
 
-<!-- UsageSnippet language="php" operationID="wallets:get" method="get" path="/v1/wallets/{id}" -->
+<!-- UsageSnippet language="php" operationID="customer_portal:wallets:get" method="get" path="/v1/customer-portal/wallets/{id}" -->
 ```php
 declare(strict_types=1);
 
 require 'vendor/autoload.php';
 
 use Polar;
+use Polar\Models\Operations;
 
-$sdk = Polar\Polar::builder()
-    ->setSecurity(
-        '<YOUR_BEARER_TOKEN_HERE>'
-    )
-    ->build();
+$sdk = Polar\Polar::builder()->build();
 
 
-
-$response = $sdk->wallets->get(
-    id: '<value>'
+$requestSecurity = new Operations\CustomerPortalWalletsGetSecurity(
+    customerSession: '<YOUR_BEARER_TOKEN_HERE>',
 );
 
-if ($response->wallet !== null) {
+$response = $sdk->customerPortal->wallets->get(
+    security: $requestSecurity,
+    id: '<value>'
+
+);
+
+if ($response->customerWallet !== null) {
     // handle response
 }
 ```
 
 ### Parameters
 
-| Parameter          | Type               | Required           | Description        |
-| ------------------ | ------------------ | ------------------ | ------------------ |
-| `id`               | *string*           | :heavy_check_mark: | The wallet ID.     |
+| Parameter                                                                                                  | Type                                                                                                       | Required                                                                                                   | Description                                                                                                |
+| ---------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------- |
+| `security`                                                                                                 | [Operations\CustomerPortalWalletsGetSecurity](../../Models/Operations/CustomerPortalWalletsGetSecurity.md) | :heavy_check_mark:                                                                                         | The security requirements to use for the request.                                                          |
+| `id`                                                                                                       | *string*                                                                                                   | :heavy_check_mark:                                                                                         | The wallet ID.                                                                                             |
 
 ### Response
 
-**[?Operations\WalletsGetResponse](../../Models/Operations/WalletsGetResponse.md)**
+**[?Operations\CustomerPortalWalletsGetResponse](../../Models/Operations/CustomerPortalWalletsGetResponse.md)**
 
 ### Errors
 
@@ -115,65 +119,3 @@ if ($response->wallet !== null) {
 | Errors\ResourceNotFound    | 404                        | application/json           |
 | Errors\HTTPValidationError | 422                        | application/json           |
 | Errors\APIException        | 4XX, 5XX                   | \*/\*                      |
-
-## topUp
-
-Top-up a wallet by adding funds to its balance.
-
-The customer should have a valid payment method on file.
-
-**Scopes**: `wallets:write`
-
-### Example Usage
-
-<!-- UsageSnippet language="php" operationID="wallets:top_up" method="post" path="/v1/wallets/{id}/top-up" -->
-```php
-declare(strict_types=1);
-
-require 'vendor/autoload.php';
-
-use Polar;
-use Polar\Models\Components;
-
-$sdk = Polar\Polar::builder()
-    ->setSecurity(
-        '<YOUR_BEARER_TOKEN_HERE>'
-    )
-    ->build();
-
-$walletTopUpCreate = new Components\WalletTopUpCreate(
-    amount: 2000,
-    currency: 'Venezuelan bolívar',
-);
-
-$response = $sdk->wallets->topUp(
-    id: '<value>',
-    walletTopUpCreate: $walletTopUpCreate
-
-);
-
-if ($response->wallet !== null) {
-    // handle response
-}
-```
-
-### Parameters
-
-| Parameter                                                                    | Type                                                                         | Required                                                                     | Description                                                                  |
-| ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- |
-| `id`                                                                         | *string*                                                                     | :heavy_check_mark:                                                           | The wallet ID.                                                               |
-| `walletTopUpCreate`                                                          | [Components\WalletTopUpCreate](../../Models/Components/WalletTopUpCreate.md) | :heavy_check_mark:                                                           | N/A                                                                          |
-
-### Response
-
-**[?Operations\WalletsTopUpResponse](../../Models/Operations/WalletsTopUpResponse.md)**
-
-### Errors
-
-| Error Type                       | Status Code                      | Content Type                     |
-| -------------------------------- | -------------------------------- | -------------------------------- |
-| Errors\PaymentIntentFailedError  | 400                              | application/json                 |
-| Errors\MissingPaymentMethodError | 402                              | application/json                 |
-| Errors\ResourceNotFound          | 404                              | application/json                 |
-| Errors\HTTPValidationError       | 422                              | application/json                 |
-| Errors\APIException              | 4XX, 5XX                         | \*/\*                            |

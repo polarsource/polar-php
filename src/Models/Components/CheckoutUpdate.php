@@ -175,6 +175,15 @@ class CheckoutUpdate
     public ?bool $requireBillingAddress = null;
 
     /**
+     * Whether to enable the trial period for the checkout session. If `false`, the trial period will be disabled, even if the selected product has a trial configured.
+     *
+     * @var ?bool $allowTrial
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('allow_trial')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
+    public ?bool $allowTrial = null;
+
+    /**
      *
      * @var ?string $customerIpAddress
      */
@@ -248,6 +257,7 @@ class CheckoutUpdate
      * @param  ?string  $discountId
      * @param  ?bool  $allowDiscountCodes
      * @param  ?bool  $requireBillingAddress
+     * @param  ?bool  $allowTrial
      * @param  ?string  $customerIpAddress
      * @param  ?array<string, string|int|float|bool>  $customerMetadata
      * @param  ?string  $successUrl
@@ -255,7 +265,7 @@ class CheckoutUpdate
      * @param  ?string  $embedOrigin
      * @phpstan-pure
      */
-    public function __construct(?array $customFieldData = null, ?array $metadata = null, ?string $productId = null, ?string $productPriceId = null, ?int $amount = null, ?int $seats = null, ?bool $isBusinessCustomer = null, ?string $customerName = null, ?string $customerEmail = null, ?string $customerBillingName = null, ?AddressInput $customerBillingAddress = null, ?string $customerTaxId = null, ?TrialInterval $trialInterval = null, ?int $trialIntervalCount = null, ?string $discountId = null, ?bool $allowDiscountCodes = null, ?bool $requireBillingAddress = null, ?string $customerIpAddress = null, ?array $customerMetadata = null, ?string $successUrl = null, ?string $returnUrl = null, ?string $embedOrigin = null)
+    public function __construct(?array $customFieldData = null, ?array $metadata = null, ?string $productId = null, ?string $productPriceId = null, ?int $amount = null, ?int $seats = null, ?bool $isBusinessCustomer = null, ?string $customerName = null, ?string $customerEmail = null, ?string $customerBillingName = null, ?AddressInput $customerBillingAddress = null, ?string $customerTaxId = null, ?TrialInterval $trialInterval = null, ?int $trialIntervalCount = null, ?string $discountId = null, ?bool $allowDiscountCodes = null, ?bool $requireBillingAddress = null, ?bool $allowTrial = null, ?string $customerIpAddress = null, ?array $customerMetadata = null, ?string $successUrl = null, ?string $returnUrl = null, ?string $embedOrigin = null)
     {
         $this->customFieldData = $customFieldData;
         $this->metadata = $metadata;
@@ -274,6 +284,7 @@ class CheckoutUpdate
         $this->discountId = $discountId;
         $this->allowDiscountCodes = $allowDiscountCodes;
         $this->requireBillingAddress = $requireBillingAddress;
+        $this->allowTrial = $allowTrial;
         $this->customerIpAddress = $customerIpAddress;
         $this->customerMetadata = $customerMetadata;
         $this->successUrl = $successUrl;
