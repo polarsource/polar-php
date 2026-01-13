@@ -53,7 +53,7 @@ class CustomerStateBenefitGrant
     public BenefitType $benefitType;
 
     /**
-     * The metadata of the benefit concerned by this grant.
+     * $benefitMetadata
      *
      * @var array<string, string|int|float|bool> $benefitMetadata
      */

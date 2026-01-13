@@ -12,409 +12,439 @@ namespace Polar\Models\Components;
 class Metrics
 {
     /**
-     * Information about a metric.
      *
-     * @var Metric $orders
+     * @var ?Metric $orders
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('orders')]
-    #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\Metric')]
-    public Metric $orders;
+    #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\Metric|null')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
+    public ?Metric $orders = null;
 
     /**
-     * Information about a metric.
      *
-     * @var Metric $revenue
+     * @var ?Metric $revenue
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('revenue')]
-    #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\Metric')]
-    public Metric $revenue;
+    #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\Metric|null')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
+    public ?Metric $revenue = null;
 
     /**
-     * Information about a metric.
      *
-     * @var Metric $netRevenue
+     * @var ?Metric $netRevenue
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('net_revenue')]
-    #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\Metric')]
-    public Metric $netRevenue;
+    #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\Metric|null')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
+    public ?Metric $netRevenue = null;
 
     /**
-     * Information about a metric.
      *
-     * @var Metric $cumulativeRevenue
+     * @var ?Metric $cumulativeRevenue
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('cumulative_revenue')]
-    #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\Metric')]
-    public Metric $cumulativeRevenue;
+    #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\Metric|null')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
+    public ?Metric $cumulativeRevenue = null;
 
     /**
-     * Information about a metric.
      *
-     * @var Metric $netCumulativeRevenue
+     * @var ?Metric $netCumulativeRevenue
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('net_cumulative_revenue')]
-    #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\Metric')]
-    public Metric $netCumulativeRevenue;
+    #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\Metric|null')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
+    public ?Metric $netCumulativeRevenue = null;
 
     /**
-     * Information about a metric.
      *
-     * @var Metric $costs
+     * @var ?Metric $costs
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('costs')]
-    #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\Metric')]
-    public Metric $costs;
+    #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\Metric|null')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
+    public ?Metric $costs = null;
 
     /**
-     * Information about a metric.
      *
-     * @var Metric $cumulativeCosts
+     * @var ?Metric $cumulativeCosts
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('cumulative_costs')]
-    #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\Metric')]
-    public Metric $cumulativeCosts;
+    #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\Metric|null')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
+    public ?Metric $cumulativeCosts = null;
 
     /**
-     * Information about a metric.
      *
-     * @var Metric $averageOrderValue
+     * @var ?Metric $averageOrderValue
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('average_order_value')]
-    #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\Metric')]
-    public Metric $averageOrderValue;
+    #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\Metric|null')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
+    public ?Metric $averageOrderValue = null;
 
     /**
-     * Information about a metric.
      *
-     * @var Metric $netAverageOrderValue
+     * @var ?Metric $netAverageOrderValue
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('net_average_order_value')]
-    #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\Metric')]
-    public Metric $netAverageOrderValue;
+    #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\Metric|null')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
+    public ?Metric $netAverageOrderValue = null;
 
     /**
-     * Information about a metric.
      *
-     * @var Metric $averageRevenuePerUser
+     * @var ?Metric $averageRevenuePerUser
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('average_revenue_per_user')]
-    #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\Metric')]
-    public Metric $averageRevenuePerUser;
+    #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\Metric|null')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
+    public ?Metric $averageRevenuePerUser = null;
 
     /**
-     * Information about a metric.
      *
-     * @var Metric $costPerUser
+     * @var ?Metric $costPerUser
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('cost_per_user')]
-    #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\Metric')]
-    public Metric $costPerUser;
+    #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\Metric|null')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
+    public ?Metric $costPerUser = null;
 
     /**
-     * Information about a metric.
      *
-     * @var Metric $activeUserByEvent
+     * @var ?Metric $activeUserByEvent
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('active_user_by_event')]
-    #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\Metric')]
-    public Metric $activeUserByEvent;
+    #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\Metric|null')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
+    public ?Metric $activeUserByEvent = null;
 
     /**
-     * Information about a metric.
      *
-     * @var Metric $oneTimeProducts
+     * @var ?Metric $oneTimeProducts
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('one_time_products')]
-    #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\Metric')]
-    public Metric $oneTimeProducts;
+    #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\Metric|null')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
+    public ?Metric $oneTimeProducts = null;
 
     /**
-     * Information about a metric.
      *
-     * @var Metric $oneTimeProductsRevenue
+     * @var ?Metric $oneTimeProductsRevenue
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('one_time_products_revenue')]
-    #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\Metric')]
-    public Metric $oneTimeProductsRevenue;
+    #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\Metric|null')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
+    public ?Metric $oneTimeProductsRevenue = null;
 
     /**
-     * Information about a metric.
      *
-     * @var Metric $oneTimeProductsNetRevenue
+     * @var ?Metric $oneTimeProductsNetRevenue
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('one_time_products_net_revenue')]
-    #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\Metric')]
-    public Metric $oneTimeProductsNetRevenue;
+    #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\Metric|null')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
+    public ?Metric $oneTimeProductsNetRevenue = null;
 
     /**
-     * Information about a metric.
      *
-     * @var Metric $newSubscriptions
+     * @var ?Metric $newSubscriptions
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('new_subscriptions')]
-    #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\Metric')]
-    public Metric $newSubscriptions;
+    #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\Metric|null')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
+    public ?Metric $newSubscriptions = null;
 
     /**
-     * Information about a metric.
      *
-     * @var Metric $newSubscriptionsRevenue
+     * @var ?Metric $newSubscriptionsRevenue
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('new_subscriptions_revenue')]
-    #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\Metric')]
-    public Metric $newSubscriptionsRevenue;
+    #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\Metric|null')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
+    public ?Metric $newSubscriptionsRevenue = null;
 
     /**
-     * Information about a metric.
      *
-     * @var Metric $newSubscriptionsNetRevenue
+     * @var ?Metric $newSubscriptionsNetRevenue
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('new_subscriptions_net_revenue')]
-    #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\Metric')]
-    public Metric $newSubscriptionsNetRevenue;
+    #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\Metric|null')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
+    public ?Metric $newSubscriptionsNetRevenue = null;
 
     /**
-     * Information about a metric.
      *
-     * @var Metric $renewedSubscriptions
+     * @var ?Metric $renewedSubscriptions
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('renewed_subscriptions')]
-    #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\Metric')]
-    public Metric $renewedSubscriptions;
+    #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\Metric|null')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
+    public ?Metric $renewedSubscriptions = null;
 
     /**
-     * Information about a metric.
      *
-     * @var Metric $renewedSubscriptionsRevenue
+     * @var ?Metric $renewedSubscriptionsRevenue
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('renewed_subscriptions_revenue')]
-    #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\Metric')]
-    public Metric $renewedSubscriptionsRevenue;
+    #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\Metric|null')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
+    public ?Metric $renewedSubscriptionsRevenue = null;
 
     /**
-     * Information about a metric.
      *
-     * @var Metric $renewedSubscriptionsNetRevenue
+     * @var ?Metric $renewedSubscriptionsNetRevenue
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('renewed_subscriptions_net_revenue')]
-    #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\Metric')]
-    public Metric $renewedSubscriptionsNetRevenue;
+    #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\Metric|null')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
+    public ?Metric $renewedSubscriptionsNetRevenue = null;
 
     /**
-     * Information about a metric.
      *
-     * @var Metric $activeSubscriptions
+     * @var ?Metric $activeSubscriptions
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('active_subscriptions')]
-    #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\Metric')]
-    public Metric $activeSubscriptions;
+    #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\Metric|null')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
+    public ?Metric $activeSubscriptions = null;
 
     /**
-     * Information about a metric.
      *
-     * @var Metric $monthlyRecurringRevenue
+     * @var ?Metric $committedSubscriptions
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('committed_subscriptions')]
+    #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\Metric|null')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
+    public ?Metric $committedSubscriptions = null;
+
+    /**
+     *
+     * @var ?Metric $monthlyRecurringRevenue
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('monthly_recurring_revenue')]
-    #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\Metric')]
-    public Metric $monthlyRecurringRevenue;
+    #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\Metric|null')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
+    public ?Metric $monthlyRecurringRevenue = null;
 
     /**
-     * Information about a metric.
      *
-     * @var Metric $committedMonthlyRecurringRevenue
+     * @var ?Metric $committedMonthlyRecurringRevenue
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('committed_monthly_recurring_revenue')]
-    #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\Metric')]
-    public Metric $committedMonthlyRecurringRevenue;
+    #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\Metric|null')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
+    public ?Metric $committedMonthlyRecurringRevenue = null;
 
     /**
-     * Information about a metric.
      *
-     * @var Metric $checkouts
+     * @var ?Metric $checkouts
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('checkouts')]
-    #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\Metric')]
-    public Metric $checkouts;
+    #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\Metric|null')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
+    public ?Metric $checkouts = null;
 
     /**
-     * Information about a metric.
      *
-     * @var Metric $succeededCheckouts
+     * @var ?Metric $succeededCheckouts
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('succeeded_checkouts')]
-    #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\Metric')]
-    public Metric $succeededCheckouts;
+    #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\Metric|null')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
+    public ?Metric $succeededCheckouts = null;
 
     /**
-     * Information about a metric.
      *
-     * @var Metric $checkoutsConversion
+     * @var ?Metric $checkoutsConversion
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('checkouts_conversion')]
-    #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\Metric')]
-    public Metric $checkoutsConversion;
+    #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\Metric|null')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
+    public ?Metric $checkoutsConversion = null;
 
     /**
-     * Information about a metric.
      *
-     * @var Metric $canceledSubscriptions
+     * @var ?Metric $canceledSubscriptions
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('canceled_subscriptions')]
-    #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\Metric')]
-    public Metric $canceledSubscriptions;
+    #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\Metric|null')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
+    public ?Metric $canceledSubscriptions = null;
 
     /**
-     * Information about a metric.
      *
-     * @var Metric $canceledSubscriptionsCustomerService
+     * @var ?Metric $canceledSubscriptionsCustomerService
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('canceled_subscriptions_customer_service')]
-    #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\Metric')]
-    public Metric $canceledSubscriptionsCustomerService;
+    #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\Metric|null')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
+    public ?Metric $canceledSubscriptionsCustomerService = null;
 
     /**
-     * Information about a metric.
      *
-     * @var Metric $canceledSubscriptionsLowQuality
+     * @var ?Metric $canceledSubscriptionsLowQuality
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('canceled_subscriptions_low_quality')]
-    #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\Metric')]
-    public Metric $canceledSubscriptionsLowQuality;
+    #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\Metric|null')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
+    public ?Metric $canceledSubscriptionsLowQuality = null;
 
     /**
-     * Information about a metric.
      *
-     * @var Metric $canceledSubscriptionsMissingFeatures
+     * @var ?Metric $canceledSubscriptionsMissingFeatures
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('canceled_subscriptions_missing_features')]
-    #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\Metric')]
-    public Metric $canceledSubscriptionsMissingFeatures;
+    #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\Metric|null')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
+    public ?Metric $canceledSubscriptionsMissingFeatures = null;
 
     /**
-     * Information about a metric.
      *
-     * @var Metric $canceledSubscriptionsSwitchedService
+     * @var ?Metric $canceledSubscriptionsSwitchedService
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('canceled_subscriptions_switched_service')]
-    #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\Metric')]
-    public Metric $canceledSubscriptionsSwitchedService;
+    #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\Metric|null')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
+    public ?Metric $canceledSubscriptionsSwitchedService = null;
 
     /**
-     * Information about a metric.
      *
-     * @var Metric $canceledSubscriptionsTooComplex
+     * @var ?Metric $canceledSubscriptionsTooComplex
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('canceled_subscriptions_too_complex')]
-    #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\Metric')]
-    public Metric $canceledSubscriptionsTooComplex;
+    #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\Metric|null')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
+    public ?Metric $canceledSubscriptionsTooComplex = null;
 
     /**
-     * Information about a metric.
      *
-     * @var Metric $canceledSubscriptionsTooExpensive
+     * @var ?Metric $canceledSubscriptionsTooExpensive
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('canceled_subscriptions_too_expensive')]
-    #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\Metric')]
-    public Metric $canceledSubscriptionsTooExpensive;
+    #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\Metric|null')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
+    public ?Metric $canceledSubscriptionsTooExpensive = null;
 
     /**
-     * Information about a metric.
      *
-     * @var Metric $canceledSubscriptionsUnused
+     * @var ?Metric $canceledSubscriptionsUnused
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('canceled_subscriptions_unused')]
-    #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\Metric')]
-    public Metric $canceledSubscriptionsUnused;
+    #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\Metric|null')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
+    public ?Metric $canceledSubscriptionsUnused = null;
 
     /**
-     * Information about a metric.
      *
-     * @var Metric $canceledSubscriptionsOther
+     * @var ?Metric $canceledSubscriptionsOther
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('canceled_subscriptions_other')]
-    #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\Metric')]
-    public Metric $canceledSubscriptionsOther;
+    #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\Metric|null')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
+    public ?Metric $canceledSubscriptionsOther = null;
 
     /**
-     * Information about a metric.
      *
-     * @var Metric $churnRate
+     * @var ?Metric $churnedSubscriptions
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('churned_subscriptions')]
+    #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\Metric|null')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
+    public ?Metric $churnedSubscriptions = null;
+
+    /**
+     *
+     * @var ?Metric $churnRate
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('churn_rate')]
-    #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\Metric')]
-    public Metric $churnRate;
+    #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\Metric|null')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
+    public ?Metric $churnRate = null;
 
     /**
-     * Information about a metric.
      *
-     * @var Metric $grossMargin
+     * @var ?Metric $ltv
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('ltv')]
+    #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\Metric|null')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
+    public ?Metric $ltv = null;
+
+    /**
+     *
+     * @var ?Metric $grossMargin
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('gross_margin')]
-    #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\Metric')]
-    public Metric $grossMargin;
+    #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\Metric|null')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
+    public ?Metric $grossMargin = null;
 
     /**
-     * Information about a metric.
      *
-     * @var Metric $grossMarginPercentage
+     * @var ?Metric $grossMarginPercentage
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('gross_margin_percentage')]
-    #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\Metric')]
-    public Metric $grossMarginPercentage;
+    #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\Metric|null')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
+    public ?Metric $grossMarginPercentage = null;
 
     /**
-     * Information about a metric.
      *
-     * @var Metric $cashflow
+     * @var ?Metric $cashflow
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('cashflow')]
-    #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\Metric')]
-    public Metric $cashflow;
+    #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\Metric|null')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
+    public ?Metric $cashflow = null;
 
     /**
-     * @param  Metric  $orders
-     * @param  Metric  $revenue
-     * @param  Metric  $netRevenue
-     * @param  Metric  $cumulativeRevenue
-     * @param  Metric  $netCumulativeRevenue
-     * @param  Metric  $costs
-     * @param  Metric  $cumulativeCosts
-     * @param  Metric  $averageOrderValue
-     * @param  Metric  $netAverageOrderValue
-     * @param  Metric  $averageRevenuePerUser
-     * @param  Metric  $costPerUser
-     * @param  Metric  $activeUserByEvent
-     * @param  Metric  $oneTimeProducts
-     * @param  Metric  $oneTimeProductsRevenue
-     * @param  Metric  $oneTimeProductsNetRevenue
-     * @param  Metric  $newSubscriptions
-     * @param  Metric  $newSubscriptionsRevenue
-     * @param  Metric  $newSubscriptionsNetRevenue
-     * @param  Metric  $renewedSubscriptions
-     * @param  Metric  $renewedSubscriptionsRevenue
-     * @param  Metric  $renewedSubscriptionsNetRevenue
-     * @param  Metric  $activeSubscriptions
-     * @param  Metric  $monthlyRecurringRevenue
-     * @param  Metric  $committedMonthlyRecurringRevenue
-     * @param  Metric  $checkouts
-     * @param  Metric  $succeededCheckouts
-     * @param  Metric  $checkoutsConversion
-     * @param  Metric  $canceledSubscriptions
-     * @param  Metric  $canceledSubscriptionsCustomerService
-     * @param  Metric  $canceledSubscriptionsLowQuality
-     * @param  Metric  $canceledSubscriptionsMissingFeatures
-     * @param  Metric  $canceledSubscriptionsSwitchedService
-     * @param  Metric  $canceledSubscriptionsTooComplex
-     * @param  Metric  $canceledSubscriptionsTooExpensive
-     * @param  Metric  $canceledSubscriptionsUnused
-     * @param  Metric  $canceledSubscriptionsOther
-     * @param  Metric  $churnRate
-     * @param  Metric  $grossMargin
-     * @param  Metric  $grossMarginPercentage
-     * @param  Metric  $cashflow
+     * @param  ?Metric  $orders
+     * @param  ?Metric  $revenue
+     * @param  ?Metric  $netRevenue
+     * @param  ?Metric  $cumulativeRevenue
+     * @param  ?Metric  $netCumulativeRevenue
+     * @param  ?Metric  $costs
+     * @param  ?Metric  $cumulativeCosts
+     * @param  ?Metric  $averageOrderValue
+     * @param  ?Metric  $netAverageOrderValue
+     * @param  ?Metric  $averageRevenuePerUser
+     * @param  ?Metric  $costPerUser
+     * @param  ?Metric  $activeUserByEvent
+     * @param  ?Metric  $oneTimeProducts
+     * @param  ?Metric  $oneTimeProductsRevenue
+     * @param  ?Metric  $oneTimeProductsNetRevenue
+     * @param  ?Metric  $newSubscriptions
+     * @param  ?Metric  $newSubscriptionsRevenue
+     * @param  ?Metric  $newSubscriptionsNetRevenue
+     * @param  ?Metric  $renewedSubscriptions
+     * @param  ?Metric  $renewedSubscriptionsRevenue
+     * @param  ?Metric  $renewedSubscriptionsNetRevenue
+     * @param  ?Metric  $activeSubscriptions
+     * @param  ?Metric  $committedSubscriptions
+     * @param  ?Metric  $monthlyRecurringRevenue
+     * @param  ?Metric  $committedMonthlyRecurringRevenue
+     * @param  ?Metric  $checkouts
+     * @param  ?Metric  $succeededCheckouts
+     * @param  ?Metric  $checkoutsConversion
+     * @param  ?Metric  $canceledSubscriptions
+     * @param  ?Metric  $canceledSubscriptionsCustomerService
+     * @param  ?Metric  $canceledSubscriptionsLowQuality
+     * @param  ?Metric  $canceledSubscriptionsMissingFeatures
+     * @param  ?Metric  $canceledSubscriptionsSwitchedService
+     * @param  ?Metric  $canceledSubscriptionsTooComplex
+     * @param  ?Metric  $canceledSubscriptionsTooExpensive
+     * @param  ?Metric  $canceledSubscriptionsUnused
+     * @param  ?Metric  $canceledSubscriptionsOther
+     * @param  ?Metric  $churnedSubscriptions
+     * @param  ?Metric  $churnRate
+     * @param  ?Metric  $ltv
+     * @param  ?Metric  $grossMargin
+     * @param  ?Metric  $grossMarginPercentage
+     * @param  ?Metric  $cashflow
      * @phpstan-pure
      */
-    public function __construct(Metric $orders, Metric $revenue, Metric $netRevenue, Metric $cumulativeRevenue, Metric $netCumulativeRevenue, Metric $costs, Metric $cumulativeCosts, Metric $averageOrderValue, Metric $netAverageOrderValue, Metric $averageRevenuePerUser, Metric $costPerUser, Metric $activeUserByEvent, Metric $oneTimeProducts, Metric $oneTimeProductsRevenue, Metric $oneTimeProductsNetRevenue, Metric $newSubscriptions, Metric $newSubscriptionsRevenue, Metric $newSubscriptionsNetRevenue, Metric $renewedSubscriptions, Metric $renewedSubscriptionsRevenue, Metric $renewedSubscriptionsNetRevenue, Metric $activeSubscriptions, Metric $monthlyRecurringRevenue, Metric $committedMonthlyRecurringRevenue, Metric $checkouts, Metric $succeededCheckouts, Metric $checkoutsConversion, Metric $canceledSubscriptions, Metric $canceledSubscriptionsCustomerService, Metric $canceledSubscriptionsLowQuality, Metric $canceledSubscriptionsMissingFeatures, Metric $canceledSubscriptionsSwitchedService, Metric $canceledSubscriptionsTooComplex, Metric $canceledSubscriptionsTooExpensive, Metric $canceledSubscriptionsUnused, Metric $canceledSubscriptionsOther, Metric $churnRate, Metric $grossMargin, Metric $grossMarginPercentage, Metric $cashflow)
+    public function __construct(?Metric $orders = null, ?Metric $revenue = null, ?Metric $netRevenue = null, ?Metric $cumulativeRevenue = null, ?Metric $netCumulativeRevenue = null, ?Metric $costs = null, ?Metric $cumulativeCosts = null, ?Metric $averageOrderValue = null, ?Metric $netAverageOrderValue = null, ?Metric $averageRevenuePerUser = null, ?Metric $costPerUser = null, ?Metric $activeUserByEvent = null, ?Metric $oneTimeProducts = null, ?Metric $oneTimeProductsRevenue = null, ?Metric $oneTimeProductsNetRevenue = null, ?Metric $newSubscriptions = null, ?Metric $newSubscriptionsRevenue = null, ?Metric $newSubscriptionsNetRevenue = null, ?Metric $renewedSubscriptions = null, ?Metric $renewedSubscriptionsRevenue = null, ?Metric $renewedSubscriptionsNetRevenue = null, ?Metric $activeSubscriptions = null, ?Metric $committedSubscriptions = null, ?Metric $monthlyRecurringRevenue = null, ?Metric $committedMonthlyRecurringRevenue = null, ?Metric $checkouts = null, ?Metric $succeededCheckouts = null, ?Metric $checkoutsConversion = null, ?Metric $canceledSubscriptions = null, ?Metric $canceledSubscriptionsCustomerService = null, ?Metric $canceledSubscriptionsLowQuality = null, ?Metric $canceledSubscriptionsMissingFeatures = null, ?Metric $canceledSubscriptionsSwitchedService = null, ?Metric $canceledSubscriptionsTooComplex = null, ?Metric $canceledSubscriptionsTooExpensive = null, ?Metric $canceledSubscriptionsUnused = null, ?Metric $canceledSubscriptionsOther = null, ?Metric $churnedSubscriptions = null, ?Metric $churnRate = null, ?Metric $ltv = null, ?Metric $grossMargin = null, ?Metric $grossMarginPercentage = null, ?Metric $cashflow = null)
     {
         $this->orders = $orders;
         $this->revenue = $revenue;
@@ -438,6 +468,7 @@ class Metrics
         $this->renewedSubscriptionsRevenue = $renewedSubscriptionsRevenue;
         $this->renewedSubscriptionsNetRevenue = $renewedSubscriptionsNetRevenue;
         $this->activeSubscriptions = $activeSubscriptions;
+        $this->committedSubscriptions = $committedSubscriptions;
         $this->monthlyRecurringRevenue = $monthlyRecurringRevenue;
         $this->committedMonthlyRecurringRevenue = $committedMonthlyRecurringRevenue;
         $this->checkouts = $checkouts;
@@ -452,7 +483,9 @@ class Metrics
         $this->canceledSubscriptionsTooExpensive = $canceledSubscriptionsTooExpensive;
         $this->canceledSubscriptionsUnused = $canceledSubscriptionsUnused;
         $this->canceledSubscriptionsOther = $canceledSubscriptionsOther;
+        $this->churnedSubscriptions = $churnedSubscriptions;
         $this->churnRate = $churnRate;
+        $this->ltv = $ltv;
         $this->grossMargin = $grossMargin;
         $this->grossMarginPercentage = $grossMarginPercentage;
         $this->cashflow = $cashflow;

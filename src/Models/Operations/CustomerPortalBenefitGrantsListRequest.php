@@ -53,6 +53,14 @@ class CustomerPortalBenefitGrantsListRequest
     public string|array|null $subscriptionId = null;
 
     /**
+     * Filter by member ID.
+     *
+     * @var string|array<string>|null $memberId
+     */
+    #[SpeakeasyMetadata('queryParam:style=form,explode=true,name=member_id')]
+    public string|array|null $memberId = null;
+
+    /**
      * Sorting criterion. Several criteria can be used simultaneously and will be applied in order. Add a minus sign `-` before the criteria name to sort by descending order.
      *
      * @var ?array<Components\CustomerBenefitGrantSortProperty> $sorting
@@ -84,16 +92,18 @@ class CustomerPortalBenefitGrantsListRequest
      * @param  string|array<string>|null  $checkoutId
      * @param  string|array<string>|null  $orderId
      * @param  string|array<string>|null  $subscriptionId
+     * @param  string|array<string>|null  $memberId
      * @param  ?array<Components\CustomerBenefitGrantSortProperty>  $sorting
      * @phpstan-pure
      */
-    public function __construct(Components\BenefitType|array|null $typeFilter = null, string|array|null $benefitId = null, string|array|null $checkoutId = null, string|array|null $orderId = null, string|array|null $subscriptionId = null, ?array $sorting = null, ?int $page = 1, ?int $limit = 10)
+    public function __construct(Components\BenefitType|array|null $typeFilter = null, string|array|null $benefitId = null, string|array|null $checkoutId = null, string|array|null $orderId = null, string|array|null $subscriptionId = null, string|array|null $memberId = null, ?array $sorting = null, ?int $page = 1, ?int $limit = 10)
     {
         $this->typeFilter = $typeFilter;
         $this->benefitId = $benefitId;
         $this->checkoutId = $checkoutId;
         $this->orderId = $orderId;
         $this->subscriptionId = $subscriptionId;
+        $this->memberId = $memberId;
         $this->sorting = $sorting;
         $this->page = $page;
         $this->limit = $limit;

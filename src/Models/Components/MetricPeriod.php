@@ -21,369 +21,439 @@ class MetricPeriod
 
     /**
      *
-     * @var int|float $orders
+     * @var int|float|null $orders
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('orders')]
-    #[\Speakeasy\Serializer\Annotation\Type('int|float')]
-    public int|float $orders;
+    #[\Speakeasy\Serializer\Annotation\Type('int|float|null')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
+    public int|float|null $orders = null;
 
     /**
      *
-     * @var int|float $revenue
+     * @var int|float|null $revenue
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('revenue')]
-    #[\Speakeasy\Serializer\Annotation\Type('int|float')]
-    public int|float $revenue;
+    #[\Speakeasy\Serializer\Annotation\Type('int|float|null')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
+    public int|float|null $revenue = null;
 
     /**
      *
-     * @var int|float $netRevenue
+     * @var int|float|null $netRevenue
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('net_revenue')]
-    #[\Speakeasy\Serializer\Annotation\Type('int|float')]
-    public int|float $netRevenue;
+    #[\Speakeasy\Serializer\Annotation\Type('int|float|null')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
+    public int|float|null $netRevenue = null;
 
     /**
      *
-     * @var int|float $cumulativeRevenue
+     * @var int|float|null $cumulativeRevenue
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('cumulative_revenue')]
-    #[\Speakeasy\Serializer\Annotation\Type('int|float')]
-    public int|float $cumulativeRevenue;
+    #[\Speakeasy\Serializer\Annotation\Type('int|float|null')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
+    public int|float|null $cumulativeRevenue = null;
 
     /**
      *
-     * @var int|float $netCumulativeRevenue
+     * @var int|float|null $netCumulativeRevenue
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('net_cumulative_revenue')]
-    #[\Speakeasy\Serializer\Annotation\Type('int|float')]
-    public int|float $netCumulativeRevenue;
+    #[\Speakeasy\Serializer\Annotation\Type('int|float|null')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
+    public int|float|null $netCumulativeRevenue = null;
 
     /**
      *
-     * @var int|float $costs
+     * @var int|float|null $costs
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('costs')]
-    #[\Speakeasy\Serializer\Annotation\Type('int|float')]
-    public int|float $costs;
+    #[\Speakeasy\Serializer\Annotation\Type('int|float|null')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
+    public int|float|null $costs = null;
 
     /**
      *
-     * @var int|float $cumulativeCosts
+     * @var int|float|null $cumulativeCosts
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('cumulative_costs')]
-    #[\Speakeasy\Serializer\Annotation\Type('int|float')]
-    public int|float $cumulativeCosts;
+    #[\Speakeasy\Serializer\Annotation\Type('int|float|null')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
+    public int|float|null $cumulativeCosts = null;
 
     /**
      *
-     * @var int|float $averageOrderValue
+     * @var int|float|null $averageOrderValue
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('average_order_value')]
-    #[\Speakeasy\Serializer\Annotation\Type('int|float')]
-    public int|float $averageOrderValue;
+    #[\Speakeasy\Serializer\Annotation\Type('int|float|null')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
+    public int|float|null $averageOrderValue = null;
 
     /**
      *
-     * @var int|float $netAverageOrderValue
+     * @var int|float|null $netAverageOrderValue
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('net_average_order_value')]
-    #[\Speakeasy\Serializer\Annotation\Type('int|float')]
-    public int|float $netAverageOrderValue;
+    #[\Speakeasy\Serializer\Annotation\Type('int|float|null')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
+    public int|float|null $netAverageOrderValue = null;
 
     /**
      *
-     * @var int|float $averageRevenuePerUser
+     * @var int|float|null $averageRevenuePerUser
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('average_revenue_per_user')]
-    #[\Speakeasy\Serializer\Annotation\Type('int|float')]
-    public int|float $averageRevenuePerUser;
+    #[\Speakeasy\Serializer\Annotation\Type('int|float|null')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
+    public int|float|null $averageRevenuePerUser = null;
 
     /**
      *
-     * @var int|float $costPerUser
+     * @var int|float|null $costPerUser
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('cost_per_user')]
-    #[\Speakeasy\Serializer\Annotation\Type('int|float')]
-    public int|float $costPerUser;
+    #[\Speakeasy\Serializer\Annotation\Type('int|float|null')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
+    public int|float|null $costPerUser = null;
 
     /**
      *
-     * @var int|float $activeUserByEvent
+     * @var int|float|null $activeUserByEvent
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('active_user_by_event')]
-    #[\Speakeasy\Serializer\Annotation\Type('int|float')]
-    public int|float $activeUserByEvent;
+    #[\Speakeasy\Serializer\Annotation\Type('int|float|null')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
+    public int|float|null $activeUserByEvent = null;
 
     /**
      *
-     * @var int|float $oneTimeProducts
+     * @var int|float|null $oneTimeProducts
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('one_time_products')]
-    #[\Speakeasy\Serializer\Annotation\Type('int|float')]
-    public int|float $oneTimeProducts;
+    #[\Speakeasy\Serializer\Annotation\Type('int|float|null')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
+    public int|float|null $oneTimeProducts = null;
 
     /**
      *
-     * @var int|float $oneTimeProductsRevenue
+     * @var int|float|null $oneTimeProductsRevenue
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('one_time_products_revenue')]
-    #[\Speakeasy\Serializer\Annotation\Type('int|float')]
-    public int|float $oneTimeProductsRevenue;
+    #[\Speakeasy\Serializer\Annotation\Type('int|float|null')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
+    public int|float|null $oneTimeProductsRevenue = null;
 
     /**
      *
-     * @var int|float $oneTimeProductsNetRevenue
+     * @var int|float|null $oneTimeProductsNetRevenue
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('one_time_products_net_revenue')]
-    #[\Speakeasy\Serializer\Annotation\Type('int|float')]
-    public int|float $oneTimeProductsNetRevenue;
+    #[\Speakeasy\Serializer\Annotation\Type('int|float|null')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
+    public int|float|null $oneTimeProductsNetRevenue = null;
 
     /**
      *
-     * @var int|float $newSubscriptions
+     * @var int|float|null $newSubscriptions
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('new_subscriptions')]
-    #[\Speakeasy\Serializer\Annotation\Type('int|float')]
-    public int|float $newSubscriptions;
+    #[\Speakeasy\Serializer\Annotation\Type('int|float|null')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
+    public int|float|null $newSubscriptions = null;
 
     /**
      *
-     * @var int|float $newSubscriptionsRevenue
+     * @var int|float|null $newSubscriptionsRevenue
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('new_subscriptions_revenue')]
-    #[\Speakeasy\Serializer\Annotation\Type('int|float')]
-    public int|float $newSubscriptionsRevenue;
+    #[\Speakeasy\Serializer\Annotation\Type('int|float|null')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
+    public int|float|null $newSubscriptionsRevenue = null;
 
     /**
      *
-     * @var int|float $newSubscriptionsNetRevenue
+     * @var int|float|null $newSubscriptionsNetRevenue
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('new_subscriptions_net_revenue')]
-    #[\Speakeasy\Serializer\Annotation\Type('int|float')]
-    public int|float $newSubscriptionsNetRevenue;
+    #[\Speakeasy\Serializer\Annotation\Type('int|float|null')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
+    public int|float|null $newSubscriptionsNetRevenue = null;
 
     /**
      *
-     * @var int|float $renewedSubscriptions
+     * @var int|float|null $renewedSubscriptions
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('renewed_subscriptions')]
-    #[\Speakeasy\Serializer\Annotation\Type('int|float')]
-    public int|float $renewedSubscriptions;
+    #[\Speakeasy\Serializer\Annotation\Type('int|float|null')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
+    public int|float|null $renewedSubscriptions = null;
 
     /**
      *
-     * @var int|float $renewedSubscriptionsRevenue
+     * @var int|float|null $renewedSubscriptionsRevenue
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('renewed_subscriptions_revenue')]
-    #[\Speakeasy\Serializer\Annotation\Type('int|float')]
-    public int|float $renewedSubscriptionsRevenue;
+    #[\Speakeasy\Serializer\Annotation\Type('int|float|null')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
+    public int|float|null $renewedSubscriptionsRevenue = null;
 
     /**
      *
-     * @var int|float $renewedSubscriptionsNetRevenue
+     * @var int|float|null $renewedSubscriptionsNetRevenue
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('renewed_subscriptions_net_revenue')]
-    #[\Speakeasy\Serializer\Annotation\Type('int|float')]
-    public int|float $renewedSubscriptionsNetRevenue;
+    #[\Speakeasy\Serializer\Annotation\Type('int|float|null')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
+    public int|float|null $renewedSubscriptionsNetRevenue = null;
 
     /**
      *
-     * @var int|float $activeSubscriptions
+     * @var int|float|null $activeSubscriptions
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('active_subscriptions')]
-    #[\Speakeasy\Serializer\Annotation\Type('int|float')]
-    public int|float $activeSubscriptions;
+    #[\Speakeasy\Serializer\Annotation\Type('int|float|null')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
+    public int|float|null $activeSubscriptions = null;
 
     /**
      *
-     * @var int|float $monthlyRecurringRevenue
+     * @var int|float|null $committedSubscriptions
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('committed_subscriptions')]
+    #[\Speakeasy\Serializer\Annotation\Type('int|float|null')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
+    public int|float|null $committedSubscriptions = null;
+
+    /**
+     *
+     * @var int|float|null $monthlyRecurringRevenue
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('monthly_recurring_revenue')]
-    #[\Speakeasy\Serializer\Annotation\Type('int|float')]
-    public int|float $monthlyRecurringRevenue;
+    #[\Speakeasy\Serializer\Annotation\Type('int|float|null')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
+    public int|float|null $monthlyRecurringRevenue = null;
 
     /**
      *
-     * @var int|float $committedMonthlyRecurringRevenue
+     * @var int|float|null $committedMonthlyRecurringRevenue
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('committed_monthly_recurring_revenue')]
-    #[\Speakeasy\Serializer\Annotation\Type('int|float')]
-    public int|float $committedMonthlyRecurringRevenue;
+    #[\Speakeasy\Serializer\Annotation\Type('int|float|null')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
+    public int|float|null $committedMonthlyRecurringRevenue = null;
 
     /**
      *
-     * @var int|float $checkouts
+     * @var int|float|null $checkouts
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('checkouts')]
-    #[\Speakeasy\Serializer\Annotation\Type('int|float')]
-    public int|float $checkouts;
+    #[\Speakeasy\Serializer\Annotation\Type('int|float|null')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
+    public int|float|null $checkouts = null;
 
     /**
      *
-     * @var int|float $succeededCheckouts
+     * @var int|float|null $succeededCheckouts
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('succeeded_checkouts')]
-    #[\Speakeasy\Serializer\Annotation\Type('int|float')]
-    public int|float $succeededCheckouts;
+    #[\Speakeasy\Serializer\Annotation\Type('int|float|null')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
+    public int|float|null $succeededCheckouts = null;
 
     /**
      *
-     * @var int|float $checkoutsConversion
+     * @var int|float|null $checkoutsConversion
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('checkouts_conversion')]
-    #[\Speakeasy\Serializer\Annotation\Type('int|float')]
-    public int|float $checkoutsConversion;
+    #[\Speakeasy\Serializer\Annotation\Type('int|float|null')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
+    public int|float|null $checkoutsConversion = null;
 
     /**
      *
-     * @var int|float $canceledSubscriptions
+     * @var int|float|null $canceledSubscriptions
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('canceled_subscriptions')]
-    #[\Speakeasy\Serializer\Annotation\Type('int|float')]
-    public int|float $canceledSubscriptions;
+    #[\Speakeasy\Serializer\Annotation\Type('int|float|null')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
+    public int|float|null $canceledSubscriptions = null;
 
     /**
      *
-     * @var int|float $canceledSubscriptionsCustomerService
+     * @var int|float|null $canceledSubscriptionsCustomerService
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('canceled_subscriptions_customer_service')]
-    #[\Speakeasy\Serializer\Annotation\Type('int|float')]
-    public int|float $canceledSubscriptionsCustomerService;
+    #[\Speakeasy\Serializer\Annotation\Type('int|float|null')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
+    public int|float|null $canceledSubscriptionsCustomerService = null;
 
     /**
      *
-     * @var int|float $canceledSubscriptionsLowQuality
+     * @var int|float|null $canceledSubscriptionsLowQuality
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('canceled_subscriptions_low_quality')]
-    #[\Speakeasy\Serializer\Annotation\Type('int|float')]
-    public int|float $canceledSubscriptionsLowQuality;
+    #[\Speakeasy\Serializer\Annotation\Type('int|float|null')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
+    public int|float|null $canceledSubscriptionsLowQuality = null;
 
     /**
      *
-     * @var int|float $canceledSubscriptionsMissingFeatures
+     * @var int|float|null $canceledSubscriptionsMissingFeatures
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('canceled_subscriptions_missing_features')]
-    #[\Speakeasy\Serializer\Annotation\Type('int|float')]
-    public int|float $canceledSubscriptionsMissingFeatures;
+    #[\Speakeasy\Serializer\Annotation\Type('int|float|null')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
+    public int|float|null $canceledSubscriptionsMissingFeatures = null;
 
     /**
      *
-     * @var int|float $canceledSubscriptionsSwitchedService
+     * @var int|float|null $canceledSubscriptionsSwitchedService
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('canceled_subscriptions_switched_service')]
-    #[\Speakeasy\Serializer\Annotation\Type('int|float')]
-    public int|float $canceledSubscriptionsSwitchedService;
+    #[\Speakeasy\Serializer\Annotation\Type('int|float|null')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
+    public int|float|null $canceledSubscriptionsSwitchedService = null;
 
     /**
      *
-     * @var int|float $canceledSubscriptionsTooComplex
+     * @var int|float|null $canceledSubscriptionsTooComplex
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('canceled_subscriptions_too_complex')]
-    #[\Speakeasy\Serializer\Annotation\Type('int|float')]
-    public int|float $canceledSubscriptionsTooComplex;
+    #[\Speakeasy\Serializer\Annotation\Type('int|float|null')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
+    public int|float|null $canceledSubscriptionsTooComplex = null;
 
     /**
      *
-     * @var int|float $canceledSubscriptionsTooExpensive
+     * @var int|float|null $canceledSubscriptionsTooExpensive
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('canceled_subscriptions_too_expensive')]
-    #[\Speakeasy\Serializer\Annotation\Type('int|float')]
-    public int|float $canceledSubscriptionsTooExpensive;
+    #[\Speakeasy\Serializer\Annotation\Type('int|float|null')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
+    public int|float|null $canceledSubscriptionsTooExpensive = null;
 
     /**
      *
-     * @var int|float $canceledSubscriptionsUnused
+     * @var int|float|null $canceledSubscriptionsUnused
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('canceled_subscriptions_unused')]
-    #[\Speakeasy\Serializer\Annotation\Type('int|float')]
-    public int|float $canceledSubscriptionsUnused;
+    #[\Speakeasy\Serializer\Annotation\Type('int|float|null')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
+    public int|float|null $canceledSubscriptionsUnused = null;
 
     /**
      *
-     * @var int|float $canceledSubscriptionsOther
+     * @var int|float|null $canceledSubscriptionsOther
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('canceled_subscriptions_other')]
-    #[\Speakeasy\Serializer\Annotation\Type('int|float')]
-    public int|float $canceledSubscriptionsOther;
+    #[\Speakeasy\Serializer\Annotation\Type('int|float|null')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
+    public int|float|null $canceledSubscriptionsOther = null;
 
     /**
      *
-     * @var int|float $churnRate
+     * @var int|float|null $churnedSubscriptions
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('churned_subscriptions')]
+    #[\Speakeasy\Serializer\Annotation\Type('int|float|null')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
+    public int|float|null $churnedSubscriptions = null;
+
+    /**
+     *
+     * @var int|float|null $churnRate
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('churn_rate')]
-    #[\Speakeasy\Serializer\Annotation\Type('int|float')]
-    public int|float $churnRate;
+    #[\Speakeasy\Serializer\Annotation\Type('int|float|null')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
+    public int|float|null $churnRate = null;
 
     /**
      *
-     * @var int|float $grossMargin
+     * @var int|float|null $ltv
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('ltv')]
+    #[\Speakeasy\Serializer\Annotation\Type('int|float|null')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
+    public int|float|null $ltv = null;
+
+    /**
+     *
+     * @var int|float|null $grossMargin
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('gross_margin')]
-    #[\Speakeasy\Serializer\Annotation\Type('int|float')]
-    public int|float $grossMargin;
+    #[\Speakeasy\Serializer\Annotation\Type('int|float|null')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
+    public int|float|null $grossMargin = null;
 
     /**
      *
-     * @var int|float $grossMarginPercentage
+     * @var int|float|null $grossMarginPercentage
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('gross_margin_percentage')]
-    #[\Speakeasy\Serializer\Annotation\Type('int|float')]
-    public int|float $grossMarginPercentage;
+    #[\Speakeasy\Serializer\Annotation\Type('int|float|null')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
+    public int|float|null $grossMarginPercentage = null;
 
     /**
      *
-     * @var int|float $cashflow
+     * @var int|float|null $cashflow
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('cashflow')]
-    #[\Speakeasy\Serializer\Annotation\Type('int|float')]
-    public int|float $cashflow;
+    #[\Speakeasy\Serializer\Annotation\Type('int|float|null')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
+    public int|float|null $cashflow = null;
 
     /**
      * @param  \DateTime  $timestamp
-     * @param  int|float  $orders
-     * @param  int|float  $revenue
-     * @param  int|float  $netRevenue
-     * @param  int|float  $cumulativeRevenue
-     * @param  int|float  $netCumulativeRevenue
-     * @param  int|float  $costs
-     * @param  int|float  $cumulativeCosts
-     * @param  int|float  $averageOrderValue
-     * @param  int|float  $netAverageOrderValue
-     * @param  int|float  $averageRevenuePerUser
-     * @param  int|float  $costPerUser
-     * @param  int|float  $activeUserByEvent
-     * @param  int|float  $oneTimeProducts
-     * @param  int|float  $oneTimeProductsRevenue
-     * @param  int|float  $oneTimeProductsNetRevenue
-     * @param  int|float  $newSubscriptions
-     * @param  int|float  $newSubscriptionsRevenue
-     * @param  int|float  $newSubscriptionsNetRevenue
-     * @param  int|float  $renewedSubscriptions
-     * @param  int|float  $renewedSubscriptionsRevenue
-     * @param  int|float  $renewedSubscriptionsNetRevenue
-     * @param  int|float  $activeSubscriptions
-     * @param  int|float  $monthlyRecurringRevenue
-     * @param  int|float  $committedMonthlyRecurringRevenue
-     * @param  int|float  $checkouts
-     * @param  int|float  $succeededCheckouts
-     * @param  int|float  $checkoutsConversion
-     * @param  int|float  $canceledSubscriptions
-     * @param  int|float  $canceledSubscriptionsCustomerService
-     * @param  int|float  $canceledSubscriptionsLowQuality
-     * @param  int|float  $canceledSubscriptionsMissingFeatures
-     * @param  int|float  $canceledSubscriptionsSwitchedService
-     * @param  int|float  $canceledSubscriptionsTooComplex
-     * @param  int|float  $canceledSubscriptionsTooExpensive
-     * @param  int|float  $canceledSubscriptionsUnused
-     * @param  int|float  $canceledSubscriptionsOther
-     * @param  int|float  $churnRate
-     * @param  int|float  $grossMargin
-     * @param  int|float  $grossMarginPercentage
-     * @param  int|float  $cashflow
+     * @param  int|float|null  $orders
+     * @param  int|float|null  $revenue
+     * @param  int|float|null  $netRevenue
+     * @param  int|float|null  $cumulativeRevenue
+     * @param  int|float|null  $netCumulativeRevenue
+     * @param  int|float|null  $costs
+     * @param  int|float|null  $cumulativeCosts
+     * @param  int|float|null  $averageOrderValue
+     * @param  int|float|null  $netAverageOrderValue
+     * @param  int|float|null  $averageRevenuePerUser
+     * @param  int|float|null  $costPerUser
+     * @param  int|float|null  $activeUserByEvent
+     * @param  int|float|null  $oneTimeProducts
+     * @param  int|float|null  $oneTimeProductsRevenue
+     * @param  int|float|null  $oneTimeProductsNetRevenue
+     * @param  int|float|null  $newSubscriptions
+     * @param  int|float|null  $newSubscriptionsRevenue
+     * @param  int|float|null  $newSubscriptionsNetRevenue
+     * @param  int|float|null  $renewedSubscriptions
+     * @param  int|float|null  $renewedSubscriptionsRevenue
+     * @param  int|float|null  $renewedSubscriptionsNetRevenue
+     * @param  int|float|null  $activeSubscriptions
+     * @param  int|float|null  $committedSubscriptions
+     * @param  int|float|null  $monthlyRecurringRevenue
+     * @param  int|float|null  $committedMonthlyRecurringRevenue
+     * @param  int|float|null  $checkouts
+     * @param  int|float|null  $succeededCheckouts
+     * @param  int|float|null  $checkoutsConversion
+     * @param  int|float|null  $canceledSubscriptions
+     * @param  int|float|null  $canceledSubscriptionsCustomerService
+     * @param  int|float|null  $canceledSubscriptionsLowQuality
+     * @param  int|float|null  $canceledSubscriptionsMissingFeatures
+     * @param  int|float|null  $canceledSubscriptionsSwitchedService
+     * @param  int|float|null  $canceledSubscriptionsTooComplex
+     * @param  int|float|null  $canceledSubscriptionsTooExpensive
+     * @param  int|float|null  $canceledSubscriptionsUnused
+     * @param  int|float|null  $canceledSubscriptionsOther
+     * @param  int|float|null  $churnedSubscriptions
+     * @param  int|float|null  $churnRate
+     * @param  int|float|null  $ltv
+     * @param  int|float|null  $grossMargin
+     * @param  int|float|null  $grossMarginPercentage
+     * @param  int|float|null  $cashflow
      * @phpstan-pure
      */
-    public function __construct(\DateTime $timestamp, int|float $orders, int|float $revenue, int|float $netRevenue, int|float $cumulativeRevenue, int|float $netCumulativeRevenue, int|float $costs, int|float $cumulativeCosts, int|float $averageOrderValue, int|float $netAverageOrderValue, int|float $averageRevenuePerUser, int|float $costPerUser, int|float $activeUserByEvent, int|float $oneTimeProducts, int|float $oneTimeProductsRevenue, int|float $oneTimeProductsNetRevenue, int|float $newSubscriptions, int|float $newSubscriptionsRevenue, int|float $newSubscriptionsNetRevenue, int|float $renewedSubscriptions, int|float $renewedSubscriptionsRevenue, int|float $renewedSubscriptionsNetRevenue, int|float $activeSubscriptions, int|float $monthlyRecurringRevenue, int|float $committedMonthlyRecurringRevenue, int|float $checkouts, int|float $succeededCheckouts, int|float $checkoutsConversion, int|float $canceledSubscriptions, int|float $canceledSubscriptionsCustomerService, int|float $canceledSubscriptionsLowQuality, int|float $canceledSubscriptionsMissingFeatures, int|float $canceledSubscriptionsSwitchedService, int|float $canceledSubscriptionsTooComplex, int|float $canceledSubscriptionsTooExpensive, int|float $canceledSubscriptionsUnused, int|float $canceledSubscriptionsOther, int|float $churnRate, int|float $grossMargin, int|float $grossMarginPercentage, int|float $cashflow)
+    public function __construct(\DateTime $timestamp, int|float|null $orders = null, int|float|null $revenue = null, int|float|null $netRevenue = null, int|float|null $cumulativeRevenue = null, int|float|null $netCumulativeRevenue = null, int|float|null $costs = null, int|float|null $cumulativeCosts = null, int|float|null $averageOrderValue = null, int|float|null $netAverageOrderValue = null, int|float|null $averageRevenuePerUser = null, int|float|null $costPerUser = null, int|float|null $activeUserByEvent = null, int|float|null $oneTimeProducts = null, int|float|null $oneTimeProductsRevenue = null, int|float|null $oneTimeProductsNetRevenue = null, int|float|null $newSubscriptions = null, int|float|null $newSubscriptionsRevenue = null, int|float|null $newSubscriptionsNetRevenue = null, int|float|null $renewedSubscriptions = null, int|float|null $renewedSubscriptionsRevenue = null, int|float|null $renewedSubscriptionsNetRevenue = null, int|float|null $activeSubscriptions = null, int|float|null $committedSubscriptions = null, int|float|null $monthlyRecurringRevenue = null, int|float|null $committedMonthlyRecurringRevenue = null, int|float|null $checkouts = null, int|float|null $succeededCheckouts = null, int|float|null $checkoutsConversion = null, int|float|null $canceledSubscriptions = null, int|float|null $canceledSubscriptionsCustomerService = null, int|float|null $canceledSubscriptionsLowQuality = null, int|float|null $canceledSubscriptionsMissingFeatures = null, int|float|null $canceledSubscriptionsSwitchedService = null, int|float|null $canceledSubscriptionsTooComplex = null, int|float|null $canceledSubscriptionsTooExpensive = null, int|float|null $canceledSubscriptionsUnused = null, int|float|null $canceledSubscriptionsOther = null, int|float|null $churnedSubscriptions = null, int|float|null $churnRate = null, int|float|null $ltv = null, int|float|null $grossMargin = null, int|float|null $grossMarginPercentage = null, int|float|null $cashflow = null)
     {
         $this->timestamp = $timestamp;
         $this->orders = $orders;
@@ -408,6 +478,7 @@ class MetricPeriod
         $this->renewedSubscriptionsRevenue = $renewedSubscriptionsRevenue;
         $this->renewedSubscriptionsNetRevenue = $renewedSubscriptionsNetRevenue;
         $this->activeSubscriptions = $activeSubscriptions;
+        $this->committedSubscriptions = $committedSubscriptions;
         $this->monthlyRecurringRevenue = $monthlyRecurringRevenue;
         $this->committedMonthlyRecurringRevenue = $committedMonthlyRecurringRevenue;
         $this->checkouts = $checkouts;
@@ -422,7 +493,9 @@ class MetricPeriod
         $this->canceledSubscriptionsTooExpensive = $canceledSubscriptionsTooExpensive;
         $this->canceledSubscriptionsUnused = $canceledSubscriptionsUnused;
         $this->canceledSubscriptionsOther = $canceledSubscriptionsOther;
+        $this->churnedSubscriptions = $churnedSubscriptions;
         $this->churnRate = $churnRate;
+        $this->ltv = $ltv;
         $this->grossMargin = $grossMargin;
         $this->grossMarginPercentage = $grossMarginPercentage;
         $this->cashflow = $cashflow;

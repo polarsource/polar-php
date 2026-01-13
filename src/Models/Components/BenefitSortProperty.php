@@ -17,4 +17,6 @@ enum BenefitSortProperty: string
     case MinusDescription = '-description';
     case Type = 'type';
     case MinusType = '-type';
+    case UserOrder = 'user_order';
+    case MinusUserOrder = '-user_order';
 }

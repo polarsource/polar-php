@@ -164,11 +164,11 @@ foreach ($responses as $response) {
 <details open>
 <summary>Available methods</summary>
 
-### [benefitGrants](docs/sdks/benefitgrants/README.md)
+### [BenefitGrants](docs/sdks/benefitgrants/README.md)
 
 * [list](docs/sdks/benefitgrants/README.md#list) - List Benefit Grants
 
-### [benefits](docs/sdks/benefits/README.md)
+### [Benefits](docs/sdks/benefits/README.md)
 
 * [list](docs/sdks/benefits/README.md#list) - List Benefits
 * [create](docs/sdks/benefits/README.md#create) - Create Benefit
@@ -177,7 +177,7 @@ foreach ($responses as $response) {
 * [delete](docs/sdks/benefits/README.md#delete) - Delete Benefit
 * [grants](docs/sdks/benefits/README.md#grants) - List Benefit Grants
 
-### [checkoutLinks](docs/sdks/checkoutlinks/README.md)
+### [CheckoutLinks](docs/sdks/checkoutlinks/README.md)
 
 * [list](docs/sdks/checkoutlinks/README.md#list) - List Checkout Links
 * [create](docs/sdks/checkoutlinks/README.md#create) - Create Checkout Link
@@ -185,7 +185,7 @@ foreach ($responses as $response) {
 * [update](docs/sdks/checkoutlinks/README.md#update) - Update Checkout Link
 * [delete](docs/sdks/checkoutlinks/README.md#delete) - Delete Checkout Link
 
-### [checkouts](docs/sdks/checkouts/README.md)
+### [Checkouts](docs/sdks/checkouts/README.md)
 
 * [list](docs/sdks/checkouts/README.md#list) - List Checkout Sessions
 * [create](docs/sdks/checkouts/README.md#create) - Create Checkout Session
@@ -195,23 +195,35 @@ foreach ($responses as $response) {
 * [clientUpdate](docs/sdks/checkouts/README.md#clientupdate) - Update Checkout Session from Client
 * [clientConfirm](docs/sdks/checkouts/README.md#clientconfirm) - Confirm Checkout Session from Client
 
-### [customerMeters](docs/sdks/customermeters/README.md)
+### [CustomFields](docs/sdks/customfields/README.md)
+
+* [list](docs/sdks/customfields/README.md#list) - List Custom Fields
+* [create](docs/sdks/customfields/README.md#create) - Create Custom Field
+* [get](docs/sdks/customfields/README.md#get) - Get Custom Field
+* [update](docs/sdks/customfields/README.md#update) - Update Custom Field
+* [delete](docs/sdks/customfields/README.md#delete) - Delete Custom Field
+
+### [CustomerMeters](docs/sdks/customermeters/README.md)
 
 * [list](docs/sdks/customermeters/README.md#list) - List Customer Meters
 * [get](docs/sdks/customermeters/README.md#get) - Get Customer Meter
 
-#### [customerPortal->benefitGrants](docs/sdks/polarbenefitgrants/README.md)
+### [CustomerPortal.BenefitGrants](docs/sdks/polarbenefitgrants/README.md)
 
 * [list](docs/sdks/polarbenefitgrants/README.md#list) - List Benefit Grants
 * [get](docs/sdks/polarbenefitgrants/README.md#get) - Get Benefit Grant
 * [update](docs/sdks/polarbenefitgrants/README.md#update) - Update Benefit Grant
 
-#### [customerPortal->customerMeters](docs/sdks/polarcustomermeters/README.md)
+### [CustomerPortal.CustomerMeters](docs/sdks/polarcustomermeters/README.md)
 
 * [list](docs/sdks/polarcustomermeters/README.md#list) - List Meters
 * [get](docs/sdks/polarcustomermeters/README.md#get) - Get Customer Meter
 
-#### [customerPortal->customers](docs/sdks/polarcustomers/README.md)
+### [CustomerPortal.CustomerSession](docs/sdks/customersession/README.md)
+
+* [introspect](docs/sdks/customersession/README.md#introspect) - Introspect Customer Session
+
+### [CustomerPortal.Customers](docs/sdks/polarcustomers/README.md)
 
 * [get](docs/sdks/polarcustomers/README.md#get) - Get Customer
 * [update](docs/sdks/polarcustomers/README.md#update) - Update Customer
@@ -220,15 +232,11 @@ foreach ($responses as $response) {
 * [confirmPaymentMethod](docs/sdks/polarcustomers/README.md#confirmpaymentmethod) - Confirm Customer Payment Method
 * [deletePaymentMethod](docs/sdks/polarcustomers/README.md#deletepaymentmethod) - Delete Customer Payment Method
 
-#### [customerPortal->customerSession](docs/sdks/customersession/README.md)
-
-* [introspect](docs/sdks/customersession/README.md#introspect) - Introspect Customer Session
-
-#### [customerPortal->downloadables](docs/sdks/downloadables/README.md)
+### [CustomerPortal.Downloadables](docs/sdks/downloadables/README.md)
 
 * [list](docs/sdks/downloadables/README.md#list) - List Downloadables
 
-#### [customerPortal->licenseKeys](docs/sdks/polarlicensekeys/README.md)
+### [CustomerPortal.LicenseKeys](docs/sdks/polarlicensekeys/README.md)
 
 * [list](docs/sdks/polarlicensekeys/README.md#list) - List License Keys
 * [get](docs/sdks/polarlicensekeys/README.md#get) - Get License Key
@@ -236,7 +244,7 @@ foreach ($responses as $response) {
 * [activate](docs/sdks/polarlicensekeys/README.md#activate) - Activate License Key
 * [deactivate](docs/sdks/polarlicensekeys/README.md#deactivate) - Deactivate License Key
 
-#### [customerPortal->orders](docs/sdks/polarorders/README.md)
+### [CustomerPortal.Orders](docs/sdks/polarorders/README.md)
 
 * [list](docs/sdks/polarorders/README.md#list) - List Orders
 * [get](docs/sdks/polarorders/README.md#get) - Get Order
@@ -246,11 +254,11 @@ foreach ($responses as $response) {
 * [getPaymentStatus](docs/sdks/polarorders/README.md#getpaymentstatus) - Get Order Payment Status
 * [confirmRetryPayment](docs/sdks/polarorders/README.md#confirmretrypayment) - Confirm Retry Payment
 
-#### [customerPortal->organizations](docs/sdks/polarorganizations/README.md)
+### [CustomerPortal.Organizations](docs/sdks/polarorganizations/README.md)
 
 * [get](docs/sdks/polarorganizations/README.md#get) - Get Organization
 
-#### [customerPortal->seats](docs/sdks/seats/README.md)
+### [CustomerPortal.Seats](docs/sdks/seats/README.md)
 
 * [listSeats](docs/sdks/seats/README.md#listseats) - List Seats
 * [assignSeat](docs/sdks/seats/README.md#assignseat) - Assign Seat
@@ -258,19 +266,32 @@ foreach ($responses as $response) {
 * [resendInvitation](docs/sdks/seats/README.md#resendinvitation) - Resend Invitation
 * [listClaimedSubscriptions](docs/sdks/seats/README.md#listclaimedsubscriptions) - List Claimed Subscriptions
 
-#### [customerPortal->subscriptions](docs/sdks/polarsubscriptions/README.md)
+### [CustomerPortal.Subscriptions](docs/sdks/polarsubscriptions/README.md)
 
 * [list](docs/sdks/polarsubscriptions/README.md#list) - List Subscriptions
 * [get](docs/sdks/polarsubscriptions/README.md#get) - Get Subscription
 * [update](docs/sdks/polarsubscriptions/README.md#update) - Update Subscription
 * [cancel](docs/sdks/polarsubscriptions/README.md#cancel) - Cancel Subscription
 
-#### [customerPortal->wallets](docs/sdks/polarwallets/README.md)
+### [CustomerPortal.Wallets](docs/sdks/wallets/README.md)
 
-* [list](docs/sdks/polarwallets/README.md#list) - List Wallets
-* [get](docs/sdks/polarwallets/README.md#get) - Get Wallet
+* [list](docs/sdks/wallets/README.md#list) - List Wallets
+* [get](docs/sdks/wallets/README.md#get) - Get Wallet
 
-### [customers](docs/sdks/customers/README.md)
+### [CustomerSeats](docs/sdks/customerseats/README.md)
+
+* [assignSeat](docs/sdks/customerseats/README.md#assignseat) - Assign Seat
+* [listSeats](docs/sdks/customerseats/README.md#listseats) - List Seats
+* [revokeSeat](docs/sdks/customerseats/README.md#revokeseat) - Revoke Seat
+* [resendInvitation](docs/sdks/customerseats/README.md#resendinvitation) - Resend Invitation
+* [getClaimInfo](docs/sdks/customerseats/README.md#getclaiminfo) - Get Claim Info
+* [claimSeat](docs/sdks/customerseats/README.md#claimseat) - Claim Seat
+
+### [CustomerSessions](docs/sdks/customersessions/README.md)
+
+* [create](docs/sdks/customersessions/README.md#create) - Create Customer Session
+
+### [Customers](docs/sdks/customers/README.md)
 
 * [list](docs/sdks/customers/README.md#list) - List Customers
 * [create](docs/sdks/customers/README.md#create) - Create Customer
@@ -283,30 +304,8 @@ foreach ($responses as $response) {
 * [deleteExternal](docs/sdks/customers/README.md#deleteexternal) - Delete Customer by External ID
 * [getState](docs/sdks/customers/README.md#getstate) - Get Customer State
 * [getStateExternal](docs/sdks/customers/README.md#getstateexternal) - Get Customer State by External ID
-* [getBalance](docs/sdks/customers/README.md#getbalance) - Get Customer Balance
 
-### [customerSeats](docs/sdks/customerseats/README.md)
-
-* [assignSeat](docs/sdks/customerseats/README.md#assignseat) - Assign Seat
-* [listSeats](docs/sdks/customerseats/README.md#listseats) - List Seats
-* [revokeSeat](docs/sdks/customerseats/README.md#revokeseat) - Revoke Seat
-* [resendInvitation](docs/sdks/customerseats/README.md#resendinvitation) - Resend Invitation
-* [getClaimInfo](docs/sdks/customerseats/README.md#getclaiminfo) - Get Claim Info
-* [claimSeat](docs/sdks/customerseats/README.md#claimseat) - Claim Seat
-
-### [customerSessions](docs/sdks/customersessions/README.md)
-
-* [create](docs/sdks/customersessions/README.md#create) - Create Customer Session
-
-### [customFields](docs/sdks/customfields/README.md)
-
-* [list](docs/sdks/customfields/README.md#list) - List Custom Fields
-* [create](docs/sdks/customfields/README.md#create) - Create Custom Field
-* [get](docs/sdks/customfields/README.md#get) - Get Custom Field
-* [update](docs/sdks/customfields/README.md#update) - Update Custom Field
-* [delete](docs/sdks/customfields/README.md#delete) - Delete Custom Field
-
-### [discounts](docs/sdks/discounts/README.md)
+### [Discounts](docs/sdks/discounts/README.md)
 
 * [list](docs/sdks/discounts/README.md#list) - List Discounts
 * [create](docs/sdks/discounts/README.md#create) - Create Discount
@@ -314,14 +313,24 @@ foreach ($responses as $response) {
 * [update](docs/sdks/discounts/README.md#update) - Update Discount
 * [delete](docs/sdks/discounts/README.md#delete) - Delete Discount
 
-### [events](docs/sdks/events/README.md)
+### [Disputes](docs/sdks/disputes/README.md)
+
+* [list](docs/sdks/disputes/README.md#list) - List Disputes
+* [get](docs/sdks/disputes/README.md#get) - Get Dispute
+
+### [EventTypes](docs/sdks/eventtypes/README.md)
+
+* [list](docs/sdks/eventtypes/README.md#list) - List Event Types
+* [update](docs/sdks/eventtypes/README.md#update) - Update Event Type
+
+### [Events](docs/sdks/events/README.md)
 
 * [list](docs/sdks/events/README.md#list) - List Events
 * [listNames](docs/sdks/events/README.md#listnames) - List Event Names
 * [get](docs/sdks/events/README.md#get) - Get Event
 * [ingest](docs/sdks/events/README.md#ingest) - Ingest Events
 
-### [files](docs/sdks/files/README.md)
+### [Files](docs/sdks/files/README.md)
 
 * [list](docs/sdks/files/README.md#list) - List Files
 * [create](docs/sdks/files/README.md#create) - Create File
@@ -329,7 +338,7 @@ foreach ($responses as $response) {
 * [update](docs/sdks/files/README.md#update) - Update File
 * [delete](docs/sdks/files/README.md#delete) - Delete File
 
-### [licenseKeys](docs/sdks/licensekeys/README.md)
+### [LicenseKeys](docs/sdks/licensekeys/README.md)
 
 * [list](docs/sdks/licensekeys/README.md#list) - List License Keys
 * [get](docs/sdks/licensekeys/README.md#get) - Get License Key
@@ -339,7 +348,13 @@ foreach ($responses as $response) {
 * [activate](docs/sdks/licensekeys/README.md#activate) - Activate License Key
 * [deactivate](docs/sdks/licensekeys/README.md#deactivate) - Deactivate License Key
 
-### [meters](docs/sdks/meters/README.md)
+### [Members](docs/sdks/members/README.md)
+
+* [listMembers](docs/sdks/members/README.md#listmembers) - List Members
+* [createMember](docs/sdks/members/README.md#createmember) - Create Member
+* [deleteMember](docs/sdks/members/README.md#deletemember) - Delete Member
+
+### [Meters](docs/sdks/meters/README.md)
 
 * [list](docs/sdks/meters/README.md#list) - List Meters
 * [create](docs/sdks/meters/README.md#create) - Create Meter
@@ -347,12 +362,12 @@ foreach ($responses as $response) {
 * [update](docs/sdks/meters/README.md#update) - Update Meter
 * [quantities](docs/sdks/meters/README.md#quantities) - Get Meter Quantities
 
-### [metrics](docs/sdks/metrics/README.md)
+### [Metrics](docs/sdks/metrics/README.md)
 
 * [get](docs/sdks/metrics/README.md#get) - Get Metrics
 * [limits](docs/sdks/metrics/README.md#limits) - Get Metrics Limits
 
-### [oauth2](docs/sdks/oauth2/README.md)
+### [Oauth2](docs/sdks/oauth2/README.md)
 
 * [authorize](docs/sdks/oauth2/README.md#authorize) - Authorize
 * [token](docs/sdks/oauth2/README.md#token) - Request Token
@@ -360,14 +375,14 @@ foreach ($responses as $response) {
 * [introspect](docs/sdks/oauth2/README.md#introspect) - Introspect Token
 * [userinfo](docs/sdks/oauth2/README.md#userinfo) - Get User Info
 
-#### [oauth2->clients](docs/sdks/clients/README.md)
+#### [Oauth2.Clients](docs/sdks/clients/README.md)
 
 * [create](docs/sdks/clients/README.md#create) - Create Client
 * [get](docs/sdks/clients/README.md#get) - Get Client
 * [update](docs/sdks/clients/README.md#update) - Update Client
 * [delete](docs/sdks/clients/README.md#delete) - Delete Client
 
-### [orders](docs/sdks/orders/README.md)
+### [Orders](docs/sdks/orders/README.md)
 
 * [list](docs/sdks/orders/README.md#list) - List Orders
 * [export](docs/sdks/orders/README.md#export) - Export Subscriptions
@@ -376,19 +391,19 @@ foreach ($responses as $response) {
 * [generateInvoice](docs/sdks/orders/README.md#generateinvoice) - Generate Order Invoice
 * [invoice](docs/sdks/orders/README.md#invoice) - Get Order Invoice
 
-### [organizations](docs/sdks/organizations/README.md)
+### [Organizations](docs/sdks/organizations/README.md)
 
 * [list](docs/sdks/organizations/README.md#list) - List Organizations
 * [create](docs/sdks/organizations/README.md#create) - Create Organization
 * [get](docs/sdks/organizations/README.md#get) - Get Organization
 * [update](docs/sdks/organizations/README.md#update) - Update Organization
 
-### [payments](docs/sdks/payments/README.md)
+### [Payments](docs/sdks/payments/README.md)
 
 * [list](docs/sdks/payments/README.md#list) - List Payments
 * [get](docs/sdks/payments/README.md#get) - Get Payment
 
-### [products](docs/sdks/products/README.md)
+### [Products](docs/sdks/products/README.md)
 
 * [list](docs/sdks/products/README.md#list) - List Products
 * [create](docs/sdks/products/README.md#create) - Create Product
@@ -396,12 +411,12 @@ foreach ($responses as $response) {
 * [update](docs/sdks/products/README.md#update) - Update Product
 * [updateBenefits](docs/sdks/products/README.md#updatebenefits) - Update Product Benefits
 
-### [refunds](docs/sdks/refunds/README.md)
+### [Refunds](docs/sdks/refunds/README.md)
 
 * [list](docs/sdks/refunds/README.md#list) - List Refunds
 * [create](docs/sdks/refunds/README.md#create) - Create Refund
 
-### [subscriptions](docs/sdks/subscriptions/README.md)
+### [Subscriptions](docs/sdks/subscriptions/README.md)
 
 * [list](docs/sdks/subscriptions/README.md#list) - List Subscriptions
 * [create](docs/sdks/subscriptions/README.md#create) - Create Subscription
@@ -410,13 +425,7 @@ foreach ($responses as $response) {
 * [update](docs/sdks/subscriptions/README.md#update) - Update Subscription
 * [revoke](docs/sdks/subscriptions/README.md#revoke) - Revoke Subscription
 
-### [wallets](docs/sdks/wallets/README.md)
-
-* [list](docs/sdks/wallets/README.md#list) - List Wallets
-* [get](docs/sdks/wallets/README.md#get) - Get Wallet
-* [topUp](docs/sdks/wallets/README.md#topup) - Top-Up Wallet
-
-### [webhooks](docs/sdks/webhooks/README.md)
+### [Webhooks](docs/sdks/webhooks/README.md)
 
 * [listWebhookEndpoints](docs/sdks/webhooks/README.md#listwebhookendpoints) - List Webhook Endpoints
 * [createWebhookEndpoint](docs/sdks/webhooks/README.md#createwebhookendpoint) - Create Webhook Endpoint

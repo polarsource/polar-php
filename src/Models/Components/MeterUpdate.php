@@ -58,7 +58,7 @@ class MeterUpdate
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('aggregation')]
     #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\CountAggregation|\Polar\Models\Components\PropertyAggregation|\Polar\Models\Components\UniqueAggregation|null')]
-    #[\Speakeasy\Serializer\Annotation\UnionDiscriminator(field: 'func', map: ['CountAggregation' => '\Polar\Models\Components\CountAggregation', 'PropertyAggregation' => '\Polar\Models\Components\PropertyAggregation', 'UniqueAggregation' => '\Polar\Models\Components\UniqueAggregation'])]
+    #[\Speakeasy\Serializer\Annotation\UnionDiscriminator(field: 'func', map: ['avg' => '\Polar\Models\Components\PropertyAggregation', 'count' => '\Polar\Models\Components\CountAggregation', 'max' => '\Polar\Models\Components\PropertyAggregation', 'min' => '\Polar\Models\Components\PropertyAggregation', 'sum' => '\Polar\Models\Components\PropertyAggregation', 'unique' => '\Polar\Models\Components\UniqueAggregation'])]
     #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
     public CountAggregation|PropertyAggregation|UniqueAggregation|null $aggregation = null;
 

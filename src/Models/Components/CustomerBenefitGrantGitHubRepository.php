@@ -116,6 +116,14 @@ class CustomerBenefitGrantGitHubRepository
     public ?string $orderId;
 
     /**
+     *
+     * @var ?string $memberId
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('member_id')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
+    public ?string $memberId = null;
+
+    /**
      * @param  \DateTime  $createdAt
      * @param  string  $id
      * @param  string  $customerId
@@ -130,9 +138,10 @@ class CustomerBenefitGrantGitHubRepository
      * @param  ?\DateTime  $revokedAt
      * @param  ?string  $subscriptionId
      * @param  ?string  $orderId
+     * @param  ?string  $memberId
      * @phpstan-pure
      */
-    public function __construct(\DateTime $createdAt, string $id, string $customerId, string $benefitId, bool $isGranted, bool $isRevoked, CustomerPortalCustomer $customer, BenefitGitHubRepositorySubscriber $benefit, BenefitGrantGitHubRepositoryProperties $properties, ?\DateTime $modifiedAt = null, ?\DateTime $grantedAt = null, ?\DateTime $revokedAt = null, ?string $subscriptionId = null, ?string $orderId = null)
+    public function __construct(\DateTime $createdAt, string $id, string $customerId, string $benefitId, bool $isGranted, bool $isRevoked, CustomerPortalCustomer $customer, BenefitGitHubRepositorySubscriber $benefit, BenefitGrantGitHubRepositoryProperties $properties, ?\DateTime $modifiedAt = null, ?\DateTime $grantedAt = null, ?\DateTime $revokedAt = null, ?string $subscriptionId = null, ?string $orderId = null, ?string $memberId = null)
     {
         $this->createdAt = $createdAt;
         $this->id = $id;
@@ -148,5 +157,6 @@ class CustomerBenefitGrantGitHubRepository
         $this->revokedAt = $revokedAt;
         $this->subscriptionId = $subscriptionId;
         $this->orderId = $orderId;
+        $this->memberId = $memberId;
     }
 }

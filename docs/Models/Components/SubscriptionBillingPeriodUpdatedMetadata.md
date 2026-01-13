@@ -1,0 +1,10 @@
+# SubscriptionBillingPeriodUpdatedMetadata
+
+
+## Fields
+
+| Field              | Type               | Required           | Description        |
+| ------------------ | ------------------ | ------------------ | ------------------ |
+| `subscriptionId`   | *string*           | :heavy_check_mark: | N/A                |
+| `oldPeriodEnd`     | *string*           | :heavy_check_mark: | N/A                |
+| `newPeriodEnd`     | *string*           | :heavy_check_mark: | N/A                |

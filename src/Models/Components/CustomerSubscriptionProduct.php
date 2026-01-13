@@ -88,11 +88,11 @@ class CustomerSubscriptionProduct
 
     /**
      *
-     * @var Organization $organization
+     * @var CustomerOrganization $organization
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('organization')]
-    #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\Organization')]
-    public Organization $organization;
+    #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\CustomerOrganization')]
+    public CustomerOrganization $organization;
 
     /**
      * Last modification timestamp of the object.
@@ -154,7 +154,7 @@ class CustomerSubscriptionProduct
      * @param  array<LegacyRecurringProductPriceFixed|LegacyRecurringProductPriceCustom|LegacyRecurringProductPriceFree|ProductPriceFixed|ProductPriceCustom|ProductPriceFree|ProductPriceSeatBased|ProductPriceMeteredUnit>  $prices
      * @param  array<BenefitPublic>  $benefits
      * @param  array<ProductMediaFileRead>  $medias
-     * @param  Organization  $organization
+     * @param  CustomerOrganization  $organization
      * @param  ?\DateTime  $modifiedAt
      * @param  ?TrialInterval  $trialInterval
      * @param  ?int  $trialIntervalCount
@@ -163,7 +163,7 @@ class CustomerSubscriptionProduct
      * @param  ?int  $recurringIntervalCount
      * @phpstan-pure
      */
-    public function __construct(string $id, \DateTime $createdAt, string $name, bool $isRecurring, bool $isArchived, string $organizationId, array $prices, array $benefits, array $medias, Organization $organization, ?\DateTime $modifiedAt = null, ?TrialInterval $trialInterval = null, ?int $trialIntervalCount = null, ?string $description = null, ?SubscriptionRecurringInterval $recurringInterval = null, ?int $recurringIntervalCount = null)
+    public function __construct(string $id, \DateTime $createdAt, string $name, bool $isRecurring, bool $isArchived, string $organizationId, array $prices, array $benefits, array $medias, CustomerOrganization $organization, ?\DateTime $modifiedAt = null, ?TrialInterval $trialInterval = null, ?int $trialIntervalCount = null, ?string $description = null, ?SubscriptionRecurringInterval $recurringInterval = null, ?int $recurringIntervalCount = null)
     {
         $this->id = $id;
         $this->createdAt = $createdAt;

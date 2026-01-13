@@ -126,14 +126,6 @@ class CustomerSubscription
     public array $meters;
 
     /**
-     * Whether the subscription is managed by Polar.
-     *
-     * @var bool $isPolarManaged
-     */
-    #[\Speakeasy\Serializer\Annotation\SerializedName('is_polar_managed')]
-    public bool $isPolarManaged;
-
-    /**
      * Last modification timestamp of the object.
      *
      * @var ?\DateTime $modifiedAt
@@ -251,7 +243,6 @@ class CustomerSubscription
      * @param  CustomerSubscriptionProduct  $product
      * @param  array<LegacyRecurringProductPriceFixed|LegacyRecurringProductPriceCustom|LegacyRecurringProductPriceFree|ProductPriceFixed|ProductPriceCustom|ProductPriceFree|ProductPriceSeatBased|ProductPriceMeteredUnit>  $prices
      * @param  array<CustomerSubscriptionMeter>  $meters
-     * @param  bool  $isPolarManaged
      * @param  ?\DateTime  $modifiedAt
      * @param  ?\DateTime  $currentPeriodEnd
      * @param  ?\DateTime  $trialStart
@@ -267,7 +258,7 @@ class CustomerSubscription
      * @param  ?int  $seats
      * @phpstan-pure
      */
-    public function __construct(\DateTime $createdAt, string $id, int $amount, string $currency, SubscriptionRecurringInterval $recurringInterval, int $recurringIntervalCount, SubscriptionStatus $status, \DateTime $currentPeriodStart, bool $cancelAtPeriodEnd, string $customerId, string $productId, CustomerSubscriptionProduct $product, array $prices, array $meters, bool $isPolarManaged, ?\DateTime $modifiedAt = null, ?\DateTime $currentPeriodEnd = null, ?\DateTime $trialStart = null, ?\DateTime $trialEnd = null, ?\DateTime $canceledAt = null, ?\DateTime $startedAt = null, ?\DateTime $endsAt = null, ?\DateTime $endedAt = null, ?string $discountId = null, ?string $checkoutId = null, ?CustomerCancellationReason $customerCancellationReason = null, ?string $customerCancellationComment = null, ?int $seats = null)
+    public function __construct(\DateTime $createdAt, string $id, int $amount, string $currency, SubscriptionRecurringInterval $recurringInterval, int $recurringIntervalCount, SubscriptionStatus $status, \DateTime $currentPeriodStart, bool $cancelAtPeriodEnd, string $customerId, string $productId, CustomerSubscriptionProduct $product, array $prices, array $meters, ?\DateTime $modifiedAt = null, ?\DateTime $currentPeriodEnd = null, ?\DateTime $trialStart = null, ?\DateTime $trialEnd = null, ?\DateTime $canceledAt = null, ?\DateTime $startedAt = null, ?\DateTime $endsAt = null, ?\DateTime $endedAt = null, ?string $discountId = null, ?string $checkoutId = null, ?CustomerCancellationReason $customerCancellationReason = null, ?string $customerCancellationComment = null, ?int $seats = null)
     {
         $this->createdAt = $createdAt;
         $this->id = $id;
@@ -283,7 +274,6 @@ class CustomerSubscription
         $this->product = $product;
         $this->prices = $prices;
         $this->meters = $meters;
-        $this->isPolarManaged = $isPolarManaged;
         $this->modifiedAt = $modifiedAt;
         $this->currentPeriodEnd = $currentPeriodEnd;
         $this->trialStart = $trialStart;

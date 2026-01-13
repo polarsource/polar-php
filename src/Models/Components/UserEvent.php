@@ -37,6 +37,14 @@ class UserEvent
     public string $organizationId;
 
     /**
+     * Human readable label of the event type.
+     *
+     * @var string $label
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('label')]
+    public string $label;
+
+    /**
      * The name of the event.
      *
      * @var string $name
@@ -79,6 +87,15 @@ class UserEvent
     public ?string $externalCustomerId;
 
     /**
+     * The ID of the parent event.
+     *
+     * @var ?string $parentId
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('parent_id')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
+    public ?string $parentId = null;
+
+    /**
      * The source of the event. `system` events are created by Polar. `user` events are the one you create through our ingestion API.
      *
      * @var string $source
@@ -99,6 +116,7 @@ class UserEvent
      * @param  string  $id
      * @param  \DateTime  $timestamp
      * @param  string  $organizationId
+     * @param  string  $label
      * @param  string  $name
      * @param  string  $source
      * @param  array<string, string|int|float|bool|CostMetadataOutput|LLMMetadata>  $metadata
@@ -106,18 +124,21 @@ class UserEvent
      * @param  ?Customer  $customer
      * @param  ?string  $externalCustomerId
      * @param  ?int  $childCount
+     * @param  ?string  $parentId
      * @phpstan-pure
      */
-    public function __construct(string $id, \DateTime $timestamp, string $organizationId, string $name, array $metadata, ?string $customerId = null, ?Customer $customer = null, ?string $externalCustomerId = null, string $source = 'user', ?int $childCount = 0)
+    public function __construct(string $id, \DateTime $timestamp, string $organizationId, string $label, string $name, array $metadata, ?string $customerId = null, ?Customer $customer = null, ?string $externalCustomerId = null, ?string $parentId = null, string $source = 'user', ?int $childCount = 0)
     {
         $this->id = $id;
         $this->timestamp = $timestamp;
         $this->organizationId = $organizationId;
+        $this->label = $label;
         $this->name = $name;
         $this->metadata = $metadata;
         $this->customerId = $customerId;
         $this->customer = $customer;
         $this->externalCustomerId = $externalCustomerId;
+        $this->parentId = $parentId;
         $this->source = $source;
         $this->childCount = $childCount;
     }

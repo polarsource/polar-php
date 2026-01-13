@@ -46,6 +46,16 @@ class AuthorizeResponseOrganization
     public ?AuthorizeOrganization $sub;
 
     /**
+     * $scopeDisplayNames
+     *
+     * @var ?array<string, string> $scopeDisplayNames
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('scope_display_names')]
+    #[\Speakeasy\Serializer\Annotation\Type('array<string, string>|null')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
+    public ?array $scopeDisplayNames = null;
+
+    /**
      *
      * @var string $subType
      */
@@ -58,14 +68,16 @@ class AuthorizeResponseOrganization
      * @param  array<Scope>  $scopes
      * @param  array<AuthorizeOrganization>  $organizations
      * @param  ?AuthorizeOrganization  $sub
+     * @param  ?array<string, string>  $scopeDisplayNames
      * @phpstan-pure
      */
-    public function __construct(OAuth2ClientPublic $client, array $scopes, array $organizations, ?AuthorizeOrganization $sub = null, string $subType = 'organization')
+    public function __construct(OAuth2ClientPublic $client, array $scopes, array $organizations, ?AuthorizeOrganization $sub = null, ?array $scopeDisplayNames = null, string $subType = 'organization')
     {
         $this->client = $client;
         $this->scopes = $scopes;
         $this->organizations = $organizations;
         $this->sub = $sub;
+        $this->scopeDisplayNames = $scopeDisplayNames;
         $this->subType = $subType;
     }
 }

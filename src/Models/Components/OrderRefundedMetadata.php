@@ -33,25 +33,15 @@ class OrderRefundedMetadata
     public string $currency;
 
     /**
-     *
-     * @var ?bool $backfilled
-     */
-    #[\Speakeasy\Serializer\Annotation\SerializedName('backfilled')]
-    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
-    public ?bool $backfilled = null;
-
-    /**
      * @param  string  $orderId
      * @param  int  $refundedAmount
      * @param  string  $currency
-     * @param  ?bool  $backfilled
      * @phpstan-pure
      */
-    public function __construct(string $orderId, int $refundedAmount, string $currency, ?bool $backfilled = null)
+    public function __construct(string $orderId, int $refundedAmount, string $currency)
     {
         $this->orderId = $orderId;
         $this->refundedAmount = $refundedAmount;
         $this->currency = $currency;
-        $this->backfilled = $backfilled;
     }
 }

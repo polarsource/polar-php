@@ -1,24 +1,24 @@
 # QueryParamStatusFilter
 
-Filter by payment status.
+Filter by checkout session status.
 
 
 ## Supported Types
 
-### `Components\PaymentStatus`
+### `Components\CheckoutStatus`
 
 ```php
 /**
-* @var Components\PaymentStatus
+* @var Components\CheckoutStatus
 */
-Components\PaymentStatus $value = /* values here */
+Components\CheckoutStatus $value = /* values here */
 ```
 
 ### `array`
 
 ```php
 /**
-* @var array<Components\PaymentStatus>
+* @var array<Components\CheckoutStatus>
 */
 array $value = /* values here */
 ```

@@ -91,7 +91,7 @@ class Events
 
                 $serializer = Utils\JSON::createSerializer();
                 $responseData = (string) $httpResponse->getBody();
-                $obj = $serializer->deserialize($responseData, '\Polar\Models\Components\MeterCreditEvent|\Polar\Models\Components\MeterResetEvent|\Polar\Models\Components\BenefitGrantedEvent|\Polar\Models\Components\BenefitCycledEvent|\Polar\Models\Components\BenefitUpdatedEvent|\Polar\Models\Components\BenefitRevokedEvent|\Polar\Models\Components\SubscriptionCycledEvent|\Polar\Models\Components\SubscriptionRevokedEvent|\Polar\Models\Components\SubscriptionProductUpdatedEvent|\Polar\Models\Components\OrderPaidEvent|\Polar\Models\Components\OrderRefundedEvent|\Polar\Models\Components\CustomerCreatedEvent|\Polar\Models\Components\CustomerUpdatedEvent|\Polar\Models\Components\CustomerDeletedEvent|\Polar\Models\Components\UserEvent', 'json', DeserializationContext::create()->setRequireAllRequiredProperties(true));
+                $obj = $serializer->deserialize($responseData, '\Polar\Models\Components\MeterCreditEvent|\Polar\Models\Components\MeterResetEvent|\Polar\Models\Components\BenefitGrantedEvent|\Polar\Models\Components\BenefitCycledEvent|\Polar\Models\Components\BenefitUpdatedEvent|\Polar\Models\Components\BenefitRevokedEvent|\Polar\Models\Components\SubscriptionCreatedEvent|\Polar\Models\Components\SubscriptionCycledEvent|\Polar\Models\Components\SubscriptionCanceledEvent|\Polar\Models\Components\SubscriptionRevokedEvent|\Polar\Models\Components\SubscriptionUncanceledEvent|\Polar\Models\Components\SubscriptionProductUpdatedEvent|\Polar\Models\Components\SubscriptionSeatsUpdatedEvent|\Polar\Models\Components\SubscriptionBillingPeriodUpdatedEvent|\Polar\Models\Components\OrderPaidEvent|\Polar\Models\Components\OrderRefundedEvent|\Polar\Models\Components\CheckoutCreatedEvent|\Polar\Models\Components\CustomerCreatedEvent|\Polar\Models\Components\CustomerUpdatedEvent|\Polar\Models\Components\CustomerDeletedEvent|\Polar\Models\Components\BalanceOrderEvent|\Polar\Models\Components\BalanceRefundEvent|\Polar\Models\Components\BalanceRefundReversalEvent|\Polar\Models\Components\BalanceDisputeEvent|\Polar\Models\Components\BalanceDisputeReversalEvent|\Polar\Models\Components\UserEvent', 'json', DeserializationContext::create()->setRequireAllRequiredProperties(true));
                 $response = new Operations\EventsGetResponse(
                     statusCode: $statusCode,
                     contentType: $contentType,
@@ -223,7 +223,7 @@ class Events
      * @return Operations\EventsListResponse
      * @throws \Polar\Models\Errors\APIException
      */
-    private function listIndividual(?Operations\EventsListRequest $request = null, ?Options $options = null): Operations\EventsListResponse
+    public function list(?Operations\EventsListRequest $request = null, ?Options $options = null): Operations\EventsListResponse
     {
         $baseUrl = $this->sdkConfiguration->getTemplatedServerUrl();
         $url = Utils\Utils::generateUrl($baseUrl, '/v1/events/');
@@ -258,60 +258,12 @@ class Events
 
                 $serializer = Utils\JSON::createSerializer();
                 $responseData = (string) $httpResponse->getBody();
-                $obj = $serializer->deserialize($responseData, '\Polar\Models\Components\ListResourceEvent', 'json', DeserializationContext::create()->setRequireAllRequiredProperties(true));
+                $obj = $serializer->deserialize($responseData, '\Polar\Models\Components\ListResourceEvent|\Polar\Models\Components\ListResourceWithCursorPaginationEvent', 'json', DeserializationContext::create()->setRequireAllRequiredProperties(true));
                 $response = new Operations\EventsListResponse(
                     statusCode: $statusCode,
                     contentType: $contentType,
                     rawResponse: $httpResponse,
-                    listResourceEvent: $obj);
-                $sdk = $this;
-
-                $response->next = function () use ($sdk, $request, $responseData): ?Operations\EventsListResponse {
-                    $page = $request != null ? $request->page : 0;
-                    $nextPage = $page + 1;
-                    $jsonObject = new \JsonPath\JsonObject($responseData);
-                    $numPages = $jsonObject->get('$.pagination.max_page');
-                    if ($numPages == null || $numPages[0] <= $page) {
-                        return null;
-                    }
-                    if (! $responseData) {
-                        return null;
-                    }
-                    $jsonObject = new \JsonPath\JsonObject($responseData);
-                    $results = $jsonObject->get('$.items');
-
-                    if (is_array($results)) {
-                        $results = $results[0];
-                    }
-                    if (count($results) === 0) {
-                        return null;
-                    }
-                    $limit = $request != null ? $request->limit : 0;
-                    if (count($results) < $limit) {
-                        return null;
-                    }
-
-                    return $sdk->listIndividual(
-                        request: new Operations\EventsListRequest(
-                            filter: $request != null ? $request->filter : null,
-                            startTimestamp: $request != null ? $request->startTimestamp : null,
-                            endTimestamp: $request != null ? $request->endTimestamp : null,
-                            organizationId: $request != null ? $request->organizationId : null,
-                            customerId: $request != null ? $request->customerId : null,
-                            externalCustomerId: $request != null ? $request->externalCustomerId : null,
-                            meterId: $request != null ? $request->meterId : null,
-                            name: $request != null ? $request->name : null,
-                            source: $request != null ? $request->source : null,
-                            query: $request != null ? $request->query : null,
-                            parentId: $request != null ? $request->parentId : null,
-                            page: $nextPage,
-                            limit: $request != null ? $request->limit : null,
-                            sorting: $request != null ? $request->sorting : null,
-                            metadata: $request != null ? $request->metadata : null,
-                        ),
-                    );
-                };
-
+                    responseEventsList: $obj);
 
                 return $response;
             } else {
@@ -334,25 +286,6 @@ class Events
             throw new \Polar\Models\Errors\APIException('API error occurred', $statusCode, $httpResponse->getBody()->getContents(), $httpResponse);
         } else {
             throw new \Polar\Models\Errors\APIException('Unknown status code received', $statusCode, $httpResponse->getBody()->getContents(), $httpResponse);
-        }
-    }
-    /**
-     * List Events
-     *
-     * List events.
-     *
-     * **Scopes**: `events:read` `events:write`
-     *
-     * @param  ?Operations\EventsListRequest  $request
-     * @return \Generator<Operations\EventsListResponse>
-     * @throws \Polar\Models\Errors\APIException
-     */
-    public function list(?Operations\EventsListRequest $request = null, ?Options $options = null): \Generator
-    {
-        $res = $this->listIndividual($request, $options);
-        while ($res !== null) {
-            yield $res;
-            $res = $res->next($res);
         }
     }
 

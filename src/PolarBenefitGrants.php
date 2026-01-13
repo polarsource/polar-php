@@ -233,6 +233,7 @@ class PolarBenefitGrants
                             checkoutId: $request != null ? $request->checkoutId : null,
                             orderId: $request != null ? $request->orderId : null,
                             subscriptionId: $request != null ? $request->subscriptionId : null,
+                            memberId: $request != null ? $request->memberId : null,
                             page: $nextPage,
                             limit: $request != null ? $request->limit : null,
                             sorting: $request != null ? $request->sorting : null,

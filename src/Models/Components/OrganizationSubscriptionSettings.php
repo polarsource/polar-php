@@ -41,17 +41,26 @@ class OrganizationSubscriptionSettings
     public int $benefitRevocationGracePeriod;
 
     /**
+     *
+     * @var bool $preventTrialAbuse
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('prevent_trial_abuse')]
+    public bool $preventTrialAbuse;
+
+    /**
      * @param  bool  $allowMultipleSubscriptions
      * @param  bool  $allowCustomerUpdates
      * @param  SubscriptionProrationBehavior  $prorationBehavior
      * @param  int  $benefitRevocationGracePeriod
+     * @param  bool  $preventTrialAbuse
      * @phpstan-pure
      */
-    public function __construct(bool $allowMultipleSubscriptions, bool $allowCustomerUpdates, SubscriptionProrationBehavior $prorationBehavior, int $benefitRevocationGracePeriod)
+    public function __construct(bool $allowMultipleSubscriptions, bool $allowCustomerUpdates, SubscriptionProrationBehavior $prorationBehavior, int $benefitRevocationGracePeriod, bool $preventTrialAbuse)
     {
         $this->allowMultipleSubscriptions = $allowMultipleSubscriptions;
         $this->allowCustomerUpdates = $allowCustomerUpdates;
         $this->prorationBehavior = $prorationBehavior;
         $this->benefitRevocationGracePeriod = $benefitRevocationGracePeriod;
+        $this->preventTrialAbuse = $preventTrialAbuse;
     }
 }

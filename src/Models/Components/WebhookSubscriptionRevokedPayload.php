@@ -10,9 +10,11 @@ namespace Polar\Models\Components;
 
 
 /**
- * WebhookSubscriptionRevokedPayload - Sent when a subscription is revoked, the user loses access immediately.
+ * WebhookSubscriptionRevokedPayload - Sent when a subscription is revoked and the user loses access immediately.
  *
- * Happens when the subscription is canceled, or payment is past due.
+ * Happens when the subscription is canceled or payment retries are exhausted (status becomes `unpaid`).
+ *
+ * For payment failures that can still be recovered, see `subscription.past_due`.
  *
  * **Discord & Slack support:** Full
  */

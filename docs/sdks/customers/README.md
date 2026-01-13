@@ -1,5 +1,4 @@
 # Customers
-(*customers*)
 
 ## Overview
 
@@ -16,7 +15,6 @@
 * [deleteExternal](#deleteexternal) - Delete Customer by External ID
 * [getState](#getstate) - Get Customer State
 * [getStateExternal](#getstateexternal) - Get Customer State by External ID
-* [getBalance](#getbalance) - Get Customer Balance
 
 ## list
 
@@ -109,13 +107,18 @@ $request = new Components\CustomerCreate(
         'us_ein',
     ],
     organizationId: '1dbfc517-0bbf-4301-9ba8-555ca42b9737',
+    owner: new Components\OwnerCreate(
+        email: 'member@example.com',
+        name: 'Jane Doe',
+        externalId: 'usr_1337',
+    ),
 );
 
 $response = $sdk->customers->create(
     request: $request
 );
 
-if ($response->customer !== null) {
+if ($response->customerWithMembers !== null) {
     // handle response
 }
 ```
@@ -215,7 +218,7 @@ $response = $sdk->customers->get(
     id: '<value>'
 );
 
-if ($response->customer !== null) {
+if ($response->customerWithMembers !== null) {
     // handle response
 }
 ```
@@ -280,7 +283,7 @@ $response = $sdk->customers->update(
 
 );
 
-if ($response->customer !== null) {
+if ($response->customerWithMembers !== null) {
     // handle response
 }
 ```
@@ -395,7 +398,7 @@ $response = $sdk->customers->getExternal(
     externalId: '<id>'
 );
 
-if ($response->customer !== null) {
+if ($response->customerWithMembers !== null) {
     // handle response
 }
 ```
@@ -459,7 +462,7 @@ $response = $sdk->customers->updateExternal(
 
 );
 
-if ($response->customer !== null) {
+if ($response->customerWithMembers !== null) {
     // handle response
 }
 ```
@@ -641,57 +644,6 @@ if ($response->customerState !== null) {
 ### Response
 
 **[?Operations\CustomersGetStateExternalResponse](../../Models/Operations/CustomersGetStateExternalResponse.md)**
-
-### Errors
-
-| Error Type                 | Status Code                | Content Type               |
-| -------------------------- | -------------------------- | -------------------------- |
-| Errors\ResourceNotFound    | 404                        | application/json           |
-| Errors\HTTPValidationError | 422                        | application/json           |
-| Errors\APIException        | 4XX, 5XX                   | \*/\*                      |
-
-## getBalance
-
-Get customer balance information.
-
-**Scopes**: `customers:read` `customers:write`
-
-### Example Usage
-
-<!-- UsageSnippet language="php" operationID="customers:get_balance" method="get" path="/v1/customers/{id}/balance" -->
-```php
-declare(strict_types=1);
-
-require 'vendor/autoload.php';
-
-use Polar;
-
-$sdk = Polar\Polar::builder()
-    ->setSecurity(
-        '<YOUR_BEARER_TOKEN_HERE>'
-    )
-    ->build();
-
-
-
-$response = $sdk->customers->getBalance(
-    id: '<value>'
-);
-
-if ($response->customerBalance !== null) {
-    // handle response
-}
-```
-
-### Parameters
-
-| Parameter          | Type               | Required           | Description        |
-| ------------------ | ------------------ | ------------------ | ------------------ |
-| `id`               | *string*           | :heavy_check_mark: | The customer ID.   |
-
-### Response
-
-**[?Operations\CustomersGetBalanceResponse](../../Models/Operations/CustomersGetBalanceResponse.md)**
 
 ### Errors
 

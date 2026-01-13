@@ -108,6 +108,15 @@ class OrganizationCreate
     public ?OrganizationCustomerEmailSettings $customerEmailSettings = null;
 
     /**
+     *
+     * @var ?OrganizationCustomerPortalSettings $customerPortalSettings
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('customer_portal_settings')]
+    #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\OrganizationCustomerPortalSettings|null')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
+    public ?OrganizationCustomerPortalSettings $customerPortalSettings = null;
+
+    /**
      * @param  string  $name
      * @param  string  $slug
      * @param  ?string  $avatarUrl
@@ -119,9 +128,10 @@ class OrganizationCreate
      * @param  ?OrganizationSubscriptionSettings  $subscriptionSettings
      * @param  ?OrganizationNotificationSettings  $notificationSettings
      * @param  ?OrganizationCustomerEmailSettings  $customerEmailSettings
+     * @param  ?OrganizationCustomerPortalSettings  $customerPortalSettings
      * @phpstan-pure
      */
-    public function __construct(string $name, string $slug, ?string $avatarUrl = null, ?string $email = null, ?string $website = null, ?array $socials = null, ?OrganizationDetails $details = null, ?OrganizationFeatureSettings $featureSettings = null, ?OrganizationSubscriptionSettings $subscriptionSettings = null, ?OrganizationNotificationSettings $notificationSettings = null, ?OrganizationCustomerEmailSettings $customerEmailSettings = null)
+    public function __construct(string $name, string $slug, ?string $avatarUrl = null, ?string $email = null, ?string $website = null, ?array $socials = null, ?OrganizationDetails $details = null, ?OrganizationFeatureSettings $featureSettings = null, ?OrganizationSubscriptionSettings $subscriptionSettings = null, ?OrganizationNotificationSettings $notificationSettings = null, ?OrganizationCustomerEmailSettings $customerEmailSettings = null, ?OrganizationCustomerPortalSettings $customerPortalSettings = null)
     {
         $this->name = $name;
         $this->slug = $slug;
@@ -134,5 +144,6 @@ class OrganizationCreate
         $this->subscriptionSettings = $subscriptionSettings;
         $this->notificationSettings = $notificationSettings;
         $this->customerEmailSettings = $customerEmailSettings;
+        $this->customerPortalSettings = $customerPortalSettings;
     }
 }

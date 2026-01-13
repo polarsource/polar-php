@@ -27,31 +27,132 @@ class OrderPaidMetadata
 
     /**
      *
-     * @var string $currency
+     * @var ?string $productId
      */
-    #[\Speakeasy\Serializer\Annotation\SerializedName('currency')]
-    public string $currency;
+    #[\Speakeasy\Serializer\Annotation\SerializedName('product_id')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
+    public ?string $productId = null;
 
     /**
      *
-     * @var ?bool $backfilled
+     * @var ?string $billingType
      */
-    #[\Speakeasy\Serializer\Annotation\SerializedName('backfilled')]
+    #[\Speakeasy\Serializer\Annotation\SerializedName('billing_type')]
     #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
-    public ?bool $backfilled = null;
+    public ?string $billingType = null;
+
+    /**
+     *
+     * @var ?string $currency
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('currency')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
+    public ?string $currency = null;
+
+    /**
+     *
+     * @var ?int $netAmount
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('net_amount')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
+    public ?int $netAmount = null;
+
+    /**
+     *
+     * @var ?int $taxAmount
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('tax_amount')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
+    public ?int $taxAmount = null;
+
+    /**
+     *
+     * @var ?int $appliedBalanceAmount
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('applied_balance_amount')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
+    public ?int $appliedBalanceAmount = null;
+
+    /**
+     *
+     * @var ?int $discountAmount
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('discount_amount')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
+    public ?int $discountAmount = null;
+
+    /**
+     *
+     * @var ?string $discountId
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('discount_id')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
+    public ?string $discountId = null;
+
+    /**
+     *
+     * @var ?int $platformFee
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('platform_fee')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
+    public ?int $platformFee = null;
+
+    /**
+     *
+     * @var ?string $subscriptionId
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('subscription_id')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
+    public ?string $subscriptionId = null;
+
+    /**
+     *
+     * @var ?string $recurringInterval
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('recurring_interval')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
+    public ?string $recurringInterval = null;
+
+    /**
+     *
+     * @var ?int $recurringIntervalCount
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('recurring_interval_count')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
+    public ?int $recurringIntervalCount = null;
 
     /**
      * @param  string  $orderId
      * @param  int  $amount
-     * @param  string  $currency
-     * @param  ?bool  $backfilled
+     * @param  ?string  $productId
+     * @param  ?string  $billingType
+     * @param  ?string  $currency
+     * @param  ?int  $netAmount
+     * @param  ?int  $taxAmount
+     * @param  ?int  $appliedBalanceAmount
+     * @param  ?int  $discountAmount
+     * @param  ?string  $discountId
+     * @param  ?int  $platformFee
+     * @param  ?string  $subscriptionId
+     * @param  ?string  $recurringInterval
+     * @param  ?int  $recurringIntervalCount
      * @phpstan-pure
      */
-    public function __construct(string $orderId, int $amount, string $currency, ?bool $backfilled = null)
+    public function __construct(string $orderId, int $amount, ?string $productId = null, ?string $billingType = null, ?string $currency = null, ?int $netAmount = null, ?int $taxAmount = null, ?int $appliedBalanceAmount = null, ?int $discountAmount = null, ?string $discountId = null, ?int $platformFee = null, ?string $subscriptionId = null, ?string $recurringInterval = null, ?int $recurringIntervalCount = null)
     {
         $this->orderId = $orderId;
         $this->amount = $amount;
+        $this->productId = $productId;
+        $this->billingType = $billingType;
         $this->currency = $currency;
-        $this->backfilled = $backfilled;
+        $this->netAmount = $netAmount;
+        $this->taxAmount = $taxAmount;
+        $this->appliedBalanceAmount = $appliedBalanceAmount;
+        $this->discountAmount = $discountAmount;
+        $this->discountId = $discountId;
+        $this->platformFee = $platformFee;
+        $this->subscriptionId = $subscriptionId;
+        $this->recurringInterval = $recurringInterval;
+        $this->recurringIntervalCount = $recurringIntervalCount;
     }
 }

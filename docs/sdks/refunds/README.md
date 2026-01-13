@@ -1,5 +1,4 @@
 # Refunds
-(*refunds*)
 
 ## Overview
 
@@ -10,7 +9,7 @@
 
 ## list
 
-List products.
+List refunds.
 
 **Scopes**: `refunds:read` `refunds:write`
 
@@ -116,7 +115,6 @@ if ($response->refund !== null) {
 
 | Error Type                 | Status Code                | Content Type               |
 | -------------------------- | -------------------------- | -------------------------- |
-| Errors\RefundAmountTooHigh | 400                        | application/json           |
 | Errors\RefundedAlready     | 403                        | application/json           |
 | Errors\HTTPValidationError | 422                        | application/json           |
 | Errors\APIException        | 4XX, 5XX                   | \*/\*                      |

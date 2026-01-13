@@ -35,9 +35,9 @@ class CustomersListResponse
     /**
      * Successful Response
      *
-     * @var ?Components\ListResourceCustomer $listResourceCustomer
+     * @var ?Components\ListResourceCustomerWithMembers $listResourceCustomerWithMembers
      */
-    public ?Components\ListResourceCustomer $listResourceCustomer = null;
+    public ?Components\ListResourceCustomerWithMembers $listResourceCustomerWithMembers = null;
 
     /**
      * @var \Closure(string): ?CustomersListResponse $next
@@ -47,15 +47,15 @@ class CustomersListResponse
      * @param  string  $contentType
      * @param  int  $statusCode
      * @param  \Psr\Http\Message\ResponseInterface  $rawResponse
-     * @param  ?Components\ListResourceCustomer  $listResourceCustomer
+     * @param  ?Components\ListResourceCustomerWithMembers  $listResourceCustomerWithMembers
      * @phpstan-pure
      */
-    public function __construct(string $contentType, int $statusCode, \Psr\Http\Message\ResponseInterface $rawResponse, ?Components\ListResourceCustomer $listResourceCustomer = null)
+    public function __construct(string $contentType, int $statusCode, \Psr\Http\Message\ResponseInterface $rawResponse, ?Components\ListResourceCustomerWithMembers $listResourceCustomerWithMembers = null)
     {
         $this->contentType = $contentType;
         $this->statusCode = $statusCode;
         $this->rawResponse = $rawResponse;
-        $this->listResourceCustomer = $listResourceCustomer;
+        $this->listResourceCustomerWithMembers = $listResourceCustomerWithMembers;
     }
     /**
      * @param  string  $name

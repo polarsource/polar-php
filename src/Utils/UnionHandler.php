@@ -116,6 +116,7 @@ final class UnionHandler implements SubscribingHandlerInterface
             }
 
             $unionMap = $type['params'][2];
+
             $lookupValue = $data[$lookupField];
             if (empty($unionMap[$lookupValue])) {
                 throw new NonVisitableTypeException(sprintf('Union Discriminator Map does not contain key "%s"', $lookupValue));
@@ -387,6 +388,8 @@ final class UnionHandler implements SubscribingHandlerInterface
             if ($param['name'] === 'union') {
                 $innerTypes = array_map(fn ($t) => $t['name'], $param['params']);
                 $typeNames[] = $typeToTry = implode('|', $innerTypes);
+            } elseif ($param['name'] === 'enum') {
+                $typeNames[] = $param['params'][0]['name'];
             } else {
                 $typeNames[] = $param['name'];
             }

@@ -29,6 +29,22 @@ class BenefitsListRequest
     public Components\BenefitType|array|null $typeFilter = null;
 
     /**
+     * Filter by benefit IDs.
+     *
+     * @var string|array<string>|null $id
+     */
+    #[SpeakeasyMetadata('queryParam:style=form,explode=true,name=id')]
+    public string|array|null $id = null;
+
+    /**
+     * Exclude benefits with these IDs.
+     *
+     * @var string|array<string>|null $excludeId
+     */
+    #[SpeakeasyMetadata('queryParam:style=form,explode=true,name=exclude_id')]
+    public string|array|null $excludeId = null;
+
+    /**
      * Filter by description.
      *
      * @var ?string $query
@@ -73,15 +89,19 @@ class BenefitsListRequest
      * @param  ?int  $limit
      * @param  string|array<string>|null  $organizationId
      * @param  Components\BenefitType|array<Components\BenefitType>|null  $typeFilter
+     * @param  string|array<string>|null  $id
+     * @param  string|array<string>|null  $excludeId
      * @param  ?string  $query
      * @param  ?array<Components\BenefitSortProperty>  $sorting
      * @param  ?array<string, string|int|bool|array<string>|array<int>|array<bool>>  $metadata
      * @phpstan-pure
      */
-    public function __construct(string|array|null $organizationId = null, Components\BenefitType|array|null $typeFilter = null, ?string $query = null, ?array $sorting = null, ?array $metadata = null, ?int $page = 1, ?int $limit = 10)
+    public function __construct(string|array|null $organizationId = null, Components\BenefitType|array|null $typeFilter = null, string|array|null $id = null, string|array|null $excludeId = null, ?string $query = null, ?array $sorting = null, ?array $metadata = null, ?int $page = 1, ?int $limit = 10)
     {
         $this->organizationId = $organizationId;
         $this->typeFilter = $typeFilter;
+        $this->id = $id;
+        $this->excludeId = $excludeId;
         $this->query = $query;
         $this->sorting = $sorting;
         $this->metadata = $metadata;

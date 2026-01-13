@@ -20,7 +20,7 @@ class Organization
     public \DateTime $createdAt;
 
     /**
-     * The organization ID.
+     * The ID of the object.
      *
      * @var string $id
      */
@@ -42,6 +42,22 @@ class Organization
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('slug')]
     public string $slug;
+
+    /**
+     *
+     * @var SubscriptionProrationBehavior $prorationBehavior
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('proration_behavior')]
+    #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\SubscriptionProrationBehavior')]
+    public SubscriptionProrationBehavior $prorationBehavior;
+
+    /**
+     * Whether customers can update their subscriptions from the customer portal.
+     *
+     * @var bool $allowCustomerUpdates
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('allow_customer_updates')]
+    public bool $allowCustomerUpdates;
 
     /**
      * Links to social profiles.
@@ -83,6 +99,14 @@ class Organization
     #[\Speakeasy\Serializer\Annotation\SerializedName('customer_email_settings')]
     #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\OrganizationCustomerEmailSettings')]
     public OrganizationCustomerEmailSettings $customerEmailSettings;
+
+    /**
+     *
+     * @var OrganizationCustomerPortalSettings $customerPortalSettings
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('customer_portal_settings')]
+    #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\OrganizationCustomerPortalSettings')]
+    public OrganizationCustomerPortalSettings $customerPortalSettings;
 
     /**
      * Last modification timestamp of the object.
@@ -138,11 +162,14 @@ class Organization
      * @param  string  $id
      * @param  string  $name
      * @param  string  $slug
+     * @param  SubscriptionProrationBehavior  $prorationBehavior
+     * @param  bool  $allowCustomerUpdates
      * @param  array<OrganizationSocialLink>  $socials
      * @param  OrganizationStatus  $status
      * @param  OrganizationSubscriptionSettings  $subscriptionSettings
      * @param  OrganizationNotificationSettings  $notificationSettings
      * @param  OrganizationCustomerEmailSettings  $customerEmailSettings
+     * @param  OrganizationCustomerPortalSettings  $customerPortalSettings
      * @param  ?\DateTime  $modifiedAt
      * @param  ?string  $avatarUrl
      * @param  ?string  $email
@@ -151,17 +178,20 @@ class Organization
      * @param  ?OrganizationFeatureSettings  $featureSettings
      * @phpstan-pure
      */
-    public function __construct(\DateTime $createdAt, string $id, string $name, string $slug, array $socials, OrganizationStatus $status, OrganizationSubscriptionSettings $subscriptionSettings, OrganizationNotificationSettings $notificationSettings, OrganizationCustomerEmailSettings $customerEmailSettings, ?\DateTime $modifiedAt = null, ?string $avatarUrl = null, ?string $email = null, ?string $website = null, ?\DateTime $detailsSubmittedAt = null, ?OrganizationFeatureSettings $featureSettings = null)
+    public function __construct(\DateTime $createdAt, string $id, string $name, string $slug, SubscriptionProrationBehavior $prorationBehavior, bool $allowCustomerUpdates, array $socials, OrganizationStatus $status, OrganizationSubscriptionSettings $subscriptionSettings, OrganizationNotificationSettings $notificationSettings, OrganizationCustomerEmailSettings $customerEmailSettings, OrganizationCustomerPortalSettings $customerPortalSettings, ?\DateTime $modifiedAt = null, ?string $avatarUrl = null, ?string $email = null, ?string $website = null, ?\DateTime $detailsSubmittedAt = null, ?OrganizationFeatureSettings $featureSettings = null)
     {
         $this->createdAt = $createdAt;
         $this->id = $id;
         $this->name = $name;
         $this->slug = $slug;
+        $this->prorationBehavior = $prorationBehavior;
+        $this->allowCustomerUpdates = $allowCustomerUpdates;
         $this->socials = $socials;
         $this->status = $status;
         $this->subscriptionSettings = $subscriptionSettings;
         $this->notificationSettings = $notificationSettings;
         $this->customerEmailSettings = $customerEmailSettings;
+        $this->customerPortalSettings = $customerPortalSettings;
         $this->modifiedAt = $modifiedAt;
         $this->avatarUrl = $avatarUrl;
         $this->email = $email;

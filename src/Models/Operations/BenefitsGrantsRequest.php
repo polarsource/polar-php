@@ -35,6 +35,14 @@ class BenefitsGrantsRequest
     public string|array|null $customerId = null;
 
     /**
+     * Filter by member.
+     *
+     * @var string|array<string>|null $memberId
+     */
+    #[SpeakeasyMetadata('queryParam:style=form,explode=true,name=member_id')]
+    public string|array|null $memberId = null;
+
+    /**
      * Page number, defaults to 1.
      *
      * @var ?int $page
@@ -56,13 +64,15 @@ class BenefitsGrantsRequest
      * @param  ?int  $limit
      * @param  ?bool  $isGranted
      * @param  string|array<string>|null  $customerId
+     * @param  string|array<string>|null  $memberId
      * @phpstan-pure
      */
-    public function __construct(string $id, ?bool $isGranted = null, string|array|null $customerId = null, ?int $page = 1, ?int $limit = 10)
+    public function __construct(string $id, ?bool $isGranted = null, string|array|null $customerId = null, string|array|null $memberId = null, ?int $page = 1, ?int $limit = 10)
     {
         $this->id = $id;
         $this->isGranted = $isGranted;
         $this->customerId = $customerId;
+        $this->memberId = $memberId;
         $this->page = $page;
         $this->limit = $limit;
     }

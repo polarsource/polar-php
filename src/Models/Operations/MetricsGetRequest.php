@@ -70,6 +70,14 @@ class MetricsGetRequest
     public string|array|null $customerId = null;
 
     /**
+     * List of metric slugs to focus on. When provided, only the queries needed for these metrics will be executed, improving performance. If not provided, all metrics are returned.
+     *
+     * @var ?array<string> $metrics
+     */
+    #[SpeakeasyMetadata('queryParam:style=form,explode=true,name=metrics')]
+    public ?array $metrics = null;
+
+    /**
      * Timezone to use for the timestamps. Default is UTC.
      *
      * @var ?string $timezone
@@ -86,9 +94,10 @@ class MetricsGetRequest
      * @param  string|array<string>|null  $productId
      * @param  Components\ProductBillingType|array<Components\ProductBillingType>|null  $billingType
      * @param  string|array<string>|null  $customerId
+     * @param  ?array<string>  $metrics
      * @phpstan-pure
      */
-    public function __construct(LocalDate $startDate, LocalDate $endDate, Components\TimeInterval $interval, string|array|null $organizationId = null, string|array|null $productId = null, Components\ProductBillingType|array|null $billingType = null, string|array|null $customerId = null, ?string $timezone = 'UTC')
+    public function __construct(LocalDate $startDate, LocalDate $endDate, Components\TimeInterval $interval, string|array|null $organizationId = null, string|array|null $productId = null, Components\ProductBillingType|array|null $billingType = null, string|array|null $customerId = null, ?array $metrics = null, ?string $timezone = 'UTC')
     {
         $this->startDate = $startDate;
         $this->endDate = $endDate;
@@ -97,6 +106,7 @@ class MetricsGetRequest
         $this->productId = $productId;
         $this->billingType = $billingType;
         $this->customerId = $customerId;
+        $this->metrics = $metrics;
         $this->timezone = $timezone;
     }
 }
