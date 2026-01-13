@@ -392,6 +392,7 @@ class Benefits
                             id: $request != null ? $request->id : '',
                             isGranted: $request != null ? $request->isGranted : null,
                             customerId: $request != null ? $request->customerId : null,
+                            memberId: $request != null ? $request->memberId : null,
                             page: $nextPage,
                             limit: $request != null ? $request->limit : null,
                         ),
@@ -538,6 +539,8 @@ class Benefits
                         request: new Operations\BenefitsListRequest(
                             organizationId: $request != null ? $request->organizationId : null,
                             typeFilter: $request != null ? $request->typeFilter : null,
+                            id: $request != null ? $request->id : null,
+                            excludeId: $request != null ? $request->excludeId : null,
                             query: $request != null ? $request->query : null,
                             page: $nextPage,
                             limit: $request != null ? $request->limit : null,

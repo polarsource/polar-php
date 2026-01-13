@@ -1,5 +1,4 @@
 # Metrics
-(*metrics*)
 
 ## Overview
 

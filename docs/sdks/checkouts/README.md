@@ -1,5 +1,4 @@
 # Checkouts
-(*checkouts*)
 
 ## Overview
 
@@ -240,6 +239,7 @@ if ($response->checkout !== null) {
 | Errors\AlreadyActiveSubscriptionError | 403                                   | application/json                      |
 | Errors\NotOpenCheckout                | 403                                   | application/json                      |
 | Errors\PaymentNotReady                | 403                                   | application/json                      |
+| Errors\TrialAlreadyRedeemed           | 403                                   | application/json                      |
 | Errors\ResourceNotFound               | 404                                   | application/json                      |
 | Errors\HTTPValidationError            | 422                                   | application/json                      |
 | Errors\APIException                   | 4XX, 5XX                              | \*/\*                                 |
@@ -341,6 +341,7 @@ if ($response->checkoutPublic !== null) {
 | Errors\AlreadyActiveSubscriptionError | 403                                   | application/json                      |
 | Errors\NotOpenCheckout                | 403                                   | application/json                      |
 | Errors\PaymentNotReady                | 403                                   | application/json                      |
+| Errors\TrialAlreadyRedeemed           | 403                                   | application/json                      |
 | Errors\ResourceNotFound               | 404                                   | application/json                      |
 | Errors\ExpiredCheckoutError           | 410                                   | application/json                      |
 | Errors\HTTPValidationError            | 422                                   | application/json                      |
@@ -406,6 +407,7 @@ if ($response->checkoutPublicConfirmed !== null) {
 | Errors\AlreadyActiveSubscriptionError | 403                                   | application/json                      |
 | Errors\NotOpenCheckout                | 403                                   | application/json                      |
 | Errors\PaymentNotReady                | 403                                   | application/json                      |
+| Errors\TrialAlreadyRedeemed           | 403                                   | application/json                      |
 | Errors\ResourceNotFound               | 404                                   | application/json                      |
 | Errors\ExpiredCheckoutError           | 410                                   | application/json                      |
 | Errors\HTTPValidationError            | 422                                   | application/json                      |

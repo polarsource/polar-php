@@ -1,24 +1,24 @@
 # StatusFilter
 
-Filter by checkout session status.
+Filter by dispute status.
 
 
 ## Supported Types
 
-### `Components\CheckoutStatus`
+### `Components\DisputeStatus`
 
 ```php
 /**
-* @var Components\CheckoutStatus
+* @var Components\DisputeStatus
 */
-Components\CheckoutStatus $value = /* values here */
+Components\DisputeStatus $value = /* values here */
 ```
 
 ### `array`
 
 ```php
 /**
-* @var array<Components\CheckoutStatus>
+* @var array<Components\DisputeStatus>
 */
 array $value = /* values here */
 ```

@@ -15,11 +15,16 @@ class ProductPriceSeatBasedCreate
     /**
      * List of pricing tiers for seat-based pricing.
      *
-     * @var ProductPriceSeatTiers $seatTiers
+     *
+     * The minimum and maximum seat limits are derived from the tiers:
+     * - minimum_seats = first tier's min_seats
+     * - maximum_seats = last tier's max_seats (None for unlimited)
+     *
+     * @var ProductPriceSeatTiersInput $seatTiers
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('seat_tiers')]
-    #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\ProductPriceSeatTiers')]
-    public ProductPriceSeatTiers $seatTiers;
+    #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\ProductPriceSeatTiersInput')]
+    public ProductPriceSeatTiersInput $seatTiers;
 
     /**
      *
@@ -39,11 +44,11 @@ class ProductPriceSeatBasedCreate
 
     /**
      * @param  string  $amountType
-     * @param  ProductPriceSeatTiers  $seatTiers
+     * @param  ProductPriceSeatTiersInput  $seatTiers
      * @param  ?string  $priceCurrency
      * @phpstan-pure
      */
-    public function __construct(ProductPriceSeatTiers $seatTiers, string $amountType = 'seat_based', ?string $priceCurrency = 'usd')
+    public function __construct(ProductPriceSeatTiersInput $seatTiers, string $amountType = 'seat_based', ?string $priceCurrency = 'usd')
     {
         $this->seatTiers = $seatTiers;
         $this->amountType = $amountType;

@@ -13,7 +13,8 @@ enum OrganizationStatus: string
 {
     case Created = 'created';
     case OnboardingStarted = 'onboarding_started';
-    case UnderReview = 'under_review';
+    case InitialReview = 'initial_review';
+    case OngoingReview = 'ongoing_review';
     case Denied = 'denied';
     case Active = 'active';
 }

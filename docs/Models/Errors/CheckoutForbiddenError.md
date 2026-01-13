@@ -30,3 +30,12 @@ Errors\NotOpenCheckout $value = /* values here */
 Errors\PaymentNotReady $value = /* values here */
 ```
 
+### `Errors\TrialAlreadyRedeemed`
+
+```php
+/**
+* @var Errors\TrialAlreadyRedeemed
+*/
+Errors\TrialAlreadyRedeemed $value = /* values here */
+```
+

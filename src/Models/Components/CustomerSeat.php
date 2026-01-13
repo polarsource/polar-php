@@ -62,13 +62,31 @@ class CustomerSeat
     public ?string $orderId = null;
 
     /**
-     * The assigned customer ID
+     * The customer ID. When member_model_enabled is true, this is the billing customer (purchaser). When false, this is the seat member customer.
      *
      * @var ?string $customerId
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('customer_id')]
     #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
     public ?string $customerId = null;
+
+    /**
+     * The member ID of the seat occupant
+     *
+     * @var ?string $memberId
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('member_id')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
+    public ?string $memberId = null;
+
+    /**
+     * Email of the seat member (set when member_model_enabled is true)
+     *
+     * @var ?string $email
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('email')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
+    public ?string $email = null;
 
     /**
      * The assigned customer email
@@ -124,6 +142,8 @@ class CustomerSeat
      * @param  ?string  $subscriptionId
      * @param  ?string  $orderId
      * @param  ?string  $customerId
+     * @param  ?string  $memberId
+     * @param  ?string  $email
      * @param  ?string  $customerEmail
      * @param  ?\DateTime  $invitationTokenExpiresAt
      * @param  ?\DateTime  $claimedAt
@@ -131,7 +151,7 @@ class CustomerSeat
      * @param  ?array<string, mixed>  $seatMetadata
      * @phpstan-pure
      */
-    public function __construct(\DateTime $createdAt, string $id, SeatStatus $status, ?\DateTime $modifiedAt = null, ?string $subscriptionId = null, ?string $orderId = null, ?string $customerId = null, ?string $customerEmail = null, ?\DateTime $invitationTokenExpiresAt = null, ?\DateTime $claimedAt = null, ?\DateTime $revokedAt = null, ?array $seatMetadata = null)
+    public function __construct(\DateTime $createdAt, string $id, SeatStatus $status, ?\DateTime $modifiedAt = null, ?string $subscriptionId = null, ?string $orderId = null, ?string $customerId = null, ?string $memberId = null, ?string $email = null, ?string $customerEmail = null, ?\DateTime $invitationTokenExpiresAt = null, ?\DateTime $claimedAt = null, ?\DateTime $revokedAt = null, ?array $seatMetadata = null)
     {
         $this->createdAt = $createdAt;
         $this->id = $id;
@@ -140,6 +160,8 @@ class CustomerSeat
         $this->subscriptionId = $subscriptionId;
         $this->orderId = $orderId;
         $this->customerId = $customerId;
+        $this->memberId = $memberId;
+        $this->email = $email;
         $this->customerEmail = $customerEmail;
         $this->invitationTokenExpiresAt = $invitationTokenExpiresAt;
         $this->claimedAt = $claimedAt;

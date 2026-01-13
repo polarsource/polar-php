@@ -48,32 +48,39 @@ class Wallets
     /**
      * Get Wallet
      *
-     * Get a wallet by ID.
+     * Get a wallet by ID for the authenticated customer.
      *
-     * **Scopes**: `wallets:read`
+     * **Scopes**: `customer_portal:read` `customer_portal:write`
      *
+     * @param  Operations\CustomerPortalWalletsGetSecurity  $security
      * @param  string  $id
-     * @return Operations\WalletsGetResponse
+     * @return Operations\CustomerPortalWalletsGetResponse
      * @throws \Polar\Models\Errors\APIException
      */
-    public function get(string $id, ?Options $options = null): Operations\WalletsGetResponse
+    public function get(Operations\CustomerPortalWalletsGetSecurity $security, string $id, ?Options $options = null): Operations\CustomerPortalWalletsGetResponse
     {
-        $request = new Operations\WalletsGetRequest(
+        $request = new Operations\CustomerPortalWalletsGetRequest(
             id: $id,
         );
         $baseUrl = $this->sdkConfiguration->getTemplatedServerUrl();
-        $url = Utils\Utils::generateUrl($baseUrl, '/v1/wallets/{id}', Operations\WalletsGetRequest::class, $request);
+        $url = Utils\Utils::generateUrl($baseUrl, '/v1/customer-portal/wallets/{id}', Operations\CustomerPortalWalletsGetRequest::class, $request);
         $urlOverride = null;
         $httpOptions = ['http_errors' => false];
         $httpOptions['headers']['Accept'] = 'application/json';
         $httpOptions['headers']['user-agent'] = $this->sdkConfiguration->userAgent;
         $httpRequest = new \GuzzleHttp\Psr7\Request('GET', $url);
-        $hookContext = new HookContext($this->sdkConfiguration, $baseUrl, 'wallets:get', null, $this->sdkConfiguration->securitySource);
+        if ($security != null) {
+            $client = Utils\Utils::configureSecurityClient($this->sdkConfiguration->client, $security);
+        } else {
+            $client = $this->sdkConfiguration->client;
+        }
+
+        $hookContext = new HookContext($this->sdkConfiguration, $baseUrl, 'customer_portal:wallets:get', null, fn () => $security);
         $httpRequest = $this->sdkConfiguration->hooks->beforeRequest(new Hooks\BeforeRequestContext($hookContext), $httpRequest);
         $httpOptions = Utils\Utils::convertHeadersToOptions($httpRequest, $httpOptions);
         $httpRequest = Utils\Utils::removeHeaders($httpRequest);
         try {
-            $httpResponse = $this->sdkConfiguration->client->send($httpRequest, $httpOptions);
+            $httpResponse = $client->send($httpRequest, $httpOptions);
         } catch (\GuzzleHttp\Exception\GuzzleException $error) {
             $res = $this->sdkConfiguration->hooks->afterError(new Hooks\AfterErrorContext($hookContext), null, $error);
             $httpResponse = $res;
@@ -91,12 +98,12 @@ class Wallets
 
                 $serializer = Utils\JSON::createSerializer();
                 $responseData = (string) $httpResponse->getBody();
-                $obj = $serializer->deserialize($responseData, '\Polar\Models\Components\Wallet', 'json', DeserializationContext::create()->setRequireAllRequiredProperties(true));
-                $response = new Operations\WalletsGetResponse(
+                $obj = $serializer->deserialize($responseData, '\Polar\Models\Components\CustomerWallet', 'json', DeserializationContext::create()->setRequireAllRequiredProperties(true));
+                $response = new Operations\CustomerPortalWalletsGetResponse(
                     statusCode: $statusCode,
                     contentType: $contentType,
                     rawResponse: $httpResponse,
-                    wallet: $obj);
+                    customerWallet: $obj);
 
                 return $response;
             } else {
@@ -136,32 +143,46 @@ class Wallets
     /**
      * List Wallets
      *
-     * List wallets.
+     * List wallets of the authenticated customer.
      *
-     * **Scopes**: `wallets:read`
+     * **Scopes**: `customer_portal:read` `customer_portal:write`
      *
-     * @param  ?Operations\WalletsListRequest  $request
-     * @return Operations\WalletsListResponse
+     * @param  Operations\CustomerPortalWalletsListSecurity  $security
+     * @param  ?int  $page
+     * @param  ?int  $limit
+     * @param  ?array<Components\CustomerWalletSortProperty>  $sorting
+     * @return Operations\CustomerPortalWalletsListResponse
      * @throws \Polar\Models\Errors\APIException
      */
-    private function listIndividual(?Operations\WalletsListRequest $request = null, ?Options $options = null): Operations\WalletsListResponse
+    private function listIndividual(Operations\CustomerPortalWalletsListSecurity $security, ?int $page = null, ?int $limit = null, ?array $sorting = null, ?Options $options = null): Operations\CustomerPortalWalletsListResponse
     {
+        $request = new Operations\CustomerPortalWalletsListRequest(
+            page: $page,
+            limit: $limit,
+            sorting: $sorting,
+        );
         $baseUrl = $this->sdkConfiguration->getTemplatedServerUrl();
-        $url = Utils\Utils::generateUrl($baseUrl, '/v1/wallets/');
+        $url = Utils\Utils::generateUrl($baseUrl, '/v1/customer-portal/wallets/');
         $urlOverride = null;
         $httpOptions = ['http_errors' => false];
 
-        $qp = Utils\Utils::getQueryParams(Operations\WalletsListRequest::class, $request, $urlOverride);
+        $qp = Utils\Utils::getQueryParams(Operations\CustomerPortalWalletsListRequest::class, $request, $urlOverride);
         $httpOptions['headers']['Accept'] = 'application/json';
         $httpOptions['headers']['user-agent'] = $this->sdkConfiguration->userAgent;
         $httpRequest = new \GuzzleHttp\Psr7\Request('GET', $url);
-        $hookContext = new HookContext($this->sdkConfiguration, $baseUrl, 'wallets:list', null, $this->sdkConfiguration->securitySource);
+        if ($security != null) {
+            $client = Utils\Utils::configureSecurityClient($this->sdkConfiguration->client, $security);
+        } else {
+            $client = $this->sdkConfiguration->client;
+        }
+
+        $hookContext = new HookContext($this->sdkConfiguration, $baseUrl, 'customer_portal:wallets:list', null, fn () => $security);
         $httpRequest = $this->sdkConfiguration->hooks->beforeRequest(new Hooks\BeforeRequestContext($hookContext), $httpRequest);
         $httpOptions['query'] = Utils\QueryParameters::standardizeQueryParams($httpRequest, $qp);
         $httpOptions = Utils\Utils::convertHeadersToOptions($httpRequest, $httpOptions);
         $httpRequest = Utils\Utils::removeHeaders($httpRequest);
         try {
-            $httpResponse = $this->sdkConfiguration->client->send($httpRequest, $httpOptions);
+            $httpResponse = $client->send($httpRequest, $httpOptions);
         } catch (\GuzzleHttp\Exception\GuzzleException $error) {
             $res = $this->sdkConfiguration->hooks->afterError(new Hooks\AfterErrorContext($hookContext), null, $error);
             $httpResponse = $res;
@@ -179,15 +200,15 @@ class Wallets
 
                 $serializer = Utils\JSON::createSerializer();
                 $responseData = (string) $httpResponse->getBody();
-                $obj = $serializer->deserialize($responseData, '\Polar\Models\Components\ListResourceWallet', 'json', DeserializationContext::create()->setRequireAllRequiredProperties(true));
-                $response = new Operations\WalletsListResponse(
+                $obj = $serializer->deserialize($responseData, '\Polar\Models\Components\ListResourceCustomerWallet', 'json', DeserializationContext::create()->setRequireAllRequiredProperties(true));
+                $response = new Operations\CustomerPortalWalletsListResponse(
                     statusCode: $statusCode,
                     contentType: $contentType,
                     rawResponse: $httpResponse,
-                    listResourceWallet: $obj);
+                    listResourceCustomerWallet: $obj);
                 $sdk = $this;
 
-                $response->next = function () use ($sdk, $request, $responseData): ?Operations\WalletsListResponse {
+                $response->next = function () use ($sdk, $request, $responseData, $security, $limit, $sorting): ?Operations\CustomerPortalWalletsListResponse {
                     $page = $request != null ? $request->page : 0;
                     $nextPage = $page + 1;
                     $jsonObject = new \JsonPath\JsonObject($responseData);
@@ -213,13 +234,10 @@ class Wallets
                     }
 
                     return $sdk->listIndividual(
-                        request: new Operations\WalletsListRequest(
-                            organizationId: $request != null ? $request->organizationId : null,
-                            customerId: $request != null ? $request->customerId : null,
-                            page: $nextPage,
-                            limit: $request != null ? $request->limit : null,
-                            sorting: $request != null ? $request->sorting : null,
-                        ),
+                        security: $security,
+                        page: $nextPage,
+                        limit: $limit,
+                        sorting: $sorting,
                     );
                 };
 
@@ -250,147 +268,23 @@ class Wallets
     /**
      * List Wallets
      *
-     * List wallets.
+     * List wallets of the authenticated customer.
      *
-     * **Scopes**: `wallets:read`
+     * **Scopes**: `customer_portal:read` `customer_portal:write`
      *
-     * @param  ?Operations\WalletsListRequest  $request
-     * @return \Generator<Operations\WalletsListResponse>
+     * @param  Operations\CustomerPortalWalletsListSecurity  $security
+     * @param  ?int  $page
+     * @param  ?int  $limit
+     * @param  ?array<Components\CustomerWalletSortProperty>  $sorting
+     * @return \Generator<Operations\CustomerPortalWalletsListResponse>
      * @throws \Polar\Models\Errors\APIException
      */
-    public function list(?Operations\WalletsListRequest $request = null, ?Options $options = null): \Generator
+    public function list(Operations\CustomerPortalWalletsListSecurity $security, ?int $page = null, ?int $limit = null, ?array $sorting = null, ?Options $options = null): \Generator
     {
-        $res = $this->listIndividual($request, $options);
+        $res = $this->listIndividual($security, $page, $limit, $sorting, $options);
         while ($res !== null) {
             yield $res;
             $res = $res->next($res);
-        }
-    }
-
-    /**
-     * Top-Up Wallet
-     *
-     * Top-up a wallet by adding funds to its balance.
-     *
-     * The customer should have a valid payment method on file.
-     *
-     * **Scopes**: `wallets:write`
-     *
-     * @param  Components\WalletTopUpCreate  $walletTopUpCreate
-     * @param  string  $id
-     * @return Operations\WalletsTopUpResponse
-     * @throws \Polar\Models\Errors\APIException
-     */
-    public function topUp(Components\WalletTopUpCreate $walletTopUpCreate, string $id, ?Options $options = null): Operations\WalletsTopUpResponse
-    {
-        $request = new Operations\WalletsTopUpRequest(
-            id: $id,
-            walletTopUpCreate: $walletTopUpCreate,
-        );
-        $baseUrl = $this->sdkConfiguration->getTemplatedServerUrl();
-        $url = Utils\Utils::generateUrl($baseUrl, '/v1/wallets/{id}/top-up', Operations\WalletsTopUpRequest::class, $request);
-        $urlOverride = null;
-        $httpOptions = ['http_errors' => false];
-        $body = Utils\Utils::serializeRequestBody($request, 'walletTopUpCreate', 'json');
-        if ($body === null) {
-            throw new \Exception('Request body is required');
-        }
-        $httpOptions = array_merge_recursive($httpOptions, $body);
-        $httpOptions['headers']['Accept'] = 'application/json';
-        $httpOptions['headers']['user-agent'] = $this->sdkConfiguration->userAgent;
-        $httpRequest = new \GuzzleHttp\Psr7\Request('POST', $url);
-        $hookContext = new HookContext($this->sdkConfiguration, $baseUrl, 'wallets:top_up', null, $this->sdkConfiguration->securitySource);
-        $httpRequest = $this->sdkConfiguration->hooks->beforeRequest(new Hooks\BeforeRequestContext($hookContext), $httpRequest);
-        $httpOptions = Utils\Utils::convertHeadersToOptions($httpRequest, $httpOptions);
-        $httpRequest = Utils\Utils::removeHeaders($httpRequest);
-        try {
-            $httpResponse = $this->sdkConfiguration->client->send($httpRequest, $httpOptions);
-        } catch (\GuzzleHttp\Exception\GuzzleException $error) {
-            $res = $this->sdkConfiguration->hooks->afterError(new Hooks\AfterErrorContext($hookContext), null, $error);
-            $httpResponse = $res;
-        }
-        $contentType = $httpResponse->getHeader('Content-Type')[0] ?? '';
-
-        $statusCode = $httpResponse->getStatusCode();
-        if (Utils\Utils::matchStatusCodes($statusCode, ['400', '402', '404', '422', '4XX', '5XX'])) {
-            $res = $this->sdkConfiguration->hooks->afterError(new Hooks\AfterErrorContext($hookContext), $httpResponse, null);
-            $httpResponse = $res;
-        }
-        if (Utils\Utils::matchStatusCodes($statusCode, ['200'])) {
-            if (Utils\Utils::matchContentType($contentType, 'application/json')) {
-                $httpResponse = $this->sdkConfiguration->hooks->afterSuccess(new Hooks\AfterSuccessContext($hookContext), $httpResponse);
-
-                $serializer = Utils\JSON::createSerializer();
-                $responseData = (string) $httpResponse->getBody();
-                $obj = $serializer->deserialize($responseData, '\Polar\Models\Components\Wallet', 'json', DeserializationContext::create()->setRequireAllRequiredProperties(true));
-                $response = new Operations\WalletsTopUpResponse(
-                    statusCode: $statusCode,
-                    contentType: $contentType,
-                    rawResponse: $httpResponse,
-                    wallet: $obj);
-
-                return $response;
-            } else {
-                throw new \Polar\Models\Errors\APIException('Unknown content type received', $statusCode, $httpResponse->getBody()->getContents(), $httpResponse);
-            }
-        } elseif (Utils\Utils::matchStatusCodes($statusCode, ['201'])) {
-            $httpResponse = $this->sdkConfiguration->hooks->afterSuccess(new Hooks\AfterSuccessContext($hookContext), $httpResponse);
-
-            return new Operations\WalletsTopUpResponse(
-                statusCode: $statusCode,
-                contentType: $contentType,
-                rawResponse: $httpResponse
-            );
-        } elseif (Utils\Utils::matchStatusCodes($statusCode, ['400'])) {
-            if (Utils\Utils::matchContentType($contentType, 'application/json')) {
-                $httpResponse = $this->sdkConfiguration->hooks->afterSuccess(new Hooks\AfterSuccessContext($hookContext), $httpResponse);
-
-                $serializer = Utils\JSON::createSerializer();
-                $responseData = (string) $httpResponse->getBody();
-                $obj = $serializer->deserialize($responseData, '\Polar\Models\Errors\PaymentIntentFailedError', 'json', DeserializationContext::create()->setRequireAllRequiredProperties(true));
-                throw $obj->toException();
-            } else {
-                throw new \Polar\Models\Errors\APIException('Unknown content type received', $statusCode, $httpResponse->getBody()->getContents(), $httpResponse);
-            }
-        } elseif (Utils\Utils::matchStatusCodes($statusCode, ['402'])) {
-            if (Utils\Utils::matchContentType($contentType, 'application/json')) {
-                $httpResponse = $this->sdkConfiguration->hooks->afterSuccess(new Hooks\AfterSuccessContext($hookContext), $httpResponse);
-
-                $serializer = Utils\JSON::createSerializer();
-                $responseData = (string) $httpResponse->getBody();
-                $obj = $serializer->deserialize($responseData, '\Polar\Models\Errors\MissingPaymentMethodError', 'json', DeserializationContext::create()->setRequireAllRequiredProperties(true));
-                throw $obj->toException();
-            } else {
-                throw new \Polar\Models\Errors\APIException('Unknown content type received', $statusCode, $httpResponse->getBody()->getContents(), $httpResponse);
-            }
-        } elseif (Utils\Utils::matchStatusCodes($statusCode, ['404'])) {
-            if (Utils\Utils::matchContentType($contentType, 'application/json')) {
-                $httpResponse = $this->sdkConfiguration->hooks->afterSuccess(new Hooks\AfterSuccessContext($hookContext), $httpResponse);
-
-                $serializer = Utils\JSON::createSerializer();
-                $responseData = (string) $httpResponse->getBody();
-                $obj = $serializer->deserialize($responseData, '\Polar\Models\Errors\ResourceNotFound', 'json', DeserializationContext::create()->setRequireAllRequiredProperties(true));
-                throw $obj->toException();
-            } else {
-                throw new \Polar\Models\Errors\APIException('Unknown content type received', $statusCode, $httpResponse->getBody()->getContents(), $httpResponse);
-            }
-        } elseif (Utils\Utils::matchStatusCodes($statusCode, ['422'])) {
-            if (Utils\Utils::matchContentType($contentType, 'application/json')) {
-                $httpResponse = $this->sdkConfiguration->hooks->afterSuccess(new Hooks\AfterSuccessContext($hookContext), $httpResponse);
-
-                $serializer = Utils\JSON::createSerializer();
-                $responseData = (string) $httpResponse->getBody();
-                $obj = $serializer->deserialize($responseData, '\Polar\Models\Errors\HTTPValidationError', 'json', DeserializationContext::create()->setRequireAllRequiredProperties(true));
-                throw $obj->toException();
-            } else {
-                throw new \Polar\Models\Errors\APIException('Unknown content type received', $statusCode, $httpResponse->getBody()->getContents(), $httpResponse);
-            }
-        } elseif (Utils\Utils::matchStatusCodes($statusCode, ['4XX'])) {
-            throw new \Polar\Models\Errors\APIException('API error occurred', $statusCode, $httpResponse->getBody()->getContents(), $httpResponse);
-        } elseif (Utils\Utils::matchStatusCodes($statusCode, ['5XX'])) {
-            throw new \Polar\Models\Errors\APIException('API error occurred', $statusCode, $httpResponse->getBody()->getContents(), $httpResponse);
-        } else {
-            throw new \Polar\Models\Errors\APIException('Unknown status code received', $statusCode, $httpResponse->getBody()->getContents(), $httpResponse);
         }
     }
 

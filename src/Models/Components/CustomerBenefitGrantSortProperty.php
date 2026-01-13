@@ -17,4 +17,6 @@ enum CustomerBenefitGrantSortProperty: string
     case MinusType = '-type';
     case Organization = 'organization';
     case MinusOrganization = '-organization';
+    case ProductBenefit = 'product_benefit';
+    case MinusProductBenefit = '-product_benefit';
 }

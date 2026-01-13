@@ -102,6 +102,15 @@ class OrganizationUpdate
     public ?OrganizationCustomerEmailSettings $customerEmailSettings = null;
 
     /**
+     *
+     * @var ?OrganizationCustomerPortalSettings $customerPortalSettings
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('customer_portal_settings')]
+    #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\OrganizationCustomerPortalSettings|null')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
+    public ?OrganizationCustomerPortalSettings $customerPortalSettings = null;
+
+    /**
      * @param  ?string  $name
      * @param  ?string  $avatarUrl
      * @param  ?string  $email
@@ -112,9 +121,10 @@ class OrganizationUpdate
      * @param  ?OrganizationSubscriptionSettings  $subscriptionSettings
      * @param  ?OrganizationNotificationSettings  $notificationSettings
      * @param  ?OrganizationCustomerEmailSettings  $customerEmailSettings
+     * @param  ?OrganizationCustomerPortalSettings  $customerPortalSettings
      * @phpstan-pure
      */
-    public function __construct(?string $name = null, ?string $avatarUrl = null, ?string $email = null, ?string $website = null, ?array $socials = null, ?OrganizationDetails $details = null, ?OrganizationFeatureSettings $featureSettings = null, ?OrganizationSubscriptionSettings $subscriptionSettings = null, ?OrganizationNotificationSettings $notificationSettings = null, ?OrganizationCustomerEmailSettings $customerEmailSettings = null)
+    public function __construct(?string $name = null, ?string $avatarUrl = null, ?string $email = null, ?string $website = null, ?array $socials = null, ?OrganizationDetails $details = null, ?OrganizationFeatureSettings $featureSettings = null, ?OrganizationSubscriptionSettings $subscriptionSettings = null, ?OrganizationNotificationSettings $notificationSettings = null, ?OrganizationCustomerEmailSettings $customerEmailSettings = null, ?OrganizationCustomerPortalSettings $customerPortalSettings = null)
     {
         $this->name = $name;
         $this->avatarUrl = $avatarUrl;
@@ -126,5 +136,6 @@ class OrganizationUpdate
         $this->subscriptionSettings = $subscriptionSettings;
         $this->notificationSettings = $notificationSettings;
         $this->customerEmailSettings = $customerEmailSettings;
+        $this->customerPortalSettings = $customerPortalSettings;
     }
 }

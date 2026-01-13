@@ -3,6 +3,51 @@
 
 ## Supported Types
 
+### `Components\BalanceDisputeEvent`
+
+```php
+/**
+* @var Components\BalanceDisputeEvent
+*/
+Components\BalanceDisputeEvent $value = /* values here */
+```
+
+### `Components\BalanceDisputeReversalEvent`
+
+```php
+/**
+* @var Components\BalanceDisputeReversalEvent
+*/
+Components\BalanceDisputeReversalEvent $value = /* values here */
+```
+
+### `Components\BalanceOrderEvent`
+
+```php
+/**
+* @var Components\BalanceOrderEvent
+*/
+Components\BalanceOrderEvent $value = /* values here */
+```
+
+### `Components\BalanceRefundEvent`
+
+```php
+/**
+* @var Components\BalanceRefundEvent
+*/
+Components\BalanceRefundEvent $value = /* values here */
+```
+
+### `Components\BalanceRefundReversalEvent`
+
+```php
+/**
+* @var Components\BalanceRefundReversalEvent
+*/
+Components\BalanceRefundReversalEvent $value = /* values here */
+```
+
 ### `Components\BenefitCycledEvent`
 
 ```php
@@ -37,6 +82,15 @@ Components\BenefitRevokedEvent $value = /* values here */
 * @var Components\BenefitUpdatedEvent
 */
 Components\BenefitUpdatedEvent $value = /* values here */
+```
+
+### `Components\CheckoutCreatedEvent`
+
+```php
+/**
+* @var Components\CheckoutCreatedEvent
+*/
+Components\CheckoutCreatedEvent $value = /* values here */
 ```
 
 ### `Components\CustomerCreatedEvent`
@@ -102,6 +156,33 @@ Components\OrderPaidEvent $value = /* values here */
 Components\OrderRefundedEvent $value = /* values here */
 ```
 
+### `Components\SubscriptionBillingPeriodUpdatedEvent`
+
+```php
+/**
+* @var Components\SubscriptionBillingPeriodUpdatedEvent
+*/
+Components\SubscriptionBillingPeriodUpdatedEvent $value = /* values here */
+```
+
+### `Components\SubscriptionCanceledEvent`
+
+```php
+/**
+* @var Components\SubscriptionCanceledEvent
+*/
+Components\SubscriptionCanceledEvent $value = /* values here */
+```
+
+### `Components\SubscriptionCreatedEvent`
+
+```php
+/**
+* @var Components\SubscriptionCreatedEvent
+*/
+Components\SubscriptionCreatedEvent $value = /* values here */
+```
+
 ### `Components\SubscriptionCycledEvent`
 
 ```php
@@ -127,5 +208,23 @@ Components\SubscriptionProductUpdatedEvent $value = /* values here */
 * @var Components\SubscriptionRevokedEvent
 */
 Components\SubscriptionRevokedEvent $value = /* values here */
+```
+
+### `Components\SubscriptionSeatsUpdatedEvent`
+
+```php
+/**
+* @var Components\SubscriptionSeatsUpdatedEvent
+*/
+Components\SubscriptionSeatsUpdatedEvent $value = /* values here */
+```
+
+### `Components\SubscriptionUncanceledEvent`
+
+```php
+/**
+* @var Components\SubscriptionUncanceledEvent
+*/
+Components\SubscriptionUncanceledEvent $value = /* values here */
 ```
 

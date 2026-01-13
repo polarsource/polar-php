@@ -9,34 +9,102 @@ declare(strict_types=1);
 namespace Polar\Models\Components;
 
 
-/** CustomerOrganization - Schema of an organization and related data for customer portal. */
 class CustomerOrganization
 {
     /**
+     * Creation timestamp of the object.
      *
-     * @var Organization $organization
+     * @var \DateTime $createdAt
      */
-    #[\Speakeasy\Serializer\Annotation\SerializedName('organization')]
-    #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\Organization')]
-    public Organization $organization;
+    #[\Speakeasy\Serializer\Annotation\SerializedName('created_at')]
+    public \DateTime $createdAt;
 
     /**
-     * $products
+     * The ID of the object.
      *
-     * @var array<CustomerProduct> $products
+     * @var string $id
      */
-    #[\Speakeasy\Serializer\Annotation\SerializedName('products')]
-    #[\Speakeasy\Serializer\Annotation\Type('array<\Polar\Models\Components\CustomerProduct>')]
-    public array $products;
+    #[\Speakeasy\Serializer\Annotation\SerializedName('id')]
+    public string $id;
 
     /**
-     * @param  Organization  $organization
-     * @param  array<CustomerProduct>  $products
+     * Organization name shown in checkout, customer portal, emails etc.
+     *
+     * @var string $name
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('name')]
+    public string $name;
+
+    /**
+     * Unique organization slug in checkout, customer portal and credit card statements.
+     *
+     * @var string $slug
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('slug')]
+    public string $slug;
+
+    /**
+     *
+     * @var SubscriptionProrationBehavior $prorationBehavior
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('proration_behavior')]
+    #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\SubscriptionProrationBehavior')]
+    public SubscriptionProrationBehavior $prorationBehavior;
+
+    /**
+     * Whether customers can update their subscriptions from the customer portal.
+     *
+     * @var bool $allowCustomerUpdates
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('allow_customer_updates')]
+    public bool $allowCustomerUpdates;
+
+    /**
+     *
+     * @var OrganizationCustomerPortalSettings $customerPortalSettings
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('customer_portal_settings')]
+    #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\OrganizationCustomerPortalSettings')]
+    public OrganizationCustomerPortalSettings $customerPortalSettings;
+
+    /**
+     * Last modification timestamp of the object.
+     *
+     * @var ?\DateTime $modifiedAt
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('modified_at')]
+    public ?\DateTime $modifiedAt;
+
+    /**
+     * Avatar URL shown in checkout, customer portal, emails etc.
+     *
+     * @var ?string $avatarUrl
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('avatar_url')]
+    public ?string $avatarUrl;
+
+    /**
+     * @param  \DateTime  $createdAt
+     * @param  string  $id
+     * @param  string  $name
+     * @param  string  $slug
+     * @param  SubscriptionProrationBehavior  $prorationBehavior
+     * @param  bool  $allowCustomerUpdates
+     * @param  OrganizationCustomerPortalSettings  $customerPortalSettings
+     * @param  ?\DateTime  $modifiedAt
+     * @param  ?string  $avatarUrl
      * @phpstan-pure
      */
-    public function __construct(Organization $organization, array $products)
+    public function __construct(\DateTime $createdAt, string $id, string $name, string $slug, SubscriptionProrationBehavior $prorationBehavior, bool $allowCustomerUpdates, OrganizationCustomerPortalSettings $customerPortalSettings, ?\DateTime $modifiedAt = null, ?string $avatarUrl = null)
     {
-        $this->organization = $organization;
-        $this->products = $products;
+        $this->createdAt = $createdAt;
+        $this->id = $id;
+        $this->name = $name;
+        $this->slug = $slug;
+        $this->prorationBehavior = $prorationBehavior;
+        $this->allowCustomerUpdates = $allowCustomerUpdates;
+        $this->customerPortalSettings = $customerPortalSettings;
+        $this->modifiedAt = $modifiedAt;
+        $this->avatarUrl = $avatarUrl;
     }
 }

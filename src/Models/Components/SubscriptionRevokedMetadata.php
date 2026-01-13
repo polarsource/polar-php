@@ -19,11 +19,61 @@ class SubscriptionRevokedMetadata
     public string $subscriptionId;
 
     /**
+     *
+     * @var ?string $productId
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('product_id')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
+    public ?string $productId = null;
+
+    /**
+     *
+     * @var ?int $amount
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('amount')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
+    public ?int $amount = null;
+
+    /**
+     *
+     * @var ?string $currency
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('currency')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
+    public ?string $currency = null;
+
+    /**
+     *
+     * @var ?string $recurringInterval
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('recurring_interval')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
+    public ?string $recurringInterval = null;
+
+    /**
+     *
+     * @var ?int $recurringIntervalCount
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('recurring_interval_count')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
+    public ?int $recurringIntervalCount = null;
+
+    /**
      * @param  string  $subscriptionId
+     * @param  ?string  $productId
+     * @param  ?int  $amount
+     * @param  ?string  $currency
+     * @param  ?string  $recurringInterval
+     * @param  ?int  $recurringIntervalCount
      * @phpstan-pure
      */
-    public function __construct(string $subscriptionId)
+    public function __construct(string $subscriptionId, ?string $productId = null, ?int $amount = null, ?string $currency = null, ?string $recurringInterval = null, ?int $recurringIntervalCount = null)
     {
         $this->subscriptionId = $subscriptionId;
+        $this->productId = $productId;
+        $this->amount = $amount;
+        $this->currency = $currency;
+        $this->recurringInterval = $recurringInterval;
+        $this->recurringIntervalCount = $recurringIntervalCount;
     }
 }

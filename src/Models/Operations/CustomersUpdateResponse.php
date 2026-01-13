@@ -35,22 +35,22 @@ class CustomersUpdateResponse
     /**
      * Customer updated.
      *
-     * @var ?Components\Customer $customer
+     * @var ?Components\CustomerWithMembers $customerWithMembers
      */
-    public ?Components\Customer $customer = null;
+    public ?Components\CustomerWithMembers $customerWithMembers = null;
 
     /**
      * @param  string  $contentType
      * @param  int  $statusCode
      * @param  \Psr\Http\Message\ResponseInterface  $rawResponse
-     * @param  ?Components\Customer  $customer
+     * @param  ?Components\CustomerWithMembers  $customerWithMembers
      * @phpstan-pure
      */
-    public function __construct(string $contentType, int $statusCode, \Psr\Http\Message\ResponseInterface $rawResponse, ?Components\Customer $customer = null)
+    public function __construct(string $contentType, int $statusCode, \Psr\Http\Message\ResponseInterface $rawResponse, ?Components\CustomerWithMembers $customerWithMembers = null)
     {
         $this->contentType = $contentType;
         $this->statusCode = $statusCode;
         $this->rawResponse = $rawResponse;
-        $this->customer = $customer;
+        $this->customerWithMembers = $customerWithMembers;
     }
 }

@@ -19,12 +19,14 @@ generation:
     hoistGlobalSecurity: true
   schemas:
     allOfMergeStrategy: shallowMerge
+  requestBodyFieldName: ""
+  persistentEdits: {}
   tests:
     generateTests: true
     generateNewTests: false
     skipResponseBodyAssertions: false
 php:
-  version: 0.7.0
+  version: 0.7.1
   additionalDependencies:
     autoload: {}
     autoload-dev: {}
@@ -42,12 +44,14 @@ php:
       operations: Models/Operations
       shared: Models/Components
       webhooks: Models/Webhooks
+  inferUnionDiscriminators: false
   inputModelSuffix: input
   laravelServiceProvider:
     enabled: true
     svcName: openapi
   maxMethodParams: 4
   methodArguments: infer-optional-args
+  multipartArrayFormat: legacy
   namespace: Polar
   outputModelSuffix: output
   packageName: polar-sh/sdk

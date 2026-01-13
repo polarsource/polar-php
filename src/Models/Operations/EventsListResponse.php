@@ -35,39 +35,22 @@ class EventsListResponse
     /**
      * Successful Response
      *
-     * @var ?Components\ListResourceEvent $listResourceEvent
+     * @var Components\ListResourceEvent|Components\ListResourceWithCursorPaginationEvent|null $responseEventsList
      */
-    public ?Components\ListResourceEvent $listResourceEvent = null;
+    public Components\ListResourceEvent|Components\ListResourceWithCursorPaginationEvent|null $responseEventsList = null;
 
-    /**
-     * @var \Closure(string): ?EventsListResponse $next
-     */
-    public \Closure $next;
     /**
      * @param  string  $contentType
      * @param  int  $statusCode
      * @param  \Psr\Http\Message\ResponseInterface  $rawResponse
-     * @param  ?Components\ListResourceEvent  $listResourceEvent
+     * @param  Components\ListResourceEvent|Components\ListResourceWithCursorPaginationEvent|null  $responseEventsList
      * @phpstan-pure
      */
-    public function __construct(string $contentType, int $statusCode, \Psr\Http\Message\ResponseInterface $rawResponse, ?Components\ListResourceEvent $listResourceEvent = null)
+    public function __construct(string $contentType, int $statusCode, \Psr\Http\Message\ResponseInterface $rawResponse, Components\ListResourceEvent|Components\ListResourceWithCursorPaginationEvent|null $responseEventsList = null)
     {
         $this->contentType = $contentType;
         $this->statusCode = $statusCode;
         $this->rawResponse = $rawResponse;
-        $this->listResourceEvent = $listResourceEvent;
-    }
-    /**
-     * @param  string  $name
-     * @param  array<mixed>  $args
-     * @return ?EventsListResponse
-     */
-    public function __call($name, $args): ?EventsListResponse
-    {
-        if ($name === 'next') {
-            return call_user_func_array($this->next, $args);
-        }
-
-        return null;
+        $this->responseEventsList = $responseEventsList;
     }
 }

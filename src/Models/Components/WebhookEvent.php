@@ -38,6 +38,14 @@ class WebhookEvent
     public string $id;
 
     /**
+     * Whether this event was skipped because the webhook endpoint was disabled.
+     *
+     * @var bool $skipped
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('skipped')]
+    public bool $skipped;
+
+    /**
      *
      * @var WebhookEventType $type
      */
@@ -90,6 +98,7 @@ class WebhookEvent
     /**
      * @param  \DateTime  $createdAt
      * @param  string  $id
+     * @param  bool  $skipped
      * @param  WebhookEventType  $type
      * @param  bool  $isArchived
      * @param  ?\DateTime  $modifiedAt
@@ -98,10 +107,11 @@ class WebhookEvent
      * @param  ?bool  $succeeded
      * @phpstan-pure
      */
-    public function __construct(\DateTime $createdAt, string $id, WebhookEventType $type, bool $isArchived, ?\DateTime $modifiedAt = null, ?string $payload = null, ?int $lastHttpCode = null, ?bool $succeeded = null)
+    public function __construct(\DateTime $createdAt, string $id, bool $skipped, WebhookEventType $type, bool $isArchived, ?\DateTime $modifiedAt = null, ?string $payload = null, ?int $lastHttpCode = null, ?bool $succeeded = null)
     {
         $this->createdAt = $createdAt;
         $this->id = $id;
+        $this->skipped = $skipped;
         $this->type = $type;
         $this->isArchived = $isArchived;
         $this->modifiedAt = $modifiedAt;

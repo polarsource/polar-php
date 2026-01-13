@@ -14,10 +14,10 @@ class ListResourceEvent
     /**
      * $items
      *
-     * @var array<MeterCreditEvent|MeterResetEvent|BenefitGrantedEvent|BenefitCycledEvent|BenefitUpdatedEvent|BenefitRevokedEvent|SubscriptionCycledEvent|SubscriptionRevokedEvent|SubscriptionProductUpdatedEvent|OrderPaidEvent|OrderRefundedEvent|CustomerCreatedEvent|CustomerUpdatedEvent|CustomerDeletedEvent|UserEvent> $items
+     * @var array<MeterCreditEvent|MeterResetEvent|BenefitGrantedEvent|BenefitCycledEvent|BenefitUpdatedEvent|BenefitRevokedEvent|SubscriptionCreatedEvent|SubscriptionCycledEvent|SubscriptionCanceledEvent|SubscriptionRevokedEvent|SubscriptionUncanceledEvent|SubscriptionProductUpdatedEvent|SubscriptionSeatsUpdatedEvent|SubscriptionBillingPeriodUpdatedEvent|OrderPaidEvent|OrderRefundedEvent|CheckoutCreatedEvent|CustomerCreatedEvent|CustomerUpdatedEvent|CustomerDeletedEvent|BalanceOrderEvent|BalanceRefundEvent|BalanceRefundReversalEvent|BalanceDisputeEvent|BalanceDisputeReversalEvent|UserEvent> $items
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('items')]
-    #[\Speakeasy\Serializer\Annotation\Type('array<\Polar\Models\Components\MeterCreditEvent|\Polar\Models\Components\MeterResetEvent|\Polar\Models\Components\BenefitGrantedEvent|\Polar\Models\Components\BenefitCycledEvent|\Polar\Models\Components\BenefitUpdatedEvent|\Polar\Models\Components\BenefitRevokedEvent|\Polar\Models\Components\SubscriptionCycledEvent|\Polar\Models\Components\SubscriptionRevokedEvent|\Polar\Models\Components\SubscriptionProductUpdatedEvent|\Polar\Models\Components\OrderPaidEvent|\Polar\Models\Components\OrderRefundedEvent|\Polar\Models\Components\CustomerCreatedEvent|\Polar\Models\Components\CustomerUpdatedEvent|\Polar\Models\Components\CustomerDeletedEvent|\Polar\Models\Components\UserEvent>')]
+    #[\Speakeasy\Serializer\Annotation\Type('array<\Polar\Models\Components\MeterCreditEvent|\Polar\Models\Components\MeterResetEvent|\Polar\Models\Components\BenefitGrantedEvent|\Polar\Models\Components\BenefitCycledEvent|\Polar\Models\Components\BenefitUpdatedEvent|\Polar\Models\Components\BenefitRevokedEvent|\Polar\Models\Components\SubscriptionCreatedEvent|\Polar\Models\Components\SubscriptionCycledEvent|\Polar\Models\Components\SubscriptionCanceledEvent|\Polar\Models\Components\SubscriptionRevokedEvent|\Polar\Models\Components\SubscriptionUncanceledEvent|\Polar\Models\Components\SubscriptionProductUpdatedEvent|\Polar\Models\Components\SubscriptionSeatsUpdatedEvent|\Polar\Models\Components\SubscriptionBillingPeriodUpdatedEvent|\Polar\Models\Components\OrderPaidEvent|\Polar\Models\Components\OrderRefundedEvent|\Polar\Models\Components\CheckoutCreatedEvent|\Polar\Models\Components\CustomerCreatedEvent|\Polar\Models\Components\CustomerUpdatedEvent|\Polar\Models\Components\CustomerDeletedEvent|\Polar\Models\Components\BalanceOrderEvent|\Polar\Models\Components\BalanceRefundEvent|\Polar\Models\Components\BalanceRefundReversalEvent|\Polar\Models\Components\BalanceDisputeEvent|\Polar\Models\Components\BalanceDisputeReversalEvent|\Polar\Models\Components\UserEvent>')]
     public array $items;
 
     /**
@@ -29,7 +29,7 @@ class ListResourceEvent
     public Pagination $pagination;
 
     /**
-     * @param  array<MeterCreditEvent|MeterResetEvent|BenefitGrantedEvent|BenefitCycledEvent|BenefitUpdatedEvent|BenefitRevokedEvent|SubscriptionCycledEvent|SubscriptionRevokedEvent|SubscriptionProductUpdatedEvent|OrderPaidEvent|OrderRefundedEvent|CustomerCreatedEvent|CustomerUpdatedEvent|CustomerDeletedEvent|UserEvent>  $items
+     * @param  array<MeterCreditEvent|MeterResetEvent|BenefitGrantedEvent|BenefitCycledEvent|BenefitUpdatedEvent|BenefitRevokedEvent|SubscriptionCreatedEvent|SubscriptionCycledEvent|SubscriptionCanceledEvent|SubscriptionRevokedEvent|SubscriptionUncanceledEvent|SubscriptionProductUpdatedEvent|SubscriptionSeatsUpdatedEvent|SubscriptionBillingPeriodUpdatedEvent|OrderPaidEvent|OrderRefundedEvent|CheckoutCreatedEvent|CustomerCreatedEvent|CustomerUpdatedEvent|CustomerDeletedEvent|BalanceOrderEvent|BalanceRefundEvent|BalanceRefundReversalEvent|BalanceDisputeEvent|BalanceDisputeReversalEvent|UserEvent>  $items
      * @param  Pagination  $pagination
      * @phpstan-pure
      */

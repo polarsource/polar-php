@@ -117,6 +117,14 @@ class Refund
     public ?string $subscriptionId;
 
     /**
+     *
+     * @var ?RefundDispute $dispute
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('dispute')]
+    #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\RefundDispute|null')]
+    public ?RefundDispute $dispute;
+
+    /**
      * @param  \DateTime  $createdAt
      * @param  string  $id
      * @param  array<string, string|int|float|bool>  $metadata
@@ -131,9 +139,10 @@ class Refund
      * @param  bool  $revokeBenefits
      * @param  ?\DateTime  $modifiedAt
      * @param  ?string  $subscriptionId
+     * @param  ?RefundDispute  $dispute
      * @phpstan-pure
      */
-    public function __construct(\DateTime $createdAt, string $id, array $metadata, RefundStatus $status, RefundReason $reason, int $amount, int $taxAmount, string $currency, string $organizationId, string $orderId, string $customerId, bool $revokeBenefits, ?\DateTime $modifiedAt = null, ?string $subscriptionId = null)
+    public function __construct(\DateTime $createdAt, string $id, array $metadata, RefundStatus $status, RefundReason $reason, int $amount, int $taxAmount, string $currency, string $organizationId, string $orderId, string $customerId, bool $revokeBenefits, ?\DateTime $modifiedAt = null, ?string $subscriptionId = null, ?RefundDispute $dispute = null)
     {
         $this->createdAt = $createdAt;
         $this->id = $id;
@@ -149,5 +158,6 @@ class Refund
         $this->revokeBenefits = $revokeBenefits;
         $this->modifiedAt = $modifiedAt;
         $this->subscriptionId = $subscriptionId;
+        $this->dispute = $dispute;
     }
 }

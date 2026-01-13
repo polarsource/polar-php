@@ -19,6 +19,10 @@ enum SubscriptionSortProperty: string
     case MinusStartedAt = '-started_at';
     case CurrentPeriodEnd = 'current_period_end';
     case MinusCurrentPeriodEnd = '-current_period_end';
+    case EndedAt = 'ended_at';
+    case MinusEndedAt = '-ended_at';
+    case EndsAt = 'ends_at';
+    case MinusEndsAt = '-ends_at';
     case Amount = 'amount';
     case MinusAmount = '-amount';
     case Product = 'product';
