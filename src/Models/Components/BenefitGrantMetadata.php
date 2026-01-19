@@ -34,15 +34,25 @@ class BenefitGrantMetadata
     public BenefitType $benefitType;
 
     /**
+     *
+     * @var ?string $memberId
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('member_id')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
+    public ?string $memberId = null;
+
+    /**
      * @param  string  $benefitId
      * @param  string  $benefitGrantId
      * @param  BenefitType  $benefitType
+     * @param  ?string  $memberId
      * @phpstan-pure
      */
-    public function __construct(string $benefitId, string $benefitGrantId, BenefitType $benefitType)
+    public function __construct(string $benefitId, string $benefitGrantId, BenefitType $benefitType, ?string $memberId = null)
     {
         $this->benefitId = $benefitId;
         $this->benefitGrantId = $benefitGrantId;
         $this->benefitType = $benefitType;
+        $this->memberId = $memberId;
     }
 }

@@ -348,10 +348,16 @@ foreach ($responses as $response) {
 * [activate](docs/sdks/licensekeys/README.md#activate) - Activate License Key
 * [deactivate](docs/sdks/licensekeys/README.md#deactivate) - Deactivate License Key
 
+### [MemberSessions](docs/sdks/membersessions/README.md)
+
+* [create](docs/sdks/membersessions/README.md#create) - Create Member Session
+
 ### [Members](docs/sdks/members/README.md)
 
 * [listMembers](docs/sdks/members/README.md#listmembers) - List Members
 * [createMember](docs/sdks/members/README.md#createmember) - Create Member
+* [getMember](docs/sdks/members/README.md#getmember) - Get Member
+* [updateMember](docs/sdks/members/README.md#updatemember) - Update Member
 * [deleteMember](docs/sdks/members/README.md#deletemember) - Delete Member
 
 ### [Meters](docs/sdks/meters/README.md)

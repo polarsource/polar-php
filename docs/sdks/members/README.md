@@ -6,6 +6,8 @@
 
 * [listMembers](#listmembers) - List Members
 * [createMember](#createmember) - Create Member
+* [getMember](#getmember) - Get Member
+* [updateMember](#updatemember) - Update Member
 * [deleteMember](#deletemember) - Delete Member
 
 ## listMembers
@@ -117,6 +119,119 @@ if ($response->member !== null) {
 ### Response
 
 **[?Operations\MembersCreateMemberResponse](../../Models/Operations/MembersCreateMemberResponse.md)**
+
+### Errors
+
+| Error Type                 | Status Code                | Content Type               |
+| -------------------------- | -------------------------- | -------------------------- |
+| Errors\ResourceNotFound    | 404                        | application/json           |
+| Errors\HTTPValidationError | 422                        | application/json           |
+| Errors\APIException        | 4XX, 5XX                   | \*/\*                      |
+
+## getMember
+
+Get a member by ID.
+
+The authenticated user or organization must have access to the member's organization.
+
+**Scopes**: `members:read` `members:write`
+
+### Example Usage
+
+<!-- UsageSnippet language="php" operationID="members:get_member" method="get" path="/v1/members/{id}" -->
+```php
+declare(strict_types=1);
+
+require 'vendor/autoload.php';
+
+use Polar;
+
+$sdk = Polar\Polar::builder()
+    ->setSecurity(
+        '<YOUR_BEARER_TOKEN_HERE>'
+    )
+    ->build();
+
+
+
+$response = $sdk->members->getMember(
+    id: '572bebad-ee17-4d04-a50f-6596a7d92cf3'
+);
+
+if ($response->member !== null) {
+    // handle response
+}
+```
+
+### Parameters
+
+| Parameter          | Type               | Required           | Description        |
+| ------------------ | ------------------ | ------------------ | ------------------ |
+| `id`               | *string*           | :heavy_check_mark: | N/A                |
+
+### Response
+
+**[?Operations\MembersGetMemberResponse](../../Models/Operations/MembersGetMemberResponse.md)**
+
+### Errors
+
+| Error Type                 | Status Code                | Content Type               |
+| -------------------------- | -------------------------- | -------------------------- |
+| Errors\ResourceNotFound    | 404                        | application/json           |
+| Errors\HTTPValidationError | 422                        | application/json           |
+| Errors\APIException        | 4XX, 5XX                   | \*/\*                      |
+
+## updateMember
+
+Update a member.
+
+Only name and role can be updated.
+The authenticated user or organization must have access to the member's organization.
+
+**Scopes**: `members:write`
+
+### Example Usage
+
+<!-- UsageSnippet language="php" operationID="members:update_member" method="patch" path="/v1/members/{id}" -->
+```php
+declare(strict_types=1);
+
+require 'vendor/autoload.php';
+
+use Polar;
+use Polar\Models\Components;
+
+$sdk = Polar\Polar::builder()
+    ->setSecurity(
+        '<YOUR_BEARER_TOKEN_HERE>'
+    )
+    ->build();
+
+$memberUpdate = new Components\MemberUpdate(
+    name: 'Jane Doe',
+);
+
+$response = $sdk->members->updateMember(
+    id: 'ab9b628a-6dbd-4f07-bcd6-163a8b5b7de4',
+    memberUpdate: $memberUpdate
+
+);
+
+if ($response->member !== null) {
+    // handle response
+}
+```
+
+### Parameters
+
+| Parameter                                                          | Type                                                               | Required                                                           | Description                                                        |
+| ------------------------------------------------------------------ | ------------------------------------------------------------------ | ------------------------------------------------------------------ | ------------------------------------------------------------------ |
+| `id`                                                               | *string*                                                           | :heavy_check_mark:                                                 | N/A                                                                |
+| `memberUpdate`                                                     | [Components\MemberUpdate](../../Models/Components/MemberUpdate.md) | :heavy_check_mark:                                                 | N/A                                                                |
+
+### Response
+
+**[?Operations\MembersUpdateMemberResponse](../../Models/Operations/MembersUpdateMemberResponse.md)**
 
 ### Errors
 

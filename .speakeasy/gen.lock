@@ -1,19 +1,19 @@
 lockVersion: 2.0.0
 id: bd003db9-613a-4093-838e-6d19bf5f76d7
 management:
-  docChecksum: cb1de50c062b6f3f7c1365801f68a43b
+  docChecksum: b13577ccd88952a2324a72aa40cf7c79
   docVersion: 0.1.0
-  speakeasyVersion: 1.685.0
-  generationVersion: 2.794.1
-  releaseVersion: 0.7.1
-  configChecksum: e42c486e922ec69ad9ecd6ec60f4b8cb
+  speakeasyVersion: 1.688.0
+  generationVersion: 2.796.4
+  releaseVersion: 0.7.2
+  configChecksum: fe32f245192959edb32cc7e3cd9284a7
   repoURL: https://github.com/polarsource/polar-php.git
   installationURL: https://github.com/polarsource/polar-php
   published: true
 persistentEdits:
-  generation_id: 3358362f-fe86-4bfd-9365-bf60dafbd6ea
-  pristine_commit_hash: 958fd9982ecf97532c611f5dc4778b55eeb03978
-  pristine_tree_hash: d1c87e4c5e1358fc50189e52f0997480817871c8
+  generation_id: c097ea01-5408-44f0-8bc1-11e960b1bc76
+  pristine_commit_hash: dfc0885028216788f4ab9d443bd3b05b8f986731
+  pristine_tree_hash: a97a76197c204c08d46b9638a761182544d2d089
 features:
   php:
     constsAndDefaults: 0.2.0
@@ -322,24 +322,24 @@ trackedFiles:
     pristine_git_object: a008685d61ade7a2cfba3ec92d978cc2a7a2657c
   docs/Models/Components/BenefitGrantCustomWebhook.md:
     id: 5481b407c5df
-    last_write_checksum: sha1:4136c14a2a328e93d24e6e6ec26a6fa114677f43
-    pristine_git_object: 704411f5164d91199c3a5ecbb2f3b573a5c68640
+    last_write_checksum: sha1:d61ee9596fff1a31279964941c23b5ca81b5d99b
+    pristine_git_object: 79e492feab615b21ccbb4f1542fd2b27486363e0
   docs/Models/Components/BenefitGrantDiscordProperties.md:
     id: 463e4af0b191
     last_write_checksum: sha1:b54a95fe7f8128d8a96c4553c84d27af73c6e820
     pristine_git_object: 0e34d73cb11e995a45b7e350e257387c7c31d32f
   docs/Models/Components/BenefitGrantDiscordWebhook.md:
     id: 8979df1357c2
-    last_write_checksum: sha1:68c62d44d98e359c35620675fa929f3b42d4e564
-    pristine_git_object: 62182165a3e3a15465f3614e499238d14c4639b4
+    last_write_checksum: sha1:54e000d05a681c84976662cae0254064e9d830a5
+    pristine_git_object: 905f59feb495c9ecd49b4adf8987787e17787bf2
   docs/Models/Components/BenefitGrantDownloadablesProperties.md:
     id: 7804e2323b06
     last_write_checksum: sha1:7647f5825ce73f0ca48ab0635b40718a0be5c54a
     pristine_git_object: 1bf46871c6db529e4e151a82c14d720232509a31
   docs/Models/Components/BenefitGrantDownloadablesWebhook.md:
     id: c0d37ec94d4d
-    last_write_checksum: sha1:33d69338033c82c09f907aba57fc8e6d6efe4c75
-    pristine_git_object: 45df9c476b44133e71f3479bcddfbc464563e49d
+    last_write_checksum: sha1:1edab541a275f61f8b797c83735610d72d0a4dfb
+    pristine_git_object: 8897675d5fb962fbdbec50fb5c89731041219feb
   docs/Models/Components/BenefitGrantError.md:
     id: 7775c7dd1656
     last_write_checksum: sha1:22897826999682c166ab2c2dc886121d6fc0196c
@@ -354,28 +354,28 @@ trackedFiles:
     pristine_git_object: 9c18f99bc4a1aa9c7adc2d698c55cbd0d9afd16f
   docs/Models/Components/BenefitGrantGitHubRepositoryWebhook.md:
     id: ba24df14e8a4
-    last_write_checksum: sha1:a649a2a905c34ed890f2b8d76396717ffe6bdf9c
-    pristine_git_object: cee41b1cab1b2b7d89792a8b3d7b682eb5789178
+    last_write_checksum: sha1:1c8c617d02b81486a273fc02ae9c2d05d9e14d1b
+    pristine_git_object: 14b0d1bfdb1cf126fefc5dfbbce595d0a57b638c
   docs/Models/Components/BenefitGrantLicenseKeysProperties.md:
     id: cbcd30acdeae
     last_write_checksum: sha1:0a521de069372280191eac2b312808aee91422c1
     pristine_git_object: 793c1fb812718b33e09eb95808c88e8ffc0bd3e0
   docs/Models/Components/BenefitGrantLicenseKeysWebhook.md:
     id: 47304d701f65
-    last_write_checksum: sha1:60e6e86e79e8188e4e27dcb91389743d8e63f681
-    pristine_git_object: ab8ab1066c2c47564db5c4f02123f18b037d9bff
+    last_write_checksum: sha1:24c42567b0dbbce115aee945a85d2590c79ac437
+    pristine_git_object: f95f6d460a297a854d0eef4beb6f8fd7937e43eb
   docs/Models/Components/BenefitGrantMetadata.md:
     id: 7972052c952a
-    last_write_checksum: sha1:becb2d9eba80c39345d60627e4e336076c0d7837
-    pristine_git_object: 0b2016531e0d08a0f86776cd4c624a18d97ed205
+    last_write_checksum: sha1:d8c8d324f44e7bef30cf6408bf5153afdf786088
+    pristine_git_object: 87b1977f2f695602f340029632de4d0267be77ee
   docs/Models/Components/BenefitGrantMeterCreditProperties.md:
     id: dc42b96218ad
     last_write_checksum: sha1:8ff821a4df714f4d708f7bd369d6bf22304874c5
     pristine_git_object: 40ac8e4869d5dc8a411dd0b66c66960fd6b8b892
   docs/Models/Components/BenefitGrantMeterCreditWebhook.md:
     id: c78577baaff7
-    last_write_checksum: sha1:a2a1f0d04ed4d1ee96607527f7250387ee2a93b5
-    pristine_git_object: e71b6254a0f30f41c2cf4d34fa6e474e0057fff0
+    last_write_checksum: sha1:2ecd3f13ba30974fded210050c8e2c8f2c94c31a
+    pristine_git_object: e6d7460f12993d28f81ef50267b15e59728c5110
   docs/Models/Components/BenefitGrantSortProperty.md:
     id: d8f1d30c8b35
     last_write_checksum: sha1:35352a19ac17d70ee1e78482fc0a44be4ef1cba4
@@ -1154,8 +1154,8 @@ trackedFiles:
     pristine_git_object: 8b8c3ced5f8872e6869e03762740ee062b43ee3d
   docs/Models/Components/CustomerOrderUpdate.md:
     id: e4f222a14175
-    last_write_checksum: sha1:335fa2a788c6fe737218f6359db63df44620dac9
-    pristine_git_object: 144c12efa1dbfd3c00a68b2fb55aa15ed0544669
+    last_write_checksum: sha1:4582014f45e41834b42355eebe0326449cb0ca0f
+    pristine_git_object: c55ef534e451c8a652e9388f30f80da32da4705d
   docs/Models/Components/CustomerOrganization.md:
     id: 380fdcfff13c
     last_write_checksum: sha1:28150013e77f32f8a3894775751a59b17107bf60
@@ -1868,10 +1868,22 @@ trackedFiles:
     id: fe06942a3e0e
     last_write_checksum: sha1:1cd787964fd3bcbb004bbe48cc8c3c360a87b4d1
     pristine_git_object: 9a3347394a72fb5358e44be8bf177834192d7b31
+  docs/Models/Components/MemberSession.md:
+    id: c5095e1c3231
+    last_write_checksum: sha1:2da087be356d8919fc7dbfa16a52a42e4b48fd61
+    pristine_git_object: bcedae9868ada2e76e30f47904b444ca84940563
+  docs/Models/Components/MemberSessionCreate.md:
+    id: 16d1abb45be4
+    last_write_checksum: sha1:1d788265f159115fe19a5dd28894ec75f1392332
+    pristine_git_object: 929df8a9e27cf030937a1a0d0af7805cc9c1fc05
   docs/Models/Components/MemberSortProperty.md:
     id: a05727f63a6c
     last_write_checksum: sha1:cdda99b0077d0de241047eee1e8e47c7ed27c2d6
     pristine_git_object: 596e4599a3e69aa9a5f3c240f3cc5ded6986edae
+  docs/Models/Components/MemberUpdate.md:
+    id: e9614ca466e6
+    last_write_checksum: sha1:21f0aa514b38feedb22d0706849d140dd5d727e9
+    pristine_git_object: 9b79182711b6e275c5b4da0a450284ce44a1a6ce
   docs/Models/Components/Meta.md:
     id: f31d15227c9a
     last_write_checksum: sha1:bc9361cf0b0c65543d5902d41e7d22e84c21d9f8
@@ -2278,8 +2290,8 @@ trackedFiles:
     pristine_git_object: 0d1c7141c97227f707ed68cbdb3fee3321312b18
   docs/Models/Components/OrderUpdate.md:
     id: ee28ca957df4
-    last_write_checksum: sha1:687f6273cc83cf6197089e5c8ae35c382518160a
-    pristine_git_object: ad04259ba46d506e8a537b7b36416968ba4da84e
+    last_write_checksum: sha1:66a30d2a4558878a2fecaec990d2db56e1424cba
+    pristine_git_object: 4337551282e6197f3b2e56557f4acba5e6d28c60
   docs/Models/Components/Orders.md:
     id: 6f53c6fdb444
     last_write_checksum: sha1:a688c76639e51b3eda6eff99f60801fa1e71a8dc
@@ -2614,8 +2626,8 @@ trackedFiles:
     pristine_git_object: b984e14539ea25d004c0148e8710c17fce38de4f
   docs/Models/Components/Scope.md:
     id: eb3a9699fb4e
-    last_write_checksum: sha1:c7175046a0544d6f1c2b8ddd8306ea375151ef2c
-    pristine_git_object: fa499577840f0f238f5a748a7e33c94cc0c28f50
+    last_write_checksum: sha1:59e4b0479611d98a5ed48499f31fd1054aa65fcf
+    pristine_git_object: 5e421c1fe67bfba424d29d920eb9999cf84c76bd
   docs/Models/Components/SeatAssign.md:
     id: e7cf12abef7a
     last_write_checksum: sha1:50cd2527b482be031a60b9c4afc1d9608368976b
@@ -4208,6 +4220,10 @@ trackedFiles:
     id: 96946d3671a6
     last_write_checksum: sha1:44f732bfa8abbb5455e11654ca2775cc488fe257
     pristine_git_object: b3cba2b5e2f4f5df21356314b80fde8930e6695b
+  docs/Models/Operations/MemberSessionsCreateResponse.md:
+    id: 6d41a2fc91d4
+    last_write_checksum: sha1:50548abddc81601e8e4fceb8bb510081b82a8938
+    pristine_git_object: a9d6955d2a8ec7c156003d5c94c06d3bd93acf50
   docs/Models/Operations/MembersCreateMemberResponse.md:
     id: 423ec0c4f2fb
     last_write_checksum: sha1:5d87c6601381e1b84580daccbfdf292149d5ec58
@@ -4220,6 +4236,14 @@ trackedFiles:
     id: a90f098a0fc0
     last_write_checksum: sha1:8beb6b46d1c9e403723008fc2539a0988919ef1d
     pristine_git_object: faa545b83a1f155f52bb9802d394f38133347b63
+  docs/Models/Operations/MembersGetMemberRequest.md:
+    id: 60d03ed6a0a9
+    last_write_checksum: sha1:4b043d914ce52e523e68be71d26a225dd49cf1e2
+    pristine_git_object: 99c3b92b89a2c386947fe69d340013c80872ec57
+  docs/Models/Operations/MembersGetMemberResponse.md:
+    id: "320224474794"
+    last_write_checksum: sha1:04cc6eab94b268cacc13236ef2974895f98c81ae
+    pristine_git_object: ecd8d84ce28de01339e8912a275cd0ca94bc9d84
   docs/Models/Operations/MembersListMembersRequest.md:
     id: e08bc6a39b5a
     last_write_checksum: sha1:8e75f24b624b86b7f8bd00923c9f5248f2afe281
@@ -4228,6 +4252,14 @@ trackedFiles:
     id: 12d4bd67c7dc
     last_write_checksum: sha1:5efae57ca5add0dfe03a1b1407d0e3e647790b86
     pristine_git_object: e8b0f938326a1a0886473f30c7f37d404e3af7cf
+  docs/Models/Operations/MembersUpdateMemberRequest.md:
+    id: ec225cfec836
+    last_write_checksum: sha1:e814888c8ec0bdb0045d7792955ecbfd0555327d
+    pristine_git_object: 4ec7a40ad97f1f8bb3871dfcffc33900192d72a9
+  docs/Models/Operations/MembersUpdateMemberResponse.md:
+    id: 1d6bfdf264ae
+    last_write_checksum: sha1:0887e157e2bedefba1be7850f0b64d66ec5fa6b7
+    pristine_git_object: bb17fe66846f7487ead3be6f8373475e57fa226f
   docs/Models/Operations/MeterIDFilter.md:
     id: 57f9af639546
     last_write_checksum: sha1:eaba9a44b8b6d6d66126ae450c63efb79517914d
@@ -4966,8 +4998,12 @@ trackedFiles:
     pristine_git_object: b8f20eba7ba919d6e83d02f34bc9fd98f2f6378f
   docs/sdks/members/README.md:
     id: efb92d440525
-    last_write_checksum: sha1:150385b4921b5f81ca235c13e4e033944630f50b
-    pristine_git_object: ebd4495adb2e41ab36dbb544bc39fddacaf820f5
+    last_write_checksum: sha1:18c403113d6b2a0ed91d52f046669dee7975f850
+    pristine_git_object: f482a924dc76aa07368c7597179ef721d249f8ca
+  docs/sdks/membersessions/README.md:
+    id: 43e04b09f1c1
+    last_write_checksum: sha1:503d6e580cb8293d77fec5285ff526da2a5aa913
+    pristine_git_object: 7c7cdaf686210cbaf3bb252e897480eefd9d4f86
   docs/sdks/meters/README.md:
     id: 2d725619329c
     last_write_checksum: sha1:f5b57da10c9f6ddd5e66e22fac8212f29e85f379
@@ -4982,8 +5018,8 @@ trackedFiles:
     pristine_git_object: 03915f2ab61081400c3ca5c99597241d23da8172
   docs/sdks/orders/README.md:
     id: fc5b2caf3cb2
-    last_write_checksum: sha1:269f09d08aa486cb3de2e81395820a70fd69e0c0
-    pristine_git_object: 3334f595ac08d2416d41480a46c5e9a84532a262
+    last_write_checksum: sha1:96d42317d450ea7f3ad3ae5f36002962c35f3b92
+    pristine_git_object: a7c6802d27751256acc44071698f895f3a1f3e4d
   docs/sdks/organizations/README.md:
     id: 3425667a2db5
     last_write_checksum: sha1:73013b8d463b47524dd320d618088f6cf3b345b8
@@ -5010,8 +5046,8 @@ trackedFiles:
     pristine_git_object: 69f4425d0e5862119d8894c9a7cfd812b8d4c4c6
   docs/sdks/polarorders/README.md:
     id: aa45777cefd6
-    last_write_checksum: sha1:27738fa96fc417e6953c353463e9639e1d74f38c
-    pristine_git_object: a0130449a507ad8c322cb5ed08876f2dbc234158
+    last_write_checksum: sha1:77e9dcf5dcf98caf41fc9bc13791e704088618d5
+    pristine_git_object: b86179cdd41492bd64ec3394bb0815d3f0df75ec
   docs/sdks/polarorganizations/README.md:
     id: 6e664ebeb7a9
     last_write_checksum: sha1:90ff661c55df51cdbe39e0a9fb57e87d4b326e1e
@@ -5200,10 +5236,14 @@ trackedFiles:
     id: 01f70c1c21fa
     last_write_checksum: sha1:06b4733456eb657222a1159cee03ddfaa7c6b7df
     pristine_git_object: 8937ef11bfe22727c8019403a204758ab3976f5e
+  src/MemberSessions.php:
+    id: 10d36ce435fd
+    last_write_checksum: sha1:ce832489d3939f35fb60a81576f72895671a5118
+    pristine_git_object: cecdb3bd349941cb39150a632f5bb2c07d8d409b
   src/Members.php:
     id: 266c54bb33a3
-    last_write_checksum: sha1:141c42377c3fd7a2b7d6dbf467ecec1b66a409bc
-    pristine_git_object: 02b7253aee69f888bee0447515628680c5f4acb1
+    last_write_checksum: sha1:0a1e42ad5555f581354d0f2e9c8cc6f9c0cabaad
+    pristine_git_object: 437ecd01faa0f2ad23eaf27ff005f2abb9ebbeb1
   src/Meters.php:
     id: 574ccdd96d36
     last_write_checksum: sha1:b53fa739bcd830590dcd870ff4f9a4a3d3ebde31
@@ -5418,24 +5458,24 @@ trackedFiles:
     pristine_git_object: 34d54affadd3c9188b2f730b41cead1b5b230370
   src/Models/Components/BenefitGrantCustomWebhook.php:
     id: ea66931fac8e
-    last_write_checksum: sha1:1a64a88a590501dcb4bc5e1a1fc156d32897094d
-    pristine_git_object: 2ffd81082ac8d6cfe6051a587e87aff14eeeeaa2
+    last_write_checksum: sha1:7b2640f55060bd607865d20f9581384a942ad70b
+    pristine_git_object: 390304f9c261788860fdc2a6592cb43608b8adbd
   src/Models/Components/BenefitGrantDiscordProperties.php:
     id: 87859763805f
     last_write_checksum: sha1:a6de717a54018aafeeb899944e6e9d615c070d82
     pristine_git_object: 504cd83a338a336e437e48ee0a686b009abbeccc
   src/Models/Components/BenefitGrantDiscordWebhook.php:
     id: af0669ef6692
-    last_write_checksum: sha1:6d45304e59219c1c1255520960132287ce5e1309
-    pristine_git_object: 41a4a7990e3130dcbba12e503aa0032d14a8d244
+    last_write_checksum: sha1:187f19f33d5d9fc2b282f4da465080910ecb4bae
+    pristine_git_object: e2abd0e60ffa7fda5b3bdc6db7b02a8f874c5ee8
   src/Models/Components/BenefitGrantDownloadablesProperties.php:
     id: fb384fcf0d2e
     last_write_checksum: sha1:d80cba27a46a3738ef95eb838001e96f5520a404
     pristine_git_object: 22527374110e6627387277aaca77ac345a93db5e
   src/Models/Components/BenefitGrantDownloadablesWebhook.php:
     id: aa5c8caca2ab
-    last_write_checksum: sha1:9964928e06dd08a76efeb1cb1c26f0eab0ff0b67
-    pristine_git_object: f288c0e225adb662ed9cda5aebf92ede3ddc828f
+    last_write_checksum: sha1:cd31f9d27cba0ca5aa231e684465b70b3197907c
+    pristine_git_object: 06c87ce8c41b3a00e69e60211f2ab7f042092d1d
   src/Models/Components/BenefitGrantError.php:
     id: 805c93720245
     last_write_checksum: sha1:a5e41c1865c6e84329834a8b831ff02a14bdec3c
@@ -5450,28 +5490,28 @@ trackedFiles:
     pristine_git_object: 7461b26c91b0cc2c149883f1a70cd52af2f12a6a
   src/Models/Components/BenefitGrantGitHubRepositoryWebhook.php:
     id: 41a0650bd4ba
-    last_write_checksum: sha1:4e0d2714cd0cdc6e0ea164ce973ecf89c6adabf1
-    pristine_git_object: 1ce9a21776e064b0aa79da963c535ed0354ffa41
+    last_write_checksum: sha1:10f244e7183129564c5362260a9f3b333caa210b
+    pristine_git_object: 260c562739dc44c8ae73a8b7f49a929dd7f3ab6b
   src/Models/Components/BenefitGrantLicenseKeysProperties.php:
     id: d61a3f8573c7
     last_write_checksum: sha1:072c7b33c257fa1f04353dc12a0044b42d796054
     pristine_git_object: b9e88c991f3598cecaf3341f4c2a9c757b8e552e
   src/Models/Components/BenefitGrantLicenseKeysWebhook.php:
     id: 6a5390f7b1c1
-    last_write_checksum: sha1:6aa198ef01c1e1a40c885fe96a22704581237e78
-    pristine_git_object: 79781c4385ea158aab4711ec67d73f15844831ed
+    last_write_checksum: sha1:eb58f29e0389ca16796bbf7b265e1909eacf0c6b
+    pristine_git_object: 21000ca499ab1dc067779ed1b92b1de38102d292
   src/Models/Components/BenefitGrantMetadata.php:
     id: ac37c6ecf750
-    last_write_checksum: sha1:f96d5a38e87867f11dbb625d655be1370e6f65ff
-    pristine_git_object: 9f05f162f9a682b01f1ec80fd5f3ea56172c2b9e
+    last_write_checksum: sha1:50fcfe7f346d391ac6750d083a1ae9d32df38a82
+    pristine_git_object: 3e1a539a3609ded1a429de9aa8b841c11e00c3b7
   src/Models/Components/BenefitGrantMeterCreditProperties.php:
     id: 8b27d855114f
     last_write_checksum: sha1:e37287cbf690d05733ba68b83fbfed3045b4598d
     pristine_git_object: c2f5dd852e4a27fd258d66bb606a094ccb18b3d0
   src/Models/Components/BenefitGrantMeterCreditWebhook.php:
     id: 6ee7577b93ed
-    last_write_checksum: sha1:e73f0d63db03335870f97b36b29810a6e9478897
-    pristine_git_object: 0bc5694ff0cc56fe810705f99c27cba9314e414d
+    last_write_checksum: sha1:7a31361e35f73ac40036475a8eb98450b3891b22
+    pristine_git_object: 5b408427c8236939c39eb89820407a4801b2e85a
   src/Models/Components/BenefitGrantSortProperty.php:
     id: 2e56c865702c
     last_write_checksum: sha1:1968717127b4abf8afd7077d808f0f3a8b2c5d2d
@@ -5946,8 +5986,8 @@ trackedFiles:
     pristine_git_object: cd4697925209a6ea01229ef650a63e69a66fe90d
   src/Models/Components/CustomerOrderUpdate.php:
     id: 6ef851fb1e91
-    last_write_checksum: sha1:50fb16ad7ea265d145fca121e6f7d277b5c75cab
-    pristine_git_object: 7a86e8ff68b564bb9ff22541fd51725d3ca92853
+    last_write_checksum: sha1:780a132e40ab3b8bf394cf7a061e5d730b114a73
+    pristine_git_object: f56c561cc9a47161e5f637dfb732973ba8fe52ee
   src/Models/Components/CustomerOrganization.php:
     id: 8579e77dec19
     last_write_checksum: sha1:6b04ca4b78f2e397bebeb4679eb70fc89a29db8b
@@ -6504,10 +6544,22 @@ trackedFiles:
     id: 4b1dcaa06450
     last_write_checksum: sha1:c1d4c54c65657e04424adce213a94540bfd61f56
     pristine_git_object: 95dc4555db459fe297a4ae1b2a2ff292da51cadd
+  src/Models/Components/MemberSession.php:
+    id: dd4ed82163d3
+    last_write_checksum: sha1:b459c21e94fb5149e0dd5a660ce6df4343b8a65c
+    pristine_git_object: 4859cb624d25dfbe8a12dcb028a3dd4da09f7398
+  src/Models/Components/MemberSessionCreate.php:
+    id: eab32a9d1100
+    last_write_checksum: sha1:df4102f2c0e4140759776d9f238d16b90c3a430d
+    pristine_git_object: 76b34798c108f447b3d1c8d378170e1bbb23a1a8
   src/Models/Components/MemberSortProperty.php:
     id: 6936948a81a7
     last_write_checksum: sha1:e1a297c2328d55cd2cf4a9933691f995622f8691
     pristine_git_object: 5067c2a7ac7806af257be7749efc3b57918e3f4f
+  src/Models/Components/MemberUpdate.php:
+    id: 0dbb2b971bf7
+    last_write_checksum: sha1:97c4386926eebaf9c411ae8c5fc1c4df509fc044
+    pristine_git_object: bdb0f50add607eb45b47b9acb3487b68ded0a002
   src/Models/Components/Meter.php:
     id: b4e9621c6762
     last_write_checksum: sha1:6a2dc5129327fb79d066c52a7980118544c93f38
@@ -6586,12 +6638,12 @@ trackedFiles:
     pristine_git_object: 4e754501aae89d93dca29ca97dfc77a1519d3ea9
   src/Models/Components/OAuth2ClientConfiguration.php:
     id: 50e22b794ded
-    last_write_checksum: sha1:5f0b30568b9f8257810e3c5b39db615d912c6cfc
-    pristine_git_object: ea10fd8d8b844350ff7fc2e6ad2b88afe7cf7615
+    last_write_checksum: sha1:cb7ef6173033ecb28761d6698104435f3f2f5704
+    pristine_git_object: e4fbd2511641d7de246448e6fc66052455de699f
   src/Models/Components/OAuth2ClientConfigurationUpdate.php:
     id: e76c6f66b784
-    last_write_checksum: sha1:38e5e2ba848ad7ba8c7f97e007be0601e5c7a9d8
-    pristine_git_object: 260f452b1bec983a6491e50ae8770ff0379d2a31
+    last_write_checksum: sha1:f57587d112c0ef3e5a2d33b131df06acd7ca9366
+    pristine_git_object: 7e8d907a6dd10c7cd49aac2daeb258aca4fb9f8e
   src/Models/Components/OAuth2ClientConfigurationUpdateGrantTypes.php:
     id: 222bd1229a49
     last_write_checksum: sha1:289cf7af412003176be942a415adbff18f4ddd89
@@ -6658,8 +6710,8 @@ trackedFiles:
     pristine_git_object: 4a7b0f54581fcfdae39802c04b32c2ec5e87b255
   src/Models/Components/OrderUpdate.php:
     id: 806d8bc6dd91
-    last_write_checksum: sha1:1cf0fefc428629d7c022c2eed7bf6d636aa2fb5a
-    pristine_git_object: 09d04d0f69b509427184e0a10833838161efc10d
+    last_write_checksum: sha1:d12d335c53240b6af51b988bad98df4e230075fc
+    pristine_git_object: 049362a7a21568b6ac1b940af2afd63d17eee03b
   src/Models/Components/Organization.php:
     id: c7417346b9ba
     last_write_checksum: sha1:4a4c58a01c89d10faccda361a56a2af5b25c607e
@@ -6926,8 +6978,8 @@ trackedFiles:
     pristine_git_object: f8237c2412c31a9806d05d2ea1451f92858788ae
   src/Models/Components/Scope.php:
     id: 9157e773608d
-    last_write_checksum: sha1:73781a8daae427bb3a45063d850860a37718df80
-    pristine_git_object: a2c0fb76498d73963f209f3de13291baacba1f92
+    last_write_checksum: sha1:dacf82f738910d1d581758d37fac83c4254d0b21
+    pristine_git_object: 4770c5abf8b6c91f981734c51df777c25f58a194
   src/Models/Components/SeatAssign.php:
     id: a9cb789315ec
     last_write_checksum: sha1:5e72399c4c9fd11322f72c2e7fc489472bd6e2c7
@@ -8348,6 +8400,10 @@ trackedFiles:
     id: b56e4c442a0f
     last_write_checksum: sha1:429eb6875844514be40f32aa711c99af1f4b61a2
     pristine_git_object: 93d0e06508a905d7428e1710305ef2cd52a8f7d8
+  src/Models/Operations/MemberSessionsCreateResponse.php:
+    id: 72e15d2b640f
+    last_write_checksum: sha1:372bf110bd9861abf676278753ee7885ba84178a
+    pristine_git_object: 8a29d7b0659234ca54ad2cb84d375e386b986253
   src/Models/Operations/MembersCreateMemberResponse.php:
     id: fb9725b01447
     last_write_checksum: sha1:d45b6080bd045520e5cac3c0483506769ee0d8f7
@@ -8360,6 +8416,14 @@ trackedFiles:
     id: 6ddc24d6be59
     last_write_checksum: sha1:f93567f0cad3dec5335d1f7cccae3da5394f9a44
     pristine_git_object: f198e2964789ab30306c6f90a0be3c264d83a8f3
+  src/Models/Operations/MembersGetMemberRequest.php:
+    id: af5418d0eae5
+    last_write_checksum: sha1:312c5c9d8e7c7aeb250a045056a737aad0342eed
+    pristine_git_object: e03c33a8abd3296096a7533600ed4b978fb2aa30
+  src/Models/Operations/MembersGetMemberResponse.php:
+    id: 130cc8eade95
+    last_write_checksum: sha1:cb9435f1afefd56e1e3586279d54aae6654b18dd
+    pristine_git_object: 259abf5f3162b18567f767823e4fbb3c074944f4
   src/Models/Operations/MembersListMembersRequest.php:
     id: b10d8ff322ea
     last_write_checksum: sha1:3a82105ab4a7bbb0a72531e8179fc0b8a53f1590
@@ -8368,6 +8432,14 @@ trackedFiles:
     id: 453156efa912
     last_write_checksum: sha1:b0ea34e91ca989c80a94cd0340f2d3a3d3e47729
     pristine_git_object: 4ed84dbeaa69b19f2ccc9c004a0128b5f6c98537
+  src/Models/Operations/MembersUpdateMemberRequest.php:
+    id: 3a631c8f1800
+    last_write_checksum: sha1:7a052abbbea1531f9ae9ef917db056cd3cfde782
+    pristine_git_object: cb46512fdf5620ef89b28220edec15e6eb0d6326
+  src/Models/Operations/MembersUpdateMemberResponse.php:
+    id: 101cf7be8818
+    last_write_checksum: sha1:fe92adc023bd4cb425182f0db7257bac97ea7233
+    pristine_git_object: 21a7f1c70c94498fe5ec943b0a4ee0a74bba7188
   src/Models/Operations/MetersCreateResponse.php:
     id: bb3ae038ef1f
     last_write_checksum: sha1:30304300bac79074adfc71a8411812b7c18cdc6c
@@ -8854,8 +8926,8 @@ trackedFiles:
     pristine_git_object: 8ae13173133db8ed4dc7376959c0f4266fbbda63
   src/Polar.php:
     id: cf4cb815d692
-    last_write_checksum: sha1:cd54c456acb7da5eeb7c865322169c9e47707efc
-    pristine_git_object: 2c7511d8a04e0982cc66b29a0aa0e66f95d82a83
+    last_write_checksum: sha1:74a9f8f8b1a894d9f7d675f31d719fd83ad1a77b
+    pristine_git_object: 3913bb79a26e7e2f700e497b0769cd6b72a955d1
   src/PolarBenefitGrants.php:
     id: 796281c08b6b
     last_write_checksum: sha1:e30be4eac9a171ff1da92cde4b30fabe63540438
@@ -8898,8 +8970,8 @@ trackedFiles:
     pristine_git_object: fdbd8b41d66a15a3514f38e5eb220f6950df3490
   src/SDKConfiguration.php:
     id: 9d60ab0bec0b
-    last_write_checksum: sha1:46801bbcd49e10a3e4db7c325c2d380764e13b68
-    pristine_git_object: 5e1d7db937e245c65cea68bd61a99b55ea412e93
+    last_write_checksum: sha1:35f21ec7c5006cba1938cd8d5dcd958cade99d06
+    pristine_git_object: 878ccfef6ffe240a73bc55caa24052135027c766
   src/Seats.php:
     id: 4830e6b5f52b
     last_write_checksum: sha1:87cccd7c64f1c38848f773f15e511a5a81e5444b
@@ -9461,7 +9533,7 @@ examples:
   oauth2:clients:oauth2:create_client:
     speakeasy-default-oauth2-:clients:oauth2-:create-client:
       requestBody:
-        application/json: {"redirect_uris": ["https://impolite-hippodrome.com/", "https://acidic-tomography.net/"], "token_endpoint_auth_method": "client_secret_post", "scope": "openid profile email user:read user:write organizations:read organizations:write custom_fields:read custom_fields:write discounts:read discounts:write checkout_links:read checkout_links:write checkouts:read checkouts:write transactions:read transactions:write payouts:read payouts:write products:read products:write benefits:read benefits:write events:read events:write meters:read meters:write files:read files:write subscriptions:read subscriptions:write customers:read customers:write members:read members:write wallets:read wallets:write disputes:read customer_meters:read customer_sessions:write customer_seats:read customer_seats:write orders:read orders:write refunds:read refunds:write payments:read metrics:read webhooks:read webhooks:write external_organizations:read license_keys:read license_keys:write repositories:read repositories:write issues:read issues:write customer_portal:read customer_portal:write notifications:read notifications:write notification_recipients:read notification_recipients:write", "client_name": "<value>"}
+        application/json: {"redirect_uris": ["https://impolite-hippodrome.com/", "https://acidic-tomography.net/"], "token_endpoint_auth_method": "client_secret_post", "scope": "openid profile email user:read user:write organizations:read organizations:write custom_fields:read custom_fields:write discounts:read discounts:write checkout_links:read checkout_links:write checkouts:read checkouts:write transactions:read transactions:write payouts:read payouts:write products:read products:write benefits:read benefits:write events:read events:write meters:read meters:write files:read files:write subscriptions:read subscriptions:write customers:read customers:write members:read members:write wallets:read wallets:write disputes:read customer_meters:read customer_sessions:write member_sessions:write customer_seats:read customer_seats:write orders:read orders:write refunds:read refunds:write payments:read metrics:read webhooks:read webhooks:write external_organizations:read license_keys:read license_keys:write repositories:read repositories:write issues:read issues:write customer_portal:read customer_portal:write notifications:read notifications:write notification_recipients:read notification_recipients:write", "client_name": "<value>"}
       responses:
         "200":
           application/json: "<value>"
@@ -9483,7 +9555,7 @@ examples:
         path:
           client_id: "<id>"
       requestBody:
-        application/json: {"redirect_uris": ["https://classic-cantaloupe.org", "https://corrupt-status.biz/"], "token_endpoint_auth_method": "client_secret_post", "scope": "openid profile email user:read user:write organizations:read organizations:write custom_fields:read custom_fields:write discounts:read discounts:write checkout_links:read checkout_links:write checkouts:read checkouts:write transactions:read transactions:write payouts:read payouts:write products:read products:write benefits:read benefits:write events:read events:write meters:read meters:write files:read files:write subscriptions:read subscriptions:write customers:read customers:write members:read members:write wallets:read wallets:write disputes:read customer_meters:read customer_sessions:write customer_seats:read customer_seats:write orders:read orders:write refunds:read refunds:write payments:read metrics:read webhooks:read webhooks:write external_organizations:read license_keys:read license_keys:write repositories:read repositories:write issues:read issues:write customer_portal:read customer_portal:write notifications:read notifications:write notification_recipients:read notification_recipients:write", "client_name": "<value>", "client_id": "<id>"}
+        application/json: {"redirect_uris": ["https://classic-cantaloupe.org", "https://corrupt-status.biz/"], "token_endpoint_auth_method": "client_secret_post", "scope": "openid profile email user:read user:write organizations:read organizations:write custom_fields:read custom_fields:write discounts:read discounts:write checkout_links:read checkout_links:write checkouts:read checkouts:write transactions:read transactions:write payouts:read payouts:write products:read products:write benefits:read benefits:write events:read events:write meters:read meters:write files:read files:write subscriptions:read subscriptions:write customers:read customers:write members:read members:write wallets:read wallets:write disputes:read customer_meters:read customer_sessions:write member_sessions:write customer_seats:read customer_seats:write orders:read orders:write refunds:read refunds:write payments:read metrics:read webhooks:read webhooks:write external_organizations:read license_keys:read license_keys:write repositories:read repositories:write issues:read issues:write customer_portal:read customer_portal:write notifications:read notifications:write notification_recipients:read notification_recipients:write", "client_name": "<value>", "client_id": "<id>"}
       responses:
         "200":
           application/json: "<value>"
@@ -9739,7 +9811,7 @@ examples:
           client_secret: "<value>"
       responses:
         "200":
-          application/json: {"id": "<value>", "created_at": "2025-06-24T05:51:11.116Z", "modified_at": "2025-07-15T02:19:22.581Z", "payment_processor": "stripe", "status": "failed", "client_secret": "<value>", "url": "https://stable-republican.name", "expires_at": "2025-01-13T08:45:44.792Z", "success_url": "https://trim-coil.name", "return_url": "https://thorny-mathematics.net", "embed_origin": "<value>", "amount": 701062, "discount_amount": 173963, "net_amount": 129651, "tax_amount": 979690, "total_amount": 68566, "currency": "Ethiopian Birr", "allow_trial": false, "active_trial_interval": "year", "active_trial_interval_count": 558443, "trial_end": "2025-03-31T17:00:49.512Z", "organization_id": "<value>", "product_id": "<value>", "product_price_id": "<value>", "discount_id": "<value>", "allow_discount_codes": false, "require_billing_address": false, "is_discount_applicable": false, "is_free_product_price": true, "is_payment_required": false, "is_payment_setup_required": false, "is_payment_form_required": false, "customer_id": "<value>", "is_business_customer": false, "customer_name": "<value>", "customer_email": "<value>", "customer_ip_address": "<value>", "customer_billing_name": "<value>", "customer_billing_address": {"country": "US"}, "customer_tax_id": "<id>", "payment_processor_metadata": {"key": "<value>", "key1": "<value>", "key2": "<value>"}, "billing_address_fields": {"country": "disabled", "state": "disabled", "city": "disabled", "postal_code": "optional", "line1": "disabled", "line2": "disabled"}, "products": [{"id": "<value>", "created_at": "2025-01-14T04:52:19.310Z", "modified_at": "2024-04-20T06:15:24.056Z", "trial_interval": "month", "trial_interval_count": 867631, "name": "<value>", "description": "outrank sometimes round heavily the lest while vastly", "recurring_interval": "year", "recurring_interval_count": 844979, "is_recurring": true, "is_archived": true, "organization_id": "<value>", "prices": [], "benefits": [{"id": "<value>", "created_at": "2025-06-18T16:43:11.992Z", "modified_at": "2023-06-16T13:07:12.807Z", "type": "downloadables", "description": "but between harangue train boo polished", "selectable": true, "deletable": false, "organization_id": "<value>"}, {"id": "<value>", "created_at": "2025-06-18T16:43:11.992Z", "modified_at": "2023-06-16T13:07:12.807Z", "type": "downloadables", "description": "but between harangue train boo polished", "selectable": true, "deletable": false, "organization_id": "<value>"}], "medias": [{"id": "<value>", "organization_id": "<value>", "name": "<value>", "path": "/etc", "mime_type": "<value>", "size": 894708, "storage_version": "<value>", "checksum_etag": "<value>", "checksum_sha256_base64": "<value>", "checksum_sha256_hex": "<value>", "last_modified_at": "2023-09-28T05:14:12.847Z", "version": "<value>", "service": "product_media", "is_uploaded": false, "created_at": "2023-11-15T04:02:31.401Z", "size_readable": "<value>", "public_url": "https://blushing-cinder.com"}]}, {"id": "<value>", "created_at": "2025-01-14T04:52:19.310Z", "modified_at": "2024-04-20T06:15:24.056Z", "trial_interval": "month", "trial_interval_count": 173963, "name": "<value>", "description": "outrank sometimes round heavily the lest while vastly", "recurring_interval": "year", "recurring_interval_count": 558443, "is_recurring": true, "is_archived": true, "organization_id": "<value>", "prices": [], "benefits": [{"id": "<value>", "created_at": "2025-06-18T16:43:11.992Z", "modified_at": "2023-06-16T13:07:12.807Z", "type": "downloadables", "description": "but between harangue train boo polished", "selectable": true, "deletable": false, "organization_id": "<value>"}, {"id": "<value>", "created_at": "2025-06-18T16:43:11.992Z", "modified_at": "2023-06-16T13:07:12.807Z", "type": "downloadables", "description": "but between harangue train boo polished", "selectable": true, "deletable": false, "organization_id": "<value>"}], "medias": [{"id": "<value>", "organization_id": "<value>", "name": "<value>", "path": "/etc", "mime_type": "<value>", "size": 894708, "storage_version": "<value>", "checksum_etag": "<value>", "checksum_sha256_base64": "<value>", "checksum_sha256_hex": "<value>", "last_modified_at": "2023-09-28T05:14:12.847Z", "version": "<value>", "service": "product_media", "is_uploaded": false, "created_at": "2023-11-15T04:02:31.401Z", "size_readable": "<value>", "public_url": "https://blushing-cinder.com"}]}], "product": {"id": "<value>", "created_at": "2024-03-24T04:29:38.701Z", "modified_at": "2025-05-05T01:21:17.988Z", "trial_interval": "year", "trial_interval_count": null, "name": "<value>", "description": "meh including winged mundane spirit snow deselect phew yowza expert", "recurring_interval": "month", "recurring_interval_count": 748822, "is_recurring": false, "is_archived": true, "organization_id": "<value>", "prices": [{"created_at": "2025-07-21T02:35:25.261Z", "modified_at": "2025-05-19T02:18:24.778Z", "id": "<value>", "source": "ad_hoc", "amount_type": "metered_unit", "is_archived": false, "product_id": "<value>", "type": "recurring", "recurring_interval": "year", "price_currency": "<value>", "unit_amount": "<value>", "cap_amount": 162606, "meter_id": "<value>", "meter": {"id": "<value>", "name": "<value>"}}], "benefits": [{"id": "<value>", "created_at": "2025-06-18T16:43:11.992Z", "modified_at": "2023-06-16T13:07:12.807Z", "type": "downloadables", "description": "but between harangue train boo polished", "selectable": true, "deletable": false, "organization_id": "<value>"}, {"id": "<value>", "created_at": "2025-06-18T16:43:11.992Z", "modified_at": "2023-06-16T13:07:12.807Z", "type": "downloadables", "description": "but between harangue train boo polished", "selectable": true, "deletable": false, "organization_id": "<value>"}, {"id": "<value>", "created_at": "2025-06-18T16:43:11.992Z", "modified_at": "2023-06-16T13:07:12.807Z", "type": "downloadables", "description": "but between harangue train boo polished", "selectable": true, "deletable": false, "organization_id": "<value>"}], "medias": [{"id": "<value>", "organization_id": "<value>", "name": "<value>", "path": "/etc", "mime_type": "<value>", "size": 894708, "storage_version": "<value>", "checksum_etag": "<value>", "checksum_sha256_base64": "<value>", "checksum_sha256_hex": "<value>", "last_modified_at": "2023-09-28T05:14:12.847Z", "version": "<value>", "service": "product_media", "is_uploaded": false, "created_at": "2023-11-15T04:02:31.401Z", "size_readable": "<value>", "public_url": "https://blushing-cinder.com"}, {"id": "<value>", "organization_id": "<value>", "name": "<value>", "path": "/etc", "mime_type": "<value>", "size": 894708, "storage_version": "<value>", "checksum_etag": "<value>", "checksum_sha256_base64": "<value>", "checksum_sha256_hex": "<value>", "last_modified_at": "2023-09-28T05:14:12.847Z", "version": "<value>", "service": "product_media", "is_uploaded": false, "created_at": "2023-11-15T04:02:31.401Z", "size_readable": "<value>", "public_url": "https://blushing-cinder.com"}]}, "product_price": {"created_at": "2024-11-20T03:28:45.411Z", "modified_at": "2025-02-07T08:44:30.879Z", "id": "<value>", "source": "ad_hoc", "amount_type": "custom", "is_archived": true, "product_id": "<value>", "type": "recurring", "recurring_interval": "year", "price_currency": "<value>", "minimum_amount": 68566, "maximum_amount": 262839, "preset_amount": 755934, "legacy": true}, "prices": {"key": [{"created_at": "2026-08-08T22:09:58.034Z", "modified_at": "2025-11-20T03:28:45.411Z", "id": "<value>", "source": "ad_hoc", "amount_type": "free", "is_archived": true, "product_id": "<value>", "type": "one_time", "recurring_interval": "day"}], "key1": []}, "discount": {"duration": "once", "type": "percentage", "basis_points": 569074, "id": "<value>", "name": "<value>", "code": "<value>"}, "organization": {"created_at": "2024-06-12T08:42:49.560Z", "modified_at": "2025-06-30T05:17:18.282Z", "id": "1dbfc517-0bbf-4301-9ba8-555ca42b9737", "name": "<value>", "slug": "<value>", "avatar_url": "https://straight-testing.biz", "proration_behavior": "prorate", "allow_customer_updates": false}, "attached_custom_fields": [{"custom_field_id": "<value>", "custom_field": {"created_at": "2025-07-30T02:52:43.070Z", "modified_at": "2023-06-26T05:50:35.070Z", "id": "<value>", "metadata": {"key": "<value>"}, "type": "number", "slug": "<value>", "name": "<value>", "organization_id": "1dbfc517-0bbf-4301-9ba8-555ca42b9737", "properties": {}}, "order": 848447, "required": false}, {"custom_field_id": "<value>", "custom_field": {"created_at": "2025-07-30T02:52:43.070Z", "modified_at": "2023-06-26T05:50:35.070Z", "id": "<value>", "metadata": {"key": "<value>"}, "type": "number", "slug": "<value>", "name": "<value>", "organization_id": "1dbfc517-0bbf-4301-9ba8-555ca42b9737", "properties": {}}, "order": 848447, "required": false}, {"custom_field_id": "<value>", "custom_field": {"created_at": "2025-07-30T02:52:43.070Z", "modified_at": "2023-06-26T05:50:35.070Z", "id": "<value>", "metadata": {"key": "<value>"}, "type": "number", "slug": "<value>", "name": "<value>", "organization_id": "1dbfc517-0bbf-4301-9ba8-555ca42b9737", "properties": {}}, "order": 848447, "required": false}]}
+          application/json: {"id": "<value>", "created_at": "2025-06-24T05:51:11.116Z", "modified_at": "2025-07-15T02:19:22.581Z", "payment_processor": "stripe", "status": "failed", "client_secret": "<value>", "url": "https://stable-republican.name", "expires_at": "2025-01-13T08:45:44.792Z", "success_url": "https://trim-coil.name", "return_url": "https://thorny-mathematics.net", "embed_origin": "<value>", "amount": 701062, "discount_amount": 173963, "net_amount": 129651, "tax_amount": 979690, "total_amount": 68566, "currency": "Ethiopian Birr", "allow_trial": false, "active_trial_interval": "year", "active_trial_interval_count": 558443, "trial_end": "2025-03-31T17:00:49.512Z", "organization_id": "<value>", "product_id": "<value>", "product_price_id": "<value>", "discount_id": "<value>", "allow_discount_codes": false, "require_billing_address": false, "is_discount_applicable": false, "is_free_product_price": true, "is_payment_required": false, "is_payment_setup_required": false, "is_payment_form_required": false, "customer_id": "<value>", "is_business_customer": false, "customer_name": "<value>", "customer_email": "<value>", "customer_ip_address": "<value>", "customer_billing_name": "<value>", "customer_billing_address": {"country": "US"}, "customer_tax_id": "<id>", "payment_processor_metadata": {"key": "<value>", "key1": "<value>", "key2": "<value>"}, "billing_address_fields": {"country": "disabled", "state": "disabled", "city": "disabled", "postal_code": "optional", "line1": "disabled", "line2": "disabled"}, "products": [{"id": "<value>", "created_at": "2025-01-14T04:52:19.310Z", "modified_at": "2024-04-20T06:15:24.056Z", "trial_interval": "month", "trial_interval_count": 867631, "name": "<value>", "description": "outrank sometimes round heavily the lest while vastly", "recurring_interval": "year", "recurring_interval_count": 844979, "is_recurring": true, "is_archived": true, "organization_id": "<value>", "prices": [], "benefits": [{"id": "<value>", "created_at": "2025-06-18T16:43:11.992Z", "modified_at": "2023-06-16T13:07:12.807Z", "type": "downloadables", "description": "but between harangue train boo polished", "selectable": true, "deletable": false, "organization_id": "<value>"}, {"id": "<value>", "created_at": "2025-06-18T16:43:11.992Z", "modified_at": "2023-06-16T13:07:12.807Z", "type": "downloadables", "description": "but between harangue train boo polished", "selectable": true, "deletable": false, "organization_id": "<value>"}], "medias": [{"id": "<value>", "organization_id": "<value>", "name": "<value>", "path": "/etc", "mime_type": "<value>", "size": 894708, "storage_version": "<value>", "checksum_etag": "<value>", "checksum_sha256_base64": "<value>", "checksum_sha256_hex": "<value>", "last_modified_at": "2023-09-28T05:14:12.847Z", "version": "<value>", "service": "product_media", "is_uploaded": false, "created_at": "2023-11-15T04:02:31.401Z", "size_readable": "<value>", "public_url": "https://blushing-cinder.com"}]}, {"id": "<value>", "created_at": "2025-01-14T04:52:19.310Z", "modified_at": "2024-04-20T06:15:24.056Z", "trial_interval": "month", "trial_interval_count": 173963, "name": "<value>", "description": "outrank sometimes round heavily the lest while vastly", "recurring_interval": "year", "recurring_interval_count": 558443, "is_recurring": true, "is_archived": true, "organization_id": "<value>", "prices": [], "benefits": [{"id": "<value>", "created_at": "2025-06-18T16:43:11.992Z", "modified_at": "2023-06-16T13:07:12.807Z", "type": "downloadables", "description": "but between harangue train boo polished", "selectable": true, "deletable": false, "organization_id": "<value>"}, {"id": "<value>", "created_at": "2025-06-18T16:43:11.992Z", "modified_at": "2023-06-16T13:07:12.807Z", "type": "downloadables", "description": "but between harangue train boo polished", "selectable": true, "deletable": false, "organization_id": "<value>"}], "medias": [{"id": "<value>", "organization_id": "<value>", "name": "<value>", "path": "/etc", "mime_type": "<value>", "size": 894708, "storage_version": "<value>", "checksum_etag": "<value>", "checksum_sha256_base64": "<value>", "checksum_sha256_hex": "<value>", "last_modified_at": "2023-09-28T05:14:12.847Z", "version": "<value>", "service": "product_media", "is_uploaded": false, "created_at": "2023-11-15T04:02:31.401Z", "size_readable": "<value>", "public_url": "https://blushing-cinder.com"}]}], "product": {"id": "<value>", "created_at": "2024-03-24T04:29:38.701Z", "modified_at": "2025-05-05T01:21:17.988Z", "trial_interval": "year", "trial_interval_count": null, "name": "<value>", "description": "meh including winged mundane spirit snow deselect phew yowza expert", "recurring_interval": "month", "recurring_interval_count": 748822, "is_recurring": false, "is_archived": true, "organization_id": "<value>", "prices": [{"created_at": "2025-07-21T02:35:25.261Z", "modified_at": "2025-05-19T02:18:24.778Z", "id": "<value>", "source": "ad_hoc", "amount_type": "metered_unit", "is_archived": false, "product_id": "<value>", "type": "recurring", "recurring_interval": "year", "price_currency": "<value>", "unit_amount": "<value>", "cap_amount": 162606, "meter_id": "<value>", "meter": {"id": "<value>", "name": "<value>"}}], "benefits": [{"id": "<value>", "created_at": "2025-06-18T16:43:11.992Z", "modified_at": "2023-06-16T13:07:12.807Z", "type": "downloadables", "description": "but between harangue train boo polished", "selectable": true, "deletable": false, "organization_id": "<value>"}, {"id": "<value>", "created_at": "2025-06-18T16:43:11.992Z", "modified_at": "2023-06-16T13:07:12.807Z", "type": "downloadables", "description": "but between harangue train boo polished", "selectable": true, "deletable": false, "organization_id": "<value>"}, {"id": "<value>", "created_at": "2025-06-18T16:43:11.992Z", "modified_at": "2023-06-16T13:07:12.807Z", "type": "downloadables", "description": "but between harangue train boo polished", "selectable": true, "deletable": false, "organization_id": "<value>"}], "medias": [{"id": "<value>", "organization_id": "<value>", "name": "<value>", "path": "/etc", "mime_type": "<value>", "size": 894708, "storage_version": "<value>", "checksum_etag": "<value>", "checksum_sha256_base64": "<value>", "checksum_sha256_hex": "<value>", "last_modified_at": "2023-09-28T05:14:12.847Z", "version": "<value>", "service": "product_media", "is_uploaded": false, "created_at": "2023-11-15T04:02:31.401Z", "size_readable": "<value>", "public_url": "https://blushing-cinder.com"}, {"id": "<value>", "organization_id": "<value>", "name": "<value>", "path": "/etc", "mime_type": "<value>", "size": 894708, "storage_version": "<value>", "checksum_etag": "<value>", "checksum_sha256_base64": "<value>", "checksum_sha256_hex": "<value>", "last_modified_at": "2023-09-28T05:14:12.847Z", "version": "<value>", "service": "product_media", "is_uploaded": false, "created_at": "2023-11-15T04:02:31.401Z", "size_readable": "<value>", "public_url": "https://blushing-cinder.com"}]}, "product_price": {"created_at": "2024-11-20T03:28:45.411Z", "modified_at": "2025-02-07T08:44:30.879Z", "id": "<value>", "source": "ad_hoc", "amount_type": "custom", "is_archived": true, "product_id": "<value>", "type": "recurring", "recurring_interval": "year", "price_currency": "<value>", "minimum_amount": 68566, "maximum_amount": 262839, "preset_amount": 755934, "legacy": true}, "prices": {"key": [{"created_at": "2026-08-08T22:09:58.034Z", "modified_at": "2025-11-20T03:28:45.411Z", "id": "<value>", "source": "ad_hoc", "amount_type": "free", "is_archived": true, "product_id": "<value>", "type": "recurring", "recurring_interval": "day", "legacy": true}], "key1": []}, "discount": {"duration": "once", "type": "percentage", "basis_points": 569074, "id": "<value>", "name": "<value>", "code": "<value>"}, "organization": {"created_at": "2024-06-12T08:42:49.560Z", "modified_at": "2025-06-30T05:17:18.282Z", "id": "1dbfc517-0bbf-4301-9ba8-555ca42b9737", "name": "<value>", "slug": "<value>", "avatar_url": "https://straight-testing.biz", "proration_behavior": "prorate", "allow_customer_updates": false}, "attached_custom_fields": [{"custom_field_id": "<value>", "custom_field": {"created_at": "2025-07-30T02:52:43.070Z", "modified_at": "2023-06-26T05:50:35.070Z", "id": "<value>", "metadata": {"key": "<value>"}, "type": "number", "slug": "<value>", "name": "<value>", "organization_id": "1dbfc517-0bbf-4301-9ba8-555ca42b9737", "properties": {}}, "order": 848447, "required": false}, {"custom_field_id": "<value>", "custom_field": {"created_at": "2025-07-30T02:52:43.070Z", "modified_at": "2023-06-26T05:50:35.070Z", "id": "<value>", "metadata": {"key": "<value>"}, "type": "number", "slug": "<value>", "name": "<value>", "organization_id": "1dbfc517-0bbf-4301-9ba8-555ca42b9737", "properties": {}}, "order": 848447, "required": false}, {"custom_field_id": "<value>", "custom_field": {"created_at": "2025-07-30T02:52:43.070Z", "modified_at": "2023-06-26T05:50:35.070Z", "id": "<value>", "metadata": {"key": "<value>"}, "type": "number", "slug": "<value>", "name": "<value>", "organization_id": "1dbfc517-0bbf-4301-9ba8-555ca42b9737", "properties": {}}, "order": 848447, "required": false}]}
         "404":
           application/json: {"error": "ResourceNotFound", "detail": "<value>"}
         "410":
@@ -10644,7 +10716,7 @@ examples:
         path:
           id: "<value>"
       requestBody:
-        application/json: {"billing_name": "<value>", "billing_address": {"country": "US"}}
+        application/json: {"billing_address": {"country": "US"}}
       responses:
         "200":
           application/json: {"id": "<value>", "created_at": "2023-07-07T02:27:33.933Z", "modified_at": "2025-12-06T08:14:38.290Z", "status": "pending", "paid": true, "subtotal_amount": 10000, "discount_amount": 1000, "net_amount": 9000, "tax_amount": 720, "total_amount": 9720, "applied_balance_amount": 0, "due_amount": 0, "refunded_amount": 0, "refunded_tax_amount": 0, "currency": "usd", "billing_reason": "subscription_update", "billing_name": "<value>", "billing_address": {"country": "US"}, "invoice_number": "<value>", "is_invoice_generated": true, "customer_id": "<value>", "product_id": "<value>", "discount_id": "<value>", "subscription_id": "<value>", "checkout_id": "<value>", "metadata": {}, "platform_fee_amount": 500, "platform_fee_currency": "usd", "customer": {"id": "992fae2a-2a17-4b7a-8d9e-e287cf90131b", "created_at": "2025-05-10T23:50:32.891Z", "modified_at": "2023-02-18T10:28:10.963Z", "metadata": {"key": false}, "external_id": "usr_1337", "email": "customer@example.com", "email_verified": true, "name": "John Doe", "billing_address": {"country": "US"}, "tax_id": ["911144442", "us_ein"], "organization_id": "1dbfc517-0bbf-4301-9ba8-555ca42b9737", "deleted_at": "2023-09-27T12:39:54.419Z", "avatar_url": "https://www.gravatar.com/avatar/xxx?d=404"}, "user_id": "<value>", "product": {"metadata": {"key": 364993, "key1": true, "key2": true}, "id": "<value>", "created_at": "2023-04-12T21:30:23.720Z", "modified_at": "2025-07-30T06:39:42.272Z", "trial_interval": "day", "trial_interval_count": 687169, "name": "<value>", "description": "yippee amid wire knowingly an er reproachfully mechanically who gym", "recurring_interval": "month", "recurring_interval_count": 241006, "is_recurring": true, "is_archived": true, "organization_id": "<value>"}, "discount": {"duration": "repeating", "duration_in_months": 919384, "type": "fixed", "basis_points": 485397, "created_at": "2023-04-20T01:15:36.927Z", "modified_at": "2025-08-12T14:50:46.554Z", "id": "<value>", "metadata": {}, "name": "<value>", "code": "<value>", "starts_at": "2023-06-20T13:39:02.935Z", "ends_at": "2024-06-17T01:44:44.306Z", "max_redemptions": 991144, "redemptions_count": 882356, "organization_id": "1dbfc517-0bbf-4301-9ba8-555ca42b9737"}, "subscription": {"metadata": {"key": true, "key1": false}, "created_at": "2025-05-14T12:37:49.790Z", "modified_at": "2023-07-19T20:08:36.520Z", "id": "<value>", "amount": 10000, "currency": "usd", "recurring_interval": "month", "recurring_interval_count": 170714, "status": "incomplete", "current_period_start": "2025-06-29T04:23:47.957Z", "current_period_end": "2024-06-02T02:08:37.593Z", "trial_start": "2023-01-29T06:32:22.248Z", "trial_end": "2025-01-26T07:02:53.111Z", "cancel_at_period_end": true, "canceled_at": "2024-06-26T07:14:15.241Z", "started_at": "2025-06-03T07:15:00.193Z", "ends_at": "2023-09-17T15:31:40.614Z", "ended_at": "2024-06-15T15:33:26.067Z", "customer_id": "<value>", "product_id": "<value>", "discount_id": "<value>", "checkout_id": "<value>", "customer_cancellation_reason": "unused", "customer_cancellation_comment": "<value>"}, "items": [{"created_at": "2025-11-07T03:04:15.446Z", "modified_at": "2024-02-25T04:48:42.731Z", "id": "<value>", "label": "<value>", "amount": 527788, "tax_amount": 941221, "proration": true, "product_price_id": "<value>"}, {"created_at": "2025-11-07T03:04:15.446Z", "modified_at": "2024-02-25T04:48:42.731Z", "id": "<value>", "label": "<value>", "amount": 527788, "tax_amount": 941221, "proration": true, "product_price_id": "<value>"}, {"created_at": "2025-11-07T03:04:15.446Z", "modified_at": "2024-02-25T04:48:42.731Z", "id": "<value>", "label": "<value>", "amount": 527788, "tax_amount": 941221, "proration": true, "product_price_id": "<value>"}], "description": "Pro Plan"}
@@ -10724,7 +10796,7 @@ examples:
         path:
           id: "<value>"
       requestBody:
-        application/json: {"billing_name": "<value>", "billing_address": {"country": "US"}}
+        application/json: {"billing_address": {"country": "US"}}
       responses:
         "200":
           application/json: {"id": "<value>", "created_at": "2025-06-18T23:40:50.214Z", "modified_at": "2023-01-14T22:55:27.186Z", "status": "paid", "paid": true, "subtotal_amount": 10000, "discount_amount": 1000, "net_amount": 9000, "tax_amount": 720, "total_amount": 9720, "applied_balance_amount": 0, "due_amount": 0, "refunded_amount": 0, "refunded_tax_amount": 0, "currency": "usd", "billing_reason": "purchase", "billing_name": "<value>", "billing_address": {"country": "US"}, "invoice_number": "<value>", "is_invoice_generated": true, "customer_id": "<value>", "product_id": "<value>", "discount_id": "<value>", "subscription_id": "<value>", "checkout_id": "<value>", "user_id": "<value>", "product": {"id": "<value>", "created_at": "2024-02-03T21:16:03.609Z", "modified_at": null, "trial_interval": "year", "trial_interval_count": 947072, "name": "<value>", "description": "gee present next brief till or", "recurring_interval": "year", "recurring_interval_count": 817410, "is_recurring": false, "is_archived": true, "organization_id": "<value>", "prices": [{"created_at": "2025-06-18T23:40:50.214Z", "modified_at": "2023-01-14T22:55:27.186Z", "id": "<value>", "source": "ad_hoc", "amount_type": "metered_unit", "is_archived": true, "product_id": "<value>", "type": "recurring", "recurring_interval": "year", "price_currency": "<value>", "unit_amount": "<value>", "cap_amount": 459195, "meter_id": "<value>", "meter": {"id": "<value>", "name": "<value>"}}], "benefits": [], "medias": [{"id": "<value>", "organization_id": "<value>", "name": "<value>", "path": "/var/yp", "mime_type": "<value>", "size": 245978, "storage_version": "<value>", "checksum_etag": null, "checksum_sha256_base64": "<value>", "checksum_sha256_hex": "<value>", "last_modified_at": "2025-09-02T01:31:39.639Z", "version": "<value>", "service": "product_media", "is_uploaded": false, "created_at": "2024-04-27T06:51:48.796Z", "size_readable": "<value>", "public_url": "https://monthly-concentration.com"}], "organization": {"created_at": "2024-05-09T04:05:31.223Z", "modified_at": "2025-07-23T21:23:51.247Z", "id": "1dbfc517-0bbf-4301-9ba8-555ca42b9737", "name": "<value>", "slug": "<value>", "avatar_url": "https://finished-language.org/", "proration_behavior": "prorate", "allow_customer_updates": false, "customer_portal_settings": {"usage": {"show": false}, "subscription": {"update_seats": true, "update_plan": true}}}}, "subscription": {"created_at": "2025-08-10T03:04:21.532Z", "modified_at": "2024-08-23T05:41:16.519Z", "id": "<value>", "amount": 10000, "currency": "usd", "recurring_interval": "month", "recurring_interval_count": 947072, "status": "incomplete_expired", "current_period_start": "2024-07-27T23:16:23.597Z", "current_period_end": "2025-01-04T16:08:44.590Z", "trial_start": null, "trial_end": "2025-05-04T04:31:46.399Z", "cancel_at_period_end": true, "canceled_at": "2025-03-10T21:35:49.211Z", "started_at": "2023-10-24T00:47:38.683Z", "ends_at": "2024-08-10T21:46:10.059Z", "ended_at": "2023-10-02T07:02:51.789Z", "customer_id": "<value>", "product_id": "<value>", "discount_id": null, "checkout_id": "<value>", "customer_cancellation_reason": "too_complex", "customer_cancellation_comment": "<value>"}, "items": [{"created_at": "2024-10-06T01:05:33.969Z", "modified_at": "2024-09-29T23:53:44.892Z", "id": "<value>", "label": "<value>", "amount": 924277, "tax_amount": 651911, "proration": false, "product_price_id": "<value>"}, {"created_at": "2024-10-06T01:05:33.969Z", "modified_at": "2024-09-29T23:53:44.892Z", "id": "<value>", "label": "<value>", "amount": 924277, "tax_amount": 651911, "proration": false, "product_price_id": "<value>"}, {"created_at": "2024-10-06T01:05:33.969Z", "modified_at": "2024-09-29T23:53:44.892Z", "id": "<value>", "label": "<value>", "amount": 924277, "tax_amount": 651911, "proration": false, "product_price_id": "<value>"}], "description": "Pro Plan"}
@@ -11263,9 +11335,52 @@ examples:
           application/json: {"created_at": "2025-10-23T01:57:20.651Z", "modified_at": "2026-09-23T16:57:59.051Z", "id": "<value>", "name": "<value>", "label": "<value>", "organization_id": "<value>"}
         "422":
           application/json: {}
+  members:get_member:
+    speakeasy-default-members:get-member:
+      parameters:
+        path:
+          id: "572bebad-ee17-4d04-a50f-6596a7d92cf3"
+      responses:
+        "200":
+          application/json: {"id": "<value>", "created_at": "2025-12-30T09:25:07.943Z", "modified_at": "2025-04-17T05:01:18.790Z", "customer_id": "<value>", "email": "member@example.com", "name": "Jane Doe", "external_id": "usr_1337", "role": "owner"}
+        "404":
+          application/json: {"error": "ResourceNotFound", "detail": "<value>"}
+        "422":
+          application/json: {}
+  members:update_member:
+    speakeasy-default-members:update-member:
+      parameters:
+        path:
+          id: "ab9b628a-6dbd-4f07-bcd6-163a8b5b7de4"
+      requestBody:
+        application/json: {"name": "Jane Doe"}
+      responses:
+        "200":
+          application/json: {"id": "<value>", "created_at": "2026-01-19T17:22:09.815Z", "modified_at": "2026-12-14T07:57:33.307Z", "customer_id": "<value>", "email": "member@example.com", "name": "Jane Doe", "external_id": "usr_1337", "role": "billing_manager"}
+        "404":
+          application/json: {"error": "ResourceNotFound", "detail": "<value>"}
+        "422":
+          application/json: {}
+  member-sessions:create:
+    speakeasy-default-member-sessions:create:
+      requestBody:
+        application/json: {"member_id": "<value>", "return_url": "https://example.com/account"}
+      responses:
+        "201":
+          application/json: {"created_at": "2024-10-29T13:05:12.712Z", "modified_at": "2025-10-31T09:33:29.753Z", "id": "<value>", "token": "<value>", "expires_at": "2026-05-23T05:24:31.597Z", "return_url": "https://muted-finer.info/", "member_portal_url": "https://emotional-switch.org", "member_id": "<value>", "member": {"id": "<value>", "created_at": "2025-04-08T05:47:40.526Z", "modified_at": null, "customer_id": "<value>", "email": "member@example.com", "name": "Jane Doe", "external_id": "usr_1337", "role": "member"}, "customer_id": "<value>", "customer": {"id": "992fae2a-2a17-4b7a-8d9e-e287cf90131b", "created_at": "2026-10-29T18:32:48.672Z", "modified_at": "2026-11-06T23:23:53.644Z", "metadata": {"key": 687299}, "external_id": "usr_1337", "email": "customer@example.com", "email_verified": true, "name": "John Doe", "billing_address": {"country": "US"}, "tax_id": ["911144442", "us_ein"], "organization_id": "1dbfc517-0bbf-4301-9ba8-555ca42b9737", "deleted_at": "2025-11-19T06:37:11.538Z", "avatar_url": "https://www.gravatar.com/avatar/xxx?d=404"}}
+        "422":
+          application/json: {}
 examplesVersion: 1.0.2
 generatedTests: {}
-releaseNotes: "## Php SDK Changes:\n* `polar->refunds->create()`: \n  *  `response.dispute` **Added**\n  *  `error.status[400]` **Removed** **Breaking** :warning:\n* `polar->events->get()`:  `response` **Changed** **Breaking** :warning:\n* `polar->events->list()`: \n  *  `request->depth` **Added**\n  *  `response` **Changed** **Breaking** :warning:\n* `polar->customer_portal->subscriptions->update()`:  `response` **Changed** **Breaking** :warning:\n* `polar->customer_portal->subscriptions->cancel()`:  `response` **Changed** **Breaking** :warning:\n* `polar->customer_portal->subscriptions->get()`:  `response` **Changed** **Breaking** :warning:\n* `polar->customer_portal->subscriptions->list()`:  `response.items->[]` **Changed** **Breaking** :warning:\n* `polar->customer_portal->organizations->get()`:  `response` **Changed** **Breaking** :warning:\n* `polar->customer_portal->orders->update()`:  `response.product` **Changed** **Breaking** :warning:\n* `polar->customer_portal->orders->get()`:  `response.product` **Changed** **Breaking** :warning:\n* `polar->customer_portal->orders->list()`:  `response.items->[]->product` **Changed** **Breaking** :warning:\n* `polar->customer_portal->seats->listClaimedSubscriptions()`:  `response.[]` **Changed** **Breaking** :warning:\n* `polar->organizations->create()`: \n  *  `request` **Changed** **Breaking** :warning:\n  *  `response` **Changed**\n* `polar->customer_portal->benefit-grants->update()`:  `response` **Changed** **Breaking** :warning:\n* `polar->organizations->update()`: \n  *  `request.organizationUpdate` **Changed** **Breaking** :warning:\n  *  `response` **Changed**\n* `polar->customer_portal->benefit-grants->get()`:  `response` **Changed** **Breaking** :warning:\n* `polar->customer_portal->benefit-grants->list()`: \n  *  `request` **Changed**\n  *  `response.items->[]` **Changed** **Breaking** :warning:\n* `polar->metrics->get()`: \n  *  `request->metrics` **Added**\n  *  `response` **Changed** **Breaking** :warning:\n* `polar->checkouts->clientConfirm()`: \n  *  `request.checkoutConfirmStripe->allowTrial` **Added**\n  *  `response` **Changed** **Breaking** :warning:\n  *  `error.[trialAlreadyRedeemed]` **Added**\n* `polar->checkouts->clientUpdate()`: \n  *  `request.checkoutUpdatePublic->allowTrial` **Added**\n  *  `response` **Changed** **Breaking** :warning:\n  *  `error.[trialAlreadyRedeemed]` **Added**\n* `polar->checkouts->clientGet()`:  `response` **Changed** **Breaking** :warning:\n* `polar->checkouts->get()`:  `response` **Changed**\n* `polar->customers->list()`:  `response.items->[]->members` **Added**\n* `polar->benefit-grants->list()`:  `response.items->[]->memberId` **Added**\n* `polar->webhooks->listWebhookDeliveries()`:  `response.items->[]->webhookEvent->skipped` **Added**\n* `polar->products->list()`:  `response.items->[]->prices->[]` **Changed**\n* `polar->products->create()`:  `response.prices->[]` **Changed**\n* `polar->products->get()`:  `response.prices->[]` **Changed**\n* `polar->products->update()`:  `response.prices->[]` **Changed**\n* `polar->products->updateBenefits()`:  `response.prices->[]` **Changed**\n* `polar->orders->list()`:  `response.items->[]->platformFeeCurrency` **Added**\n* `polar->orders->get()`:  `response.platformFeeCurrency` **Added**\n* `polar->orders->update()`:  `response.platformFeeCurrency` **Added**\n* `polar->refunds->list()`:  `response.items->[]->dispute` **Added**\n* `polar->benefits->list()`:  `request` **Changed**\n* `polar->checkouts->list()`:  `response.items->[]` **Changed**\n* `polar->checkouts->create()`: \n  *  `request` **Changed**\n  *  `response` **Changed**\n* `polar->disputes->list()`: **Added**\n* `polar->checkouts->update()`: \n  *  `request.checkoutUpdate` **Changed**\n  *  `response` **Changed**\n  *  `error.[trialAlreadyRedeemed]` **Added**\n* `polar->oauth2->authorize()`:  `response` **Changed**\n* `polar->subscriptions->update()`: \n  *  `request.subscriptionUpdate->[subscriptionUpdateBillingPeriod]` **Added**\n  *  `response.product->prices->[]` **Changed**\n* `polar->subscriptions->revoke()`:  `response.product->prices->[]` **Changed**\n* `polar->subscriptions->get()`:  `response.product->prices->[]` **Changed**\n* `polar->metrics->limits()`:  `response.intervals->hour->minDays` **Added**\n* `polar->checkout-links->list()`:  `response.items->[]->products->[]->prices->[]` **Changed**\n* `polar->checkout-links->create()`:  `response.products->[]->prices->[]` **Changed**\n* `polar->checkout-links->get()`:  `response.products->[]->prices->[]` **Changed**\n* `polar->checkout-links->update()`:  `response.products->[]->prices->[]` **Changed**\n* `polar->benefits->grants()`: \n  *  `request->memberId` **Added**\n  *  `response.items->[]->memberId` **Added**\n* `polar->customers->create()`: \n  *  `request->owner` **Added**\n  *  `response.members` **Added**\n* `polar->customers->get()`:  `response.members` **Added**\n* `polar->customers->update()`:  `response.members` **Added**\n* `polar->customers->getExternal()`:  `response.members` **Added**\n* `polar->customers->updateExternal()`:  `response.members` **Added**\n* `polar->subscriptions->create()`:  `response.product->prices->[]` **Changed**\n* `polar->subscriptions->list()`: \n  *  `request` **Changed**\n  *  `response.items->[]->product->prices->[]` **Changed**\n* `polar->organizations->get()`:  `response` **Changed**\n* `polar->customer_portal->seats->listSeats()`:  `response.seats->[]` **Changed**\n* `polar->customer_portal->seats->assignSeat()`:  `response` **Changed**\n* `polar->customer_portal->seats->revokeSeat()`:  `response` **Changed**\n* `polar->customer_portal->seats->resendInvitation()`:  `response` **Changed**\n* `polar->organizations->list()`:  `response.items->[]` **Changed**\n* `polar->wallets->topUp()`: **Deleted** **Breaking** :warning:\n* `polar->wallets->get()`: **Deleted** **Breaking** :warning:\n* `polar->wallets->list()`: **Deleted** **Breaking** :warning:\n* `polar->customers->getBalance()`: **Deleted** **Breaking** :warning:\n* `polar->event-types->update()`: **Added**\n* `polar->event-types->list()`: **Added**\n* `polar->members->deleteMember()`: **Added**\n* `polar->members->createMember()`: **Added**\n* `polar->customer-seats->listSeats()`:  `response.seats->[]` **Changed**\n* `polar->customer-seats->assignSeat()`:  `response` **Changed**\n* `polar->customer-seats->revokeSeat()`:  `response` **Changed**\n* `polar->customer-seats->resendInvitation()`:  `response` **Changed**\n* `polar->customer-seats->claimSeat()`:  `response.seat` **Changed**\n* `polar->members->listMembers()`: **Added**\n* `polar->disputes->get()`: **Added**\n"
+releaseNotes: |
+  ## Php SDK Changes:
+  * `polar->members->getMember()`: **Added**
+  * `polar->members->updateMember()`: **Added**
+  * `polar->member-sessions->create()`: **Added**
+  * `polar->orders->update()`:  `request.orderUpdate` **Changed**
+  * `polar->customer_portal->orders->update()`:  `request.customerOrderUpdate` **Changed**
+  * `polar->events->list()`:  `response.[listResourceEvent]->items->[]->[systemEvent]->[balance.refund]->metadata->memberId` **Added**
+  * `polar->events->get()`:  `response.[systemEvent]->[balance.refundReversal]->metadata->memberId` **Added**
 generatedFiles:
   - .gitattributes
   - USAGE.md
