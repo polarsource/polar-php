@@ -64,7 +64,7 @@ if ($response->seatsList !== null) {
 
 ## assignSeat
 
-**Scopes**: `customer_portal:write`
+Assign Seat
 
 ### Example Usage
 
@@ -115,7 +115,7 @@ if ($response->customerSeat !== null) {
 
 ## revokeSeat
 
-**Scopes**: `customer_portal:write`
+Revoke Seat
 
 ### Example Usage
 
@@ -166,7 +166,7 @@ if ($response->customerSeat !== null) {
 
 ## resendInvitation
 
-**Scopes**: `customer_portal:write`
+Resend Invitation
 
 ### Example Usage
 

@@ -467,6 +467,7 @@ class Orders
                             productBillingType: $request != null ? $request->productBillingType : null,
                             discountId: $request != null ? $request->discountId : null,
                             customerId: $request != null ? $request->customerId : null,
+                            externalCustomerId: $request != null ? $request->externalCustomerId : null,
                             checkoutId: $request != null ? $request->checkoutId : null,
                             page: $nextPage,
                             limit: $request != null ? $request->limit : null,

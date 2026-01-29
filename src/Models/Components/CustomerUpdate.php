@@ -78,15 +78,26 @@ class CustomerUpdate
     public ?string $externalId = null;
 
     /**
+     * The customer type. Can only be upgraded from 'individual' to 'team', never downgraded.
+     *
+     * @var ?CustomerType $type
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('type')]
+    #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\CustomerType|null')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
+    public ?CustomerType $type = null;
+
+    /**
      * @param  ?array<string, string|int|float|bool>  $metadata
      * @param  ?string  $email
      * @param  ?string  $name
      * @param  ?AddressInput  $billingAddress
      * @param  ?array<string|TaxIDFormat|null>  $taxId
      * @param  ?string  $externalId
+     * @param  ?CustomerType  $type
      * @phpstan-pure
      */
-    public function __construct(?array $metadata = null, ?string $email = null, ?string $name = null, ?AddressInput $billingAddress = null, ?array $taxId = null, ?string $externalId = null)
+    public function __construct(?array $metadata = null, ?string $email = null, ?string $name = null, ?AddressInput $billingAddress = null, ?array $taxId = null, ?string $externalId = null, ?CustomerType $type = null)
     {
         $this->metadata = $metadata;
         $this->email = $email;
@@ -94,5 +105,6 @@ class CustomerUpdate
         $this->billingAddress = $billingAddress;
         $this->taxId = $taxId;
         $this->externalId = $externalId;
+        $this->type = $type;
     }
 }

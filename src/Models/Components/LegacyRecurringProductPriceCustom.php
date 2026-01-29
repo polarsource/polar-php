@@ -74,20 +74,20 @@ class LegacyRecurringProductPriceCustom
     public string $priceCurrency;
 
     /**
+     * The minimum amount the customer can pay. If 0, the price is 'free or pay what you want'. Defaults to 50 cents.
+     *
+     * @var int $minimumAmount
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('minimum_amount')]
+    public int $minimumAmount;
+
+    /**
      * Last modification timestamp of the object.
      *
      * @var ?\DateTime $modifiedAt
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('modified_at')]
     public ?\DateTime $modifiedAt;
-
-    /**
-     * The minimum amount the customer can pay.
-     *
-     * @var ?int $minimumAmount
-     */
-    #[\Speakeasy\Serializer\Annotation\SerializedName('minimum_amount')]
-    public ?int $minimumAmount;
 
     /**
      * The maximum amount the customer can pay.
@@ -137,14 +137,14 @@ class LegacyRecurringProductPriceCustom
      * @param  string  $type
      * @param  SubscriptionRecurringInterval  $recurringInterval
      * @param  string  $priceCurrency
+     * @param  int  $minimumAmount
      * @param  bool  $legacy
      * @param  ?\DateTime  $modifiedAt
-     * @param  ?int  $minimumAmount
      * @param  ?int  $maximumAmount
      * @param  ?int  $presetAmount
      * @phpstan-pure
      */
-    public function __construct(\DateTime $createdAt, string $id, ProductPriceSource $source, bool $isArchived, string $productId, SubscriptionRecurringInterval $recurringInterval, string $priceCurrency, ?\DateTime $modifiedAt = null, ?int $minimumAmount = null, ?int $maximumAmount = null, ?int $presetAmount = null, string $amountType = 'custom', string $type = 'recurring', bool $legacy = true)
+    public function __construct(\DateTime $createdAt, string $id, ProductPriceSource $source, bool $isArchived, string $productId, SubscriptionRecurringInterval $recurringInterval, string $priceCurrency, int $minimumAmount, ?\DateTime $modifiedAt = null, ?int $maximumAmount = null, ?int $presetAmount = null, string $amountType = 'custom', string $type = 'recurring', bool $legacy = true)
     {
         $this->createdAt = $createdAt;
         $this->id = $id;
@@ -153,8 +153,8 @@ class LegacyRecurringProductPriceCustom
         $this->productId = $productId;
         $this->recurringInterval = $recurringInterval;
         $this->priceCurrency = $priceCurrency;
-        $this->modifiedAt = $modifiedAt;
         $this->minimumAmount = $minimumAmount;
+        $this->modifiedAt = $modifiedAt;
         $this->maximumAmount = $maximumAmount;
         $this->presetAmount = $presetAmount;
         $this->amountType = $amountType;

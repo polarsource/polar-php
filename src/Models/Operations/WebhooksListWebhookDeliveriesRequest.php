@@ -8,6 +8,7 @@ declare(strict_types=1);
 
 namespace Polar\Models\Operations;
 
+use Polar\Models\Components;
 use Polar\Utils\SpeakeasyMetadata;
 class WebhooksListWebhookDeliveriesRequest
 {
@@ -36,6 +37,38 @@ class WebhooksListWebhookDeliveriesRequest
     public ?\DateTime $endTimestamp = null;
 
     /**
+     * Filter by delivery success status.
+     *
+     * @var ?bool $succeeded
+     */
+    #[SpeakeasyMetadata('queryParam:style=form,explode=true,name=succeeded')]
+    public ?bool $succeeded = null;
+
+    /**
+     * Query to filter webhook deliveries.
+     *
+     * @var ?string $query
+     */
+    #[SpeakeasyMetadata('queryParam:style=form,explode=true,name=query')]
+    public ?string $query = null;
+
+    /**
+     * Filter by HTTP response code class (2xx, 3xx, 4xx, 5xx).
+     *
+     * @var ?HttpCodeClass $httpCodeClass
+     */
+    #[SpeakeasyMetadata('queryParam:style=form,explode=true,name=http_code_class')]
+    public ?HttpCodeClass $httpCodeClass = null;
+
+    /**
+     * Filter by webhook event type.
+     *
+     * @var Components\WebhookEventType|array<Components\WebhookEventType>|null $eventType
+     */
+    #[SpeakeasyMetadata('queryParam:style=form,explode=true,name=event_type')]
+    public Components\WebhookEventType|array|null $eventType = null;
+
+    /**
      * Page number, defaults to 1.
      *
      * @var ?int $page
@@ -57,13 +90,21 @@ class WebhooksListWebhookDeliveriesRequest
      * @param  string|array<string>|null  $endpointId
      * @param  ?\DateTime  $startTimestamp
      * @param  ?\DateTime  $endTimestamp
+     * @param  ?bool  $succeeded
+     * @param  ?string  $query
+     * @param  ?HttpCodeClass  $httpCodeClass
+     * @param  Components\WebhookEventType|array<Components\WebhookEventType>|null  $eventType
      * @phpstan-pure
      */
-    public function __construct(string|array|null $endpointId = null, ?\DateTime $startTimestamp = null, ?\DateTime $endTimestamp = null, ?int $page = 1, ?int $limit = 10)
+    public function __construct(string|array|null $endpointId = null, ?\DateTime $startTimestamp = null, ?\DateTime $endTimestamp = null, ?bool $succeeded = null, ?string $query = null, ?HttpCodeClass $httpCodeClass = null, Components\WebhookEventType|array|null $eventType = null, ?int $page = 1, ?int $limit = 10)
     {
         $this->endpointId = $endpointId;
         $this->startTimestamp = $startTimestamp;
         $this->endTimestamp = $endTimestamp;
+        $this->succeeded = $succeeded;
+        $this->query = $query;
+        $this->httpCodeClass = $httpCodeClass;
+        $this->eventType = $eventType;
         $this->page = $page;
         $this->limit = $limit;
     }

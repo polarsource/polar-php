@@ -69,6 +69,14 @@ class ProductPriceCustom
     public string $priceCurrency;
 
     /**
+     * The minimum amount the customer can pay. If 0, the price is 'free or pay what you want'. Defaults to 50 cents.
+     *
+     * @var int $minimumAmount
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('minimum_amount')]
+    public int $minimumAmount;
+
+    /**
      * Last modification timestamp of the object.
      *
      * @var ?\DateTime $modifiedAt
@@ -84,14 +92,6 @@ class ProductPriceCustom
     #[\Speakeasy\Serializer\Annotation\SerializedName('recurring_interval')]
     #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\SubscriptionRecurringInterval|null')]
     public ?SubscriptionRecurringInterval $recurringInterval;
-
-    /**
-     * The minimum amount the customer can pay.
-     *
-     * @var ?int $minimumAmount
-     */
-    #[\Speakeasy\Serializer\Annotation\SerializedName('minimum_amount')]
-    public ?int $minimumAmount;
 
     /**
      * The maximum amount the customer can pay.
@@ -125,14 +125,14 @@ class ProductPriceCustom
      * @param  string  $productId
      * @param  ProductPriceType  $type
      * @param  string  $priceCurrency
+     * @param  int  $minimumAmount
      * @param  ?\DateTime  $modifiedAt
      * @param  ?SubscriptionRecurringInterval  $recurringInterval
-     * @param  ?int  $minimumAmount
      * @param  ?int  $maximumAmount
      * @param  ?int  $presetAmount
      * @phpstan-pure
      */
-    public function __construct(\DateTime $createdAt, string $id, ProductPriceSource $source, bool $isArchived, string $productId, ProductPriceType $type, string $priceCurrency, ?\DateTime $modifiedAt = null, ?SubscriptionRecurringInterval $recurringInterval = null, ?int $minimumAmount = null, ?int $maximumAmount = null, ?int $presetAmount = null, string $amountType = 'custom')
+    public function __construct(\DateTime $createdAt, string $id, ProductPriceSource $source, bool $isArchived, string $productId, ProductPriceType $type, string $priceCurrency, int $minimumAmount, ?\DateTime $modifiedAt = null, ?SubscriptionRecurringInterval $recurringInterval = null, ?int $maximumAmount = null, ?int $presetAmount = null, string $amountType = 'custom')
     {
         $this->createdAt = $createdAt;
         $this->id = $id;
@@ -141,9 +141,9 @@ class ProductPriceCustom
         $this->productId = $productId;
         $this->type = $type;
         $this->priceCurrency = $priceCurrency;
+        $this->minimumAmount = $minimumAmount;
         $this->modifiedAt = $modifiedAt;
         $this->recurringInterval = $recurringInterval;
-        $this->minimumAmount = $minimumAmount;
         $this->maximumAmount = $maximumAmount;
         $this->presetAmount = $presetAmount;
         $this->amountType = $amountType;

@@ -13,15 +13,6 @@ namespace Polar\Models\Components;
 class ProductPriceCustomCreate
 {
     /**
-     * The minimum amount the customer can pay.
-     *
-     * @var ?int $minimumAmount
-     */
-    #[\Speakeasy\Serializer\Annotation\SerializedName('minimum_amount')]
-    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
-    public ?int $minimumAmount = null;
-
-    /**
      * The maximum amount the customer can pay.
      *
      * @var ?int $maximumAmount
@@ -31,7 +22,7 @@ class ProductPriceCustomCreate
     public ?int $maximumAmount = null;
 
     /**
-     * The initial amount shown to the customer.
+     * The initial amount shown to the customer. If 0, the customer will see $0 as the default. Values between 1-49 are rejected.
      *
      * @var ?int $presetAmount
      */
@@ -56,6 +47,15 @@ class ProductPriceCustomCreate
     public ?string $priceCurrency = null;
 
     /**
+     * The minimum amount the customer can pay. If set to 0, the price is 'free or pay what you want' and $0 is accepted. If set to a value between 1-49, it will be rejected. Defaults to 50 cents.
+     *
+     * @var ?int $minimumAmount
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('minimum_amount')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
+    public ?int $minimumAmount = null;
+
+    /**
      * @param  string  $amountType
      * @param  ?string  $priceCurrency
      * @param  ?int  $minimumAmount
@@ -63,12 +63,12 @@ class ProductPriceCustomCreate
      * @param  ?int  $presetAmount
      * @phpstan-pure
      */
-    public function __construct(?int $minimumAmount = null, ?int $maximumAmount = null, ?int $presetAmount = null, string $amountType = 'custom', ?string $priceCurrency = 'usd')
+    public function __construct(?int $maximumAmount = null, ?int $presetAmount = null, string $amountType = 'custom', ?string $priceCurrency = 'usd', ?int $minimumAmount = 50)
     {
-        $this->minimumAmount = $minimumAmount;
         $this->maximumAmount = $maximumAmount;
         $this->presetAmount = $presetAmount;
         $this->amountType = $amountType;
         $this->priceCurrency = $priceCurrency;
+        $this->minimumAmount = $minimumAmount;
     }
 }

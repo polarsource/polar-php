@@ -53,6 +53,14 @@ class RefundsListRequest
     public string|array|null $customerId = null;
 
     /**
+     * Filter by customer external ID.
+     *
+     * @var string|array<string>|null $externalCustomerId
+     */
+    #[SpeakeasyMetadata('queryParam:style=form,explode=true,name=external_customer_id')]
+    public string|array|null $externalCustomerId = null;
+
+    /**
      * Filter by `succeeded`.
      *
      * @var ?bool $succeeded
@@ -92,17 +100,19 @@ class RefundsListRequest
      * @param  string|array<string>|null  $orderId
      * @param  string|array<string>|null  $subscriptionId
      * @param  string|array<string>|null  $customerId
+     * @param  string|array<string>|null  $externalCustomerId
      * @param  ?bool  $succeeded
      * @param  ?array<Components\RefundSortProperty>  $sorting
      * @phpstan-pure
      */
-    public function __construct(string|array|null $id = null, string|array|null $organizationId = null, string|array|null $orderId = null, string|array|null $subscriptionId = null, string|array|null $customerId = null, ?bool $succeeded = null, ?array $sorting = null, ?int $page = 1, ?int $limit = 10)
+    public function __construct(string|array|null $id = null, string|array|null $organizationId = null, string|array|null $orderId = null, string|array|null $subscriptionId = null, string|array|null $customerId = null, string|array|null $externalCustomerId = null, ?bool $succeeded = null, ?array $sorting = null, ?int $page = 1, ?int $limit = 10)
     {
         $this->id = $id;
         $this->organizationId = $organizationId;
         $this->orderId = $orderId;
         $this->subscriptionId = $subscriptionId;
         $this->customerId = $customerId;
+        $this->externalCustomerId = $externalCustomerId;
         $this->succeeded = $succeeded;
         $this->sorting = $sorting;
         $this->page = $page;

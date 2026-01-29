@@ -13,6 +13,7 @@ generation:
     requestResponseComponentNamesFeb2024: true
     securityFeb2025: false
     sharedErrorComponentsApr2025: false
+    sharedNestedComponentsJan2026: false
   auth:
     oAuth2ClientCredentialsEnabled: true
     oAuth2PasswordEnabled: true
@@ -26,7 +27,7 @@ generation:
     generateNewTests: false
     skipResponseBodyAssertions: false
 php:
-  version: 0.7.1
+  version: 0.7.2
   additionalDependencies:
     autoload: {}
     autoload-dev: {}

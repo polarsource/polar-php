@@ -222,6 +222,7 @@ foreach ($responses as $response) {
 ### [CustomerPortal.CustomerSession](docs/sdks/customersession/README.md)
 
 * [introspect](docs/sdks/customersession/README.md#introspect) - Introspect Customer Session
+* [getAuthenticatedUser](docs/sdks/customersession/README.md#getauthenticateduser) - Get Authenticated Portal User
 
 ### [CustomerPortal.Customers](docs/sdks/polarcustomers/README.md)
 
@@ -348,10 +349,16 @@ foreach ($responses as $response) {
 * [activate](docs/sdks/licensekeys/README.md#activate) - Activate License Key
 * [deactivate](docs/sdks/licensekeys/README.md#deactivate) - Deactivate License Key
 
+### [MemberSessions](docs/sdks/membersessions/README.md)
+
+* [create](docs/sdks/membersessions/README.md#create) - Create Member Session
+
 ### [Members](docs/sdks/members/README.md)
 
 * [listMembers](docs/sdks/members/README.md#listmembers) - List Members
 * [createMember](docs/sdks/members/README.md#createmember) - Create Member
+* [getMember](docs/sdks/members/README.md#getmember) - Get Member
+* [updateMember](docs/sdks/members/README.md#updatemember) - Update Member
 * [deleteMember](docs/sdks/members/README.md#deletemember) - Delete Member
 
 ### [Meters](docs/sdks/meters/README.md)
@@ -390,6 +397,13 @@ foreach ($responses as $response) {
 * [update](docs/sdks/orders/README.md#update) - Update Order
 * [generateInvoice](docs/sdks/orders/README.md#generateinvoice) - Generate Order Invoice
 * [invoice](docs/sdks/orders/README.md#invoice) - Get Order Invoice
+
+### [OrganizationAccessTokens](docs/sdks/organizationaccesstokens/README.md)
+
+* [list](docs/sdks/organizationaccesstokens/README.md#list) - List
+* [create](docs/sdks/organizationaccesstokens/README.md#create) - Create
+* [update](docs/sdks/organizationaccesstokens/README.md#update) - Update
+* [delete](docs/sdks/organizationaccesstokens/README.md#delete) - Delete
 
 ### [Organizations](docs/sdks/organizations/README.md)
 

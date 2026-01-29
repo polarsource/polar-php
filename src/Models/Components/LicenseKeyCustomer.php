@@ -117,6 +117,16 @@ class LicenseKeyCustomer
     public ?\DateTime $deletedAt;
 
     /**
+     * The type of customer: 'individual' for single users, 'team' for customers with multiple members. Legacy customers may have NULL type which is treated as 'individual'.
+     *
+     * @var ?CustomerType $type
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('type')]
+    #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\CustomerType|null')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
+    public ?CustomerType $type = null;
+
+    /**
      * @param  string  $id
      * @param  \DateTime  $createdAt
      * @param  array<string, string|int|float|bool>  $metadata
@@ -130,9 +140,10 @@ class LicenseKeyCustomer
      * @param  ?Address  $billingAddress
      * @param  ?array<string|TaxIDFormat|null>  $taxId
      * @param  ?\DateTime  $deletedAt
+     * @param  ?CustomerType  $type
      * @phpstan-pure
      */
-    public function __construct(string $id, \DateTime $createdAt, array $metadata, string $email, bool $emailVerified, string $organizationId, string $avatarUrl, ?\DateTime $modifiedAt = null, ?string $externalId = null, ?string $name = null, ?Address $billingAddress = null, ?array $taxId = null, ?\DateTime $deletedAt = null)
+    public function __construct(string $id, \DateTime $createdAt, array $metadata, string $email, bool $emailVerified, string $organizationId, string $avatarUrl, ?\DateTime $modifiedAt = null, ?string $externalId = null, ?string $name = null, ?Address $billingAddress = null, ?array $taxId = null, ?\DateTime $deletedAt = null, ?CustomerType $type = null)
     {
         $this->id = $id;
         $this->createdAt = $createdAt;
@@ -147,5 +158,6 @@ class LicenseKeyCustomer
         $this->billingAddress = $billingAddress;
         $this->taxId = $taxId;
         $this->deletedAt = $deletedAt;
+        $this->type = $type;
     }
 }

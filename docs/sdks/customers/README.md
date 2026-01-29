@@ -106,6 +106,7 @@ $request = new Components\CustomerCreate(
         '911144442',
         'us_ein',
     ],
+    type: Components\CustomerType::Individual,
     organizationId: '1dbfc517-0bbf-4301-9ba8-555ca42b9737',
     owner: new Components\OwnerCreate(
         email: 'member@example.com',
@@ -275,6 +276,7 @@ $customerUpdate = new Components\CustomerUpdate(
         'us_ein',
     ],
     externalId: 'usr_1337',
+    type: Components\CustomerType::Individual,
 );
 
 $response = $sdk->customers->update(
@@ -323,6 +325,8 @@ a specific subscription or revoke certain benefits.
 Note: The customers information will nonetheless be retained for historic
 orders and subscriptions.
 
+Set `anonymize=true` to also anonymize PII for GDPR compliance.
+
 **Scopes**: `customers:write`
 
 ### Example Usage
@@ -344,7 +348,9 @@ $sdk = Polar\Polar::builder()
 
 
 $response = $sdk->customers->delete(
-    id: '<value>'
+    id: '<value>',
+    anonymize: false
+
 );
 
 if ($response->statusCode === 200) {
@@ -354,9 +360,10 @@ if ($response->statusCode === 200) {
 
 ### Parameters
 
-| Parameter          | Type               | Required           | Description        |
-| ------------------ | ------------------ | ------------------ | ------------------ |
-| `id`               | *string*           | :heavy_check_mark: | The customer ID.   |
+| Parameter                                                                                                                                                                                                                                              | Type                                                                                                                                                                                                                                                   | Required                                                                                                                                                                                                                                               | Description                                                                                                                                                                                                                                            |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `id`                                                                                                                                                                                                                                                   | *string*                                                                                                                                                                                                                                               | :heavy_check_mark:                                                                                                                                                                                                                                     | The customer ID.                                                                                                                                                                                                                                       |
+| `anonymize`                                                                                                                                                                                                                                            | *?bool*                                                                                                                                                                                                                                                | :heavy_minus_sign:                                                                                                                                                                                                                                     | If true, also anonymize the customer's personal data for GDPR compliance. This replaces email with a hashed version, hashes name and billing name (name preserved for businesses with tax_id), clears billing address, and removes OAuth account data. |
 
 ### Response
 
@@ -492,6 +499,8 @@ Delete a customer by external ID.
 
 Immediately cancels any active subscriptions and revokes any active benefits.
 
+Set `anonymize=true` to also anonymize PII for GDPR compliance.
+
 **Scopes**: `customers:write`
 
 ### Example Usage
@@ -513,7 +522,9 @@ $sdk = Polar\Polar::builder()
 
 
 $response = $sdk->customers->deleteExternal(
-    externalId: '<id>'
+    externalId: '<id>',
+    anonymize: false
+
 );
 
 if ($response->statusCode === 200) {
@@ -523,9 +534,10 @@ if ($response->statusCode === 200) {
 
 ### Parameters
 
-| Parameter                 | Type                      | Required                  | Description               |
-| ------------------------- | ------------------------- | ------------------------- | ------------------------- |
-| `externalId`              | *string*                  | :heavy_check_mark:        | The customer external ID. |
+| Parameter                                                                 | Type                                                                      | Required                                                                  | Description                                                               |
+| ------------------------------------------------------------------------- | ------------------------------------------------------------------------- | ------------------------------------------------------------------------- | ------------------------------------------------------------------------- |
+| `externalId`                                                              | *string*                                                                  | :heavy_check_mark:                                                        | The customer external ID.                                                 |
+| `anonymize`                                                               | *?bool*                                                                   | :heavy_minus_sign:                                                        | If true, also anonymize the customer's personal data for GDPR compliance. |
 
 ### Response
 

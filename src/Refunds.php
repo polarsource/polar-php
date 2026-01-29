@@ -229,6 +229,7 @@ class Refunds
                             orderId: $request != null ? $request->orderId : null,
                             subscriptionId: $request != null ? $request->subscriptionId : null,
                             customerId: $request != null ? $request->customerId : null,
+                            externalCustomerId: $request != null ? $request->externalCustomerId : null,
                             succeeded: $request != null ? $request->succeeded : null,
                             page: $nextPage,
                             limit: $request != null ? $request->limit : null,

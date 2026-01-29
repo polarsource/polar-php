@@ -1,0 +1,9 @@
+# ListResourceOrganizationAccessToken
+
+
+## Fields
+
+| Field                                                                                           | Type                                                                                            | Required                                                                                        | Description                                                                                     |
+| ----------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------- |
+| `items`                                                                                         | array<[Components\OrganizationAccessToken](../../Models/Components/OrganizationAccessToken.md)> | :heavy_check_mark:                                                                              | N/A                                                                                             |
+| `pagination`                                                                                    | [Components\Pagination](../../Models/Components/Pagination.md)                                  | :heavy_check_mark:                                                                              | N/A                                                                                             |

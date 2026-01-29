@@ -16,8 +16,6 @@
 
 List orders of the authenticated customer.
 
-**Scopes**: `customer_portal:read` `customer_portal:write`
-
 ### Example Usage
 
 <!-- UsageSnippet language="php" operationID="customer_portal:orders:list" method="get" path="/v1/customer-portal/orders/" -->
@@ -71,8 +69,6 @@ foreach ($responses as $response) {
 
 Get an order by ID for the authenticated customer.
 
-**Scopes**: `customer_portal:read` `customer_portal:write`
-
 ### Example Usage
 
 <!-- UsageSnippet language="php" operationID="customer_portal:orders:get" method="get" path="/v1/customer-portal/orders/{id}" -->
@@ -125,8 +121,6 @@ if ($response->customerOrder !== null) {
 
 Update an order for the authenticated customer.
 
-**Scopes**: `customer_portal:write`
-
 ### Example Usage
 
 <!-- UsageSnippet language="php" operationID="customer_portal:orders:update" method="patch" path="/v1/customer-portal/orders/{id}" -->
@@ -142,7 +136,6 @@ use Polar\Models\Operations;
 $sdk = Polar\Polar::builder()->build();
 
 $customerOrderUpdate = new Components\CustomerOrderUpdate(
-    billingName: '<value>',
     billingAddress: new Components\AddressInput(
         country: Components\CountryAlpha2Input::Us,
     ),
@@ -186,8 +179,6 @@ if ($response->customerOrder !== null) {
 ## generateInvoice
 
 Trigger generation of an order's invoice.
-
-**Scopes**: `customer_portal:read` `customer_portal:write`
 
 ### Example Usage
 
@@ -241,8 +232,6 @@ if ($response->any !== null) {
 
 Get an order's invoice data.
 
-**Scopes**: `customer_portal:read` `customer_portal:write`
-
 ### Example Usage
 
 <!-- UsageSnippet language="php" operationID="customer_portal:orders:invoice" method="get" path="/v1/customer-portal/orders/{id}/invoice" -->
@@ -295,8 +284,6 @@ if ($response->customerOrderInvoice !== null) {
 
 Get the current payment status for an order.
 
-**Scopes**: `customer_portal:read` `customer_portal:write`
-
 ### Example Usage
 
 <!-- UsageSnippet language="php" operationID="customer_portal:orders:get_payment_status" method="get" path="/v1/customer-portal/orders/{id}/payment-status" -->
@@ -348,8 +335,6 @@ if ($response->customerOrderPaymentStatus !== null) {
 ## confirmRetryPayment
 
 Confirm a retry payment using a Stripe confirmation token.
-
-**Scopes**: `customer_portal:write`
 
 ### Example Usage
 

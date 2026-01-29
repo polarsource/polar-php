@@ -48,8 +48,6 @@ class Seats
     /**
      * Assign Seat
      *
-     * **Scopes**: `customer_portal:write`
-     *
      * @param  Operations\CustomerPortalSeatsAssignSeatSecurity  $security
      * @param  Components\SeatAssign  $request
      * @return Operations\CustomerPortalSeatsAssignSeatResponse
@@ -288,8 +286,6 @@ class Seats
     /**
      * Resend Invitation
      *
-     * **Scopes**: `customer_portal:write`
-     *
      * @param  Operations\CustomerPortalSeatsResendInvitationSecurity  $security
      * @param  string  $seatId
      * @return Operations\CustomerPortalSeatsResendInvitationResponse
@@ -369,8 +365,6 @@ class Seats
 
     /**
      * Revoke Seat
-     *
-     * **Scopes**: `customer_portal:write`
      *
      * @param  Operations\CustomerPortalSeatsRevokeSeatSecurity  $security
      * @param  string  $seatId

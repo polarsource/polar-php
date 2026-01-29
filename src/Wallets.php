@@ -50,8 +50,6 @@ class Wallets
      *
      * Get a wallet by ID for the authenticated customer.
      *
-     * **Scopes**: `customer_portal:read` `customer_portal:write`
-     *
      * @param  Operations\CustomerPortalWalletsGetSecurity  $security
      * @param  string  $id
      * @return Operations\CustomerPortalWalletsGetResponse
@@ -144,8 +142,6 @@ class Wallets
      * List Wallets
      *
      * List wallets of the authenticated customer.
-     *
-     * **Scopes**: `customer_portal:read` `customer_portal:write`
      *
      * @param  Operations\CustomerPortalWalletsListSecurity  $security
      * @param  ?int  $page
@@ -269,8 +265,6 @@ class Wallets
      * List Wallets
      *
      * List wallets of the authenticated customer.
-     *
-     * **Scopes**: `customer_portal:read` `customer_portal:write`
      *
      * @param  Operations\CustomerPortalWalletsListSecurity  $security
      * @param  ?int  $page

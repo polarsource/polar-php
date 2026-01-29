@@ -37,6 +37,14 @@ class CheckoutsListRequest
     public string|array|null $customerId = null;
 
     /**
+     * Filter by customer external ID.
+     *
+     * @var string|array<string>|null $externalCustomerId
+     */
+    #[SpeakeasyMetadata('queryParam:style=form,explode=true,name=external_customer_id')]
+    public string|array|null $externalCustomerId = null;
+
+    /**
      * Filter by checkout session status.
      *
      * @var Components\CheckoutStatus|array<Components\CheckoutStatus>|null $status
@@ -82,16 +90,18 @@ class CheckoutsListRequest
      * @param  string|array<string>|null  $organizationId
      * @param  string|array<string>|null  $productId
      * @param  string|array<string>|null  $customerId
+     * @param  string|array<string>|null  $externalCustomerId
      * @param  Components\CheckoutStatus|array<Components\CheckoutStatus>|null  $status
      * @param  ?string  $query
      * @param  ?array<Components\CheckoutSortProperty>  $sorting
      * @phpstan-pure
      */
-    public function __construct(string|array|null $organizationId = null, string|array|null $productId = null, string|array|null $customerId = null, Components\CheckoutStatus|array|null $status = null, ?string $query = null, ?array $sorting = null, ?int $page = 1, ?int $limit = 10)
+    public function __construct(string|array|null $organizationId = null, string|array|null $productId = null, string|array|null $customerId = null, string|array|null $externalCustomerId = null, Components\CheckoutStatus|array|null $status = null, ?string $query = null, ?array $sorting = null, ?int $page = 1, ?int $limit = 10)
     {
         $this->organizationId = $organizationId;
         $this->productId = $productId;
         $this->customerId = $customerId;
+        $this->externalCustomerId = $externalCustomerId;
         $this->status = $status;
         $this->query = $query;
         $this->sorting = $sorting;

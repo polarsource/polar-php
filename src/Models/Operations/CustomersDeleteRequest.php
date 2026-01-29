@@ -20,11 +20,21 @@ class CustomersDeleteRequest
     public string $id;
 
     /**
+     * If true, also anonymize the customer's personal data for GDPR compliance. This replaces email with a hashed version, hashes name and billing name (name preserved for businesses with tax_id), clears billing address, and removes OAuth account data.
+     *
+     * @var ?bool $anonymize
+     */
+    #[SpeakeasyMetadata('queryParam:style=form,explode=true,name=anonymize')]
+    public ?bool $anonymize = null;
+
+    /**
      * @param  string  $id
+     * @param  ?bool  $anonymize
      * @phpstan-pure
      */
-    public function __construct(string $id)
+    public function __construct(string $id, ?bool $anonymize = false)
     {
         $this->id = $id;
+        $this->anonymize = $anonymize;
     }
 }

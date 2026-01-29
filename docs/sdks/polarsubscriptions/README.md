@@ -122,8 +122,6 @@ if ($response->customerSubscription !== null) {
 
 Update a subscription of the authenticated customer.
 
-**Scopes**: `customer_portal:write`
-
 ### Example Usage
 
 <!-- UsageSnippet language="php" operationID="customer_portal:subscriptions:update" method="patch" path="/v1/customer-portal/subscriptions/{id}" -->
@@ -179,8 +177,6 @@ if ($response->customerSubscription !== null) {
 ## cancel
 
 Cancel a subscription of the authenticated customer.
-
-**Scopes**: `customer_portal:write`
 
 ### Example Usage
 

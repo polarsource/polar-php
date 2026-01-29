@@ -8,6 +8,7 @@
 | `transactionId`       | *string*              | :heavy_check_mark:    | N/A                   |
 | `refundId`            | *string*              | :heavy_check_mark:    | N/A                   |
 | `orderId`             | *?string*             | :heavy_minus_sign:    | N/A                   |
+| `orderCreatedAt`      | *?string*             | :heavy_minus_sign:    | N/A                   |
 | `productId`           | *?string*             | :heavy_minus_sign:    | N/A                   |
 | `subscriptionId`      | *?string*             | :heavy_minus_sign:    | N/A                   |
 | `amount`              | *int*                 | :heavy_check_mark:    | N/A                   |
