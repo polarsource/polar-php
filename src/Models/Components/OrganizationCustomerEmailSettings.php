@@ -41,6 +41,13 @@ class OrganizationCustomerEmailSettings
 
     /**
      *
+     * @var bool $subscriptionCycledAfterTrial
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('subscription_cycled_after_trial')]
+    public bool $subscriptionCycledAfterTrial;
+
+    /**
+     *
      * @var bool $subscriptionPastDue
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('subscription_past_due')]
@@ -72,18 +79,20 @@ class OrganizationCustomerEmailSettings
      * @param  bool  $subscriptionCancellation
      * @param  bool  $subscriptionConfirmation
      * @param  bool  $subscriptionCycled
+     * @param  bool  $subscriptionCycledAfterTrial
      * @param  bool  $subscriptionPastDue
      * @param  bool  $subscriptionRevoked
      * @param  bool  $subscriptionUncanceled
      * @param  bool  $subscriptionUpdated
      * @phpstan-pure
      */
-    public function __construct(bool $orderConfirmation, bool $subscriptionCancellation, bool $subscriptionConfirmation, bool $subscriptionCycled, bool $subscriptionPastDue, bool $subscriptionRevoked, bool $subscriptionUncanceled, bool $subscriptionUpdated)
+    public function __construct(bool $orderConfirmation, bool $subscriptionCancellation, bool $subscriptionConfirmation, bool $subscriptionCycled, bool $subscriptionCycledAfterTrial, bool $subscriptionPastDue, bool $subscriptionRevoked, bool $subscriptionUncanceled, bool $subscriptionUpdated)
     {
         $this->orderConfirmation = $orderConfirmation;
         $this->subscriptionCancellation = $subscriptionCancellation;
         $this->subscriptionConfirmation = $subscriptionConfirmation;
         $this->subscriptionCycled = $subscriptionCycled;
+        $this->subscriptionCycledAfterTrial = $subscriptionCycledAfterTrial;
         $this->subscriptionPastDue = $subscriptionPastDue;
         $this->subscriptionRevoked = $subscriptionRevoked;
         $this->subscriptionUncanceled = $subscriptionUncanceled;

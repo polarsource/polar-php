@@ -74,6 +74,15 @@ class EventCreateCustomer
     public ?string $parentId = null;
 
     /**
+     * ID of the member within the customer's organization who performed the action. Used for member-level attribution in B2B.
+     *
+     * @var ?string $memberId
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('member_id')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
+    public ?string $memberId = null;
+
+    /**
      * @param  string  $name
      * @param  string  $customerId
      * @param  ?\DateTime  $timestamp
@@ -81,9 +90,10 @@ class EventCreateCustomer
      * @param  ?string  $organizationId
      * @param  ?string  $externalId
      * @param  ?string  $parentId
+     * @param  ?string  $memberId
      * @phpstan-pure
      */
-    public function __construct(string $name, string $customerId, ?\DateTime $timestamp = null, ?array $metadata = null, ?string $organizationId = null, ?string $externalId = null, ?string $parentId = null)
+    public function __construct(string $name, string $customerId, ?\DateTime $timestamp = null, ?array $metadata = null, ?string $organizationId = null, ?string $externalId = null, ?string $parentId = null, ?string $memberId = null)
     {
         $this->name = $name;
         $this->customerId = $customerId;
@@ -92,5 +102,6 @@ class EventCreateCustomer
         $this->organizationId = $organizationId;
         $this->externalId = $externalId;
         $this->parentId = $parentId;
+        $this->memberId = $memberId;
     }
 }

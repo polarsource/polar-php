@@ -98,6 +98,16 @@ class ProductUpdate
     public ?bool $isArchived = null;
 
     /**
+     * The visibility of the product.
+     *
+     * @var ?ProductVisibility $visibility
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('visibility')]
+    #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\ProductVisibility|null')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
+    public ?ProductVisibility $visibility = null;
+
+    /**
      * List of available prices for this product. If you want to keep existing prices, include them in the list as an `ExistingProductPrice` object.
      *
      * @var ?array<ExistingProductPrice|ProductPriceFixedCreate|ProductPriceCustomCreate|ProductPriceFreeCreate|ProductPriceSeatBasedCreate|ProductPriceMeteredUnitCreate> $prices
@@ -136,12 +146,13 @@ class ProductUpdate
      * @param  ?SubscriptionRecurringInterval  $recurringInterval
      * @param  ?int  $recurringIntervalCount
      * @param  ?bool  $isArchived
+     * @param  ?ProductVisibility  $visibility
      * @param  ?array<ExistingProductPrice|ProductPriceFixedCreate|ProductPriceCustomCreate|ProductPriceFreeCreate|ProductPriceSeatBasedCreate|ProductPriceMeteredUnitCreate>  $prices
      * @param  ?array<string>  $medias
      * @param  ?array<AttachedCustomFieldCreate>  $attachedCustomFields
      * @phpstan-pure
      */
-    public function __construct(?array $metadata = null, ?TrialInterval $trialInterval = null, ?int $trialIntervalCount = null, ?string $name = null, ?string $description = null, ?SubscriptionRecurringInterval $recurringInterval = null, ?int $recurringIntervalCount = null, ?bool $isArchived = null, ?array $prices = null, ?array $medias = null, ?array $attachedCustomFields = null)
+    public function __construct(?array $metadata = null, ?TrialInterval $trialInterval = null, ?int $trialIntervalCount = null, ?string $name = null, ?string $description = null, ?SubscriptionRecurringInterval $recurringInterval = null, ?int $recurringIntervalCount = null, ?bool $isArchived = null, ?ProductVisibility $visibility = null, ?array $prices = null, ?array $medias = null, ?array $attachedCustomFields = null)
     {
         $this->metadata = $metadata;
         $this->trialInterval = $trialInterval;
@@ -151,6 +162,7 @@ class ProductUpdate
         $this->recurringInterval = $recurringInterval;
         $this->recurringIntervalCount = $recurringIntervalCount;
         $this->isArchived = $isArchived;
+        $this->visibility = $visibility;
         $this->prices = $prices;
         $this->medias = $medias;
         $this->attachedCustomFields = $attachedCustomFields;

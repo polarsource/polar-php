@@ -53,6 +53,14 @@ class OrdersListRequest
     public string|array|null $customerId = null;
 
     /**
+     * Filter by customer external ID.
+     *
+     * @var string|array<string>|null $externalCustomerId
+     */
+    #[SpeakeasyMetadata('queryParam:style=form,explode=true,name=external_customer_id')]
+    public string|array|null $externalCustomerId = null;
+
+    /**
      * Filter by checkout ID.
      *
      * @var string|array<string>|null $checkoutId
@@ -100,18 +108,20 @@ class OrdersListRequest
      * @param  Components\ProductBillingType|array<Components\ProductBillingType>|null  $productBillingType
      * @param  string|array<string>|null  $discountId
      * @param  string|array<string>|null  $customerId
+     * @param  string|array<string>|null  $externalCustomerId
      * @param  string|array<string>|null  $checkoutId
      * @param  ?array<Components\OrderSortProperty>  $sorting
      * @param  ?array<string, string|int|bool|array<string>|array<int>|array<bool>>  $metadata
      * @phpstan-pure
      */
-    public function __construct(string|array|null $organizationId = null, string|array|null $productId = null, Components\ProductBillingType|array|null $productBillingType = null, string|array|null $discountId = null, string|array|null $customerId = null, string|array|null $checkoutId = null, ?array $sorting = null, ?array $metadata = null, ?int $page = 1, ?int $limit = 10)
+    public function __construct(string|array|null $organizationId = null, string|array|null $productId = null, Components\ProductBillingType|array|null $productBillingType = null, string|array|null $discountId = null, string|array|null $customerId = null, string|array|null $externalCustomerId = null, string|array|null $checkoutId = null, ?array $sorting = null, ?array $metadata = null, ?int $page = 1, ?int $limit = 10)
     {
         $this->organizationId = $organizationId;
         $this->productId = $productId;
         $this->productBillingType = $productBillingType;
         $this->discountId = $discountId;
         $this->customerId = $customerId;
+        $this->externalCustomerId = $externalCustomerId;
         $this->checkoutId = $checkoutId;
         $this->sorting = $sorting;
         $this->metadata = $metadata;

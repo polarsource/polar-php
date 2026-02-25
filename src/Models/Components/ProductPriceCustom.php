@@ -37,6 +37,14 @@ class ProductPriceCustom
     public ProductPriceSource $source;
 
     /**
+     * The currency in which the customer will be charged.
+     *
+     * @var string $priceCurrency
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('price_currency')]
+    public string $priceCurrency;
+
+    /**
      * Whether the price is archived and no longer available.
      *
      * @var bool $isArchived
@@ -53,20 +61,12 @@ class ProductPriceCustom
     public string $productId;
 
     /**
+     * The minimum amount the customer can pay. If 0, the price is 'free or pay what you want'. Defaults to 50 cents.
      *
-     * @var ProductPriceType $type
+     * @var int $minimumAmount
      */
-    #[\Speakeasy\Serializer\Annotation\SerializedName('type')]
-    #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\ProductPriceType')]
-    public ProductPriceType $type;
-
-    /**
-     * The currency.
-     *
-     * @var string $priceCurrency
-     */
-    #[\Speakeasy\Serializer\Annotation\SerializedName('price_currency')]
-    public string $priceCurrency;
+    #[\Speakeasy\Serializer\Annotation\SerializedName('minimum_amount')]
+    public int $minimumAmount;
 
     /**
      * Last modification timestamp of the object.
@@ -75,23 +75,6 @@ class ProductPriceCustom
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('modified_at')]
     public ?\DateTime $modifiedAt;
-
-    /**
-     *
-     * @var ?SubscriptionRecurringInterval $recurringInterval
-     * @deprecated  field: This will be removed in a future release, please migrate away from it as soon as possible.
-     */
-    #[\Speakeasy\Serializer\Annotation\SerializedName('recurring_interval')]
-    #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\SubscriptionRecurringInterval|null')]
-    public ?SubscriptionRecurringInterval $recurringInterval;
-
-    /**
-     * The minimum amount the customer can pay.
-     *
-     * @var ?int $minimumAmount
-     */
-    #[\Speakeasy\Serializer\Annotation\SerializedName('minimum_amount')]
-    public ?int $minimumAmount;
 
     /**
      * The maximum amount the customer can pay.
@@ -121,29 +104,25 @@ class ProductPriceCustom
      * @param  string  $id
      * @param  ProductPriceSource  $source
      * @param  string  $amountType
+     * @param  string  $priceCurrency
      * @param  bool  $isArchived
      * @param  string  $productId
-     * @param  ProductPriceType  $type
-     * @param  string  $priceCurrency
+     * @param  int  $minimumAmount
      * @param  ?\DateTime  $modifiedAt
-     * @param  ?SubscriptionRecurringInterval  $recurringInterval
-     * @param  ?int  $minimumAmount
      * @param  ?int  $maximumAmount
      * @param  ?int  $presetAmount
      * @phpstan-pure
      */
-    public function __construct(\DateTime $createdAt, string $id, ProductPriceSource $source, bool $isArchived, string $productId, ProductPriceType $type, string $priceCurrency, ?\DateTime $modifiedAt = null, ?SubscriptionRecurringInterval $recurringInterval = null, ?int $minimumAmount = null, ?int $maximumAmount = null, ?int $presetAmount = null, string $amountType = 'custom')
+    public function __construct(\DateTime $createdAt, string $id, ProductPriceSource $source, string $priceCurrency, bool $isArchived, string $productId, int $minimumAmount, ?\DateTime $modifiedAt = null, ?int $maximumAmount = null, ?int $presetAmount = null, string $amountType = 'custom')
     {
         $this->createdAt = $createdAt;
         $this->id = $id;
         $this->source = $source;
+        $this->priceCurrency = $priceCurrency;
         $this->isArchived = $isArchived;
         $this->productId = $productId;
-        $this->type = $type;
-        $this->priceCurrency = $priceCurrency;
-        $this->modifiedAt = $modifiedAt;
-        $this->recurringInterval = $recurringInterval;
         $this->minimumAmount = $minimumAmount;
+        $this->modifiedAt = $modifiedAt;
         $this->maximumAmount = $maximumAmount;
         $this->presetAmount = $presetAmount;
         $this->amountType = $amountType;

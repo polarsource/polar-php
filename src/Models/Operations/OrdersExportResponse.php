@@ -40,17 +40,26 @@ class OrdersExportResponse
     public mixed $any = null;
 
     /**
+     * Successful Response
+     *
+     * @var ?string $res
+     */
+    public ?string $res = null;
+
+    /**
      * @param  string  $contentType
      * @param  int  $statusCode
      * @param  \Psr\Http\Message\ResponseInterface  $rawResponse
      * @param  mixed  $any
+     * @param  ?string  $res
      * @phpstan-pure
      */
-    public function __construct(string $contentType, int $statusCode, \Psr\Http\Message\ResponseInterface $rawResponse, mixed $any = null)
+    public function __construct(string $contentType, int $statusCode, \Psr\Http\Message\ResponseInterface $rawResponse, mixed $any = null, ?string $res = null)
     {
         $this->contentType = $contentType;
         $this->statusCode = $statusCode;
         $this->rawResponse = $rawResponse;
         $this->any = $any;
+        $this->res = $res;
     }
 }

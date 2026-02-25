@@ -30,6 +30,15 @@ class ProductPriceMeteredUnitCreate
     public float|string $unitAmount;
 
     /**
+     *
+     * @var ?PresentmentCurrency $priceCurrency
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('price_currency')]
+    #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\PresentmentCurrency|null')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
+    public ?PresentmentCurrency $priceCurrency = null;
+
+    /**
      * Optional maximum amount in cents that can be charged, regardless of the number of units consumed.
      *
      * @var ?int $capAmount
@@ -46,28 +55,19 @@ class ProductPriceMeteredUnitCreate
     public string $amountType;
 
     /**
-     * The currency. Currently, only `usd` is supported.
-     *
-     * @var ?string $priceCurrency
-     */
-    #[\Speakeasy\Serializer\Annotation\SerializedName('price_currency')]
-    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
-    public ?string $priceCurrency = null;
-
-    /**
      * @param  string  $amountType
      * @param  string  $meterId
      * @param  float|string  $unitAmount
-     * @param  ?string  $priceCurrency
+     * @param  ?PresentmentCurrency  $priceCurrency
      * @param  ?int  $capAmount
      * @phpstan-pure
      */
-    public function __construct(string $meterId, float|string $unitAmount, ?int $capAmount = null, string $amountType = 'metered_unit', ?string $priceCurrency = 'usd')
+    public function __construct(string $meterId, float|string $unitAmount, ?PresentmentCurrency $priceCurrency = null, ?int $capAmount = null, string $amountType = 'metered_unit')
     {
         $this->meterId = $meterId;
         $this->unitAmount = $unitAmount;
+        $this->priceCurrency = $priceCurrency;
         $this->capAmount = $capAmount;
         $this->amountType = $amountType;
-        $this->priceCurrency = $priceCurrency;
     }
 }

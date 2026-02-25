@@ -89,6 +89,15 @@ class CheckoutLinkCreateProducts
     public ?string $successUrl = null;
 
     /**
+     * When set, a back button will be shown in the checkout to return to this URL.
+     *
+     * @var ?string $returnUrl
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('return_url')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
+    public ?string $returnUrl = null;
+
+    /**
      * Payment processor to use. Currently only Stripe is supported.
      *
      * @var string $paymentProcessor
@@ -125,9 +134,10 @@ class CheckoutLinkCreateProducts
      * @param  ?string  $label
      * @param  ?string  $discountId
      * @param  ?string  $successUrl
+     * @param  ?string  $returnUrl
      * @phpstan-pure
      */
-    public function __construct(array $products, ?array $metadata = null, ?TrialInterval $trialInterval = null, ?int $trialIntervalCount = null, ?string $label = null, ?string $discountId = null, ?string $successUrl = null, string $paymentProcessor = 'stripe', ?bool $allowDiscountCodes = true, ?bool $requireBillingAddress = false)
+    public function __construct(array $products, ?array $metadata = null, ?TrialInterval $trialInterval = null, ?int $trialIntervalCount = null, ?string $label = null, ?string $discountId = null, ?string $successUrl = null, ?string $returnUrl = null, string $paymentProcessor = 'stripe', ?bool $allowDiscountCodes = true, ?bool $requireBillingAddress = false)
     {
         $this->products = $products;
         $this->metadata = $metadata;
@@ -136,6 +146,7 @@ class CheckoutLinkCreateProducts
         $this->label = $label;
         $this->discountId = $discountId;
         $this->successUrl = $successUrl;
+        $this->returnUrl = $returnUrl;
         $this->paymentProcessor = $paymentProcessor;
         $this->allowDiscountCodes = $allowDiscountCodes;
         $this->requireBillingAddress = $requireBillingAddress;

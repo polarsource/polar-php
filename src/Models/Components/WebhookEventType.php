@@ -13,6 +13,7 @@ enum WebhookEventType: string
 {
     case CheckoutCreated = 'checkout.created';
     case CheckoutUpdated = 'checkout.updated';
+    case CheckoutExpired = 'checkout.expired';
     case CustomerCreated = 'customer.created';
     case CustomerUpdated = 'customer.updated';
     case CustomerDeleted = 'customer.deleted';
@@ -20,6 +21,9 @@ enum WebhookEventType: string
     case CustomerSeatAssigned = 'customer_seat.assigned';
     case CustomerSeatClaimed = 'customer_seat.claimed';
     case CustomerSeatRevoked = 'customer_seat.revoked';
+    case MemberCreated = 'member.created';
+    case MemberUpdated = 'member.updated';
+    case MemberDeleted = 'member.deleted';
     case OrderCreated = 'order.created';
     case OrderUpdated = 'order.updated';
     case OrderPaid = 'order.paid';

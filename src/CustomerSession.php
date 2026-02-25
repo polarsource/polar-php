@@ -45,6 +45,75 @@ class CustomerSession
     }
 
     /**
+     * Get Authenticated Portal User
+     *
+     * Get information about the currently authenticated portal user.
+     *
+     * **Scopes**: `customer_portal:read` `customer_portal:write`
+     *
+     * @param  Operations\CustomerPortalCustomerSessionGetAuthenticatedUserSecurity  $security
+     * @return Operations\CustomerPortalCustomerSessionGetAuthenticatedUserResponse
+     * @throws \Polar\Models\Errors\APIException
+     */
+    public function getAuthenticatedUser(Operations\CustomerPortalCustomerSessionGetAuthenticatedUserSecurity $security, ?Options $options = null): Operations\CustomerPortalCustomerSessionGetAuthenticatedUserResponse
+    {
+        $baseUrl = $this->sdkConfiguration->getTemplatedServerUrl();
+        $url = Utils\Utils::generateUrl($baseUrl, '/v1/customer-portal/customer-session/user');
+        $urlOverride = null;
+        $httpOptions = ['http_errors' => false];
+        $httpOptions['headers']['Accept'] = 'application/json';
+        $httpOptions['headers']['user-agent'] = $this->sdkConfiguration->userAgent;
+        $httpRequest = new \GuzzleHttp\Psr7\Request('GET', $url);
+        if ($security != null) {
+            $client = Utils\Utils::configureSecurityClient($this->sdkConfiguration->client, $security);
+        } else {
+            $client = $this->sdkConfiguration->client;
+        }
+
+        $hookContext = new HookContext($this->sdkConfiguration, $baseUrl, 'customer_portal:customer-session:get_authenticated_user', null, fn () => $security);
+        $httpRequest = $this->sdkConfiguration->hooks->beforeRequest(new Hooks\BeforeRequestContext($hookContext), $httpRequest);
+        $httpOptions = Utils\Utils::convertHeadersToOptions($httpRequest, $httpOptions);
+        $httpRequest = Utils\Utils::removeHeaders($httpRequest);
+        try {
+            $httpResponse = $client->send($httpRequest, $httpOptions);
+        } catch (\GuzzleHttp\Exception\GuzzleException $error) {
+            $res = $this->sdkConfiguration->hooks->afterError(new Hooks\AfterErrorContext($hookContext), null, $error);
+            $httpResponse = $res;
+        }
+        $contentType = $httpResponse->getHeader('Content-Type')[0] ?? '';
+
+        $statusCode = $httpResponse->getStatusCode();
+        if (Utils\Utils::matchStatusCodes($statusCode, ['4XX', '5XX'])) {
+            $res = $this->sdkConfiguration->hooks->afterError(new Hooks\AfterErrorContext($hookContext), $httpResponse, null);
+            $httpResponse = $res;
+        }
+        if (Utils\Utils::matchStatusCodes($statusCode, ['200'])) {
+            if (Utils\Utils::matchContentType($contentType, 'application/json')) {
+                $httpResponse = $this->sdkConfiguration->hooks->afterSuccess(new Hooks\AfterSuccessContext($hookContext), $httpResponse);
+
+                $serializer = Utils\JSON::createSerializer();
+                $responseData = (string) $httpResponse->getBody();
+                $obj = $serializer->deserialize($responseData, '\Polar\Models\Components\PortalAuthenticatedUser', 'json', DeserializationContext::create()->setRequireAllRequiredProperties(true));
+                $response = new Operations\CustomerPortalCustomerSessionGetAuthenticatedUserResponse(
+                    statusCode: $statusCode,
+                    contentType: $contentType,
+                    rawResponse: $httpResponse,
+                    portalAuthenticatedUser: $obj);
+
+                return $response;
+            } else {
+                throw new \Polar\Models\Errors\APIException('Unknown content type received', $statusCode, $httpResponse->getBody()->getContents(), $httpResponse);
+            }
+        } elseif (Utils\Utils::matchStatusCodes($statusCode, ['4XX'])) {
+            throw new \Polar\Models\Errors\APIException('API error occurred', $statusCode, $httpResponse->getBody()->getContents(), $httpResponse);
+        } elseif (Utils\Utils::matchStatusCodes($statusCode, ['5XX'])) {
+            throw new \Polar\Models\Errors\APIException('API error occurred', $statusCode, $httpResponse->getBody()->getContents(), $httpResponse);
+        } else {
+            throw new \Polar\Models\Errors\APIException('Unknown status code received', $statusCode, $httpResponse->getBody()->getContents(), $httpResponse);
+        }
+    }
+
+    /**
      * Introspect Customer Session
      *
      * Introspect the current session and return its information.

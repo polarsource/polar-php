@@ -64,7 +64,7 @@ if ($response->seatsList !== null) {
 
 ## assignSeat
 
-**Scopes**: `customer_portal:write`
+Assign Seat
 
 ### Example Usage
 
@@ -115,7 +115,7 @@ if ($response->customerSeat !== null) {
 
 ## revokeSeat
 
-**Scopes**: `customer_portal:write`
+Revoke Seat
 
 ### Example Usage
 
@@ -166,7 +166,7 @@ if ($response->customerSeat !== null) {
 
 ## resendInvitation
 
-**Scopes**: `customer_portal:write`
+Resend Invitation
 
 ### Example Usage
 
@@ -239,12 +239,18 @@ $requestSecurity = new Operations\CustomerPortalSeatsListClaimedSubscriptionsSec
     customerSession: '<YOUR_BEARER_TOKEN_HERE>',
 );
 
-$response = $sdk->customerPortal->seats->listClaimedSubscriptions(
-    security: $requestSecurity
+$responses = $sdk->customerPortal->seats->listClaimedSubscriptions(
+    security: $requestSecurity,
+    page: 1,
+    limit: 10
+
 );
 
-if ($response->responseCustomerPortalSeatsListClaimedSubscriptions !== null) {
-    // handle response
+
+foreach ($responses as $response) {
+    if ($response->statusCode === 200) {
+        // handle response
+    }
 }
 ```
 
@@ -253,6 +259,8 @@ if ($response->responseCustomerPortalSeatsListClaimedSubscriptions !== null) {
 | Parameter                                                                                                                                        | Type                                                                                                                                             | Required                                                                                                                                         | Description                                                                                                                                      |
 | ------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------ |
 | `security`                                                                                                                                       | [Operations\CustomerPortalSeatsListClaimedSubscriptionsSecurity](../../Models/Operations/CustomerPortalSeatsListClaimedSubscriptionsSecurity.md) | :heavy_check_mark:                                                                                                                               | The security requirements to use for the request.                                                                                                |
+| `page`                                                                                                                                           | *?int*                                                                                                                                           | :heavy_minus_sign:                                                                                                                               | Page number, defaults to 1.                                                                                                                      |
+| `limit`                                                                                                                                          | *?int*                                                                                                                                           | :heavy_minus_sign:                                                                                                                               | Size of a page, defaults to 10. Maximum is 100.                                                                                                  |
 
 ### Response
 
@@ -260,6 +268,7 @@ if ($response->responseCustomerPortalSeatsListClaimedSubscriptions !== null) {
 
 ### Errors
 
-| Error Type          | Status Code         | Content Type        |
-| ------------------- | ------------------- | ------------------- |
-| Errors\APIException | 4XX, 5XX            | \*/\*               |
+| Error Type                 | Status Code                | Content Type               |
+| -------------------------- | -------------------------- | -------------------------- |
+| Errors\HTTPValidationError | 422                        | application/json           |
+| Errors\APIException        | 4XX, 5XX                   | \*/\*                      |

@@ -275,7 +275,7 @@ class Organizations
                     listResourceOrganization: $obj);
                 $sdk = $this;
 
-                $response->next = function () use ($sdk, $request, $responseData, $slug, $limit, $sorting): ?Operations\OrganizationsListResponse {
+                $response->next = function () use ($sdk, $request, $responseData): ?Operations\OrganizationsListResponse {
                     $page = $request != null ? $request->page : 0;
                     $nextPage = $page + 1;
                     $jsonObject = new \JsonPath\JsonObject($responseData);
@@ -301,10 +301,10 @@ class Organizations
                     }
 
                     return $sdk->listIndividual(
-                        slug: $slug,
+                        slug: $request != null ? $request->slug : null,
                         page: $nextPage,
-                        limit: $limit,
-                        sorting: $sorting,
+                        limit: $request != null ? $request->limit : null,
+                        sorting: $request != null ? $request->sorting : null,
                     );
                 };
 

@@ -5,11 +5,11 @@
 ### Available Operations
 
 * [list](#list) - List Orders
-* [export](#export) - Export Subscriptions
+* [export](#export) - Export Orders
 * [get](#get) - Get Order
 * [update](#update) - Update Order
-* [generateInvoice](#generateinvoice) - Generate Order Invoice
 * [invoice](#invoice) - Get Order Invoice
+* [generateInvoice](#generateinvoice) - Generate Order Invoice
 
 ## list
 
@@ -193,7 +193,6 @@ $sdk = Polar\Polar::builder()
     ->build();
 
 $orderUpdate = new Components\OrderUpdate(
-    billingName: '<value>',
     billingAddress: new Components\AddressInput(
         country: Components\CountryAlpha2Input::Us,
     ),
@@ -220,6 +219,57 @@ if ($response->order !== null) {
 ### Response
 
 **[?Operations\OrdersUpdateResponse](../../Models/Operations/OrdersUpdateResponse.md)**
+
+### Errors
+
+| Error Type                 | Status Code                | Content Type               |
+| -------------------------- | -------------------------- | -------------------------- |
+| Errors\ResourceNotFound    | 404                        | application/json           |
+| Errors\HTTPValidationError | 422                        | application/json           |
+| Errors\APIException        | 4XX, 5XX                   | \*/\*                      |
+
+## invoice
+
+Get an order's invoice data.
+
+**Scopes**: `orders:read`
+
+### Example Usage
+
+<!-- UsageSnippet language="php" operationID="orders:invoice" method="get" path="/v1/orders/{id}/invoice" -->
+```php
+declare(strict_types=1);
+
+require 'vendor/autoload.php';
+
+use Polar;
+
+$sdk = Polar\Polar::builder()
+    ->setSecurity(
+        '<YOUR_BEARER_TOKEN_HERE>'
+    )
+    ->build();
+
+
+
+$response = $sdk->orders->invoice(
+    id: '<value>'
+);
+
+if ($response->orderInvoice !== null) {
+    // handle response
+}
+```
+
+### Parameters
+
+| Parameter          | Type               | Required           | Description        |
+| ------------------ | ------------------ | ------------------ | ------------------ |
+| `id`               | *string*           | :heavy_check_mark: | The order ID.      |
+
+### Response
+
+**[?Operations\OrdersInvoiceResponse](../../Models/Operations/OrdersInvoiceResponse.md)**
 
 ### Errors
 
@@ -279,54 +329,3 @@ if ($response->any !== null) {
 | Errors\MissingInvoiceBillingDetails | 422                                 | application/json                    |
 | Errors\NotPaidOrder                 | 422                                 | application/json                    |
 | Errors\APIException                 | 4XX, 5XX                            | \*/\*                               |
-
-## invoice
-
-Get an order's invoice data.
-
-**Scopes**: `orders:read`
-
-### Example Usage
-
-<!-- UsageSnippet language="php" operationID="orders:invoice" method="get" path="/v1/orders/{id}/invoice" -->
-```php
-declare(strict_types=1);
-
-require 'vendor/autoload.php';
-
-use Polar;
-
-$sdk = Polar\Polar::builder()
-    ->setSecurity(
-        '<YOUR_BEARER_TOKEN_HERE>'
-    )
-    ->build();
-
-
-
-$response = $sdk->orders->invoice(
-    id: '<value>'
-);
-
-if ($response->orderInvoice !== null) {
-    // handle response
-}
-```
-
-### Parameters
-
-| Parameter          | Type               | Required           | Description        |
-| ------------------ | ------------------ | ------------------ | ------------------ |
-| `id`               | *string*           | :heavy_check_mark: | The order ID.      |
-
-### Response
-
-**[?Operations\OrdersInvoiceResponse](../../Models/Operations/OrdersInvoiceResponse.md)**
-
-### Errors
-
-| Error Type                 | Status Code                | Content Type               |
-| -------------------------- | -------------------------- | -------------------------- |
-| Errors\ResourceNotFound    | 404                        | application/json           |
-| Errors\HTTPValidationError | 422                        | application/json           |
-| Errors\APIException        | 4XX, 5XX                   | \*/\*                      |

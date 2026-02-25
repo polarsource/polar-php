@@ -1,0 +1,9 @@
+# CustomerPortalMembersUpdateMemberRequest
+
+
+## Fields
+
+| Field                                                                                          | Type                                                                                           | Required                                                                                       | Description                                                                                    |
+| ---------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------- |
+| `id`                                                                                           | *string*                                                                                       | :heavy_check_mark:                                                                             | N/A                                                                                            |
+| `customerPortalMemberUpdate`                                                                   | [Components\CustomerPortalMemberUpdate](../../Models/Components/CustomerPortalMemberUpdate.md) | :heavy_check_mark:                                                                             | N/A                                                                                            |

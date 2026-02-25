@@ -77,17 +77,26 @@ class MetersQuantitiesRequest
     public ?array $metadata = null;
 
     /**
+     * Timezone to use for the timestamps. Default is UTC.
+     *
+     * @var ?string $timezone
+     */
+    #[SpeakeasyMetadata('queryParam:style=form,explode=true,name=timezone')]
+    public ?string $timezone = null;
+
+    /**
      * @param  string  $id
      * @param  \DateTime  $startTimestamp
      * @param  \DateTime  $endTimestamp
      * @param  Components\TimeInterval  $interval
+     * @param  ?string  $timezone
      * @param  string|array<string>|null  $customerId
      * @param  string|array<string>|null  $externalCustomerId
      * @param  ?Components\AggregationFunction  $customerAggregationFunction
      * @param  ?array<string, string|int|bool|array<string>|array<int>|array<bool>>  $metadata
      * @phpstan-pure
      */
-    public function __construct(string $id, \DateTime $startTimestamp, \DateTime $endTimestamp, Components\TimeInterval $interval, string|array|null $customerId = null, string|array|null $externalCustomerId = null, ?Components\AggregationFunction $customerAggregationFunction = null, ?array $metadata = null)
+    public function __construct(string $id, \DateTime $startTimestamp, \DateTime $endTimestamp, Components\TimeInterval $interval, string|array|null $customerId = null, string|array|null $externalCustomerId = null, ?Components\AggregationFunction $customerAggregationFunction = null, ?array $metadata = null, ?string $timezone = 'UTC')
     {
         $this->id = $id;
         $this->startTimestamp = $startTimestamp;
@@ -97,5 +106,6 @@ class MetersQuantitiesRequest
         $this->externalCustomerId = $externalCustomerId;
         $this->customerAggregationFunction = $customerAggregationFunction;
         $this->metadata = $metadata;
+        $this->timezone = $timezone;
     }
 }

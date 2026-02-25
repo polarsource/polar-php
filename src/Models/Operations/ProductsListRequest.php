@@ -61,6 +61,14 @@ class ProductsListRequest
     public string|array|null $benefitId = null;
 
     /**
+     * Filter by visibility.
+     *
+     * @var ?array<Components\ProductVisibility> $visibility
+     */
+    #[SpeakeasyMetadata('queryParam:style=form,explode=true,name=visibility')]
+    public ?array $visibility = null;
+
+    /**
      * Sorting criterion. Several criteria can be used simultaneously and will be applied in order. Add a minus sign `-` before the criteria name to sort by descending order.
      *
      * @var ?array<Components\ProductSortProperty> $sorting
@@ -101,11 +109,12 @@ class ProductsListRequest
      * @param  ?bool  $isArchived
      * @param  ?bool  $isRecurring
      * @param  string|array<string>|null  $benefitId
+     * @param  ?array<Components\ProductVisibility>  $visibility
      * @param  ?array<Components\ProductSortProperty>  $sorting
      * @param  ?array<string, string|int|bool|array<string>|array<int>|array<bool>>  $metadata
      * @phpstan-pure
      */
-    public function __construct(string|array|null $id = null, string|array|null $organizationId = null, ?string $query = null, ?bool $isArchived = null, ?bool $isRecurring = null, string|array|null $benefitId = null, ?array $sorting = null, ?array $metadata = null, ?int $page = 1, ?int $limit = 10)
+    public function __construct(string|array|null $id = null, string|array|null $organizationId = null, ?string $query = null, ?bool $isArchived = null, ?bool $isRecurring = null, string|array|null $benefitId = null, ?array $visibility = null, ?array $sorting = null, ?array $metadata = null, ?int $page = 1, ?int $limit = 10)
     {
         $this->id = $id;
         $this->organizationId = $organizationId;
@@ -113,6 +122,7 @@ class ProductsListRequest
         $this->isArchived = $isArchived;
         $this->isRecurring = $isRecurring;
         $this->benefitId = $benefitId;
+        $this->visibility = $visibility;
         $this->sorting = $sorting;
         $this->metadata = $metadata;
         $this->page = $page;

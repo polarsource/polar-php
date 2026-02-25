@@ -228,6 +228,7 @@ class PolarBenefitGrants
 
                     return $sdk->listIndividual(
                         request: new Operations\CustomerPortalBenefitGrantsListRequest(
+                            query: $request != null ? $request->query : null,
                             typeFilter: $request != null ? $request->typeFilter : null,
                             benefitId: $request != null ? $request->benefitId : null,
                             checkoutId: $request != null ? $request->checkoutId : null,

@@ -7,8 +7,8 @@
 * [list](#list) - List Discounts
 * [create](#create) - Create Discount
 * [get](#get) - Get Discount
-* [update](#update) - Update Discount
 * [delete](#delete) - Delete Discount
+* [update](#update) - Update Discount
 
 ## list
 
@@ -174,6 +174,57 @@ if ($response->discount !== null) {
 | Errors\HTTPValidationError | 422                        | application/json           |
 | Errors\APIException        | 4XX, 5XX                   | \*/\*                      |
 
+## delete
+
+Delete a discount.
+
+**Scopes**: `discounts:write`
+
+### Example Usage
+
+<!-- UsageSnippet language="php" operationID="discounts:delete" method="delete" path="/v1/discounts/{id}" -->
+```php
+declare(strict_types=1);
+
+require 'vendor/autoload.php';
+
+use Polar;
+
+$sdk = Polar\Polar::builder()
+    ->setSecurity(
+        '<YOUR_BEARER_TOKEN_HERE>'
+    )
+    ->build();
+
+
+
+$response = $sdk->discounts->delete(
+    id: '<value>'
+);
+
+if ($response->statusCode === 200) {
+    // handle response
+}
+```
+
+### Parameters
+
+| Parameter          | Type               | Required           | Description        |
+| ------------------ | ------------------ | ------------------ | ------------------ |
+| `id`               | *string*           | :heavy_check_mark: | The discount ID.   |
+
+### Response
+
+**[?Operations\DiscountsDeleteResponse](../../Models/Operations/DiscountsDeleteResponse.md)**
+
+### Errors
+
+| Error Type                 | Status Code                | Content Type               |
+| -------------------------- | -------------------------- | -------------------------- |
+| Errors\ResourceNotFound    | 404                        | application/json           |
+| Errors\HTTPValidationError | 422                        | application/json           |
+| Errors\APIException        | 4XX, 5XX                   | \*/\*                      |
+
 ## update
 
 Update a discount.
@@ -220,57 +271,6 @@ if ($response->discount !== null) {
 ### Response
 
 **[?Operations\DiscountsUpdateResponse](../../Models/Operations/DiscountsUpdateResponse.md)**
-
-### Errors
-
-| Error Type                 | Status Code                | Content Type               |
-| -------------------------- | -------------------------- | -------------------------- |
-| Errors\ResourceNotFound    | 404                        | application/json           |
-| Errors\HTTPValidationError | 422                        | application/json           |
-| Errors\APIException        | 4XX, 5XX                   | \*/\*                      |
-
-## delete
-
-Delete a discount.
-
-**Scopes**: `discounts:write`
-
-### Example Usage
-
-<!-- UsageSnippet language="php" operationID="discounts:delete" method="delete" path="/v1/discounts/{id}" -->
-```php
-declare(strict_types=1);
-
-require 'vendor/autoload.php';
-
-use Polar;
-
-$sdk = Polar\Polar::builder()
-    ->setSecurity(
-        '<YOUR_BEARER_TOKEN_HERE>'
-    )
-    ->build();
-
-
-
-$response = $sdk->discounts->delete(
-    id: '<value>'
-);
-
-if ($response->statusCode === 200) {
-    // handle response
-}
-```
-
-### Parameters
-
-| Parameter          | Type               | Required           | Description        |
-| ------------------ | ------------------ | ------------------ | ------------------ |
-| `id`               | *string*           | :heavy_check_mark: | The discount ID.   |
-
-### Response
-
-**[?Operations\DiscountsDeleteResponse](../../Models/Operations/DiscountsDeleteResponse.md)**
 
 ### Errors
 

@@ -13,13 +13,13 @@ namespace Polar\Models\Components;
 class ProductPriceCustomCreate
 {
     /**
-     * The minimum amount the customer can pay.
      *
-     * @var ?int $minimumAmount
+     * @var ?PresentmentCurrency $priceCurrency
      */
-    #[\Speakeasy\Serializer\Annotation\SerializedName('minimum_amount')]
+    #[\Speakeasy\Serializer\Annotation\SerializedName('price_currency')]
+    #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\PresentmentCurrency|null')]
     #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
-    public ?int $minimumAmount = null;
+    public ?PresentmentCurrency $priceCurrency = null;
 
     /**
      * The maximum amount the customer can pay.
@@ -31,7 +31,7 @@ class ProductPriceCustomCreate
     public ?int $maximumAmount = null;
 
     /**
-     * The initial amount shown to the customer.
+     * The initial amount shown to the customer. If 0, the customer will see $0 as the default. Values between 1-49 are rejected.
      *
      * @var ?int $presetAmount
      */
@@ -47,28 +47,28 @@ class ProductPriceCustomCreate
     public string $amountType;
 
     /**
-     * The currency. Currently, only `usd` is supported.
+     * The minimum amount the customer can pay. If set to 0, the price is 'free or pay what you want' and $0 is accepted. If set to a value between 1-49, it will be rejected. Defaults to 50 cents.
      *
-     * @var ?string $priceCurrency
+     * @var ?int $minimumAmount
      */
-    #[\Speakeasy\Serializer\Annotation\SerializedName('price_currency')]
+    #[\Speakeasy\Serializer\Annotation\SerializedName('minimum_amount')]
     #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
-    public ?string $priceCurrency = null;
+    public ?int $minimumAmount = null;
 
     /**
      * @param  string  $amountType
-     * @param  ?string  $priceCurrency
+     * @param  ?PresentmentCurrency  $priceCurrency
      * @param  ?int  $minimumAmount
      * @param  ?int  $maximumAmount
      * @param  ?int  $presetAmount
      * @phpstan-pure
      */
-    public function __construct(?int $minimumAmount = null, ?int $maximumAmount = null, ?int $presetAmount = null, string $amountType = 'custom', ?string $priceCurrency = 'usd')
+    public function __construct(?PresentmentCurrency $priceCurrency = null, ?int $maximumAmount = null, ?int $presetAmount = null, string $amountType = 'custom', ?int $minimumAmount = 50)
     {
-        $this->minimumAmount = $minimumAmount;
+        $this->priceCurrency = $priceCurrency;
         $this->maximumAmount = $maximumAmount;
         $this->presetAmount = $presetAmount;
         $this->amountType = $amountType;
-        $this->priceCurrency = $priceCurrency;
+        $this->minimumAmount = $minimumAmount;
     }
 }

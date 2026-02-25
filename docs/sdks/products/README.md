@@ -93,9 +93,12 @@ $request = new Components\ProductCreateOneTime(
     name: '<value>',
     prices: [
         new Components\ProductPriceFixedCreate(
+            priceCurrency: Components\PresentmentCurrency::Usd,
             priceAmount: 677078,
         ),
-        new Components\ProductPriceCustomCreate(),
+        new Components\ProductPriceCustomCreate(
+            priceCurrency: Components\PresentmentCurrency::Usd,
+        ),
     ],
     organizationId: '1dbfc517-0bbf-4301-9ba8-555ca42b9737',
     recurringInterval: 'year',

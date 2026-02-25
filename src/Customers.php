@@ -141,26 +141,33 @@ class Customers
      * Note: The customers information will nonetheless be retained for historic
      * orders and subscriptions.
      *
+     * Set `anonymize=true` to also anonymize PII for GDPR compliance.
+     *
      * **Scopes**: `customers:write`
      *
      * @param  string  $id
+     * @param  ?bool  $anonymize
      * @return Operations\CustomersDeleteResponse
      * @throws \Polar\Models\Errors\APIException
      */
-    public function delete(string $id, ?Options $options = null): Operations\CustomersDeleteResponse
+    public function delete(string $id, ?bool $anonymize = null, ?Options $options = null): Operations\CustomersDeleteResponse
     {
         $request = new Operations\CustomersDeleteRequest(
             id: $id,
+            anonymize: $anonymize,
         );
         $baseUrl = $this->sdkConfiguration->getTemplatedServerUrl();
         $url = Utils\Utils::generateUrl($baseUrl, '/v1/customers/{id}', Operations\CustomersDeleteRequest::class, $request);
         $urlOverride = null;
         $httpOptions = ['http_errors' => false];
+
+        $qp = Utils\Utils::getQueryParams(Operations\CustomersDeleteRequest::class, $request, $urlOverride);
         $httpOptions['headers']['Accept'] = 'application/json';
         $httpOptions['headers']['user-agent'] = $this->sdkConfiguration->userAgent;
         $httpRequest = new \GuzzleHttp\Psr7\Request('DELETE', $url);
         $hookContext = new HookContext($this->sdkConfiguration, $baseUrl, 'customers:delete', null, $this->sdkConfiguration->securitySource);
         $httpRequest = $this->sdkConfiguration->hooks->beforeRequest(new Hooks\BeforeRequestContext($hookContext), $httpRequest);
+        $httpOptions['query'] = Utils\QueryParameters::standardizeQueryParams($httpRequest, $qp);
         $httpOptions = Utils\Utils::convertHeadersToOptions($httpRequest, $httpOptions);
         $httpRequest = Utils\Utils::removeHeaders($httpRequest);
         try {
@@ -222,26 +229,33 @@ class Customers
      *
      * Immediately cancels any active subscriptions and revokes any active benefits.
      *
+     * Set `anonymize=true` to also anonymize PII for GDPR compliance.
+     *
      * **Scopes**: `customers:write`
      *
      * @param  string  $externalId
+     * @param  ?bool  $anonymize
      * @return Operations\CustomersDeleteExternalResponse
      * @throws \Polar\Models\Errors\APIException
      */
-    public function deleteExternal(string $externalId, ?Options $options = null): Operations\CustomersDeleteExternalResponse
+    public function deleteExternal(string $externalId, ?bool $anonymize = null, ?Options $options = null): Operations\CustomersDeleteExternalResponse
     {
         $request = new Operations\CustomersDeleteExternalRequest(
             externalId: $externalId,
+            anonymize: $anonymize,
         );
         $baseUrl = $this->sdkConfiguration->getTemplatedServerUrl();
         $url = Utils\Utils::generateUrl($baseUrl, '/v1/customers/external/{external_id}', Operations\CustomersDeleteExternalRequest::class, $request);
         $urlOverride = null;
         $httpOptions = ['http_errors' => false];
+
+        $qp = Utils\Utils::getQueryParams(Operations\CustomersDeleteExternalRequest::class, $request, $urlOverride);
         $httpOptions['headers']['Accept'] = 'application/json';
         $httpOptions['headers']['user-agent'] = $this->sdkConfiguration->userAgent;
         $httpRequest = new \GuzzleHttp\Psr7\Request('DELETE', $url);
         $hookContext = new HookContext($this->sdkConfiguration, $baseUrl, 'customers:delete_external', null, $this->sdkConfiguration->securitySource);
         $httpRequest = $this->sdkConfiguration->hooks->beforeRequest(new Hooks\BeforeRequestContext($hookContext), $httpRequest);
+        $httpOptions['query'] = Utils\QueryParameters::standardizeQueryParams($httpRequest, $qp);
         $httpOptions = Utils\Utils::convertHeadersToOptions($httpRequest, $httpOptions);
         $httpRequest = Utils\Utils::removeHeaders($httpRequest);
         try {
@@ -318,7 +332,7 @@ class Customers
         $httpOptions = ['http_errors' => false];
 
         $qp = Utils\Utils::getQueryParams(Operations\CustomersExportRequest::class, $request, $urlOverride);
-        $httpOptions['headers']['Accept'] = 'application/json';
+        $httpOptions['headers']['Accept'] = 'application/json;q=1, text/csv;q=0';
         $httpOptions['headers']['user-agent'] = $this->sdkConfiguration->userAgent;
         $httpRequest = new \GuzzleHttp\Psr7\Request('GET', $url);
         $hookContext = new HookContext($this->sdkConfiguration, $baseUrl, 'customers:export', null, $this->sdkConfiguration->securitySource);
@@ -353,6 +367,16 @@ class Customers
                     any: $obj);
 
                 return $response;
+            } elseif (Utils\Utils::matchContentType($contentType, 'text/csv')) {
+                $httpResponse = $this->sdkConfiguration->hooks->afterSuccess(new Hooks\AfterSuccessContext($hookContext), $httpResponse);
+
+                $obj = $httpResponse->getBody()->getContents();
+
+                return new Operations\CustomersExportResponse(
+                    statusCode: $statusCode,
+                    contentType: $contentType,
+                    rawResponse: $httpResponse,
+                    res: $obj);
             } else {
                 throw new \Polar\Models\Errors\APIException('Unknown content type received', $statusCode, $httpResponse->getBody()->getContents(), $httpResponse);
             }

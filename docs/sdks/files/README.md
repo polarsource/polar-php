@@ -7,8 +7,8 @@
 * [list](#list) - List Files
 * [create](#create) - Create File
 * [uploaded](#uploaded) - Complete File Upload
-* [update](#update) - Update File
 * [delete](#delete) - Delete File
+* [update](#update) - Update File
 
 ## list
 
@@ -204,6 +204,58 @@ if ($response->responseFilesUploaded !== null) {
 | Errors\HTTPValidationError | 422                        | application/json           |
 | Errors\APIException        | 4XX, 5XX                   | \*/\*                      |
 
+## delete
+
+Delete a file.
+
+**Scopes**: `files:write`
+
+### Example Usage
+
+<!-- UsageSnippet language="php" operationID="files:delete" method="delete" path="/v1/files/{id}" -->
+```php
+declare(strict_types=1);
+
+require 'vendor/autoload.php';
+
+use Polar;
+
+$sdk = Polar\Polar::builder()
+    ->setSecurity(
+        '<YOUR_BEARER_TOKEN_HERE>'
+    )
+    ->build();
+
+
+
+$response = $sdk->files->delete(
+    id: '<value>'
+);
+
+if ($response->statusCode === 200) {
+    // handle response
+}
+```
+
+### Parameters
+
+| Parameter          | Type               | Required           | Description        |
+| ------------------ | ------------------ | ------------------ | ------------------ |
+| `id`               | *string*           | :heavy_check_mark: | N/A                |
+
+### Response
+
+**[?Operations\FilesDeleteResponse](../../Models/Operations/FilesDeleteResponse.md)**
+
+### Errors
+
+| Error Type                 | Status Code                | Content Type               |
+| -------------------------- | -------------------------- | -------------------------- |
+| Errors\NotPermitted        | 403                        | application/json           |
+| Errors\ResourceNotFound    | 404                        | application/json           |
+| Errors\HTTPValidationError | 422                        | application/json           |
+| Errors\APIException        | 4XX, 5XX                   | \*/\*                      |
+
 ## update
 
 Update a file.
@@ -250,58 +302,6 @@ if ($response->responseFilesUpdate !== null) {
 ### Response
 
 **[?Operations\FilesUpdateResponse](../../Models/Operations/FilesUpdateResponse.md)**
-
-### Errors
-
-| Error Type                 | Status Code                | Content Type               |
-| -------------------------- | -------------------------- | -------------------------- |
-| Errors\NotPermitted        | 403                        | application/json           |
-| Errors\ResourceNotFound    | 404                        | application/json           |
-| Errors\HTTPValidationError | 422                        | application/json           |
-| Errors\APIException        | 4XX, 5XX                   | \*/\*                      |
-
-## delete
-
-Delete a file.
-
-**Scopes**: `files:write`
-
-### Example Usage
-
-<!-- UsageSnippet language="php" operationID="files:delete" method="delete" path="/v1/files/{id}" -->
-```php
-declare(strict_types=1);
-
-require 'vendor/autoload.php';
-
-use Polar;
-
-$sdk = Polar\Polar::builder()
-    ->setSecurity(
-        '<YOUR_BEARER_TOKEN_HERE>'
-    )
-    ->build();
-
-
-
-$response = $sdk->files->delete(
-    id: '<value>'
-);
-
-if ($response->statusCode === 200) {
-    // handle response
-}
-```
-
-### Parameters
-
-| Parameter          | Type               | Required           | Description        |
-| ------------------ | ------------------ | ------------------ | ------------------ |
-| `id`               | *string*           | :heavy_check_mark: | N/A                |
-
-### Response
-
-**[?Operations\FilesDeleteResponse](../../Models/Operations/FilesDeleteResponse.md)**
 
 ### Errors
 

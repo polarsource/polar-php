@@ -113,11 +113,12 @@ class DiscountUpdate
 
     /**
      *
-     * @var ?string $currency
+     * @var ?PresentmentCurrency $currency
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('currency')]
+    #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\PresentmentCurrency|null')]
     #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
-    public ?string $currency = null;
+    public ?PresentmentCurrency $currency = null;
 
     /**
      *
@@ -148,12 +149,12 @@ class DiscountUpdate
      * @param  ?int  $durationInMonths
      * @param  ?DiscountType  $type
      * @param  ?int  $amount
-     * @param  ?string  $currency
+     * @param  ?PresentmentCurrency  $currency
      * @param  ?int  $basisPoints
      * @param  ?array<string>  $products
      * @phpstan-pure
      */
-    public function __construct(?array $metadata = null, ?string $name = null, ?string $code = null, ?\DateTime $startsAt = null, ?\DateTime $endsAt = null, ?int $maxRedemptions = null, ?DiscountDuration $duration = null, ?int $durationInMonths = null, ?DiscountType $type = null, ?int $amount = null, ?string $currency = null, ?int $basisPoints = null, ?array $products = null)
+    public function __construct(?array $metadata = null, ?string $name = null, ?string $code = null, ?\DateTime $startsAt = null, ?\DateTime $endsAt = null, ?int $maxRedemptions = null, ?DiscountDuration $duration = null, ?int $durationInMonths = null, ?DiscountType $type = null, ?int $amount = null, ?PresentmentCurrency $currency = null, ?int $basisPoints = null, ?array $products = null)
     {
         $this->metadata = $metadata;
         $this->name = $name;

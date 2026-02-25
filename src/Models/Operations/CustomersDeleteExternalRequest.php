@@ -20,11 +20,21 @@ class CustomersDeleteExternalRequest
     public string $externalId;
 
     /**
+     * If true, also anonymize the customer's personal data for GDPR compliance.
+     *
+     * @var ?bool $anonymize
+     */
+    #[SpeakeasyMetadata('queryParam:style=form,explode=true,name=anonymize')]
+    public ?bool $anonymize = null;
+
+    /**
      * @param  string  $externalId
+     * @param  ?bool  $anonymize
      * @phpstan-pure
      */
-    public function __construct(string $externalId)
+    public function __construct(string $externalId, ?bool $anonymize = false)
     {
         $this->externalId = $externalId;
+        $this->anonymize = $anonymize;
     }
 }

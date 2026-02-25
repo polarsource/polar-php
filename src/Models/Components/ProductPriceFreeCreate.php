@@ -14,6 +14,15 @@ class ProductPriceFreeCreate
 {
     /**
      *
+     * @var ?PresentmentCurrency $priceCurrency
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('price_currency')]
+    #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\PresentmentCurrency|null')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
+    public ?PresentmentCurrency $priceCurrency = null;
+
+    /**
+     *
      * @var string $amountType
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('amount_type')]
@@ -21,10 +30,12 @@ class ProductPriceFreeCreate
 
     /**
      * @param  string  $amountType
+     * @param  ?PresentmentCurrency  $priceCurrency
      * @phpstan-pure
      */
-    public function __construct(string $amountType = 'free')
+    public function __construct(?PresentmentCurrency $priceCurrency = null, string $amountType = 'free')
     {
+        $this->priceCurrency = $priceCurrency;
         $this->amountType = $amountType;
     }
 }

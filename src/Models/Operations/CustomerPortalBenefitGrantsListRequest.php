@@ -13,6 +13,14 @@ use Polar\Utils\SpeakeasyMetadata;
 class CustomerPortalBenefitGrantsListRequest
 {
     /**
+     * Filter by benefit description.
+     *
+     * @var ?string $query
+     */
+    #[SpeakeasyMetadata('queryParam:style=form,explode=true,name=query')]
+    public ?string $query = null;
+
+    /**
      * Filter by benefit type.
      *
      * @var Components\BenefitType|array<Components\BenefitType>|null $typeFilter
@@ -87,6 +95,7 @@ class CustomerPortalBenefitGrantsListRequest
     /**
      * @param  ?int  $page
      * @param  ?int  $limit
+     * @param  ?string  $query
      * @param  Components\BenefitType|array<Components\BenefitType>|null  $typeFilter
      * @param  string|array<string>|null  $benefitId
      * @param  string|array<string>|null  $checkoutId
@@ -96,8 +105,9 @@ class CustomerPortalBenefitGrantsListRequest
      * @param  ?array<Components\CustomerBenefitGrantSortProperty>  $sorting
      * @phpstan-pure
      */
-    public function __construct(Components\BenefitType|array|null $typeFilter = null, string|array|null $benefitId = null, string|array|null $checkoutId = null, string|array|null $orderId = null, string|array|null $subscriptionId = null, string|array|null $memberId = null, ?array $sorting = null, ?int $page = 1, ?int $limit = 10)
+    public function __construct(?string $query = null, Components\BenefitType|array|null $typeFilter = null, string|array|null $benefitId = null, string|array|null $checkoutId = null, string|array|null $orderId = null, string|array|null $subscriptionId = null, string|array|null $memberId = null, ?array $sorting = null, ?int $page = 1, ?int $limit = 10)
     {
+        $this->query = $query;
         $this->typeFilter = $typeFilter;
         $this->benefitId = $benefitId;
         $this->checkoutId = $checkoutId;

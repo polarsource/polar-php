@@ -35,15 +35,37 @@ class ValidationError
     public string $type;
 
     /**
+     *
+     * @var mixed $input
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('input')]
+    #[\Speakeasy\Serializer\Annotation\Type('mixed')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
+    public mixed $input = null;
+
+    /**
+     *
+     * @var ?Context $ctx
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('ctx')]
+    #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\Context|null')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
+    public ?Context $ctx = null;
+
+    /**
      * @param  array<string|int>  $loc
      * @param  string  $msg
      * @param  string  $type
+     * @param  mixed  $input
+     * @param  ?Context  $ctx
      * @phpstan-pure
      */
-    public function __construct(array $loc, string $msg, string $type)
+    public function __construct(array $loc, string $msg, string $type, mixed $input = null, ?Context $ctx = null)
     {
         $this->loc = $loc;
         $this->msg = $msg;
         $this->type = $type;
+        $this->input = $input;
+        $this->ctx = $ctx;
     }
 }

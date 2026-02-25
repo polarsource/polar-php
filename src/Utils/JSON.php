@@ -15,6 +15,7 @@ use Speakeasy\Serializer\Handler\IteratorHandler;
 use Speakeasy\Serializer\Handler\StdClassHandler;
 use Speakeasy\Serializer\SerializationContext;
 use Speakeasy\Serializer\SerializerBuilder;
+use Speakeasy\Serializer\Visitor\Factory\JsonDeserializationVisitorFactory;
 
 
 class JSON
@@ -34,6 +35,7 @@ class JSON
                 $registry->registerSubscribingHandler(new BigIntHandler());
                 $registry->registerSubscribingHandler(new BigDecimalHandler());
             },
+        )->setDeserializationVisitor('json', (new JsonDeserializationVisitorFactory())->setOptions(JSON_BIGINT_AS_STRING)
         )->setTypeParser(new PhpDocTypeParser()
         )->setSerializationContextFactory(function () {
             return SerializationContext::create()

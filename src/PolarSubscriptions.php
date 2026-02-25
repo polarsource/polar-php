@@ -50,8 +50,6 @@ class PolarSubscriptions
      *
      * Cancel a subscription of the authenticated customer.
      *
-     * **Scopes**: `customer_portal:write`
-     *
      * @param  Operations\CustomerPortalSubscriptionsCancelSecurity  $security
      * @param  string  $id
      * @return Operations\CustomerPortalSubscriptionsCancelResponse
@@ -394,8 +392,6 @@ class PolarSubscriptions
      * Update Subscription
      *
      * Update a subscription of the authenticated customer.
-     *
-     * **Scopes**: `customer_portal:write`
      *
      * @param  Operations\CustomerPortalSubscriptionsUpdateSecurity  $security
      * @param  Components\CustomerSubscriptionUpdateProduct|Components\CustomerSubscriptionUpdateSeats|Components\CustomerSubscriptionCancel  $customerSubscriptionUpdate

@@ -53,6 +53,7 @@ enum Scope: string
     case DisputesRead = 'disputes:read';
     case CustomerMetersRead = 'customer_meters:read';
     case CustomerSessionsWrite = 'customer_sessions:write';
+    case MemberSessionsWrite = 'member_sessions:write';
     case CustomerSeatsRead = 'customer_seats:read';
     case CustomerSeatsWrite = 'customer_seats:write';
     case OrdersRead = 'orders:read';
@@ -63,17 +64,14 @@ enum Scope: string
     case MetricsRead = 'metrics:read';
     case WebhooksRead = 'webhooks:read';
     case WebhooksWrite = 'webhooks:write';
-    case ExternalOrganizationsRead = 'external_organizations:read';
     case LicenseKeysRead = 'license_keys:read';
     case LicenseKeysWrite = 'license_keys:write';
-    case RepositoriesRead = 'repositories:read';
-    case RepositoriesWrite = 'repositories:write';
-    case IssuesRead = 'issues:read';
-    case IssuesWrite = 'issues:write';
     case CustomerPortalRead = 'customer_portal:read';
     case CustomerPortalWrite = 'customer_portal:write';
     case NotificationsRead = 'notifications:read';
     case NotificationsWrite = 'notifications:write';
     case NotificationRecipientsRead = 'notification_recipients:read';
     case NotificationRecipientsWrite = 'notification_recipients:write';
+    case OrganizationAccessTokensRead = 'organization_access_tokens:read';
+    case OrganizationAccessTokensWrite = 'organization_access_tokens:write';
 }

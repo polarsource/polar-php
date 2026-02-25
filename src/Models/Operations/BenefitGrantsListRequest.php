@@ -29,6 +29,14 @@ class BenefitGrantsListRequest
     public string|array|null $customerId = null;
 
     /**
+     * Filter by customer external ID.
+     *
+     * @var string|array<string>|null $externalCustomerId
+     */
+    #[SpeakeasyMetadata('queryParam:style=form,explode=true,name=external_customer_id')]
+    public string|array|null $externalCustomerId = null;
+
+    /**
      * Filter by granted status. If `true`, only granted benefits will be returned. If `false`, only revoked benefits will be returned. 
      *
      * @var ?bool $isGranted
@@ -65,14 +73,16 @@ class BenefitGrantsListRequest
      * @param  ?int  $limit
      * @param  string|array<string>|null  $organizationId
      * @param  string|array<string>|null  $customerId
+     * @param  string|array<string>|null  $externalCustomerId
      * @param  ?bool  $isGranted
      * @param  ?array<Components\BenefitGrantSortProperty>  $sorting
      * @phpstan-pure
      */
-    public function __construct(string|array|null $organizationId = null, string|array|null $customerId = null, ?bool $isGranted = null, ?array $sorting = null, ?int $page = 1, ?int $limit = 10)
+    public function __construct(string|array|null $organizationId = null, string|array|null $customerId = null, string|array|null $externalCustomerId = null, ?bool $isGranted = null, ?array $sorting = null, ?int $page = 1, ?int $limit = 10)
     {
         $this->organizationId = $organizationId;
         $this->customerId = $customerId;
+        $this->externalCustomerId = $externalCustomerId;
         $this->isGranted = $isGranted;
         $this->sorting = $sorting;
         $this->page = $page;

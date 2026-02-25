@@ -77,6 +77,14 @@ class Organization
     public OrganizationStatus $status;
 
     /**
+     * Default presentment currency. Used as fallback in checkout and customer portal, if the customer's local currency is not available.
+     *
+     * @var string $defaultPresentmentCurrency
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('default_presentment_currency')]
+    public string $defaultPresentmentCurrency;
+
+    /**
      *
      * @var OrganizationSubscriptionSettings $subscriptionSettings
      */
@@ -166,6 +174,7 @@ class Organization
      * @param  bool  $allowCustomerUpdates
      * @param  array<OrganizationSocialLink>  $socials
      * @param  OrganizationStatus  $status
+     * @param  string  $defaultPresentmentCurrency
      * @param  OrganizationSubscriptionSettings  $subscriptionSettings
      * @param  OrganizationNotificationSettings  $notificationSettings
      * @param  OrganizationCustomerEmailSettings  $customerEmailSettings
@@ -178,7 +187,7 @@ class Organization
      * @param  ?OrganizationFeatureSettings  $featureSettings
      * @phpstan-pure
      */
-    public function __construct(\DateTime $createdAt, string $id, string $name, string $slug, SubscriptionProrationBehavior $prorationBehavior, bool $allowCustomerUpdates, array $socials, OrganizationStatus $status, OrganizationSubscriptionSettings $subscriptionSettings, OrganizationNotificationSettings $notificationSettings, OrganizationCustomerEmailSettings $customerEmailSettings, OrganizationCustomerPortalSettings $customerPortalSettings, ?\DateTime $modifiedAt = null, ?string $avatarUrl = null, ?string $email = null, ?string $website = null, ?\DateTime $detailsSubmittedAt = null, ?OrganizationFeatureSettings $featureSettings = null)
+    public function __construct(\DateTime $createdAt, string $id, string $name, string $slug, SubscriptionProrationBehavior $prorationBehavior, bool $allowCustomerUpdates, array $socials, OrganizationStatus $status, string $defaultPresentmentCurrency, OrganizationSubscriptionSettings $subscriptionSettings, OrganizationNotificationSettings $notificationSettings, OrganizationCustomerEmailSettings $customerEmailSettings, OrganizationCustomerPortalSettings $customerPortalSettings, ?\DateTime $modifiedAt = null, ?string $avatarUrl = null, ?string $email = null, ?string $website = null, ?\DateTime $detailsSubmittedAt = null, ?OrganizationFeatureSettings $featureSettings = null)
     {
         $this->createdAt = $createdAt;
         $this->id = $id;
@@ -188,6 +197,7 @@ class Organization
         $this->allowCustomerUpdates = $allowCustomerUpdates;
         $this->socials = $socials;
         $this->status = $status;
+        $this->defaultPresentmentCurrency = $defaultPresentmentCurrency;
         $this->subscriptionSettings = $subscriptionSettings;
         $this->notificationSettings = $notificationSettings;
         $this->customerEmailSettings = $customerEmailSettings;

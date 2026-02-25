@@ -85,6 +85,22 @@ class BalanceOrderMetadata
 
     /**
      *
+     * @var ?int $netAmount
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('net_amount')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
+    public ?int $netAmount = null;
+
+    /**
+     *
+     * @var ?float $exchangeRate
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('exchange_rate')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
+    public ?float $exchangeRate = null;
+
+    /**
+     *
      * @var ?string $taxState
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('tax_state')]
@@ -110,11 +126,13 @@ class BalanceOrderMetadata
      * @param  int  $fee
      * @param  ?string  $productId
      * @param  ?string  $subscriptionId
+     * @param  ?int  $netAmount
+     * @param  ?float  $exchangeRate
      * @param  ?string  $taxState
      * @param  ?string  $taxCountry
      * @phpstan-pure
      */
-    public function __construct(string $transactionId, string $orderId, int $amount, string $currency, int $presentmentAmount, string $presentmentCurrency, int $taxAmount, int $fee, ?string $productId = null, ?string $subscriptionId = null, ?string $taxState = null, ?string $taxCountry = null)
+    public function __construct(string $transactionId, string $orderId, int $amount, string $currency, int $presentmentAmount, string $presentmentCurrency, int $taxAmount, int $fee, ?string $productId = null, ?string $subscriptionId = null, ?int $netAmount = null, ?float $exchangeRate = null, ?string $taxState = null, ?string $taxCountry = null)
     {
         $this->transactionId = $transactionId;
         $this->orderId = $orderId;
@@ -126,6 +144,8 @@ class BalanceOrderMetadata
         $this->fee = $fee;
         $this->productId = $productId;
         $this->subscriptionId = $subscriptionId;
+        $this->netAmount = $netAmount;
+        $this->exchangeRate = $exchangeRate;
         $this->taxState = $taxState;
         $this->taxCountry = $taxCountry;
     }

@@ -87,6 +87,24 @@ class UserEvent
     public ?string $externalCustomerId;
 
     /**
+     * ID of the member within the customer's organization who performed the action inside B2B.
+     *
+     * @var ?string $memberId
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('member_id')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
+    public ?string $memberId = null;
+
+    /**
+     * ID of the member in your system within the customer's organization who performed the action inside B2B.
+     *
+     * @var ?string $externalMemberId
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('external_member_id')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
+    public ?string $externalMemberId = null;
+
+    /**
      * The ID of the parent event.
      *
      * @var ?string $parentId
@@ -124,10 +142,12 @@ class UserEvent
      * @param  ?Customer  $customer
      * @param  ?string  $externalCustomerId
      * @param  ?int  $childCount
+     * @param  ?string  $memberId
+     * @param  ?string  $externalMemberId
      * @param  ?string  $parentId
      * @phpstan-pure
      */
-    public function __construct(string $id, \DateTime $timestamp, string $organizationId, string $label, string $name, array $metadata, ?string $customerId = null, ?Customer $customer = null, ?string $externalCustomerId = null, ?string $parentId = null, string $source = 'user', ?int $childCount = 0)
+    public function __construct(string $id, \DateTime $timestamp, string $organizationId, string $label, string $name, array $metadata, ?string $customerId = null, ?Customer $customer = null, ?string $externalCustomerId = null, ?string $memberId = null, ?string $externalMemberId = null, ?string $parentId = null, string $source = 'user', ?int $childCount = 0)
     {
         $this->id = $id;
         $this->timestamp = $timestamp;
@@ -138,6 +158,8 @@ class UserEvent
         $this->customerId = $customerId;
         $this->customer = $customer;
         $this->externalCustomerId = $externalCustomerId;
+        $this->memberId = $memberId;
+        $this->externalMemberId = $externalMemberId;
         $this->parentId = $parentId;
         $this->source = $source;
         $this->childCount = $childCount;

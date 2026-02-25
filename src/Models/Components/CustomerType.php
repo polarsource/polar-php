@@ -9,8 +9,8 @@ declare(strict_types=1);
 namespace Polar\Models\Components;
 
 
-enum ProductPriceType: string
+enum CustomerType: string
 {
-    case OneTime = 'one_time';
-    case Recurring = 'recurring';
+    case Individual = 'individual';
+    case Team = 'team';
 }

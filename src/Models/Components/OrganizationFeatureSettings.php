@@ -57,19 +57,63 @@ class OrganizationFeatureSettings
     public ?bool $memberModelEnabled = null;
 
     /**
+     * If this organization reads from Tinybird
+     *
+     * @var ?bool $tinybirdRead
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('tinybird_read')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
+    public ?bool $tinybirdRead = null;
+
+    /**
+     * If this organization compares Tinybird results with database
+     *
+     * @var ?bool $tinybirdCompare
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('tinybird_compare')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
+    public ?bool $tinybirdCompare = null;
+
+    /**
+     * If this organization has multiple presentment currencies enabled
+     *
+     * @var ?bool $presentmentCurrenciesEnabled
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('presentment_currencies_enabled')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
+    public ?bool $presentmentCurrenciesEnabled = null;
+
+    /**
+     * If this organization has checkout localization enabled
+     *
+     * @var ?bool $checkoutLocalizationEnabled
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('checkout_localization_enabled')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
+    public ?bool $checkoutLocalizationEnabled = null;
+
+    /**
      * @param  ?bool  $issueFundingEnabled
      * @param  ?bool  $seatBasedPricingEnabled
      * @param  ?bool  $revopsEnabled
      * @param  ?bool  $walletsEnabled
      * @param  ?bool  $memberModelEnabled
+     * @param  ?bool  $tinybirdRead
+     * @param  ?bool  $tinybirdCompare
+     * @param  ?bool  $presentmentCurrenciesEnabled
+     * @param  ?bool  $checkoutLocalizationEnabled
      * @phpstan-pure
      */
-    public function __construct(?bool $issueFundingEnabled = false, ?bool $seatBasedPricingEnabled = false, ?bool $revopsEnabled = false, ?bool $walletsEnabled = false, ?bool $memberModelEnabled = false)
+    public function __construct(?bool $issueFundingEnabled = false, ?bool $seatBasedPricingEnabled = false, ?bool $revopsEnabled = false, ?bool $walletsEnabled = false, ?bool $memberModelEnabled = false, ?bool $tinybirdRead = false, ?bool $tinybirdCompare = false, ?bool $presentmentCurrenciesEnabled = false, ?bool $checkoutLocalizationEnabled = false)
     {
         $this->issueFundingEnabled = $issueFundingEnabled;
         $this->seatBasedPricingEnabled = $seatBasedPricingEnabled;
         $this->revopsEnabled = $revopsEnabled;
         $this->walletsEnabled = $walletsEnabled;
         $this->memberModelEnabled = $memberModelEnabled;
+        $this->tinybirdRead = $tinybirdRead;
+        $this->tinybirdCompare = $tinybirdCompare;
+        $this->presentmentCurrenciesEnabled = $presentmentCurrenciesEnabled;
+        $this->checkoutLocalizationEnabled = $checkoutLocalizationEnabled;
     }
 }

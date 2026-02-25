@@ -80,6 +80,16 @@ class CustomerSeat
     public ?string $memberId = null;
 
     /**
+     * The member associated with this seat
+     *
+     * @var ?Member $member
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('member')]
+    #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\Member|null')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
+    public ?Member $member = null;
+
+    /**
      * Email of the seat member (set when member_model_enabled is true)
      *
      * @var ?string $email
@@ -143,6 +153,7 @@ class CustomerSeat
      * @param  ?string  $orderId
      * @param  ?string  $customerId
      * @param  ?string  $memberId
+     * @param  ?Member  $member
      * @param  ?string  $email
      * @param  ?string  $customerEmail
      * @param  ?\DateTime  $invitationTokenExpiresAt
@@ -151,7 +162,7 @@ class CustomerSeat
      * @param  ?array<string, mixed>  $seatMetadata
      * @phpstan-pure
      */
-    public function __construct(\DateTime $createdAt, string $id, SeatStatus $status, ?\DateTime $modifiedAt = null, ?string $subscriptionId = null, ?string $orderId = null, ?string $customerId = null, ?string $memberId = null, ?string $email = null, ?string $customerEmail = null, ?\DateTime $invitationTokenExpiresAt = null, ?\DateTime $claimedAt = null, ?\DateTime $revokedAt = null, ?array $seatMetadata = null)
+    public function __construct(\DateTime $createdAt, string $id, SeatStatus $status, ?\DateTime $modifiedAt = null, ?string $subscriptionId = null, ?string $orderId = null, ?string $customerId = null, ?string $memberId = null, ?Member $member = null, ?string $email = null, ?string $customerEmail = null, ?\DateTime $invitationTokenExpiresAt = null, ?\DateTime $claimedAt = null, ?\DateTime $revokedAt = null, ?array $seatMetadata = null)
     {
         $this->createdAt = $createdAt;
         $this->id = $id;
@@ -161,6 +172,7 @@ class CustomerSeat
         $this->orderId = $orderId;
         $this->customerId = $customerId;
         $this->memberId = $memberId;
+        $this->member = $member;
         $this->email = $email;
         $this->customerEmail = $customerEmail;
         $this->invitationTokenExpiresAt = $invitationTokenExpiresAt;

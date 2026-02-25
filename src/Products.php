@@ -299,6 +299,7 @@ class Products
                             isArchived: $request != null ? $request->isArchived : null,
                             isRecurring: $request != null ? $request->isRecurring : null,
                             benefitId: $request != null ? $request->benefitId : null,
+                            visibility: $request != null ? $request->visibility : null,
                             page: $nextPage,
                             limit: $request != null ? $request->limit : null,
                             sorting: $request != null ? $request->sorting : null,

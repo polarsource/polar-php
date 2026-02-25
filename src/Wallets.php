@@ -50,8 +50,6 @@ class Wallets
      *
      * Get a wallet by ID for the authenticated customer.
      *
-     * **Scopes**: `customer_portal:read` `customer_portal:write`
-     *
      * @param  Operations\CustomerPortalWalletsGetSecurity  $security
      * @param  string  $id
      * @return Operations\CustomerPortalWalletsGetResponse
@@ -145,8 +143,6 @@ class Wallets
      *
      * List wallets of the authenticated customer.
      *
-     * **Scopes**: `customer_portal:read` `customer_portal:write`
-     *
      * @param  Operations\CustomerPortalWalletsListSecurity  $security
      * @param  ?int  $page
      * @param  ?int  $limit
@@ -208,7 +204,7 @@ class Wallets
                     listResourceCustomerWallet: $obj);
                 $sdk = $this;
 
-                $response->next = function () use ($sdk, $request, $responseData, $security, $limit, $sorting): ?Operations\CustomerPortalWalletsListResponse {
+                $response->next = function () use ($sdk, $request, $responseData, $security): ?Operations\CustomerPortalWalletsListResponse {
                     $page = $request != null ? $request->page : 0;
                     $nextPage = $page + 1;
                     $jsonObject = new \JsonPath\JsonObject($responseData);
@@ -236,8 +232,8 @@ class Wallets
                     return $sdk->listIndividual(
                         security: $security,
                         page: $nextPage,
-                        limit: $limit,
-                        sorting: $sorting,
+                        limit: $request != null ? $request->limit : null,
+                        sorting: $request != null ? $request->sorting : null,
                     );
                 };
 
@@ -269,8 +265,6 @@ class Wallets
      * List Wallets
      *
      * List wallets of the authenticated customer.
-     *
-     * **Scopes**: `customer_portal:read` `customer_portal:write`
      *
      * @param  Operations\CustomerPortalWalletsListSecurity  $security
      * @param  ?int  $page

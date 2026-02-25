@@ -11,8 +11,6 @@
 
 List wallets of the authenticated customer.
 
-**Scopes**: `customer_portal:read` `customer_portal:write`
-
 ### Example Usage
 
 <!-- UsageSnippet language="php" operationID="customer_portal:wallets:list" method="get" path="/v1/customer-portal/wallets/" -->
@@ -69,8 +67,6 @@ foreach ($responses as $response) {
 ## get
 
 Get a wallet by ID for the authenticated customer.
-
-**Scopes**: `customer_portal:read` `customer_portal:write`
 
 ### Example Usage
 

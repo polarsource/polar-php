@@ -7,16 +7,14 @@
 * [list](#list) - List Orders
 * [get](#get) - Get Order
 * [update](#update) - Update Order
-* [generateInvoice](#generateinvoice) - Generate Order Invoice
 * [invoice](#invoice) - Get Order Invoice
+* [generateInvoice](#generateinvoice) - Generate Order Invoice
 * [getPaymentStatus](#getpaymentstatus) - Get Order Payment Status
 * [confirmRetryPayment](#confirmretrypayment) - Confirm Retry Payment
 
 ## list
 
 List orders of the authenticated customer.
-
-**Scopes**: `customer_portal:read` `customer_portal:write`
 
 ### Example Usage
 
@@ -71,8 +69,6 @@ foreach ($responses as $response) {
 
 Get an order by ID for the authenticated customer.
 
-**Scopes**: `customer_portal:read` `customer_portal:write`
-
 ### Example Usage
 
 <!-- UsageSnippet language="php" operationID="customer_portal:orders:get" method="get" path="/v1/customer-portal/orders/{id}" -->
@@ -125,8 +121,6 @@ if ($response->customerOrder !== null) {
 
 Update an order for the authenticated customer.
 
-**Scopes**: `customer_portal:write`
-
 ### Example Usage
 
 <!-- UsageSnippet language="php" operationID="customer_portal:orders:update" method="patch" path="/v1/customer-portal/orders/{id}" -->
@@ -142,7 +136,6 @@ use Polar\Models\Operations;
 $sdk = Polar\Polar::builder()->build();
 
 $customerOrderUpdate = new Components\CustomerOrderUpdate(
-    billingName: '<value>',
     billingAddress: new Components\AddressInput(
         country: Components\CountryAlpha2Input::Us,
     ),
@@ -183,65 +176,9 @@ if ($response->customerOrder !== null) {
 | Errors\HTTPValidationError | 422                        | application/json           |
 | Errors\APIException        | 4XX, 5XX                   | \*/\*                      |
 
-## generateInvoice
-
-Trigger generation of an order's invoice.
-
-**Scopes**: `customer_portal:read` `customer_portal:write`
-
-### Example Usage
-
-<!-- UsageSnippet language="php" operationID="customer_portal:orders:generate_invoice" method="post" path="/v1/customer-portal/orders/{id}/invoice" -->
-```php
-declare(strict_types=1);
-
-require 'vendor/autoload.php';
-
-use Polar;
-use Polar\Models\Operations;
-
-$sdk = Polar\Polar::builder()->build();
-
-
-$requestSecurity = new Operations\CustomerPortalOrdersGenerateInvoiceSecurity(
-    customerSession: '<YOUR_BEARER_TOKEN_HERE>',
-);
-
-$response = $sdk->customerPortal->orders->generateInvoice(
-    security: $requestSecurity,
-    id: '<value>'
-
-);
-
-if ($response->any !== null) {
-    // handle response
-}
-```
-
-### Parameters
-
-| Parameter                                                                                                                        | Type                                                                                                                             | Required                                                                                                                         | Description                                                                                                                      |
-| -------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------- |
-| `security`                                                                                                                       | [Operations\CustomerPortalOrdersGenerateInvoiceSecurity](../../Models/Operations/CustomerPortalOrdersGenerateInvoiceSecurity.md) | :heavy_check_mark:                                                                                                               | The security requirements to use for the request.                                                                                |
-| `id`                                                                                                                             | *string*                                                                                                                         | :heavy_check_mark:                                                                                                               | The order ID.                                                                                                                    |
-
-### Response
-
-**[?Operations\CustomerPortalOrdersGenerateInvoiceResponse](../../Models/Operations/CustomerPortalOrdersGenerateInvoiceResponse.md)**
-
-### Errors
-
-| Error Type                          | Status Code                         | Content Type                        |
-| ----------------------------------- | ----------------------------------- | ----------------------------------- |
-| Errors\MissingInvoiceBillingDetails | 422                                 | application/json                    |
-| Errors\NotPaidOrder                 | 422                                 | application/json                    |
-| Errors\APIException                 | 4XX, 5XX                            | \*/\*                               |
-
 ## invoice
 
 Get an order's invoice data.
-
-**Scopes**: `customer_portal:read` `customer_portal:write`
 
 ### Example Usage
 
@@ -291,11 +228,61 @@ if ($response->customerOrderInvoice !== null) {
 | Errors\HTTPValidationError | 422                        | application/json           |
 | Errors\APIException        | 4XX, 5XX                   | \*/\*                      |
 
+## generateInvoice
+
+Trigger generation of an order's invoice.
+
+### Example Usage
+
+<!-- UsageSnippet language="php" operationID="customer_portal:orders:generate_invoice" method="post" path="/v1/customer-portal/orders/{id}/invoice" -->
+```php
+declare(strict_types=1);
+
+require 'vendor/autoload.php';
+
+use Polar;
+use Polar\Models\Operations;
+
+$sdk = Polar\Polar::builder()->build();
+
+
+$requestSecurity = new Operations\CustomerPortalOrdersGenerateInvoiceSecurity(
+    customerSession: '<YOUR_BEARER_TOKEN_HERE>',
+);
+
+$response = $sdk->customerPortal->orders->generateInvoice(
+    security: $requestSecurity,
+    id: '<value>'
+
+);
+
+if ($response->any !== null) {
+    // handle response
+}
+```
+
+### Parameters
+
+| Parameter                                                                                                                        | Type                                                                                                                             | Required                                                                                                                         | Description                                                                                                                      |
+| -------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------- |
+| `security`                                                                                                                       | [Operations\CustomerPortalOrdersGenerateInvoiceSecurity](../../Models/Operations/CustomerPortalOrdersGenerateInvoiceSecurity.md) | :heavy_check_mark:                                                                                                               | The security requirements to use for the request.                                                                                |
+| `id`                                                                                                                             | *string*                                                                                                                         | :heavy_check_mark:                                                                                                               | The order ID.                                                                                                                    |
+
+### Response
+
+**[?Operations\CustomerPortalOrdersGenerateInvoiceResponse](../../Models/Operations/CustomerPortalOrdersGenerateInvoiceResponse.md)**
+
+### Errors
+
+| Error Type                          | Status Code                         | Content Type                        |
+| ----------------------------------- | ----------------------------------- | ----------------------------------- |
+| Errors\MissingInvoiceBillingDetails | 422                                 | application/json                    |
+| Errors\NotPaidOrder                 | 422                                 | application/json                    |
+| Errors\APIException                 | 4XX, 5XX                            | \*/\*                               |
+
 ## getPaymentStatus
 
 Get the current payment status for an order.
-
-**Scopes**: `customer_portal:read` `customer_portal:write`
 
 ### Example Usage
 
@@ -348,8 +335,6 @@ if ($response->customerOrderPaymentStatus !== null) {
 ## confirmRetryPayment
 
 Confirm a retry payment using a Stripe confirmation token.
-
-**Scopes**: `customer_portal:write`
 
 ### Example Usage
 

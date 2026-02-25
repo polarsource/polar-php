@@ -128,6 +128,24 @@ class CustomerWithMembers
     public ?array $members = null;
 
     /**
+     * The type of customer: 'individual' for single users, 'team' for customers with multiple members. Legacy customers may have NULL type which is treated as 'individual'.
+     *
+     * @var ?CustomerType $type
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('type')]
+    #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\CustomerType|null')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
+    public ?CustomerType $type = null;
+
+    /**
+     *
+     * @var ?string $locale
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('locale')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
+    public ?string $locale = null;
+
+    /**
      * @param  string  $id
      * @param  \DateTime  $createdAt
      * @param  array<string, string|int|float|bool>  $metadata
@@ -142,9 +160,11 @@ class CustomerWithMembers
      * @param  ?array<string|TaxIDFormat|null>  $taxId
      * @param  ?\DateTime  $deletedAt
      * @param  ?array<Member>  $members
+     * @param  ?CustomerType  $type
+     * @param  ?string  $locale
      * @phpstan-pure
      */
-    public function __construct(string $id, \DateTime $createdAt, array $metadata, string $email, bool $emailVerified, string $organizationId, string $avatarUrl, ?\DateTime $modifiedAt = null, ?string $externalId = null, ?string $name = null, ?Address $billingAddress = null, ?array $taxId = null, ?\DateTime $deletedAt = null, ?array $members = null)
+    public function __construct(string $id, \DateTime $createdAt, array $metadata, string $email, bool $emailVerified, string $organizationId, string $avatarUrl, ?\DateTime $modifiedAt = null, ?string $externalId = null, ?string $name = null, ?Address $billingAddress = null, ?array $taxId = null, ?\DateTime $deletedAt = null, ?array $members = null, ?CustomerType $type = null, ?string $locale = null)
     {
         $this->id = $id;
         $this->createdAt = $createdAt;
@@ -160,5 +180,7 @@ class CustomerWithMembers
         $this->taxId = $taxId;
         $this->deletedAt = $deletedAt;
         $this->members = $members;
+        $this->type = $type;
+        $this->locale = $locale;
     }
 }

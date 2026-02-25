@@ -7,8 +7,8 @@
 * [list](#list) - List Benefits
 * [create](#create) - Create Benefit
 * [get](#get) - Get Benefit
-* [update](#update) - Update Benefit
 * [delete](#delete) - Delete Benefit
+* [update](#update) - Update Benefit
 * [grants](#grants) - List Benefit Grants
 
 ## list
@@ -173,61 +173,6 @@ if ($response->benefit !== null) {
 | Errors\HTTPValidationError | 422                        | application/json           |
 | Errors\APIException        | 4XX, 5XX                   | \*/\*                      |
 
-## update
-
-Update a benefit.
-
-**Scopes**: `benefits:write`
-
-### Example Usage
-
-<!-- UsageSnippet language="php" operationID="benefits:update" method="patch" path="/v1/benefits/{id}" -->
-```php
-declare(strict_types=1);
-
-require 'vendor/autoload.php';
-
-use Polar;
-use Polar\Models\Components;
-
-$sdk = Polar\Polar::builder()
-    ->setSecurity(
-        '<YOUR_BEARER_TOKEN_HERE>'
-    )
-    ->build();
-
-
-
-$response = $sdk->benefits->update(
-    id: '<value>',
-    requestBody: new Components\BenefitCustomUpdate()
-
-);
-
-if ($response->benefit !== null) {
-    // handle response
-}
-```
-
-### Parameters
-
-| Parameter                                                                                                                                                                                                                                                                       | Type                                                                                                                                                                                                                                                                            | Required                                                                                                                                                                                                                                                                        | Description                                                                                                                                                                                                                                                                     |
-| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `id`                                                                                                                                                                                                                                                                            | *string*                                                                                                                                                                                                                                                                        | :heavy_check_mark:                                                                                                                                                                                                                                                              | N/A                                                                                                                                                                                                                                                                             |
-| `requestBody`                                                                                                                                                                                                                                                                   | [Components\BenefitCustomUpdate\|Components\BenefitDiscordUpdate\|Components\BenefitGitHubRepositoryUpdate\|Components\BenefitDownloadablesUpdate\|Components\BenefitLicenseKeysUpdate\|Components\BenefitMeterCreditUpdate](../../Models/Operations/BenefitsUpdateBenefitUpdate.md) | :heavy_check_mark:                                                                                                                                                                                                                                                              | N/A                                                                                                                                                                                                                                                                             |
-
-### Response
-
-**[?Operations\BenefitsUpdateResponse](../../Models/Operations/BenefitsUpdateResponse.md)**
-
-### Errors
-
-| Error Type                 | Status Code                | Content Type               |
-| -------------------------- | -------------------------- | -------------------------- |
-| Errors\ResourceNotFound    | 404                        | application/json           |
-| Errors\HTTPValidationError | 422                        | application/json           |
-| Errors\APIException        | 4XX, 5XX                   | \*/\*                      |
-
 ## delete
 
 Delete a benefit.
@@ -280,6 +225,61 @@ if ($response->statusCode === 200) {
 | Error Type                 | Status Code                | Content Type               |
 | -------------------------- | -------------------------- | -------------------------- |
 | Errors\NotPermitted        | 403                        | application/json           |
+| Errors\ResourceNotFound    | 404                        | application/json           |
+| Errors\HTTPValidationError | 422                        | application/json           |
+| Errors\APIException        | 4XX, 5XX                   | \*/\*                      |
+
+## update
+
+Update a benefit.
+
+**Scopes**: `benefits:write`
+
+### Example Usage
+
+<!-- UsageSnippet language="php" operationID="benefits:update" method="patch" path="/v1/benefits/{id}" -->
+```php
+declare(strict_types=1);
+
+require 'vendor/autoload.php';
+
+use Polar;
+use Polar\Models\Components;
+
+$sdk = Polar\Polar::builder()
+    ->setSecurity(
+        '<YOUR_BEARER_TOKEN_HERE>'
+    )
+    ->build();
+
+
+
+$response = $sdk->benefits->update(
+    id: '<value>',
+    requestBody: new Components\BenefitCustomUpdate()
+
+);
+
+if ($response->benefit !== null) {
+    // handle response
+}
+```
+
+### Parameters
+
+| Parameter                                                                                                                                                                                                                                                                       | Type                                                                                                                                                                                                                                                                            | Required                                                                                                                                                                                                                                                                        | Description                                                                                                                                                                                                                                                                     |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `id`                                                                                                                                                                                                                                                                            | *string*                                                                                                                                                                                                                                                                        | :heavy_check_mark:                                                                                                                                                                                                                                                              | N/A                                                                                                                                                                                                                                                                             |
+| `requestBody`                                                                                                                                                                                                                                                                   | [Components\BenefitCustomUpdate\|Components\BenefitDiscordUpdate\|Components\BenefitGitHubRepositoryUpdate\|Components\BenefitDownloadablesUpdate\|Components\BenefitLicenseKeysUpdate\|Components\BenefitMeterCreditUpdate](../../Models/Operations/BenefitsUpdateBenefitUpdate.md) | :heavy_check_mark:                                                                                                                                                                                                                                                              | N/A                                                                                                                                                                                                                                                                             |
+
+### Response
+
+**[?Operations\BenefitsUpdateResponse](../../Models/Operations/BenefitsUpdateResponse.md)**
+
+### Errors
+
+| Error Type                 | Status Code                | Content Type               |
+| -------------------------- | -------------------------- | -------------------------- |
 | Errors\ResourceNotFound    | 404                        | application/json           |
 | Errors\HTTPValidationError | 422                        | application/json           |
 | Errors\APIException        | 4XX, 5XX                   | \*/\*                      |

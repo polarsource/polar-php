@@ -38,15 +38,6 @@ class WebhookEndpointCreate
     public array $events;
 
     /**
-     *
-     * @var ?string $secret
-     * @deprecated  field: This will be removed in a future release, please migrate away from it as soon as possible.
-     */
-    #[\Speakeasy\Serializer\Annotation\SerializedName('secret')]
-    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
-    public ?string $secret = null;
-
-    /**
      * The organization ID associated with the webhook endpoint. **Required unless you use an organization token.**
      *
      * @var ?string $organizationId
@@ -59,16 +50,14 @@ class WebhookEndpointCreate
      * @param  string  $url
      * @param  WebhookFormat  $format
      * @param  array<WebhookEventType>  $events
-     * @param  ?string  $secret
      * @param  ?string  $organizationId
      * @phpstan-pure
      */
-    public function __construct(string $url, WebhookFormat $format, array $events, ?string $secret = null, ?string $organizationId = null)
+    public function __construct(string $url, WebhookFormat $format, array $events, ?string $organizationId = null)
     {
         $this->url = $url;
         $this->format = $format;
         $this->events = $events;
-        $this->secret = $secret;
         $this->organizationId = $organizationId;
     }
 }

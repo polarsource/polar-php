@@ -147,6 +147,15 @@ class BenefitGrantDownloadablesWebhook
 
     /**
      *
+     * @var ?Member $member
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('member')]
+    #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\Member|null')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
+    public ?Member $member = null;
+
+    /**
+     *
      * @var ?BenefitGrantDownloadablesProperties $previousProperties
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('previous_properties')]
@@ -171,10 +180,11 @@ class BenefitGrantDownloadablesWebhook
      * @param  ?\DateTime  $revokedAt
      * @param  ?string  $memberId
      * @param  ?BenefitGrantError  $error
+     * @param  ?Member  $member
      * @param  ?BenefitGrantDownloadablesProperties  $previousProperties
      * @phpstan-pure
      */
-    public function __construct(\DateTime $createdAt, string $id, bool $isGranted, bool $isRevoked, string $customerId, string $benefitId, Customer $customer, BenefitDownloadables $benefit, BenefitGrantDownloadablesProperties $properties, ?\DateTime $modifiedAt = null, ?string $subscriptionId = null, ?string $orderId = null, ?\DateTime $grantedAt = null, ?\DateTime $revokedAt = null, ?string $memberId = null, ?BenefitGrantError $error = null, ?BenefitGrantDownloadablesProperties $previousProperties = null)
+    public function __construct(\DateTime $createdAt, string $id, bool $isGranted, bool $isRevoked, string $customerId, string $benefitId, Customer $customer, BenefitDownloadables $benefit, BenefitGrantDownloadablesProperties $properties, ?\DateTime $modifiedAt = null, ?string $subscriptionId = null, ?string $orderId = null, ?\DateTime $grantedAt = null, ?\DateTime $revokedAt = null, ?string $memberId = null, ?BenefitGrantError $error = null, ?Member $member = null, ?BenefitGrantDownloadablesProperties $previousProperties = null)
     {
         $this->createdAt = $createdAt;
         $this->id = $id;
@@ -192,6 +202,7 @@ class BenefitGrantDownloadablesWebhook
         $this->revokedAt = $revokedAt;
         $this->memberId = $memberId;
         $this->error = $error;
+        $this->member = $member;
         $this->previousProperties = $previousProperties;
     }
 }

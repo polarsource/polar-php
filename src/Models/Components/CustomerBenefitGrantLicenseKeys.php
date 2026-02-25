@@ -124,6 +124,15 @@ class CustomerBenefitGrantLicenseKeys
     public ?string $memberId = null;
 
     /**
+     *
+     * @var ?BenefitGrantError $error
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('error')]
+    #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\BenefitGrantError|null')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
+    public ?BenefitGrantError $error = null;
+
+    /**
      * @param  \DateTime  $createdAt
      * @param  string  $id
      * @param  string  $customerId
@@ -139,9 +148,10 @@ class CustomerBenefitGrantLicenseKeys
      * @param  ?string  $subscriptionId
      * @param  ?string  $orderId
      * @param  ?string  $memberId
+     * @param  ?BenefitGrantError  $error
      * @phpstan-pure
      */
-    public function __construct(\DateTime $createdAt, string $id, string $customerId, string $benefitId, bool $isGranted, bool $isRevoked, CustomerPortalCustomer $customer, BenefitLicenseKeysSubscriber $benefit, BenefitGrantLicenseKeysProperties $properties, ?\DateTime $modifiedAt = null, ?\DateTime $grantedAt = null, ?\DateTime $revokedAt = null, ?string $subscriptionId = null, ?string $orderId = null, ?string $memberId = null)
+    public function __construct(\DateTime $createdAt, string $id, string $customerId, string $benefitId, bool $isGranted, bool $isRevoked, CustomerPortalCustomer $customer, BenefitLicenseKeysSubscriber $benefit, BenefitGrantLicenseKeysProperties $properties, ?\DateTime $modifiedAt = null, ?\DateTime $grantedAt = null, ?\DateTime $revokedAt = null, ?string $subscriptionId = null, ?string $orderId = null, ?string $memberId = null, ?BenefitGrantError $error = null)
     {
         $this->createdAt = $createdAt;
         $this->id = $id;
@@ -158,5 +168,6 @@ class CustomerBenefitGrantLicenseKeys
         $this->subscriptionId = $subscriptionId;
         $this->orderId = $orderId;
         $this->memberId = $memberId;
+        $this->error = $error;
     }
 }

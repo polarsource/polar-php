@@ -5,6 +5,7 @@
 ### Available Operations
 
 * [introspect](#introspect) - Introspect Customer Session
+* [getAuthenticatedUser](#getauthenticateduser) - Get Authenticated Portal User
 
 ## introspect
 
@@ -48,6 +49,55 @@ if ($response->customerCustomerSession !== null) {
 ### Response
 
 **[?Operations\CustomerPortalCustomerSessionIntrospectResponse](../../Models/Operations/CustomerPortalCustomerSessionIntrospectResponse.md)**
+
+### Errors
+
+| Error Type          | Status Code         | Content Type        |
+| ------------------- | ------------------- | ------------------- |
+| Errors\APIException | 4XX, 5XX            | \*/\*               |
+
+## getAuthenticatedUser
+
+Get information about the currently authenticated portal user.
+
+**Scopes**: `customer_portal:read` `customer_portal:write`
+
+### Example Usage
+
+<!-- UsageSnippet language="php" operationID="customer_portal:customer-session:get_authenticated_user" method="get" path="/v1/customer-portal/customer-session/user" -->
+```php
+declare(strict_types=1);
+
+require 'vendor/autoload.php';
+
+use Polar;
+use Polar\Models\Operations;
+
+$sdk = Polar\Polar::builder()->build();
+
+
+$requestSecurity = new Operations\CustomerPortalCustomerSessionGetAuthenticatedUserSecurity(
+    customerSession: '<YOUR_BEARER_TOKEN_HERE>',
+);
+
+$response = $sdk->customerPortal->customerSession->getAuthenticatedUser(
+    security: $requestSecurity
+);
+
+if ($response->portalAuthenticatedUser !== null) {
+    // handle response
+}
+```
+
+### Parameters
+
+| Parameter                                                                                                                                                    | Type                                                                                                                                                         | Required                                                                                                                                                     | Description                                                                                                                                                  |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `security`                                                                                                                                                   | [Operations\CustomerPortalCustomerSessionGetAuthenticatedUserSecurity](../../Models/Operations/CustomerPortalCustomerSessionGetAuthenticatedUserSecurity.md) | :heavy_check_mark:                                                                                                                                           | The security requirements to use for the request.                                                                                                            |
+
+### Response
+
+**[?Operations\CustomerPortalCustomerSessionGetAuthenticatedUserResponse](../../Models/Operations/CustomerPortalCustomerSessionGetAuthenticatedUserResponse.md)**
 
 ### Errors
 

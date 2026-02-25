@@ -490,7 +490,7 @@ class LicenseKeys
                     listResourceLicenseKeyRead: $obj);
                 $sdk = $this;
 
-                $response->next = function () use ($sdk, $request, $responseData, $organizationId, $benefitId, $limit): ?Operations\LicenseKeysListResponse {
+                $response->next = function () use ($sdk, $request, $responseData): ?Operations\LicenseKeysListResponse {
                     $page = $request != null ? $request->page : 0;
                     $nextPage = $page + 1;
                     $jsonObject = new \JsonPath\JsonObject($responseData);
@@ -516,10 +516,10 @@ class LicenseKeys
                     }
 
                     return $sdk->listIndividual(
-                        organizationId: $organizationId,
-                        benefitId: $benefitId,
+                        organizationId: $request != null ? $request->organizationId : null,
+                        benefitId: $request != null ? $request->benefitId : null,
                         page: $nextPage,
-                        limit: $limit,
+                        limit: $request != null ? $request->limit : null,
                     );
                 };
 

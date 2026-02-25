@@ -636,6 +636,7 @@ class Checkouts
                             organizationId: $request != null ? $request->organizationId : null,
                             productId: $request != null ? $request->productId : null,
                             customerId: $request != null ? $request->customerId : null,
+                            externalCustomerId: $request != null ? $request->externalCustomerId : null,
                             status: $request != null ? $request->status : null,
                             query: $request != null ? $request->query : null,
                             page: $nextPage,

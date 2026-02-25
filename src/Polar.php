@@ -74,11 +74,15 @@ class Polar
 
     public CustomerSessions $customerSessions;
 
+    public MemberSessions $memberSessions;
+
     public Events $events;
 
     public EventTypes $eventTypes;
 
     public Meters $meters;
+
+    public OrganizationAccessTokens $organizationAccessTokens;
 
     public CustomerMeters $customerMeters;
 
@@ -122,9 +126,11 @@ class Polar
         $this->customerPortal = new CustomerPortal($this->sdkConfiguration);
         $this->customerSeats = new CustomerSeats($this->sdkConfiguration);
         $this->customerSessions = new CustomerSessions($this->sdkConfiguration);
+        $this->memberSessions = new MemberSessions($this->sdkConfiguration);
         $this->events = new Events($this->sdkConfiguration);
         $this->eventTypes = new EventTypes($this->sdkConfiguration);
         $this->meters = new Meters($this->sdkConfiguration);
+        $this->organizationAccessTokens = new OrganizationAccessTokens($this->sdkConfiguration);
         $this->customerMeters = new CustomerMeters($this->sdkConfiguration);
         $this->payments = new Payments($this->sdkConfiguration);
         $this->initHooks();

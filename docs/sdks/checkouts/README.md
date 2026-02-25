@@ -96,6 +96,7 @@ $request = new Components\CheckoutCreate(
     customerBillingAddress: new Components\AddressInput(
         country: Components\CountryAlpha2Input::Us,
     ),
+    locale: 'en',
     products: [
         '<value 1>',
         '<value 2>',
@@ -208,6 +209,7 @@ $checkoutUpdate = new Components\CheckoutUpdate(
     customerBillingAddress: new Components\AddressInput(
         country: Components\CountryAlpha2Input::Us,
     ),
+    locale: 'en',
 );
 
 $response = $sdk->checkouts->update(
@@ -310,6 +312,7 @@ $sdk = Polar\Polar::builder()->build();
 $checkoutUpdatePublic = new Components\CheckoutUpdatePublic(
     customerName: 'John Doe',
     customerBillingAddress: null,
+    locale: 'en',
 );
 
 $response = $sdk->checkouts->clientUpdate(
@@ -375,6 +378,7 @@ $checkoutConfirmStripe = new Components\CheckoutConfirmStripe(
     customerBillingAddress: new Components\AddressInput(
         country: Components\CountryAlpha2Input::Us,
     ),
+    locale: 'en',
 );
 
 $response = $sdk->checkouts->clientConfirm(
