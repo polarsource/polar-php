@@ -277,7 +277,7 @@ class Files
                     listResourceFileRead: $obj);
                 $sdk = $this;
 
-                $response->next = function () use ($sdk, $request, $responseData, $organizationId, $ids, $limit): ?Operations\FilesListResponse {
+                $response->next = function () use ($sdk, $request, $responseData): ?Operations\FilesListResponse {
                     $page = $request != null ? $request->page : 0;
                     $nextPage = $page + 1;
                     $jsonObject = new \JsonPath\JsonObject($responseData);
@@ -303,10 +303,10 @@ class Files
                     }
 
                     return $sdk->listIndividual(
-                        organizationId: $organizationId,
-                        ids: $ids,
+                        organizationId: $request != null ? $request->organizationId : null,
+                        ids: $request != null ? $request->ids : null,
                         page: $nextPage,
-                        limit: $limit,
+                        limit: $request != null ? $request->limit : null,
                     );
                 };
 

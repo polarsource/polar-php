@@ -50,6 +50,15 @@ class ProductCreateOneTime
     public ?array $metadata = null;
 
     /**
+     *
+     * @var ?ProductVisibility $visibility
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('visibility')]
+    #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\ProductVisibility|null')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
+    public ?ProductVisibility $visibility = null;
+
+    /**
      * List of custom fields to attach.
      *
      * @var ?array<AttachedCustomFieldCreate> $attachedCustomFields
@@ -111,6 +120,7 @@ class ProductCreateOneTime
      * @param  string  $name
      * @param  array<ProductPriceFixedCreate|ProductPriceCustomCreate|ProductPriceFreeCreate|ProductPriceSeatBasedCreate|ProductPriceMeteredUnitCreate>  $prices
      * @param  ?array<string, string|int|float|bool>  $metadata
+     * @param  ?ProductVisibility  $visibility
      * @param  ?array<AttachedCustomFieldCreate>  $attachedCustomFields
      * @param  ?string  $description
      * @param  ?array<string>  $medias
@@ -119,11 +129,12 @@ class ProductCreateOneTime
      * @param  mixed  $recurringIntervalCount
      * @phpstan-pure
      */
-    public function __construct(string $name, array $prices, ?array $metadata = null, ?array $attachedCustomFields = null, ?string $description = null, ?array $medias = null, ?string $organizationId = null, mixed $recurringInterval = null, mixed $recurringIntervalCount = null)
+    public function __construct(string $name, array $prices, ?array $metadata = null, ?ProductVisibility $visibility = null, ?array $attachedCustomFields = null, ?string $description = null, ?array $medias = null, ?string $organizationId = null, mixed $recurringInterval = null, mixed $recurringIntervalCount = null)
     {
         $this->name = $name;
         $this->prices = $prices;
         $this->metadata = $metadata;
+        $this->visibility = $visibility;
         $this->attachedCustomFields = $attachedCustomFields;
         $this->description = $description;
         $this->medias = $medias;

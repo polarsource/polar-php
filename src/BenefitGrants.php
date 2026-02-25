@@ -127,6 +127,7 @@ class BenefitGrants
                         request: new Operations\BenefitGrantsListRequest(
                             organizationId: $request != null ? $request->organizationId : null,
                             customerId: $request != null ? $request->customerId : null,
+                            externalCustomerId: $request != null ? $request->externalCustomerId : null,
                             isGranted: $request != null ? $request->isGranted : null,
                             page: $nextPage,
                             limit: $request != null ? $request->limit : null,

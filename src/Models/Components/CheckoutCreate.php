@@ -230,6 +230,14 @@ class CheckoutCreate
 
     /**
      *
+     * @var ?string $locale
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('locale')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
+    public ?string $locale = null;
+
+    /**
+     *
      * @var ?PresentmentCurrency $currency
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('currency')]
@@ -309,11 +317,12 @@ class CheckoutCreate
      * @param  ?string  $successUrl
      * @param  ?string  $returnUrl
      * @param  ?string  $embedOrigin
+     * @param  ?string  $locale
      * @param  ?PresentmentCurrency  $currency
      * @param  ?array<string, array<ProductPriceFixedCreate|ProductPriceCustomCreate|ProductPriceFreeCreate|ProductPriceSeatBasedCreate|ProductPriceMeteredUnitCreate>>  $prices
      * @phpstan-pure
      */
-    public function __construct(array $products, ?array $metadata = null, ?array $customFieldData = null, ?array $customerMetadata = null, ?TrialInterval $trialInterval = null, ?int $trialIntervalCount = null, ?string $discountId = null, ?int $amount = null, ?int $seats = null, ?string $customerId = null, ?string $externalCustomerId = null, ?string $customerName = null, ?string $customerEmail = null, ?string $customerIpAddress = null, ?string $customerBillingName = null, ?AddressInput $customerBillingAddress = null, ?string $customerTaxId = null, ?string $subscriptionId = null, ?string $successUrl = null, ?string $returnUrl = null, ?string $embedOrigin = null, ?PresentmentCurrency $currency = null, ?array $prices = null, ?bool $allowDiscountCodes = true, ?bool $requireBillingAddress = false, ?bool $allowTrial = true, ?bool $isBusinessCustomer = false)
+    public function __construct(array $products, ?array $metadata = null, ?array $customFieldData = null, ?array $customerMetadata = null, ?TrialInterval $trialInterval = null, ?int $trialIntervalCount = null, ?string $discountId = null, ?int $amount = null, ?int $seats = null, ?string $customerId = null, ?string $externalCustomerId = null, ?string $customerName = null, ?string $customerEmail = null, ?string $customerIpAddress = null, ?string $customerBillingName = null, ?AddressInput $customerBillingAddress = null, ?string $customerTaxId = null, ?string $subscriptionId = null, ?string $successUrl = null, ?string $returnUrl = null, ?string $embedOrigin = null, ?string $locale = null, ?PresentmentCurrency $currency = null, ?array $prices = null, ?bool $allowDiscountCodes = true, ?bool $requireBillingAddress = false, ?bool $allowTrial = true, ?bool $isBusinessCustomer = false)
     {
         $this->products = $products;
         $this->metadata = $metadata;
@@ -336,6 +345,7 @@ class CheckoutCreate
         $this->successUrl = $successUrl;
         $this->returnUrl = $returnUrl;
         $this->embedOrigin = $embedOrigin;
+        $this->locale = $locale;
         $this->currency = $currency;
         $this->prices = $prices;
         $this->allowDiscountCodes = $allowDiscountCodes;

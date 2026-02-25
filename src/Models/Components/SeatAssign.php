@@ -66,6 +66,24 @@ class SeatAssign
     public ?string $customerId = null;
 
     /**
+     * External member ID for the seat assignment. Only supported when member_model_enabled is true. Can be used alone (lookup existing member) or with email (create/validate member).
+     *
+     * @var ?string $externalMemberId
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('external_member_id')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
+    public ?string $externalMemberId = null;
+
+    /**
+     * Member ID for the seat assignment. Only supported when member_model_enabled is true.
+     *
+     * @var ?string $memberId
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('member_id')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
+    public ?string $memberId = null;
+
+    /**
      * Additional metadata for the seat (max 10 keys, 1KB total)
      *
      * @var ?array<string, mixed> $metadata
@@ -92,10 +110,12 @@ class SeatAssign
      * @param  ?string  $email
      * @param  ?string  $externalCustomerId
      * @param  ?string  $customerId
+     * @param  ?string  $externalMemberId
+     * @param  ?string  $memberId
      * @param  ?array<string, mixed>  $metadata
      * @phpstan-pure
      */
-    public function __construct(?string $subscriptionId = null, ?string $checkoutId = null, ?string $orderId = null, ?string $email = null, ?string $externalCustomerId = null, ?string $customerId = null, ?array $metadata = null, ?bool $immediateClaim = false)
+    public function __construct(?string $subscriptionId = null, ?string $checkoutId = null, ?string $orderId = null, ?string $email = null, ?string $externalCustomerId = null, ?string $customerId = null, ?string $externalMemberId = null, ?string $memberId = null, ?array $metadata = null, ?bool $immediateClaim = false)
     {
         $this->subscriptionId = $subscriptionId;
         $this->checkoutId = $checkoutId;
@@ -103,6 +123,8 @@ class SeatAssign
         $this->email = $email;
         $this->externalCustomerId = $externalCustomerId;
         $this->customerId = $customerId;
+        $this->externalMemberId = $externalMemberId;
+        $this->memberId = $memberId;
         $this->metadata = $metadata;
         $this->immediateClaim = $immediateClaim;
     }

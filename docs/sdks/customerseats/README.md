@@ -4,61 +4,12 @@
 
 ### Available Operations
 
-* [assignSeat](#assignseat) - Assign Seat
 * [listSeats](#listseats) - List Seats
+* [assignSeat](#assignseat) - Assign Seat
 * [revokeSeat](#revokeseat) - Revoke Seat
 * [resendInvitation](#resendinvitation) - Resend Invitation
 * [getClaimInfo](#getclaiminfo) - Get Claim Info
 * [claimSeat](#claimseat) - Claim Seat
-
-## assignSeat
-
-**Scopes**: `customer_seats:write`
-
-### Example Usage
-
-<!-- UsageSnippet language="php" operationID="customer-seats:assign_seat" method="post" path="/v1/customer-seats" -->
-```php
-declare(strict_types=1);
-
-require 'vendor/autoload.php';
-
-use Polar;
-use Polar\Models\Components;
-
-$sdk = Polar\Polar::builder()
-    ->setSecurity(
-        '<YOUR_BEARER_TOKEN_HERE>'
-    )
-    ->build();
-
-$request = new Components\SeatAssign();
-
-$response = $sdk->customerSeats->assignSeat(
-    request: $request
-);
-
-if ($response->customerSeat !== null) {
-    // handle response
-}
-```
-
-### Parameters
-
-| Parameter                                                      | Type                                                           | Required                                                       | Description                                                    |
-| -------------------------------------------------------------- | -------------------------------------------------------------- | -------------------------------------------------------------- | -------------------------------------------------------------- |
-| `$request`                                                     | [Components\SeatAssign](../../Models/Components/SeatAssign.md) | :heavy_check_mark:                                             | The request object to use for the request.                     |
-
-### Response
-
-**[?Operations\CustomerSeatsAssignSeatResponse](../../Models/Operations/CustomerSeatsAssignSeatResponse.md)**
-
-### Errors
-
-| Error Type                 | Status Code                | Content Type               |
-| -------------------------- | -------------------------- | -------------------------- |
-| Errors\HTTPValidationError | 422                        | application/json           |
-| Errors\APIException        | 4XX, 5XX                   | \*/\*                      |
 
 ## listSeats
 
@@ -101,6 +52,55 @@ if ($response->seatsList !== null) {
 ### Response
 
 **[?Operations\CustomerSeatsListSeatsResponse](../../Models/Operations/CustomerSeatsListSeatsResponse.md)**
+
+### Errors
+
+| Error Type                 | Status Code                | Content Type               |
+| -------------------------- | -------------------------- | -------------------------- |
+| Errors\HTTPValidationError | 422                        | application/json           |
+| Errors\APIException        | 4XX, 5XX                   | \*/\*                      |
+
+## assignSeat
+
+**Scopes**: `customer_seats:write`
+
+### Example Usage
+
+<!-- UsageSnippet language="php" operationID="customer-seats:assign_seat" method="post" path="/v1/customer-seats" -->
+```php
+declare(strict_types=1);
+
+require 'vendor/autoload.php';
+
+use Polar;
+use Polar\Models\Components;
+
+$sdk = Polar\Polar::builder()
+    ->setSecurity(
+        '<YOUR_BEARER_TOKEN_HERE>'
+    )
+    ->build();
+
+$request = new Components\SeatAssign();
+
+$response = $sdk->customerSeats->assignSeat(
+    request: $request
+);
+
+if ($response->customerSeat !== null) {
+    // handle response
+}
+```
+
+### Parameters
+
+| Parameter                                                      | Type                                                           | Required                                                       | Description                                                    |
+| -------------------------------------------------------------- | -------------------------------------------------------------- | -------------------------------------------------------------- | -------------------------------------------------------------- |
+| `$request`                                                     | [Components\SeatAssign](../../Models/Components/SeatAssign.md) | :heavy_check_mark:                                             | The request object to use for the request.                     |
+
+### Response
+
+**[?Operations\CustomerSeatsAssignSeatResponse](../../Models/Operations/CustomerSeatsAssignSeatResponse.md)**
 
 ### Errors
 

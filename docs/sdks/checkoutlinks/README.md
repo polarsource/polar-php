@@ -7,8 +7,8 @@
 * [list](#list) - List Checkout Links
 * [create](#create) - Create Checkout Link
 * [get](#get) - Get Checkout Link
-* [update](#update) - Update Checkout Link
 * [delete](#delete) - Delete Checkout Link
+* [update](#update) - Update Checkout Link
 
 ## list
 
@@ -170,6 +170,57 @@ if ($response->checkoutLink !== null) {
 | Errors\HTTPValidationError | 422                        | application/json           |
 | Errors\APIException        | 4XX, 5XX                   | \*/\*                      |
 
+## delete
+
+Delete a checkout link.
+
+**Scopes**: `checkout_links:write`
+
+### Example Usage
+
+<!-- UsageSnippet language="php" operationID="checkout-links:delete" method="delete" path="/v1/checkout-links/{id}" -->
+```php
+declare(strict_types=1);
+
+require 'vendor/autoload.php';
+
+use Polar;
+
+$sdk = Polar\Polar::builder()
+    ->setSecurity(
+        '<YOUR_BEARER_TOKEN_HERE>'
+    )
+    ->build();
+
+
+
+$response = $sdk->checkoutLinks->delete(
+    id: '<value>'
+);
+
+if ($response->statusCode === 200) {
+    // handle response
+}
+```
+
+### Parameters
+
+| Parameter             | Type                  | Required              | Description           |
+| --------------------- | --------------------- | --------------------- | --------------------- |
+| `id`                  | *string*              | :heavy_check_mark:    | The checkout link ID. |
+
+### Response
+
+**[?Operations\CheckoutLinksDeleteResponse](../../Models/Operations/CheckoutLinksDeleteResponse.md)**
+
+### Errors
+
+| Error Type                 | Status Code                | Content Type               |
+| -------------------------- | -------------------------- | -------------------------- |
+| Errors\ResourceNotFound    | 404                        | application/json           |
+| Errors\HTTPValidationError | 422                        | application/json           |
+| Errors\APIException        | 4XX, 5XX                   | \*/\*                      |
+
 ## update
 
 Update a checkout link.
@@ -216,57 +267,6 @@ if ($response->checkoutLink !== null) {
 ### Response
 
 **[?Operations\CheckoutLinksUpdateResponse](../../Models/Operations/CheckoutLinksUpdateResponse.md)**
-
-### Errors
-
-| Error Type                 | Status Code                | Content Type               |
-| -------------------------- | -------------------------- | -------------------------- |
-| Errors\ResourceNotFound    | 404                        | application/json           |
-| Errors\HTTPValidationError | 422                        | application/json           |
-| Errors\APIException        | 4XX, 5XX                   | \*/\*                      |
-
-## delete
-
-Delete a checkout link.
-
-**Scopes**: `checkout_links:write`
-
-### Example Usage
-
-<!-- UsageSnippet language="php" operationID="checkout-links:delete" method="delete" path="/v1/checkout-links/{id}" -->
-```php
-declare(strict_types=1);
-
-require 'vendor/autoload.php';
-
-use Polar;
-
-$sdk = Polar\Polar::builder()
-    ->setSecurity(
-        '<YOUR_BEARER_TOKEN_HERE>'
-    )
-    ->build();
-
-
-
-$response = $sdk->checkoutLinks->delete(
-    id: '<value>'
-);
-
-if ($response->statusCode === 200) {
-    // handle response
-}
-```
-
-### Parameters
-
-| Parameter             | Type                  | Required              | Description           |
-| --------------------- | --------------------- | --------------------- | --------------------- |
-| `id`                  | *string*              | :heavy_check_mark:    | The checkout link ID. |
-
-### Response
-
-**[?Operations\CheckoutLinksDeleteResponse](../../Models/Operations/CheckoutLinksDeleteResponse.md)**
 
 ### Errors
 

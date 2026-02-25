@@ -58,6 +58,15 @@ class ProductCreateRecurring
     public ?array $metadata = null;
 
     /**
+     *
+     * @var ?ProductVisibility $visibility
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('visibility')]
+    #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\ProductVisibility|null')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
+    public ?ProductVisibility $visibility = null;
+
+    /**
      * List of custom fields to attach.
      *
      * @var ?array<AttachedCustomFieldCreate> $attachedCustomFields
@@ -128,6 +137,7 @@ class ProductCreateRecurring
      * @param  array<ProductPriceFixedCreate|ProductPriceCustomCreate|ProductPriceFreeCreate|ProductPriceSeatBasedCreate|ProductPriceMeteredUnitCreate>  $prices
      * @param  SubscriptionRecurringInterval  $recurringInterval
      * @param  ?array<string, string|int|float|bool>  $metadata
+     * @param  ?ProductVisibility  $visibility
      * @param  ?array<AttachedCustomFieldCreate>  $attachedCustomFields
      * @param  ?int  $recurringIntervalCount
      * @param  ?string  $description
@@ -137,12 +147,13 @@ class ProductCreateRecurring
      * @param  ?int  $trialIntervalCount
      * @phpstan-pure
      */
-    public function __construct(string $name, array $prices, SubscriptionRecurringInterval $recurringInterval, ?array $metadata = null, ?array $attachedCustomFields = null, ?string $description = null, ?array $medias = null, ?string $organizationId = null, ?TrialInterval $trialInterval = null, ?int $trialIntervalCount = null, ?int $recurringIntervalCount = 1)
+    public function __construct(string $name, array $prices, SubscriptionRecurringInterval $recurringInterval, ?array $metadata = null, ?ProductVisibility $visibility = null, ?array $attachedCustomFields = null, ?string $description = null, ?array $medias = null, ?string $organizationId = null, ?TrialInterval $trialInterval = null, ?int $trialIntervalCount = null, ?int $recurringIntervalCount = 1)
     {
         $this->name = $name;
         $this->prices = $prices;
         $this->recurringInterval = $recurringInterval;
         $this->metadata = $metadata;
+        $this->visibility = $visibility;
         $this->attachedCustomFields = $attachedCustomFields;
         $this->description = $description;
         $this->medias = $medias;

@@ -30,6 +30,7 @@ class WebhookBenefitCreatedPayload
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('data')]
     #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\BenefitCustom|\Polar\Models\Components\BenefitDiscord|\Polar\Models\Components\BenefitGitHubRepository|\Polar\Models\Components\BenefitDownloadables|\Polar\Models\Components\BenefitLicenseKeys|\Polar\Models\Components\BenefitMeterCredit')]
+    #[\Speakeasy\Serializer\Annotation\UnionDiscriminator(field: 'type', map: ['custom' => '\Polar\Models\Components\BenefitCustom', 'discord' => '\Polar\Models\Components\BenefitDiscord', 'downloadables' => '\Polar\Models\Components\BenefitDownloadables', 'github_repository' => '\Polar\Models\Components\BenefitGitHubRepository', 'license_keys' => '\Polar\Models\Components\BenefitLicenseKeys', 'meter_credit' => '\Polar\Models\Components\BenefitMeterCredit'])]
     public BenefitCustom|BenefitDiscord|BenefitGitHubRepository|BenefitDownloadables|BenefitLicenseKeys|BenefitMeterCredit $data;
 
     /**

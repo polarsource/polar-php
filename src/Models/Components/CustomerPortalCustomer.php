@@ -98,6 +98,15 @@ class CustomerPortalCustomer
     public ?string $defaultPaymentMethodId = null;
 
     /**
+     *
+     * @var ?CustomerType $type
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('type')]
+    #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\CustomerType|null')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
+    public ?CustomerType $type = null;
+
+    /**
      * @param  \DateTime  $createdAt
      * @param  string  $id
      * @param  string  $email
@@ -109,9 +118,10 @@ class CustomerPortalCustomer
      * @param  ?Address  $billingAddress
      * @param  ?array<string|TaxIDFormat|null>  $taxId
      * @param  ?string  $defaultPaymentMethodId
+     * @param  ?CustomerType  $type
      * @phpstan-pure
      */
-    public function __construct(\DateTime $createdAt, string $id, string $email, bool $emailVerified, array $oauthAccounts, ?\DateTime $modifiedAt = null, ?string $name = null, ?string $billingName = null, ?Address $billingAddress = null, ?array $taxId = null, ?string $defaultPaymentMethodId = null)
+    public function __construct(\DateTime $createdAt, string $id, string $email, bool $emailVerified, array $oauthAccounts, ?\DateTime $modifiedAt = null, ?string $name = null, ?string $billingName = null, ?Address $billingAddress = null, ?array $taxId = null, ?string $defaultPaymentMethodId = null, ?CustomerType $type = null)
     {
         $this->createdAt = $createdAt;
         $this->id = $id;
@@ -124,5 +134,6 @@ class CustomerPortalCustomer
         $this->billingAddress = $billingAddress;
         $this->taxId = $taxId;
         $this->defaultPaymentMethodId = $defaultPaymentMethodId;
+        $this->type = $type;
     }
 }

@@ -50,8 +50,6 @@ class PolarOrders
      *
      * Confirm a retry payment using a Stripe confirmation token.
      *
-     * **Scopes**: `customer_portal:write`
-     *
      * @param  Operations\CustomerPortalOrdersConfirmRetryPaymentSecurity  $security
      * @param  Components\CustomerOrderConfirmPayment  $customerOrderConfirmPayment
      * @param  string  $id
@@ -163,8 +161,6 @@ class PolarOrders
      *
      * Trigger generation of an order's invoice.
      *
-     * **Scopes**: `customer_portal:read` `customer_portal:write`
-     *
      * @param  Operations\CustomerPortalOrdersGenerateInvoiceSecurity  $security
      * @param  string  $id
      * @return Operations\CustomerPortalOrdersGenerateInvoiceResponse
@@ -247,8 +243,6 @@ class PolarOrders
      * Get Order
      *
      * Get an order by ID for the authenticated customer.
-     *
-     * **Scopes**: `customer_portal:read` `customer_portal:write`
      *
      * @param  Operations\CustomerPortalOrdersGetSecurity  $security
      * @param  string  $id
@@ -343,8 +337,6 @@ class PolarOrders
      *
      * Get the current payment status for an order.
      *
-     * **Scopes**: `customer_portal:read` `customer_portal:write`
-     *
      * @param  Operations\CustomerPortalOrdersGetPaymentStatusSecurity  $security
      * @param  string  $id
      * @return Operations\CustomerPortalOrdersGetPaymentStatusResponse
@@ -438,8 +430,6 @@ class PolarOrders
      *
      * Get an order's invoice data.
      *
-     * **Scopes**: `customer_portal:read` `customer_portal:write`
-     *
      * @param  Operations\CustomerPortalOrdersInvoiceSecurity  $security
      * @param  string  $id
      * @return Operations\CustomerPortalOrdersInvoiceResponse
@@ -532,8 +522,6 @@ class PolarOrders
      * List Orders
      *
      * List orders of the authenticated customer.
-     *
-     * **Scopes**: `customer_portal:read` `customer_portal:write`
      *
      * @param  Operations\CustomerPortalOrdersListSecurity  $security
      * @param  ?Operations\CustomerPortalOrdersListRequest  $request
@@ -657,8 +645,6 @@ class PolarOrders
      *
      * List orders of the authenticated customer.
      *
-     * **Scopes**: `customer_portal:read` `customer_portal:write`
-     *
      * @param  Operations\CustomerPortalOrdersListSecurity  $security
      * @param  ?Operations\CustomerPortalOrdersListRequest  $request
      * @return \Generator<Operations\CustomerPortalOrdersListResponse>
@@ -677,8 +663,6 @@ class PolarOrders
      * Update Order
      *
      * Update an order for the authenticated customer.
-     *
-     * **Scopes**: `customer_portal:write`
      *
      * @param  Operations\CustomerPortalOrdersUpdateSecurity  $security
      * @param  Components\CustomerOrderUpdate  $customerOrderUpdate

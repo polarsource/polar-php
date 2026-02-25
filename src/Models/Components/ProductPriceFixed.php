@@ -37,6 +37,14 @@ class ProductPriceFixed
     public ProductPriceSource $source;
 
     /**
+     * The currency in which the customer will be charged.
+     *
+     * @var string $priceCurrency
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('price_currency')]
+    public string $priceCurrency;
+
+    /**
      * Whether the price is archived and no longer available.
      *
      * @var bool $isArchived
@@ -51,22 +59,6 @@ class ProductPriceFixed
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('product_id')]
     public string $productId;
-
-    /**
-     *
-     * @var ProductPriceType $type
-     */
-    #[\Speakeasy\Serializer\Annotation\SerializedName('type')]
-    #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\ProductPriceType')]
-    public ProductPriceType $type;
-
-    /**
-     * The currency.
-     *
-     * @var string $priceCurrency
-     */
-    #[\Speakeasy\Serializer\Annotation\SerializedName('price_currency')]
-    public string $priceCurrency;
 
     /**
      * The price in cents.
@@ -86,15 +78,6 @@ class ProductPriceFixed
 
     /**
      *
-     * @var ?SubscriptionRecurringInterval $recurringInterval
-     * @deprecated  field: This will be removed in a future release, please migrate away from it as soon as possible.
-     */
-    #[\Speakeasy\Serializer\Annotation\SerializedName('recurring_interval')]
-    #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\SubscriptionRecurringInterval|null')]
-    public ?SubscriptionRecurringInterval $recurringInterval;
-
-    /**
-     *
      * @var string $amountType
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('amount_type')]
@@ -105,27 +88,23 @@ class ProductPriceFixed
      * @param  string  $id
      * @param  ProductPriceSource  $source
      * @param  string  $amountType
+     * @param  string  $priceCurrency
      * @param  bool  $isArchived
      * @param  string  $productId
-     * @param  ProductPriceType  $type
-     * @param  string  $priceCurrency
      * @param  int  $priceAmount
      * @param  ?\DateTime  $modifiedAt
-     * @param  ?SubscriptionRecurringInterval  $recurringInterval
      * @phpstan-pure
      */
-    public function __construct(\DateTime $createdAt, string $id, ProductPriceSource $source, bool $isArchived, string $productId, ProductPriceType $type, string $priceCurrency, int $priceAmount, ?\DateTime $modifiedAt = null, ?SubscriptionRecurringInterval $recurringInterval = null, string $amountType = 'fixed')
+    public function __construct(\DateTime $createdAt, string $id, ProductPriceSource $source, string $priceCurrency, bool $isArchived, string $productId, int $priceAmount, ?\DateTime $modifiedAt = null, string $amountType = 'fixed')
     {
         $this->createdAt = $createdAt;
         $this->id = $id;
         $this->source = $source;
+        $this->priceCurrency = $priceCurrency;
         $this->isArchived = $isArchived;
         $this->productId = $productId;
-        $this->type = $type;
-        $this->priceCurrency = $priceCurrency;
         $this->priceAmount = $priceAmount;
         $this->modifiedAt = $modifiedAt;
-        $this->recurringInterval = $recurringInterval;
         $this->amountType = $amountType;
     }
 }

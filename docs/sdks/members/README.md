@@ -6,7 +6,9 @@
 
 * [listMembers](#listmembers) - List Members
 * [createMember](#createmember) - Create Member
+* [getMember](#getmember) - Get Member
 * [deleteMember](#deletemember) - Delete Member
+* [updateMember](#updatemember) - Update Member
 
 ## listMembers
 
@@ -23,6 +25,7 @@ declare(strict_types=1);
 require 'vendor/autoload.php';
 
 use Polar;
+use Polar\Models\Operations;
 
 $sdk = Polar\Polar::builder()
     ->setSecurity(
@@ -30,12 +33,10 @@ $sdk = Polar\Polar::builder()
     )
     ->build();
 
-
+$request = new Operations\MembersListMembersRequest();
 
 $responses = $sdk->members->listMembers(
-    page: 1,
-    limit: 10
-
+    request: $request
 );
 
 
@@ -48,12 +49,9 @@ foreach ($responses as $response) {
 
 ### Parameters
 
-| Parameter                                                                                                                                                               | Type                                                                                                                                                                    | Required                                                                                                                                                                | Description                                                                                                                                                             |
-| ----------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `customerId`                                                                                                                                                            | *?string*                                                                                                                                                               | :heavy_minus_sign:                                                                                                                                                      | Filter by customer ID.                                                                                                                                                  |
-| `page`                                                                                                                                                                  | *?int*                                                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                      | Page number, defaults to 1.                                                                                                                                             |
-| `limit`                                                                                                                                                                 | *?int*                                                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                      | Size of a page, defaults to 10. Maximum is 100.                                                                                                                         |
-| `sorting`                                                                                                                                                               | array<[Components\MemberSortProperty](../../Models/Components/MemberSortProperty.md)>                                                                                   | :heavy_minus_sign:                                                                                                                                                      | Sorting criterion. Several criteria can be used simultaneously and will be applied in order. Add a minus sign `-` before the criteria name to sort by descending order. |
+| Parameter                                                                                    | Type                                                                                         | Required                                                                                     | Description                                                                                  |
+| -------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------- |
+| `$request`                                                                                   | [Operations\MembersListMembersRequest](../../Models/Operations/MembersListMembersRequest.md) | :heavy_check_mark:                                                                           | The request object to use for the request.                                                   |
 
 ### Response
 
@@ -126,6 +124,59 @@ if ($response->member !== null) {
 | Errors\HTTPValidationError | 422                        | application/json           |
 | Errors\APIException        | 4XX, 5XX                   | \*/\*                      |
 
+## getMember
+
+Get a member by ID.
+
+The authenticated user or organization must have access to the member's organization.
+
+**Scopes**: `members:read` `members:write`
+
+### Example Usage
+
+<!-- UsageSnippet language="php" operationID="members:get_member" method="get" path="/v1/members/{id}" -->
+```php
+declare(strict_types=1);
+
+require 'vendor/autoload.php';
+
+use Polar;
+
+$sdk = Polar\Polar::builder()
+    ->setSecurity(
+        '<YOUR_BEARER_TOKEN_HERE>'
+    )
+    ->build();
+
+
+
+$response = $sdk->members->getMember(
+    id: '572bebad-ee17-4d04-a50f-6596a7d92cf3'
+);
+
+if ($response->member !== null) {
+    // handle response
+}
+```
+
+### Parameters
+
+| Parameter          | Type               | Required           | Description        |
+| ------------------ | ------------------ | ------------------ | ------------------ |
+| `id`               | *string*           | :heavy_check_mark: | N/A                |
+
+### Response
+
+**[?Operations\MembersGetMemberResponse](../../Models/Operations/MembersGetMemberResponse.md)**
+
+### Errors
+
+| Error Type                 | Status Code                | Content Type               |
+| -------------------------- | -------------------------- | -------------------------- |
+| Errors\ResourceNotFound    | 404                        | application/json           |
+| Errors\HTTPValidationError | 422                        | application/json           |
+| Errors\APIException        | 4XX, 5XX                   | \*/\*                      |
+
 ## deleteMember
 
 Delete a member.
@@ -170,6 +221,66 @@ if ($response->statusCode === 200) {
 ### Response
 
 **[?Operations\MembersDeleteMemberResponse](../../Models/Operations/MembersDeleteMemberResponse.md)**
+
+### Errors
+
+| Error Type                 | Status Code                | Content Type               |
+| -------------------------- | -------------------------- | -------------------------- |
+| Errors\ResourceNotFound    | 404                        | application/json           |
+| Errors\HTTPValidationError | 422                        | application/json           |
+| Errors\APIException        | 4XX, 5XX                   | \*/\*                      |
+
+## updateMember
+
+Update a member.
+
+Only name and role can be updated.
+The authenticated user or organization must have access to the member's organization.
+
+**Scopes**: `members:write`
+
+### Example Usage
+
+<!-- UsageSnippet language="php" operationID="members:update_member" method="patch" path="/v1/members/{id}" -->
+```php
+declare(strict_types=1);
+
+require 'vendor/autoload.php';
+
+use Polar;
+use Polar\Models\Components;
+
+$sdk = Polar\Polar::builder()
+    ->setSecurity(
+        '<YOUR_BEARER_TOKEN_HERE>'
+    )
+    ->build();
+
+$memberUpdate = new Components\MemberUpdate(
+    name: 'Jane Doe',
+);
+
+$response = $sdk->members->updateMember(
+    id: 'ab9b628a-6dbd-4f07-bcd6-163a8b5b7de4',
+    memberUpdate: $memberUpdate
+
+);
+
+if ($response->member !== null) {
+    // handle response
+}
+```
+
+### Parameters
+
+| Parameter                                                          | Type                                                               | Required                                                           | Description                                                        |
+| ------------------------------------------------------------------ | ------------------------------------------------------------------ | ------------------------------------------------------------------ | ------------------------------------------------------------------ |
+| `id`                                                               | *string*                                                           | :heavy_check_mark:                                                 | N/A                                                                |
+| `memberUpdate`                                                     | [Components\MemberUpdate](../../Models/Components/MemberUpdate.md) | :heavy_check_mark:                                                 | N/A                                                                |
+
+### Response
+
+**[?Operations\MembersUpdateMemberResponse](../../Models/Operations/MembersUpdateMemberResponse.md)**
 
 ### Errors
 

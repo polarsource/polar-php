@@ -151,7 +151,7 @@ class Subscriptions
         $httpOptions = ['http_errors' => false];
 
         $qp = Utils\Utils::getQueryParams(Operations\SubscriptionsExportRequest::class, $request, $urlOverride);
-        $httpOptions['headers']['Accept'] = 'application/json';
+        $httpOptions['headers']['Accept'] = 'application/json;q=1, text/csv;q=0';
         $httpOptions['headers']['user-agent'] = $this->sdkConfiguration->userAgent;
         $httpRequest = new \GuzzleHttp\Psr7\Request('GET', $url);
         $hookContext = new HookContext($this->sdkConfiguration, $baseUrl, 'subscriptions:export', null, $this->sdkConfiguration->securitySource);
@@ -186,6 +186,16 @@ class Subscriptions
                     any: $obj);
 
                 return $response;
+            } elseif (Utils\Utils::matchContentType($contentType, 'text/csv')) {
+                $httpResponse = $this->sdkConfiguration->hooks->afterSuccess(new Hooks\AfterSuccessContext($hookContext), $httpResponse);
+
+                $obj = $httpResponse->getBody()->getContents();
+
+                return new Operations\SubscriptionsExportResponse(
+                    statusCode: $statusCode,
+                    contentType: $contentType,
+                    rawResponse: $httpResponse,
+                    res: $obj);
             } else {
                 throw new \Polar\Models\Errors\APIException('Unknown content type received', $statusCode, $httpResponse->getBody()->getContents(), $httpResponse);
             }

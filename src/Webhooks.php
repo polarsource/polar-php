@@ -377,6 +377,10 @@ class Webhooks
                             endpointId: $request != null ? $request->endpointId : null,
                             startTimestamp: $request != null ? $request->startTimestamp : null,
                             endTimestamp: $request != null ? $request->endTimestamp : null,
+                            succeeded: $request != null ? $request->succeeded : null,
+                            query: $request != null ? $request->query : null,
+                            httpCodeClass: $request != null ? $request->httpCodeClass : null,
+                            eventType: $request != null ? $request->eventType : null,
                             page: $nextPage,
                             limit: $request != null ? $request->limit : null,
                         ),
@@ -490,7 +494,7 @@ class Webhooks
                     listResourceWebhookEndpoint: $obj);
                 $sdk = $this;
 
-                $response->next = function () use ($sdk, $request, $responseData, $organizationId, $limit): ?Operations\WebhooksListWebhookEndpointsResponse {
+                $response->next = function () use ($sdk, $request, $responseData): ?Operations\WebhooksListWebhookEndpointsResponse {
                     $page = $request != null ? $request->page : 0;
                     $nextPage = $page + 1;
                     $jsonObject = new \JsonPath\JsonObject($responseData);
@@ -516,9 +520,9 @@ class Webhooks
                     }
 
                     return $sdk->listWebhookEndpointsIndividual(
-                        organizationId: $organizationId,
+                        organizationId: $request != null ? $request->organizationId : null,
                         page: $nextPage,
-                        limit: $limit,
+                        limit: $request != null ? $request->limit : null,
                     );
                 };
 

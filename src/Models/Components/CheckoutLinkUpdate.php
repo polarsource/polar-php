@@ -107,6 +107,15 @@ class CheckoutLinkUpdate
     public ?string $successUrl = null;
 
     /**
+     * When set, a back button will be shown in the checkout to return to this URL.
+     *
+     * @var ?string $returnUrl
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('return_url')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
+    public ?string $returnUrl = null;
+
+    /**
      * @param  ?array<string, string|int|float|bool>  $metadata
      * @param  ?TrialInterval  $trialInterval
      * @param  ?int  $trialIntervalCount
@@ -116,9 +125,10 @@ class CheckoutLinkUpdate
      * @param  ?bool  $requireBillingAddress
      * @param  ?string  $discountId
      * @param  ?string  $successUrl
+     * @param  ?string  $returnUrl
      * @phpstan-pure
      */
-    public function __construct(?array $metadata = null, ?TrialInterval $trialInterval = null, ?int $trialIntervalCount = null, ?array $products = null, ?string $label = null, ?bool $allowDiscountCodes = null, ?bool $requireBillingAddress = null, ?string $discountId = null, ?string $successUrl = null)
+    public function __construct(?array $metadata = null, ?TrialInterval $trialInterval = null, ?int $trialIntervalCount = null, ?array $products = null, ?string $label = null, ?bool $allowDiscountCodes = null, ?bool $requireBillingAddress = null, ?string $discountId = null, ?string $successUrl = null, ?string $returnUrl = null)
     {
         $this->metadata = $metadata;
         $this->trialInterval = $trialInterval;
@@ -129,5 +139,6 @@ class CheckoutLinkUpdate
         $this->requireBillingAddress = $requireBillingAddress;
         $this->discountId = $discountId;
         $this->successUrl = $successUrl;
+        $this->returnUrl = $returnUrl;
     }
 }

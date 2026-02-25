@@ -7,8 +7,8 @@
 * [list](#list) - List Custom Fields
 * [create](#create) - Create Custom Field
 * [get](#get) - Get Custom Field
-* [update](#update) - Update Custom Field
 * [delete](#delete) - Delete Custom Field
+* [update](#update) - Update Custom Field
 
 ## list
 
@@ -175,6 +175,57 @@ if ($response->customField !== null) {
 | Errors\HTTPValidationError | 422                        | application/json           |
 | Errors\APIException        | 4XX, 5XX                   | \*/\*                      |
 
+## delete
+
+Delete a custom field.
+
+**Scopes**: `custom_fields:write`
+
+### Example Usage
+
+<!-- UsageSnippet language="php" operationID="custom-fields:delete" method="delete" path="/v1/custom-fields/{id}" -->
+```php
+declare(strict_types=1);
+
+require 'vendor/autoload.php';
+
+use Polar;
+
+$sdk = Polar\Polar::builder()
+    ->setSecurity(
+        '<YOUR_BEARER_TOKEN_HERE>'
+    )
+    ->build();
+
+
+
+$response = $sdk->customFields->delete(
+    id: '<value>'
+);
+
+if ($response->statusCode === 200) {
+    // handle response
+}
+```
+
+### Parameters
+
+| Parameter            | Type                 | Required             | Description          |
+| -------------------- | -------------------- | -------------------- | -------------------- |
+| `id`                 | *string*             | :heavy_check_mark:   | The custom field ID. |
+
+### Response
+
+**[?Operations\CustomFieldsDeleteResponse](../../Models/Operations/CustomFieldsDeleteResponse.md)**
+
+### Errors
+
+| Error Type                 | Status Code                | Content Type               |
+| -------------------------- | -------------------------- | -------------------------- |
+| Errors\ResourceNotFound    | 404                        | application/json           |
+| Errors\HTTPValidationError | 422                        | application/json           |
+| Errors\APIException        | 4XX, 5XX                   | \*/\*                      |
+
 ## update
 
 Update a custom field.
@@ -221,57 +272,6 @@ if ($response->customField !== null) {
 ### Response
 
 **[?Operations\CustomFieldsUpdateResponse](../../Models/Operations/CustomFieldsUpdateResponse.md)**
-
-### Errors
-
-| Error Type                 | Status Code                | Content Type               |
-| -------------------------- | -------------------------- | -------------------------- |
-| Errors\ResourceNotFound    | 404                        | application/json           |
-| Errors\HTTPValidationError | 422                        | application/json           |
-| Errors\APIException        | 4XX, 5XX                   | \*/\*                      |
-
-## delete
-
-Delete a custom field.
-
-**Scopes**: `custom_fields:write`
-
-### Example Usage
-
-<!-- UsageSnippet language="php" operationID="custom-fields:delete" method="delete" path="/v1/custom-fields/{id}" -->
-```php
-declare(strict_types=1);
-
-require 'vendor/autoload.php';
-
-use Polar;
-
-$sdk = Polar\Polar::builder()
-    ->setSecurity(
-        '<YOUR_BEARER_TOKEN_HERE>'
-    )
-    ->build();
-
-
-
-$response = $sdk->customFields->delete(
-    id: '<value>'
-);
-
-if ($response->statusCode === 200) {
-    // handle response
-}
-```
-
-### Parameters
-
-| Parameter            | Type                 | Required             | Description          |
-| -------------------- | -------------------- | -------------------- | -------------------- |
-| `id`                 | *string*             | :heavy_check_mark:   | The custom field ID. |
-
-### Response
-
-**[?Operations\CustomFieldsDeleteResponse](../../Models/Operations/CustomFieldsDeleteResponse.md)**
 
 ### Errors
 

@@ -111,6 +111,16 @@ class OrganizationUpdate
     public ?OrganizationCustomerPortalSettings $customerPortalSettings = null;
 
     /**
+     * Default presentment currency for the organization
+     *
+     * @var ?PresentmentCurrency $defaultPresentmentCurrency
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('default_presentment_currency')]
+    #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\PresentmentCurrency|null')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
+    public ?PresentmentCurrency $defaultPresentmentCurrency = null;
+
+    /**
      * @param  ?string  $name
      * @param  ?string  $avatarUrl
      * @param  ?string  $email
@@ -122,9 +132,10 @@ class OrganizationUpdate
      * @param  ?OrganizationNotificationSettings  $notificationSettings
      * @param  ?OrganizationCustomerEmailSettings  $customerEmailSettings
      * @param  ?OrganizationCustomerPortalSettings  $customerPortalSettings
+     * @param  ?PresentmentCurrency  $defaultPresentmentCurrency
      * @phpstan-pure
      */
-    public function __construct(?string $name = null, ?string $avatarUrl = null, ?string $email = null, ?string $website = null, ?array $socials = null, ?OrganizationDetails $details = null, ?OrganizationFeatureSettings $featureSettings = null, ?OrganizationSubscriptionSettings $subscriptionSettings = null, ?OrganizationNotificationSettings $notificationSettings = null, ?OrganizationCustomerEmailSettings $customerEmailSettings = null, ?OrganizationCustomerPortalSettings $customerPortalSettings = null)
+    public function __construct(?string $name = null, ?string $avatarUrl = null, ?string $email = null, ?string $website = null, ?array $socials = null, ?OrganizationDetails $details = null, ?OrganizationFeatureSettings $featureSettings = null, ?OrganizationSubscriptionSettings $subscriptionSettings = null, ?OrganizationNotificationSettings $notificationSettings = null, ?OrganizationCustomerEmailSettings $customerEmailSettings = null, ?OrganizationCustomerPortalSettings $customerPortalSettings = null, ?PresentmentCurrency $defaultPresentmentCurrency = null)
     {
         $this->name = $name;
         $this->avatarUrl = $avatarUrl;
@@ -137,5 +148,6 @@ class OrganizationUpdate
         $this->notificationSettings = $notificationSettings;
         $this->customerEmailSettings = $customerEmailSettings;
         $this->customerPortalSettings = $customerPortalSettings;
+        $this->defaultPresentmentCurrency = $defaultPresentmentCurrency;
     }
 }

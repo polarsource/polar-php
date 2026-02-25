@@ -28,30 +28,30 @@ class ProductPriceSeatBasedCreate
 
     /**
      *
+     * @var ?PresentmentCurrency $priceCurrency
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('price_currency')]
+    #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\PresentmentCurrency|null')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
+    public ?PresentmentCurrency $priceCurrency = null;
+
+    /**
+     *
      * @var string $amountType
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('amount_type')]
     public string $amountType;
 
     /**
-     * The currency. Currently, only `usd` is supported.
-     *
-     * @var ?string $priceCurrency
-     */
-    #[\Speakeasy\Serializer\Annotation\SerializedName('price_currency')]
-    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
-    public ?string $priceCurrency = null;
-
-    /**
      * @param  string  $amountType
      * @param  ProductPriceSeatTiersInput  $seatTiers
-     * @param  ?string  $priceCurrency
+     * @param  ?PresentmentCurrency  $priceCurrency
      * @phpstan-pure
      */
-    public function __construct(ProductPriceSeatTiersInput $seatTiers, string $amountType = 'seat_based', ?string $priceCurrency = 'usd')
+    public function __construct(ProductPriceSeatTiersInput $seatTiers, ?PresentmentCurrency $priceCurrency = null, string $amountType = 'seat_based')
     {
         $this->seatTiers = $seatTiers;
-        $this->amountType = $amountType;
         $this->priceCurrency = $priceCurrency;
+        $this->amountType = $amountType;
     }
 }

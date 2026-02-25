@@ -8,8 +8,8 @@
 * [create](#create) - Create Subscription
 * [export](#export) - Export Subscriptions
 * [get](#get) - Get Subscription
-* [update](#update) - Update Subscription
 * [revoke](#revoke) - Revoke Subscription
+* [update](#update) - Update Subscription
 
 ## list
 
@@ -227,6 +227,59 @@ if ($response->subscription !== null) {
 | Errors\HTTPValidationError | 422                        | application/json           |
 | Errors\APIException        | 4XX, 5XX                   | \*/\*                      |
 
+## revoke
+
+Revoke a subscription, i.e cancel immediately.
+
+**Scopes**: `subscriptions:write`
+
+### Example Usage
+
+<!-- UsageSnippet language="php" operationID="subscriptions:revoke" method="delete" path="/v1/subscriptions/{id}" -->
+```php
+declare(strict_types=1);
+
+require 'vendor/autoload.php';
+
+use Polar;
+
+$sdk = Polar\Polar::builder()
+    ->setSecurity(
+        '<YOUR_BEARER_TOKEN_HERE>'
+    )
+    ->build();
+
+
+
+$response = $sdk->subscriptions->revoke(
+    id: '<value>'
+);
+
+if ($response->subscription !== null) {
+    // handle response
+}
+```
+
+### Parameters
+
+| Parameter            | Type                 | Required             | Description          |
+| -------------------- | -------------------- | -------------------- | -------------------- |
+| `id`                 | *string*             | :heavy_check_mark:   | The subscription ID. |
+
+### Response
+
+**[?Operations\SubscriptionsRevokeResponse](../../Models/Operations/SubscriptionsRevokeResponse.md)**
+
+### Errors
+
+| Error Type                         | Status Code                        | Content Type                       |
+| ---------------------------------- | ---------------------------------- | ---------------------------------- |
+| Errors\AlreadyCanceledSubscription | 403                                | application/json                   |
+| Errors\ResourceNotFound            | 404                                | application/json                   |
+| Errors\SubscriptionLocked          | 409                                | application/json                   |
+| Errors\HTTPValidationError         | 422                                | application/json                   |
+| Errors\APIException                | 4XX, 5XX                           | \*/\*                              |
+
 ## update
 
 Update a subscription.
@@ -275,59 +328,6 @@ if ($response->subscription !== null) {
 ### Response
 
 **[?Operations\SubscriptionsUpdateResponse](../../Models/Operations/SubscriptionsUpdateResponse.md)**
-
-### Errors
-
-| Error Type                         | Status Code                        | Content Type                       |
-| ---------------------------------- | ---------------------------------- | ---------------------------------- |
-| Errors\AlreadyCanceledSubscription | 403                                | application/json                   |
-| Errors\ResourceNotFound            | 404                                | application/json                   |
-| Errors\SubscriptionLocked          | 409                                | application/json                   |
-| Errors\HTTPValidationError         | 422                                | application/json                   |
-| Errors\APIException                | 4XX, 5XX                           | \*/\*                              |
-
-## revoke
-
-Revoke a subscription, i.e cancel immediately.
-
-**Scopes**: `subscriptions:write`
-
-### Example Usage
-
-<!-- UsageSnippet language="php" operationID="subscriptions:revoke" method="delete" path="/v1/subscriptions/{id}" -->
-```php
-declare(strict_types=1);
-
-require 'vendor/autoload.php';
-
-use Polar;
-
-$sdk = Polar\Polar::builder()
-    ->setSecurity(
-        '<YOUR_BEARER_TOKEN_HERE>'
-    )
-    ->build();
-
-
-
-$response = $sdk->subscriptions->revoke(
-    id: '<value>'
-);
-
-if ($response->subscription !== null) {
-    // handle response
-}
-```
-
-### Parameters
-
-| Parameter            | Type                 | Required             | Description          |
-| -------------------- | -------------------- | -------------------- | -------------------- |
-| `id`                 | *string*             | :heavy_check_mark:   | The subscription ID. |
-
-### Response
-
-**[?Operations\SubscriptionsRevokeResponse](../../Models/Operations/SubscriptionsRevokeResponse.md)**
 
 ### Errors
 

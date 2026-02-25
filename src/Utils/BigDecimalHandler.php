@@ -60,6 +60,6 @@ class BigDecimalHandler implements SubscribingHandlerInterface
     /** @phpstan-ignore-next-line */
     public function deserialize(JsonDeserializationVisitor $visitor, string|float $data, array $type, Context $context): mixed
     {
-        return \Brick\Math\BigDecimal::of($data);
+        return \Brick\Math\BigDecimal::of(is_float($data) ? (string) $data : $data);
     }
 }

@@ -50,8 +50,6 @@ class PolarCustomers
      *
      * Add a payment method to the authenticated customer.
      *
-     * **Scopes**: `customer_portal:read` `customer_portal:write`
-     *
      * @param  Operations\CustomerPortalCustomersAddPaymentMethodSecurity  $security
      * @param  Components\CustomerPaymentMethodCreate  $request
      * @return Operations\CustomerPortalCustomersAddPaymentMethodResponse
@@ -135,8 +133,6 @@ class PolarCustomers
      * Confirm Customer Payment Method
      *
      * Confirm a payment method for the authenticated customer.
-     *
-     * **Scopes**: `customer_portal:read` `customer_portal:write`
      *
      * @param  Operations\CustomerPortalCustomersConfirmPaymentMethodSecurity  $security
      * @param  Components\CustomerPaymentMethodConfirm  $request
@@ -232,8 +228,6 @@ class PolarCustomers
      * Delete Customer Payment Method
      *
      * Delete a payment method from the authenticated customer.
-     *
-     * **Scopes**: `customer_portal:read` `customer_portal:write`
      *
      * @param  Operations\CustomerPortalCustomersDeletePaymentMethodSecurity  $security
      * @param  string  $id
@@ -399,8 +393,6 @@ class PolarCustomers
      *
      * Get saved payment methods of the authenticated customer.
      *
-     * **Scopes**: `customer_portal:read` `customer_portal:write`
-     *
      * @param  Operations\CustomerPortalCustomersListPaymentMethodsSecurity  $security
      * @param  ?int  $page
      * @param  ?int  $limit
@@ -460,7 +452,7 @@ class PolarCustomers
                     listResourceCustomerPaymentMethod: $obj);
                 $sdk = $this;
 
-                $response->next = function () use ($sdk, $request, $responseData, $security, $limit): ?Operations\CustomerPortalCustomersListPaymentMethodsResponse {
+                $response->next = function () use ($sdk, $request, $responseData, $security): ?Operations\CustomerPortalCustomersListPaymentMethodsResponse {
                     $page = $request != null ? $request->page : 0;
                     $nextPage = $page + 1;
                     $jsonObject = new \JsonPath\JsonObject($responseData);
@@ -488,7 +480,7 @@ class PolarCustomers
                     return $sdk->listPaymentMethodsIndividual(
                         security: $security,
                         page: $nextPage,
-                        limit: $limit,
+                        limit: $request != null ? $request->limit : null,
                     );
                 };
 
@@ -521,8 +513,6 @@ class PolarCustomers
      *
      * Get saved payment methods of the authenticated customer.
      *
-     * **Scopes**: `customer_portal:read` `customer_portal:write`
-     *
      * @param  Operations\CustomerPortalCustomersListPaymentMethodsSecurity  $security
      * @param  ?int  $page
      * @param  ?int  $limit
@@ -542,8 +532,6 @@ class PolarCustomers
      * Update Customer
      *
      * Update authenticated customer.
-     *
-     * **Scopes**: `customer_portal:write`
      *
      * @param  Operations\CustomerPortalCustomersUpdateSecurity  $security
      * @param  Components\CustomerPortalCustomerUpdate  $request

@@ -13,21 +13,23 @@ namespace Polar\Models\Components;
 class OrderUpdate
 {
     /**
-     * The name of the customer that should appear on the invoice. Can't be updated after the invoice is generated.
+     * The name of the customer that should appear on the invoice.
      *
      * @var ?string $billingName
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('billing_name')]
-    public ?string $billingName;
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
+    public ?string $billingName = null;
 
     /**
-     * The address of the customer that should appear on the invoice. Can't be updated after the invoice is generated.
+     * The address of the customer that should appear on the invoice. Country and state fields cannot be updated.
      *
      * @var ?AddressInput $billingAddress
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('billing_address')]
     #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\AddressInput|null')]
-    public ?AddressInput $billingAddress;
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
+    public ?AddressInput $billingAddress = null;
 
     /**
      * @param  ?string  $billingName

@@ -7,8 +7,8 @@
 * [listWebhookEndpoints](#listwebhookendpoints) - List Webhook Endpoints
 * [createWebhookEndpoint](#createwebhookendpoint) - Create Webhook Endpoint
 * [getWebhookEndpoint](#getwebhookendpoint) - Get Webhook Endpoint
-* [updateWebhookEndpoint](#updatewebhookendpoint) - Update Webhook Endpoint
 * [deleteWebhookEndpoint](#deletewebhookendpoint) - Delete Webhook Endpoint
+* [updateWebhookEndpoint](#updatewebhookendpoint) - Update Webhook Endpoint
 * [resetWebhookEndpointSecret](#resetwebhookendpointsecret) - Reset Webhook Endpoint Secret
 * [listWebhookDeliveries](#listwebhookdeliveries) - List Webhook Deliveries
 * [redeliverWebhookEvent](#redeliverwebhookevent) - Redeliver Webhook Event
@@ -180,6 +180,57 @@ if ($response->webhookEndpoint !== null) {
 | Errors\HTTPValidationError | 422                        | application/json           |
 | Errors\APIException        | 4XX, 5XX                   | \*/\*                      |
 
+## deleteWebhookEndpoint
+
+Delete a webhook endpoint.
+
+**Scopes**: `webhooks:write`
+
+### Example Usage
+
+<!-- UsageSnippet language="php" operationID="webhooks:delete_webhook_endpoint" method="delete" path="/v1/webhooks/endpoints/{id}" -->
+```php
+declare(strict_types=1);
+
+require 'vendor/autoload.php';
+
+use Polar;
+
+$sdk = Polar\Polar::builder()
+    ->setSecurity(
+        '<YOUR_BEARER_TOKEN_HERE>'
+    )
+    ->build();
+
+
+
+$response = $sdk->webhooks->deleteWebhookEndpoint(
+    id: '<value>'
+);
+
+if ($response->statusCode === 200) {
+    // handle response
+}
+```
+
+### Parameters
+
+| Parameter                | Type                     | Required                 | Description              |
+| ------------------------ | ------------------------ | ------------------------ | ------------------------ |
+| `id`                     | *string*                 | :heavy_check_mark:       | The webhook endpoint ID. |
+
+### Response
+
+**[?Operations\WebhooksDeleteWebhookEndpointResponse](../../Models/Operations/WebhooksDeleteWebhookEndpointResponse.md)**
+
+### Errors
+
+| Error Type                 | Status Code                | Content Type               |
+| -------------------------- | -------------------------- | -------------------------- |
+| Errors\ResourceNotFound    | 404                        | application/json           |
+| Errors\HTTPValidationError | 422                        | application/json           |
+| Errors\APIException        | 4XX, 5XX                   | \*/\*                      |
+
 ## updateWebhookEndpoint
 
 Update a webhook endpoint.
@@ -228,57 +279,6 @@ if ($response->webhookEndpoint !== null) {
 ### Response
 
 **[?Operations\WebhooksUpdateWebhookEndpointResponse](../../Models/Operations/WebhooksUpdateWebhookEndpointResponse.md)**
-
-### Errors
-
-| Error Type                 | Status Code                | Content Type               |
-| -------------------------- | -------------------------- | -------------------------- |
-| Errors\ResourceNotFound    | 404                        | application/json           |
-| Errors\HTTPValidationError | 422                        | application/json           |
-| Errors\APIException        | 4XX, 5XX                   | \*/\*                      |
-
-## deleteWebhookEndpoint
-
-Delete a webhook endpoint.
-
-**Scopes**: `webhooks:write`
-
-### Example Usage
-
-<!-- UsageSnippet language="php" operationID="webhooks:delete_webhook_endpoint" method="delete" path="/v1/webhooks/endpoints/{id}" -->
-```php
-declare(strict_types=1);
-
-require 'vendor/autoload.php';
-
-use Polar;
-
-$sdk = Polar\Polar::builder()
-    ->setSecurity(
-        '<YOUR_BEARER_TOKEN_HERE>'
-    )
-    ->build();
-
-
-
-$response = $sdk->webhooks->deleteWebhookEndpoint(
-    id: '<value>'
-);
-
-if ($response->statusCode === 200) {
-    // handle response
-}
-```
-
-### Parameters
-
-| Parameter                | Type                     | Required                 | Description              |
-| ------------------------ | ------------------------ | ------------------------ | ------------------------ |
-| `id`                     | *string*                 | :heavy_check_mark:       | The webhook endpoint ID. |
-
-### Response
-
-**[?Operations\WebhooksDeleteWebhookEndpointResponse](../../Models/Operations/WebhooksDeleteWebhookEndpointResponse.md)**
 
 ### Errors
 

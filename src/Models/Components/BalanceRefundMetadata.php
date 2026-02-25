@@ -77,6 +77,14 @@ class BalanceRefundMetadata
 
     /**
      *
+     * @var ?string $orderCreatedAt
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('order_created_at')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
+    public ?string $orderCreatedAt = null;
+
+    /**
+     *
      * @var ?string $productId
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('product_id')]
@@ -98,6 +106,14 @@ class BalanceRefundMetadata
     #[\Speakeasy\Serializer\Annotation\SerializedName('refundable_amount')]
     #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
     public ?int $refundableAmount = null;
+
+    /**
+     *
+     * @var ?float $exchangeRate
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('exchange_rate')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
+    public ?float $exchangeRate = null;
 
     /**
      *
@@ -125,14 +141,16 @@ class BalanceRefundMetadata
      * @param  int  $taxAmount
      * @param  int  $fee
      * @param  ?string  $orderId
+     * @param  ?string  $orderCreatedAt
      * @param  ?string  $productId
      * @param  ?string  $subscriptionId
      * @param  ?int  $refundableAmount
+     * @param  ?float  $exchangeRate
      * @param  ?string  $taxState
      * @param  ?string  $taxCountry
      * @phpstan-pure
      */
-    public function __construct(string $transactionId, string $refundId, int $amount, string $currency, int $presentmentAmount, string $presentmentCurrency, int $taxAmount, int $fee, ?string $orderId = null, ?string $productId = null, ?string $subscriptionId = null, ?int $refundableAmount = null, ?string $taxState = null, ?string $taxCountry = null)
+    public function __construct(string $transactionId, string $refundId, int $amount, string $currency, int $presentmentAmount, string $presentmentCurrency, int $taxAmount, int $fee, ?string $orderId = null, ?string $orderCreatedAt = null, ?string $productId = null, ?string $subscriptionId = null, ?int $refundableAmount = null, ?float $exchangeRate = null, ?string $taxState = null, ?string $taxCountry = null)
     {
         $this->transactionId = $transactionId;
         $this->refundId = $refundId;
@@ -143,9 +161,11 @@ class BalanceRefundMetadata
         $this->taxAmount = $taxAmount;
         $this->fee = $fee;
         $this->orderId = $orderId;
+        $this->orderCreatedAt = $orderCreatedAt;
         $this->productId = $productId;
         $this->subscriptionId = $subscriptionId;
         $this->refundableAmount = $refundableAmount;
+        $this->exchangeRate = $exchangeRate;
         $this->taxState = $taxState;
         $this->taxCountry = $taxCountry;
     }

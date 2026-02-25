@@ -35,22 +35,39 @@ class CustomerPortalSeatsListClaimedSubscriptionsResponse
     /**
      * Successful Response
      *
-     * @var ?array<Components\CustomerSubscription> $responseCustomerPortalSeatsListClaimedSubscriptions
+     * @var ?Components\ListResourceCustomerSubscription $listResourceCustomerSubscription
      */
-    public ?array $responseCustomerPortalSeatsListClaimedSubscriptions = null;
+    public ?Components\ListResourceCustomerSubscription $listResourceCustomerSubscription = null;
 
+    /**
+     * @var \Closure(string): ?CustomerPortalSeatsListClaimedSubscriptionsResponse $next
+     */
+    public \Closure $next;
     /**
      * @param  string  $contentType
      * @param  int  $statusCode
      * @param  \Psr\Http\Message\ResponseInterface  $rawResponse
-     * @param  ?array<Components\CustomerSubscription>  $responseCustomerPortalSeatsListClaimedSubscriptions
+     * @param  ?Components\ListResourceCustomerSubscription  $listResourceCustomerSubscription
      * @phpstan-pure
      */
-    public function __construct(string $contentType, int $statusCode, \Psr\Http\Message\ResponseInterface $rawResponse, ?array $responseCustomerPortalSeatsListClaimedSubscriptions = null)
+    public function __construct(string $contentType, int $statusCode, \Psr\Http\Message\ResponseInterface $rawResponse, ?Components\ListResourceCustomerSubscription $listResourceCustomerSubscription = null)
     {
         $this->contentType = $contentType;
         $this->statusCode = $statusCode;
         $this->rawResponse = $rawResponse;
-        $this->responseCustomerPortalSeatsListClaimedSubscriptions = $responseCustomerPortalSeatsListClaimedSubscriptions;
+        $this->listResourceCustomerSubscription = $listResourceCustomerSubscription;
+    }
+    /**
+     * @param  string  $name
+     * @param  array<mixed>  $args
+     * @return ?CustomerPortalSeatsListClaimedSubscriptionsResponse
+     */
+    public function __call($name, $args): ?CustomerPortalSeatsListClaimedSubscriptionsResponse
+    {
+        if ($name === 'next') {
+            return call_user_func_array($this->next, $args);
+        }
+
+        return null;
     }
 }

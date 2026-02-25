@@ -11,12 +11,14 @@ namespace Polar\Models\Components;
 
 enum PresentmentCurrency: string
 {
-    case Usd = 'usd';
-    case Eur = 'eur';
-    case Gbp = 'gbp';
-    case Cad = 'cad';
     case Aud = 'aud';
-    case Jpy = 'jpy';
+    case Brl = 'brl';
+    case Cad = 'cad';
     case Chf = 'chf';
+    case Eur = 'eur';
+    case Inr = 'inr';
+    case Gbp = 'gbp';
+    case Jpy = 'jpy';
     case Sek = 'sek';
+    case Usd = 'usd';
 }

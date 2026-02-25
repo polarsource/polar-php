@@ -84,6 +84,16 @@ class CustomerOrganization
     public ?string $avatarUrl;
 
     /**
+     * Feature flags exposed to the customer portal.
+     *
+     * @var ?CustomerOrganizationFeatureSettings $organizationFeatures
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('organization_features')]
+    #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\CustomerOrganizationFeatureSettings|null')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
+    public ?CustomerOrganizationFeatureSettings $organizationFeatures = null;
+
+    /**
      * @param  \DateTime  $createdAt
      * @param  string  $id
      * @param  string  $name
@@ -93,9 +103,10 @@ class CustomerOrganization
      * @param  OrganizationCustomerPortalSettings  $customerPortalSettings
      * @param  ?\DateTime  $modifiedAt
      * @param  ?string  $avatarUrl
+     * @param  ?CustomerOrganizationFeatureSettings  $organizationFeatures
      * @phpstan-pure
      */
-    public function __construct(\DateTime $createdAt, string $id, string $name, string $slug, SubscriptionProrationBehavior $prorationBehavior, bool $allowCustomerUpdates, OrganizationCustomerPortalSettings $customerPortalSettings, ?\DateTime $modifiedAt = null, ?string $avatarUrl = null)
+    public function __construct(\DateTime $createdAt, string $id, string $name, string $slug, SubscriptionProrationBehavior $prorationBehavior, bool $allowCustomerUpdates, OrganizationCustomerPortalSettings $customerPortalSettings, ?\DateTime $modifiedAt = null, ?string $avatarUrl = null, ?CustomerOrganizationFeatureSettings $organizationFeatures = null)
     {
         $this->createdAt = $createdAt;
         $this->id = $id;
@@ -106,5 +117,6 @@ class CustomerOrganization
         $this->customerPortalSettings = $customerPortalSettings;
         $this->modifiedAt = $modifiedAt;
         $this->avatarUrl = $avatarUrl;
+        $this->organizationFeatures = $organizationFeatures;
     }
 }

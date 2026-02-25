@@ -154,14 +154,6 @@ class CustomerOrder
     public string $customerId;
 
     /**
-     *
-     * @var string $userId
-     * @deprecated  field: This will be removed in a future release, please migrate away from it as soon as possible.
-     */
-    #[\Speakeasy\Serializer\Annotation\SerializedName('user_id')]
-    public string $userId;
-
-    /**
      * Line items composing the order.
      *
      * @var array<OrderItemSchema> $items
@@ -283,7 +275,6 @@ class CustomerOrder
      * @param  string  $invoiceNumber
      * @param  bool  $isInvoiceGenerated
      * @param  string  $customerId
-     * @param  string  $userId
      * @param  array<OrderItemSchema>  $items
      * @param  string  $description
      * @param  ?\DateTime  $modifiedAt
@@ -299,7 +290,7 @@ class CustomerOrder
      * @param  ?\DateTime  $nextPaymentAttemptAt
      * @phpstan-pure
      */
-    public function __construct(string $id, \DateTime $createdAt, OrderStatus $status, bool $paid, int $subtotalAmount, int $discountAmount, int $netAmount, int $taxAmount, int $totalAmount, int $appliedBalanceAmount, int $dueAmount, int $refundedAmount, int $refundedTaxAmount, string $currency, OrderBillingReason $billingReason, string $invoiceNumber, bool $isInvoiceGenerated, string $customerId, string $userId, array $items, string $description, ?\DateTime $modifiedAt = null, ?string $billingName = null, ?Address $billingAddress = null, ?string $productId = null, ?string $discountId = null, ?string $subscriptionId = null, ?string $checkoutId = null, ?CustomerOrderProduct $product = null, ?CustomerOrderSubscription $subscription = null, ?int $seats = null, ?\DateTime $nextPaymentAttemptAt = null)
+    public function __construct(string $id, \DateTime $createdAt, OrderStatus $status, bool $paid, int $subtotalAmount, int $discountAmount, int $netAmount, int $taxAmount, int $totalAmount, int $appliedBalanceAmount, int $dueAmount, int $refundedAmount, int $refundedTaxAmount, string $currency, OrderBillingReason $billingReason, string $invoiceNumber, bool $isInvoiceGenerated, string $customerId, array $items, string $description, ?\DateTime $modifiedAt = null, ?string $billingName = null, ?Address $billingAddress = null, ?string $productId = null, ?string $discountId = null, ?string $subscriptionId = null, ?string $checkoutId = null, ?CustomerOrderProduct $product = null, ?CustomerOrderSubscription $subscription = null, ?int $seats = null, ?\DateTime $nextPaymentAttemptAt = null)
     {
         $this->id = $id;
         $this->createdAt = $createdAt;
@@ -319,7 +310,6 @@ class CustomerOrder
         $this->invoiceNumber = $invoiceNumber;
         $this->isInvoiceGenerated = $isInvoiceGenerated;
         $this->customerId = $customerId;
-        $this->userId = $userId;
         $this->items = $items;
         $this->description = $description;
         $this->modifiedAt = $modifiedAt;

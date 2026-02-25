@@ -151,6 +151,15 @@ class BenefitGrantCustomWebhook
 
     /**
      *
+     * @var ?Member $member
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('member')]
+    #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\Member|null')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
+    public ?Member $member = null;
+
+    /**
+     *
      * @var ?BenefitGrantCustomProperties $previousProperties
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('previous_properties')]
@@ -175,10 +184,11 @@ class BenefitGrantCustomWebhook
      * @param  ?\DateTime  $revokedAt
      * @param  ?string  $memberId
      * @param  ?BenefitGrantError  $error
+     * @param  ?Member  $member
      * @param  ?BenefitGrantCustomProperties  $previousProperties
      * @phpstan-pure
      */
-    public function __construct(\DateTime $createdAt, string $id, bool $isGranted, bool $isRevoked, string $customerId, string $benefitId, Customer $customer, BenefitCustom $benefit, BenefitGrantCustomProperties $properties, ?\DateTime $modifiedAt = null, ?string $subscriptionId = null, ?string $orderId = null, ?\DateTime $grantedAt = null, ?\DateTime $revokedAt = null, ?string $memberId = null, ?BenefitGrantError $error = null, ?BenefitGrantCustomProperties $previousProperties = null)
+    public function __construct(\DateTime $createdAt, string $id, bool $isGranted, bool $isRevoked, string $customerId, string $benefitId, Customer $customer, BenefitCustom $benefit, BenefitGrantCustomProperties $properties, ?\DateTime $modifiedAt = null, ?string $subscriptionId = null, ?string $orderId = null, ?\DateTime $grantedAt = null, ?\DateTime $revokedAt = null, ?string $memberId = null, ?BenefitGrantError $error = null, ?Member $member = null, ?BenefitGrantCustomProperties $previousProperties = null)
     {
         $this->createdAt = $createdAt;
         $this->id = $id;
@@ -196,6 +206,7 @@ class BenefitGrantCustomWebhook
         $this->revokedAt = $revokedAt;
         $this->memberId = $memberId;
         $this->error = $error;
+        $this->member = $member;
         $this->previousProperties = $previousProperties;
     }
 }

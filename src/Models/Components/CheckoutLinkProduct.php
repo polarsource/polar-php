@@ -46,6 +46,14 @@ class CheckoutLinkProduct
     public string $name;
 
     /**
+     *
+     * @var ProductVisibility $visibility
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('visibility')]
+    #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\ProductVisibility')]
+    public ProductVisibility $visibility;
+
+    /**
      * Whether the product is a subscription.
      *
      * @var bool $isRecurring
@@ -151,6 +159,7 @@ class CheckoutLinkProduct
      * @param  string  $id
      * @param  \DateTime  $createdAt
      * @param  string  $name
+     * @param  ProductVisibility  $visibility
      * @param  bool  $isRecurring
      * @param  bool  $isArchived
      * @param  string  $organizationId
@@ -165,12 +174,13 @@ class CheckoutLinkProduct
      * @param  ?int  $recurringIntervalCount
      * @phpstan-pure
      */
-    public function __construct(array $metadata, string $id, \DateTime $createdAt, string $name, bool $isRecurring, bool $isArchived, string $organizationId, array $prices, array $benefits, array $medias, ?\DateTime $modifiedAt = null, ?TrialInterval $trialInterval = null, ?int $trialIntervalCount = null, ?string $description = null, ?SubscriptionRecurringInterval $recurringInterval = null, ?int $recurringIntervalCount = null)
+    public function __construct(array $metadata, string $id, \DateTime $createdAt, string $name, ProductVisibility $visibility, bool $isRecurring, bool $isArchived, string $organizationId, array $prices, array $benefits, array $medias, ?\DateTime $modifiedAt = null, ?TrialInterval $trialInterval = null, ?int $trialIntervalCount = null, ?string $description = null, ?SubscriptionRecurringInterval $recurringInterval = null, ?int $recurringIntervalCount = null)
     {
         $this->metadata = $metadata;
         $this->id = $id;
         $this->createdAt = $createdAt;
         $this->name = $name;
+        $this->visibility = $visibility;
         $this->isRecurring = $isRecurring;
         $this->isArchived = $isArchived;
         $this->organizationId = $organizationId;

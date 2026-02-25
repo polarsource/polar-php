@@ -5,11 +5,13 @@
 
 | Name  | Value |
 | ----- | ----- |
-| `Usd` | usd   |
-| `Eur` | eur   |
-| `Gbp` | gbp   |
-| `Cad` | cad   |
 | `Aud` | aud   |
-| `Jpy` | jpy   |
+| `Brl` | brl   |
+| `Cad` | cad   |
 | `Chf` | chf   |
+| `Eur` | eur   |
+| `Inr` | inr   |
+| `Gbp` | gbp   |
+| `Jpy` | jpy   |
 | `Sek` | sek   |
+| `Usd` | usd   |

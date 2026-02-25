@@ -13,6 +13,14 @@ class BenefitGrantLicenseKeysProperties
 {
     /**
      *
+     * @var ?string $userProvidedKey
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('user_provided_key')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
+    public ?string $userProvidedKey = null;
+
+    /**
+     *
      * @var ?string $licenseKeyId
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('license_key_id')]
@@ -28,12 +36,14 @@ class BenefitGrantLicenseKeysProperties
     public ?string $displayKey = null;
 
     /**
+     * @param  ?string  $userProvidedKey
      * @param  ?string  $licenseKeyId
      * @param  ?string  $displayKey
      * @phpstan-pure
      */
-    public function __construct(?string $licenseKeyId = null, ?string $displayKey = null)
+    public function __construct(?string $userProvidedKey = null, ?string $licenseKeyId = null, ?string $displayKey = null)
     {
+        $this->userProvidedKey = $userProvidedKey;
         $this->licenseKeyId = $licenseKeyId;
         $this->displayKey = $displayKey;
     }

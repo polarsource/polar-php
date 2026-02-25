@@ -46,7 +46,7 @@ class Orders
     }
 
     /**
-     * Export Subscriptions
+     * Export Orders
      *
      * Export orders as a CSV file.
      *
@@ -69,7 +69,7 @@ class Orders
         $httpOptions = ['http_errors' => false];
 
         $qp = Utils\Utils::getQueryParams(Operations\OrdersExportRequest::class, $request, $urlOverride);
-        $httpOptions['headers']['Accept'] = 'application/json';
+        $httpOptions['headers']['Accept'] = 'application/json;q=1, text/csv;q=0';
         $httpOptions['headers']['user-agent'] = $this->sdkConfiguration->userAgent;
         $httpRequest = new \GuzzleHttp\Psr7\Request('GET', $url);
         $hookContext = new HookContext($this->sdkConfiguration, $baseUrl, 'orders:export', null, $this->sdkConfiguration->securitySource);
@@ -104,6 +104,16 @@ class Orders
                     any: $obj);
 
                 return $response;
+            } elseif (Utils\Utils::matchContentType($contentType, 'text/csv')) {
+                $httpResponse = $this->sdkConfiguration->hooks->afterSuccess(new Hooks\AfterSuccessContext($hookContext), $httpResponse);
+
+                $obj = $httpResponse->getBody()->getContents();
+
+                return new Operations\OrdersExportResponse(
+                    statusCode: $statusCode,
+                    contentType: $contentType,
+                    rawResponse: $httpResponse,
+                    res: $obj);
             } else {
                 throw new \Polar\Models\Errors\APIException('Unknown content type received', $statusCode, $httpResponse->getBody()->getContents(), $httpResponse);
             }
@@ -467,6 +477,7 @@ class Orders
                             productBillingType: $request != null ? $request->productBillingType : null,
                             discountId: $request != null ? $request->discountId : null,
                             customerId: $request != null ? $request->customerId : null,
+                            externalCustomerId: $request != null ? $request->externalCustomerId : null,
                             checkoutId: $request != null ? $request->checkoutId : null,
                             page: $nextPage,
                             limit: $request != null ? $request->limit : null,

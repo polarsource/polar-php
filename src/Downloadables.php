@@ -110,7 +110,7 @@ class Downloadables
                     listResourceDownloadableRead: $obj);
                 $sdk = $this;
 
-                $response->next = function () use ($sdk, $request, $responseData, $security, $benefitId, $limit): ?Operations\CustomerPortalDownloadablesListResponse {
+                $response->next = function () use ($sdk, $request, $responseData, $security): ?Operations\CustomerPortalDownloadablesListResponse {
                     $page = $request != null ? $request->page : 0;
                     $nextPage = $page + 1;
                     $jsonObject = new \JsonPath\JsonObject($responseData);
@@ -137,9 +137,9 @@ class Downloadables
 
                     return $sdk->listIndividual(
                         security: $security,
-                        benefitId: $benefitId,
+                        benefitId: $request != null ? $request->benefitId : null,
                         page: $nextPage,
-                        limit: $limit,
+                        limit: $request != null ? $request->limit : null,
                     );
                 };
 

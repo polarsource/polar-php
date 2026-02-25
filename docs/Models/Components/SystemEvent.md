@@ -3,6 +3,15 @@
 
 ## Supported Types
 
+### `Components\BalanceCreditOrderEvent`
+
+```php
+/**
+* @var Components\BalanceCreditOrderEvent
+*/
+Components\BalanceCreditOrderEvent $value = /* values here */
+```
+
 ### `Components\BalanceDisputeEvent`
 
 ```php

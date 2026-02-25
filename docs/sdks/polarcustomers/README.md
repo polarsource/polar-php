@@ -64,8 +64,6 @@ if ($response->customerPortalCustomer !== null) {
 
 Update authenticated customer.
 
-**Scopes**: `customer_portal:write`
-
 ### Example Usage
 
 <!-- UsageSnippet language="php" operationID="customer_portal:customers:update" method="patch" path="/v1/customer-portal/customers/me" -->
@@ -120,8 +118,6 @@ if ($response->customerPortalCustomer !== null) {
 ## listPaymentMethods
 
 Get saved payment methods of the authenticated customer.
-
-**Scopes**: `customer_portal:read` `customer_portal:write`
 
 ### Example Usage
 
@@ -179,8 +175,6 @@ foreach ($responses as $response) {
 
 Add a payment method to the authenticated customer.
 
-**Scopes**: `customer_portal:read` `customer_portal:write`
-
 ### Example Usage
 
 <!-- UsageSnippet language="php" operationID="customer_portal:customers:add_payment_method" method="post" path="/v1/customer-portal/customers/me/payment-methods" -->
@@ -236,8 +230,6 @@ if ($response->customerPaymentMethodCreateResponse !== null) {
 
 Confirm a payment method for the authenticated customer.
 
-**Scopes**: `customer_portal:read` `customer_portal:write`
-
 ### Example Usage
 
 <!-- UsageSnippet language="php" operationID="customer_portal:customers:confirm_payment_method" method="post" path="/v1/customer-portal/customers/me/payment-methods/confirm" -->
@@ -292,8 +284,6 @@ if ($response->customerPaymentMethodCreateResponse !== null) {
 ## deletePaymentMethod
 
 Delete a payment method from the authenticated customer.
-
-**Scopes**: `customer_portal:read` `customer_portal:write`
 
 ### Example Usage
 

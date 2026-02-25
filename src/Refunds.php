@@ -87,7 +87,7 @@ class Refunds
             $res = $this->sdkConfiguration->hooks->afterError(new Hooks\AfterErrorContext($hookContext), $httpResponse, null);
             $httpResponse = $res;
         }
-        if (Utils\Utils::matchStatusCodes($statusCode, ['200'])) {
+        if (Utils\Utils::matchStatusCodes($statusCode, ['201'])) {
             if (Utils\Utils::matchContentType($contentType, 'application/json')) {
                 $httpResponse = $this->sdkConfiguration->hooks->afterSuccess(new Hooks\AfterSuccessContext($hookContext), $httpResponse);
 
@@ -104,14 +104,6 @@ class Refunds
             } else {
                 throw new \Polar\Models\Errors\APIException('Unknown content type received', $statusCode, $httpResponse->getBody()->getContents(), $httpResponse);
             }
-        } elseif (Utils\Utils::matchStatusCodes($statusCode, ['201'])) {
-            $httpResponse = $this->sdkConfiguration->hooks->afterSuccess(new Hooks\AfterSuccessContext($hookContext), $httpResponse);
-
-            return new Operations\RefundsCreateResponse(
-                statusCode: $statusCode,
-                contentType: $contentType,
-                rawResponse: $httpResponse
-            );
         } elseif (Utils\Utils::matchStatusCodes($statusCode, ['403'])) {
             if (Utils\Utils::matchContentType($contentType, 'application/json')) {
                 $httpResponse = $this->sdkConfiguration->hooks->afterSuccess(new Hooks\AfterSuccessContext($hookContext), $httpResponse);
@@ -229,6 +221,7 @@ class Refunds
                             orderId: $request != null ? $request->orderId : null,
                             subscriptionId: $request != null ? $request->subscriptionId : null,
                             customerId: $request != null ? $request->customerId : null,
+                            externalCustomerId: $request != null ? $request->externalCustomerId : null,
                             succeeded: $request != null ? $request->succeeded : null,
                             page: $nextPage,
                             limit: $request != null ? $request->limit : null,

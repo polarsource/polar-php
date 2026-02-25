@@ -8,11 +8,11 @@
 * [create](#create) - Create Customer
 * [export](#export) - Export Customers
 * [get](#get) - Get Customer
-* [update](#update) - Update Customer
 * [delete](#delete) - Delete Customer
+* [update](#update) - Update Customer
 * [getExternal](#getexternal) - Get Customer by External ID
-* [updateExternal](#updateexternal) - Update Customer by External ID
 * [deleteExternal](#deleteexternal) - Delete Customer by External ID
+* [updateExternal](#updateexternal) - Update Customer by External ID
 * [getState](#getstate) - Get Customer State
 * [getStateExternal](#getstateexternal) - Get Customer State by External ID
 
@@ -106,6 +106,8 @@ $request = new Components\CustomerCreate(
         '911144442',
         'us_ein',
     ],
+    locale: 'en',
+    type: Components\CustomerType::Individual,
     organizationId: '1dbfc517-0bbf-4301-9ba8-555ca42b9737',
     owner: new Components\OwnerCreate(
         email: 'member@example.com',
@@ -241,6 +243,74 @@ if ($response->customerWithMembers !== null) {
 | Errors\HTTPValidationError | 422                        | application/json           |
 | Errors\APIException        | 4XX, 5XX                   | \*/\*                      |
 
+## delete
+
+Delete a customer.
+
+This action cannot be undone and will immediately:
+- Cancel any active subscriptions for the customer
+- Revoke all their benefits
+- Clear any `external_id`
+
+Use it only in the context of deleting a user within your
+own service. Otherwise, use more granular API endpoints to cancel
+a specific subscription or revoke certain benefits.
+
+Note: The customers information will nonetheless be retained for historic
+orders and subscriptions.
+
+Set `anonymize=true` to also anonymize PII for GDPR compliance.
+
+**Scopes**: `customers:write`
+
+### Example Usage
+
+<!-- UsageSnippet language="php" operationID="customers:delete" method="delete" path="/v1/customers/{id}" -->
+```php
+declare(strict_types=1);
+
+require 'vendor/autoload.php';
+
+use Polar;
+
+$sdk = Polar\Polar::builder()
+    ->setSecurity(
+        '<YOUR_BEARER_TOKEN_HERE>'
+    )
+    ->build();
+
+
+
+$response = $sdk->customers->delete(
+    id: '<value>',
+    anonymize: false
+
+);
+
+if ($response->statusCode === 200) {
+    // handle response
+}
+```
+
+### Parameters
+
+| Parameter                                                                                                                                                                                                                                              | Type                                                                                                                                                                                                                                                   | Required                                                                                                                                                                                                                                               | Description                                                                                                                                                                                                                                            |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `id`                                                                                                                                                                                                                                                   | *string*                                                                                                                                                                                                                                               | :heavy_check_mark:                                                                                                                                                                                                                                     | The customer ID.                                                                                                                                                                                                                                       |
+| `anonymize`                                                                                                                                                                                                                                            | *?bool*                                                                                                                                                                                                                                                | :heavy_minus_sign:                                                                                                                                                                                                                                     | If true, also anonymize the customer's personal data for GDPR compliance. This replaces email with a hashed version, hashes name and billing name (name preserved for businesses with tax_id), clears billing address, and removes OAuth account data. |
+
+### Response
+
+**[?Operations\CustomersDeleteResponse](../../Models/Operations/CustomersDeleteResponse.md)**
+
+### Errors
+
+| Error Type                 | Status Code                | Content Type               |
+| -------------------------- | -------------------------- | -------------------------- |
+| Errors\ResourceNotFound    | 404                        | application/json           |
+| Errors\HTTPValidationError | 422                        | application/json           |
+| Errors\APIException        | 4XX, 5XX                   | \*/\*                      |
+
 ## update
 
 Update a customer.
@@ -274,7 +344,9 @@ $customerUpdate = new Components\CustomerUpdate(
         '911144442',
         'us_ein',
     ],
+    locale: 'en',
     externalId: 'usr_1337',
+    type: Components\CustomerType::Individual,
 );
 
 $response = $sdk->customers->update(
@@ -298,69 +370,6 @@ if ($response->customerWithMembers !== null) {
 ### Response
 
 **[?Operations\CustomersUpdateResponse](../../Models/Operations/CustomersUpdateResponse.md)**
-
-### Errors
-
-| Error Type                 | Status Code                | Content Type               |
-| -------------------------- | -------------------------- | -------------------------- |
-| Errors\ResourceNotFound    | 404                        | application/json           |
-| Errors\HTTPValidationError | 422                        | application/json           |
-| Errors\APIException        | 4XX, 5XX                   | \*/\*                      |
-
-## delete
-
-Delete a customer.
-
-This action cannot be undone and will immediately:
-- Cancel any active subscriptions for the customer
-- Revoke all their benefits
-- Clear any `external_id`
-
-Use it only in the context of deleting a user within your
-own service. Otherwise, use more granular API endpoints to cancel
-a specific subscription or revoke certain benefits.
-
-Note: The customers information will nonetheless be retained for historic
-orders and subscriptions.
-
-**Scopes**: `customers:write`
-
-### Example Usage
-
-<!-- UsageSnippet language="php" operationID="customers:delete" method="delete" path="/v1/customers/{id}" -->
-```php
-declare(strict_types=1);
-
-require 'vendor/autoload.php';
-
-use Polar;
-
-$sdk = Polar\Polar::builder()
-    ->setSecurity(
-        '<YOUR_BEARER_TOKEN_HERE>'
-    )
-    ->build();
-
-
-
-$response = $sdk->customers->delete(
-    id: '<value>'
-);
-
-if ($response->statusCode === 200) {
-    // handle response
-}
-```
-
-### Parameters
-
-| Parameter          | Type               | Required           | Description        |
-| ------------------ | ------------------ | ------------------ | ------------------ |
-| `id`               | *string*           | :heavy_check_mark: | The customer ID.   |
-
-### Response
-
-**[?Operations\CustomersDeleteResponse](../../Models/Operations/CustomersDeleteResponse.md)**
 
 ### Errors
 
@@ -421,6 +430,64 @@ if ($response->customerWithMembers !== null) {
 | Errors\HTTPValidationError | 422                        | application/json           |
 | Errors\APIException        | 4XX, 5XX                   | \*/\*                      |
 
+## deleteExternal
+
+Delete a customer by external ID.
+
+Immediately cancels any active subscriptions and revokes any active benefits.
+
+Set `anonymize=true` to also anonymize PII for GDPR compliance.
+
+**Scopes**: `customers:write`
+
+### Example Usage
+
+<!-- UsageSnippet language="php" operationID="customers:delete_external" method="delete" path="/v1/customers/external/{external_id}" -->
+```php
+declare(strict_types=1);
+
+require 'vendor/autoload.php';
+
+use Polar;
+
+$sdk = Polar\Polar::builder()
+    ->setSecurity(
+        '<YOUR_BEARER_TOKEN_HERE>'
+    )
+    ->build();
+
+
+
+$response = $sdk->customers->deleteExternal(
+    externalId: '<id>',
+    anonymize: false
+
+);
+
+if ($response->statusCode === 200) {
+    // handle response
+}
+```
+
+### Parameters
+
+| Parameter                                                                 | Type                                                                      | Required                                                                  | Description                                                               |
+| ------------------------------------------------------------------------- | ------------------------------------------------------------------------- | ------------------------------------------------------------------------- | ------------------------------------------------------------------------- |
+| `externalId`                                                              | *string*                                                                  | :heavy_check_mark:                                                        | The customer external ID.                                                 |
+| `anonymize`                                                               | *?bool*                                                                   | :heavy_minus_sign:                                                        | If true, also anonymize the customer's personal data for GDPR compliance. |
+
+### Response
+
+**[?Operations\CustomersDeleteExternalResponse](../../Models/Operations/CustomersDeleteExternalResponse.md)**
+
+### Errors
+
+| Error Type                 | Status Code                | Content Type               |
+| -------------------------- | -------------------------- | -------------------------- |
+| Errors\ResourceNotFound    | 404                        | application/json           |
+| Errors\HTTPValidationError | 422                        | application/json           |
+| Errors\APIException        | 4XX, 5XX                   | \*/\*                      |
+
 ## updateExternal
 
 Update a customer by external ID.
@@ -454,6 +521,7 @@ $customerUpdateExternalID = new Components\CustomerUpdateExternalID(
         '911144442',
         'us_ein',
     ],
+    locale: 'en',
 );
 
 $response = $sdk->customers->updateExternal(
@@ -477,59 +545,6 @@ if ($response->customerWithMembers !== null) {
 ### Response
 
 **[?Operations\CustomersUpdateExternalResponse](../../Models/Operations/CustomersUpdateExternalResponse.md)**
-
-### Errors
-
-| Error Type                 | Status Code                | Content Type               |
-| -------------------------- | -------------------------- | -------------------------- |
-| Errors\ResourceNotFound    | 404                        | application/json           |
-| Errors\HTTPValidationError | 422                        | application/json           |
-| Errors\APIException        | 4XX, 5XX                   | \*/\*                      |
-
-## deleteExternal
-
-Delete a customer by external ID.
-
-Immediately cancels any active subscriptions and revokes any active benefits.
-
-**Scopes**: `customers:write`
-
-### Example Usage
-
-<!-- UsageSnippet language="php" operationID="customers:delete_external" method="delete" path="/v1/customers/external/{external_id}" -->
-```php
-declare(strict_types=1);
-
-require 'vendor/autoload.php';
-
-use Polar;
-
-$sdk = Polar\Polar::builder()
-    ->setSecurity(
-        '<YOUR_BEARER_TOKEN_HERE>'
-    )
-    ->build();
-
-
-
-$response = $sdk->customers->deleteExternal(
-    externalId: '<id>'
-);
-
-if ($response->statusCode === 200) {
-    // handle response
-}
-```
-
-### Parameters
-
-| Parameter                 | Type                      | Required                  | Description               |
-| ------------------------- | ------------------------- | ------------------------- | ------------------------- |
-| `externalId`              | *string*                  | :heavy_check_mark:        | The customer external ID. |
-
-### Response
-
-**[?Operations\CustomersDeleteExternalResponse](../../Models/Operations/CustomersDeleteExternalResponse.md)**
 
 ### Errors
 

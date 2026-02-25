@@ -22,15 +22,6 @@ class WebhookEndpointUpdate
 
     /**
      *
-     * @var ?string $secret
-     * @deprecated  field: This will be removed in a future release, please migrate away from it as soon as possible.
-     */
-    #[\Speakeasy\Serializer\Annotation\SerializedName('secret')]
-    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
-    public ?string $secret = null;
-
-    /**
-     *
      * @var ?WebhookFormat $format
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('format')]
@@ -59,16 +50,14 @@ class WebhookEndpointUpdate
 
     /**
      * @param  ?string  $url
-     * @param  ?string  $secret
      * @param  ?WebhookFormat  $format
      * @param  ?array<WebhookEventType>  $events
      * @param  ?bool  $enabled
      * @phpstan-pure
      */
-    public function __construct(?string $url = null, ?string $secret = null, ?WebhookFormat $format = null, ?array $events = null, ?bool $enabled = null)
+    public function __construct(?string $url = null, ?WebhookFormat $format = null, ?array $events = null, ?bool $enabled = null)
     {
         $this->url = $url;
-        $this->secret = $secret;
         $this->format = $format;
         $this->events = $events;
         $this->enabled = $enabled;

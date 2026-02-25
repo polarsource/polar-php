@@ -48,8 +48,6 @@ class Seats
     /**
      * Assign Seat
      *
-     * **Scopes**: `customer_portal:write`
-     *
      * @param  Operations\CustomerPortalSeatsAssignSeatSecurity  $security
      * @param  Components\SeatAssign  $request
      * @return Operations\CustomerPortalSeatsAssignSeatResponse
@@ -137,15 +135,23 @@ class Seats
      * **Scopes**: `customer_portal:read` `customer_portal:write`
      *
      * @param  Operations\CustomerPortalSeatsListClaimedSubscriptionsSecurity  $security
+     * @param  ?int  $page
+     * @param  ?int  $limit
      * @return Operations\CustomerPortalSeatsListClaimedSubscriptionsResponse
      * @throws \Polar\Models\Errors\APIException
      */
-    public function listClaimedSubscriptions(Operations\CustomerPortalSeatsListClaimedSubscriptionsSecurity $security, ?Options $options = null): Operations\CustomerPortalSeatsListClaimedSubscriptionsResponse
+    private function listClaimedSubscriptionsIndividual(Operations\CustomerPortalSeatsListClaimedSubscriptionsSecurity $security, ?int $page = null, ?int $limit = null, ?Options $options = null): Operations\CustomerPortalSeatsListClaimedSubscriptionsResponse
     {
+        $request = new Operations\CustomerPortalSeatsListClaimedSubscriptionsRequest(
+            page: $page,
+            limit: $limit,
+        );
         $baseUrl = $this->sdkConfiguration->getTemplatedServerUrl();
         $url = Utils\Utils::generateUrl($baseUrl, '/v1/customer-portal/seats/subscriptions');
         $urlOverride = null;
         $httpOptions = ['http_errors' => false];
+
+        $qp = Utils\Utils::getQueryParams(Operations\CustomerPortalSeatsListClaimedSubscriptionsRequest::class, $request, $urlOverride);
         $httpOptions['headers']['Accept'] = 'application/json';
         $httpOptions['headers']['user-agent'] = $this->sdkConfiguration->userAgent;
         $httpRequest = new \GuzzleHttp\Psr7\Request('GET', $url);
@@ -157,6 +163,7 @@ class Seats
 
         $hookContext = new HookContext($this->sdkConfiguration, $baseUrl, 'customer_portal:seats:list_claimed_subscriptions', null, fn () => $security);
         $httpRequest = $this->sdkConfiguration->hooks->beforeRequest(new Hooks\BeforeRequestContext($hookContext), $httpRequest);
+        $httpOptions['query'] = Utils\QueryParameters::standardizeQueryParams($httpRequest, $qp);
         $httpOptions = Utils\Utils::convertHeadersToOptions($httpRequest, $httpOptions);
         $httpRequest = Utils\Utils::removeHeaders($httpRequest);
         try {
@@ -168,7 +175,7 @@ class Seats
         $contentType = $httpResponse->getHeader('Content-Type')[0] ?? '';
 
         $statusCode = $httpResponse->getStatusCode();
-        if (Utils\Utils::matchStatusCodes($statusCode, ['401', '4XX', '5XX'])) {
+        if (Utils\Utils::matchStatusCodes($statusCode, ['401', '422', '4XX', '5XX'])) {
             $res = $this->sdkConfiguration->hooks->afterError(new Hooks\AfterErrorContext($hookContext), $httpResponse, null);
             $httpResponse = $res;
         }
@@ -178,14 +185,59 @@ class Seats
 
                 $serializer = Utils\JSON::createSerializer();
                 $responseData = (string) $httpResponse->getBody();
-                $obj = $serializer->deserialize($responseData, 'array<\Polar\Models\Components\CustomerSubscription>', 'json', DeserializationContext::create()->setRequireAllRequiredProperties(true));
+                $obj = $serializer->deserialize($responseData, '\Polar\Models\Components\ListResourceCustomerSubscription', 'json', DeserializationContext::create()->setRequireAllRequiredProperties(true));
                 $response = new Operations\CustomerPortalSeatsListClaimedSubscriptionsResponse(
                     statusCode: $statusCode,
                     contentType: $contentType,
                     rawResponse: $httpResponse,
-                    responseCustomerPortalSeatsListClaimedSubscriptions: $obj);
+                    listResourceCustomerSubscription: $obj);
+                $sdk = $this;
+
+                $response->next = function () use ($sdk, $request, $responseData, $security): ?Operations\CustomerPortalSeatsListClaimedSubscriptionsResponse {
+                    $page = $request != null ? $request->page : 0;
+                    $nextPage = $page + 1;
+                    $jsonObject = new \JsonPath\JsonObject($responseData);
+                    $numPages = $jsonObject->get('$.pagination.max_page');
+                    if ($numPages == null || $numPages[0] <= $page) {
+                        return null;
+                    }
+                    if (! $responseData) {
+                        return null;
+                    }
+                    $jsonObject = new \JsonPath\JsonObject($responseData);
+                    $results = $jsonObject->get('$.items');
+
+                    if (is_array($results)) {
+                        $results = $results[0];
+                    }
+                    if (count($results) === 0) {
+                        return null;
+                    }
+                    $limit = $request != null ? $request->limit : 0;
+                    if (count($results) < $limit) {
+                        return null;
+                    }
+
+                    return $sdk->listClaimedSubscriptionsIndividual(
+                        security: $security,
+                        page: $nextPage,
+                        limit: $request != null ? $request->limit : null,
+                    );
+                };
+
 
                 return $response;
+            } else {
+                throw new \Polar\Models\Errors\APIException('Unknown content type received', $statusCode, $httpResponse->getBody()->getContents(), $httpResponse);
+            }
+        } elseif (Utils\Utils::matchStatusCodes($statusCode, ['422'])) {
+            if (Utils\Utils::matchContentType($contentType, 'application/json')) {
+                $httpResponse = $this->sdkConfiguration->hooks->afterSuccess(new Hooks\AfterSuccessContext($hookContext), $httpResponse);
+
+                $serializer = Utils\JSON::createSerializer();
+                $responseData = (string) $httpResponse->getBody();
+                $obj = $serializer->deserialize($responseData, '\Polar\Models\Errors\HTTPValidationError', 'json', DeserializationContext::create()->setRequireAllRequiredProperties(true));
+                throw $obj->toException();
             } else {
                 throw new \Polar\Models\Errors\APIException('Unknown content type received', $statusCode, $httpResponse->getBody()->getContents(), $httpResponse);
             }
@@ -195,6 +247,27 @@ class Seats
             throw new \Polar\Models\Errors\APIException('API error occurred', $statusCode, $httpResponse->getBody()->getContents(), $httpResponse);
         } else {
             throw new \Polar\Models\Errors\APIException('Unknown status code received', $statusCode, $httpResponse->getBody()->getContents(), $httpResponse);
+        }
+    }
+    /**
+     * List Claimed Subscriptions
+     *
+     * List all subscriptions where the authenticated customer has claimed a seat.
+     *
+     * **Scopes**: `customer_portal:read` `customer_portal:write`
+     *
+     * @param  Operations\CustomerPortalSeatsListClaimedSubscriptionsSecurity  $security
+     * @param  ?int  $page
+     * @param  ?int  $limit
+     * @return \Generator<Operations\CustomerPortalSeatsListClaimedSubscriptionsResponse>
+     * @throws \Polar\Models\Errors\APIException
+     */
+    public function listClaimedSubscriptions(Operations\CustomerPortalSeatsListClaimedSubscriptionsSecurity $security, ?int $page = null, ?int $limit = null, ?Options $options = null): \Generator
+    {
+        $res = $this->listClaimedSubscriptionsIndividual($security, $page, $limit, $options);
+        while ($res !== null) {
+            yield $res;
+            $res = $res->next($res);
         }
     }
 
@@ -288,8 +361,6 @@ class Seats
     /**
      * Resend Invitation
      *
-     * **Scopes**: `customer_portal:write`
-     *
      * @param  Operations\CustomerPortalSeatsResendInvitationSecurity  $security
      * @param  string  $seatId
      * @return Operations\CustomerPortalSeatsResendInvitationResponse
@@ -369,8 +440,6 @@ class Seats
 
     /**
      * Revoke Seat
-     *
-     * **Scopes**: `customer_portal:write`
      *
      * @param  Operations\CustomerPortalSeatsRevokeSeatSecurity  $security
      * @param  string  $seatId
