@@ -30,6 +30,15 @@ Components\CustomerBenefitGrantDiscordUpdate $value = /* values here */
 Components\CustomerBenefitGrantDownloadablesUpdate $value = /* values here */
 ```
 
+### `Components\CustomerBenefitGrantFeatureFlagUpdate`
+
+```php
+/**
+* @var Components\CustomerBenefitGrantFeatureFlagUpdate
+*/
+Components\CustomerBenefitGrantFeatureFlagUpdate $value = /* values here */
+```
+
 ### `Components\CustomerBenefitGrantGitHubRepositoryUpdate`
 
 ```php

@@ -34,17 +34,19 @@ class TokenResponse
 
     /**
      *
-     * @var string $idToken
-     */
-    #[\Speakeasy\Serializer\Annotation\SerializedName('id_token')]
-    public string $idToken;
-
-    /**
-     *
      * @var ?string $refreshToken
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('refresh_token')]
-    public ?string $refreshToken;
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
+    public ?string $refreshToken = null;
+
+    /**
+     *
+     * @var ?string $idToken
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('id_token')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
+    public ?string $idToken = null;
 
     /**
      *
@@ -58,17 +60,17 @@ class TokenResponse
      * @param  string  $tokenType
      * @param  int  $expiresIn
      * @param  string  $scope
-     * @param  string  $idToken
      * @param  ?string  $refreshToken
+     * @param  ?string  $idToken
      * @phpstan-pure
      */
-    public function __construct(string $accessToken, int $expiresIn, string $scope, string $idToken, ?string $refreshToken = null, string $tokenType = 'Bearer')
+    public function __construct(string $accessToken, int $expiresIn, string $scope, ?string $refreshToken = null, ?string $idToken = null, string $tokenType = 'Bearer')
     {
         $this->accessToken = $accessToken;
         $this->expiresIn = $expiresIn;
         $this->scope = $scope;
-        $this->idToken = $idToken;
         $this->refreshToken = $refreshToken;
+        $this->idToken = $idToken;
         $this->tokenType = $tokenType;
     }
 }

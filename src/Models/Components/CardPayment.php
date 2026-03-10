@@ -94,7 +94,7 @@ class CardPayment
     public ?string $declineReason;
 
     /**
-     * Human-reasable error message, if the payment was declined.
+     * Human-readable error message, if the payment was declined.
      *
      * @var ?string $declineMessage
      */

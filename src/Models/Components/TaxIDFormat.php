@@ -62,6 +62,7 @@ enum TaxIDFormat: string
     case KrBrn = 'kr_brn';
     case KzBin = 'kz_bin';
     case LiUid = 'li_uid';
+    case MkVat = 'mk_vat';
     case MxRfc = 'mx_rfc';
     case MyFrp = 'my_frp';
     case MyItn = 'my_itn';

@@ -57,3 +57,12 @@ Components\CustomerBenefitGrantCustom $value = /* values here */
 Components\CustomerBenefitGrantMeterCredit $value = /* values here */
 ```
 
+### `Components\CustomerBenefitGrantFeatureFlag`
+
+```php
+/**
+* @var Components\CustomerBenefitGrantFeatureFlag
+*/
+Components\CustomerBenefitGrantFeatureFlag $value = /* values here */
+```
+

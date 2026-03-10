@@ -86,6 +86,15 @@ class WebhookEndpoint
     public ?\DateTime $modifiedAt;
 
     /**
+     * An optional name for the webhook endpoint to help organize and identify it.
+     *
+     * @var ?string $name
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('name')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
+    public ?string $name = null;
+
+    /**
      * @param  \DateTime  $createdAt
      * @param  string  $id
      * @param  string  $url
@@ -95,9 +104,10 @@ class WebhookEndpoint
      * @param  array<WebhookEventType>  $events
      * @param  bool  $enabled
      * @param  ?\DateTime  $modifiedAt
+     * @param  ?string  $name
      * @phpstan-pure
      */
-    public function __construct(\DateTime $createdAt, string $id, string $url, WebhookFormat $format, string $secret, string $organizationId, array $events, bool $enabled, ?\DateTime $modifiedAt = null)
+    public function __construct(\DateTime $createdAt, string $id, string $url, WebhookFormat $format, string $secret, string $organizationId, array $events, bool $enabled, ?\DateTime $modifiedAt = null, ?string $name = null)
     {
         $this->createdAt = $createdAt;
         $this->id = $id;
@@ -108,5 +118,6 @@ class WebhookEndpoint
         $this->events = $events;
         $this->enabled = $enabled;
         $this->modifiedAt = $modifiedAt;
+        $this->name = $name;
     }
 }

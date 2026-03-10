@@ -57,3 +57,12 @@ Components\BenefitGrantLicenseKeysWebhook $value = /* values here */
 Components\BenefitGrantMeterCreditWebhook $value = /* values here */
 ```
 
+### `Components\BenefitGrantFeatureFlagWebhook`
+
+```php
+/**
+* @var Components\BenefitGrantFeatureFlagWebhook
+*/
+Components\BenefitGrantFeatureFlagWebhook $value = /* values here */
+```
+

@@ -21,6 +21,15 @@ class WebhookEndpointUpdate
     public ?string $url = null;
 
     /**
+     * An optional name for the webhook endpoint to help organize and identify it.
+     *
+     * @var ?string $name
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('name')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
+    public ?string $name = null;
+
+    /**
      *
      * @var ?WebhookFormat $format
      */
@@ -50,14 +59,16 @@ class WebhookEndpointUpdate
 
     /**
      * @param  ?string  $url
+     * @param  ?string  $name
      * @param  ?WebhookFormat  $format
      * @param  ?array<WebhookEventType>  $events
      * @param  ?bool  $enabled
      * @phpstan-pure
      */
-    public function __construct(?string $url = null, ?WebhookFormat $format = null, ?array $events = null, ?bool $enabled = null)
+    public function __construct(?string $url = null, ?string $name = null, ?WebhookFormat $format = null, ?array $events = null, ?bool $enabled = null)
     {
         $this->url = $url;
+        $this->name = $name;
         $this->format = $format;
         $this->events = $events;
         $this->enabled = $enabled;

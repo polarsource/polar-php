@@ -38,6 +38,15 @@ class WebhookEndpointCreate
     public array $events;
 
     /**
+     * An optional name for the webhook endpoint to help organize and identify it.
+     *
+     * @var ?string $name
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('name')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
+    public ?string $name = null;
+
+    /**
      * The organization ID associated with the webhook endpoint. **Required unless you use an organization token.**
      *
      * @var ?string $organizationId
@@ -50,14 +59,16 @@ class WebhookEndpointCreate
      * @param  string  $url
      * @param  WebhookFormat  $format
      * @param  array<WebhookEventType>  $events
+     * @param  ?string  $name
      * @param  ?string  $organizationId
      * @phpstan-pure
      */
-    public function __construct(string $url, WebhookFormat $format, array $events, ?string $organizationId = null)
+    public function __construct(string $url, WebhookFormat $format, array $events, ?string $name = null, ?string $organizationId = null)
     {
         $this->url = $url;
         $this->format = $format;
         $this->events = $events;
+        $this->name = $name;
         $this->organizationId = $organizationId;
     }
 }

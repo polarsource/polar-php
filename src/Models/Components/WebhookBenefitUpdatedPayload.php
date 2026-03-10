@@ -26,12 +26,12 @@ class WebhookBenefitUpdatedPayload
 
     /**
      *
-     * @var BenefitCustom|BenefitDiscord|BenefitGitHubRepository|BenefitDownloadables|BenefitLicenseKeys|BenefitMeterCredit $data
+     * @var BenefitCustom|BenefitDiscord|BenefitGitHubRepository|BenefitDownloadables|BenefitLicenseKeys|BenefitMeterCredit|BenefitFeatureFlag $data
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('data')]
-    #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\BenefitCustom|\Polar\Models\Components\BenefitDiscord|\Polar\Models\Components\BenefitGitHubRepository|\Polar\Models\Components\BenefitDownloadables|\Polar\Models\Components\BenefitLicenseKeys|\Polar\Models\Components\BenefitMeterCredit')]
-    #[\Speakeasy\Serializer\Annotation\UnionDiscriminator(field: 'type', map: ['custom' => '\Polar\Models\Components\BenefitCustom', 'discord' => '\Polar\Models\Components\BenefitDiscord', 'downloadables' => '\Polar\Models\Components\BenefitDownloadables', 'github_repository' => '\Polar\Models\Components\BenefitGitHubRepository', 'license_keys' => '\Polar\Models\Components\BenefitLicenseKeys', 'meter_credit' => '\Polar\Models\Components\BenefitMeterCredit'])]
-    public BenefitCustom|BenefitDiscord|BenefitGitHubRepository|BenefitDownloadables|BenefitLicenseKeys|BenefitMeterCredit $data;
+    #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\BenefitCustom|\Polar\Models\Components\BenefitDiscord|\Polar\Models\Components\BenefitGitHubRepository|\Polar\Models\Components\BenefitDownloadables|\Polar\Models\Components\BenefitLicenseKeys|\Polar\Models\Components\BenefitMeterCredit|\Polar\Models\Components\BenefitFeatureFlag')]
+    #[\Speakeasy\Serializer\Annotation\UnionDiscriminator(field: 'type', map: ['custom' => '\Polar\Models\Components\BenefitCustom', 'discord' => '\Polar\Models\Components\BenefitDiscord', 'downloadables' => '\Polar\Models\Components\BenefitDownloadables', 'feature_flag' => '\Polar\Models\Components\BenefitFeatureFlag', 'github_repository' => '\Polar\Models\Components\BenefitGitHubRepository', 'license_keys' => '\Polar\Models\Components\BenefitLicenseKeys', 'meter_credit' => '\Polar\Models\Components\BenefitMeterCredit'])]
+    public BenefitCustom|BenefitDiscord|BenefitGitHubRepository|BenefitDownloadables|BenefitLicenseKeys|BenefitMeterCredit|BenefitFeatureFlag $data;
 
     /**
      *
@@ -43,10 +43,10 @@ class WebhookBenefitUpdatedPayload
     /**
      * @param  string  $type
      * @param  \DateTime  $timestamp
-     * @param  BenefitCustom|BenefitDiscord|BenefitGitHubRepository|BenefitDownloadables|BenefitLicenseKeys|BenefitMeterCredit  $data
+     * @param  BenefitCustom|BenefitDiscord|BenefitGitHubRepository|BenefitDownloadables|BenefitLicenseKeys|BenefitMeterCredit|BenefitFeatureFlag  $data
      * @phpstan-pure
      */
-    public function __construct(\DateTime $timestamp, BenefitCustom|BenefitDiscord|BenefitGitHubRepository|BenefitDownloadables|BenefitLicenseKeys|BenefitMeterCredit $data, string $type = 'benefit.updated')
+    public function __construct(\DateTime $timestamp, BenefitCustom|BenefitDiscord|BenefitGitHubRepository|BenefitDownloadables|BenefitLicenseKeys|BenefitMeterCredit|BenefitFeatureFlag $data, string $type = 'benefit.updated')
     {
         $this->timestamp = $timestamp;
         $this->data = $data;

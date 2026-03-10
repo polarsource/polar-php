@@ -48,3 +48,12 @@ Components\BenefitGrantLicenseKeysProperties $value = /* values here */
 Components\BenefitGrantCustomProperties $value = /* values here */
 ```
 
+### `Components\BenefitGrantFeatureFlagProperties`
+
+```php
+/**
+* @var Components\BenefitGrantFeatureFlagProperties
+*/
+Components\BenefitGrantFeatureFlagProperties $value = /* values here */
+```
+

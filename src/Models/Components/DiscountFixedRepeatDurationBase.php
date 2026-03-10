@@ -37,6 +37,7 @@ class DiscountFixedRepeatDurationBase
     /**
      *
      * @var int $amount
+     * @deprecated  field: This will be removed in a future release, please migrate away from it as soon as possible.
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('amount')]
     public int $amount;
@@ -44,9 +45,19 @@ class DiscountFixedRepeatDurationBase
     /**
      *
      * @var string $currency
+     * @deprecated  field: This will be removed in a future release, please migrate away from it as soon as possible.
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('currency')]
     public string $currency;
+
+    /**
+     * Map of currency to fixed amount to discount from the total.
+     *
+     * @var array<string, int> $amounts
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('amounts')]
+    #[\Speakeasy\Serializer\Annotation\Type('array<string, int>')]
+    public array $amounts;
 
     /**
      * Creation timestamp of the object.
@@ -143,6 +154,7 @@ class DiscountFixedRepeatDurationBase
      * @param  DiscountType  $type
      * @param  int  $amount
      * @param  string  $currency
+     * @param  array<string, int>  $amounts
      * @param  \DateTime  $createdAt
      * @param  string  $id
      * @param  array<string, string|int|float|bool>  $metadata
@@ -156,13 +168,14 @@ class DiscountFixedRepeatDurationBase
      * @param  ?int  $maxRedemptions
      * @phpstan-pure
      */
-    public function __construct(DiscountDuration $duration, int $durationInMonths, DiscountType $type, int $amount, string $currency, \DateTime $createdAt, string $id, array $metadata, string $name, int $redemptionsCount, string $organizationId, ?\DateTime $modifiedAt = null, ?string $code = null, ?\DateTime $startsAt = null, ?\DateTime $endsAt = null, ?int $maxRedemptions = null)
+    public function __construct(DiscountDuration $duration, int $durationInMonths, DiscountType $type, int $amount, string $currency, array $amounts, \DateTime $createdAt, string $id, array $metadata, string $name, int $redemptionsCount, string $organizationId, ?\DateTime $modifiedAt = null, ?string $code = null, ?\DateTime $startsAt = null, ?\DateTime $endsAt = null, ?int $maxRedemptions = null)
     {
         $this->duration = $duration;
         $this->durationInMonths = $durationInMonths;
         $this->type = $type;
         $this->amount = $amount;
         $this->currency = $currency;
+        $this->amounts = $amounts;
         $this->createdAt = $createdAt;
         $this->id = $id;
         $this->metadata = $metadata;

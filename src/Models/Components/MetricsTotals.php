@@ -13,6 +13,87 @@ class MetricsTotals
 {
     /**
      *
+     * @var int|float|null $activeSubscriptions
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('active_subscriptions')]
+    #[\Speakeasy\Serializer\Annotation\Type('int|float|null')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
+    public int|float|null $activeSubscriptions = null;
+
+    /**
+     *
+     * @var int|float|null $committedSubscriptions
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('committed_subscriptions')]
+    #[\Speakeasy\Serializer\Annotation\Type('int|float|null')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
+    public int|float|null $committedSubscriptions = null;
+
+    /**
+     *
+     * @var int|float|null $monthlyRecurringRevenue
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('monthly_recurring_revenue')]
+    #[\Speakeasy\Serializer\Annotation\Type('int|float|null')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
+    public int|float|null $monthlyRecurringRevenue = null;
+
+    /**
+     *
+     * @var int|float|null $committedMonthlyRecurringRevenue
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('committed_monthly_recurring_revenue')]
+    #[\Speakeasy\Serializer\Annotation\Type('int|float|null')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
+    public int|float|null $committedMonthlyRecurringRevenue = null;
+
+    /**
+     *
+     * @var int|float|null $averageRevenuePerUser
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('average_revenue_per_user')]
+    #[\Speakeasy\Serializer\Annotation\Type('int|float|null')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
+    public int|float|null $averageRevenuePerUser = null;
+
+    /**
+     *
+     * @var int|float|null $checkouts
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('checkouts')]
+    #[\Speakeasy\Serializer\Annotation\Type('int|float|null')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
+    public int|float|null $checkouts = null;
+
+    /**
+     *
+     * @var int|float|null $succeededCheckouts
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('succeeded_checkouts')]
+    #[\Speakeasy\Serializer\Annotation\Type('int|float|null')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
+    public int|float|null $succeededCheckouts = null;
+
+    /**
+     *
+     * @var int|float|null $checkoutsConversion
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('checkouts_conversion')]
+    #[\Speakeasy\Serializer\Annotation\Type('int|float|null')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
+    public int|float|null $checkoutsConversion = null;
+
+    /**
+     *
+     * @var int|float|null $churnedSubscriptions
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('churned_subscriptions')]
+    #[\Speakeasy\Serializer\Annotation\Type('int|float|null')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
+    public int|float|null $churnedSubscriptions = null;
+
+    /**
+     *
      * @var int|float|null $orders
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('orders')]
@@ -91,15 +172,6 @@ class MetricsTotals
     #[\Speakeasy\Serializer\Annotation\Type('int|float|null')]
     #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
     public int|float|null $netAverageOrderValue = null;
-
-    /**
-     *
-     * @var int|float|null $averageRevenuePerUser
-     */
-    #[\Speakeasy\Serializer\Annotation\SerializedName('average_revenue_per_user')]
-    #[\Speakeasy\Serializer\Annotation\Type('int|float|null')]
-    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
-    public int|float|null $averageRevenuePerUser = null;
 
     /**
      *
@@ -202,69 +274,6 @@ class MetricsTotals
 
     /**
      *
-     * @var int|float|null $activeSubscriptions
-     */
-    #[\Speakeasy\Serializer\Annotation\SerializedName('active_subscriptions')]
-    #[\Speakeasy\Serializer\Annotation\Type('int|float|null')]
-    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
-    public int|float|null $activeSubscriptions = null;
-
-    /**
-     *
-     * @var int|float|null $committedSubscriptions
-     */
-    #[\Speakeasy\Serializer\Annotation\SerializedName('committed_subscriptions')]
-    #[\Speakeasy\Serializer\Annotation\Type('int|float|null')]
-    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
-    public int|float|null $committedSubscriptions = null;
-
-    /**
-     *
-     * @var int|float|null $monthlyRecurringRevenue
-     */
-    #[\Speakeasy\Serializer\Annotation\SerializedName('monthly_recurring_revenue')]
-    #[\Speakeasy\Serializer\Annotation\Type('int|float|null')]
-    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
-    public int|float|null $monthlyRecurringRevenue = null;
-
-    /**
-     *
-     * @var int|float|null $committedMonthlyRecurringRevenue
-     */
-    #[\Speakeasy\Serializer\Annotation\SerializedName('committed_monthly_recurring_revenue')]
-    #[\Speakeasy\Serializer\Annotation\Type('int|float|null')]
-    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
-    public int|float|null $committedMonthlyRecurringRevenue = null;
-
-    /**
-     *
-     * @var int|float|null $checkouts
-     */
-    #[\Speakeasy\Serializer\Annotation\SerializedName('checkouts')]
-    #[\Speakeasy\Serializer\Annotation\Type('int|float|null')]
-    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
-    public int|float|null $checkouts = null;
-
-    /**
-     *
-     * @var int|float|null $succeededCheckouts
-     */
-    #[\Speakeasy\Serializer\Annotation\SerializedName('succeeded_checkouts')]
-    #[\Speakeasy\Serializer\Annotation\Type('int|float|null')]
-    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
-    public int|float|null $succeededCheckouts = null;
-
-    /**
-     *
-     * @var int|float|null $checkoutsConversion
-     */
-    #[\Speakeasy\Serializer\Annotation\SerializedName('checkouts_conversion')]
-    #[\Speakeasy\Serializer\Annotation\Type('int|float|null')]
-    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
-    public int|float|null $checkoutsConversion = null;
-
-    /**
-     *
      * @var int|float|null $canceledSubscriptions
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('canceled_subscriptions')]
@@ -346,15 +355,6 @@ class MetricsTotals
 
     /**
      *
-     * @var int|float|null $churnedSubscriptions
-     */
-    #[\Speakeasy\Serializer\Annotation\SerializedName('churned_subscriptions')]
-    #[\Speakeasy\Serializer\Annotation\Type('int|float|null')]
-    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
-    public int|float|null $churnedSubscriptions = null;
-
-    /**
-     *
      * @var int|float|null $churnRate
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('churn_rate')]
@@ -399,6 +399,15 @@ class MetricsTotals
     public int|float|null $cashflow = null;
 
     /**
+     * @param  int|float|null  $activeSubscriptions
+     * @param  int|float|null  $committedSubscriptions
+     * @param  int|float|null  $monthlyRecurringRevenue
+     * @param  int|float|null  $committedMonthlyRecurringRevenue
+     * @param  int|float|null  $averageRevenuePerUser
+     * @param  int|float|null  $checkouts
+     * @param  int|float|null  $succeededCheckouts
+     * @param  int|float|null  $checkoutsConversion
+     * @param  int|float|null  $churnedSubscriptions
      * @param  int|float|null  $orders
      * @param  int|float|null  $revenue
      * @param  int|float|null  $netRevenue
@@ -408,7 +417,6 @@ class MetricsTotals
      * @param  int|float|null  $cumulativeCosts
      * @param  int|float|null  $averageOrderValue
      * @param  int|float|null  $netAverageOrderValue
-     * @param  int|float|null  $averageRevenuePerUser
      * @param  int|float|null  $costPerUser
      * @param  int|float|null  $activeUserByEvent
      * @param  int|float|null  $oneTimeProducts
@@ -420,13 +428,6 @@ class MetricsTotals
      * @param  int|float|null  $renewedSubscriptions
      * @param  int|float|null  $renewedSubscriptionsRevenue
      * @param  int|float|null  $renewedSubscriptionsNetRevenue
-     * @param  int|float|null  $activeSubscriptions
-     * @param  int|float|null  $committedSubscriptions
-     * @param  int|float|null  $monthlyRecurringRevenue
-     * @param  int|float|null  $committedMonthlyRecurringRevenue
-     * @param  int|float|null  $checkouts
-     * @param  int|float|null  $succeededCheckouts
-     * @param  int|float|null  $checkoutsConversion
      * @param  int|float|null  $canceledSubscriptions
      * @param  int|float|null  $canceledSubscriptionsCustomerService
      * @param  int|float|null  $canceledSubscriptionsLowQuality
@@ -436,7 +437,6 @@ class MetricsTotals
      * @param  int|float|null  $canceledSubscriptionsTooExpensive
      * @param  int|float|null  $canceledSubscriptionsUnused
      * @param  int|float|null  $canceledSubscriptionsOther
-     * @param  int|float|null  $churnedSubscriptions
      * @param  int|float|null  $churnRate
      * @param  int|float|null  $ltv
      * @param  int|float|null  $grossMargin
@@ -444,8 +444,17 @@ class MetricsTotals
      * @param  int|float|null  $cashflow
      * @phpstan-pure
      */
-    public function __construct(int|float|null $orders = null, int|float|null $revenue = null, int|float|null $netRevenue = null, int|float|null $cumulativeRevenue = null, int|float|null $netCumulativeRevenue = null, int|float|null $costs = null, int|float|null $cumulativeCosts = null, int|float|null $averageOrderValue = null, int|float|null $netAverageOrderValue = null, int|float|null $averageRevenuePerUser = null, int|float|null $costPerUser = null, int|float|null $activeUserByEvent = null, int|float|null $oneTimeProducts = null, int|float|null $oneTimeProductsRevenue = null, int|float|null $oneTimeProductsNetRevenue = null, int|float|null $newSubscriptions = null, int|float|null $newSubscriptionsRevenue = null, int|float|null $newSubscriptionsNetRevenue = null, int|float|null $renewedSubscriptions = null, int|float|null $renewedSubscriptionsRevenue = null, int|float|null $renewedSubscriptionsNetRevenue = null, int|float|null $activeSubscriptions = null, int|float|null $committedSubscriptions = null, int|float|null $monthlyRecurringRevenue = null, int|float|null $committedMonthlyRecurringRevenue = null, int|float|null $checkouts = null, int|float|null $succeededCheckouts = null, int|float|null $checkoutsConversion = null, int|float|null $canceledSubscriptions = null, int|float|null $canceledSubscriptionsCustomerService = null, int|float|null $canceledSubscriptionsLowQuality = null, int|float|null $canceledSubscriptionsMissingFeatures = null, int|float|null $canceledSubscriptionsSwitchedService = null, int|float|null $canceledSubscriptionsTooComplex = null, int|float|null $canceledSubscriptionsTooExpensive = null, int|float|null $canceledSubscriptionsUnused = null, int|float|null $canceledSubscriptionsOther = null, int|float|null $churnedSubscriptions = null, int|float|null $churnRate = null, int|float|null $ltv = null, int|float|null $grossMargin = null, int|float|null $grossMarginPercentage = null, int|float|null $cashflow = null)
+    public function __construct(int|float|null $activeSubscriptions = null, int|float|null $committedSubscriptions = null, int|float|null $monthlyRecurringRevenue = null, int|float|null $committedMonthlyRecurringRevenue = null, int|float|null $averageRevenuePerUser = null, int|float|null $checkouts = null, int|float|null $succeededCheckouts = null, int|float|null $checkoutsConversion = null, int|float|null $churnedSubscriptions = null, int|float|null $orders = null, int|float|null $revenue = null, int|float|null $netRevenue = null, int|float|null $cumulativeRevenue = null, int|float|null $netCumulativeRevenue = null, int|float|null $costs = null, int|float|null $cumulativeCosts = null, int|float|null $averageOrderValue = null, int|float|null $netAverageOrderValue = null, int|float|null $costPerUser = null, int|float|null $activeUserByEvent = null, int|float|null $oneTimeProducts = null, int|float|null $oneTimeProductsRevenue = null, int|float|null $oneTimeProductsNetRevenue = null, int|float|null $newSubscriptions = null, int|float|null $newSubscriptionsRevenue = null, int|float|null $newSubscriptionsNetRevenue = null, int|float|null $renewedSubscriptions = null, int|float|null $renewedSubscriptionsRevenue = null, int|float|null $renewedSubscriptionsNetRevenue = null, int|float|null $canceledSubscriptions = null, int|float|null $canceledSubscriptionsCustomerService = null, int|float|null $canceledSubscriptionsLowQuality = null, int|float|null $canceledSubscriptionsMissingFeatures = null, int|float|null $canceledSubscriptionsSwitchedService = null, int|float|null $canceledSubscriptionsTooComplex = null, int|float|null $canceledSubscriptionsTooExpensive = null, int|float|null $canceledSubscriptionsUnused = null, int|float|null $canceledSubscriptionsOther = null, int|float|null $churnRate = null, int|float|null $ltv = null, int|float|null $grossMargin = null, int|float|null $grossMarginPercentage = null, int|float|null $cashflow = null)
     {
+        $this->activeSubscriptions = $activeSubscriptions;
+        $this->committedSubscriptions = $committedSubscriptions;
+        $this->monthlyRecurringRevenue = $monthlyRecurringRevenue;
+        $this->committedMonthlyRecurringRevenue = $committedMonthlyRecurringRevenue;
+        $this->averageRevenuePerUser = $averageRevenuePerUser;
+        $this->checkouts = $checkouts;
+        $this->succeededCheckouts = $succeededCheckouts;
+        $this->checkoutsConversion = $checkoutsConversion;
+        $this->churnedSubscriptions = $churnedSubscriptions;
         $this->orders = $orders;
         $this->revenue = $revenue;
         $this->netRevenue = $netRevenue;
@@ -455,7 +464,6 @@ class MetricsTotals
         $this->cumulativeCosts = $cumulativeCosts;
         $this->averageOrderValue = $averageOrderValue;
         $this->netAverageOrderValue = $netAverageOrderValue;
-        $this->averageRevenuePerUser = $averageRevenuePerUser;
         $this->costPerUser = $costPerUser;
         $this->activeUserByEvent = $activeUserByEvent;
         $this->oneTimeProducts = $oneTimeProducts;
@@ -467,13 +475,6 @@ class MetricsTotals
         $this->renewedSubscriptions = $renewedSubscriptions;
         $this->renewedSubscriptionsRevenue = $renewedSubscriptionsRevenue;
         $this->renewedSubscriptionsNetRevenue = $renewedSubscriptionsNetRevenue;
-        $this->activeSubscriptions = $activeSubscriptions;
-        $this->committedSubscriptions = $committedSubscriptions;
-        $this->monthlyRecurringRevenue = $monthlyRecurringRevenue;
-        $this->committedMonthlyRecurringRevenue = $committedMonthlyRecurringRevenue;
-        $this->checkouts = $checkouts;
-        $this->succeededCheckouts = $succeededCheckouts;
-        $this->checkoutsConversion = $checkoutsConversion;
         $this->canceledSubscriptions = $canceledSubscriptions;
         $this->canceledSubscriptionsCustomerService = $canceledSubscriptionsCustomerService;
         $this->canceledSubscriptionsLowQuality = $canceledSubscriptionsLowQuality;
@@ -483,7 +484,6 @@ class MetricsTotals
         $this->canceledSubscriptionsTooExpensive = $canceledSubscriptionsTooExpensive;
         $this->canceledSubscriptionsUnused = $canceledSubscriptionsUnused;
         $this->canceledSubscriptionsOther = $canceledSubscriptionsOther;
-        $this->churnedSubscriptions = $churnedSubscriptions;
         $this->churnRate = $churnRate;
         $this->ltv = $ltv;
         $this->grossMargin = $grossMargin;

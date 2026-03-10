@@ -9,15 +9,15 @@ declare(strict_types=1);
 namespace Polar\Models\Components;
 
 
-class ListResourceCustomerWithMembers
+class ListResourceCustomer
 {
     /**
      * $items
      *
-     * @var array<CustomerWithMembers> $items
+     * @var array<Customer> $items
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('items')]
-    #[\Speakeasy\Serializer\Annotation\Type('array<\Polar\Models\Components\CustomerWithMembers>')]
+    #[\Speakeasy\Serializer\Annotation\Type('array<\Polar\Models\Components\Customer>')]
     public array $items;
 
     /**
@@ -29,7 +29,7 @@ class ListResourceCustomerWithMembers
     public Pagination $pagination;
 
     /**
-     * @param  array<CustomerWithMembers>  $items
+     * @param  array<Customer>  $items
      * @param  Pagination  $pagination
      * @phpstan-pure
      */
