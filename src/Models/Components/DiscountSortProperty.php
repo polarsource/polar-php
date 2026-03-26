@@ -19,4 +19,6 @@ enum DiscountSortProperty: string
     case MinusCode = '-code';
     case RedemptionsCount = 'redemptions_count';
     case MinusRedemptionsCount = '-redemptions_count';
+    case EndsAt = 'ends_at';
+    case MinusEndsAt = '-ends_at';
 }

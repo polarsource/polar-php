@@ -35,22 +35,22 @@ class CustomersUpdateExternalResponse
     /**
      * Customer updated.
      *
-     * @var ?Components\CustomerWithMembers $customerWithMembers
+     * @var ?Components\Customer $customer
      */
-    public ?Components\CustomerWithMembers $customerWithMembers = null;
+    public ?Components\Customer $customer = null;
 
     /**
      * @param  string  $contentType
      * @param  int  $statusCode
      * @param  \Psr\Http\Message\ResponseInterface  $rawResponse
-     * @param  ?Components\CustomerWithMembers  $customerWithMembers
+     * @param  ?Components\Customer  $customer
      * @phpstan-pure
      */
-    public function __construct(string $contentType, int $statusCode, \Psr\Http\Message\ResponseInterface $rawResponse, ?Components\CustomerWithMembers $customerWithMembers = null)
+    public function __construct(string $contentType, int $statusCode, \Psr\Http\Message\ResponseInterface $rawResponse, ?Components\Customer $customer = null)
     {
         $this->contentType = $contentType;
         $this->statusCode = $statusCode;
         $this->rawResponse = $rawResponse;
-        $this->customerWithMembers = $customerWithMembers;
+        $this->customer = $customer;
     }
 }

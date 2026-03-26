@@ -30,6 +30,15 @@ Components\BenefitDiscordCreate $value = /* values here */
 Components\BenefitDownloadablesCreate $value = /* values here */
 ```
 
+### `Components\BenefitFeatureFlagCreate`
+
+```php
+/**
+* @var Components\BenefitFeatureFlagCreate
+*/
+Components\BenefitFeatureFlagCreate $value = /* values here */
+```
+
 ### `Components\BenefitGitHubRepositoryCreate`
 
 ```php

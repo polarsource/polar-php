@@ -12,6 +12,16 @@ namespace Polar\Models\Components;
 class OrganizationFeatureSettings
 {
     /**
+     * Ordered list of metric slugs shown on the dashboard overview.
+     *
+     * @var ?array<string> $overviewMetrics
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('overview_metrics')]
+    #[\Speakeasy\Serializer\Annotation\Type('array<string>|null')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
+    public ?array $overviewMetrics = null;
+
+    /**
      * If this organization has issue funding enabled
      *
      * @var ?bool $issueFundingEnabled
@@ -75,15 +85,6 @@ class OrganizationFeatureSettings
     public ?bool $tinybirdCompare = null;
 
     /**
-     * If this organization has multiple presentment currencies enabled
-     *
-     * @var ?bool $presentmentCurrenciesEnabled
-     */
-    #[\Speakeasy\Serializer\Annotation\SerializedName('presentment_currencies_enabled')]
-    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
-    public ?bool $presentmentCurrenciesEnabled = null;
-
-    /**
      * If this organization has checkout localization enabled
      *
      * @var ?bool $checkoutLocalizationEnabled
@@ -100,12 +101,13 @@ class OrganizationFeatureSettings
      * @param  ?bool  $memberModelEnabled
      * @param  ?bool  $tinybirdRead
      * @param  ?bool  $tinybirdCompare
-     * @param  ?bool  $presentmentCurrenciesEnabled
      * @param  ?bool  $checkoutLocalizationEnabled
+     * @param  ?array<string>  $overviewMetrics
      * @phpstan-pure
      */
-    public function __construct(?bool $issueFundingEnabled = false, ?bool $seatBasedPricingEnabled = false, ?bool $revopsEnabled = false, ?bool $walletsEnabled = false, ?bool $memberModelEnabled = false, ?bool $tinybirdRead = false, ?bool $tinybirdCompare = false, ?bool $presentmentCurrenciesEnabled = false, ?bool $checkoutLocalizationEnabled = false)
+    public function __construct(?array $overviewMetrics = null, ?bool $issueFundingEnabled = false, ?bool $seatBasedPricingEnabled = false, ?bool $revopsEnabled = false, ?bool $walletsEnabled = false, ?bool $memberModelEnabled = false, ?bool $tinybirdRead = false, ?bool $tinybirdCompare = false, ?bool $checkoutLocalizationEnabled = false)
     {
+        $this->overviewMetrics = $overviewMetrics;
         $this->issueFundingEnabled = $issueFundingEnabled;
         $this->seatBasedPricingEnabled = $seatBasedPricingEnabled;
         $this->revopsEnabled = $revopsEnabled;
@@ -113,7 +115,6 @@ class OrganizationFeatureSettings
         $this->memberModelEnabled = $memberModelEnabled;
         $this->tinybirdRead = $tinybirdRead;
         $this->tinybirdCompare = $tinybirdCompare;
-        $this->presentmentCurrenciesEnabled = $presentmentCurrenciesEnabled;
         $this->checkoutLocalizationEnabled = $checkoutLocalizationEnabled;
     }
 }

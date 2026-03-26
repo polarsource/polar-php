@@ -29,11 +29,22 @@ class ProductPriceSeatTiersInput
     public array $tiers;
 
     /**
+     *
+     * @var ?SeatTierType $seatTierType
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('seat_tier_type')]
+    #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\SeatTierType|null')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
+    public ?SeatTierType $seatTierType = null;
+
+    /**
      * @param  array<ProductPriceSeatTier>  $tiers
+     * @param  ?SeatTierType  $seatTierType
      * @phpstan-pure
      */
-    public function __construct(array $tiers)
+    public function __construct(array $tiers, ?SeatTierType $seatTierType = null)
     {
         $this->tiers = $tiers;
+        $this->seatTierType = $seatTierType;
     }
 }

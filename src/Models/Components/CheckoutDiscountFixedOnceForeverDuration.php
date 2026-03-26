@@ -31,6 +31,7 @@ class CheckoutDiscountFixedOnceForeverDuration
     /**
      *
      * @var int $amount
+     * @deprecated  field: This will be removed in a future release, please migrate away from it as soon as possible.
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('amount')]
     public int $amount;
@@ -38,9 +39,19 @@ class CheckoutDiscountFixedOnceForeverDuration
     /**
      *
      * @var string $currency
+     * @deprecated  field: This will be removed in a future release, please migrate away from it as soon as possible.
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('currency')]
     public string $currency;
+
+    /**
+     * Map of currency to fixed amount to discount from the total.
+     *
+     * @var array<string, int> $amounts
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('amounts')]
+    #[\Speakeasy\Serializer\Annotation\Type('array<string, int>')]
+    public array $amounts;
 
     /**
      * The ID of the object.
@@ -69,17 +80,19 @@ class CheckoutDiscountFixedOnceForeverDuration
      * @param  DiscountType  $type
      * @param  int  $amount
      * @param  string  $currency
+     * @param  array<string, int>  $amounts
      * @param  string  $id
      * @param  string  $name
      * @param  ?string  $code
      * @phpstan-pure
      */
-    public function __construct(DiscountDuration $duration, DiscountType $type, int $amount, string $currency, string $id, string $name, ?string $code = null)
+    public function __construct(DiscountDuration $duration, DiscountType $type, int $amount, string $currency, array $amounts, string $id, string $name, ?string $code = null)
     {
         $this->duration = $duration;
         $this->type = $type;
         $this->amount = $amount;
         $this->currency = $currency;
+        $this->amounts = $amounts;
         $this->id = $id;
         $this->name = $name;
         $this->code = $code;

@@ -194,7 +194,7 @@ $sdk = Polar\Polar::builder()
 
 $orderUpdate = new Components\OrderUpdate(
     billingAddress: new Components\AddressInput(
-        country: Components\CountryAlpha2Input::Us,
+        country: Components\AddressInputCountryAlpha2Input::Us,
     ),
 );
 

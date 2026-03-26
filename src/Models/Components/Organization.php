@@ -86,6 +86,14 @@ class Organization
 
     /**
      *
+     * @var TaxBehaviorOption $defaultTaxBehavior
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('default_tax_behavior')]
+    #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\TaxBehaviorOption')]
+    public TaxBehaviorOption $defaultTaxBehavior;
+
+    /**
+     *
      * @var OrganizationSubscriptionSettings $subscriptionSettings
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('subscription_settings')]
@@ -149,7 +157,7 @@ class Organization
     public ?string $website;
 
     /**
-     * When the business details were submitted.
+     * When the business details were submitted for review.
      *
      * @var ?\DateTime $detailsSubmittedAt
      */
@@ -166,6 +174,16 @@ class Organization
     public ?OrganizationFeatureSettings $featureSettings;
 
     /**
+     * Two-letter country code (ISO 3166-1 alpha-2).
+     *
+     * @var ?CountryAlpha2 $country
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('country')]
+    #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\CountryAlpha2|null')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
+    public ?CountryAlpha2 $country = null;
+
+    /**
      * @param  \DateTime  $createdAt
      * @param  string  $id
      * @param  string  $name
@@ -175,6 +193,7 @@ class Organization
      * @param  array<OrganizationSocialLink>  $socials
      * @param  OrganizationStatus  $status
      * @param  string  $defaultPresentmentCurrency
+     * @param  TaxBehaviorOption  $defaultTaxBehavior
      * @param  OrganizationSubscriptionSettings  $subscriptionSettings
      * @param  OrganizationNotificationSettings  $notificationSettings
      * @param  OrganizationCustomerEmailSettings  $customerEmailSettings
@@ -185,9 +204,10 @@ class Organization
      * @param  ?string  $website
      * @param  ?\DateTime  $detailsSubmittedAt
      * @param  ?OrganizationFeatureSettings  $featureSettings
+     * @param  ?CountryAlpha2  $country
      * @phpstan-pure
      */
-    public function __construct(\DateTime $createdAt, string $id, string $name, string $slug, SubscriptionProrationBehavior $prorationBehavior, bool $allowCustomerUpdates, array $socials, OrganizationStatus $status, string $defaultPresentmentCurrency, OrganizationSubscriptionSettings $subscriptionSettings, OrganizationNotificationSettings $notificationSettings, OrganizationCustomerEmailSettings $customerEmailSettings, OrganizationCustomerPortalSettings $customerPortalSettings, ?\DateTime $modifiedAt = null, ?string $avatarUrl = null, ?string $email = null, ?string $website = null, ?\DateTime $detailsSubmittedAt = null, ?OrganizationFeatureSettings $featureSettings = null)
+    public function __construct(\DateTime $createdAt, string $id, string $name, string $slug, SubscriptionProrationBehavior $prorationBehavior, bool $allowCustomerUpdates, array $socials, OrganizationStatus $status, string $defaultPresentmentCurrency, TaxBehaviorOption $defaultTaxBehavior, OrganizationSubscriptionSettings $subscriptionSettings, OrganizationNotificationSettings $notificationSettings, OrganizationCustomerEmailSettings $customerEmailSettings, OrganizationCustomerPortalSettings $customerPortalSettings, ?\DateTime $modifiedAt = null, ?string $avatarUrl = null, ?string $email = null, ?string $website = null, ?\DateTime $detailsSubmittedAt = null, ?OrganizationFeatureSettings $featureSettings = null, ?CountryAlpha2 $country = null)
     {
         $this->createdAt = $createdAt;
         $this->id = $id;
@@ -198,6 +218,7 @@ class Organization
         $this->socials = $socials;
         $this->status = $status;
         $this->defaultPresentmentCurrency = $defaultPresentmentCurrency;
+        $this->defaultTaxBehavior = $defaultTaxBehavior;
         $this->subscriptionSettings = $subscriptionSettings;
         $this->notificationSettings = $notificationSettings;
         $this->customerEmailSettings = $customerEmailSettings;
@@ -208,5 +229,6 @@ class Organization
         $this->website = $website;
         $this->detailsSubmittedAt = $detailsSubmittedAt;
         $this->featureSettings = $featureSettings;
+        $this->country = $country;
     }
 }

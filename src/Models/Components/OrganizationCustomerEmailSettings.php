@@ -55,10 +55,24 @@ class OrganizationCustomerEmailSettings
 
     /**
      *
+     * @var bool $subscriptionRenewalReminder
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('subscription_renewal_reminder')]
+    public bool $subscriptionRenewalReminder;
+
+    /**
+     *
      * @var bool $subscriptionRevoked
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('subscription_revoked')]
     public bool $subscriptionRevoked;
+
+    /**
+     *
+     * @var bool $subscriptionTrialConversionReminder
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('subscription_trial_conversion_reminder')]
+    public bool $subscriptionTrialConversionReminder;
 
     /**
      *
@@ -81,12 +95,14 @@ class OrganizationCustomerEmailSettings
      * @param  bool  $subscriptionCycled
      * @param  bool  $subscriptionCycledAfterTrial
      * @param  bool  $subscriptionPastDue
+     * @param  bool  $subscriptionRenewalReminder
      * @param  bool  $subscriptionRevoked
+     * @param  bool  $subscriptionTrialConversionReminder
      * @param  bool  $subscriptionUncanceled
      * @param  bool  $subscriptionUpdated
      * @phpstan-pure
      */
-    public function __construct(bool $orderConfirmation, bool $subscriptionCancellation, bool $subscriptionConfirmation, bool $subscriptionCycled, bool $subscriptionCycledAfterTrial, bool $subscriptionPastDue, bool $subscriptionRevoked, bool $subscriptionUncanceled, bool $subscriptionUpdated)
+    public function __construct(bool $orderConfirmation, bool $subscriptionCancellation, bool $subscriptionConfirmation, bool $subscriptionCycled, bool $subscriptionCycledAfterTrial, bool $subscriptionPastDue, bool $subscriptionRenewalReminder, bool $subscriptionRevoked, bool $subscriptionTrialConversionReminder, bool $subscriptionUncanceled, bool $subscriptionUpdated)
     {
         $this->orderConfirmation = $orderConfirmation;
         $this->subscriptionCancellation = $subscriptionCancellation;
@@ -94,7 +110,9 @@ class OrganizationCustomerEmailSettings
         $this->subscriptionCycled = $subscriptionCycled;
         $this->subscriptionCycledAfterTrial = $subscriptionCycledAfterTrial;
         $this->subscriptionPastDue = $subscriptionPastDue;
+        $this->subscriptionRenewalReminder = $subscriptionRenewalReminder;
         $this->subscriptionRevoked = $subscriptionRevoked;
+        $this->subscriptionTrialConversionReminder = $subscriptionTrialConversionReminder;
         $this->subscriptionUncanceled = $subscriptionUncanceled;
         $this->subscriptionUpdated = $subscriptionUpdated;
     }

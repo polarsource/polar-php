@@ -12,4 +12,6 @@
 | `Youtube`   | youtube     |
 | `Tiktok`    | tiktok      |
 | `Linkedin`  | linkedin    |
+| `Threads`   | threads     |
+| `Discord`   | discord     |
 | `Other`     | other       |

@@ -80,7 +80,7 @@ $sdk = Polar\Polar::builder()->build();
 
 $request = new Components\CustomerPortalCustomerUpdate(
     billingAddress: new Components\AddressInput(
-        country: Components\CountryAlpha2Input::Us,
+        country: Components\AddressInputCountryAlpha2Input::Us,
     ),
 );
 $requestSecurity = new Operations\CustomerPortalCustomersUpdateSecurity(

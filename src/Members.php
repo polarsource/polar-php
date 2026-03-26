@@ -392,6 +392,7 @@ class Members
                         request: new Operations\MembersListMembersRequest(
                             customerId: $request != null ? $request->customerId : null,
                             externalCustomerId: $request != null ? $request->externalCustomerId : null,
+                            role: $request != null ? $request->role : null,
                             page: $nextPage,
                             limit: $request != null ? $request->limit : null,
                             sorting: $request != null ? $request->sorting : null,

@@ -100,12 +100,8 @@ $request = new Components\CustomerCreate(
     email: 'customer@example.com',
     name: 'John Doe',
     billingAddress: new Components\AddressInput(
-        country: Components\CountryAlpha2Input::Us,
+        country: Components\AddressInputCountryAlpha2Input::Us,
     ),
-    taxId: [
-        '911144442',
-        'us_ein',
-    ],
     locale: 'en',
     type: Components\CustomerType::Individual,
     organizationId: '1dbfc517-0bbf-4301-9ba8-555ca42b9737',
@@ -120,7 +116,7 @@ $response = $sdk->customers->create(
     request: $request
 );
 
-if ($response->customerWithMembers !== null) {
+if ($response->customer !== null) {
     // handle response
 }
 ```
@@ -220,7 +216,7 @@ $response = $sdk->customers->get(
     id: '<value>'
 );
 
-if ($response->customerWithMembers !== null) {
+if ($response->customer !== null) {
     // handle response
 }
 ```
@@ -338,12 +334,8 @@ $customerUpdate = new Components\CustomerUpdate(
     email: 'customer@example.com',
     name: 'John Doe',
     billingAddress: new Components\AddressInput(
-        country: Components\CountryAlpha2Input::Us,
+        country: Components\AddressInputCountryAlpha2Input::Us,
     ),
-    taxId: [
-        '911144442',
-        'us_ein',
-    ],
     locale: 'en',
     externalId: 'usr_1337',
     type: Components\CustomerType::Individual,
@@ -355,7 +347,7 @@ $response = $sdk->customers->update(
 
 );
 
-if ($response->customerWithMembers !== null) {
+if ($response->customer !== null) {
     // handle response
 }
 ```
@@ -407,7 +399,7 @@ $response = $sdk->customers->getExternal(
     externalId: '<id>'
 );
 
-if ($response->customerWithMembers !== null) {
+if ($response->customer !== null) {
     // handle response
 }
 ```
@@ -515,12 +507,8 @@ $customerUpdateExternalID = new Components\CustomerUpdateExternalID(
     email: 'customer@example.com',
     name: 'John Doe',
     billingAddress: new Components\AddressInput(
-        country: Components\CountryAlpha2Input::Us,
+        country: Components\AddressInputCountryAlpha2Input::Us,
     ),
-    taxId: [
-        '911144442',
-        'us_ein',
-    ],
     locale: 'en',
 );
 
@@ -530,7 +518,7 @@ $response = $sdk->customers->updateExternal(
 
 );
 
-if ($response->customerWithMembers !== null) {
+if ($response->customer !== null) {
     // handle response
 }
 ```

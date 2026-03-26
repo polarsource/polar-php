@@ -18,5 +18,7 @@ enum OrganizationSocialPlatforms: string
     case Youtube = 'youtube';
     case Tiktok = 'tiktok';
     case Linkedin = 'linkedin';
+    case Threads = 'threads';
+    case Discord = 'discord';
     case Other = 'other';
 }

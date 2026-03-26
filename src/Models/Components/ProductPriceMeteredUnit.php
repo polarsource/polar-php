@@ -94,6 +94,15 @@ class ProductPriceMeteredUnit
     public ?\DateTime $modifiedAt;
 
     /**
+     * The tax behavior of the price. If null, it defaults to the organization's default tax behavior.
+     *
+     * @var ?TaxBehaviorOption $taxBehavior
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('tax_behavior')]
+    #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\TaxBehaviorOption|null')]
+    public ?TaxBehaviorOption $taxBehavior;
+
+    /**
      * The maximum amount in cents that can be charged, regardless of the number of units consumed.
      *
      * @var ?int $capAmount
@@ -120,10 +129,11 @@ class ProductPriceMeteredUnit
      * @param  string  $meterId
      * @param  ProductPriceMeter  $meter
      * @param  ?\DateTime  $modifiedAt
+     * @param  ?TaxBehaviorOption  $taxBehavior
      * @param  ?int  $capAmount
      * @phpstan-pure
      */
-    public function __construct(\DateTime $createdAt, string $id, ProductPriceSource $source, string $priceCurrency, bool $isArchived, string $productId, string $unitAmount, string $meterId, ProductPriceMeter $meter, ?\DateTime $modifiedAt = null, ?int $capAmount = null, string $amountType = 'metered_unit')
+    public function __construct(\DateTime $createdAt, string $id, ProductPriceSource $source, string $priceCurrency, bool $isArchived, string $productId, string $unitAmount, string $meterId, ProductPriceMeter $meter, ?\DateTime $modifiedAt = null, ?TaxBehaviorOption $taxBehavior = null, ?int $capAmount = null, string $amountType = 'metered_unit')
     {
         $this->createdAt = $createdAt;
         $this->id = $id;
@@ -135,6 +145,7 @@ class ProductPriceMeteredUnit
         $this->meterId = $meterId;
         $this->meter = $meter;
         $this->modifiedAt = $modifiedAt;
+        $this->taxBehavior = $taxBehavior;
         $this->capAmount = $capAmount;
         $this->amountType = $amountType;
     }

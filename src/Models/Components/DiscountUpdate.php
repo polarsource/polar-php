@@ -106,6 +106,7 @@ class DiscountUpdate
     /**
      *
      * @var ?int $amount
+     * @deprecated  field: This will be removed in a future release, please migrate away from it as soon as possible.
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('amount')]
     #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
@@ -114,11 +115,22 @@ class DiscountUpdate
     /**
      *
      * @var ?PresentmentCurrency $currency
+     * @deprecated  field: This will be removed in a future release, please migrate away from it as soon as possible.
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('currency')]
     #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\PresentmentCurrency|null')]
     #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
     public ?PresentmentCurrency $currency = null;
+
+    /**
+     * $amounts
+     *
+     * @var ?array<string, int> $amounts
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('amounts')]
+    #[\Speakeasy\Serializer\Annotation\Type('array<string, int>|null')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
+    public ?array $amounts = null;
 
     /**
      *
@@ -150,11 +162,12 @@ class DiscountUpdate
      * @param  ?DiscountType  $type
      * @param  ?int  $amount
      * @param  ?PresentmentCurrency  $currency
+     * @param  ?array<string, int>  $amounts
      * @param  ?int  $basisPoints
      * @param  ?array<string>  $products
      * @phpstan-pure
      */
-    public function __construct(?array $metadata = null, ?string $name = null, ?string $code = null, ?\DateTime $startsAt = null, ?\DateTime $endsAt = null, ?int $maxRedemptions = null, ?DiscountDuration $duration = null, ?int $durationInMonths = null, ?DiscountType $type = null, ?int $amount = null, ?PresentmentCurrency $currency = null, ?int $basisPoints = null, ?array $products = null)
+    public function __construct(?array $metadata = null, ?string $name = null, ?string $code = null, ?\DateTime $startsAt = null, ?\DateTime $endsAt = null, ?int $maxRedemptions = null, ?DiscountDuration $duration = null, ?int $durationInMonths = null, ?DiscountType $type = null, ?int $amount = null, ?PresentmentCurrency $currency = null, ?array $amounts = null, ?int $basisPoints = null, ?array $products = null)
     {
         $this->metadata = $metadata;
         $this->name = $name;
@@ -167,6 +180,7 @@ class DiscountUpdate
         $this->type = $type;
         $this->amount = $amount;
         $this->currency = $currency;
+        $this->amounts = $amounts;
         $this->basisPoints = $basisPoints;
         $this->products = $products;
     }

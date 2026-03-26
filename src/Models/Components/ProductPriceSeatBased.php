@@ -83,6 +83,15 @@ class ProductPriceSeatBased
     public ?\DateTime $modifiedAt;
 
     /**
+     * The tax behavior of the price. If null, it defaults to the organization's default tax behavior.
+     *
+     * @var ?TaxBehaviorOption $taxBehavior
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('tax_behavior')]
+    #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\TaxBehaviorOption|null')]
+    public ?TaxBehaviorOption $taxBehavior;
+
+    /**
      *
      * @var string $amountType
      */
@@ -99,9 +108,10 @@ class ProductPriceSeatBased
      * @param  string  $productId
      * @param  ProductPriceSeatTiersOutput  $seatTiers
      * @param  ?\DateTime  $modifiedAt
+     * @param  ?TaxBehaviorOption  $taxBehavior
      * @phpstan-pure
      */
-    public function __construct(\DateTime $createdAt, string $id, ProductPriceSource $source, string $priceCurrency, bool $isArchived, string $productId, ProductPriceSeatTiersOutput $seatTiers, ?\DateTime $modifiedAt = null, string $amountType = 'seat_based')
+    public function __construct(\DateTime $createdAt, string $id, ProductPriceSource $source, string $priceCurrency, bool $isArchived, string $productId, ProductPriceSeatTiersOutput $seatTiers, ?\DateTime $modifiedAt = null, ?TaxBehaviorOption $taxBehavior = null, string $amountType = 'seat_based')
     {
         $this->createdAt = $createdAt;
         $this->id = $id;
@@ -111,6 +121,7 @@ class ProductPriceSeatBased
         $this->productId = $productId;
         $this->seatTiers = $seatTiers;
         $this->modifiedAt = $modifiedAt;
+        $this->taxBehavior = $taxBehavior;
         $this->amountType = $amountType;
     }
 }

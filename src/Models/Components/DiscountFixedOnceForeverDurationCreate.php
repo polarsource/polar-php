@@ -29,29 +29,12 @@ class DiscountFixedOnceForeverDurationCreate
     public DiscountType $type;
 
     /**
-     * Fixed amount to discount from the invoice total.
-     *
-     * @var int $amount
-     */
-    #[\Speakeasy\Serializer\Annotation\SerializedName('amount')]
-    public int $amount;
-
-    /**
      * Name of the discount. Will be displayed to the customer when the discount is applied.
      *
      * @var string $name
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('name')]
     public string $name;
-
-    /**
-     *
-     * @var ?PresentmentCurrency $currency
-     */
-    #[\Speakeasy\Serializer\Annotation\SerializedName('currency')]
-    #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\PresentmentCurrency|null')]
-    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
-    public ?PresentmentCurrency $currency = null;
 
     /**
      * Key-value object allowing you to store additional information.
@@ -73,6 +56,35 @@ class DiscountFixedOnceForeverDurationCreate
     #[\Speakeasy\Serializer\Annotation\Type('array<string, string|int|float|bool>|null')]
     #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
     public ?array $metadata = null;
+
+    /**
+     *
+     * @var ?int $amount
+     * @deprecated  field: This will be removed in a future release, please migrate away from it as soon as possible.
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('amount')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
+    public ?int $amount = null;
+
+    /**
+     *
+     * @var ?PresentmentCurrency $currency
+     * @deprecated  field: This will be removed in a future release, please migrate away from it as soon as possible.
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('currency')]
+    #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\PresentmentCurrency|null')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
+    public ?PresentmentCurrency $currency = null;
+
+    /**
+     * $amounts
+     *
+     * @var ?array<string, int> $amounts
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('amounts')]
+    #[\Speakeasy\Serializer\Annotation\Type('array<string, int>|null')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
+    public ?array $amounts = null;
 
     /**
      * Code customers can use to apply the discount during checkout. Must be between 3 and 256 characters long and contain only alphanumeric characters.If not provided, the discount can only be applied via the API.
@@ -132,10 +144,11 @@ class DiscountFixedOnceForeverDurationCreate
     /**
      * @param  DiscountDuration  $duration
      * @param  DiscountType  $type
-     * @param  int  $amount
      * @param  string  $name
-     * @param  ?PresentmentCurrency  $currency
      * @param  ?array<string, string|int|float|bool>  $metadata
+     * @param  ?int  $amount
+     * @param  ?PresentmentCurrency  $currency
+     * @param  ?array<string, int>  $amounts
      * @param  ?string  $code
      * @param  ?\DateTime  $startsAt
      * @param  ?\DateTime  $endsAt
@@ -144,14 +157,15 @@ class DiscountFixedOnceForeverDurationCreate
      * @param  ?string  $organizationId
      * @phpstan-pure
      */
-    public function __construct(DiscountDuration $duration, DiscountType $type, int $amount, string $name, ?PresentmentCurrency $currency = null, ?array $metadata = null, ?string $code = null, ?\DateTime $startsAt = null, ?\DateTime $endsAt = null, ?int $maxRedemptions = null, ?array $products = null, ?string $organizationId = null)
+    public function __construct(DiscountDuration $duration, DiscountType $type, string $name, ?array $metadata = null, ?int $amount = null, ?PresentmentCurrency $currency = null, ?array $amounts = null, ?string $code = null, ?\DateTime $startsAt = null, ?\DateTime $endsAt = null, ?int $maxRedemptions = null, ?array $products = null, ?string $organizationId = null)
     {
         $this->duration = $duration;
         $this->type = $type;
-        $this->amount = $amount;
         $this->name = $name;
-        $this->currency = $currency;
         $this->metadata = $metadata;
+        $this->amount = $amount;
+        $this->currency = $currency;
+        $this->amounts = $amounts;
         $this->code = $code;
         $this->startsAt = $startsAt;
         $this->endsAt = $endsAt;

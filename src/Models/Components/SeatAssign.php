@@ -66,7 +66,7 @@ class SeatAssign
     public ?string $customerId = null;
 
     /**
-     * External member ID for the seat assignment. Only supported when member_model_enabled is true. Can be used alone (lookup existing member) or with email (create/validate member).
+     * External member ID for the seat assignment. Can be used alone (lookup existing member) or with email (create/validate member).
      *
      * @var ?string $externalMemberId
      */
@@ -75,7 +75,7 @@ class SeatAssign
     public ?string $externalMemberId = null;
 
     /**
-     * Member ID for the seat assignment. Only supported when member_model_enabled is true.
+     * Member ID for the seat assignment.
      *
      * @var ?string $memberId
      */

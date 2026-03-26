@@ -356,10 +356,6 @@ foreach ($responses as $response) {
 * [activate](docs/sdks/licensekeys/README.md#activate) - Activate License Key
 * [deactivate](docs/sdks/licensekeys/README.md#deactivate) - Deactivate License Key
 
-### [MemberSessions](docs/sdks/membersessions/README.md)
-
-* [create](docs/sdks/membersessions/README.md#create) - Create Member Session
-
 ### [Members](docs/sdks/members/README.md)
 
 * [listMembers](docs/sdks/members/README.md#listmembers) - List Members

@@ -32,6 +32,16 @@ class CheckoutConfirmStripe
     public ?string $productId = null;
 
     /**
+     * ID of the product price to checkout. Must correspond to a price present in the checkout's product list.
+     *
+     * @var ?string $productPriceId
+     * @deprecated  field: This will be removed in a future release, please migrate away from it as soon as possible.
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('product_price_id')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
+    public ?string $productPriceId = null;
+
+    /**
      *
      * @var ?int $amount
      */
@@ -135,6 +145,7 @@ class CheckoutConfirmStripe
     /**
      * @param  ?array<string, string|int|bool|\DateTime|null>  $customFieldData
      * @param  ?string  $productId
+     * @param  ?string  $productPriceId
      * @param  ?int  $amount
      * @param  ?int  $seats
      * @param  ?bool  $isBusinessCustomer
@@ -149,10 +160,11 @@ class CheckoutConfirmStripe
      * @param  ?string  $confirmationTokenId
      * @phpstan-pure
      */
-    public function __construct(?array $customFieldData = null, ?string $productId = null, ?int $amount = null, ?int $seats = null, ?bool $isBusinessCustomer = null, ?string $customerName = null, ?string $customerEmail = null, ?string $customerBillingName = null, ?AddressInput $customerBillingAddress = null, ?string $customerTaxId = null, ?string $locale = null, ?string $discountCode = null, ?string $confirmationTokenId = null, ?bool $allowTrial = false)
+    public function __construct(?array $customFieldData = null, ?string $productId = null, ?string $productPriceId = null, ?int $amount = null, ?int $seats = null, ?bool $isBusinessCustomer = null, ?string $customerName = null, ?string $customerEmail = null, ?string $customerBillingName = null, ?AddressInput $customerBillingAddress = null, ?string $customerTaxId = null, ?string $locale = null, ?string $discountCode = null, ?string $confirmationTokenId = null, ?bool $allowTrial = false)
     {
         $this->customFieldData = $customFieldData;
         $this->productId = $productId;
+        $this->productPriceId = $productPriceId;
         $this->amount = $amount;
         $this->seats = $seats;
         $this->isBusinessCustomer = $isBusinessCustomer;

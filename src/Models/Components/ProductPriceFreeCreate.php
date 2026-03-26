@@ -22,6 +22,16 @@ class ProductPriceFreeCreate
     public ?PresentmentCurrency $priceCurrency = null;
 
     /**
+     * The tax behavior of the price. If not set, it will default to the organization's default tax behavior.
+     *
+     * @var ?TaxBehaviorOption $taxBehavior
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('tax_behavior')]
+    #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\TaxBehaviorOption|null')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
+    public ?TaxBehaviorOption $taxBehavior = null;
+
+    /**
      *
      * @var string $amountType
      */
@@ -31,11 +41,13 @@ class ProductPriceFreeCreate
     /**
      * @param  string  $amountType
      * @param  ?PresentmentCurrency  $priceCurrency
+     * @param  ?TaxBehaviorOption  $taxBehavior
      * @phpstan-pure
      */
-    public function __construct(?PresentmentCurrency $priceCurrency = null, string $amountType = 'free')
+    public function __construct(?PresentmentCurrency $priceCurrency = null, ?TaxBehaviorOption $taxBehavior = null, string $amountType = 'free')
     {
         $this->priceCurrency = $priceCurrency;
+        $this->taxBehavior = $taxBehavior;
         $this->amountType = $amountType;
     }
 }

@@ -90,6 +90,15 @@ class LegacyRecurringProductPriceFixed
     public ?\DateTime $modifiedAt;
 
     /**
+     * The tax behavior of the price. If null, it defaults to the organization's default tax behavior.
+     *
+     * @var ?TaxBehaviorOption $taxBehavior
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('tax_behavior')]
+    #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\TaxBehaviorOption|null')]
+    public ?TaxBehaviorOption $taxBehavior;
+
+    /**
      *
      * @var string $amountType
      */
@@ -124,9 +133,10 @@ class LegacyRecurringProductPriceFixed
      * @param  int  $priceAmount
      * @param  bool  $legacy
      * @param  ?\DateTime  $modifiedAt
+     * @param  ?TaxBehaviorOption  $taxBehavior
      * @phpstan-pure
      */
-    public function __construct(\DateTime $createdAt, string $id, ProductPriceSource $source, string $priceCurrency, bool $isArchived, string $productId, SubscriptionRecurringInterval $recurringInterval, int $priceAmount, ?\DateTime $modifiedAt = null, string $amountType = 'fixed', string $type = 'recurring', bool $legacy = true)
+    public function __construct(\DateTime $createdAt, string $id, ProductPriceSource $source, string $priceCurrency, bool $isArchived, string $productId, SubscriptionRecurringInterval $recurringInterval, int $priceAmount, ?\DateTime $modifiedAt = null, ?TaxBehaviorOption $taxBehavior = null, string $amountType = 'fixed', string $type = 'recurring', bool $legacy = true)
     {
         $this->createdAt = $createdAt;
         $this->id = $id;
@@ -137,6 +147,7 @@ class LegacyRecurringProductPriceFixed
         $this->recurringInterval = $recurringInterval;
         $this->priceAmount = $priceAmount;
         $this->modifiedAt = $modifiedAt;
+        $this->taxBehavior = $taxBehavior;
         $this->amountType = $amountType;
         $this->type = $type;
         $this->legacy = $legacy;

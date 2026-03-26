@@ -76,6 +76,14 @@ class CustomerOrderSubscription
     public \DateTime $currentPeriodStart;
 
     /**
+     * The end timestamp of the current billing period.
+     *
+     * @var \DateTime $currentPeriodEnd
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('current_period_end')]
+    public \DateTime $currentPeriodEnd;
+
+    /**
      * Whether the subscription will be canceled at the end of the current period.
      *
      * @var bool $cancelAtPeriodEnd
@@ -106,14 +114,6 @@ class CustomerOrderSubscription
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('modified_at')]
     public ?\DateTime $modifiedAt;
-
-    /**
-     * The end timestamp of the current billing period.
-     *
-     * @var ?\DateTime $currentPeriodEnd
-     */
-    #[\Speakeasy\Serializer\Annotation\SerializedName('current_period_end')]
-    public ?\DateTime $currentPeriodEnd;
 
     /**
      * The start timestamp of the trial period, if any.
@@ -211,11 +211,11 @@ class CustomerOrderSubscription
      * @param  int  $recurringIntervalCount
      * @param  SubscriptionStatus  $status
      * @param  \DateTime  $currentPeriodStart
+     * @param  \DateTime  $currentPeriodEnd
      * @param  bool  $cancelAtPeriodEnd
      * @param  string  $customerId
      * @param  string  $productId
      * @param  ?\DateTime  $modifiedAt
-     * @param  ?\DateTime  $currentPeriodEnd
      * @param  ?\DateTime  $trialStart
      * @param  ?\DateTime  $trialEnd
      * @param  ?\DateTime  $canceledAt
@@ -229,7 +229,7 @@ class CustomerOrderSubscription
      * @param  ?int  $seats
      * @phpstan-pure
      */
-    public function __construct(\DateTime $createdAt, string $id, int $amount, string $currency, SubscriptionRecurringInterval $recurringInterval, int $recurringIntervalCount, SubscriptionStatus $status, \DateTime $currentPeriodStart, bool $cancelAtPeriodEnd, string $customerId, string $productId, ?\DateTime $modifiedAt = null, ?\DateTime $currentPeriodEnd = null, ?\DateTime $trialStart = null, ?\DateTime $trialEnd = null, ?\DateTime $canceledAt = null, ?\DateTime $startedAt = null, ?\DateTime $endsAt = null, ?\DateTime $endedAt = null, ?string $discountId = null, ?string $checkoutId = null, ?CustomerCancellationReason $customerCancellationReason = null, ?string $customerCancellationComment = null, ?int $seats = null)
+    public function __construct(\DateTime $createdAt, string $id, int $amount, string $currency, SubscriptionRecurringInterval $recurringInterval, int $recurringIntervalCount, SubscriptionStatus $status, \DateTime $currentPeriodStart, \DateTime $currentPeriodEnd, bool $cancelAtPeriodEnd, string $customerId, string $productId, ?\DateTime $modifiedAt = null, ?\DateTime $trialStart = null, ?\DateTime $trialEnd = null, ?\DateTime $canceledAt = null, ?\DateTime $startedAt = null, ?\DateTime $endsAt = null, ?\DateTime $endedAt = null, ?string $discountId = null, ?string $checkoutId = null, ?CustomerCancellationReason $customerCancellationReason = null, ?string $customerCancellationComment = null, ?int $seats = null)
     {
         $this->createdAt = $createdAt;
         $this->id = $id;
@@ -239,11 +239,11 @@ class CustomerOrderSubscription
         $this->recurringIntervalCount = $recurringIntervalCount;
         $this->status = $status;
         $this->currentPeriodStart = $currentPeriodStart;
+        $this->currentPeriodEnd = $currentPeriodEnd;
         $this->cancelAtPeriodEnd = $cancelAtPeriodEnd;
         $this->customerId = $customerId;
         $this->productId = $productId;
         $this->modifiedAt = $modifiedAt;
-        $this->currentPeriodEnd = $currentPeriodEnd;
         $this->trialStart = $trialStart;
         $this->trialEnd = $trialEnd;
         $this->canceledAt = $canceledAt;

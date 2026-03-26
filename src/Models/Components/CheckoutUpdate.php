@@ -53,6 +53,16 @@ class CheckoutUpdate
     public ?string $productId = null;
 
     /**
+     * ID of the product price to checkout. Must correspond to a price present in the checkout's product list.
+     *
+     * @var ?string $productPriceId
+     * @deprecated  field: This will be removed in a future release, please migrate away from it as soon as possible.
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('product_price_id')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
+    public ?string $productPriceId = null;
+
+    /**
      *
      * @var ?int $amount
      */
@@ -250,6 +260,7 @@ class CheckoutUpdate
      * @param  ?array<string, string|int|bool|\DateTime|null>  $customFieldData
      * @param  ?array<string, string|int|float|bool>  $metadata
      * @param  ?string  $productId
+     * @param  ?string  $productPriceId
      * @param  ?int  $amount
      * @param  ?int  $seats
      * @param  ?bool  $isBusinessCustomer
@@ -273,11 +284,12 @@ class CheckoutUpdate
      * @param  ?string  $embedOrigin
      * @phpstan-pure
      */
-    public function __construct(?array $customFieldData = null, ?array $metadata = null, ?string $productId = null, ?int $amount = null, ?int $seats = null, ?bool $isBusinessCustomer = null, ?string $customerName = null, ?string $customerEmail = null, ?string $customerBillingName = null, ?AddressInput $customerBillingAddress = null, ?string $customerTaxId = null, ?string $locale = null, ?TrialInterval $trialInterval = null, ?int $trialIntervalCount = null, ?PresentmentCurrency $currency = null, ?string $discountId = null, ?bool $allowDiscountCodes = null, ?bool $requireBillingAddress = null, ?bool $allowTrial = null, ?string $customerIpAddress = null, ?array $customerMetadata = null, ?string $successUrl = null, ?string $returnUrl = null, ?string $embedOrigin = null)
+    public function __construct(?array $customFieldData = null, ?array $metadata = null, ?string $productId = null, ?string $productPriceId = null, ?int $amount = null, ?int $seats = null, ?bool $isBusinessCustomer = null, ?string $customerName = null, ?string $customerEmail = null, ?string $customerBillingName = null, ?AddressInput $customerBillingAddress = null, ?string $customerTaxId = null, ?string $locale = null, ?TrialInterval $trialInterval = null, ?int $trialIntervalCount = null, ?PresentmentCurrency $currency = null, ?string $discountId = null, ?bool $allowDiscountCodes = null, ?bool $requireBillingAddress = null, ?bool $allowTrial = null, ?string $customerIpAddress = null, ?array $customerMetadata = null, ?string $successUrl = null, ?string $returnUrl = null, ?string $embedOrigin = null)
     {
         $this->customFieldData = $customFieldData;
         $this->metadata = $metadata;
         $this->productId = $productId;
+        $this->productPriceId = $productPriceId;
         $this->amount = $amount;
         $this->seats = $seats;
         $this->isBusinessCustomer = $isBusinessCustomer;

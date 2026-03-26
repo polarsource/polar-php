@@ -11,14 +11,40 @@ namespace Polar\Models\Components;
 
 enum PresentmentCurrency: string
 {
+    case Aed = 'aed';
+    case Ars = 'ars';
     case Aud = 'aud';
     case Brl = 'brl';
     case Cad = 'cad';
     case Chf = 'chf';
+    case Clp = 'clp';
+    case Cny = 'cny';
+    case Cop = 'cop';
+    case Czk = 'czk';
+    case Dkk = 'dkk';
     case Eur = 'eur';
-    case Inr = 'inr';
     case Gbp = 'gbp';
+    case Hkd = 'hkd';
+    case Huf = 'huf';
+    case Idr = 'idr';
+    case Ils = 'ils';
+    case Inr = 'inr';
     case Jpy = 'jpy';
+    case Krw = 'krw';
+    case Mxn = 'mxn';
+    case Myr = 'myr';
+    case Nok = 'nok';
+    case Nzd = 'nzd';
+    case Pen = 'pen';
+    case Php = 'php';
+    case Pln = 'pln';
+    case Ron = 'ron';
+    case Sar = 'sar';
     case Sek = 'sek';
+    case Sgd = 'sgd';
+    case Thb = 'thb';
+    case Try = 'try';
+    case Twd = 'twd';
     case Usd = 'usd';
+    case Zar = 'zar';
 }

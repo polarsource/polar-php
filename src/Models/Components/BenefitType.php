@@ -17,4 +17,5 @@ enum BenefitType: string
     case Downloadables = 'downloadables';
     case LicenseKeys = 'license_keys';
     case MeterCredit = 'meter_credit';
+    case FeatureFlag = 'feature_flag';
 }

@@ -111,14 +111,6 @@ class CustomerState
     public ?\DateTime $modifiedAt;
 
     /**
-     * The ID of the customer in your system. This must be unique within the organization. Once set, it can't be updated.
-     *
-     * @var ?string $externalId
-     */
-    #[\Speakeasy\Serializer\Annotation\SerializedName('external_id')]
-    public ?string $externalId;
-
-    /**
      * The name of the customer.
      *
      * @var ?string $name
@@ -152,6 +144,15 @@ class CustomerState
     public ?\DateTime $deletedAt;
 
     /**
+     * The ID of the customer in your system. This must be unique within the organization. Once set, it can't be updated.
+     *
+     * @var ?string $externalId
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('external_id')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
+    public ?string $externalId = null;
+
+    /**
      * The type of customer: 'individual' for single users, 'team' for customers with multiple members. Legacy customers may have NULL type which is treated as 'individual'.
      *
      * @var ?CustomerType $type
@@ -181,16 +182,16 @@ class CustomerState
      * @param  array<CustomerStateMeter>  $activeMeters
      * @param  string  $avatarUrl
      * @param  ?\DateTime  $modifiedAt
-     * @param  ?string  $externalId
      * @param  ?string  $name
      * @param  ?Address  $billingAddress
      * @param  ?array<string|TaxIDFormat|null>  $taxId
      * @param  ?\DateTime  $deletedAt
+     * @param  ?string  $externalId
      * @param  ?CustomerType  $type
      * @param  ?string  $locale
      * @phpstan-pure
      */
-    public function __construct(string $id, \DateTime $createdAt, array $metadata, string $email, bool $emailVerified, string $organizationId, array $activeSubscriptions, array $grantedBenefits, array $activeMeters, string $avatarUrl, ?\DateTime $modifiedAt = null, ?string $externalId = null, ?string $name = null, ?Address $billingAddress = null, ?array $taxId = null, ?\DateTime $deletedAt = null, ?CustomerType $type = null, ?string $locale = null)
+    public function __construct(string $id, \DateTime $createdAt, array $metadata, string $email, bool $emailVerified, string $organizationId, array $activeSubscriptions, array $grantedBenefits, array $activeMeters, string $avatarUrl, ?\DateTime $modifiedAt = null, ?string $name = null, ?Address $billingAddress = null, ?array $taxId = null, ?\DateTime $deletedAt = null, ?string $externalId = null, ?CustomerType $type = null, ?string $locale = null)
     {
         $this->id = $id;
         $this->createdAt = $createdAt;
@@ -203,11 +204,11 @@ class CustomerState
         $this->activeMeters = $activeMeters;
         $this->avatarUrl = $avatarUrl;
         $this->modifiedAt = $modifiedAt;
-        $this->externalId = $externalId;
         $this->name = $name;
         $this->billingAddress = $billingAddress;
         $this->taxId = $taxId;
         $this->deletedAt = $deletedAt;
+        $this->externalId = $externalId;
         $this->type = $type;
         $this->locale = $locale;
     }
