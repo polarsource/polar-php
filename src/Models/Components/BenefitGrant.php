@@ -70,20 +70,20 @@ class BenefitGrant
 
     /**
      *
-     * @var BenefitCustom|BenefitDiscord|BenefitGitHubRepository|BenefitDownloadables|BenefitLicenseKeys|BenefitMeterCredit $benefit
+     * @var BenefitCustom|BenefitDiscord|BenefitGitHubRepository|BenefitDownloadables|BenefitLicenseKeys|BenefitMeterCredit|BenefitFeatureFlag $benefit
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('benefit')]
-    #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\BenefitCustom|\Polar\Models\Components\BenefitDiscord|\Polar\Models\Components\BenefitGitHubRepository|\Polar\Models\Components\BenefitDownloadables|\Polar\Models\Components\BenefitLicenseKeys|\Polar\Models\Components\BenefitMeterCredit')]
-    #[\Speakeasy\Serializer\Annotation\UnionDiscriminator(field: 'type', map: ['custom' => '\Polar\Models\Components\BenefitCustom', 'discord' => '\Polar\Models\Components\BenefitDiscord', 'downloadables' => '\Polar\Models\Components\BenefitDownloadables', 'github_repository' => '\Polar\Models\Components\BenefitGitHubRepository', 'license_keys' => '\Polar\Models\Components\BenefitLicenseKeys', 'meter_credit' => '\Polar\Models\Components\BenefitMeterCredit'])]
-    public BenefitCustom|BenefitDiscord|BenefitGitHubRepository|BenefitDownloadables|BenefitLicenseKeys|BenefitMeterCredit $benefit;
+    #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\BenefitCustom|\Polar\Models\Components\BenefitDiscord|\Polar\Models\Components\BenefitGitHubRepository|\Polar\Models\Components\BenefitDownloadables|\Polar\Models\Components\BenefitLicenseKeys|\Polar\Models\Components\BenefitMeterCredit|\Polar\Models\Components\BenefitFeatureFlag')]
+    #[\Speakeasy\Serializer\Annotation\UnionDiscriminator(field: 'type', map: ['custom' => '\Polar\Models\Components\BenefitCustom', 'discord' => '\Polar\Models\Components\BenefitDiscord', 'downloadables' => '\Polar\Models\Components\BenefitDownloadables', 'feature_flag' => '\Polar\Models\Components\BenefitFeatureFlag', 'github_repository' => '\Polar\Models\Components\BenefitGitHubRepository', 'license_keys' => '\Polar\Models\Components\BenefitLicenseKeys', 'meter_credit' => '\Polar\Models\Components\BenefitMeterCredit'])]
+    public BenefitCustom|BenefitDiscord|BenefitGitHubRepository|BenefitDownloadables|BenefitLicenseKeys|BenefitMeterCredit|BenefitFeatureFlag $benefit;
 
     /**
      *
-     * @var BenefitGrantDiscordProperties|BenefitGrantGitHubRepositoryProperties|BenefitGrantDownloadablesProperties|BenefitGrantLicenseKeysProperties|BenefitGrantCustomProperties $properties
+     * @var BenefitGrantDiscordProperties|BenefitGrantGitHubRepositoryProperties|BenefitGrantDownloadablesProperties|BenefitGrantLicenseKeysProperties|BenefitGrantCustomProperties|BenefitGrantFeatureFlagProperties $properties
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('properties')]
-    #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\BenefitGrantDiscordProperties|\Polar\Models\Components\BenefitGrantGitHubRepositoryProperties|\Polar\Models\Components\BenefitGrantDownloadablesProperties|\Polar\Models\Components\BenefitGrantLicenseKeysProperties|\Polar\Models\Components\BenefitGrantCustomProperties')]
-    public BenefitGrantDiscordProperties|BenefitGrantGitHubRepositoryProperties|BenefitGrantDownloadablesProperties|BenefitGrantLicenseKeysProperties|BenefitGrantCustomProperties $properties;
+    #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\BenefitGrantDiscordProperties|\Polar\Models\Components\BenefitGrantGitHubRepositoryProperties|\Polar\Models\Components\BenefitGrantDownloadablesProperties|\Polar\Models\Components\BenefitGrantLicenseKeysProperties|\Polar\Models\Components\BenefitGrantCustomProperties|\Polar\Models\Components\BenefitGrantFeatureFlagProperties')]
+    public BenefitGrantDiscordProperties|BenefitGrantGitHubRepositoryProperties|BenefitGrantDownloadablesProperties|BenefitGrantLicenseKeysProperties|BenefitGrantCustomProperties|BenefitGrantFeatureFlagProperties $properties;
 
     /**
      * Last modification timestamp of the object.
@@ -163,8 +163,8 @@ class BenefitGrant
      * @param  string  $customerId
      * @param  string  $benefitId
      * @param  Customer  $customer
-     * @param  BenefitCustom|BenefitDiscord|BenefitGitHubRepository|BenefitDownloadables|BenefitLicenseKeys|BenefitMeterCredit  $benefit
-     * @param  BenefitGrantDiscordProperties|BenefitGrantGitHubRepositoryProperties|BenefitGrantDownloadablesProperties|BenefitGrantLicenseKeysProperties|BenefitGrantCustomProperties  $properties
+     * @param  BenefitCustom|BenefitDiscord|BenefitGitHubRepository|BenefitDownloadables|BenefitLicenseKeys|BenefitMeterCredit|BenefitFeatureFlag  $benefit
+     * @param  BenefitGrantDiscordProperties|BenefitGrantGitHubRepositoryProperties|BenefitGrantDownloadablesProperties|BenefitGrantLicenseKeysProperties|BenefitGrantCustomProperties|BenefitGrantFeatureFlagProperties  $properties
      * @param  ?\DateTime  $modifiedAt
      * @param  ?string  $subscriptionId
      * @param  ?string  $orderId
@@ -175,7 +175,7 @@ class BenefitGrant
      * @param  ?Member  $member
      * @phpstan-pure
      */
-    public function __construct(\DateTime $createdAt, string $id, bool $isGranted, bool $isRevoked, string $customerId, string $benefitId, Customer $customer, BenefitCustom|BenefitDiscord|BenefitGitHubRepository|BenefitDownloadables|BenefitLicenseKeys|BenefitMeterCredit $benefit, BenefitGrantDiscordProperties|BenefitGrantGitHubRepositoryProperties|BenefitGrantDownloadablesProperties|BenefitGrantLicenseKeysProperties|BenefitGrantCustomProperties $properties, ?\DateTime $modifiedAt = null, ?string $subscriptionId = null, ?string $orderId = null, ?\DateTime $grantedAt = null, ?\DateTime $revokedAt = null, ?string $memberId = null, ?BenefitGrantError $error = null, ?Member $member = null)
+    public function __construct(\DateTime $createdAt, string $id, bool $isGranted, bool $isRevoked, string $customerId, string $benefitId, Customer $customer, BenefitCustom|BenefitDiscord|BenefitGitHubRepository|BenefitDownloadables|BenefitLicenseKeys|BenefitMeterCredit|BenefitFeatureFlag $benefit, BenefitGrantDiscordProperties|BenefitGrantGitHubRepositoryProperties|BenefitGrantDownloadablesProperties|BenefitGrantLicenseKeysProperties|BenefitGrantCustomProperties|BenefitGrantFeatureFlagProperties $properties, ?\DateTime $modifiedAt = null, ?string $subscriptionId = null, ?string $orderId = null, ?\DateTime $grantedAt = null, ?\DateTime $revokedAt = null, ?string $memberId = null, ?BenefitGrantError $error = null, ?Member $member = null)
     {
         $this->createdAt = $createdAt;
         $this->id = $id;

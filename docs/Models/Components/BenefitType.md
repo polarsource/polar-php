@@ -11,3 +11,4 @@
 | `Downloadables`    | downloadables      |
 | `LicenseKeys`      | license_keys       |
 | `MeterCredit`      | meter_credit       |
+| `FeatureFlag`      | feature_flag       |

@@ -77,6 +77,15 @@ class ProductPriceCustom
     public ?\DateTime $modifiedAt;
 
     /**
+     * The tax behavior of the price. If null, it defaults to the organization's default tax behavior.
+     *
+     * @var ?TaxBehaviorOption $taxBehavior
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('tax_behavior')]
+    #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\TaxBehaviorOption|null')]
+    public ?TaxBehaviorOption $taxBehavior;
+
+    /**
      * The maximum amount the customer can pay.
      *
      * @var ?int $maximumAmount
@@ -109,11 +118,12 @@ class ProductPriceCustom
      * @param  string  $productId
      * @param  int  $minimumAmount
      * @param  ?\DateTime  $modifiedAt
+     * @param  ?TaxBehaviorOption  $taxBehavior
      * @param  ?int  $maximumAmount
      * @param  ?int  $presetAmount
      * @phpstan-pure
      */
-    public function __construct(\DateTime $createdAt, string $id, ProductPriceSource $source, string $priceCurrency, bool $isArchived, string $productId, int $minimumAmount, ?\DateTime $modifiedAt = null, ?int $maximumAmount = null, ?int $presetAmount = null, string $amountType = 'custom')
+    public function __construct(\DateTime $createdAt, string $id, ProductPriceSource $source, string $priceCurrency, bool $isArchived, string $productId, int $minimumAmount, ?\DateTime $modifiedAt = null, ?TaxBehaviorOption $taxBehavior = null, ?int $maximumAmount = null, ?int $presetAmount = null, string $amountType = 'custom')
     {
         $this->createdAt = $createdAt;
         $this->id = $id;
@@ -123,6 +133,7 @@ class ProductPriceCustom
         $this->productId = $productId;
         $this->minimumAmount = $minimumAmount;
         $this->modifiedAt = $modifiedAt;
+        $this->taxBehavior = $taxBehavior;
         $this->maximumAmount = $maximumAmount;
         $this->presetAmount = $presetAmount;
         $this->amountType = $amountType;

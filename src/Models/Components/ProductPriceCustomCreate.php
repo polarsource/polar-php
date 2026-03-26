@@ -22,6 +22,16 @@ class ProductPriceCustomCreate
     public ?PresentmentCurrency $priceCurrency = null;
 
     /**
+     * The tax behavior of the price. If not set, it will default to the organization's default tax behavior.
+     *
+     * @var ?TaxBehaviorOption $taxBehavior
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('tax_behavior')]
+    #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\TaxBehaviorOption|null')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
+    public ?TaxBehaviorOption $taxBehavior = null;
+
+    /**
      * The maximum amount the customer can pay.
      *
      * @var ?int $maximumAmount
@@ -59,13 +69,15 @@ class ProductPriceCustomCreate
      * @param  string  $amountType
      * @param  ?PresentmentCurrency  $priceCurrency
      * @param  ?int  $minimumAmount
+     * @param  ?TaxBehaviorOption  $taxBehavior
      * @param  ?int  $maximumAmount
      * @param  ?int  $presetAmount
      * @phpstan-pure
      */
-    public function __construct(?PresentmentCurrency $priceCurrency = null, ?int $maximumAmount = null, ?int $presetAmount = null, string $amountType = 'custom', ?int $minimumAmount = 50)
+    public function __construct(?PresentmentCurrency $priceCurrency = null, ?TaxBehaviorOption $taxBehavior = null, ?int $maximumAmount = null, ?int $presetAmount = null, string $amountType = 'custom', ?int $minimumAmount = 50)
     {
         $this->priceCurrency = $priceCurrency;
+        $this->taxBehavior = $taxBehavior;
         $this->maximumAmount = $maximumAmount;
         $this->presetAmount = $presetAmount;
         $this->amountType = $amountType;

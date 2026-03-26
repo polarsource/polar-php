@@ -237,3 +237,12 @@ Components\SubscriptionSeatsUpdatedEvent $value = /* values here */
 Components\SubscriptionUncanceledEvent $value = /* values here */
 ```
 
+### `Components\SubscriptionUpdatedEvent`
+
+```php
+/**
+* @var Components\SubscriptionUpdatedEvent
+*/
+Components\SubscriptionUpdatedEvent $value = /* values here */
+```
+

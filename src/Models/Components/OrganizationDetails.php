@@ -12,45 +12,74 @@ namespace Polar\Models\Components;
 class OrganizationDetails
 {
     /**
-     * Brief information about you and your business.
+     * Categories of products being sold.
      *
-     * @var string $about
+     * @var ?array<string> $sellingCategories
      */
-    #[\Speakeasy\Serializer\Annotation\SerializedName('about')]
-    public string $about;
+    #[\Speakeasy\Serializer\Annotation\SerializedName('selling_categories')]
+    #[\Speakeasy\Serializer\Annotation\Type('array<string>|null')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
+    public ?array $sellingCategories = null;
 
     /**
-     * Description of digital products being sold.
+     * Pricing models used by the organization.
      *
-     * @var string $productDescription
+     * @var ?array<string> $pricingModels
      */
-    #[\Speakeasy\Serializer\Annotation\SerializedName('product_description')]
-    public string $productDescription;
-
-    /**
-     * How the organization will integrate and use Polar.
-     *
-     * @var string $intendedUse
-     */
-    #[\Speakeasy\Serializer\Annotation\SerializedName('intended_use')]
-    public string $intendedUse;
+    #[\Speakeasy\Serializer\Annotation\SerializedName('pricing_models')]
+    #[\Speakeasy\Serializer\Annotation\Type('array<string>|null')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
+    public ?array $pricingModels = null;
 
     /**
      * Main customer acquisition channels.
      *
-     * @var array<string> $customerAcquisition
+     * @var ?array<string> $customerAcquisition
+     * @deprecated  field: This will be removed in a future release, please migrate away from it as soon as possible.
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('customer_acquisition')]
-    #[\Speakeasy\Serializer\Annotation\Type('array<string>')]
-    public array $customerAcquisition;
+    #[\Speakeasy\Serializer\Annotation\Type('array<string>|null')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
+    public ?array $customerAcquisition = null;
+
+    /**
+     * Brief information about you and your business.
+     *
+     * @var ?string $about
+     * @deprecated  field: This will be removed in a future release, please migrate away from it as soon as possible.
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('about')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
+    public ?string $about = null;
+
+    /**
+     * Description of digital products being sold.
+     *
+     * @var ?string $productDescription
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('product_description')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
+    public ?string $productDescription = null;
+
+    /**
+     * How the organization will integrate and use Polar.
+     *
+     * @var ?string $intendedUse
+     * @deprecated  field: This will be removed in a future release, please migrate away from it as soon as possible.
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('intended_use')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
+    public ?string $intendedUse = null;
 
     /**
      * Estimated revenue in the next 12 months
      *
-     * @var int $futureAnnualRevenue
+     * @var ?int $futureAnnualRevenue
+     * @deprecated  field: This will be removed in a future release, please migrate away from it as soon as possible.
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('future_annual_revenue')]
-    public int $futureAnnualRevenue;
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
+    public ?int $futureAnnualRevenue = null;
 
     /**
      * Which platform the organization is migrating from.
@@ -63,6 +92,16 @@ class OrganizationDetails
     public ?SwitchingFrom $switchingFrom = null;
 
     /**
+     * Revenue from last year if applicable.
+     *
+     * @var ?int $previousAnnualRevenue
+     * @deprecated  field: This will be removed in a future release, please migrate away from it as soon as possible.
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('previous_annual_revenue')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
+    public ?int $previousAnnualRevenue = null;
+
+    /**
      * Switching from another platform?
      *
      * @var ?bool $switching
@@ -72,34 +111,29 @@ class OrganizationDetails
     public ?bool $switching = null;
 
     /**
-     * Revenue from last year if applicable.
-     *
-     * @var ?int $previousAnnualRevenue
-     */
-    #[\Speakeasy\Serializer\Annotation\SerializedName('previous_annual_revenue')]
-    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
-    public ?int $previousAnnualRevenue = null;
-
-    /**
-     * @param  string  $about
-     * @param  string  $productDescription
-     * @param  string  $intendedUse
-     * @param  array<string>  $customerAcquisition
-     * @param  int  $futureAnnualRevenue
+     * @param  ?array<string>  $sellingCategories
+     * @param  ?array<string>  $pricingModels
+     * @param  ?array<string>  $customerAcquisition
      * @param  ?bool  $switching
-     * @param  ?int  $previousAnnualRevenue
+     * @param  ?string  $about
+     * @param  ?string  $productDescription
+     * @param  ?string  $intendedUse
+     * @param  ?int  $futureAnnualRevenue
      * @param  ?SwitchingFrom  $switchingFrom
+     * @param  ?int  $previousAnnualRevenue
      * @phpstan-pure
      */
-    public function __construct(string $about, string $productDescription, string $intendedUse, array $customerAcquisition, int $futureAnnualRevenue, ?SwitchingFrom $switchingFrom = null, ?bool $switching = true, ?int $previousAnnualRevenue = 0)
+    public function __construct(?array $sellingCategories = null, ?array $pricingModels = null, ?array $customerAcquisition = null, ?string $about = null, ?string $productDescription = null, ?string $intendedUse = null, ?int $futureAnnualRevenue = null, ?SwitchingFrom $switchingFrom = null, ?int $previousAnnualRevenue = null, ?bool $switching = false)
     {
+        $this->sellingCategories = $sellingCategories;
+        $this->pricingModels = $pricingModels;
+        $this->customerAcquisition = $customerAcquisition;
         $this->about = $about;
         $this->productDescription = $productDescription;
         $this->intendedUse = $intendedUse;
-        $this->customerAcquisition = $customerAcquisition;
         $this->futureAnnualRevenue = $futureAnnualRevenue;
         $this->switchingFrom = $switchingFrom;
-        $this->switching = $switching;
         $this->previousAnnualRevenue = $previousAnnualRevenue;
+        $this->switching = $switching;
     }
 }

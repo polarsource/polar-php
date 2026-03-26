@@ -78,6 +78,14 @@ class CustomerStateSubscription
     public \DateTime $currentPeriodStart;
 
     /**
+     * The end timestamp of the current billing period.
+     *
+     * @var \DateTime $currentPeriodEnd
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('current_period_end')]
+    public \DateTime $currentPeriodEnd;
+
+    /**
      * Whether the subscription will be canceled at the end of the current period.
      *
      * @var bool $cancelAtPeriodEnd
@@ -119,14 +127,6 @@ class CustomerStateSubscription
     #[\Speakeasy\Serializer\Annotation\Type('array<string, string|int|bool|\DateTime|null>|null')]
     #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
     public ?array $customFieldData = null;
-
-    /**
-     * The end timestamp of the current billing period.
-     *
-     * @var ?\DateTime $currentPeriodEnd
-     */
-    #[\Speakeasy\Serializer\Annotation\SerializedName('current_period_end')]
-    public ?\DateTime $currentPeriodEnd;
 
     /**
      * The start timestamp of the trial period, if any.
@@ -185,12 +185,12 @@ class CustomerStateSubscription
      * @param  string  $currency
      * @param  SubscriptionRecurringInterval  $recurringInterval
      * @param  \DateTime  $currentPeriodStart
+     * @param  \DateTime  $currentPeriodEnd
      * @param  bool  $cancelAtPeriodEnd
      * @param  string  $productId
      * @param  array<CustomerStateSubscriptionMeter>  $meters
      * @param  ?\DateTime  $modifiedAt
      * @param  ?array<string, string|int|bool|\DateTime|null>  $customFieldData
-     * @param  ?\DateTime  $currentPeriodEnd
      * @param  ?\DateTime  $trialStart
      * @param  ?\DateTime  $trialEnd
      * @param  ?\DateTime  $canceledAt
@@ -199,7 +199,7 @@ class CustomerStateSubscription
      * @param  ?string  $discountId
      * @phpstan-pure
      */
-    public function __construct(string $id, \DateTime $createdAt, array $metadata, Status $status, int $amount, string $currency, SubscriptionRecurringInterval $recurringInterval, \DateTime $currentPeriodStart, bool $cancelAtPeriodEnd, string $productId, array $meters, ?\DateTime $modifiedAt = null, ?array $customFieldData = null, ?\DateTime $currentPeriodEnd = null, ?\DateTime $trialStart = null, ?\DateTime $trialEnd = null, ?\DateTime $canceledAt = null, ?\DateTime $startedAt = null, ?\DateTime $endsAt = null, ?string $discountId = null)
+    public function __construct(string $id, \DateTime $createdAt, array $metadata, Status $status, int $amount, string $currency, SubscriptionRecurringInterval $recurringInterval, \DateTime $currentPeriodStart, \DateTime $currentPeriodEnd, bool $cancelAtPeriodEnd, string $productId, array $meters, ?\DateTime $modifiedAt = null, ?array $customFieldData = null, ?\DateTime $trialStart = null, ?\DateTime $trialEnd = null, ?\DateTime $canceledAt = null, ?\DateTime $startedAt = null, ?\DateTime $endsAt = null, ?string $discountId = null)
     {
         $this->id = $id;
         $this->createdAt = $createdAt;
@@ -209,12 +209,12 @@ class CustomerStateSubscription
         $this->currency = $currency;
         $this->recurringInterval = $recurringInterval;
         $this->currentPeriodStart = $currentPeriodStart;
+        $this->currentPeriodEnd = $currentPeriodEnd;
         $this->cancelAtPeriodEnd = $cancelAtPeriodEnd;
         $this->productId = $productId;
         $this->meters = $meters;
         $this->modifiedAt = $modifiedAt;
         $this->customFieldData = $customFieldData;
-        $this->currentPeriodEnd = $currentPeriodEnd;
         $this->trialStart = $trialStart;
         $this->trialEnd = $trialEnd;
         $this->canceledAt = $canceledAt;

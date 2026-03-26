@@ -27,11 +27,11 @@ class WebhookBenefitGrantCycledPayload
 
     /**
      *
-     * @var BenefitGrantDiscordWebhook|BenefitGrantCustomWebhook|BenefitGrantGitHubRepositoryWebhook|BenefitGrantDownloadablesWebhook|BenefitGrantLicenseKeysWebhook|BenefitGrantMeterCreditWebhook $data
+     * @var BenefitGrantDiscordWebhook|BenefitGrantCustomWebhook|BenefitGrantGitHubRepositoryWebhook|BenefitGrantDownloadablesWebhook|BenefitGrantLicenseKeysWebhook|BenefitGrantMeterCreditWebhook|BenefitGrantFeatureFlagWebhook $data
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('data')]
-    #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\BenefitGrantDiscordWebhook|\Polar\Models\Components\BenefitGrantCustomWebhook|\Polar\Models\Components\BenefitGrantGitHubRepositoryWebhook|\Polar\Models\Components\BenefitGrantDownloadablesWebhook|\Polar\Models\Components\BenefitGrantLicenseKeysWebhook|\Polar\Models\Components\BenefitGrantMeterCreditWebhook')]
-    public BenefitGrantDiscordWebhook|BenefitGrantCustomWebhook|BenefitGrantGitHubRepositoryWebhook|BenefitGrantDownloadablesWebhook|BenefitGrantLicenseKeysWebhook|BenefitGrantMeterCreditWebhook $data;
+    #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\BenefitGrantDiscordWebhook|\Polar\Models\Components\BenefitGrantCustomWebhook|\Polar\Models\Components\BenefitGrantGitHubRepositoryWebhook|\Polar\Models\Components\BenefitGrantDownloadablesWebhook|\Polar\Models\Components\BenefitGrantLicenseKeysWebhook|\Polar\Models\Components\BenefitGrantMeterCreditWebhook|\Polar\Models\Components\BenefitGrantFeatureFlagWebhook')]
+    public BenefitGrantDiscordWebhook|BenefitGrantCustomWebhook|BenefitGrantGitHubRepositoryWebhook|BenefitGrantDownloadablesWebhook|BenefitGrantLicenseKeysWebhook|BenefitGrantMeterCreditWebhook|BenefitGrantFeatureFlagWebhook $data;
 
     /**
      *
@@ -43,10 +43,10 @@ class WebhookBenefitGrantCycledPayload
     /**
      * @param  string  $type
      * @param  \DateTime  $timestamp
-     * @param  BenefitGrantDiscordWebhook|BenefitGrantCustomWebhook|BenefitGrantGitHubRepositoryWebhook|BenefitGrantDownloadablesWebhook|BenefitGrantLicenseKeysWebhook|BenefitGrantMeterCreditWebhook  $data
+     * @param  BenefitGrantDiscordWebhook|BenefitGrantCustomWebhook|BenefitGrantGitHubRepositoryWebhook|BenefitGrantDownloadablesWebhook|BenefitGrantLicenseKeysWebhook|BenefitGrantMeterCreditWebhook|BenefitGrantFeatureFlagWebhook  $data
      * @phpstan-pure
      */
-    public function __construct(\DateTime $timestamp, BenefitGrantDiscordWebhook|BenefitGrantCustomWebhook|BenefitGrantGitHubRepositoryWebhook|BenefitGrantDownloadablesWebhook|BenefitGrantLicenseKeysWebhook|BenefitGrantMeterCreditWebhook $data, string $type = 'benefit_grant.cycled')
+    public function __construct(\DateTime $timestamp, BenefitGrantDiscordWebhook|BenefitGrantCustomWebhook|BenefitGrantGitHubRepositoryWebhook|BenefitGrantDownloadablesWebhook|BenefitGrantLicenseKeysWebhook|BenefitGrantMeterCreditWebhook|BenefitGrantFeatureFlagWebhook $data, string $type = 'benefit_grant.cycled')
     {
         $this->timestamp = $timestamp;
         $this->data = $data;

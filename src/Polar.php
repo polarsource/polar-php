@@ -74,8 +74,6 @@ class Polar
 
     public CustomerSessions $customerSessions;
 
-    public MemberSessions $memberSessions;
-
     public Events $events;
 
     public EventTypes $eventTypes;
@@ -126,7 +124,6 @@ class Polar
         $this->customerPortal = new CustomerPortal($this->sdkConfiguration);
         $this->customerSeats = new CustomerSeats($this->sdkConfiguration);
         $this->customerSessions = new CustomerSessions($this->sdkConfiguration);
-        $this->memberSessions = new MemberSessions($this->sdkConfiguration);
         $this->events = new Events($this->sdkConfiguration);
         $this->eventTypes = new EventTypes($this->sdkConfiguration);
         $this->meters = new Meters($this->sdkConfiguration);

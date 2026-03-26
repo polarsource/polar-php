@@ -21,6 +21,24 @@ class CustomerSessionCustomerExternalIDCreate
     public string $externalCustomerId;
 
     /**
+     * ID of the member to create a session for. When not provided and the organization has `member_model_enabled`, the owner member of the customer will be used for individual customers.
+     *
+     * @var ?string $memberId
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('member_id')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
+    public ?string $memberId = null;
+
+    /**
+     * External ID of the member to create a session for. Alternative to `member_id`.
+     *
+     * @var ?string $externalMemberId
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('external_member_id')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
+    public ?string $externalMemberId = null;
+
+    /**
      * When set, a back button will be shown in the customer portal to return to this URL.
      *
      * @var ?string $returnUrl
@@ -31,12 +49,16 @@ class CustomerSessionCustomerExternalIDCreate
 
     /**
      * @param  string  $externalCustomerId
+     * @param  ?string  $memberId
+     * @param  ?string  $externalMemberId
      * @param  ?string  $returnUrl
      * @phpstan-pure
      */
-    public function __construct(string $externalCustomerId, ?string $returnUrl = null)
+    public function __construct(string $externalCustomerId, ?string $memberId = null, ?string $externalMemberId = null, ?string $returnUrl = null)
     {
         $this->externalCustomerId = $externalCustomerId;
+        $this->memberId = $memberId;
+        $this->externalMemberId = $externalMemberId;
         $this->returnUrl = $returnUrl;
     }
 }

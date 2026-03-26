@@ -16,5 +16,3 @@ interface Hooks
     public function registerAfterSuccessHook(AfterSuccessHook $hook): void;
     public function registerAfterErrorHook(AfterErrorHook $hook): void;
 }
-
-

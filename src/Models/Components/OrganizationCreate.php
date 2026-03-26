@@ -36,11 +36,30 @@ class OrganizationCreate
 
     /**
      *
+     * @var ?TaxBehaviorOption $defaultTaxBehavior
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('default_tax_behavior')]
+    #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\TaxBehaviorOption|null')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
+    public ?TaxBehaviorOption $defaultTaxBehavior = null;
+
+    /**
+     *
      * @var ?string $avatarUrl
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('avatar_url')]
     #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
     public ?string $avatarUrl = null;
+
+    /**
+     *
+     * @var OrganizationIndividualLegalEntitySchema|OrganizationCompanyLegalEntitySchema|null $legalEntity
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('legal_entity')]
+    #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\OrganizationIndividualLegalEntitySchema|\Polar\Models\Components\OrganizationCompanyLegalEntitySchema|null')]
+    #[\Speakeasy\Serializer\Annotation\UnionDiscriminator(field: 'type', map: ['company' => '\Polar\Models\Components\OrganizationCompanyLegalEntitySchema', 'individual' => '\Polar\Models\Components\OrganizationIndividualLegalEntitySchema'])]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
+    public OrganizationIndividualLegalEntitySchema|OrganizationCompanyLegalEntitySchema|null $legalEntity = null;
 
     /**
      * Public support email.
@@ -79,6 +98,16 @@ class OrganizationCreate
     #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\OrganizationDetails|null')]
     #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
     public ?OrganizationDetails $details = null;
+
+    /**
+     * Two-letter country code (ISO 3166-1 alpha-2).
+     *
+     * @var ?CountryAlpha2Input $country
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('country')]
+    #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\CountryAlpha2Input|null')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
+    public ?CountryAlpha2Input $country = null;
 
     /**
      *
@@ -129,11 +158,14 @@ class OrganizationCreate
      * @param  string  $name
      * @param  string  $slug
      * @param  ?PresentmentCurrency  $defaultPresentmentCurrency
+     * @param  ?TaxBehaviorOption  $defaultTaxBehavior
      * @param  ?string  $avatarUrl
+     * @param  OrganizationIndividualLegalEntitySchema|OrganizationCompanyLegalEntitySchema|null  $legalEntity
      * @param  ?string  $email
      * @param  ?string  $website
      * @param  ?array<OrganizationSocialLink>  $socials
      * @param  ?OrganizationDetails  $details
+     * @param  ?CountryAlpha2Input  $country
      * @param  ?OrganizationFeatureSettings  $featureSettings
      * @param  ?OrganizationSubscriptionSettings  $subscriptionSettings
      * @param  ?OrganizationNotificationSettings  $notificationSettings
@@ -141,16 +173,19 @@ class OrganizationCreate
      * @param  ?OrganizationCustomerPortalSettings  $customerPortalSettings
      * @phpstan-pure
      */
-    public function __construct(string $name, string $slug, ?PresentmentCurrency $defaultPresentmentCurrency = null, ?string $avatarUrl = null, ?string $email = null, ?string $website = null, ?array $socials = null, ?OrganizationDetails $details = null, ?OrganizationFeatureSettings $featureSettings = null, ?OrganizationSubscriptionSettings $subscriptionSettings = null, ?OrganizationNotificationSettings $notificationSettings = null, ?OrganizationCustomerEmailSettings $customerEmailSettings = null, ?OrganizationCustomerPortalSettings $customerPortalSettings = null)
+    public function __construct(string $name, string $slug, ?PresentmentCurrency $defaultPresentmentCurrency = null, ?TaxBehaviorOption $defaultTaxBehavior = null, ?string $avatarUrl = null, OrganizationIndividualLegalEntitySchema|OrganizationCompanyLegalEntitySchema|null $legalEntity = null, ?string $email = null, ?string $website = null, ?array $socials = null, ?OrganizationDetails $details = null, ?CountryAlpha2Input $country = null, ?OrganizationFeatureSettings $featureSettings = null, ?OrganizationSubscriptionSettings $subscriptionSettings = null, ?OrganizationNotificationSettings $notificationSettings = null, ?OrganizationCustomerEmailSettings $customerEmailSettings = null, ?OrganizationCustomerPortalSettings $customerPortalSettings = null)
     {
         $this->name = $name;
         $this->slug = $slug;
         $this->defaultPresentmentCurrency = $defaultPresentmentCurrency;
+        $this->defaultTaxBehavior = $defaultTaxBehavior;
         $this->avatarUrl = $avatarUrl;
+        $this->legalEntity = $legalEntity;
         $this->email = $email;
         $this->website = $website;
         $this->socials = $socials;
         $this->details = $details;
+        $this->country = $country;
         $this->featureSettings = $featureSettings;
         $this->subscriptionSettings = $subscriptionSettings;
         $this->notificationSettings = $notificationSettings;

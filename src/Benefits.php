@@ -52,11 +52,11 @@ class Benefits
      *
      * **Scopes**: `benefits:write`
      *
-     * @param  Components\BenefitCustomCreate|Components\BenefitDiscordCreate|Components\BenefitGitHubRepositoryCreate|Components\BenefitDownloadablesCreate|Components\BenefitLicenseKeysCreate|Components\BenefitMeterCreditCreate  $request
+     * @param  Components\BenefitCustomCreate|Components\BenefitDiscordCreate|Components\BenefitGitHubRepositoryCreate|Components\BenefitDownloadablesCreate|Components\BenefitLicenseKeysCreate|Components\BenefitMeterCreditCreate|Components\BenefitFeatureFlagCreate  $request
      * @return Operations\BenefitsCreateResponse
      * @throws \Polar\Models\Errors\APIException
      */
-    public function create(Components\BenefitCustomCreate|Components\BenefitDiscordCreate|Components\BenefitGitHubRepositoryCreate|Components\BenefitDownloadablesCreate|Components\BenefitLicenseKeysCreate|Components\BenefitMeterCreditCreate $request, ?Options $options = null): Operations\BenefitsCreateResponse
+    public function create(Components\BenefitCustomCreate|Components\BenefitDiscordCreate|Components\BenefitGitHubRepositoryCreate|Components\BenefitDownloadablesCreate|Components\BenefitLicenseKeysCreate|Components\BenefitMeterCreditCreate|Components\BenefitFeatureFlagCreate $request, ?Options $options = null): Operations\BenefitsCreateResponse
     {
         $baseUrl = $this->sdkConfiguration->getTemplatedServerUrl();
         $url = Utils\Utils::generateUrl($baseUrl, '/v1/benefits/');
@@ -93,7 +93,7 @@ class Benefits
 
                 $serializer = Utils\JSON::createSerializer();
                 $responseData = (string) $httpResponse->getBody();
-                $obj = $serializer->deserialize($responseData, '\Polar\Models\Components\BenefitCustom|\Polar\Models\Components\BenefitDiscord|\Polar\Models\Components\BenefitGitHubRepository|\Polar\Models\Components\BenefitDownloadables|\Polar\Models\Components\BenefitLicenseKeys|\Polar\Models\Components\BenefitMeterCredit', 'json', DeserializationContext::create()->setRequireAllRequiredProperties(true));
+                $obj = $serializer->deserialize($responseData, '\Polar\Models\Components\BenefitCustom|\Polar\Models\Components\BenefitDiscord|\Polar\Models\Components\BenefitGitHubRepository|\Polar\Models\Components\BenefitDownloadables|\Polar\Models\Components\BenefitLicenseKeys|\Polar\Models\Components\BenefitMeterCredit|\Polar\Models\Components\BenefitFeatureFlag', 'json', DeserializationContext::create()->setRequireAllRequiredProperties(true));
                 $response = new Operations\BenefitsCreateResponse(
                     statusCode: $statusCode,
                     contentType: $contentType,
@@ -264,7 +264,7 @@ class Benefits
 
                 $serializer = Utils\JSON::createSerializer();
                 $responseData = (string) $httpResponse->getBody();
-                $obj = $serializer->deserialize($responseData, '\Polar\Models\Components\BenefitCustom|\Polar\Models\Components\BenefitDiscord|\Polar\Models\Components\BenefitGitHubRepository|\Polar\Models\Components\BenefitDownloadables|\Polar\Models\Components\BenefitLicenseKeys|\Polar\Models\Components\BenefitMeterCredit', 'json', DeserializationContext::create()->setRequireAllRequiredProperties(true));
+                $obj = $serializer->deserialize($responseData, '\Polar\Models\Components\BenefitCustom|\Polar\Models\Components\BenefitDiscord|\Polar\Models\Components\BenefitGitHubRepository|\Polar\Models\Components\BenefitDownloadables|\Polar\Models\Components\BenefitLicenseKeys|\Polar\Models\Components\BenefitMeterCredit|\Polar\Models\Components\BenefitFeatureFlag', 'json', DeserializationContext::create()->setRequireAllRequiredProperties(true));
                 $response = new Operations\BenefitsGetResponse(
                     statusCode: $statusCode,
                     contentType: $contentType,
@@ -601,12 +601,12 @@ class Benefits
      *
      * **Scopes**: `benefits:write`
      *
-     * @param  Components\BenefitCustomUpdate|Components\BenefitDiscordUpdate|Components\BenefitGitHubRepositoryUpdate|Components\BenefitDownloadablesUpdate|Components\BenefitLicenseKeysUpdate|Components\BenefitMeterCreditUpdate  $requestBody
+     * @param  Components\BenefitCustomUpdate|Components\BenefitDiscordUpdate|Components\BenefitGitHubRepositoryUpdate|Components\BenefitDownloadablesUpdate|Components\BenefitLicenseKeysUpdate|Components\BenefitMeterCreditUpdate|Components\BenefitFeatureFlagUpdate  $requestBody
      * @param  string  $id
      * @return Operations\BenefitsUpdateResponse
      * @throws \Polar\Models\Errors\APIException
      */
-    public function update(Components\BenefitCustomUpdate|Components\BenefitDiscordUpdate|Components\BenefitGitHubRepositoryUpdate|Components\BenefitDownloadablesUpdate|Components\BenefitLicenseKeysUpdate|Components\BenefitMeterCreditUpdate $requestBody, string $id, ?Options $options = null): Operations\BenefitsUpdateResponse
+    public function update(Components\BenefitCustomUpdate|Components\BenefitDiscordUpdate|Components\BenefitGitHubRepositoryUpdate|Components\BenefitDownloadablesUpdate|Components\BenefitLicenseKeysUpdate|Components\BenefitMeterCreditUpdate|Components\BenefitFeatureFlagUpdate $requestBody, string $id, ?Options $options = null): Operations\BenefitsUpdateResponse
     {
         $request = new Operations\BenefitsUpdateRequest(
             id: $id,
@@ -647,7 +647,7 @@ class Benefits
 
                 $serializer = Utils\JSON::createSerializer();
                 $responseData = (string) $httpResponse->getBody();
-                $obj = $serializer->deserialize($responseData, '\Polar\Models\Components\BenefitCustom|\Polar\Models\Components\BenefitDiscord|\Polar\Models\Components\BenefitGitHubRepository|\Polar\Models\Components\BenefitDownloadables|\Polar\Models\Components\BenefitLicenseKeys|\Polar\Models\Components\BenefitMeterCredit', 'json', DeserializationContext::create()->setRequireAllRequiredProperties(true));
+                $obj = $serializer->deserialize($responseData, '\Polar\Models\Components\BenefitCustom|\Polar\Models\Components\BenefitDiscord|\Polar\Models\Components\BenefitGitHubRepository|\Polar\Models\Components\BenefitDownloadables|\Polar\Models\Components\BenefitLicenseKeys|\Polar\Models\Components\BenefitMeterCredit|\Polar\Models\Components\BenefitFeatureFlag', 'json', DeserializationContext::create()->setRequireAllRequiredProperties(true));
                 $response = new Operations\BenefitsUpdateResponse(
                     statusCode: $statusCode,
                     contentType: $contentType,

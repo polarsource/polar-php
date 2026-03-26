@@ -37,6 +37,15 @@ class ProductPriceSeatTiersOutput
     public int $minimumSeats;
 
     /**
+     *
+     * @var ?SeatTierType $seatTierType
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('seat_tier_type')]
+    #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\SeatTierType|null')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
+    public ?SeatTierType $seatTierType = null;
+
+    /**
      * Maximum number of seats allowed for purchase, derived from last tier. None for unlimited.
      *
      * @var ?int $maximumSeats
@@ -47,13 +56,15 @@ class ProductPriceSeatTiersOutput
     /**
      * @param  array<ProductPriceSeatTier>  $tiers
      * @param  int  $minimumSeats
+     * @param  ?SeatTierType  $seatTierType
      * @param  ?int  $maximumSeats
      * @phpstan-pure
      */
-    public function __construct(array $tiers, int $minimumSeats, ?int $maximumSeats = null)
+    public function __construct(array $tiers, int $minimumSeats, ?SeatTierType $seatTierType = null, ?int $maximumSeats = null)
     {
         $this->tiers = $tiers;
         $this->minimumSeats = $minimumSeats;
+        $this->seatTierType = $seatTierType;
         $this->maximumSeats = $maximumSeats;
     }
 }

@@ -222,6 +222,7 @@ if ($response->customerSubscription !== null) {
 
 | Error Type                         | Status Code                        | Content Type                       |
 | ---------------------------------- | ---------------------------------- | ---------------------------------- |
+| Errors\PaymentFailed               | 402                                | application/json                   |
 | Errors\AlreadyCanceledSubscription | 403                                | application/json                   |
 | Errors\ResourceNotFound            | 404                                | application/json                   |
 | Errors\HTTPValidationError         | 422                                | application/json                   |

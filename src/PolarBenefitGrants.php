@@ -98,7 +98,7 @@ class PolarBenefitGrants
 
                 $serializer = Utils\JSON::createSerializer();
                 $responseData = (string) $httpResponse->getBody();
-                $obj = $serializer->deserialize($responseData, '\Polar\Models\Components\CustomerBenefitGrantDiscord|\Polar\Models\Components\CustomerBenefitGrantGitHubRepository|\Polar\Models\Components\CustomerBenefitGrantDownloadables|\Polar\Models\Components\CustomerBenefitGrantLicenseKeys|\Polar\Models\Components\CustomerBenefitGrantCustom|\Polar\Models\Components\CustomerBenefitGrantMeterCredit', 'json', DeserializationContext::create()->setRequireAllRequiredProperties(true));
+                $obj = $serializer->deserialize($responseData, '\Polar\Models\Components\CustomerBenefitGrantDiscord|\Polar\Models\Components\CustomerBenefitGrantGitHubRepository|\Polar\Models\Components\CustomerBenefitGrantDownloadables|\Polar\Models\Components\CustomerBenefitGrantLicenseKeys|\Polar\Models\Components\CustomerBenefitGrantCustom|\Polar\Models\Components\CustomerBenefitGrantMeterCredit|\Polar\Models\Components\CustomerBenefitGrantFeatureFlag', 'json', DeserializationContext::create()->setRequireAllRequiredProperties(true));
                 $response = new Operations\CustomerPortalBenefitGrantsGetResponse(
                     statusCode: $statusCode,
                     contentType: $contentType,
@@ -296,12 +296,12 @@ class PolarBenefitGrants
      * **Scopes**: `customer_portal:write`
      *
      * @param  Operations\CustomerPortalBenefitGrantsUpdateSecurity  $security
-     * @param  Components\CustomerBenefitGrantDiscordUpdate|Components\CustomerBenefitGrantGitHubRepositoryUpdate|Components\CustomerBenefitGrantDownloadablesUpdate|Components\CustomerBenefitGrantLicenseKeysUpdate|Components\CustomerBenefitGrantCustomUpdate|Components\CustomerBenefitGrantMeterCreditUpdate  $customerBenefitGrantUpdate
+     * @param  Components\CustomerBenefitGrantDiscordUpdate|Components\CustomerBenefitGrantGitHubRepositoryUpdate|Components\CustomerBenefitGrantDownloadablesUpdate|Components\CustomerBenefitGrantLicenseKeysUpdate|Components\CustomerBenefitGrantCustomUpdate|Components\CustomerBenefitGrantMeterCreditUpdate|Components\CustomerBenefitGrantFeatureFlagUpdate  $customerBenefitGrantUpdate
      * @param  string  $id
      * @return Operations\CustomerPortalBenefitGrantsUpdateResponse
      * @throws \Polar\Models\Errors\APIException
      */
-    public function update(Operations\CustomerPortalBenefitGrantsUpdateSecurity $security, Components\CustomerBenefitGrantDiscordUpdate|Components\CustomerBenefitGrantGitHubRepositoryUpdate|Components\CustomerBenefitGrantDownloadablesUpdate|Components\CustomerBenefitGrantLicenseKeysUpdate|Components\CustomerBenefitGrantCustomUpdate|Components\CustomerBenefitGrantMeterCreditUpdate $customerBenefitGrantUpdate, string $id, ?Options $options = null): Operations\CustomerPortalBenefitGrantsUpdateResponse
+    public function update(Operations\CustomerPortalBenefitGrantsUpdateSecurity $security, Components\CustomerBenefitGrantDiscordUpdate|Components\CustomerBenefitGrantGitHubRepositoryUpdate|Components\CustomerBenefitGrantDownloadablesUpdate|Components\CustomerBenefitGrantLicenseKeysUpdate|Components\CustomerBenefitGrantCustomUpdate|Components\CustomerBenefitGrantMeterCreditUpdate|Components\CustomerBenefitGrantFeatureFlagUpdate $customerBenefitGrantUpdate, string $id, ?Options $options = null): Operations\CustomerPortalBenefitGrantsUpdateResponse
     {
         $request = new Operations\CustomerPortalBenefitGrantsUpdateRequest(
             id: $id,
@@ -348,7 +348,7 @@ class PolarBenefitGrants
 
                 $serializer = Utils\JSON::createSerializer();
                 $responseData = (string) $httpResponse->getBody();
-                $obj = $serializer->deserialize($responseData, '\Polar\Models\Components\CustomerBenefitGrantDiscord|\Polar\Models\Components\CustomerBenefitGrantGitHubRepository|\Polar\Models\Components\CustomerBenefitGrantDownloadables|\Polar\Models\Components\CustomerBenefitGrantLicenseKeys|\Polar\Models\Components\CustomerBenefitGrantCustom|\Polar\Models\Components\CustomerBenefitGrantMeterCredit', 'json', DeserializationContext::create()->setRequireAllRequiredProperties(true));
+                $obj = $serializer->deserialize($responseData, '\Polar\Models\Components\CustomerBenefitGrantDiscord|\Polar\Models\Components\CustomerBenefitGrantGitHubRepository|\Polar\Models\Components\CustomerBenefitGrantDownloadables|\Polar\Models\Components\CustomerBenefitGrantLicenseKeys|\Polar\Models\Components\CustomerBenefitGrantCustom|\Polar\Models\Components\CustomerBenefitGrantMeterCredit|\Polar\Models\Components\CustomerBenefitGrantFeatureFlag', 'json', DeserializationContext::create()->setRequireAllRequiredProperties(true));
                 $response = new Operations\CustomerPortalBenefitGrantsUpdateResponse(
                     statusCode: $statusCode,
                     contentType: $contentType,

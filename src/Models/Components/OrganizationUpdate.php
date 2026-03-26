@@ -66,6 +66,16 @@ class OrganizationUpdate
     public ?OrganizationDetails $details = null;
 
     /**
+     * Two-letter country code (ISO 3166-1 alpha-2).
+     *
+     * @var ?CountryCountryAlpha2Input $country
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('country')]
+    #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\CountryCountryAlpha2Input|null')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
+    public ?CountryCountryAlpha2Input $country = null;
+
+    /**
      *
      * @var ?OrganizationFeatureSettings $featureSettings
      */
@@ -121,21 +131,33 @@ class OrganizationUpdate
     public ?PresentmentCurrency $defaultPresentmentCurrency = null;
 
     /**
+     * Default tax behavior applied on products.
+     *
+     * @var ?TaxBehaviorOption $defaultTaxBehavior
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('default_tax_behavior')]
+    #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\TaxBehaviorOption|null')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
+    public ?TaxBehaviorOption $defaultTaxBehavior = null;
+
+    /**
      * @param  ?string  $name
      * @param  ?string  $avatarUrl
      * @param  ?string  $email
      * @param  ?string  $website
      * @param  ?array<OrganizationSocialLink>  $socials
      * @param  ?OrganizationDetails  $details
+     * @param  ?CountryCountryAlpha2Input  $country
      * @param  ?OrganizationFeatureSettings  $featureSettings
      * @param  ?OrganizationSubscriptionSettings  $subscriptionSettings
      * @param  ?OrganizationNotificationSettings  $notificationSettings
      * @param  ?OrganizationCustomerEmailSettings  $customerEmailSettings
      * @param  ?OrganizationCustomerPortalSettings  $customerPortalSettings
      * @param  ?PresentmentCurrency  $defaultPresentmentCurrency
+     * @param  ?TaxBehaviorOption  $defaultTaxBehavior
      * @phpstan-pure
      */
-    public function __construct(?string $name = null, ?string $avatarUrl = null, ?string $email = null, ?string $website = null, ?array $socials = null, ?OrganizationDetails $details = null, ?OrganizationFeatureSettings $featureSettings = null, ?OrganizationSubscriptionSettings $subscriptionSettings = null, ?OrganizationNotificationSettings $notificationSettings = null, ?OrganizationCustomerEmailSettings $customerEmailSettings = null, ?OrganizationCustomerPortalSettings $customerPortalSettings = null, ?PresentmentCurrency $defaultPresentmentCurrency = null)
+    public function __construct(?string $name = null, ?string $avatarUrl = null, ?string $email = null, ?string $website = null, ?array $socials = null, ?OrganizationDetails $details = null, ?CountryCountryAlpha2Input $country = null, ?OrganizationFeatureSettings $featureSettings = null, ?OrganizationSubscriptionSettings $subscriptionSettings = null, ?OrganizationNotificationSettings $notificationSettings = null, ?OrganizationCustomerEmailSettings $customerEmailSettings = null, ?OrganizationCustomerPortalSettings $customerPortalSettings = null, ?PresentmentCurrency $defaultPresentmentCurrency = null, ?TaxBehaviorOption $defaultTaxBehavior = null)
     {
         $this->name = $name;
         $this->avatarUrl = $avatarUrl;
@@ -143,11 +165,13 @@ class OrganizationUpdate
         $this->website = $website;
         $this->socials = $socials;
         $this->details = $details;
+        $this->country = $country;
         $this->featureSettings = $featureSettings;
         $this->subscriptionSettings = $subscriptionSettings;
         $this->notificationSettings = $notificationSettings;
         $this->customerEmailSettings = $customerEmailSettings;
         $this->customerPortalSettings = $customerPortalSettings;
         $this->defaultPresentmentCurrency = $defaultPresentmentCurrency;
+        $this->defaultTaxBehavior = $defaultTaxBehavior;
     }
 }

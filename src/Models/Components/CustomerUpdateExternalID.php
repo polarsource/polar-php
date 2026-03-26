@@ -59,14 +59,12 @@ class CustomerUpdateExternalID
     public ?AddressInput $billingAddress = null;
 
     /**
-     * $taxId
      *
-     * @var ?array<string|TaxIDFormat|null> $taxId
+     * @var ?string $taxId
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('tax_id')]
-    #[\Speakeasy\Serializer\Annotation\Type('array<string|\Polar\Models\Components\TaxIDFormat|null>|null')]
     #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
-    public ?array $taxId = null;
+    public ?string $taxId = null;
 
     /**
      *
@@ -81,11 +79,11 @@ class CustomerUpdateExternalID
      * @param  ?string  $email
      * @param  ?string  $name
      * @param  ?AddressInput  $billingAddress
-     * @param  ?array<string|TaxIDFormat|null>  $taxId
+     * @param  ?string  $taxId
      * @param  ?string  $locale
      * @phpstan-pure
      */
-    public function __construct(?array $metadata = null, ?string $email = null, ?string $name = null, ?AddressInput $billingAddress = null, ?array $taxId = null, ?string $locale = null)
+    public function __construct(?array $metadata = null, ?string $email = null, ?string $name = null, ?AddressInput $billingAddress = null, ?string $taxId = null, ?string $locale = null)
     {
         $this->metadata = $metadata;
         $this->email = $email;

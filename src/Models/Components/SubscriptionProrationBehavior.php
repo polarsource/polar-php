@@ -13,4 +13,5 @@ enum SubscriptionProrationBehavior: string
 {
     case Invoice = 'invoice';
     case Prorate = 'prorate';
+    case NextPeriod = 'next_period';
 }

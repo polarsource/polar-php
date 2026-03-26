@@ -29,6 +29,14 @@ class MembersListMembersRequest
     public ?string $externalCustomerId = null;
 
     /**
+     * Filter by member role.
+     *
+     * @var ?Components\MemberRole $role
+     */
+    #[SpeakeasyMetadata('queryParam:style=form,explode=true,name=role')]
+    public ?Components\MemberRole $role = null;
+
+    /**
      * Sorting criterion. Several criteria can be used simultaneously and will be applied in order. Add a minus sign `-` before the criteria name to sort by descending order.
      *
      * @var ?array<Components\MemberSortProperty> $sorting
@@ -57,13 +65,15 @@ class MembersListMembersRequest
      * @param  ?int  $limit
      * @param  ?string  $customerId
      * @param  ?string  $externalCustomerId
+     * @param  ?Components\MemberRole  $role
      * @param  ?array<Components\MemberSortProperty>  $sorting
      * @phpstan-pure
      */
-    public function __construct(?string $customerId = null, ?string $externalCustomerId = null, ?array $sorting = null, ?int $page = 1, ?int $limit = 10)
+    public function __construct(?string $customerId = null, ?string $externalCustomerId = null, ?Components\MemberRole $role = null, ?array $sorting = null, ?int $page = 1, ?int $limit = 10)
     {
         $this->customerId = $customerId;
         $this->externalCustomerId = $externalCustomerId;
+        $this->role = $role;
         $this->sorting = $sorting;
         $this->page = $page;
         $this->limit = $limit;

@@ -14,10 +14,10 @@ class ListResourceCustomerBenefitGrant
     /**
      * $items
      *
-     * @var array<CustomerBenefitGrantDiscord|CustomerBenefitGrantGitHubRepository|CustomerBenefitGrantDownloadables|CustomerBenefitGrantLicenseKeys|CustomerBenefitGrantCustom|CustomerBenefitGrantMeterCredit> $items
+     * @var array<CustomerBenefitGrantDiscord|CustomerBenefitGrantGitHubRepository|CustomerBenefitGrantDownloadables|CustomerBenefitGrantLicenseKeys|CustomerBenefitGrantCustom|CustomerBenefitGrantMeterCredit|CustomerBenefitGrantFeatureFlag> $items
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('items')]
-    #[\Speakeasy\Serializer\Annotation\Type('array<\Polar\Models\Components\CustomerBenefitGrantDiscord|\Polar\Models\Components\CustomerBenefitGrantGitHubRepository|\Polar\Models\Components\CustomerBenefitGrantDownloadables|\Polar\Models\Components\CustomerBenefitGrantLicenseKeys|\Polar\Models\Components\CustomerBenefitGrantCustom|\Polar\Models\Components\CustomerBenefitGrantMeterCredit>')]
+    #[\Speakeasy\Serializer\Annotation\Type('array<\Polar\Models\Components\CustomerBenefitGrantDiscord|\Polar\Models\Components\CustomerBenefitGrantGitHubRepository|\Polar\Models\Components\CustomerBenefitGrantDownloadables|\Polar\Models\Components\CustomerBenefitGrantLicenseKeys|\Polar\Models\Components\CustomerBenefitGrantCustom|\Polar\Models\Components\CustomerBenefitGrantMeterCredit|\Polar\Models\Components\CustomerBenefitGrantFeatureFlag>')]
     public array $items;
 
     /**
@@ -29,7 +29,7 @@ class ListResourceCustomerBenefitGrant
     public Pagination $pagination;
 
     /**
-     * @param  array<CustomerBenefitGrantDiscord|CustomerBenefitGrantGitHubRepository|CustomerBenefitGrantDownloadables|CustomerBenefitGrantLicenseKeys|CustomerBenefitGrantCustom|CustomerBenefitGrantMeterCredit>  $items
+     * @param  array<CustomerBenefitGrantDiscord|CustomerBenefitGrantGitHubRepository|CustomerBenefitGrantDownloadables|CustomerBenefitGrantLicenseKeys|CustomerBenefitGrantCustom|CustomerBenefitGrantMeterCredit|CustomerBenefitGrantFeatureFlag>  $items
      * @param  Pagination  $pagination
      * @phpstan-pure
      */

@@ -67,14 +67,12 @@ class CustomerCreate
     public ?AddressInput $billingAddress = null;
 
     /**
-     * $taxId
      *
-     * @var ?array<string|TaxIDFormat|null> $taxId
+     * @var ?string $taxId
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('tax_id')]
-    #[\Speakeasy\Serializer\Annotation\Type('array<string|\Polar\Models\Components\TaxIDFormat|null>|null')]
     #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
-    public ?array $taxId = null;
+    public ?string $taxId = null;
 
     /**
      *
@@ -119,14 +117,14 @@ class CustomerCreate
      * @param  ?string  $externalId
      * @param  ?string  $name
      * @param  ?AddressInput  $billingAddress
-     * @param  ?array<string|TaxIDFormat|null>  $taxId
+     * @param  ?string  $taxId
      * @param  ?string  $locale
      * @param  ?CustomerType  $type
      * @param  ?string  $organizationId
      * @param  ?OwnerCreate  $owner
      * @phpstan-pure
      */
-    public function __construct(string $email, ?array $metadata = null, ?string $externalId = null, ?string $name = null, ?AddressInput $billingAddress = null, ?array $taxId = null, ?string $locale = null, ?CustomerType $type = null, ?string $organizationId = null, ?OwnerCreate $owner = null)
+    public function __construct(string $email, ?array $metadata = null, ?string $externalId = null, ?string $name = null, ?AddressInput $billingAddress = null, ?string $taxId = null, ?string $locale = null, ?CustomerType $type = null, ?string $organizationId = null, ?OwnerCreate $owner = null)
     {
         $this->email = $email;
         $this->metadata = $metadata;
