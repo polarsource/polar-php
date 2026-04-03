@@ -39,7 +39,7 @@ class MetersQuantitiesRequest
     /**
      * Interval between two timestamps.
      *
-     * @var Components\TimeInterval $interval
+     * @var \Polar\Models\Components\TimeInterval $interval
      */
     #[SpeakeasyMetadata('queryParam:style=form,explode=true,name=interval')]
     public Components\TimeInterval $interval;
@@ -63,7 +63,7 @@ class MetersQuantitiesRequest
     /**
      * If set, will first compute the quantities per customer before aggregating them using the given function. If not set, the quantities will be aggregated across all events.
      *
-     * @var ?Components\AggregationFunction $customerAggregationFunction
+     * @var ?\Polar\Models\Components\AggregationFunction $customerAggregationFunction
      */
     #[SpeakeasyMetadata('queryParam:style=form,explode=true,name=customer_aggregation_function')]
     public ?Components\AggregationFunction $customerAggregationFunction = null;
@@ -88,11 +88,11 @@ class MetersQuantitiesRequest
      * @param  string  $id
      * @param  \DateTime  $startTimestamp
      * @param  \DateTime  $endTimestamp
-     * @param  Components\TimeInterval  $interval
+     * @param  \Polar\Models\Components\TimeInterval  $interval
      * @param  ?string  $timezone
      * @param  string|array<string>|null  $customerId
      * @param  string|array<string>|null  $externalCustomerId
-     * @param  ?Components\AggregationFunction  $customerAggregationFunction
+     * @param  ?\Polar\Models\Components\AggregationFunction  $customerAggregationFunction
      * @param  ?array<string, string|int|bool|array<string>|array<int>|array<bool>>  $metadata
      * @phpstan-pure
      */

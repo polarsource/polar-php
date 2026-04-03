@@ -29,7 +29,7 @@ class Order
 
     /**
      *
-     * @var OrderStatus $status
+     * @var \Polar\Models\Components\OrderStatus $status
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('status')]
     #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\OrderStatus')]
@@ -124,7 +124,7 @@ class Order
 
     /**
      *
-     * @var OrderBillingReason $billingReason
+     * @var \Polar\Models\Components\OrderBillingReason $billingReason
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('billing_reason')]
     #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\OrderBillingReason')]
@@ -172,7 +172,7 @@ class Order
 
     /**
      *
-     * @var OrderCustomer $customer
+     * @var \Polar\Models\Components\OrderCustomer $customer
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('customer')]
     #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\OrderCustomer')]
@@ -181,7 +181,7 @@ class Order
     /**
      * Line items composing the order.
      *
-     * @var array<OrderItemSchema> $items
+     * @var array<\Polar\Models\Components\OrderItemSchema> $items
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('items')]
     #[\Speakeasy\Serializer\Annotation\Type('array<\Polar\Models\Components\OrderItemSchema>')]
@@ -213,7 +213,7 @@ class Order
 
     /**
      *
-     * @var ?Address $billingAddress
+     * @var ?\Polar\Models\Components\Address $billingAddress
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('billing_address')]
     #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\Address|null')]
@@ -267,7 +267,7 @@ class Order
 
     /**
      *
-     * @var ?OrderProduct $product
+     * @var ?\Polar\Models\Components\OrderProduct $product
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('product')]
     #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\OrderProduct|null')]
@@ -275,7 +275,7 @@ class Order
 
     /**
      *
-     * @var DiscountFixedOnceForeverDurationBase|DiscountFixedRepeatDurationBase|DiscountPercentageOnceForeverDurationBase|DiscountPercentageRepeatDurationBase|null $discount
+     * @var \Polar\Models\Components\DiscountFixedOnceForeverDurationBase|\Polar\Models\Components\DiscountFixedRepeatDurationBase|\Polar\Models\Components\DiscountPercentageOnceForeverDurationBase|\Polar\Models\Components\DiscountPercentageRepeatDurationBase|null $discount
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('discount')]
     #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\DiscountFixedOnceForeverDurationBase|\Polar\Models\Components\DiscountFixedRepeatDurationBase|\Polar\Models\Components\DiscountPercentageOnceForeverDurationBase|\Polar\Models\Components\DiscountPercentageRepeatDurationBase|null')]
@@ -283,7 +283,7 @@ class Order
 
     /**
      *
-     * @var ?OrderSubscription $subscription
+     * @var ?\Polar\Models\Components\OrderSubscription $subscription
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('subscription')]
     #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\OrderSubscription|null')]
@@ -301,7 +301,7 @@ class Order
     /**
      * @param  string  $id
      * @param  \DateTime  $createdAt
-     * @param  OrderStatus  $status
+     * @param  \Polar\Models\Components\OrderStatus  $status
      * @param  bool  $paid
      * @param  int  $subtotalAmount
      * @param  int  $discountAmount
@@ -313,27 +313,27 @@ class Order
      * @param  int  $refundedAmount
      * @param  int  $refundedTaxAmount
      * @param  string  $currency
-     * @param  OrderBillingReason  $billingReason
+     * @param  \Polar\Models\Components\OrderBillingReason  $billingReason
      * @param  string  $invoiceNumber
      * @param  bool  $isInvoiceGenerated
      * @param  string  $customerId
      * @param  array<string, string|int|float|bool>  $metadata
      * @param  int  $platformFeeAmount
-     * @param  OrderCustomer  $customer
-     * @param  array<OrderItemSchema>  $items
+     * @param  \Polar\Models\Components\OrderCustomer  $customer
+     * @param  array<\Polar\Models\Components\OrderItemSchema>  $items
      * @param  string  $description
      * @param  ?\DateTime  $modifiedAt
      * @param  ?string  $billingName
-     * @param  ?Address  $billingAddress
+     * @param  ?\Polar\Models\Components\Address  $billingAddress
      * @param  ?string  $productId
      * @param  ?string  $discountId
      * @param  ?string  $subscriptionId
      * @param  ?string  $checkoutId
      * @param  ?array<string, string|int|bool|\DateTime|null>  $customFieldData
      * @param  ?string  $platformFeeCurrency
-     * @param  ?OrderProduct  $product
-     * @param  DiscountFixedOnceForeverDurationBase|DiscountFixedRepeatDurationBase|DiscountPercentageOnceForeverDurationBase|DiscountPercentageRepeatDurationBase|null  $discount
-     * @param  ?OrderSubscription  $subscription
+     * @param  ?\Polar\Models\Components\OrderProduct  $product
+     * @param  \Polar\Models\Components\DiscountFixedOnceForeverDurationBase|\Polar\Models\Components\DiscountFixedRepeatDurationBase|\Polar\Models\Components\DiscountPercentageOnceForeverDurationBase|\Polar\Models\Components\DiscountPercentageRepeatDurationBase|null  $discount
+     * @param  ?\Polar\Models\Components\OrderSubscription  $subscription
      * @param  ?int  $seats
      * @phpstan-pure
      */

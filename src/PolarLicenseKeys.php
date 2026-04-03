@@ -55,8 +55,8 @@ class PolarLicenseKeys
      * > If you plan to validate a license key on a server, use the `/v1/license-keys/activate`
      * > endpoint instead.
      *
-     * @param  Components\LicenseKeyActivate  $request
-     * @return Operations\CustomerPortalLicenseKeysActivateResponse
+     * @param  \Polar\Models\Components\LicenseKeyActivate  $request
+     * @return \Polar\Models\Operations\CustomerPortalLicenseKeysActivateResponse
      * @throws \Polar\Models\Errors\APIException
      */
     public function activate(Components\LicenseKeyActivate $request, ?Options $options = null): Operations\CustomerPortalLicenseKeysActivateResponse
@@ -159,8 +159,8 @@ class PolarLicenseKeys
      * > If you plan to validate a license key on a server, use the `/v1/license-keys/deactivate`
      * > endpoint instead.
      *
-     * @param  Components\LicenseKeyDeactivate  $request
-     * @return Operations\CustomerPortalLicenseKeysDeactivateResponse
+     * @param  \Polar\Models\Components\LicenseKeyDeactivate  $request
+     * @return \Polar\Models\Operations\CustomerPortalLicenseKeysDeactivateResponse
      * @throws \Polar\Models\Errors\APIException
      */
     public function deactivate(Components\LicenseKeyDeactivate $request, ?Options $options = null): Operations\CustomerPortalLicenseKeysDeactivateResponse
@@ -240,9 +240,9 @@ class PolarLicenseKeys
      *
      * **Scopes**: `customer_portal:read` `customer_portal:write`
      *
-     * @param  Operations\CustomerPortalLicenseKeysGetSecurity  $security
+     * @param  \Polar\Models\Operations\CustomerPortalLicenseKeysGetSecurity  $security
      * @param  string  $id
-     * @return Operations\CustomerPortalLicenseKeysGetResponse
+     * @return \Polar\Models\Operations\CustomerPortalLicenseKeysGetResponse
      * @throws \Polar\Models\Errors\APIException
      */
     public function get(Operations\CustomerPortalLicenseKeysGetSecurity $security, string $id, ?Options $options = null): Operations\CustomerPortalLicenseKeysGetResponse
@@ -333,11 +333,11 @@ class PolarLicenseKeys
      *
      * **Scopes**: `customer_portal:read` `customer_portal:write`
      *
-     * @param  Operations\CustomerPortalLicenseKeysListSecurity  $security
+     * @param  \Polar\Models\Operations\CustomerPortalLicenseKeysListSecurity  $security
      * @param  ?string  $benefitId
      * @param  ?int  $page
      * @param  ?int  $limit
-     * @return Operations\CustomerPortalLicenseKeysListResponse
+     * @return \Polar\Models\Operations\CustomerPortalLicenseKeysListResponse
      * @throws \Polar\Models\Errors\APIException
      */
     private function listIndividual(Operations\CustomerPortalLicenseKeysListSecurity $security, ?string $benefitId = null, ?int $page = null, ?int $limit = null, ?Options $options = null): Operations\CustomerPortalLicenseKeysListResponse
@@ -478,11 +478,11 @@ class PolarLicenseKeys
      *
      * **Scopes**: `customer_portal:read` `customer_portal:write`
      *
-     * @param  Operations\CustomerPortalLicenseKeysListSecurity  $security
+     * @param  \Polar\Models\Operations\CustomerPortalLicenseKeysListSecurity  $security
      * @param  ?string  $benefitId
      * @param  ?int  $page
      * @param  ?int  $limit
-     * @return \Generator<Operations\CustomerPortalLicenseKeysListResponse>
+     * @return \Generator<\Polar\Models\Operations\CustomerPortalLicenseKeysListResponse>
      * @throws \Polar\Models\Errors\APIException
      */
     public function list(Operations\CustomerPortalLicenseKeysListSecurity $security, ?string $benefitId = null, ?int $page = null, ?int $limit = null, ?Options $options = null): \Generator
@@ -504,8 +504,8 @@ class PolarLicenseKeys
      * > If you plan to validate a license key on a server, use the `/v1/license-keys/validate`
      * > endpoint instead.
      *
-     * @param  Components\LicenseKeyValidate  $request
-     * @return Operations\CustomerPortalLicenseKeysValidateResponse
+     * @param  \Polar\Models\Components\LicenseKeyValidate  $request
+     * @return \Polar\Models\Operations\CustomerPortalLicenseKeysValidateResponse
      * @throws \Polar\Models\Errors\APIException
      */
     public function validate(Components\LicenseKeyValidate $request, ?Options $options = null): Operations\CustomerPortalLicenseKeysValidateResponse

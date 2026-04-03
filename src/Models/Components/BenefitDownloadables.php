@@ -70,7 +70,7 @@ class BenefitDownloadables
 
     /**
      *
-     * @var BenefitDownloadablesProperties $properties
+     * @var \Polar\Models\Components\BenefitDownloadablesProperties $properties
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('properties')]
     #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\BenefitDownloadablesProperties')]
@@ -100,7 +100,7 @@ class BenefitDownloadables
      * @param  bool  $deletable
      * @param  string  $organizationId
      * @param  array<string, string|int|float|bool>  $metadata
-     * @param  BenefitDownloadablesProperties  $properties
+     * @param  \Polar\Models\Components\BenefitDownloadablesProperties  $properties
      * @param  ?\DateTime  $modifiedAt
      * @phpstan-pure
      */

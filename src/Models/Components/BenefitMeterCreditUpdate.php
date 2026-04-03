@@ -43,7 +43,7 @@ class BenefitMeterCreditUpdate
 
     /**
      *
-     * @var ?BenefitMeterCreditCreateProperties $properties
+     * @var ?\Polar\Models\Components\BenefitMeterCreditCreateProperties $properties
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('properties')]
     #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\BenefitMeterCreditCreateProperties|null')]
@@ -61,7 +61,7 @@ class BenefitMeterCreditUpdate
      * @param  string  $type
      * @param  ?array<string, string|int|float|bool>  $metadata
      * @param  ?string  $description
-     * @param  ?BenefitMeterCreditCreateProperties  $properties
+     * @param  ?\Polar\Models\Components\BenefitMeterCreditCreateProperties  $properties
      * @phpstan-pure
      */
     public function __construct(?array $metadata = null, ?string $description = null, ?BenefitMeterCreditCreateProperties $properties = null, string $type = 'meter_credit')

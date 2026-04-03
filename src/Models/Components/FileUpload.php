@@ -56,7 +56,7 @@ class FileUpload
 
     /**
      *
-     * @var S3FileUploadMultipart $upload
+     * @var \Polar\Models\Components\S3FileUploadMultipart $upload
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('upload')]
     #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\S3FileUploadMultipart')]
@@ -64,7 +64,7 @@ class FileUpload
 
     /**
      *
-     * @var FileServiceTypes $service
+     * @var \Polar\Models\Components\FileServiceTypes $service
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('service')]
     #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\FileServiceTypes')]
@@ -134,8 +134,8 @@ class FileUpload
      * @param  string  $path
      * @param  string  $mimeType
      * @param  int  $size
-     * @param  S3FileUploadMultipart  $upload
-     * @param  FileServiceTypes  $service
+     * @param  \Polar\Models\Components\S3FileUploadMultipart  $upload
+     * @param  \Polar\Models\Components\FileServiceTypes  $service
      * @param  string  $sizeReadable
      * @param  ?string  $storageVersion
      * @param  ?string  $checksumEtag

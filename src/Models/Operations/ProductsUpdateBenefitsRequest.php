@@ -21,14 +21,14 @@ class ProductsUpdateBenefitsRequest
 
     /**
      *
-     * @var Components\ProductBenefitsUpdate $productBenefitsUpdate
+     * @var \Polar\Models\Components\ProductBenefitsUpdate $productBenefitsUpdate
      */
     #[SpeakeasyMetadata('request:mediaType=application/json')]
     public Components\ProductBenefitsUpdate $productBenefitsUpdate;
 
     /**
      * @param  string  $id
-     * @param  Components\ProductBenefitsUpdate  $productBenefitsUpdate
+     * @param  \Polar\Models\Components\ProductBenefitsUpdate  $productBenefitsUpdate
      * @phpstan-pure
      */
     public function __construct(string $id, Components\ProductBenefitsUpdate $productBenefitsUpdate)

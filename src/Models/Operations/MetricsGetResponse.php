@@ -35,7 +35,7 @@ class MetricsGetResponse
     /**
      * Successful Response
      *
-     * @var ?Components\MetricsResponse $metricsResponse
+     * @var ?\Polar\Models\Components\MetricsResponse $metricsResponse
      */
     public ?Components\MetricsResponse $metricsResponse = null;
 
@@ -43,7 +43,7 @@ class MetricsGetResponse
      * @param  string  $contentType
      * @param  int  $statusCode
      * @param  \Psr\Http\Message\ResponseInterface  $rawResponse
-     * @param  ?Components\MetricsResponse  $metricsResponse
+     * @param  ?\Polar\Models\Components\MetricsResponse  $metricsResponse
      * @phpstan-pure
      */
     public function __construct(string $contentType, int $statusCode, \Psr\Http\Message\ResponseInterface $rawResponse, ?Components\MetricsResponse $metricsResponse = null)

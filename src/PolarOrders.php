@@ -50,10 +50,10 @@ class PolarOrders
      *
      * Confirm a retry payment using a Stripe confirmation token.
      *
-     * @param  Operations\CustomerPortalOrdersConfirmRetryPaymentSecurity  $security
-     * @param  Components\CustomerOrderConfirmPayment  $customerOrderConfirmPayment
+     * @param  \Polar\Models\Operations\CustomerPortalOrdersConfirmRetryPaymentSecurity  $security
+     * @param  \Polar\Models\Components\CustomerOrderConfirmPayment  $customerOrderConfirmPayment
      * @param  string  $id
-     * @return Operations\CustomerPortalOrdersConfirmRetryPaymentResponse
+     * @return \Polar\Models\Operations\CustomerPortalOrdersConfirmRetryPaymentResponse
      * @throws \Polar\Models\Errors\APIException
      */
     public function confirmRetryPayment(Operations\CustomerPortalOrdersConfirmRetryPaymentSecurity $security, Components\CustomerOrderConfirmPayment $customerOrderConfirmPayment, string $id, ?Options $options = null): Operations\CustomerPortalOrdersConfirmRetryPaymentResponse
@@ -161,9 +161,9 @@ class PolarOrders
      *
      * Trigger generation of an order's invoice.
      *
-     * @param  Operations\CustomerPortalOrdersGenerateInvoiceSecurity  $security
+     * @param  \Polar\Models\Operations\CustomerPortalOrdersGenerateInvoiceSecurity  $security
      * @param  string  $id
-     * @return Operations\CustomerPortalOrdersGenerateInvoiceResponse
+     * @return \Polar\Models\Operations\CustomerPortalOrdersGenerateInvoiceResponse
      * @throws \Polar\Models\Errors\APIException
      */
     public function generateInvoice(Operations\CustomerPortalOrdersGenerateInvoiceSecurity $security, string $id, ?Options $options = null): Operations\CustomerPortalOrdersGenerateInvoiceResponse
@@ -244,9 +244,9 @@ class PolarOrders
      *
      * Get an order by ID for the authenticated customer.
      *
-     * @param  Operations\CustomerPortalOrdersGetSecurity  $security
+     * @param  \Polar\Models\Operations\CustomerPortalOrdersGetSecurity  $security
      * @param  string  $id
-     * @return Operations\CustomerPortalOrdersGetResponse
+     * @return \Polar\Models\Operations\CustomerPortalOrdersGetResponse
      * @throws \Polar\Models\Errors\APIException
      */
     public function get(Operations\CustomerPortalOrdersGetSecurity $security, string $id, ?Options $options = null): Operations\CustomerPortalOrdersGetResponse
@@ -337,9 +337,9 @@ class PolarOrders
      *
      * Get the current payment status for an order.
      *
-     * @param  Operations\CustomerPortalOrdersGetPaymentStatusSecurity  $security
+     * @param  \Polar\Models\Operations\CustomerPortalOrdersGetPaymentStatusSecurity  $security
      * @param  string  $id
-     * @return Operations\CustomerPortalOrdersGetPaymentStatusResponse
+     * @return \Polar\Models\Operations\CustomerPortalOrdersGetPaymentStatusResponse
      * @throws \Polar\Models\Errors\APIException
      */
     public function getPaymentStatus(Operations\CustomerPortalOrdersGetPaymentStatusSecurity $security, string $id, ?Options $options = null): Operations\CustomerPortalOrdersGetPaymentStatusResponse
@@ -430,9 +430,9 @@ class PolarOrders
      *
      * Get an order's invoice data.
      *
-     * @param  Operations\CustomerPortalOrdersInvoiceSecurity  $security
+     * @param  \Polar\Models\Operations\CustomerPortalOrdersInvoiceSecurity  $security
      * @param  string  $id
-     * @return Operations\CustomerPortalOrdersInvoiceResponse
+     * @return \Polar\Models\Operations\CustomerPortalOrdersInvoiceResponse
      * @throws \Polar\Models\Errors\APIException
      */
     public function invoice(Operations\CustomerPortalOrdersInvoiceSecurity $security, string $id, ?Options $options = null): Operations\CustomerPortalOrdersInvoiceResponse
@@ -523,9 +523,9 @@ class PolarOrders
      *
      * List orders of the authenticated customer.
      *
-     * @param  Operations\CustomerPortalOrdersListSecurity  $security
-     * @param  ?Operations\CustomerPortalOrdersListRequest  $request
-     * @return Operations\CustomerPortalOrdersListResponse
+     * @param  \Polar\Models\Operations\CustomerPortalOrdersListSecurity  $security
+     * @param  ?\Polar\Models\Operations\CustomerPortalOrdersListRequest  $request
+     * @return \Polar\Models\Operations\CustomerPortalOrdersListResponse
      * @throws \Polar\Models\Errors\APIException
      */
     private function listIndividual(Operations\CustomerPortalOrdersListSecurity $security, ?Operations\CustomerPortalOrdersListRequest $request = null, ?Options $options = null): Operations\CustomerPortalOrdersListResponse
@@ -645,9 +645,9 @@ class PolarOrders
      *
      * List orders of the authenticated customer.
      *
-     * @param  Operations\CustomerPortalOrdersListSecurity  $security
-     * @param  ?Operations\CustomerPortalOrdersListRequest  $request
-     * @return \Generator<Operations\CustomerPortalOrdersListResponse>
+     * @param  \Polar\Models\Operations\CustomerPortalOrdersListSecurity  $security
+     * @param  ?\Polar\Models\Operations\CustomerPortalOrdersListRequest  $request
+     * @return \Generator<\Polar\Models\Operations\CustomerPortalOrdersListResponse>
      * @throws \Polar\Models\Errors\APIException
      */
     public function list(Operations\CustomerPortalOrdersListSecurity $security, ?Operations\CustomerPortalOrdersListRequest $request = null, ?Options $options = null): \Generator
@@ -664,10 +664,10 @@ class PolarOrders
      *
      * Update an order for the authenticated customer.
      *
-     * @param  Operations\CustomerPortalOrdersUpdateSecurity  $security
-     * @param  Components\CustomerOrderUpdate  $customerOrderUpdate
+     * @param  \Polar\Models\Operations\CustomerPortalOrdersUpdateSecurity  $security
+     * @param  \Polar\Models\Components\CustomerOrderUpdate  $customerOrderUpdate
      * @param  string  $id
-     * @return Operations\CustomerPortalOrdersUpdateResponse
+     * @return \Polar\Models\Operations\CustomerPortalOrdersUpdateResponse
      * @throws \Polar\Models\Errors\APIException
      */
     public function update(Operations\CustomerPortalOrdersUpdateSecurity $security, Components\CustomerOrderUpdate $customerOrderUpdate, string $id, ?Options $options = null): Operations\CustomerPortalOrdersUpdateResponse

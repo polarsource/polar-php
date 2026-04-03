@@ -21,14 +21,14 @@ class OrganizationsUpdateRequest
 
     /**
      *
-     * @var Components\OrganizationUpdate $organizationUpdate
+     * @var \Polar\Models\Components\OrganizationUpdate $organizationUpdate
      */
     #[SpeakeasyMetadata('request:mediaType=application/json')]
     public Components\OrganizationUpdate $organizationUpdate;
 
     /**
      * @param  string  $id
-     * @param  Components\OrganizationUpdate  $organizationUpdate
+     * @param  \Polar\Models\Components\OrganizationUpdate  $organizationUpdate
      * @phpstan-pure
      */
     public function __construct(string $id, Components\OrganizationUpdate $organizationUpdate)

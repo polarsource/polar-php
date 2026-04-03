@@ -35,7 +35,7 @@ class MembersUpdateMemberResponse
     /**
      * Member updated.
      *
-     * @var ?Components\Member $member
+     * @var ?\Polar\Models\Components\Member $member
      */
     public ?Components\Member $member = null;
 
@@ -43,7 +43,7 @@ class MembersUpdateMemberResponse
      * @param  string  $contentType
      * @param  int  $statusCode
      * @param  \Psr\Http\Message\ResponseInterface  $rawResponse
-     * @param  ?Components\Member  $member
+     * @param  ?\Polar\Models\Components\Member  $member
      * @phpstan-pure
      */
     public function __construct(string $contentType, int $statusCode, \Psr\Http\Message\ResponseInterface $rawResponse, ?Components\Member $member = null)

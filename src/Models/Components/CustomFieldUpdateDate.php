@@ -51,7 +51,7 @@ class CustomFieldUpdateDate
 
     /**
      *
-     * @var ?CustomFieldDateProperties $properties
+     * @var ?\Polar\Models\Components\CustomFieldDateProperties $properties
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('properties')]
     #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\CustomFieldDateProperties|null')]
@@ -70,7 +70,7 @@ class CustomFieldUpdateDate
      * @param  ?array<string, string|int|float|bool>  $metadata
      * @param  ?string  $name
      * @param  ?string  $slug
-     * @param  ?CustomFieldDateProperties  $properties
+     * @param  ?\Polar\Models\Components\CustomFieldDateProperties  $properties
      * @phpstan-pure
      */
     public function __construct(?array $metadata = null, ?string $name = null, ?string $slug = null, ?CustomFieldDateProperties $properties = null, string $type = 'date')

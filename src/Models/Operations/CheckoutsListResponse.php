@@ -35,7 +35,7 @@ class CheckoutsListResponse
     /**
      * Successful Response
      *
-     * @var ?Components\ListResourceCheckout $listResourceCheckout
+     * @var ?\Polar\Models\Components\ListResourceCheckout $listResourceCheckout
      */
     public ?Components\ListResourceCheckout $listResourceCheckout = null;
 
@@ -47,7 +47,7 @@ class CheckoutsListResponse
      * @param  string  $contentType
      * @param  int  $statusCode
      * @param  \Psr\Http\Message\ResponseInterface  $rawResponse
-     * @param  ?Components\ListResourceCheckout  $listResourceCheckout
+     * @param  ?\Polar\Models\Components\ListResourceCheckout  $listResourceCheckout
      * @phpstan-pure
      */
     public function __construct(string $contentType, int $statusCode, \Psr\Http\Message\ResponseInterface $rawResponse, ?Components\ListResourceCheckout $listResourceCheckout = null)

@@ -31,7 +31,7 @@ class CheckoutLinksListRequest
     /**
      * Sorting criterion. Several criteria can be used simultaneously and will be applied in order. Add a minus sign `-` before the criteria name to sort by descending order.
      *
-     * @var ?array<Components\CheckoutLinkSortProperty> $sorting
+     * @var ?array<\Polar\Models\Components\CheckoutLinkSortProperty> $sorting
      */
     #[SpeakeasyMetadata('queryParam:style=form,explode=true,name=sorting')]
     public ?array $sorting = null;
@@ -57,7 +57,7 @@ class CheckoutLinksListRequest
      * @param  ?int  $limit
      * @param  string|array<string>|null  $organizationId
      * @param  string|array<string>|null  $productId
-     * @param  ?array<Components\CheckoutLinkSortProperty>  $sorting
+     * @param  ?array<\Polar\Models\Components\CheckoutLinkSortProperty>  $sorting
      * @phpstan-pure
      */
     public function __construct(string|array|null $organizationId = null, string|array|null $productId = null, ?array $sorting = null, ?int $page = 1, ?int $limit = 10)

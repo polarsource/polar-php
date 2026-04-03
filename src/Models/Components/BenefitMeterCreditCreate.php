@@ -23,7 +23,7 @@ class BenefitMeterCreditCreate
     /**
      * Properties for creating a benefit of type `meter_unit`.
      *
-     * @var BenefitMeterCreditCreateProperties $properties
+     * @var \Polar\Models\Components\BenefitMeterCreditCreateProperties $properties
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('properties')]
     #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\BenefitMeterCreditCreateProperties')]
@@ -69,7 +69,7 @@ class BenefitMeterCreditCreate
     /**
      * @param  string  $type
      * @param  string  $description
-     * @param  BenefitMeterCreditCreateProperties  $properties
+     * @param  \Polar\Models\Components\BenefitMeterCreditCreateProperties  $properties
      * @param  ?array<string, string|int|float|bool>  $metadata
      * @param  ?string  $organizationId
      * @phpstan-pure

@@ -7,7 +7,7 @@
 
 ```php
 /**
-* @var Components\SubscriptionUpdatedProductMetadata
+* @var \Polar\Models\Components\SubscriptionUpdatedProductMetadata
 */
 Components\SubscriptionUpdatedProductMetadata $value = /* values here */
 ```
@@ -16,7 +16,7 @@ Components\SubscriptionUpdatedProductMetadata $value = /* values here */
 
 ```php
 /**
-* @var Components\SubscriptionUpdatedDiscountMetadata
+* @var \Polar\Models\Components\SubscriptionUpdatedDiscountMetadata
 */
 Components\SubscriptionUpdatedDiscountMetadata $value = /* values here */
 ```
@@ -25,7 +25,7 @@ Components\SubscriptionUpdatedDiscountMetadata $value = /* values here */
 
 ```php
 /**
-* @var Components\SubscriptionUpdatedTrialMetadata
+* @var \Polar\Models\Components\SubscriptionUpdatedTrialMetadata
 */
 Components\SubscriptionUpdatedTrialMetadata $value = /* values here */
 ```
@@ -34,7 +34,7 @@ Components\SubscriptionUpdatedTrialMetadata $value = /* values here */
 
 ```php
 /**
-* @var Components\SubscriptionUpdatedSeatsMetadata
+* @var \Polar\Models\Components\SubscriptionUpdatedSeatsMetadata
 */
 Components\SubscriptionUpdatedSeatsMetadata $value = /* values here */
 ```
@@ -43,7 +43,7 @@ Components\SubscriptionUpdatedSeatsMetadata $value = /* values here */
 
 ```php
 /**
-* @var Components\SubscriptionUpdatedBillingPeriodMetadata
+* @var \Polar\Models\Components\SubscriptionUpdatedBillingPeriodMetadata
 */
 Components\SubscriptionUpdatedBillingPeriodMetadata $value = /* values here */
 ```

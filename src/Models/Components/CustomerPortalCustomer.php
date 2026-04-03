@@ -29,13 +29,6 @@ class CustomerPortalCustomer
 
     /**
      *
-     * @var string $email
-     */
-    #[\Speakeasy\Serializer\Annotation\SerializedName('email')]
-    public string $email;
-
-    /**
-     *
      * @var bool $emailVerified
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('email_verified')]
@@ -44,7 +37,7 @@ class CustomerPortalCustomer
     /**
      * $oauthAccounts
      *
-     * @var array<string, CustomerPortalOAuthAccount> $oauthAccounts
+     * @var array<string, \Polar\Models\Components\CustomerPortalOAuthAccount> $oauthAccounts
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('oauth_accounts')]
     #[\Speakeasy\Serializer\Annotation\Type('array<string, \Polar\Models\Components\CustomerPortalOAuthAccount>')]
@@ -57,6 +50,13 @@ class CustomerPortalCustomer
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('modified_at')]
     public ?\DateTime $modifiedAt;
+
+    /**
+     *
+     * @var ?string $email
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('email')]
+    public ?string $email;
 
     /**
      *
@@ -74,7 +74,7 @@ class CustomerPortalCustomer
 
     /**
      *
-     * @var ?Address $billingAddress
+     * @var ?\Polar\Models\Components\Address $billingAddress
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('billing_address')]
     #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\Address|null')]
@@ -83,7 +83,7 @@ class CustomerPortalCustomer
     /**
      * $taxId
      *
-     * @var ?array<string|TaxIDFormat|null> $taxId
+     * @var ?array<string|\Polar\Models\Components\TaxIDFormat|null> $taxId
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('tax_id')]
     #[\Speakeasy\Serializer\Annotation\Type('array<string|\Polar\Models\Components\TaxIDFormat|null>|null')]
@@ -99,7 +99,7 @@ class CustomerPortalCustomer
 
     /**
      *
-     * @var ?CustomerType $type
+     * @var ?\Polar\Models\Components\CustomerType $type
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('type')]
     #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\CustomerType|null')]
@@ -109,26 +109,26 @@ class CustomerPortalCustomer
     /**
      * @param  \DateTime  $createdAt
      * @param  string  $id
-     * @param  string  $email
      * @param  bool  $emailVerified
-     * @param  array<string, CustomerPortalOAuthAccount>  $oauthAccounts
+     * @param  array<string, \Polar\Models\Components\CustomerPortalOAuthAccount>  $oauthAccounts
      * @param  ?\DateTime  $modifiedAt
+     * @param  ?string  $email
      * @param  ?string  $name
      * @param  ?string  $billingName
-     * @param  ?Address  $billingAddress
-     * @param  ?array<string|TaxIDFormat|null>  $taxId
+     * @param  ?\Polar\Models\Components\Address  $billingAddress
+     * @param  ?array<string|\Polar\Models\Components\TaxIDFormat|null>  $taxId
      * @param  ?string  $defaultPaymentMethodId
-     * @param  ?CustomerType  $type
+     * @param  ?\Polar\Models\Components\CustomerType  $type
      * @phpstan-pure
      */
-    public function __construct(\DateTime $createdAt, string $id, string $email, bool $emailVerified, array $oauthAccounts, ?\DateTime $modifiedAt = null, ?string $name = null, ?string $billingName = null, ?Address $billingAddress = null, ?array $taxId = null, ?string $defaultPaymentMethodId = null, ?CustomerType $type = null)
+    public function __construct(\DateTime $createdAt, string $id, bool $emailVerified, array $oauthAccounts, ?\DateTime $modifiedAt = null, ?string $email = null, ?string $name = null, ?string $billingName = null, ?Address $billingAddress = null, ?array $taxId = null, ?string $defaultPaymentMethodId = null, ?CustomerType $type = null)
     {
         $this->createdAt = $createdAt;
         $this->id = $id;
-        $this->email = $email;
         $this->emailVerified = $emailVerified;
         $this->oauthAccounts = $oauthAccounts;
         $this->modifiedAt = $modifiedAt;
+        $this->email = $email;
         $this->name = $name;
         $this->billingName = $billingName;
         $this->billingAddress = $billingAddress;

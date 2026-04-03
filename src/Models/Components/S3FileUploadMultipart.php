@@ -28,7 +28,7 @@ class S3FileUploadMultipart
     /**
      * $parts
      *
-     * @var array<S3FileUploadPart> $parts
+     * @var array<\Polar\Models\Components\S3FileUploadPart> $parts
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('parts')]
     #[\Speakeasy\Serializer\Annotation\Type('array<\Polar\Models\Components\S3FileUploadPart>')]
@@ -37,7 +37,7 @@ class S3FileUploadMultipart
     /**
      * @param  string  $id
      * @param  string  $path
-     * @param  array<S3FileUploadPart>  $parts
+     * @param  array<\Polar\Models\Components\S3FileUploadPart>  $parts
      * @phpstan-pure
      */
     public function __construct(string $id, string $path, array $parts)

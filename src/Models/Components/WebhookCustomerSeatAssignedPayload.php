@@ -27,7 +27,7 @@ class WebhookCustomerSeatAssignedPayload
 
     /**
      *
-     * @var CustomerSeat $data
+     * @var \Polar\Models\Components\CustomerSeat $data
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('data')]
     #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\CustomerSeat')]
@@ -43,7 +43,7 @@ class WebhookCustomerSeatAssignedPayload
     /**
      * @param  string  $type
      * @param  \DateTime  $timestamp
-     * @param  CustomerSeat  $data
+     * @param  \Polar\Models\Components\CustomerSeat  $data
      * @phpstan-pure
      */
     public function __construct(\DateTime $timestamp, CustomerSeat $data, string $type = 'customer_seat.assigned')

@@ -14,7 +14,7 @@ class SeatsList
     /**
      * List of seats
      *
-     * @var array<CustomerSeat> $seats
+     * @var array<\Polar\Models\Components\CustomerSeat> $seats
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('seats')]
     #[\Speakeasy\Serializer\Annotation\Type('array<\Polar\Models\Components\CustomerSeat>')]
@@ -37,7 +37,7 @@ class SeatsList
     public int $totalSeats;
 
     /**
-     * @param  array<CustomerSeat>  $seats
+     * @param  array<\Polar\Models\Components\CustomerSeat>  $seats
      * @param  int  $availableSeats
      * @param  int  $totalSeats
      * @phpstan-pure

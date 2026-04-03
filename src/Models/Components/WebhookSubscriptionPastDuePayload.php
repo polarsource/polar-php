@@ -31,7 +31,7 @@ class WebhookSubscriptionPastDuePayload
 
     /**
      *
-     * @var Subscription $data
+     * @var \Polar\Models\Components\Subscription $data
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('data')]
     #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\Subscription')]
@@ -47,7 +47,7 @@ class WebhookSubscriptionPastDuePayload
     /**
      * @param  string  $type
      * @param  \DateTime  $timestamp
-     * @param  Subscription  $data
+     * @param  \Polar\Models\Components\Subscription  $data
      * @phpstan-pure
      */
     public function __construct(\DateTime $timestamp, Subscription $data, string $type = 'subscription.past_due')

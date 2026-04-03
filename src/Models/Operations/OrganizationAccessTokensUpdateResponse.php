@@ -35,7 +35,7 @@ class OrganizationAccessTokensUpdateResponse
     /**
      * Successful Response
      *
-     * @var ?Components\OrganizationAccessToken $organizationAccessToken
+     * @var ?\Polar\Models\Components\OrganizationAccessToken $organizationAccessToken
      */
     public ?Components\OrganizationAccessToken $organizationAccessToken = null;
 
@@ -43,7 +43,7 @@ class OrganizationAccessTokensUpdateResponse
      * @param  string  $contentType
      * @param  int  $statusCode
      * @param  \Psr\Http\Message\ResponseInterface  $rawResponse
-     * @param  ?Components\OrganizationAccessToken  $organizationAccessToken
+     * @param  ?\Polar\Models\Components\OrganizationAccessToken  $organizationAccessToken
      * @phpstan-pure
      */
     public function __construct(string $contentType, int $statusCode, \Psr\Http\Message\ResponseInterface $rawResponse, ?Components\OrganizationAccessToken $organizationAccessToken = null)

@@ -13,7 +13,7 @@ class AuthorizeResponseUser
 {
     /**
      *
-     * @var OAuth2ClientPublic $client
+     * @var \Polar\Models\Components\OAuth2ClientPublic $client
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('client')]
     #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\OAuth2ClientPublic')]
@@ -22,7 +22,7 @@ class AuthorizeResponseUser
     /**
      * $scopes
      *
-     * @var array<Scope> $scopes
+     * @var array<\Polar\Models\Components\Scope> $scopes
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('scopes')]
     #[\Speakeasy\Serializer\Annotation\Type('array<\Polar\Models\Components\Scope>')]
@@ -30,7 +30,7 @@ class AuthorizeResponseUser
 
     /**
      *
-     * @var ?AuthorizeUser $sub
+     * @var ?\Polar\Models\Components\AuthorizeUser $sub
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('sub')]
     #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\AuthorizeUser|null')]
@@ -54,10 +54,10 @@ class AuthorizeResponseUser
     public string $subType;
 
     /**
-     * @param  OAuth2ClientPublic  $client
+     * @param  \Polar\Models\Components\OAuth2ClientPublic  $client
      * @param  string  $subType
-     * @param  array<Scope>  $scopes
-     * @param  ?AuthorizeUser  $sub
+     * @param  array<\Polar\Models\Components\Scope>  $scopes
+     * @param  ?\Polar\Models\Components\AuthorizeUser  $sub
      * @param  ?array<string, string>  $scopeDisplayNames
      * @phpstan-pure
      */

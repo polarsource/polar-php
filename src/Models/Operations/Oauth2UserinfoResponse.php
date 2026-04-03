@@ -35,7 +35,7 @@ class Oauth2UserinfoResponse
     /**
      * Successful Response
      *
-     * @var Components\UserInfoUser|Components\UserInfoOrganization|null $responseOauth2Userinfo
+     * @var \Polar\Models\Components\UserInfoUser|\Polar\Models\Components\UserInfoOrganization|null $responseOauth2Userinfo
      */
     public Components\UserInfoUser|Components\UserInfoOrganization|null $responseOauth2Userinfo = null;
 
@@ -43,7 +43,7 @@ class Oauth2UserinfoResponse
      * @param  string  $contentType
      * @param  int  $statusCode
      * @param  \Psr\Http\Message\ResponseInterface  $rawResponse
-     * @param  Components\UserInfoUser|Components\UserInfoOrganization|null  $responseOauth2Userinfo
+     * @param  \Polar\Models\Components\UserInfoUser|\Polar\Models\Components\UserInfoOrganization|null  $responseOauth2Userinfo
      * @phpstan-pure
      */
     public function __construct(string $contentType, int $statusCode, \Psr\Http\Message\ResponseInterface $rawResponse, Components\UserInfoUser|Components\UserInfoOrganization|null $responseOauth2Userinfo = null)

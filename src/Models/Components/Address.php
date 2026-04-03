@@ -13,7 +13,7 @@ class Address
 {
     /**
      *
-     * @var AddressCountryAlpha2 $country
+     * @var \Polar\Models\Components\AddressCountryAlpha2 $country
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('country')]
     #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\AddressCountryAlpha2')]
@@ -60,7 +60,7 @@ class Address
     public ?string $state = null;
 
     /**
-     * @param  AddressCountryAlpha2  $country
+     * @param  \Polar\Models\Components\AddressCountryAlpha2  $country
      * @param  ?string  $line1
      * @param  ?string  $line2
      * @param  ?string  $postalCode

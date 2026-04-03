@@ -39,7 +39,7 @@ class EventsListNamesRequest
     /**
      * Filter by event source.
      *
-     * @var Components\EventSource|array<Components\EventSource>|null $source
+     * @var \Polar\Models\Components\EventSource|array<\Polar\Models\Components\EventSource>|null $source
      */
     #[SpeakeasyMetadata('queryParam:style=form,explode=true,name=source')]
     public Components\EventSource|array|null $source = null;
@@ -55,7 +55,7 @@ class EventsListNamesRequest
     /**
      * Sorting criterion. Several criteria can be used simultaneously and will be applied in order. Add a minus sign `-` before the criteria name to sort by descending order.
      *
-     * @var ?array<Components\EventNamesSortProperty> $sorting
+     * @var ?array<\Polar\Models\Components\EventNamesSortProperty> $sorting
      */
     #[SpeakeasyMetadata('queryParam:style=form,explode=true,name=sorting')]
     public ?array $sorting = null;
@@ -82,9 +82,9 @@ class EventsListNamesRequest
      * @param  string|array<string>|null  $organizationId
      * @param  string|array<string>|null  $customerId
      * @param  string|array<string>|null  $externalCustomerId
-     * @param  Components\EventSource|array<Components\EventSource>|null  $source
+     * @param  \Polar\Models\Components\EventSource|array<\Polar\Models\Components\EventSource>|null  $source
      * @param  ?string  $query
-     * @param  ?array<Components\EventNamesSortProperty>  $sorting
+     * @param  ?array<\Polar\Models\Components\EventNamesSortProperty>  $sorting
      * @phpstan-pure
      */
     public function __construct(string|array|null $organizationId = null, string|array|null $customerId = null, string|array|null $externalCustomerId = null, Components\EventSource|array|null $source = null, ?string $query = null, ?array $sorting = null, ?int $page = 1, ?int $limit = 10)

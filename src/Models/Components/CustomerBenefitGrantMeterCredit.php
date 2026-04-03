@@ -57,7 +57,7 @@ class CustomerBenefitGrantMeterCredit
 
     /**
      *
-     * @var CustomerPortalCustomer $customer
+     * @var \Polar\Models\Components\CustomerPortalCustomer $customer
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('customer')]
     #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\CustomerPortalCustomer')]
@@ -65,7 +65,7 @@ class CustomerBenefitGrantMeterCredit
 
     /**
      *
-     * @var BenefitMeterCreditSubscriber $benefit
+     * @var \Polar\Models\Components\BenefitMeterCreditSubscriber $benefit
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('benefit')]
     #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\BenefitMeterCreditSubscriber')]
@@ -73,7 +73,7 @@ class CustomerBenefitGrantMeterCredit
 
     /**
      *
-     * @var BenefitGrantMeterCreditProperties $properties
+     * @var \Polar\Models\Components\BenefitGrantMeterCreditProperties $properties
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('properties')]
     #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\BenefitGrantMeterCreditProperties')]
@@ -125,7 +125,7 @@ class CustomerBenefitGrantMeterCredit
 
     /**
      *
-     * @var ?BenefitGrantError $error
+     * @var ?\Polar\Models\Components\BenefitGrantError $error
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('error')]
     #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\BenefitGrantError|null')]
@@ -139,16 +139,16 @@ class CustomerBenefitGrantMeterCredit
      * @param  string  $benefitId
      * @param  bool  $isGranted
      * @param  bool  $isRevoked
-     * @param  CustomerPortalCustomer  $customer
-     * @param  BenefitMeterCreditSubscriber  $benefit
-     * @param  BenefitGrantMeterCreditProperties  $properties
+     * @param  \Polar\Models\Components\CustomerPortalCustomer  $customer
+     * @param  \Polar\Models\Components\BenefitMeterCreditSubscriber  $benefit
+     * @param  \Polar\Models\Components\BenefitGrantMeterCreditProperties  $properties
      * @param  ?\DateTime  $modifiedAt
      * @param  ?\DateTime  $grantedAt
      * @param  ?\DateTime  $revokedAt
      * @param  ?string  $subscriptionId
      * @param  ?string  $orderId
      * @param  ?string  $memberId
-     * @param  ?BenefitGrantError  $error
+     * @param  ?\Polar\Models\Components\BenefitGrantError  $error
      * @phpstan-pure
      */
     public function __construct(\DateTime $createdAt, string $id, string $customerId, string $benefitId, bool $isGranted, bool $isRevoked, CustomerPortalCustomer $customer, BenefitMeterCreditSubscriber $benefit, BenefitGrantMeterCreditProperties $properties, ?\DateTime $modifiedAt = null, ?\DateTime $grantedAt = null, ?\DateTime $revokedAt = null, ?string $subscriptionId = null, ?string $orderId = null, ?string $memberId = null, ?BenefitGrantError $error = null)

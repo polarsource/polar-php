@@ -24,7 +24,7 @@ class CustomerOrderUpdate
     /**
      * The address of the customer that should appear on the invoice. Country and state fields cannot be updated.
      *
-     * @var ?AddressInput $billingAddress
+     * @var ?\Polar\Models\Components\AddressInput $billingAddress
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('billing_address')]
     #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\AddressInput|null')]
@@ -33,7 +33,7 @@ class CustomerOrderUpdate
 
     /**
      * @param  ?string  $billingName
-     * @param  ?AddressInput  $billingAddress
+     * @param  ?\Polar\Models\Components\AddressInput  $billingAddress
      * @phpstan-pure
      */
     public function __construct(?string $billingName = null, ?AddressInput $billingAddress = null)

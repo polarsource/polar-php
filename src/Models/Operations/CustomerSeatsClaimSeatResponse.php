@@ -35,7 +35,7 @@ class CustomerSeatsClaimSeatResponse
     /**
      * Successful Response
      *
-     * @var ?Components\CustomerSeatClaimResponse $customerSeatClaimResponse
+     * @var ?\Polar\Models\Components\CustomerSeatClaimResponse $customerSeatClaimResponse
      */
     public ?Components\CustomerSeatClaimResponse $customerSeatClaimResponse = null;
 
@@ -43,7 +43,7 @@ class CustomerSeatsClaimSeatResponse
      * @param  string  $contentType
      * @param  int  $statusCode
      * @param  \Psr\Http\Message\ResponseInterface  $rawResponse
-     * @param  ?Components\CustomerSeatClaimResponse  $customerSeatClaimResponse
+     * @param  ?\Polar\Models\Components\CustomerSeatClaimResponse  $customerSeatClaimResponse
      * @phpstan-pure
      */
     public function __construct(string $contentType, int $statusCode, \Psr\Http\Message\ResponseInterface $rawResponse, ?Components\CustomerSeatClaimResponse $customerSeatClaimResponse = null)

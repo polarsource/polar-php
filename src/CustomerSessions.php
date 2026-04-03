@@ -55,8 +55,8 @@ class CustomerSessions
      *
      * **Scopes**: `customer_sessions:write`
      *
-     * @param  Components\CustomerSessionCustomerIDCreate|Components\CustomerSessionCustomerExternalIDCreate  $request
-     * @return Operations\CustomerSessionsCreateResponse
+     * @param  \Polar\Models\Components\CustomerSessionCustomerIDCreate|\Polar\Models\Components\CustomerSessionCustomerExternalIDCreate  $request
+     * @return \Polar\Models\Operations\CustomerSessionsCreateResponse
      * @throws \Polar\Models\Errors\APIException
      */
     public function create(Components\CustomerSessionCustomerIDCreate|Components\CustomerSessionCustomerExternalIDCreate $request, ?Options $options = null): Operations\CustomerSessionsCreateResponse

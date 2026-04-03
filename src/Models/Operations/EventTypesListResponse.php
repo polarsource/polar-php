@@ -35,7 +35,7 @@ class EventTypesListResponse
     /**
      * Successful Response
      *
-     * @var ?Components\ListResourceEventTypeWithStats $listResourceEventTypeWithStats
+     * @var ?\Polar\Models\Components\ListResourceEventTypeWithStats $listResourceEventTypeWithStats
      */
     public ?Components\ListResourceEventTypeWithStats $listResourceEventTypeWithStats = null;
 
@@ -47,7 +47,7 @@ class EventTypesListResponse
      * @param  string  $contentType
      * @param  int  $statusCode
      * @param  \Psr\Http\Message\ResponseInterface  $rawResponse
-     * @param  ?Components\ListResourceEventTypeWithStats  $listResourceEventTypeWithStats
+     * @param  ?\Polar\Models\Components\ListResourceEventTypeWithStats  $listResourceEventTypeWithStats
      * @phpstan-pure
      */
     public function __construct(string $contentType, int $statusCode, \Psr\Http\Message\ResponseInterface $rawResponse, ?Components\ListResourceEventTypeWithStats $listResourceEventTypeWithStats = null)

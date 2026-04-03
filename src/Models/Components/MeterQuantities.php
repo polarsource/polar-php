@@ -14,7 +14,7 @@ class MeterQuantities
     /**
      * $quantities
      *
-     * @var array<MeterQuantity> $quantities
+     * @var array<\Polar\Models\Components\MeterQuantity> $quantities
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('quantities')]
     #[\Speakeasy\Serializer\Annotation\Type('array<\Polar\Models\Components\MeterQuantity>')]
@@ -29,7 +29,7 @@ class MeterQuantities
     public float $total;
 
     /**
-     * @param  array<MeterQuantity>  $quantities
+     * @param  array<\Polar\Models\Components\MeterQuantity>  $quantities
      * @param  float  $total
      * @phpstan-pure
      */

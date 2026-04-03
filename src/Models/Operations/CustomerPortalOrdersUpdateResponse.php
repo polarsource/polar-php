@@ -35,7 +35,7 @@ class CustomerPortalOrdersUpdateResponse
     /**
      * Successful Response
      *
-     * @var ?Components\CustomerOrder $customerOrder
+     * @var ?\Polar\Models\Components\CustomerOrder $customerOrder
      */
     public ?Components\CustomerOrder $customerOrder = null;
 
@@ -43,7 +43,7 @@ class CustomerPortalOrdersUpdateResponse
      * @param  string  $contentType
      * @param  int  $statusCode
      * @param  \Psr\Http\Message\ResponseInterface  $rawResponse
-     * @param  ?Components\CustomerOrder  $customerOrder
+     * @param  ?\Polar\Models\Components\CustomerOrder  $customerOrder
      * @phpstan-pure
      */
     public function __construct(string $contentType, int $statusCode, \Psr\Http\Message\ResponseInterface $rawResponse, ?Components\CustomerOrder $customerOrder = null)

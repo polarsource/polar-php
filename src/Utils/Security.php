@@ -14,16 +14,30 @@ class Security
 {
     /**
      * @param  mixed  $security
+     * @param  ?string[]  $allowedFields
      * @return array<string,array<string,string>>
      */
-    public function parseSecurity(mixed $security): array
+    public function parseSecurity(mixed $security, ?array $allowedFields = null): array
     {
         $clientOptions = [
             'headers' => [],
             'query' => [],
         ];
 
-        foreach ($security as $field => $value) {
+        $fields = [];
+        if ($allowedFields !== null) {
+            foreach ($allowedFields as $name) {
+                if (property_exists($security, $name)) {
+                    $fields[$name] = $security->{$name};
+                }
+            }
+        } else {
+            foreach ($security as $field => $value) {
+                $fields[$field] = $value;
+            }
+        }
+
+        foreach ($fields as $field => $value) {
             if ($value === null) {
                 continue;
             }
@@ -45,6 +59,10 @@ class Security
                     return $clientOptions;
                 } else {
                     $clientOptions = array_merge_recursive($clientOptions, $this->parseSecurityScheme($value, $metadata));
+                }
+
+                if (! $metadata->composite) {
+                    return $clientOptions;
                 }
             }
         }
@@ -69,13 +87,15 @@ class Security
             }
 
             $metadata = $this->parseSecurityMetadata(new ReflectionProperty($option::class, $field));
-            if ($metadata === null) {
+            if ($metadata === null || ! $metadata->scheme) {
                 continue;
             }
 
-            if ($metadata->scheme) {
-                $clientOptions = array_merge_recursive($clientOptions, $this->parseSecurityScheme($value, $metadata));
+            if ($metadata->type === 'http' && $metadata->subtype === 'basic' && gettype($value) !== 'object') {
+                return $this->parseBasicAuthScheme($option);
             }
+
+            $clientOptions = array_merge_recursive($clientOptions, $this->parseSecurityScheme($value, $metadata));
         }
 
         return $clientOptions;

@@ -9,7 +9,7 @@ Filter by payment status.
 
 ```php
 /**
-* @var Components\PaymentStatus
+* @var \Polar\Models\Components\PaymentStatus
 */
 Components\PaymentStatus $value = /* values here */
 ```
@@ -18,7 +18,7 @@ Components\PaymentStatus $value = /* values here */
 
 ```php
 /**
-* @var array<Components\PaymentStatus>
+* @var array<\Polar\Models\Components\PaymentStatus>
 */
 array $value = /* values here */
 ```

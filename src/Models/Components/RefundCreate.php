@@ -20,7 +20,7 @@ class RefundCreate
 
     /**
      *
-     * @var RefundReason $reason
+     * @var \Polar\Models\Components\RefundReason $reason
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('reason')]
     #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\RefundReason')]
@@ -81,7 +81,7 @@ class RefundCreate
 
     /**
      * @param  string  $orderId
-     * @param  RefundReason  $reason
+     * @param  \Polar\Models\Components\RefundReason  $reason
      * @param  int  $amount
      * @param  ?array<string, string|int|float|bool>  $metadata
      * @param  ?bool  $revokeBenefits

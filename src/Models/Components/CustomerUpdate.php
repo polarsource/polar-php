@@ -51,7 +51,7 @@ class CustomerUpdate
 
     /**
      *
-     * @var ?AddressInput $billingAddress
+     * @var ?\Polar\Models\Components\AddressInput $billingAddress
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('billing_address')]
     #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\AddressInput|null')]
@@ -86,7 +86,7 @@ class CustomerUpdate
     /**
      * The customer type. Can only be upgraded from 'individual' to 'team', never downgraded.
      *
-     * @var ?CustomerType $type
+     * @var ?\Polar\Models\Components\CustomerType $type
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('type')]
     #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\CustomerType|null')]
@@ -97,11 +97,11 @@ class CustomerUpdate
      * @param  ?array<string, string|int|float|bool>  $metadata
      * @param  ?string  $email
      * @param  ?string  $name
-     * @param  ?AddressInput  $billingAddress
+     * @param  ?\Polar\Models\Components\AddressInput  $billingAddress
      * @param  ?string  $taxId
      * @param  ?string  $locale
      * @param  ?string  $externalId
-     * @param  ?CustomerType  $type
+     * @param  ?\Polar\Models\Components\CustomerType  $type
      * @phpstan-pure
      */
     public function __construct(?array $metadata = null, ?string $email = null, ?string $name = null, ?AddressInput $billingAddress = null, ?string $taxId = null, ?string $locale = null, ?string $externalId = null, ?CustomerType $type = null)

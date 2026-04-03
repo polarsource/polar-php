@@ -26,7 +26,7 @@ class WebhookBenefitGrantRevokedPayload
 
     /**
      *
-     * @var BenefitGrantDiscordWebhook|BenefitGrantCustomWebhook|BenefitGrantGitHubRepositoryWebhook|BenefitGrantDownloadablesWebhook|BenefitGrantLicenseKeysWebhook|BenefitGrantMeterCreditWebhook|BenefitGrantFeatureFlagWebhook $data
+     * @var \Polar\Models\Components\BenefitGrantDiscordWebhook|\Polar\Models\Components\BenefitGrantCustomWebhook|\Polar\Models\Components\BenefitGrantGitHubRepositoryWebhook|\Polar\Models\Components\BenefitGrantDownloadablesWebhook|\Polar\Models\Components\BenefitGrantLicenseKeysWebhook|\Polar\Models\Components\BenefitGrantMeterCreditWebhook|\Polar\Models\Components\BenefitGrantFeatureFlagWebhook $data
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('data')]
     #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\BenefitGrantDiscordWebhook|\Polar\Models\Components\BenefitGrantCustomWebhook|\Polar\Models\Components\BenefitGrantGitHubRepositoryWebhook|\Polar\Models\Components\BenefitGrantDownloadablesWebhook|\Polar\Models\Components\BenefitGrantLicenseKeysWebhook|\Polar\Models\Components\BenefitGrantMeterCreditWebhook|\Polar\Models\Components\BenefitGrantFeatureFlagWebhook')]
@@ -42,7 +42,7 @@ class WebhookBenefitGrantRevokedPayload
     /**
      * @param  string  $type
      * @param  \DateTime  $timestamp
-     * @param  BenefitGrantDiscordWebhook|BenefitGrantCustomWebhook|BenefitGrantGitHubRepositoryWebhook|BenefitGrantDownloadablesWebhook|BenefitGrantLicenseKeysWebhook|BenefitGrantMeterCreditWebhook|BenefitGrantFeatureFlagWebhook  $data
+     * @param  \Polar\Models\Components\BenefitGrantDiscordWebhook|\Polar\Models\Components\BenefitGrantCustomWebhook|\Polar\Models\Components\BenefitGrantGitHubRepositoryWebhook|\Polar\Models\Components\BenefitGrantDownloadablesWebhook|\Polar\Models\Components\BenefitGrantLicenseKeysWebhook|\Polar\Models\Components\BenefitGrantMeterCreditWebhook|\Polar\Models\Components\BenefitGrantFeatureFlagWebhook  $data
      * @phpstan-pure
      */
     public function __construct(\DateTime $timestamp, BenefitGrantDiscordWebhook|BenefitGrantCustomWebhook|BenefitGrantGitHubRepositoryWebhook|BenefitGrantDownloadablesWebhook|BenefitGrantLicenseKeysWebhook|BenefitGrantMeterCreditWebhook|BenefitGrantFeatureFlagWebhook $data, string $type = 'benefit_grant.revoked')

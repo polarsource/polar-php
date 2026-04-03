@@ -46,7 +46,7 @@ class Meter
 
     /**
      *
-     * @var Filter $filter
+     * @var \Polar\Models\Components\Filter $filter
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('filter')]
     #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\Filter')]
@@ -55,7 +55,7 @@ class Meter
     /**
      * The aggregation to apply on the filtered events to calculate the meter.
      *
-     * @var CountAggregation|PropertyAggregation|UniqueAggregation $aggregation
+     * @var \Polar\Models\Components\CountAggregation|\Polar\Models\Components\PropertyAggregation|\Polar\Models\Components\UniqueAggregation $aggregation
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('aggregation')]
     #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\CountAggregation|\Polar\Models\Components\PropertyAggregation|\Polar\Models\Components\UniqueAggregation')]
@@ -92,8 +92,8 @@ class Meter
      * @param  \DateTime  $createdAt
      * @param  string  $id
      * @param  string  $name
-     * @param  Filter  $filter
-     * @param  CountAggregation|PropertyAggregation|UniqueAggregation  $aggregation
+     * @param  \Polar\Models\Components\Filter  $filter
+     * @param  \Polar\Models\Components\CountAggregation|\Polar\Models\Components\PropertyAggregation|\Polar\Models\Components\UniqueAggregation  $aggregation
      * @param  string  $organizationId
      * @param  ?\DateTime  $modifiedAt
      * @param  ?\DateTime  $archivedAt

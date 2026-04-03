@@ -30,7 +30,7 @@ class OAuth2ClientConfiguration
     /**
      * $grantTypes
      *
-     * @var ?array<GrantTypes> $grantTypes
+     * @var ?array<\Polar\Models\Components\GrantTypes> $grantTypes
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('grant_types')]
     #[\Speakeasy\Serializer\Annotation\Type('array<\Polar\Models\Components\GrantTypes>|null')]
@@ -49,7 +49,7 @@ class OAuth2ClientConfiguration
 
     /**
      *
-     * @var ?SubType $defaultSubType
+     * @var ?\Polar\Models\Components\SubType $defaultSubType
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('default_sub_type')]
     #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\SubType|null')]
@@ -90,7 +90,7 @@ class OAuth2ClientConfiguration
 
     /**
      *
-     * @var ?TokenEndpointAuthMethod $tokenEndpointAuthMethod
+     * @var ?\Polar\Models\Components\TokenEndpointAuthMethod $tokenEndpointAuthMethod
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('token_endpoint_auth_method')]
     #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\TokenEndpointAuthMethod|null')]
@@ -108,18 +108,18 @@ class OAuth2ClientConfiguration
     /**
      * @param  array<string>  $redirectUris
      * @param  string  $clientName
-     * @param  ?TokenEndpointAuthMethod  $tokenEndpointAuthMethod
-     * @param  ?array<GrantTypes>  $grantTypes
+     * @param  ?\Polar\Models\Components\TokenEndpointAuthMethod  $tokenEndpointAuthMethod
+     * @param  ?array<\Polar\Models\Components\GrantTypes>  $grantTypes
      * @param  ?array<string>  $responseTypes
      * @param  ?string  $scope
-     * @param  ?SubType  $defaultSubType
+     * @param  ?\Polar\Models\Components\SubType  $defaultSubType
      * @param  ?string  $clientUri
      * @param  ?string  $logoUri
      * @param  ?string  $tosUri
      * @param  ?string  $policyUri
      * @phpstan-pure
      */
-    public function __construct(array $redirectUris, string $clientName, ?array $grantTypes = null, ?array $responseTypes = null, ?SubType $defaultSubType = null, ?string $clientUri = null, ?string $logoUri = null, ?string $tosUri = null, ?string $policyUri = null, ?TokenEndpointAuthMethod $tokenEndpointAuthMethod = TokenEndpointAuthMethod::ClientSecretPost, ?string $scope = 'openid profile email user:read user:write organizations:read organizations:write custom_fields:read custom_fields:write discounts:read discounts:write checkout_links:read checkout_links:write checkouts:read checkouts:write transactions:read transactions:write payouts:read payouts:write products:read products:write benefits:read benefits:write events:read events:write meters:read meters:write files:read files:write subscriptions:read subscriptions:write customers:read customers:write members:read members:write wallets:read wallets:write disputes:read customer_meters:read customer_sessions:write member_sessions:write customer_seats:read customer_seats:write orders:read orders:write refunds:read refunds:write payments:read metrics:read webhooks:read webhooks:write license_keys:read license_keys:write customer_portal:read customer_portal:write notifications:read notifications:write notification_recipients:read notification_recipients:write organization_access_tokens:read organization_access_tokens:write')
+    public function __construct(array $redirectUris, string $clientName, ?array $grantTypes = null, ?array $responseTypes = null, ?SubType $defaultSubType = null, ?string $clientUri = null, ?string $logoUri = null, ?string $tosUri = null, ?string $policyUri = null, ?TokenEndpointAuthMethod $tokenEndpointAuthMethod = TokenEndpointAuthMethod::ClientSecretPost, ?string $scope = 'openid profile email user:read user:write organizations:read organizations:write custom_fields:read custom_fields:write discounts:read discounts:write checkout_links:read checkout_links:write checkouts:read checkouts:write transactions:read transactions:write payouts:read payouts:write products:read products:write benefits:read benefits:write events:read events:write meters:read meters:write files:read files:write subscriptions:read subscriptions:write customers:read customers:write members:read members:write wallets:read wallets:write disputes:read customer_meters:read customer_sessions:write member_sessions:write customer_seats:read customer_seats:write orders:read orders:write refunds:read refunds:write payments:read metrics:read metrics:write webhooks:read webhooks:write license_keys:read license_keys:write customer_portal:read customer_portal:write notifications:read notifications:write notification_recipients:read notification_recipients:write organization_access_tokens:read organization_access_tokens:write')
     {
         $this->redirectUris = $redirectUris;
         $this->clientName = $clientName;

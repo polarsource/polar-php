@@ -35,7 +35,7 @@ class CustomerPortalOrdersListResponse
     /**
      * Successful Response
      *
-     * @var ?Components\ListResourceCustomerOrder $listResourceCustomerOrder
+     * @var ?\Polar\Models\Components\ListResourceCustomerOrder $listResourceCustomerOrder
      */
     public ?Components\ListResourceCustomerOrder $listResourceCustomerOrder = null;
 
@@ -47,7 +47,7 @@ class CustomerPortalOrdersListResponse
      * @param  string  $contentType
      * @param  int  $statusCode
      * @param  \Psr\Http\Message\ResponseInterface  $rawResponse
-     * @param  ?Components\ListResourceCustomerOrder  $listResourceCustomerOrder
+     * @param  ?\Polar\Models\Components\ListResourceCustomerOrder  $listResourceCustomerOrder
      * @phpstan-pure
      */
     public function __construct(string $contentType, int $statusCode, \Psr\Http\Message\ResponseInterface $rawResponse, ?Components\ListResourceCustomerOrder $listResourceCustomerOrder = null)

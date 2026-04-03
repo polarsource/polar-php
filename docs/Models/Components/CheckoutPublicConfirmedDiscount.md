@@ -7,7 +7,7 @@
 
 ```php
 /**
-* @var Components\CheckoutDiscountFixedOnceForeverDuration
+* @var \Polar\Models\Components\CheckoutDiscountFixedOnceForeverDuration
 */
 Components\CheckoutDiscountFixedOnceForeverDuration $value = /* values here */
 ```
@@ -16,7 +16,7 @@ Components\CheckoutDiscountFixedOnceForeverDuration $value = /* values here */
 
 ```php
 /**
-* @var Components\CheckoutDiscountFixedRepeatDuration
+* @var \Polar\Models\Components\CheckoutDiscountFixedRepeatDuration
 */
 Components\CheckoutDiscountFixedRepeatDuration $value = /* values here */
 ```
@@ -25,7 +25,7 @@ Components\CheckoutDiscountFixedRepeatDuration $value = /* values here */
 
 ```php
 /**
-* @var Components\CheckoutDiscountPercentageOnceForeverDuration
+* @var \Polar\Models\Components\CheckoutDiscountPercentageOnceForeverDuration
 */
 Components\CheckoutDiscountPercentageOnceForeverDuration $value = /* values here */
 ```
@@ -34,7 +34,7 @@ Components\CheckoutDiscountPercentageOnceForeverDuration $value = /* values here
 
 ```php
 /**
-* @var Components\CheckoutDiscountPercentageRepeatDuration
+* @var \Polar\Models\Components\CheckoutDiscountPercentageRepeatDuration
 */
 Components\CheckoutDiscountPercentageRepeatDuration $value = /* values here */
 ```

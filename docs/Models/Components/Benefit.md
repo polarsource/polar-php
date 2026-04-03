@@ -7,7 +7,7 @@
 
 ```php
 /**
-* @var Components\BenefitCustom
+* @var \Polar\Models\Components\BenefitCustom
 */
 Components\BenefitCustom $value = /* values here */
 ```
@@ -16,7 +16,7 @@ Components\BenefitCustom $value = /* values here */
 
 ```php
 /**
-* @var Components\BenefitDiscord
+* @var \Polar\Models\Components\BenefitDiscord
 */
 Components\BenefitDiscord $value = /* values here */
 ```
@@ -25,7 +25,7 @@ Components\BenefitDiscord $value = /* values here */
 
 ```php
 /**
-* @var Components\BenefitDownloadables
+* @var \Polar\Models\Components\BenefitDownloadables
 */
 Components\BenefitDownloadables $value = /* values here */
 ```
@@ -34,7 +34,7 @@ Components\BenefitDownloadables $value = /* values here */
 
 ```php
 /**
-* @var Components\BenefitFeatureFlag
+* @var \Polar\Models\Components\BenefitFeatureFlag
 */
 Components\BenefitFeatureFlag $value = /* values here */
 ```
@@ -43,7 +43,7 @@ Components\BenefitFeatureFlag $value = /* values here */
 
 ```php
 /**
-* @var Components\BenefitGitHubRepository
+* @var \Polar\Models\Components\BenefitGitHubRepository
 */
 Components\BenefitGitHubRepository $value = /* values here */
 ```
@@ -52,7 +52,7 @@ Components\BenefitGitHubRepository $value = /* values here */
 
 ```php
 /**
-* @var Components\BenefitLicenseKeys
+* @var \Polar\Models\Components\BenefitLicenseKeys
 */
 Components\BenefitLicenseKeys $value = /* values here */
 ```
@@ -61,7 +61,7 @@ Components\BenefitLicenseKeys $value = /* values here */
 
 ```php
 /**
-* @var Components\BenefitMeterCredit
+* @var \Polar\Models\Components\BenefitMeterCredit
 */
 Components\BenefitMeterCredit $value = /* values here */
 ```

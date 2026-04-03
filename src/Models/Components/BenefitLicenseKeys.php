@@ -70,7 +70,7 @@ class BenefitLicenseKeys
 
     /**
      *
-     * @var BenefitLicenseKeysProperties $properties
+     * @var \Polar\Models\Components\BenefitLicenseKeysProperties $properties
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('properties')]
     #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\BenefitLicenseKeysProperties')]
@@ -100,7 +100,7 @@ class BenefitLicenseKeys
      * @param  bool  $deletable
      * @param  string  $organizationId
      * @param  array<string, string|int|float|bool>  $metadata
-     * @param  BenefitLicenseKeysProperties  $properties
+     * @param  \Polar\Models\Components\BenefitLicenseKeysProperties  $properties
      * @param  ?\DateTime  $modifiedAt
      * @phpstan-pure
      */

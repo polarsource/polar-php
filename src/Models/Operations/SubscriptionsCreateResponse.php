@@ -35,7 +35,7 @@ class SubscriptionsCreateResponse
     /**
      * Subscription created.
      *
-     * @var ?Components\Subscription $subscription
+     * @var ?\Polar\Models\Components\Subscription $subscription
      */
     public ?Components\Subscription $subscription = null;
 
@@ -43,7 +43,7 @@ class SubscriptionsCreateResponse
      * @param  string  $contentType
      * @param  int  $statusCode
      * @param  \Psr\Http\Message\ResponseInterface  $rawResponse
-     * @param  ?Components\Subscription  $subscription
+     * @param  ?\Polar\Models\Components\Subscription  $subscription
      * @phpstan-pure
      */
     public function __construct(string $contentType, int $statusCode, \Psr\Http\Message\ResponseInterface $rawResponse, ?Components\Subscription $subscription = null)

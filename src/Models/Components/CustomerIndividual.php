@@ -9,15 +9,8 @@ declare(strict_types=1);
 namespace Polar\Models\Components;
 
 
-/**
- * CustomerState - A customer along with additional state information:
- *
- *
- * * Active subscriptions
- * * Granted benefits
- * * Active meters
- */
-class CustomerState
+/** CustomerIndividual - A customer in an organization. */
+class CustomerIndividual
 {
     /**
      * The ID of the customer.
@@ -69,33 +62,6 @@ class CustomerState
     public string $organizationId;
 
     /**
-     * The customer's active subscriptions.
-     *
-     * @var array<CustomerStateSubscription> $activeSubscriptions
-     */
-    #[\Speakeasy\Serializer\Annotation\SerializedName('active_subscriptions')]
-    #[\Speakeasy\Serializer\Annotation\Type('array<\Polar\Models\Components\CustomerStateSubscription>')]
-    public array $activeSubscriptions;
-
-    /**
-     * The customer's active benefit grants.
-     *
-     * @var array<CustomerStateBenefitGrant> $grantedBenefits
-     */
-    #[\Speakeasy\Serializer\Annotation\SerializedName('granted_benefits')]
-    #[\Speakeasy\Serializer\Annotation\Type('array<\Polar\Models\Components\CustomerStateBenefitGrant>')]
-    public array $grantedBenefits;
-
-    /**
-     * The customer's active meters.
-     *
-     * @var array<CustomerStateMeter> $activeMeters
-     */
-    #[\Speakeasy\Serializer\Annotation\SerializedName('active_meters')]
-    #[\Speakeasy\Serializer\Annotation\Type('array<\Polar\Models\Components\CustomerStateMeter>')]
-    public array $activeMeters;
-
-    /**
      *
      * @var string $avatarUrl
      */
@@ -120,7 +86,7 @@ class CustomerState
 
     /**
      *
-     * @var ?Address $billingAddress
+     * @var ?\Polar\Models\Components\Address $billingAddress
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('billing_address')]
     #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\Address|null')]
@@ -129,7 +95,7 @@ class CustomerState
     /**
      * $taxId
      *
-     * @var ?array<string|TaxIDFormat|null> $taxId
+     * @var ?array<string|\Polar\Models\Components\TaxIDFormat|null> $taxId
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('tax_id')]
     #[\Speakeasy\Serializer\Annotation\Type('array<string|\Polar\Models\Components\TaxIDFormat|null>|null')]
@@ -153,16 +119,6 @@ class CustomerState
     public ?string $externalId = null;
 
     /**
-     * The type of customer: 'individual' for single users, 'team' for customers with multiple members. Legacy customers may have NULL type which is treated as 'individual'.
-     *
-     * @var ?CustomerType $type
-     */
-    #[\Speakeasy\Serializer\Annotation\SerializedName('type')]
-    #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\CustomerType|null')]
-    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
-    public ?CustomerType $type = null;
-
-    /**
      *
      * @var ?string $locale
      */
@@ -171,27 +127,32 @@ class CustomerState
     public ?string $locale = null;
 
     /**
+     * The type of customer.
+     *
+     * @var string $type
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('type')]
+    public string $type;
+
+    /**
      * @param  string  $id
      * @param  \DateTime  $createdAt
      * @param  array<string, string|int|float|bool>  $metadata
      * @param  string  $email
      * @param  bool  $emailVerified
+     * @param  string  $type
      * @param  string  $organizationId
-     * @param  array<CustomerStateSubscription>  $activeSubscriptions
-     * @param  array<CustomerStateBenefitGrant>  $grantedBenefits
-     * @param  array<CustomerStateMeter>  $activeMeters
      * @param  string  $avatarUrl
      * @param  ?\DateTime  $modifiedAt
      * @param  ?string  $name
-     * @param  ?Address  $billingAddress
-     * @param  ?array<string|TaxIDFormat|null>  $taxId
+     * @param  ?\Polar\Models\Components\Address  $billingAddress
+     * @param  ?array<string|\Polar\Models\Components\TaxIDFormat|null>  $taxId
      * @param  ?\DateTime  $deletedAt
      * @param  ?string  $externalId
-     * @param  ?CustomerType  $type
      * @param  ?string  $locale
      * @phpstan-pure
      */
-    public function __construct(string $id, \DateTime $createdAt, array $metadata, string $email, bool $emailVerified, string $organizationId, array $activeSubscriptions, array $grantedBenefits, array $activeMeters, string $avatarUrl, ?\DateTime $modifiedAt = null, ?string $name = null, ?Address $billingAddress = null, ?array $taxId = null, ?\DateTime $deletedAt = null, ?string $externalId = null, ?CustomerType $type = null, ?string $locale = null)
+    public function __construct(string $id, \DateTime $createdAt, array $metadata, string $email, bool $emailVerified, string $organizationId, string $avatarUrl, ?\DateTime $modifiedAt = null, ?string $name = null, ?Address $billingAddress = null, ?array $taxId = null, ?\DateTime $deletedAt = null, ?string $externalId = null, ?string $locale = null, string $type = 'individual')
     {
         $this->id = $id;
         $this->createdAt = $createdAt;
@@ -199,9 +160,6 @@ class CustomerState
         $this->email = $email;
         $this->emailVerified = $emailVerified;
         $this->organizationId = $organizationId;
-        $this->activeSubscriptions = $activeSubscriptions;
-        $this->grantedBenefits = $grantedBenefits;
-        $this->activeMeters = $activeMeters;
         $this->avatarUrl = $avatarUrl;
         $this->modifiedAt = $modifiedAt;
         $this->name = $name;
@@ -209,7 +167,7 @@ class CustomerState
         $this->taxId = $taxId;
         $this->deletedAt = $deletedAt;
         $this->externalId = $externalId;
-        $this->type = $type;
         $this->locale = $locale;
+        $this->type = $type;
     }
 }

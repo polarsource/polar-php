@@ -55,8 +55,8 @@ class Members
      *
      * **Scopes**: `members:write`
      *
-     * @param  Components\MemberCreate  $request
-     * @return Operations\MembersCreateMemberResponse
+     * @param  \Polar\Models\Components\MemberCreate  $request
+     * @return \Polar\Models\Operations\MembersCreateMemberResponse
      * @throws \Polar\Models\Errors\APIException
      */
     public function createMember(Components\MemberCreate $request, ?Options $options = null): Operations\MembersCreateMemberResponse
@@ -148,7 +148,7 @@ class Members
      * **Scopes**: `members:write`
      *
      * @param  string  $id
-     * @return Operations\MembersDeleteMemberResponse
+     * @return \Polar\Models\Operations\MembersDeleteMemberResponse
      * @throws \Polar\Models\Errors\APIException
      */
     public function deleteMember(string $id, ?Options $options = null): Operations\MembersDeleteMemberResponse
@@ -229,7 +229,7 @@ class Members
      * **Scopes**: `members:read` `members:write`
      *
      * @param  string  $id
-     * @return Operations\MembersGetMemberResponse
+     * @return \Polar\Models\Operations\MembersGetMemberResponse
      * @throws \Polar\Models\Errors\APIException
      */
     public function getMember(string $id, ?Options $options = null): Operations\MembersGetMemberResponse
@@ -316,8 +316,8 @@ class Members
      *
      * **Scopes**: `members:read` `members:write`
      *
-     * @param  ?Operations\MembersListMembersRequest  $request
-     * @return Operations\MembersListMembersResponse
+     * @param  ?\Polar\Models\Operations\MembersListMembersRequest  $request
+     * @return \Polar\Models\Operations\MembersListMembersResponse
      * @throws \Polar\Models\Errors\APIException
      */
     private function listMembersIndividual(?Operations\MembersListMembersRequest $request = null, ?Options $options = null): Operations\MembersListMembersResponse
@@ -431,8 +431,8 @@ class Members
      *
      * **Scopes**: `members:read` `members:write`
      *
-     * @param  ?Operations\MembersListMembersRequest  $request
-     * @return \Generator<Operations\MembersListMembersResponse>
+     * @param  ?\Polar\Models\Operations\MembersListMembersRequest  $request
+     * @return \Generator<\Polar\Models\Operations\MembersListMembersResponse>
      * @throws \Polar\Models\Errors\APIException
      */
     public function listMembers(?Operations\MembersListMembersRequest $request = null, ?Options $options = null): \Generator
@@ -454,9 +454,9 @@ class Members
      *
      * **Scopes**: `members:write`
      *
-     * @param  Components\MemberUpdate  $memberUpdate
+     * @param  \Polar\Models\Components\MemberUpdate  $memberUpdate
      * @param  string  $id
-     * @return Operations\MembersUpdateMemberResponse
+     * @return \Polar\Models\Operations\MembersUpdateMemberResponse
      * @throws \Polar\Models\Errors\APIException
      */
     public function updateMember(Components\MemberUpdate $memberUpdate, string $id, ?Options $options = null): Operations\MembersUpdateMemberResponse

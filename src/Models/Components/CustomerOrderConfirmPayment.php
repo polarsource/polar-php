@@ -14,7 +14,7 @@ class CustomerOrderConfirmPayment
 {
     /**
      *
-     * @var ?PaymentProcessor $paymentProcessor
+     * @var ?\Polar\Models\Components\PaymentProcessor $paymentProcessor
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('payment_processor')]
     #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\PaymentProcessor|null')]
@@ -40,7 +40,7 @@ class CustomerOrderConfirmPayment
     public ?string $paymentMethodId = null;
 
     /**
-     * @param  ?PaymentProcessor  $paymentProcessor
+     * @param  ?\Polar\Models\Components\PaymentProcessor  $paymentProcessor
      * @param  ?string  $confirmationTokenId
      * @param  ?string  $paymentMethodId
      * @phpstan-pure

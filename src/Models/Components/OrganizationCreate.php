@@ -27,7 +27,7 @@ class OrganizationCreate
 
     /**
      *
-     * @var ?PresentmentCurrency $defaultPresentmentCurrency
+     * @var ?\Polar\Models\Components\PresentmentCurrency $defaultPresentmentCurrency
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('default_presentment_currency')]
     #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\PresentmentCurrency|null')]
@@ -36,7 +36,7 @@ class OrganizationCreate
 
     /**
      *
-     * @var ?TaxBehaviorOption $defaultTaxBehavior
+     * @var ?\Polar\Models\Components\TaxBehaviorOption $defaultTaxBehavior
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('default_tax_behavior')]
     #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\TaxBehaviorOption|null')]
@@ -53,7 +53,7 @@ class OrganizationCreate
 
     /**
      *
-     * @var OrganizationIndividualLegalEntitySchema|OrganizationCompanyLegalEntitySchema|null $legalEntity
+     * @var \Polar\Models\Components\OrganizationIndividualLegalEntitySchema|\Polar\Models\Components\OrganizationCompanyLegalEntitySchema|null $legalEntity
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('legal_entity')]
     #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\OrganizationIndividualLegalEntitySchema|\Polar\Models\Components\OrganizationCompanyLegalEntitySchema|null')]
@@ -82,7 +82,7 @@ class OrganizationCreate
     /**
      * Link to social profiles.
      *
-     * @var ?array<OrganizationSocialLink> $socials
+     * @var ?array<\Polar\Models\Components\OrganizationSocialLink> $socials
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('socials')]
     #[\Speakeasy\Serializer\Annotation\Type('array<\Polar\Models\Components\OrganizationSocialLink>|null')]
@@ -92,7 +92,7 @@ class OrganizationCreate
     /**
      * Additional, private, business details Polar needs about active organizations for compliance (KYC).
      *
-     * @var ?OrganizationDetails $details
+     * @var ?\Polar\Models\Components\OrganizationDetails $details
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('details')]
     #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\OrganizationDetails|null')]
@@ -102,7 +102,7 @@ class OrganizationCreate
     /**
      * Two-letter country code (ISO 3166-1 alpha-2).
      *
-     * @var ?CountryAlpha2Input $country
+     * @var ?\Polar\Models\Components\CountryAlpha2Input $country
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('country')]
     #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\CountryAlpha2Input|null')]
@@ -111,7 +111,7 @@ class OrganizationCreate
 
     /**
      *
-     * @var ?OrganizationFeatureSettings $featureSettings
+     * @var ?\Polar\Models\Components\OrganizationFeatureSettings $featureSettings
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('feature_settings')]
     #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\OrganizationFeatureSettings|null')]
@@ -120,7 +120,7 @@ class OrganizationCreate
 
     /**
      *
-     * @var ?OrganizationSubscriptionSettings $subscriptionSettings
+     * @var ?\Polar\Models\Components\OrganizationSubscriptionSettings $subscriptionSettings
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('subscription_settings')]
     #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\OrganizationSubscriptionSettings|null')]
@@ -129,7 +129,7 @@ class OrganizationCreate
 
     /**
      *
-     * @var ?OrganizationNotificationSettings $notificationSettings
+     * @var ?\Polar\Models\Components\OrganizationNotificationSettings $notificationSettings
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('notification_settings')]
     #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\OrganizationNotificationSettings|null')]
@@ -138,7 +138,7 @@ class OrganizationCreate
 
     /**
      *
-     * @var ?OrganizationCustomerEmailSettings $customerEmailSettings
+     * @var ?\Polar\Models\Components\OrganizationCustomerEmailSettings $customerEmailSettings
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('customer_email_settings')]
     #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\OrganizationCustomerEmailSettings|null')]
@@ -147,7 +147,7 @@ class OrganizationCreate
 
     /**
      *
-     * @var ?OrganizationCustomerPortalSettings $customerPortalSettings
+     * @var ?\Polar\Models\Components\OrganizationCustomerPortalSettings $customerPortalSettings
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('customer_portal_settings')]
     #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\OrganizationCustomerPortalSettings|null')]
@@ -157,20 +157,20 @@ class OrganizationCreate
     /**
      * @param  string  $name
      * @param  string  $slug
-     * @param  ?PresentmentCurrency  $defaultPresentmentCurrency
-     * @param  ?TaxBehaviorOption  $defaultTaxBehavior
+     * @param  ?\Polar\Models\Components\PresentmentCurrency  $defaultPresentmentCurrency
+     * @param  ?\Polar\Models\Components\TaxBehaviorOption  $defaultTaxBehavior
      * @param  ?string  $avatarUrl
-     * @param  OrganizationIndividualLegalEntitySchema|OrganizationCompanyLegalEntitySchema|null  $legalEntity
+     * @param  \Polar\Models\Components\OrganizationIndividualLegalEntitySchema|\Polar\Models\Components\OrganizationCompanyLegalEntitySchema|null  $legalEntity
      * @param  ?string  $email
      * @param  ?string  $website
-     * @param  ?array<OrganizationSocialLink>  $socials
-     * @param  ?OrganizationDetails  $details
-     * @param  ?CountryAlpha2Input  $country
-     * @param  ?OrganizationFeatureSettings  $featureSettings
-     * @param  ?OrganizationSubscriptionSettings  $subscriptionSettings
-     * @param  ?OrganizationNotificationSettings  $notificationSettings
-     * @param  ?OrganizationCustomerEmailSettings  $customerEmailSettings
-     * @param  ?OrganizationCustomerPortalSettings  $customerPortalSettings
+     * @param  ?array<\Polar\Models\Components\OrganizationSocialLink>  $socials
+     * @param  ?\Polar\Models\Components\OrganizationDetails  $details
+     * @param  ?\Polar\Models\Components\CountryAlpha2Input  $country
+     * @param  ?\Polar\Models\Components\OrganizationFeatureSettings  $featureSettings
+     * @param  ?\Polar\Models\Components\OrganizationSubscriptionSettings  $subscriptionSettings
+     * @param  ?\Polar\Models\Components\OrganizationNotificationSettings  $notificationSettings
+     * @param  ?\Polar\Models\Components\OrganizationCustomerEmailSettings  $customerEmailSettings
+     * @param  ?\Polar\Models\Components\OrganizationCustomerPortalSettings  $customerPortalSettings
      * @phpstan-pure
      */
     public function __construct(string $name, string $slug, ?PresentmentCurrency $defaultPresentmentCurrency = null, ?TaxBehaviorOption $defaultTaxBehavior = null, ?string $avatarUrl = null, OrganizationIndividualLegalEntitySchema|OrganizationCompanyLegalEntitySchema|null $legalEntity = null, ?string $email = null, ?string $website = null, ?array $socials = null, ?OrganizationDetails $details = null, ?CountryAlpha2Input $country = null, ?OrganizationFeatureSettings $featureSettings = null, ?OrganizationSubscriptionSettings $subscriptionSettings = null, ?OrganizationNotificationSettings $notificationSettings = null, ?OrganizationCustomerEmailSettings $customerEmailSettings = null, ?OrganizationCustomerPortalSettings $customerPortalSettings = null)

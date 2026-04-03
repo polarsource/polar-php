@@ -63,7 +63,7 @@ class CustomFieldSelect
 
     /**
      *
-     * @var CustomFieldSelectProperties $properties
+     * @var \Polar\Models\Components\CustomFieldSelectProperties $properties
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('properties')]
     #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\CustomFieldSelectProperties')]
@@ -92,7 +92,7 @@ class CustomFieldSelect
      * @param  string  $slug
      * @param  string  $name
      * @param  string  $organizationId
-     * @param  CustomFieldSelectProperties  $properties
+     * @param  \Polar\Models\Components\CustomFieldSelectProperties  $properties
      * @param  ?\DateTime  $modifiedAt
      * @phpstan-pure
      */

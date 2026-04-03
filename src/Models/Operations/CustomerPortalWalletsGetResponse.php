@@ -35,7 +35,7 @@ class CustomerPortalWalletsGetResponse
     /**
      * Successful Response
      *
-     * @var ?Components\CustomerWallet $customerWallet
+     * @var ?\Polar\Models\Components\CustomerWallet $customerWallet
      */
     public ?Components\CustomerWallet $customerWallet = null;
 
@@ -43,7 +43,7 @@ class CustomerPortalWalletsGetResponse
      * @param  string  $contentType
      * @param  int  $statusCode
      * @param  \Psr\Http\Message\ResponseInterface  $rawResponse
-     * @param  ?Components\CustomerWallet  $customerWallet
+     * @param  ?\Polar\Models\Components\CustomerWallet  $customerWallet
      * @phpstan-pure
      */
     public function __construct(string $contentType, int $statusCode, \Psr\Http\Message\ResponseInterface $rawResponse, ?Components\CustomerWallet $customerWallet = null)

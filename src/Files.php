@@ -52,8 +52,8 @@ class Files
      *
      * **Scopes**: `files:write`
      *
-     * @param  Components\DownloadableFileCreate|Components\ProductMediaFileCreate|Components\OrganizationAvatarFileCreate  $request
-     * @return Operations\FilesCreateResponse
+     * @param  \Polar\Models\Components\DownloadableFileCreate|\Polar\Models\Components\ProductMediaFileCreate|\Polar\Models\Components\OrganizationAvatarFileCreate  $request
+     * @return \Polar\Models\Operations\FilesCreateResponse
      * @throws \Polar\Models\Errors\APIException
      */
     public function create(Components\DownloadableFileCreate|Components\ProductMediaFileCreate|Components\OrganizationAvatarFileCreate $request, ?Options $options = null): Operations\FilesCreateResponse
@@ -132,7 +132,7 @@ class Files
      * **Scopes**: `files:write`
      *
      * @param  string  $id
-     * @return Operations\FilesDeleteResponse
+     * @return \Polar\Models\Operations\FilesDeleteResponse
      * @throws \Polar\Models\Errors\APIException
      */
     public function delete(string $id, ?Options $options = null): Operations\FilesDeleteResponse
@@ -225,7 +225,7 @@ class Files
      * @param  string|array<string>|null  $ids
      * @param  ?int  $page
      * @param  ?int  $limit
-     * @return Operations\FilesListResponse
+     * @return \Polar\Models\Operations\FilesListResponse
      * @throws \Polar\Models\Errors\APIException
      */
     private function listIndividual(string|array|null $organizationId = null, string|array|null $ids = null, ?int $page = null, ?int $limit = null, ?Options $options = null): Operations\FilesListResponse
@@ -345,7 +345,7 @@ class Files
      * @param  string|array<string>|null  $ids
      * @param  ?int  $page
      * @param  ?int  $limit
-     * @return \Generator<Operations\FilesListResponse>
+     * @return \Generator<\Polar\Models\Operations\FilesListResponse>
      * @throws \Polar\Models\Errors\APIException
      */
     public function list(string|array|null $organizationId = null, string|array|null $ids = null, ?int $page = null, ?int $limit = null, ?Options $options = null): \Generator
@@ -364,9 +364,9 @@ class Files
      *
      * **Scopes**: `files:write`
      *
-     * @param  Components\FilePatch  $filePatch
+     * @param  \Polar\Models\Components\FilePatch  $filePatch
      * @param  string  $id
-     * @return Operations\FilesUpdateResponse
+     * @return \Polar\Models\Operations\FilesUpdateResponse
      * @throws \Polar\Models\Errors\APIException
      */
     public function update(Components\FilePatch $filePatch, string $id, ?Options $options = null): Operations\FilesUpdateResponse
@@ -470,9 +470,9 @@ class Files
      *
      * **Scopes**: `files:write`
      *
-     * @param  Components\FileUploadCompleted  $fileUploadCompleted
+     * @param  \Polar\Models\Components\FileUploadCompleted  $fileUploadCompleted
      * @param  string  $id
-     * @return Operations\FilesUploadedResponse
+     * @return \Polar\Models\Operations\FilesUploadedResponse
      * @throws \Polar\Models\Errors\APIException
      */
     public function uploaded(Components\FileUploadCompleted $fileUploadCompleted, string $id, ?Options $options = null): Operations\FilesUploadedResponse

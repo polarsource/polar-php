@@ -45,7 +45,7 @@ class CustomerSubscription
 
     /**
      *
-     * @var SubscriptionRecurringInterval $recurringInterval
+     * @var \Polar\Models\Components\SubscriptionRecurringInterval $recurringInterval
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('recurring_interval')]
     #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\SubscriptionRecurringInterval')]
@@ -61,7 +61,7 @@ class CustomerSubscription
 
     /**
      *
-     * @var SubscriptionStatus $status
+     * @var \Polar\Models\Components\SubscriptionStatus $status
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('status')]
     #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\SubscriptionStatus')]
@@ -109,7 +109,7 @@ class CustomerSubscription
 
     /**
      *
-     * @var CustomerSubscriptionProduct $product
+     * @var \Polar\Models\Components\CustomerSubscriptionProduct $product
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('product')]
     #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\CustomerSubscriptionProduct')]
@@ -118,7 +118,7 @@ class CustomerSubscription
     /**
      * List of enabled prices for the subscription.
      *
-     * @var array<LegacyRecurringProductPriceFixed|LegacyRecurringProductPriceCustom|LegacyRecurringProductPriceFree|ProductPriceFixed|ProductPriceCustom|ProductPriceFree|ProductPriceSeatBased|ProductPriceMeteredUnit> $prices
+     * @var array<\Polar\Models\Components\LegacyRecurringProductPriceFixed|\Polar\Models\Components\LegacyRecurringProductPriceCustom|\Polar\Models\Components\LegacyRecurringProductPriceFree|\Polar\Models\Components\ProductPriceFixed|\Polar\Models\Components\ProductPriceCustom|\Polar\Models\Components\ProductPriceFree|\Polar\Models\Components\ProductPriceSeatBased|\Polar\Models\Components\ProductPriceMeteredUnit> $prices
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('prices')]
     #[\Speakeasy\Serializer\Annotation\Type('array<\Polar\Models\Components\LegacyRecurringProductPriceFixed|\Polar\Models\Components\LegacyRecurringProductPriceCustom|\Polar\Models\Components\LegacyRecurringProductPriceFree|\Polar\Models\Components\ProductPriceFixed|\Polar\Models\Components\ProductPriceCustom|\Polar\Models\Components\ProductPriceFree|\Polar\Models\Components\ProductPriceSeatBased|\Polar\Models\Components\ProductPriceMeteredUnit>')]
@@ -127,7 +127,7 @@ class CustomerSubscription
     /**
      * List of meters associated with the subscription.
      *
-     * @var array<CustomerSubscriptionMeter> $meters
+     * @var array<\Polar\Models\Components\CustomerSubscriptionMeter> $meters
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('meters')]
     #[\Speakeasy\Serializer\Annotation\Type('array<\Polar\Models\Components\CustomerSubscriptionMeter>')]
@@ -206,7 +206,7 @@ class CustomerSubscription
 
     /**
      *
-     * @var ?CustomerCancellationReason $customerCancellationReason
+     * @var ?\Polar\Models\Components\CustomerCancellationReason $customerCancellationReason
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('customer_cancellation_reason')]
     #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\CustomerCancellationReason|null')]
@@ -222,7 +222,7 @@ class CustomerSubscription
     /**
      * Pending subscription update that will be applied at the beginning of the next period. If `null`, there is no pending update.
      *
-     * @var ?PendingSubscriptionUpdate $pendingUpdate
+     * @var ?\Polar\Models\Components\PendingSubscriptionUpdate $pendingUpdate
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('pending_update')]
     #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\PendingSubscriptionUpdate|null')]
@@ -242,17 +242,17 @@ class CustomerSubscription
      * @param  string  $id
      * @param  int  $amount
      * @param  string  $currency
-     * @param  SubscriptionRecurringInterval  $recurringInterval
+     * @param  \Polar\Models\Components\SubscriptionRecurringInterval  $recurringInterval
      * @param  int  $recurringIntervalCount
-     * @param  SubscriptionStatus  $status
+     * @param  \Polar\Models\Components\SubscriptionStatus  $status
      * @param  \DateTime  $currentPeriodStart
      * @param  \DateTime  $currentPeriodEnd
      * @param  bool  $cancelAtPeriodEnd
      * @param  string  $customerId
      * @param  string  $productId
-     * @param  CustomerSubscriptionProduct  $product
-     * @param  array<LegacyRecurringProductPriceFixed|LegacyRecurringProductPriceCustom|LegacyRecurringProductPriceFree|ProductPriceFixed|ProductPriceCustom|ProductPriceFree|ProductPriceSeatBased|ProductPriceMeteredUnit>  $prices
-     * @param  array<CustomerSubscriptionMeter>  $meters
+     * @param  \Polar\Models\Components\CustomerSubscriptionProduct  $product
+     * @param  array<\Polar\Models\Components\LegacyRecurringProductPriceFixed|\Polar\Models\Components\LegacyRecurringProductPriceCustom|\Polar\Models\Components\LegacyRecurringProductPriceFree|\Polar\Models\Components\ProductPriceFixed|\Polar\Models\Components\ProductPriceCustom|\Polar\Models\Components\ProductPriceFree|\Polar\Models\Components\ProductPriceSeatBased|\Polar\Models\Components\ProductPriceMeteredUnit>  $prices
+     * @param  array<\Polar\Models\Components\CustomerSubscriptionMeter>  $meters
      * @param  ?\DateTime  $modifiedAt
      * @param  ?\DateTime  $trialStart
      * @param  ?\DateTime  $trialEnd
@@ -262,9 +262,9 @@ class CustomerSubscription
      * @param  ?\DateTime  $endedAt
      * @param  ?string  $discountId
      * @param  ?string  $checkoutId
-     * @param  ?CustomerCancellationReason  $customerCancellationReason
+     * @param  ?\Polar\Models\Components\CustomerCancellationReason  $customerCancellationReason
      * @param  ?string  $customerCancellationComment
-     * @param  ?PendingSubscriptionUpdate  $pendingUpdate
+     * @param  ?\Polar\Models\Components\PendingSubscriptionUpdate  $pendingUpdate
      * @param  ?int  $seats
      * @phpstan-pure
      */

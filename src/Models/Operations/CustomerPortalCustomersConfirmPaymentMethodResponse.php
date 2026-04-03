@@ -35,7 +35,7 @@ class CustomerPortalCustomersConfirmPaymentMethodResponse
     /**
      * Payment method created or setup initiated.
      *
-     * @var Components\CustomerPaymentMethodCreateSucceededResponse|Components\CustomerPaymentMethodCreateRequiresActionResponse|null $customerPaymentMethodCreateResponse
+     * @var \Polar\Models\Components\CustomerPaymentMethodCreateSucceededResponse|\Polar\Models\Components\CustomerPaymentMethodCreateRequiresActionResponse|null $customerPaymentMethodCreateResponse
      */
     public Components\CustomerPaymentMethodCreateSucceededResponse|Components\CustomerPaymentMethodCreateRequiresActionResponse|null $customerPaymentMethodCreateResponse = null;
 
@@ -43,7 +43,7 @@ class CustomerPortalCustomersConfirmPaymentMethodResponse
      * @param  string  $contentType
      * @param  int  $statusCode
      * @param  \Psr\Http\Message\ResponseInterface  $rawResponse
-     * @param  Components\CustomerPaymentMethodCreateSucceededResponse|Components\CustomerPaymentMethodCreateRequiresActionResponse|null  $customerPaymentMethodCreateResponse
+     * @param  \Polar\Models\Components\CustomerPaymentMethodCreateSucceededResponse|\Polar\Models\Components\CustomerPaymentMethodCreateRequiresActionResponse|null  $customerPaymentMethodCreateResponse
      * @phpstan-pure
      */
     public function __construct(string $contentType, int $statusCode, \Psr\Http\Message\ResponseInterface $rawResponse, Components\CustomerPaymentMethodCreateSucceededResponse|Components\CustomerPaymentMethodCreateRequiresActionResponse|null $customerPaymentMethodCreateResponse = null)

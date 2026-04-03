@@ -9,8 +9,15 @@ declare(strict_types=1);
 namespace Polar\Models\Components;
 
 
-/** Customer - A customer in an organization. */
-class Customer
+/**
+ * CustomerStateTeam - A team customer along with additional state information:
+ *
+ *
+ * * Active subscriptions
+ * * Granted benefits
+ * * Active meters
+ */
+class CustomerStateTeam
 {
     /**
      * The ID of the customer.
@@ -38,14 +45,6 @@ class Customer
     public array $metadata;
 
     /**
-     * The email address of the customer. This must be unique within the organization.
-     *
-     * @var string $email
-     */
-    #[\Speakeasy\Serializer\Annotation\SerializedName('email')]
-    public string $email;
-
-    /**
      * Whether the customer email address is verified. The address is automatically verified when the customer accesses the customer portal using their email address.
      *
      * @var bool $emailVerified
@@ -60,6 +59,33 @@ class Customer
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('organization_id')]
     public string $organizationId;
+
+    /**
+     * The customer's active subscriptions.
+     *
+     * @var array<\Polar\Models\Components\CustomerStateSubscription> $activeSubscriptions
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('active_subscriptions')]
+    #[\Speakeasy\Serializer\Annotation\Type('array<\Polar\Models\Components\CustomerStateSubscription>')]
+    public array $activeSubscriptions;
+
+    /**
+     * The customer's active benefit grants.
+     *
+     * @var array<\Polar\Models\Components\CustomerStateBenefitGrant> $grantedBenefits
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('granted_benefits')]
+    #[\Speakeasy\Serializer\Annotation\Type('array<\Polar\Models\Components\CustomerStateBenefitGrant>')]
+    public array $grantedBenefits;
+
+    /**
+     * The customer's active meters.
+     *
+     * @var array<\Polar\Models\Components\CustomerStateMeter> $activeMeters
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('active_meters')]
+    #[\Speakeasy\Serializer\Annotation\Type('array<\Polar\Models\Components\CustomerStateMeter>')]
+    public array $activeMeters;
 
     /**
      *
@@ -86,7 +112,7 @@ class Customer
 
     /**
      *
-     * @var ?Address $billingAddress
+     * @var ?\Polar\Models\Components\Address $billingAddress
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('billing_address')]
     #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\Address|null')]
@@ -95,7 +121,7 @@ class Customer
     /**
      * $taxId
      *
-     * @var ?array<string|TaxIDFormat|null> $taxId
+     * @var ?array<string|\Polar\Models\Components\TaxIDFormat|null> $taxId
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('tax_id')]
     #[\Speakeasy\Serializer\Annotation\Type('array<string|\Polar\Models\Components\TaxIDFormat|null>|null')]
@@ -119,14 +145,13 @@ class Customer
     public ?string $externalId = null;
 
     /**
-     * The type of customer: 'individual' for single users, 'team' for customers with multiple members. Legacy customers may have NULL type which is treated as 'individual'.
+     * The email address of the customer. This must be unique within the organization.
      *
-     * @var ?CustomerType $type
+     * @var ?string $email
      */
-    #[\Speakeasy\Serializer\Annotation\SerializedName('type')]
-    #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\CustomerType|null')]
+    #[\Speakeasy\Serializer\Annotation\SerializedName('email')]
     #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
-    public ?CustomerType $type = null;
+    public ?string $email = null;
 
     /**
      *
@@ -137,31 +162,44 @@ class Customer
     public ?string $locale = null;
 
     /**
+     * The type of customer. Team customers can have multiple members.
+     *
+     * @var string $type
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('type')]
+    public string $type;
+
+    /**
      * @param  string  $id
      * @param  \DateTime  $createdAt
      * @param  array<string, string|int|float|bool>  $metadata
-     * @param  string  $email
      * @param  bool  $emailVerified
+     * @param  string  $type
      * @param  string  $organizationId
+     * @param  array<\Polar\Models\Components\CustomerStateSubscription>  $activeSubscriptions
+     * @param  array<\Polar\Models\Components\CustomerStateBenefitGrant>  $grantedBenefits
+     * @param  array<\Polar\Models\Components\CustomerStateMeter>  $activeMeters
      * @param  string  $avatarUrl
      * @param  ?\DateTime  $modifiedAt
      * @param  ?string  $name
-     * @param  ?Address  $billingAddress
-     * @param  ?array<string|TaxIDFormat|null>  $taxId
+     * @param  ?\Polar\Models\Components\Address  $billingAddress
+     * @param  ?array<string|\Polar\Models\Components\TaxIDFormat|null>  $taxId
      * @param  ?\DateTime  $deletedAt
      * @param  ?string  $externalId
-     * @param  ?CustomerType  $type
+     * @param  ?string  $email
      * @param  ?string  $locale
      * @phpstan-pure
      */
-    public function __construct(string $id, \DateTime $createdAt, array $metadata, string $email, bool $emailVerified, string $organizationId, string $avatarUrl, ?\DateTime $modifiedAt = null, ?string $name = null, ?Address $billingAddress = null, ?array $taxId = null, ?\DateTime $deletedAt = null, ?string $externalId = null, ?CustomerType $type = null, ?string $locale = null)
+    public function __construct(string $id, \DateTime $createdAt, array $metadata, bool $emailVerified, string $organizationId, array $activeSubscriptions, array $grantedBenefits, array $activeMeters, string $avatarUrl, ?\DateTime $modifiedAt = null, ?string $name = null, ?Address $billingAddress = null, ?array $taxId = null, ?\DateTime $deletedAt = null, ?string $externalId = null, ?string $email = null, ?string $locale = null, string $type = 'team')
     {
         $this->id = $id;
         $this->createdAt = $createdAt;
         $this->metadata = $metadata;
-        $this->email = $email;
         $this->emailVerified = $emailVerified;
         $this->organizationId = $organizationId;
+        $this->activeSubscriptions = $activeSubscriptions;
+        $this->grantedBenefits = $grantedBenefits;
+        $this->activeMeters = $activeMeters;
         $this->avatarUrl = $avatarUrl;
         $this->modifiedAt = $modifiedAt;
         $this->name = $name;
@@ -169,7 +207,8 @@ class Customer
         $this->taxId = $taxId;
         $this->deletedAt = $deletedAt;
         $this->externalId = $externalId;
-        $this->type = $type;
+        $this->email = $email;
         $this->locale = $locale;
+        $this->type = $type;
     }
 }

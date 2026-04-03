@@ -13,7 +13,7 @@ class CustomerBenefitGrantDiscordUpdate
 {
     /**
      *
-     * @var CustomerBenefitGrantDiscordPropertiesUpdate $properties
+     * @var \Polar\Models\Components\CustomerBenefitGrantDiscordPropertiesUpdate $properties
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('properties')]
     #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\CustomerBenefitGrantDiscordPropertiesUpdate')]
@@ -28,7 +28,7 @@ class CustomerBenefitGrantDiscordUpdate
 
     /**
      * @param  string  $benefitType
-     * @param  CustomerBenefitGrantDiscordPropertiesUpdate  $properties
+     * @param  \Polar\Models\Components\CustomerBenefitGrantDiscordPropertiesUpdate  $properties
      * @phpstan-pure
      */
     public function __construct(CustomerBenefitGrantDiscordPropertiesUpdate $properties, string $benefitType = 'discord')

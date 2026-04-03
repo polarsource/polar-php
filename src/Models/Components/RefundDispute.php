@@ -34,7 +34,7 @@ class RefundDispute
 
     /**
      *
-     * @var DisputeStatus $status
+     * @var \Polar\Models\Components\DisputeStatus $status
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('status')]
     #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\DisputeStatus')]
@@ -107,7 +107,7 @@ class RefundDispute
     /**
      * @param  \DateTime  $createdAt
      * @param  string  $id
-     * @param  DisputeStatus  $status
+     * @param  \Polar\Models\Components\DisputeStatus  $status
      * @param  bool  $resolved
      * @param  bool  $closed
      * @param  int  $amount

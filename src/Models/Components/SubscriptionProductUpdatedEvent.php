@@ -46,7 +46,7 @@ class SubscriptionProductUpdatedEvent
 
     /**
      *
-     * @var SubscriptionProductUpdatedMetadata $metadata
+     * @var \Polar\Models\Components\SubscriptionProductUpdatedMetadata $metadata
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('metadata')]
     #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\SubscriptionProductUpdatedMetadata')]
@@ -63,11 +63,12 @@ class SubscriptionProductUpdatedEvent
     /**
      * The customer associated with the event.
      *
-     * @var ?Customer $customer
+     * @var \Polar\Models\Components\CustomerIndividual|\Polar\Models\Components\CustomerTeam|null $customer
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('customer')]
-    #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\Customer|null')]
-    public ?Customer $customer;
+    #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\CustomerIndividual|\Polar\Models\Components\CustomerTeam|null')]
+    #[\Speakeasy\Serializer\Annotation\UnionDiscriminator(field: 'type', map: ['individual' => '\Polar\Models\Components\CustomerIndividual', 'team' => '\Polar\Models\Components\CustomerTeam'])]
+    public CustomerIndividual|CustomerTeam|null $customer;
 
     /**
      * ID of the customer in your system associated with the event.
@@ -136,9 +137,9 @@ class SubscriptionProductUpdatedEvent
      * @param  string  $label
      * @param  string  $source
      * @param  string  $name
-     * @param  SubscriptionProductUpdatedMetadata  $metadata
+     * @param  \Polar\Models\Components\SubscriptionProductUpdatedMetadata  $metadata
      * @param  ?string  $customerId
-     * @param  ?Customer  $customer
+     * @param  \Polar\Models\Components\CustomerIndividual|\Polar\Models\Components\CustomerTeam|null  $customer
      * @param  ?string  $externalCustomerId
      * @param  ?int  $childCount
      * @param  ?string  $memberId
@@ -146,7 +147,7 @@ class SubscriptionProductUpdatedEvent
      * @param  ?string  $parentId
      * @phpstan-pure
      */
-    public function __construct(string $id, \DateTime $timestamp, string $organizationId, string $label, SubscriptionProductUpdatedMetadata $metadata, ?string $customerId = null, ?Customer $customer = null, ?string $externalCustomerId = null, ?string $memberId = null, ?string $externalMemberId = null, ?string $parentId = null, string $source = 'system', string $name = 'subscription.product_updated', ?int $childCount = 0)
+    public function __construct(string $id, \DateTime $timestamp, string $organizationId, string $label, SubscriptionProductUpdatedMetadata $metadata, ?string $customerId = null, CustomerIndividual|CustomerTeam|null $customer = null, ?string $externalCustomerId = null, ?string $memberId = null, ?string $externalMemberId = null, ?string $parentId = null, string $source = 'system', string $name = 'subscription.product_updated', ?int $childCount = 0)
     {
         $this->id = $id;
         $this->timestamp = $timestamp;

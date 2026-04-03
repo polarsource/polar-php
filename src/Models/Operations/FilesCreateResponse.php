@@ -35,7 +35,7 @@ class FilesCreateResponse
     /**
      * File created.
      *
-     * @var ?Components\FileUpload $fileUpload
+     * @var ?\Polar\Models\Components\FileUpload $fileUpload
      */
     public ?Components\FileUpload $fileUpload = null;
 
@@ -43,7 +43,7 @@ class FilesCreateResponse
      * @param  string  $contentType
      * @param  int  $statusCode
      * @param  \Psr\Http\Message\ResponseInterface  $rawResponse
-     * @param  ?Components\FileUpload  $fileUpload
+     * @param  ?\Polar\Models\Components\FileUpload  $fileUpload
      * @phpstan-pure
      */
     public function __construct(string $contentType, int $statusCode, \Psr\Http\Message\ResponseInterface $rawResponse, ?Components\FileUpload $fileUpload = null)

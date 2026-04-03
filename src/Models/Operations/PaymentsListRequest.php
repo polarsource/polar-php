@@ -39,7 +39,7 @@ class PaymentsListRequest
     /**
      * Filter by payment status.
      *
-     * @var Components\PaymentStatus|array<Components\PaymentStatus>|null $status
+     * @var \Polar\Models\Components\PaymentStatus|array<\Polar\Models\Components\PaymentStatus>|null $status
      */
     #[SpeakeasyMetadata('queryParam:style=form,explode=true,name=status')]
     public Components\PaymentStatus|array|null $status = null;
@@ -63,7 +63,7 @@ class PaymentsListRequest
     /**
      * Sorting criterion. Several criteria can be used simultaneously and will be applied in order. Add a minus sign `-` before the criteria name to sort by descending order.
      *
-     * @var ?array<Components\PaymentSortProperty> $sorting
+     * @var ?array<\Polar\Models\Components\PaymentSortProperty> $sorting
      */
     #[SpeakeasyMetadata('queryParam:style=form,explode=true,name=sorting')]
     public ?array $sorting = null;
@@ -90,10 +90,10 @@ class PaymentsListRequest
      * @param  string|array<string>|null  $organizationId
      * @param  string|array<string>|null  $checkoutId
      * @param  string|array<string>|null  $orderId
-     * @param  Components\PaymentStatus|array<Components\PaymentStatus>|null  $status
+     * @param  \Polar\Models\Components\PaymentStatus|array<\Polar\Models\Components\PaymentStatus>|null  $status
      * @param  string|array<string>|null  $method
      * @param  string|array<string>|null  $customerEmail
-     * @param  ?array<Components\PaymentSortProperty>  $sorting
+     * @param  ?array<\Polar\Models\Components\PaymentSortProperty>  $sorting
      * @phpstan-pure
      */
     public function __construct(string|array|null $organizationId = null, string|array|null $checkoutId = null, string|array|null $orderId = null, Components\PaymentStatus|array|null $status = null, string|array|null $method = null, string|array|null $customerEmail = null, ?array $sorting = null, ?int $page = 1, ?int $limit = 10)

@@ -37,7 +37,7 @@ class OAuth2ClientConfigurationUpdate
     /**
      * $grantTypes
      *
-     * @var ?array<OAuth2ClientConfigurationUpdateGrantTypes> $grantTypes
+     * @var ?array<\Polar\Models\Components\OAuth2ClientConfigurationUpdateGrantTypes> $grantTypes
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('grant_types')]
     #[\Speakeasy\Serializer\Annotation\Type('array<\Polar\Models\Components\OAuth2ClientConfigurationUpdateGrantTypes>|null')]
@@ -56,7 +56,7 @@ class OAuth2ClientConfigurationUpdate
 
     /**
      *
-     * @var ?SubType $defaultSubType
+     * @var ?\Polar\Models\Components\SubType $defaultSubType
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('default_sub_type')]
     #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\SubType|null')]
@@ -97,7 +97,7 @@ class OAuth2ClientConfigurationUpdate
 
     /**
      *
-     * @var ?OAuth2ClientConfigurationUpdateTokenEndpointAuthMethod $tokenEndpointAuthMethod
+     * @var ?\Polar\Models\Components\OAuth2ClientConfigurationUpdateTokenEndpointAuthMethod $tokenEndpointAuthMethod
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('token_endpoint_auth_method')]
     #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\OAuth2ClientConfigurationUpdateTokenEndpointAuthMethod|null')]
@@ -116,18 +116,18 @@ class OAuth2ClientConfigurationUpdate
      * @param  array<string>  $redirectUris
      * @param  string  $clientName
      * @param  string  $clientId
-     * @param  ?OAuth2ClientConfigurationUpdateTokenEndpointAuthMethod  $tokenEndpointAuthMethod
-     * @param  ?array<OAuth2ClientConfigurationUpdateGrantTypes>  $grantTypes
+     * @param  ?\Polar\Models\Components\OAuth2ClientConfigurationUpdateTokenEndpointAuthMethod  $tokenEndpointAuthMethod
+     * @param  ?array<\Polar\Models\Components\OAuth2ClientConfigurationUpdateGrantTypes>  $grantTypes
      * @param  ?array<string>  $responseTypes
      * @param  ?string  $scope
-     * @param  ?SubType  $defaultSubType
+     * @param  ?\Polar\Models\Components\SubType  $defaultSubType
      * @param  ?string  $clientUri
      * @param  ?string  $logoUri
      * @param  ?string  $tosUri
      * @param  ?string  $policyUri
      * @phpstan-pure
      */
-    public function __construct(array $redirectUris, string $clientName, string $clientId, ?array $grantTypes = null, ?array $responseTypes = null, ?SubType $defaultSubType = null, ?string $clientUri = null, ?string $logoUri = null, ?string $tosUri = null, ?string $policyUri = null, ?OAuth2ClientConfigurationUpdateTokenEndpointAuthMethod $tokenEndpointAuthMethod = OAuth2ClientConfigurationUpdateTokenEndpointAuthMethod::ClientSecretPost, ?string $scope = 'openid profile email user:read user:write organizations:read organizations:write custom_fields:read custom_fields:write discounts:read discounts:write checkout_links:read checkout_links:write checkouts:read checkouts:write transactions:read transactions:write payouts:read payouts:write products:read products:write benefits:read benefits:write events:read events:write meters:read meters:write files:read files:write subscriptions:read subscriptions:write customers:read customers:write members:read members:write wallets:read wallets:write disputes:read customer_meters:read customer_sessions:write member_sessions:write customer_seats:read customer_seats:write orders:read orders:write refunds:read refunds:write payments:read metrics:read webhooks:read webhooks:write license_keys:read license_keys:write customer_portal:read customer_portal:write notifications:read notifications:write notification_recipients:read notification_recipients:write organization_access_tokens:read organization_access_tokens:write')
+    public function __construct(array $redirectUris, string $clientName, string $clientId, ?array $grantTypes = null, ?array $responseTypes = null, ?SubType $defaultSubType = null, ?string $clientUri = null, ?string $logoUri = null, ?string $tosUri = null, ?string $policyUri = null, ?OAuth2ClientConfigurationUpdateTokenEndpointAuthMethod $tokenEndpointAuthMethod = OAuth2ClientConfigurationUpdateTokenEndpointAuthMethod::ClientSecretPost, ?string $scope = 'openid profile email user:read user:write organizations:read organizations:write custom_fields:read custom_fields:write discounts:read discounts:write checkout_links:read checkout_links:write checkouts:read checkouts:write transactions:read transactions:write payouts:read payouts:write products:read products:write benefits:read benefits:write events:read events:write meters:read meters:write files:read files:write subscriptions:read subscriptions:write customers:read customers:write members:read members:write wallets:read wallets:write disputes:read customer_meters:read customer_sessions:write member_sessions:write customer_seats:read customer_seats:write orders:read orders:write refunds:read refunds:write payments:read metrics:read metrics:write webhooks:read webhooks:write license_keys:read license_keys:write customer_portal:read customer_portal:write notifications:read notifications:write notification_recipients:read notification_recipients:write organization_access_tokens:read organization_access_tokens:write')
     {
         $this->redirectUris = $redirectUris;
         $this->clientName = $clientName;

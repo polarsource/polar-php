@@ -78,7 +78,7 @@ class BenefitFeatureFlag
     /**
      * Properties for a benefit of type `feature_flag`.
      *
-     * @var BenefitFeatureFlagProperties $properties
+     * @var \Polar\Models\Components\BenefitFeatureFlagProperties $properties
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('properties')]
     #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\BenefitFeatureFlagProperties')]
@@ -108,7 +108,7 @@ class BenefitFeatureFlag
      * @param  bool  $deletable
      * @param  string  $organizationId
      * @param  array<string, string|int|float|bool>  $metadata
-     * @param  BenefitFeatureFlagProperties  $properties
+     * @param  \Polar\Models\Components\BenefitFeatureFlagProperties  $properties
      * @param  ?\DateTime  $modifiedAt
      * @phpstan-pure
      */

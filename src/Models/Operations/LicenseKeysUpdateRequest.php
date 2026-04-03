@@ -21,14 +21,14 @@ class LicenseKeysUpdateRequest
 
     /**
      *
-     * @var Components\LicenseKeyUpdate $licenseKeyUpdate
+     * @var \Polar\Models\Components\LicenseKeyUpdate $licenseKeyUpdate
      */
     #[SpeakeasyMetadata('request:mediaType=application/json')]
     public Components\LicenseKeyUpdate $licenseKeyUpdate;
 
     /**
      * @param  string  $id
-     * @param  Components\LicenseKeyUpdate  $licenseKeyUpdate
+     * @param  \Polar\Models\Components\LicenseKeyUpdate  $licenseKeyUpdate
      * @phpstan-pure
      */
     public function __construct(string $id, Components\LicenseKeyUpdate $licenseKeyUpdate)

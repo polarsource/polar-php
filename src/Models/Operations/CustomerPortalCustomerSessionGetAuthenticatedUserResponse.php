@@ -35,7 +35,7 @@ class CustomerPortalCustomerSessionGetAuthenticatedUserResponse
     /**
      * Successful Response
      *
-     * @var ?Components\PortalAuthenticatedUser $portalAuthenticatedUser
+     * @var ?\Polar\Models\Components\PortalAuthenticatedUser $portalAuthenticatedUser
      */
     public ?Components\PortalAuthenticatedUser $portalAuthenticatedUser = null;
 
@@ -43,7 +43,7 @@ class CustomerPortalCustomerSessionGetAuthenticatedUserResponse
      * @param  string  $contentType
      * @param  int  $statusCode
      * @param  \Psr\Http\Message\ResponseInterface  $rawResponse
-     * @param  ?Components\PortalAuthenticatedUser  $portalAuthenticatedUser
+     * @param  ?\Polar\Models\Components\PortalAuthenticatedUser  $portalAuthenticatedUser
      * @phpstan-pure
      */
     public function __construct(string $contentType, int $statusCode, \Psr\Http\Message\ResponseInterface $rawResponse, ?Components\PortalAuthenticatedUser $portalAuthenticatedUser = null)

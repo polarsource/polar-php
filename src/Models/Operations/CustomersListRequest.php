@@ -39,7 +39,7 @@ class CustomersListRequest
     /**
      * Sorting criterion. Several criteria can be used simultaneously and will be applied in order. Add a minus sign `-` before the criteria name to sort by descending order.
      *
-     * @var ?array<Components\CustomerSortProperty> $sorting
+     * @var ?array<\Polar\Models\Components\CustomerSortProperty> $sorting
      */
     #[SpeakeasyMetadata('queryParam:style=form,explode=true,name=sorting')]
     public ?array $sorting = null;
@@ -74,7 +74,7 @@ class CustomersListRequest
      * @param  string|array<string>|null  $organizationId
      * @param  ?string  $email
      * @param  ?string  $query
-     * @param  ?array<Components\CustomerSortProperty>  $sorting
+     * @param  ?array<\Polar\Models\Components\CustomerSortProperty>  $sorting
      * @param  ?array<string, string|int|bool|array<string>|array<int>|array<bool>>  $metadata
      * @phpstan-pure
      */

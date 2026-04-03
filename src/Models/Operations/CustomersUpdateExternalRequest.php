@@ -22,14 +22,14 @@ class CustomersUpdateExternalRequest
 
     /**
      *
-     * @var Components\CustomerUpdateExternalID $customerUpdateExternalID
+     * @var \Polar\Models\Components\CustomerUpdateExternalID $customerUpdateExternalID
      */
     #[SpeakeasyMetadata('request:mediaType=application/json')]
     public Components\CustomerUpdateExternalID $customerUpdateExternalID;
 
     /**
      * @param  string  $externalId
-     * @param  Components\CustomerUpdateExternalID  $customerUpdateExternalID
+     * @param  \Polar\Models\Components\CustomerUpdateExternalID  $customerUpdateExternalID
      * @phpstan-pure
      */
     public function __construct(string $externalId, Components\CustomerUpdateExternalID $customerUpdateExternalID)

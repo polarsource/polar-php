@@ -63,7 +63,7 @@ class ProductsListRequest
     /**
      * Filter by visibility.
      *
-     * @var ?array<Components\ProductVisibility> $visibility
+     * @var ?array<\Polar\Models\Components\ProductVisibility> $visibility
      */
     #[SpeakeasyMetadata('queryParam:style=form,explode=true,name=visibility')]
     public ?array $visibility = null;
@@ -71,7 +71,7 @@ class ProductsListRequest
     /**
      * Sorting criterion. Several criteria can be used simultaneously and will be applied in order. Add a minus sign `-` before the criteria name to sort by descending order.
      *
-     * @var ?array<Components\ProductSortProperty> $sorting
+     * @var ?array<\Polar\Models\Components\ProductSortProperty> $sorting
      */
     #[SpeakeasyMetadata('queryParam:style=form,explode=true,name=sorting')]
     public ?array $sorting = null;
@@ -109,8 +109,8 @@ class ProductsListRequest
      * @param  ?bool  $isArchived
      * @param  ?bool  $isRecurring
      * @param  string|array<string>|null  $benefitId
-     * @param  ?array<Components\ProductVisibility>  $visibility
-     * @param  ?array<Components\ProductSortProperty>  $sorting
+     * @param  ?array<\Polar\Models\Components\ProductVisibility>  $visibility
+     * @param  ?array<\Polar\Models\Components\ProductSortProperty>  $sorting
      * @param  ?array<string, string|int|bool|array<string>|array<int>|array<bool>>  $metadata
      * @phpstan-pure
      */

@@ -60,17 +60,17 @@ class BenefitGrant
     public string $benefitId;
 
     /**
-     * A customer in an organization.
      *
-     * @var Customer $customer
+     * @var \Polar\Models\Components\CustomerIndividual|\Polar\Models\Components\CustomerTeam $customer
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('customer')]
-    #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\Customer')]
-    public Customer $customer;
+    #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\CustomerIndividual|\Polar\Models\Components\CustomerTeam')]
+    #[\Speakeasy\Serializer\Annotation\UnionDiscriminator(field: 'type', map: ['individual' => '\Polar\Models\Components\CustomerIndividual', 'team' => '\Polar\Models\Components\CustomerTeam'])]
+    public CustomerIndividual|CustomerTeam $customer;
 
     /**
      *
-     * @var BenefitCustom|BenefitDiscord|BenefitGitHubRepository|BenefitDownloadables|BenefitLicenseKeys|BenefitMeterCredit|BenefitFeatureFlag $benefit
+     * @var \Polar\Models\Components\BenefitCustom|\Polar\Models\Components\BenefitDiscord|\Polar\Models\Components\BenefitGitHubRepository|\Polar\Models\Components\BenefitDownloadables|\Polar\Models\Components\BenefitLicenseKeys|\Polar\Models\Components\BenefitMeterCredit|\Polar\Models\Components\BenefitFeatureFlag $benefit
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('benefit')]
     #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\BenefitCustom|\Polar\Models\Components\BenefitDiscord|\Polar\Models\Components\BenefitGitHubRepository|\Polar\Models\Components\BenefitDownloadables|\Polar\Models\Components\BenefitLicenseKeys|\Polar\Models\Components\BenefitMeterCredit|\Polar\Models\Components\BenefitFeatureFlag')]
@@ -79,7 +79,7 @@ class BenefitGrant
 
     /**
      *
-     * @var BenefitGrantDiscordProperties|BenefitGrantGitHubRepositoryProperties|BenefitGrantDownloadablesProperties|BenefitGrantLicenseKeysProperties|BenefitGrantCustomProperties|BenefitGrantFeatureFlagProperties $properties
+     * @var \Polar\Models\Components\BenefitGrantDiscordProperties|\Polar\Models\Components\BenefitGrantGitHubRepositoryProperties|\Polar\Models\Components\BenefitGrantDownloadablesProperties|\Polar\Models\Components\BenefitGrantLicenseKeysProperties|\Polar\Models\Components\BenefitGrantCustomProperties|\Polar\Models\Components\BenefitGrantFeatureFlagProperties $properties
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('properties')]
     #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\BenefitGrantDiscordProperties|\Polar\Models\Components\BenefitGrantGitHubRepositoryProperties|\Polar\Models\Components\BenefitGrantDownloadablesProperties|\Polar\Models\Components\BenefitGrantLicenseKeysProperties|\Polar\Models\Components\BenefitGrantCustomProperties|\Polar\Models\Components\BenefitGrantFeatureFlagProperties')]
@@ -139,7 +139,7 @@ class BenefitGrant
     /**
      * The error information if the benefit grant failed with an unrecoverable error.
      *
-     * @var ?BenefitGrantError $error
+     * @var ?\Polar\Models\Components\BenefitGrantError $error
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('error')]
     #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\BenefitGrantError|null')]
@@ -148,7 +148,7 @@ class BenefitGrant
 
     /**
      *
-     * @var ?Member $member
+     * @var ?\Polar\Models\Components\Member $member
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('member')]
     #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\Member|null')]
@@ -162,20 +162,20 @@ class BenefitGrant
      * @param  bool  $isRevoked
      * @param  string  $customerId
      * @param  string  $benefitId
-     * @param  Customer  $customer
-     * @param  BenefitCustom|BenefitDiscord|BenefitGitHubRepository|BenefitDownloadables|BenefitLicenseKeys|BenefitMeterCredit|BenefitFeatureFlag  $benefit
-     * @param  BenefitGrantDiscordProperties|BenefitGrantGitHubRepositoryProperties|BenefitGrantDownloadablesProperties|BenefitGrantLicenseKeysProperties|BenefitGrantCustomProperties|BenefitGrantFeatureFlagProperties  $properties
+     * @param  \Polar\Models\Components\CustomerIndividual|\Polar\Models\Components\CustomerTeam  $customer
+     * @param  \Polar\Models\Components\BenefitCustom|\Polar\Models\Components\BenefitDiscord|\Polar\Models\Components\BenefitGitHubRepository|\Polar\Models\Components\BenefitDownloadables|\Polar\Models\Components\BenefitLicenseKeys|\Polar\Models\Components\BenefitMeterCredit|\Polar\Models\Components\BenefitFeatureFlag  $benefit
+     * @param  \Polar\Models\Components\BenefitGrantDiscordProperties|\Polar\Models\Components\BenefitGrantGitHubRepositoryProperties|\Polar\Models\Components\BenefitGrantDownloadablesProperties|\Polar\Models\Components\BenefitGrantLicenseKeysProperties|\Polar\Models\Components\BenefitGrantCustomProperties|\Polar\Models\Components\BenefitGrantFeatureFlagProperties  $properties
      * @param  ?\DateTime  $modifiedAt
      * @param  ?string  $subscriptionId
      * @param  ?string  $orderId
      * @param  ?\DateTime  $grantedAt
      * @param  ?\DateTime  $revokedAt
      * @param  ?string  $memberId
-     * @param  ?BenefitGrantError  $error
-     * @param  ?Member  $member
+     * @param  ?\Polar\Models\Components\BenefitGrantError  $error
+     * @param  ?\Polar\Models\Components\Member  $member
      * @phpstan-pure
      */
-    public function __construct(\DateTime $createdAt, string $id, bool $isGranted, bool $isRevoked, string $customerId, string $benefitId, Customer $customer, BenefitCustom|BenefitDiscord|BenefitGitHubRepository|BenefitDownloadables|BenefitLicenseKeys|BenefitMeterCredit|BenefitFeatureFlag $benefit, BenefitGrantDiscordProperties|BenefitGrantGitHubRepositoryProperties|BenefitGrantDownloadablesProperties|BenefitGrantLicenseKeysProperties|BenefitGrantCustomProperties|BenefitGrantFeatureFlagProperties $properties, ?\DateTime $modifiedAt = null, ?string $subscriptionId = null, ?string $orderId = null, ?\DateTime $grantedAt = null, ?\DateTime $revokedAt = null, ?string $memberId = null, ?BenefitGrantError $error = null, ?Member $member = null)
+    public function __construct(\DateTime $createdAt, string $id, bool $isGranted, bool $isRevoked, string $customerId, string $benefitId, CustomerIndividual|CustomerTeam $customer, BenefitCustom|BenefitDiscord|BenefitGitHubRepository|BenefitDownloadables|BenefitLicenseKeys|BenefitMeterCredit|BenefitFeatureFlag $benefit, BenefitGrantDiscordProperties|BenefitGrantGitHubRepositoryProperties|BenefitGrantDownloadablesProperties|BenefitGrantLicenseKeysProperties|BenefitGrantCustomProperties|BenefitGrantFeatureFlagProperties $properties, ?\DateTime $modifiedAt = null, ?string $subscriptionId = null, ?string $orderId = null, ?\DateTime $grantedAt = null, ?\DateTime $revokedAt = null, ?string $memberId = null, ?BenefitGrantError $error = null, ?Member $member = null)
     {
         $this->createdAt = $createdAt;
         $this->id = $id;

@@ -48,9 +48,9 @@ class Seats
     /**
      * Assign Seat
      *
-     * @param  Operations\CustomerPortalSeatsAssignSeatSecurity  $security
-     * @param  Components\SeatAssign  $request
-     * @return Operations\CustomerPortalSeatsAssignSeatResponse
+     * @param  \Polar\Models\Operations\CustomerPortalSeatsAssignSeatSecurity  $security
+     * @param  \Polar\Models\Components\SeatAssign  $request
+     * @return \Polar\Models\Operations\CustomerPortalSeatsAssignSeatResponse
      * @throws \Polar\Models\Errors\APIException
      */
     public function assignSeat(Operations\CustomerPortalSeatsAssignSeatSecurity $security, Components\SeatAssign $request, ?Options $options = null): Operations\CustomerPortalSeatsAssignSeatResponse
@@ -134,10 +134,10 @@ class Seats
      *
      * **Scopes**: `customer_portal:read` `customer_portal:write`
      *
-     * @param  Operations\CustomerPortalSeatsListClaimedSubscriptionsSecurity  $security
+     * @param  \Polar\Models\Operations\CustomerPortalSeatsListClaimedSubscriptionsSecurity  $security
      * @param  ?int  $page
      * @param  ?int  $limit
-     * @return Operations\CustomerPortalSeatsListClaimedSubscriptionsResponse
+     * @return \Polar\Models\Operations\CustomerPortalSeatsListClaimedSubscriptionsResponse
      * @throws \Polar\Models\Errors\APIException
      */
     private function listClaimedSubscriptionsIndividual(Operations\CustomerPortalSeatsListClaimedSubscriptionsSecurity $security, ?int $page = null, ?int $limit = null, ?Options $options = null): Operations\CustomerPortalSeatsListClaimedSubscriptionsResponse
@@ -256,10 +256,10 @@ class Seats
      *
      * **Scopes**: `customer_portal:read` `customer_portal:write`
      *
-     * @param  Operations\CustomerPortalSeatsListClaimedSubscriptionsSecurity  $security
+     * @param  \Polar\Models\Operations\CustomerPortalSeatsListClaimedSubscriptionsSecurity  $security
      * @param  ?int  $page
      * @param  ?int  $limit
-     * @return \Generator<Operations\CustomerPortalSeatsListClaimedSubscriptionsResponse>
+     * @return \Generator<\Polar\Models\Operations\CustomerPortalSeatsListClaimedSubscriptionsResponse>
      * @throws \Polar\Models\Errors\APIException
      */
     public function listClaimedSubscriptions(Operations\CustomerPortalSeatsListClaimedSubscriptionsSecurity $security, ?int $page = null, ?int $limit = null, ?Options $options = null): \Generator
@@ -276,10 +276,10 @@ class Seats
      *
      * **Scopes**: `customer_portal:read` `customer_portal:write`
      *
-     * @param  Operations\CustomerPortalSeatsListSeatsSecurity  $security
+     * @param  \Polar\Models\Operations\CustomerPortalSeatsListSeatsSecurity  $security
      * @param  ?string  $subscriptionId
      * @param  ?string  $orderId
-     * @return Operations\CustomerPortalSeatsListSeatsResponse
+     * @return \Polar\Models\Operations\CustomerPortalSeatsListSeatsResponse
      * @throws \Polar\Models\Errors\APIException
      */
     public function listSeats(Operations\CustomerPortalSeatsListSeatsSecurity $security, ?string $subscriptionId = null, ?string $orderId = null, ?Options $options = null): Operations\CustomerPortalSeatsListSeatsResponse
@@ -361,9 +361,9 @@ class Seats
     /**
      * Resend Invitation
      *
-     * @param  Operations\CustomerPortalSeatsResendInvitationSecurity  $security
+     * @param  \Polar\Models\Operations\CustomerPortalSeatsResendInvitationSecurity  $security
      * @param  string  $seatId
-     * @return Operations\CustomerPortalSeatsResendInvitationResponse
+     * @return \Polar\Models\Operations\CustomerPortalSeatsResendInvitationResponse
      * @throws \Polar\Models\Errors\APIException
      */
     public function resendInvitation(Operations\CustomerPortalSeatsResendInvitationSecurity $security, string $seatId, ?Options $options = null): Operations\CustomerPortalSeatsResendInvitationResponse
@@ -441,9 +441,9 @@ class Seats
     /**
      * Revoke Seat
      *
-     * @param  Operations\CustomerPortalSeatsRevokeSeatSecurity  $security
+     * @param  \Polar\Models\Operations\CustomerPortalSeatsRevokeSeatSecurity  $security
      * @param  string  $seatId
-     * @return Operations\CustomerPortalSeatsRevokeSeatResponse
+     * @return \Polar\Models\Operations\CustomerPortalSeatsRevokeSeatResponse
      * @throws \Polar\Models\Errors\APIException
      */
     public function revokeSeat(Operations\CustomerPortalSeatsRevokeSeatSecurity $security, string $seatId, ?Options $options = null): Operations\CustomerPortalSeatsRevokeSeatResponse

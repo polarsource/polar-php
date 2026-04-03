@@ -35,7 +35,7 @@ class LicenseKeysValidateResponse
     /**
      * Successful Response
      *
-     * @var ?Components\ValidatedLicenseKey $validatedLicenseKey
+     * @var ?\Polar\Models\Components\ValidatedLicenseKey $validatedLicenseKey
      */
     public ?Components\ValidatedLicenseKey $validatedLicenseKey = null;
 
@@ -43,7 +43,7 @@ class LicenseKeysValidateResponse
      * @param  string  $contentType
      * @param  int  $statusCode
      * @param  \Psr\Http\Message\ResponseInterface  $rawResponse
-     * @param  ?Components\ValidatedLicenseKey  $validatedLicenseKey
+     * @param  ?\Polar\Models\Components\ValidatedLicenseKey  $validatedLicenseKey
      * @phpstan-pure
      */
     public function __construct(string $contentType, int $statusCode, \Psr\Http\Message\ResponseInterface $rawResponse, ?Components\ValidatedLicenseKey $validatedLicenseKey = null)

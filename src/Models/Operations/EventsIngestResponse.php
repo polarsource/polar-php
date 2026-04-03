@@ -35,7 +35,7 @@ class EventsIngestResponse
     /**
      * Successful Response
      *
-     * @var ?Components\EventsIngestResponse $eventsIngestResponse
+     * @var ?\Polar\Models\Components\EventsIngestResponse $eventsIngestResponse
      */
     public ?Components\EventsIngestResponse $eventsIngestResponse = null;
 
@@ -43,7 +43,7 @@ class EventsIngestResponse
      * @param  string  $contentType
      * @param  int  $statusCode
      * @param  \Psr\Http\Message\ResponseInterface  $rawResponse
-     * @param  ?Components\EventsIngestResponse  $eventsIngestResponse
+     * @param  ?\Polar\Models\Components\EventsIngestResponse  $eventsIngestResponse
      * @phpstan-pure
      */
     public function __construct(string $contentType, int $statusCode, \Psr\Http\Message\ResponseInterface $rawResponse, ?Components\EventsIngestResponse $eventsIngestResponse = null)

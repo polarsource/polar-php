@@ -35,7 +35,7 @@ class RefundsCreateResponse
     /**
      * Refund created.
      *
-     * @var ?Components\Refund $refund
+     * @var ?\Polar\Models\Components\Refund $refund
      */
     public ?Components\Refund $refund = null;
 
@@ -43,7 +43,7 @@ class RefundsCreateResponse
      * @param  string  $contentType
      * @param  int  $statusCode
      * @param  \Psr\Http\Message\ResponseInterface  $rawResponse
-     * @param  ?Components\Refund  $refund
+     * @param  ?\Polar\Models\Components\Refund  $refund
      * @phpstan-pure
      */
     public function __construct(string $contentType, int $statusCode, \Psr\Http\Message\ResponseInterface $rawResponse, ?Components\Refund $refund = null)

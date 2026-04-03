@@ -43,7 +43,7 @@ class BenefitGitHubRepositoryUpdate
 
     /**
      *
-     * @var ?BenefitGitHubRepositoryCreateProperties $properties
+     * @var ?\Polar\Models\Components\BenefitGitHubRepositoryCreateProperties $properties
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('properties')]
     #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\BenefitGitHubRepositoryCreateProperties|null')]
@@ -61,7 +61,7 @@ class BenefitGitHubRepositoryUpdate
      * @param  string  $type
      * @param  ?array<string, string|int|float|bool>  $metadata
      * @param  ?string  $description
-     * @param  ?BenefitGitHubRepositoryCreateProperties  $properties
+     * @param  ?\Polar\Models\Components\BenefitGitHubRepositoryCreateProperties  $properties
      * @phpstan-pure
      */
     public function __construct(?array $metadata = null, ?string $description = null, ?BenefitGitHubRepositoryCreateProperties $properties = null, string $type = 'github_repository')

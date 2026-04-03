@@ -13,7 +13,7 @@ class CheckoutBillingAddressFields
 {
     /**
      *
-     * @var BillingAddressFieldMode $country
+     * @var \Polar\Models\Components\BillingAddressFieldMode $country
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('country')]
     #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\BillingAddressFieldMode')]
@@ -21,7 +21,7 @@ class CheckoutBillingAddressFields
 
     /**
      *
-     * @var BillingAddressFieldMode $state
+     * @var \Polar\Models\Components\BillingAddressFieldMode $state
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('state')]
     #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\BillingAddressFieldMode')]
@@ -29,7 +29,7 @@ class CheckoutBillingAddressFields
 
     /**
      *
-     * @var BillingAddressFieldMode $city
+     * @var \Polar\Models\Components\BillingAddressFieldMode $city
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('city')]
     #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\BillingAddressFieldMode')]
@@ -37,7 +37,7 @@ class CheckoutBillingAddressFields
 
     /**
      *
-     * @var BillingAddressFieldMode $postalCode
+     * @var \Polar\Models\Components\BillingAddressFieldMode $postalCode
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('postal_code')]
     #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\BillingAddressFieldMode')]
@@ -45,7 +45,7 @@ class CheckoutBillingAddressFields
 
     /**
      *
-     * @var BillingAddressFieldMode $line1
+     * @var \Polar\Models\Components\BillingAddressFieldMode $line1
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('line1')]
     #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\BillingAddressFieldMode')]
@@ -53,19 +53,19 @@ class CheckoutBillingAddressFields
 
     /**
      *
-     * @var BillingAddressFieldMode $line2
+     * @var \Polar\Models\Components\BillingAddressFieldMode $line2
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('line2')]
     #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\BillingAddressFieldMode')]
     public BillingAddressFieldMode $line2;
 
     /**
-     * @param  BillingAddressFieldMode  $country
-     * @param  BillingAddressFieldMode  $state
-     * @param  BillingAddressFieldMode  $city
-     * @param  BillingAddressFieldMode  $postalCode
-     * @param  BillingAddressFieldMode  $line1
-     * @param  BillingAddressFieldMode  $line2
+     * @param  \Polar\Models\Components\BillingAddressFieldMode  $country
+     * @param  \Polar\Models\Components\BillingAddressFieldMode  $state
+     * @param  \Polar\Models\Components\BillingAddressFieldMode  $city
+     * @param  \Polar\Models\Components\BillingAddressFieldMode  $postalCode
+     * @param  \Polar\Models\Components\BillingAddressFieldMode  $line1
+     * @param  \Polar\Models\Components\BillingAddressFieldMode  $line2
      * @phpstan-pure
      */
     public function __construct(BillingAddressFieldMode $country, BillingAddressFieldMode $state, BillingAddressFieldMode $city, BillingAddressFieldMode $postalCode, BillingAddressFieldMode $line1, BillingAddressFieldMode $line2)

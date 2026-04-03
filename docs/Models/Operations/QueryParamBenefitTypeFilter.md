@@ -9,7 +9,7 @@ Filter by benefit type.
 
 ```php
 /**
-* @var Components\BenefitType
+* @var \Polar\Models\Components\BenefitType
 */
 Components\BenefitType $value = /* values here */
 ```
@@ -18,7 +18,7 @@ Components\BenefitType $value = /* values here */
 
 ```php
 /**
-* @var array<Components\BenefitType>
+* @var array<\Polar\Models\Components\BenefitType>
 */
 array $value = /* values here */
 ```

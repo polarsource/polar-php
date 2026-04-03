@@ -38,7 +38,7 @@ class WebhookEndpoint
 
     /**
      *
-     * @var WebhookFormat $format
+     * @var \Polar\Models\Components\WebhookFormat $format
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('format')]
     #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\WebhookFormat')]
@@ -63,7 +63,7 @@ class WebhookEndpoint
     /**
      * The events that will trigger the webhook.
      *
-     * @var array<WebhookEventType> $events
+     * @var array<\Polar\Models\Components\WebhookEventType> $events
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('events')]
     #[\Speakeasy\Serializer\Annotation\Type('array<\Polar\Models\Components\WebhookEventType>')]
@@ -98,10 +98,10 @@ class WebhookEndpoint
      * @param  \DateTime  $createdAt
      * @param  string  $id
      * @param  string  $url
-     * @param  WebhookFormat  $format
+     * @param  \Polar\Models\Components\WebhookFormat  $format
      * @param  string  $secret
      * @param  string  $organizationId
-     * @param  array<WebhookEventType>  $events
+     * @param  array<\Polar\Models\Components\WebhookEventType>  $events
      * @param  bool  $enabled
      * @param  ?\DateTime  $modifiedAt
      * @param  ?string  $name

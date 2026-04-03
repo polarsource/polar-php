@@ -14,14 +14,14 @@ class EventsIngest
     /**
      * List of events to ingest.
      *
-     * @var array<EventCreateCustomer|EventCreateExternalCustomer> $events
+     * @var array<\Polar\Models\Components\EventCreateCustomer|\Polar\Models\Components\EventCreateExternalCustomer> $events
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('events')]
     #[\Speakeasy\Serializer\Annotation\Type('array<\Polar\Models\Components\EventCreateCustomer|\Polar\Models\Components\EventCreateExternalCustomer>')]
     public array $events;
 
     /**
-     * @param  array<EventCreateCustomer|EventCreateExternalCustomer>  $events
+     * @param  array<\Polar\Models\Components\EventCreateCustomer|\Polar\Models\Components\EventCreateExternalCustomer>  $events
      * @phpstan-pure
      */
     public function __construct(array $events)

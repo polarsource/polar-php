@@ -14,7 +14,7 @@ class ListResourceCheckoutLink
     /**
      * $items
      *
-     * @var array<CheckoutLink> $items
+     * @var array<\Polar\Models\Components\CheckoutLink> $items
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('items')]
     #[\Speakeasy\Serializer\Annotation\Type('array<\Polar\Models\Components\CheckoutLink>')]
@@ -22,15 +22,15 @@ class ListResourceCheckoutLink
 
     /**
      *
-     * @var Pagination $pagination
+     * @var \Polar\Models\Components\Pagination $pagination
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('pagination')]
     #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\Pagination')]
     public Pagination $pagination;
 
     /**
-     * @param  array<CheckoutLink>  $items
-     * @param  Pagination  $pagination
+     * @param  array<\Polar\Models\Components\CheckoutLink>  $items
+     * @param  \Polar\Models\Components\Pagination  $pagination
      * @phpstan-pure
      */
     public function __construct(array $items, Pagination $pagination)

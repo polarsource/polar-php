@@ -52,8 +52,8 @@ class Benefits
      *
      * **Scopes**: `benefits:write`
      *
-     * @param  Components\BenefitCustomCreate|Components\BenefitDiscordCreate|Components\BenefitGitHubRepositoryCreate|Components\BenefitDownloadablesCreate|Components\BenefitLicenseKeysCreate|Components\BenefitMeterCreditCreate|Components\BenefitFeatureFlagCreate  $request
-     * @return Operations\BenefitsCreateResponse
+     * @param  \Polar\Models\Components\BenefitCustomCreate|\Polar\Models\Components\BenefitDiscordCreate|\Polar\Models\Components\BenefitGitHubRepositoryCreate|\Polar\Models\Components\BenefitDownloadablesCreate|\Polar\Models\Components\BenefitLicenseKeysCreate|\Polar\Models\Components\BenefitMeterCreditCreate|\Polar\Models\Components\BenefitFeatureFlagCreate  $request
+     * @return \Polar\Models\Operations\BenefitsCreateResponse
      * @throws \Polar\Models\Errors\APIException
      */
     public function create(Components\BenefitCustomCreate|Components\BenefitDiscordCreate|Components\BenefitGitHubRepositoryCreate|Components\BenefitDownloadablesCreate|Components\BenefitLicenseKeysCreate|Components\BenefitMeterCreditCreate|Components\BenefitFeatureFlagCreate $request, ?Options $options = null): Operations\BenefitsCreateResponse
@@ -136,7 +136,7 @@ class Benefits
      * **Scopes**: `benefits:write`
      *
      * @param  string  $id
-     * @return Operations\BenefitsDeleteResponse
+     * @return \Polar\Models\Operations\BenefitsDeleteResponse
      * @throws \Polar\Models\Errors\APIException
      */
     public function delete(string $id, ?Options $options = null): Operations\BenefitsDeleteResponse
@@ -226,7 +226,7 @@ class Benefits
      * **Scopes**: `benefits:read` `benefits:write`
      *
      * @param  string  $id
-     * @return Operations\BenefitsGetResponse
+     * @return \Polar\Models\Operations\BenefitsGetResponse
      * @throws \Polar\Models\Errors\APIException
      */
     public function get(string $id, ?Options $options = null): Operations\BenefitsGetResponse
@@ -315,8 +315,8 @@ class Benefits
      *
      * **Scopes**: `benefits:read` `benefits:write`
      *
-     * @param  Operations\BenefitsGrantsRequest  $request
-     * @return Operations\BenefitsGrantsResponse
+     * @param  \Polar\Models\Operations\BenefitsGrantsRequest  $request
+     * @return \Polar\Models\Operations\BenefitsGrantsResponse
      * @throws \Polar\Models\Errors\APIException
      */
     private function grantsIndividual(Operations\BenefitsGrantsRequest $request, ?Options $options = null): Operations\BenefitsGrantsResponse
@@ -443,8 +443,8 @@ class Benefits
      *
      * **Scopes**: `benefits:read` `benefits:write`
      *
-     * @param  Operations\BenefitsGrantsRequest  $request
-     * @return \Generator<Operations\BenefitsGrantsResponse>
+     * @param  \Polar\Models\Operations\BenefitsGrantsRequest  $request
+     * @return \Generator<\Polar\Models\Operations\BenefitsGrantsResponse>
      * @throws \Polar\Models\Errors\APIException
      */
     public function grants(Operations\BenefitsGrantsRequest $request, ?Options $options = null): \Generator
@@ -463,8 +463,8 @@ class Benefits
      *
      * **Scopes**: `benefits:read` `benefits:write`
      *
-     * @param  ?Operations\BenefitsListRequest  $request
-     * @return Operations\BenefitsListResponse
+     * @param  ?\Polar\Models\Operations\BenefitsListRequest  $request
+     * @return \Polar\Models\Operations\BenefitsListResponse
      * @throws \Polar\Models\Errors\APIException
      */
     private function listIndividual(?Operations\BenefitsListRequest $request = null, ?Options $options = null): Operations\BenefitsListResponse
@@ -581,8 +581,8 @@ class Benefits
      *
      * **Scopes**: `benefits:read` `benefits:write`
      *
-     * @param  ?Operations\BenefitsListRequest  $request
-     * @return \Generator<Operations\BenefitsListResponse>
+     * @param  ?\Polar\Models\Operations\BenefitsListRequest  $request
+     * @return \Generator<\Polar\Models\Operations\BenefitsListResponse>
      * @throws \Polar\Models\Errors\APIException
      */
     public function list(?Operations\BenefitsListRequest $request = null, ?Options $options = null): \Generator
@@ -601,9 +601,9 @@ class Benefits
      *
      * **Scopes**: `benefits:write`
      *
-     * @param  Components\BenefitCustomUpdate|Components\BenefitDiscordUpdate|Components\BenefitGitHubRepositoryUpdate|Components\BenefitDownloadablesUpdate|Components\BenefitLicenseKeysUpdate|Components\BenefitMeterCreditUpdate|Components\BenefitFeatureFlagUpdate  $requestBody
+     * @param  \Polar\Models\Components\BenefitCustomUpdate|\Polar\Models\Components\BenefitDiscordUpdate|\Polar\Models\Components\BenefitGitHubRepositoryUpdate|\Polar\Models\Components\BenefitDownloadablesUpdate|\Polar\Models\Components\BenefitLicenseKeysUpdate|\Polar\Models\Components\BenefitMeterCreditUpdate|\Polar\Models\Components\BenefitFeatureFlagUpdate  $requestBody
      * @param  string  $id
-     * @return Operations\BenefitsUpdateResponse
+     * @return \Polar\Models\Operations\BenefitsUpdateResponse
      * @throws \Polar\Models\Errors\APIException
      */
     public function update(Components\BenefitCustomUpdate|Components\BenefitDiscordUpdate|Components\BenefitGitHubRepositoryUpdate|Components\BenefitDownloadablesUpdate|Components\BenefitLicenseKeysUpdate|Components\BenefitMeterCreditUpdate|Components\BenefitFeatureFlagUpdate $requestBody, string $id, ?Options $options = null): Operations\BenefitsUpdateResponse

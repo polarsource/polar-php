@@ -22,7 +22,7 @@ class ProductCreateOneTime
     /**
      * List of available prices for this product. It should contain at most one static price (fixed, custom or free), and any number of metered prices. Metered prices are not supported on one-time purchase products.
      *
-     * @var array<ProductPriceFixedCreate|ProductPriceCustomCreate|ProductPriceFreeCreate|ProductPriceSeatBasedCreate|ProductPriceMeteredUnitCreate> $prices
+     * @var array<\Polar\Models\Components\ProductPriceFixedCreate|\Polar\Models\Components\ProductPriceCustomCreate|\Polar\Models\Components\ProductPriceFreeCreate|\Polar\Models\Components\ProductPriceSeatBasedCreate|\Polar\Models\Components\ProductPriceMeteredUnitCreate> $prices
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('prices')]
     #[\Speakeasy\Serializer\Annotation\Type('array<\Polar\Models\Components\ProductPriceFixedCreate|\Polar\Models\Components\ProductPriceCustomCreate|\Polar\Models\Components\ProductPriceFreeCreate|\Polar\Models\Components\ProductPriceSeatBasedCreate|\Polar\Models\Components\ProductPriceMeteredUnitCreate>')]
@@ -51,7 +51,7 @@ class ProductCreateOneTime
 
     /**
      *
-     * @var ?ProductVisibility $visibility
+     * @var ?\Polar\Models\Components\ProductVisibility $visibility
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('visibility')]
     #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\ProductVisibility|null')]
@@ -61,7 +61,7 @@ class ProductCreateOneTime
     /**
      * List of custom fields to attach.
      *
-     * @var ?array<AttachedCustomFieldCreate> $attachedCustomFields
+     * @var ?array<\Polar\Models\Components\AttachedCustomFieldCreate> $attachedCustomFields
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('attached_custom_fields')]
     #[\Speakeasy\Serializer\Annotation\Type('array<\Polar\Models\Components\AttachedCustomFieldCreate>|null')]
@@ -118,10 +118,10 @@ class ProductCreateOneTime
 
     /**
      * @param  string  $name
-     * @param  array<ProductPriceFixedCreate|ProductPriceCustomCreate|ProductPriceFreeCreate|ProductPriceSeatBasedCreate|ProductPriceMeteredUnitCreate>  $prices
+     * @param  array<\Polar\Models\Components\ProductPriceFixedCreate|\Polar\Models\Components\ProductPriceCustomCreate|\Polar\Models\Components\ProductPriceFreeCreate|\Polar\Models\Components\ProductPriceSeatBasedCreate|\Polar\Models\Components\ProductPriceMeteredUnitCreate>  $prices
      * @param  ?array<string, string|int|float|bool>  $metadata
-     * @param  ?ProductVisibility  $visibility
-     * @param  ?array<AttachedCustomFieldCreate>  $attachedCustomFields
+     * @param  ?\Polar\Models\Components\ProductVisibility  $visibility
+     * @param  ?array<\Polar\Models\Components\AttachedCustomFieldCreate>  $attachedCustomFields
      * @param  ?string  $description
      * @param  ?array<string>  $medias
      * @param  ?string  $organizationId

@@ -35,18 +35,18 @@ class CustomersUpdateResponse
     /**
      * Customer updated.
      *
-     * @var ?Components\Customer $customer
+     * @var \Polar\Models\Components\CustomerIndividual|\Polar\Models\Components\CustomerTeam|null $customer
      */
-    public ?Components\Customer $customer = null;
+    public Components\CustomerIndividual|Components\CustomerTeam|null $customer = null;
 
     /**
      * @param  string  $contentType
      * @param  int  $statusCode
      * @param  \Psr\Http\Message\ResponseInterface  $rawResponse
-     * @param  ?Components\Customer  $customer
+     * @param  \Polar\Models\Components\CustomerIndividual|\Polar\Models\Components\CustomerTeam|null  $customer
      * @phpstan-pure
      */
-    public function __construct(string $contentType, int $statusCode, \Psr\Http\Message\ResponseInterface $rawResponse, ?Components\Customer $customer = null)
+    public function __construct(string $contentType, int $statusCode, \Psr\Http\Message\ResponseInterface $rawResponse, Components\CustomerIndividual|Components\CustomerTeam|null $customer = null)
     {
         $this->contentType = $contentType;
         $this->statusCode = $statusCode;

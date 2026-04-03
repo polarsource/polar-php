@@ -51,8 +51,8 @@ class CustomerSession
      *
      * **Scopes**: `customer_portal:read` `customer_portal:write`
      *
-     * @param  Operations\CustomerPortalCustomerSessionGetAuthenticatedUserSecurity  $security
-     * @return Operations\CustomerPortalCustomerSessionGetAuthenticatedUserResponse
+     * @param  \Polar\Models\Operations\CustomerPortalCustomerSessionGetAuthenticatedUserSecurity  $security
+     * @return \Polar\Models\Operations\CustomerPortalCustomerSessionGetAuthenticatedUserResponse
      * @throws \Polar\Models\Errors\APIException
      */
     public function getAuthenticatedUser(Operations\CustomerPortalCustomerSessionGetAuthenticatedUserSecurity $security, ?Options $options = null): Operations\CustomerPortalCustomerSessionGetAuthenticatedUserResponse
@@ -120,8 +120,8 @@ class CustomerSession
      *
      * **Scopes**: `customer_portal:read` `customer_portal:write`
      *
-     * @param  Operations\CustomerPortalCustomerSessionIntrospectSecurity  $security
-     * @return Operations\CustomerPortalCustomerSessionIntrospectResponse
+     * @param  \Polar\Models\Operations\CustomerPortalCustomerSessionIntrospectSecurity  $security
+     * @return \Polar\Models\Operations\CustomerPortalCustomerSessionIntrospectResponse
      * @throws \Polar\Models\Errors\APIException
      */
     public function introspect(Operations\CustomerPortalCustomerSessionIntrospectSecurity $security, ?Options $options = null): Operations\CustomerPortalCustomerSessionIntrospectResponse

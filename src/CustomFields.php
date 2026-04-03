@@ -52,8 +52,8 @@ class CustomFields
      *
      * **Scopes**: `custom_fields:write`
      *
-     * @param  Components\CustomFieldCreateText|Components\CustomFieldCreateNumber|Components\CustomFieldCreateDate|Components\CustomFieldCreateCheckbox|Components\CustomFieldCreateSelect  $request
-     * @return Operations\CustomFieldsCreateResponse
+     * @param  \Polar\Models\Components\CustomFieldCreateText|\Polar\Models\Components\CustomFieldCreateNumber|\Polar\Models\Components\CustomFieldCreateDate|\Polar\Models\Components\CustomFieldCreateCheckbox|\Polar\Models\Components\CustomFieldCreateSelect  $request
+     * @return \Polar\Models\Operations\CustomFieldsCreateResponse
      * @throws \Polar\Models\Errors\APIException
      */
     public function create(Components\CustomFieldCreateText|Components\CustomFieldCreateNumber|Components\CustomFieldCreateDate|Components\CustomFieldCreateCheckbox|Components\CustomFieldCreateSelect $request, ?Options $options = null): Operations\CustomFieldsCreateResponse
@@ -132,7 +132,7 @@ class CustomFields
      * **Scopes**: `custom_fields:write`
      *
      * @param  string  $id
-     * @return Operations\CustomFieldsDeleteResponse
+     * @return \Polar\Models\Operations\CustomFieldsDeleteResponse
      * @throws \Polar\Models\Errors\APIException
      */
     public function delete(string $id, ?Options $options = null): Operations\CustomFieldsDeleteResponse
@@ -211,7 +211,7 @@ class CustomFields
      * **Scopes**: `custom_fields:read` `custom_fields:write`
      *
      * @param  string  $id
-     * @return Operations\CustomFieldsGetResponse
+     * @return \Polar\Models\Operations\CustomFieldsGetResponse
      * @throws \Polar\Models\Errors\APIException
      */
     public function get(string $id, ?Options $options = null): Operations\CustomFieldsGetResponse
@@ -298,8 +298,8 @@ class CustomFields
      *
      * **Scopes**: `custom_fields:read` `custom_fields:write`
      *
-     * @param  ?Operations\CustomFieldsListRequest  $request
-     * @return Operations\CustomFieldsListResponse
+     * @param  ?\Polar\Models\Operations\CustomFieldsListRequest  $request
+     * @return \Polar\Models\Operations\CustomFieldsListResponse
      * @throws \Polar\Models\Errors\APIException
      */
     private function listIndividual(?Operations\CustomFieldsListRequest $request = null, ?Options $options = null): Operations\CustomFieldsListResponse
@@ -413,8 +413,8 @@ class CustomFields
      *
      * **Scopes**: `custom_fields:read` `custom_fields:write`
      *
-     * @param  ?Operations\CustomFieldsListRequest  $request
-     * @return \Generator<Operations\CustomFieldsListResponse>
+     * @param  ?\Polar\Models\Operations\CustomFieldsListRequest  $request
+     * @return \Generator<\Polar\Models\Operations\CustomFieldsListResponse>
      * @throws \Polar\Models\Errors\APIException
      */
     public function list(?Operations\CustomFieldsListRequest $request = null, ?Options $options = null): \Generator
@@ -433,9 +433,9 @@ class CustomFields
      *
      * **Scopes**: `custom_fields:write`
      *
-     * @param  Components\CustomFieldUpdateText|Components\CustomFieldUpdateNumber|Components\CustomFieldUpdateDate|Components\CustomFieldUpdateCheckbox|Components\CustomFieldUpdateSelect  $customFieldUpdate
+     * @param  \Polar\Models\Components\CustomFieldUpdateText|\Polar\Models\Components\CustomFieldUpdateNumber|\Polar\Models\Components\CustomFieldUpdateDate|\Polar\Models\Components\CustomFieldUpdateCheckbox|\Polar\Models\Components\CustomFieldUpdateSelect  $customFieldUpdate
      * @param  string  $id
-     * @return Operations\CustomFieldsUpdateResponse
+     * @return \Polar\Models\Operations\CustomFieldsUpdateResponse
      * @throws \Polar\Models\Errors\APIException
      */
     public function update(Components\CustomFieldUpdateText|Components\CustomFieldUpdateNumber|Components\CustomFieldUpdateDate|Components\CustomFieldUpdateCheckbox|Components\CustomFieldUpdateSelect $customFieldUpdate, string $id, ?Options $options = null): Operations\CustomFieldsUpdateResponse

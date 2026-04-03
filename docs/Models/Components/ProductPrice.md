@@ -7,7 +7,7 @@
 
 ```php
 /**
-* @var Components\ProductPriceCustom
+* @var \Polar\Models\Components\ProductPriceCustom
 */
 Components\ProductPriceCustom $value = /* values here */
 ```
@@ -16,7 +16,7 @@ Components\ProductPriceCustom $value = /* values here */
 
 ```php
 /**
-* @var Components\ProductPriceFixed
+* @var \Polar\Models\Components\ProductPriceFixed
 */
 Components\ProductPriceFixed $value = /* values here */
 ```
@@ -25,7 +25,7 @@ Components\ProductPriceFixed $value = /* values here */
 
 ```php
 /**
-* @var Components\ProductPriceFree
+* @var \Polar\Models\Components\ProductPriceFree
 */
 Components\ProductPriceFree $value = /* values here */
 ```
@@ -34,7 +34,7 @@ Components\ProductPriceFree $value = /* values here */
 
 ```php
 /**
-* @var Components\ProductPriceMeteredUnit
+* @var \Polar\Models\Components\ProductPriceMeteredUnit
 */
 Components\ProductPriceMeteredUnit $value = /* values here */
 ```
@@ -43,7 +43,7 @@ Components\ProductPriceMeteredUnit $value = /* values here */
 
 ```php
 /**
-* @var Components\ProductPriceSeatBased
+* @var \Polar\Models\Components\ProductPriceSeatBased
 */
 Components\ProductPriceSeatBased $value = /* values here */
 ```

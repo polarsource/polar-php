@@ -56,8 +56,8 @@ class PolarMembers
      * - Cannot add a member with the owner role (there must be exactly one owner)
      * - If a member with this email already exists, the existing member is returned
      *
-     * @param  Components\CustomerPortalMemberCreate  $request
-     * @return Operations\CustomerPortalMembersAddMemberResponse
+     * @param  \Polar\Models\Components\CustomerPortalMemberCreate  $request
+     * @return \Polar\Models\Operations\CustomerPortalMembersAddMemberResponse
      * @throws \Polar\Models\Errors\APIException
      */
     public function addMember(Components\CustomerPortalMemberCreate $request, ?Options $options = null): Operations\CustomerPortalMembersAddMemberResponse
@@ -137,7 +137,7 @@ class PolarMembers
      *
      * @param  ?int  $page
      * @param  ?int  $limit
-     * @return Operations\CustomerPortalMembersListMembersResponse
+     * @return \Polar\Models\Operations\CustomerPortalMembersListMembersResponse
      * @throws \Polar\Models\Errors\APIException
      */
     private function listMembersIndividual(?int $page = null, ?int $limit = null, ?Options $options = null): Operations\CustomerPortalMembersListMembersResponse
@@ -251,7 +251,7 @@ class PolarMembers
      *
      * @param  ?int  $page
      * @param  ?int  $limit
-     * @return \Generator<Operations\CustomerPortalMembersListMembersResponse>
+     * @return \Generator<\Polar\Models\Operations\CustomerPortalMembersListMembersResponse>
      * @throws \Polar\Models\Errors\APIException
      */
     public function listMembers(?int $page = null, ?int $limit = null, ?Options $options = null): \Generator
@@ -275,7 +275,7 @@ class PolarMembers
      * - Cannot remove the only owner
      *
      * @param  string  $id
-     * @return Operations\CustomerPortalMembersRemoveMemberResponse
+     * @return \Polar\Models\Operations\CustomerPortalMembersRemoveMemberResponse
      * @throws \Polar\Models\Errors\APIException
      */
     public function removeMember(string $id, ?Options $options = null): Operations\CustomerPortalMembersRemoveMemberResponse
@@ -346,9 +346,9 @@ class PolarMembers
      * - Cannot modify your own role (to prevent self-demotion)
      * - Customer must have exactly one owner at all times
      *
-     * @param  Components\CustomerPortalMemberUpdate  $customerPortalMemberUpdate
+     * @param  \Polar\Models\Components\CustomerPortalMemberUpdate  $customerPortalMemberUpdate
      * @param  string  $id
-     * @return Operations\CustomerPortalMembersUpdateMemberResponse
+     * @return \Polar\Models\Operations\CustomerPortalMembersUpdateMemberResponse
      * @throws \Polar\Models\Errors\APIException
      */
     public function updateMember(Components\CustomerPortalMemberUpdate $customerPortalMemberUpdate, string $id, ?Options $options = null): Operations\CustomerPortalMembersUpdateMemberResponse

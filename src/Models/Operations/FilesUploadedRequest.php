@@ -22,14 +22,14 @@ class FilesUploadedRequest
 
     /**
      *
-     * @var Components\FileUploadCompleted $fileUploadCompleted
+     * @var \Polar\Models\Components\FileUploadCompleted $fileUploadCompleted
      */
     #[SpeakeasyMetadata('request:mediaType=application/json')]
     public Components\FileUploadCompleted $fileUploadCompleted;
 
     /**
      * @param  string  $id
-     * @param  Components\FileUploadCompleted  $fileUploadCompleted
+     * @param  \Polar\Models\Components\FileUploadCompleted  $fileUploadCompleted
      * @phpstan-pure
      */
     public function __construct(string $id, Components\FileUploadCompleted $fileUploadCompleted)

@@ -35,7 +35,7 @@ class Oauth2AuthorizeResponse
     /**
      * Successful Response
      *
-     * @var Components\AuthorizeResponseUser|Components\AuthorizeResponseOrganization|null $responseOauth2Authorize
+     * @var \Polar\Models\Components\AuthorizeResponseUser|\Polar\Models\Components\AuthorizeResponseOrganization|null $responseOauth2Authorize
      */
     public Components\AuthorizeResponseUser|Components\AuthorizeResponseOrganization|null $responseOauth2Authorize = null;
 
@@ -43,7 +43,7 @@ class Oauth2AuthorizeResponse
      * @param  string  $contentType
      * @param  int  $statusCode
      * @param  \Psr\Http\Message\ResponseInterface  $rawResponse
-     * @param  Components\AuthorizeResponseUser|Components\AuthorizeResponseOrganization|null  $responseOauth2Authorize
+     * @param  \Polar\Models\Components\AuthorizeResponseUser|\Polar\Models\Components\AuthorizeResponseOrganization|null  $responseOauth2Authorize
      * @phpstan-pure
      */
     public function __construct(string $contentType, int $statusCode, \Psr\Http\Message\ResponseInterface $rawResponse, Components\AuthorizeResponseUser|Components\AuthorizeResponseOrganization|null $responseOauth2Authorize = null)

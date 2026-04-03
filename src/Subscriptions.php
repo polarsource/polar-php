@@ -57,8 +57,8 @@ class Subscriptions
      *
      * **Scopes**: `subscriptions:write`
      *
-     * @param  Components\SubscriptionCreateCustomer|Components\SubscriptionCreateExternalCustomer  $request
-     * @return Operations\SubscriptionsCreateResponse
+     * @param  \Polar\Models\Components\SubscriptionCreateCustomer|\Polar\Models\Components\SubscriptionCreateExternalCustomer  $request
+     * @return \Polar\Models\Operations\SubscriptionsCreateResponse
      * @throws \Polar\Models\Errors\APIException
      */
     public function create(Components\SubscriptionCreateCustomer|Components\SubscriptionCreateExternalCustomer $request, ?Options $options = null): Operations\SubscriptionsCreateResponse
@@ -137,7 +137,7 @@ class Subscriptions
      * **Scopes**: `subscriptions:read` `subscriptions:write`
      *
      * @param  string|array<string>|null  $organizationId
-     * @return Operations\SubscriptionsExportResponse
+     * @return \Polar\Models\Operations\SubscriptionsExportResponse
      * @throws \Polar\Models\Errors\APIException
      */
     public function export(string|array|null $organizationId = null, ?Options $options = null): Operations\SubscriptionsExportResponse
@@ -227,7 +227,7 @@ class Subscriptions
      * **Scopes**: `subscriptions:read` `subscriptions:write`
      *
      * @param  string  $id
-     * @return Operations\SubscriptionsGetResponse
+     * @return \Polar\Models\Operations\SubscriptionsGetResponse
      * @throws \Polar\Models\Errors\APIException
      */
     public function get(string $id, ?Options $options = null): Operations\SubscriptionsGetResponse
@@ -314,8 +314,8 @@ class Subscriptions
      *
      * **Scopes**: `subscriptions:read` `subscriptions:write`
      *
-     * @param  ?Operations\SubscriptionsListRequest  $request
-     * @return Operations\SubscriptionsListResponse
+     * @param  ?\Polar\Models\Operations\SubscriptionsListRequest  $request
+     * @return \Polar\Models\Operations\SubscriptionsListResponse
      * @throws \Polar\Models\Errors\APIException
      */
     private function listIndividual(?Operations\SubscriptionsListRequest $request = null, ?Options $options = null): Operations\SubscriptionsListResponse
@@ -395,6 +395,9 @@ class Subscriptions
                             discountId: $request != null ? $request->discountId : null,
                             active: $request != null ? $request->active : null,
                             cancelAtPeriodEnd: $request != null ? $request->cancelAtPeriodEnd : null,
+                            customerCancellationReason: $request != null ? $request->customerCancellationReason : null,
+                            canceledAtAfter: $request != null ? $request->canceledAtAfter : null,
+                            canceledAtBefore: $request != null ? $request->canceledAtBefore : null,
                             page: $nextPage,
                             limit: $request != null ? $request->limit : null,
                             sorting: $request != null ? $request->sorting : null,
@@ -434,8 +437,8 @@ class Subscriptions
      *
      * **Scopes**: `subscriptions:read` `subscriptions:write`
      *
-     * @param  ?Operations\SubscriptionsListRequest  $request
-     * @return \Generator<Operations\SubscriptionsListResponse>
+     * @param  ?\Polar\Models\Operations\SubscriptionsListRequest  $request
+     * @return \Generator<\Polar\Models\Operations\SubscriptionsListResponse>
      * @throws \Polar\Models\Errors\APIException
      */
     public function list(?Operations\SubscriptionsListRequest $request = null, ?Options $options = null): \Generator
@@ -455,7 +458,7 @@ class Subscriptions
      * **Scopes**: `subscriptions:write`
      *
      * @param  string  $id
-     * @return Operations\SubscriptionsRevokeResponse
+     * @return \Polar\Models\Operations\SubscriptionsRevokeResponse
      * @throws \Polar\Models\Errors\APIException
      */
     public function revoke(string $id, ?Options $options = null): Operations\SubscriptionsRevokeResponse
@@ -564,9 +567,9 @@ class Subscriptions
      *
      * **Scopes**: `subscriptions:write`
      *
-     * @param  Components\SubscriptionUpdateProduct|Components\SubscriptionUpdateDiscount|Components\SubscriptionUpdateTrial|Components\SubscriptionUpdateSeats|Components\SubscriptionUpdateBillingPeriod|Components\SubscriptionCancel|Components\SubscriptionRevoke  $subscriptionUpdate
+     * @param  \Polar\Models\Components\SubscriptionUpdateProduct|\Polar\Models\Components\SubscriptionUpdateDiscount|\Polar\Models\Components\SubscriptionUpdateTrial|\Polar\Models\Components\SubscriptionUpdateSeats|\Polar\Models\Components\SubscriptionUpdateBillingPeriod|\Polar\Models\Components\SubscriptionCancel|\Polar\Models\Components\SubscriptionRevoke  $subscriptionUpdate
      * @param  string  $id
-     * @return Operations\SubscriptionsUpdateResponse
+     * @return \Polar\Models\Operations\SubscriptionsUpdateResponse
      * @throws \Polar\Models\Errors\APIException
      */
     public function update(Components\SubscriptionUpdateProduct|Components\SubscriptionUpdateDiscount|Components\SubscriptionUpdateTrial|Components\SubscriptionUpdateSeats|Components\SubscriptionUpdateBillingPeriod|Components\SubscriptionCancel|Components\SubscriptionRevoke $subscriptionUpdate, string $id, ?Options $options = null): Operations\SubscriptionsUpdateResponse

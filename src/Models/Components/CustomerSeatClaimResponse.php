@@ -14,7 +14,7 @@ class CustomerSeatClaimResponse
 {
     /**
      *
-     * @var CustomerSeat $seat
+     * @var \Polar\Models\Components\CustomerSeat $seat
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('seat')]
     #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\CustomerSeat')]
@@ -29,7 +29,7 @@ class CustomerSeatClaimResponse
     public string $customerSessionToken;
 
     /**
-     * @param  CustomerSeat  $seat
+     * @param  \Polar\Models\Components\CustomerSeat  $seat
      * @param  string  $customerSessionToken
      * @phpstan-pure
      */

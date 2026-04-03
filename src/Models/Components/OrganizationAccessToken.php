@@ -29,7 +29,7 @@ class OrganizationAccessToken
     /**
      * $scopes
      *
-     * @var array<Scope> $scopes
+     * @var array<\Polar\Models\Components\Scope> $scopes
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('scopes')]
     #[\Speakeasy\Serializer\Annotation\Type('array<\Polar\Models\Components\Scope>')]
@@ -75,7 +75,7 @@ class OrganizationAccessToken
     /**
      * @param  \DateTime  $createdAt
      * @param  string  $id
-     * @param  array<Scope>  $scopes
+     * @param  array<\Polar\Models\Components\Scope>  $scopes
      * @param  string  $comment
      * @param  string  $organizationId
      * @param  ?\DateTime  $modifiedAt

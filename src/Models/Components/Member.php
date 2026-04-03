@@ -46,7 +46,7 @@ class Member
 
     /**
      *
-     * @var MemberRole $role
+     * @var \Polar\Models\Components\MemberRole $role
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('role')]
     #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\MemberRole')]
@@ -81,7 +81,7 @@ class Member
      * @param  \DateTime  $createdAt
      * @param  string  $customerId
      * @param  string  $email
-     * @param  MemberRole  $role
+     * @param  \Polar\Models\Components\MemberRole  $role
      * @param  ?\DateTime  $modifiedAt
      * @param  ?string  $name
      * @param  ?string  $externalId

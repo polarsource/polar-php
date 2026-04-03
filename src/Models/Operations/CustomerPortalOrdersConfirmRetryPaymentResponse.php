@@ -35,7 +35,7 @@ class CustomerPortalOrdersConfirmRetryPaymentResponse
     /**
      * Successful Response
      *
-     * @var ?Components\CustomerOrderPaymentConfirmation $customerOrderPaymentConfirmation
+     * @var ?\Polar\Models\Components\CustomerOrderPaymentConfirmation $customerOrderPaymentConfirmation
      */
     public ?Components\CustomerOrderPaymentConfirmation $customerOrderPaymentConfirmation = null;
 
@@ -43,7 +43,7 @@ class CustomerPortalOrdersConfirmRetryPaymentResponse
      * @param  string  $contentType
      * @param  int  $statusCode
      * @param  \Psr\Http\Message\ResponseInterface  $rawResponse
-     * @param  ?Components\CustomerOrderPaymentConfirmation  $customerOrderPaymentConfirmation
+     * @param  ?\Polar\Models\Components\CustomerOrderPaymentConfirmation  $customerOrderPaymentConfirmation
      * @phpstan-pure
      */
     public function __construct(string $contentType, int $statusCode, \Psr\Http\Message\ResponseInterface $rawResponse, ?Components\CustomerOrderPaymentConfirmation $customerOrderPaymentConfirmation = null)

@@ -14,23 +14,23 @@ class ListResourceCustomer
     /**
      * $items
      *
-     * @var array<Customer> $items
+     * @var array<\Polar\Models\Components\CustomerIndividual|\Polar\Models\Components\CustomerTeam> $items
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('items')]
-    #[\Speakeasy\Serializer\Annotation\Type('array<\Polar\Models\Components\Customer>')]
+    #[\Speakeasy\Serializer\Annotation\Type('array<\Polar\Models\Components\CustomerIndividual|\Polar\Models\Components\CustomerTeam>')]
     public array $items;
 
     /**
      *
-     * @var Pagination $pagination
+     * @var \Polar\Models\Components\Pagination $pagination
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('pagination')]
     #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\Pagination')]
     public Pagination $pagination;
 
     /**
-     * @param  array<Customer>  $items
-     * @param  Pagination  $pagination
+     * @param  array<\Polar\Models\Components\CustomerIndividual|\Polar\Models\Components\CustomerTeam>  $items
+     * @param  \Polar\Models\Components\Pagination  $pagination
      * @phpstan-pure
      */
     public function __construct(array $items, Pagination $pagination)

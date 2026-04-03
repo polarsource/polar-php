@@ -26,7 +26,7 @@ class WebhookOrganizationUpdatedPayload
 
     /**
      *
-     * @var Organization $data
+     * @var \Polar\Models\Components\Organization $data
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('data')]
     #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\Organization')]
@@ -42,7 +42,7 @@ class WebhookOrganizationUpdatedPayload
     /**
      * @param  string  $type
      * @param  \DateTime  $timestamp
-     * @param  Organization  $data
+     * @param  \Polar\Models\Components\Organization  $data
      * @phpstan-pure
      */
     public function __construct(\DateTime $timestamp, Organization $data, string $type = 'organization.updated')

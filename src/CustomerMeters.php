@@ -52,7 +52,7 @@ class CustomerMeters
      * **Scopes**: `customer_meters:read`
      *
      * @param  string  $id
-     * @return Operations\CustomerMetersGetResponse
+     * @return \Polar\Models\Operations\CustomerMetersGetResponse
      * @throws \Polar\Models\Errors\APIException
      */
     public function get(string $id, ?Options $options = null): Operations\CustomerMetersGetResponse
@@ -139,8 +139,8 @@ class CustomerMeters
      *
      * **Scopes**: `customer_meters:read`
      *
-     * @param  ?Operations\CustomerMetersListRequest  $request
-     * @return Operations\CustomerMetersListResponse
+     * @param  ?\Polar\Models\Operations\CustomerMetersListRequest  $request
+     * @return \Polar\Models\Operations\CustomerMetersListResponse
      * @throws \Polar\Models\Errors\APIException
      */
     private function listIndividual(?Operations\CustomerMetersListRequest $request = null, ?Options $options = null): Operations\CustomerMetersListResponse
@@ -255,8 +255,8 @@ class CustomerMeters
      *
      * **Scopes**: `customer_meters:read`
      *
-     * @param  ?Operations\CustomerMetersListRequest  $request
-     * @return \Generator<Operations\CustomerMetersListResponse>
+     * @param  ?\Polar\Models\Operations\CustomerMetersListRequest  $request
+     * @return \Generator<\Polar\Models\Operations\CustomerMetersListResponse>
      * @throws \Polar\Models\Errors\APIException
      */
     public function list(?Operations\CustomerMetersListRequest $request = null, ?Options $options = null): \Generator

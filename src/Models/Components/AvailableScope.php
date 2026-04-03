@@ -60,6 +60,7 @@ enum AvailableScope: string
     case RefundsWrite = 'refunds:write';
     case PaymentsRead = 'payments:read';
     case MetricsRead = 'metrics:read';
+    case MetricsWrite = 'metrics:write';
     case WebhooksRead = 'webhooks:read';
     case WebhooksWrite = 'webhooks:write';
     case LicenseKeysRead = 'license_keys:read';

@@ -21,7 +21,7 @@ class BenefitLicenseKeysCreateProperties
 
     /**
      *
-     * @var ?BenefitLicenseKeyExpirationProperties $expires
+     * @var ?\Polar\Models\Components\BenefitLicenseKeyExpirationProperties $expires
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('expires')]
     #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\BenefitLicenseKeyExpirationProperties|null')]
@@ -30,7 +30,7 @@ class BenefitLicenseKeysCreateProperties
 
     /**
      *
-     * @var ?BenefitLicenseKeyActivationCreateProperties $activations
+     * @var ?\Polar\Models\Components\BenefitLicenseKeyActivationCreateProperties $activations
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('activations')]
     #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\BenefitLicenseKeyActivationCreateProperties|null')]
@@ -47,8 +47,8 @@ class BenefitLicenseKeysCreateProperties
 
     /**
      * @param  ?string  $prefix
-     * @param  ?BenefitLicenseKeyExpirationProperties  $expires
-     * @param  ?BenefitLicenseKeyActivationCreateProperties  $activations
+     * @param  ?\Polar\Models\Components\BenefitLicenseKeyExpirationProperties  $expires
+     * @param  ?\Polar\Models\Components\BenefitLicenseKeyActivationCreateProperties  $activations
      * @param  ?int  $limitUsage
      * @phpstan-pure
      */

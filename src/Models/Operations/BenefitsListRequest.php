@@ -23,7 +23,7 @@ class BenefitsListRequest
     /**
      * Filter by benefit type.
      *
-     * @var Components\BenefitType|array<Components\BenefitType>|null $typeFilter
+     * @var \Polar\Models\Components\BenefitType|array<\Polar\Models\Components\BenefitType>|null $typeFilter
      */
     #[SpeakeasyMetadata('queryParam:style=form,explode=true,name=type')]
     public Components\BenefitType|array|null $typeFilter = null;
@@ -55,7 +55,7 @@ class BenefitsListRequest
     /**
      * Sorting criterion. Several criteria can be used simultaneously and will be applied in order. Add a minus sign `-` before the criteria name to sort by descending order.
      *
-     * @var ?array<Components\BenefitSortProperty> $sorting
+     * @var ?array<\Polar\Models\Components\BenefitSortProperty> $sorting
      */
     #[SpeakeasyMetadata('queryParam:style=form,explode=true,name=sorting')]
     public ?array $sorting = null;
@@ -88,11 +88,11 @@ class BenefitsListRequest
      * @param  ?int  $page
      * @param  ?int  $limit
      * @param  string|array<string>|null  $organizationId
-     * @param  Components\BenefitType|array<Components\BenefitType>|null  $typeFilter
+     * @param  \Polar\Models\Components\BenefitType|array<\Polar\Models\Components\BenefitType>|null  $typeFilter
      * @param  string|array<string>|null  $id
      * @param  string|array<string>|null  $excludeId
      * @param  ?string  $query
-     * @param  ?array<Components\BenefitSortProperty>  $sorting
+     * @param  ?array<\Polar\Models\Components\BenefitSortProperty>  $sorting
      * @param  ?array<string, string|int|bool|array<string>|array<int>|array<bool>>  $metadata
      * @phpstan-pure
      */

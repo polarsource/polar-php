@@ -50,8 +50,8 @@ class OrganizationAccessTokens
      *
      * **Scopes**: `organization_access_tokens:write`
      *
-     * @param  Components\OrganizationAccessTokenCreate  $request
-     * @return Operations\OrganizationAccessTokensCreateResponse
+     * @param  \Polar\Models\Components\OrganizationAccessTokenCreate  $request
+     * @return \Polar\Models\Operations\OrganizationAccessTokensCreateResponse
      * @throws \Polar\Models\Errors\APIException
      */
     public function create(Components\OrganizationAccessTokenCreate $request, ?Options $options = null): Operations\OrganizationAccessTokensCreateResponse
@@ -128,7 +128,7 @@ class OrganizationAccessTokens
      * **Scopes**: `organization_access_tokens:write`
      *
      * @param  string  $id
-     * @return Operations\OrganizationAccessTokensDeleteResponse
+     * @return \Polar\Models\Operations\OrganizationAccessTokensDeleteResponse
      * @throws \Polar\Models\Errors\APIException
      */
     public function delete(string $id, ?Options $options = null): Operations\OrganizationAccessTokensDeleteResponse
@@ -198,8 +198,8 @@ class OrganizationAccessTokens
      * @param  string|array<string>|null  $organizationId
      * @param  ?int  $page
      * @param  ?int  $limit
-     * @param  ?array<Components\OrganizationAccessTokenSortProperty>  $sorting
-     * @return Operations\OrganizationAccessTokensListResponse
+     * @param  ?array<\Polar\Models\Components\OrganizationAccessTokenSortProperty>  $sorting
+     * @return \Polar\Models\Operations\OrganizationAccessTokensListResponse
      * @throws \Polar\Models\Errors\APIException
      */
     private function listIndividual(string|array|null $organizationId = null, ?int $page = null, ?int $limit = null, ?array $sorting = null, ?Options $options = null): Operations\OrganizationAccessTokensListResponse
@@ -318,8 +318,8 @@ class OrganizationAccessTokens
      * @param  string|array<string>|null  $organizationId
      * @param  ?int  $page
      * @param  ?int  $limit
-     * @param  ?array<Components\OrganizationAccessTokenSortProperty>  $sorting
-     * @return \Generator<Operations\OrganizationAccessTokensListResponse>
+     * @param  ?array<\Polar\Models\Components\OrganizationAccessTokenSortProperty>  $sorting
+     * @return \Generator<\Polar\Models\Operations\OrganizationAccessTokensListResponse>
      * @throws \Polar\Models\Errors\APIException
      */
     public function list(string|array|null $organizationId = null, ?int $page = null, ?int $limit = null, ?array $sorting = null, ?Options $options = null): \Generator
@@ -336,9 +336,9 @@ class OrganizationAccessTokens
      *
      * **Scopes**: `organization_access_tokens:write`
      *
-     * @param  Components\OrganizationAccessTokenUpdate  $organizationAccessTokenUpdate
+     * @param  \Polar\Models\Components\OrganizationAccessTokenUpdate  $organizationAccessTokenUpdate
      * @param  string  $id
-     * @return Operations\OrganizationAccessTokensUpdateResponse
+     * @return \Polar\Models\Operations\OrganizationAccessTokensUpdateResponse
      * @throws \Polar\Models\Errors\APIException
      */
     public function update(Components\OrganizationAccessTokenUpdate $organizationAccessTokenUpdate, string $id, ?Options $options = null): Operations\OrganizationAccessTokensUpdateResponse

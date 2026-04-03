@@ -13,7 +13,7 @@ class OrganizationAccessTokenCreateResponse
 {
     /**
      *
-     * @var OrganizationAccessToken $organizationAccessToken
+     * @var \Polar\Models\Components\OrganizationAccessToken $organizationAccessToken
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('organization_access_token')]
     #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\OrganizationAccessToken')]
@@ -27,7 +27,7 @@ class OrganizationAccessTokenCreateResponse
     public string $token;
 
     /**
-     * @param  OrganizationAccessToken  $organizationAccessToken
+     * @param  \Polar\Models\Components\OrganizationAccessToken  $organizationAccessToken
      * @param  string  $token
      * @phpstan-pure
      */

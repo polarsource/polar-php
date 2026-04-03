@@ -9,7 +9,7 @@ Filter by product billing type. `recurring` will filter data corresponding to su
 
 ```php
 /**
-* @var Components\ProductBillingType
+* @var \Polar\Models\Components\ProductBillingType
 */
 Components\ProductBillingType $value = /* values here */
 ```
@@ -18,7 +18,7 @@ Components\ProductBillingType $value = /* values here */
 
 ```php
 /**
-* @var array<Components\ProductBillingType>
+* @var array<\Polar\Models\Components\ProductBillingType>
 */
 array $value = /* values here */
 ```

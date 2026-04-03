@@ -13,6 +13,7 @@ class SecurityMetadata
     private function __construct(
         public bool $option,
         public bool $scheme,
+        public bool $composite,
         public string $name,
         public string $type,
         public string $subtype,
@@ -29,6 +30,7 @@ class SecurityMetadata
 
         $option = false;
         $scheme = false;
+        $composite = false;
         $name = '';
         $type = '';
         $subtype = '';
@@ -47,6 +49,7 @@ class SecurityMetadata
                 'subtype' => $subtype = $parts[1],
                 'option' => $option = true,
                 'scheme' => $scheme = true,
+                'composite' => $composite = true,
                 default => throw new \RuntimeException('Invalid option passed'),
             };
         }
@@ -54,6 +57,7 @@ class SecurityMetadata
         return new SecurityMetadata(
             option: $option,
             scheme: $scheme,
+            composite: $composite,
             name: $name,
             type: $type,
             subtype: $subtype,

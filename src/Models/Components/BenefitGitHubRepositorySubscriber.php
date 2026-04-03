@@ -70,7 +70,7 @@ class BenefitGitHubRepositorySubscriber
 
     /**
      *
-     * @var BenefitSubscriberOrganization $organization
+     * @var \Polar\Models\Components\BenefitSubscriberOrganization $organization
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('organization')]
     #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\BenefitSubscriberOrganization')]
@@ -79,7 +79,7 @@ class BenefitGitHubRepositorySubscriber
     /**
      * Properties available to subscribers for a benefit of type `github_repository`.
      *
-     * @var BenefitGitHubRepositorySubscriberProperties $properties
+     * @var \Polar\Models\Components\BenefitGitHubRepositorySubscriberProperties $properties
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('properties')]
     #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\BenefitGitHubRepositorySubscriberProperties')]
@@ -109,8 +109,8 @@ class BenefitGitHubRepositorySubscriber
      * @param  bool  $deletable
      * @param  string  $organizationId
      * @param  array<string, string|int|float|bool>  $metadata
-     * @param  BenefitSubscriberOrganization  $organization
-     * @param  BenefitGitHubRepositorySubscriberProperties  $properties
+     * @param  \Polar\Models\Components\BenefitSubscriberOrganization  $organization
+     * @param  \Polar\Models\Components\BenefitGitHubRepositorySubscriberProperties  $properties
      * @param  ?\DateTime  $modifiedAt
      * @phpstan-pure
      */

@@ -53,7 +53,7 @@ class Events
      * **Scopes**: `events:read` `events:write`
      *
      * @param  string  $id
-     * @return Operations\EventsGetResponse
+     * @return \Polar\Models\Operations\EventsGetResponse
      * @throws \Polar\Models\Errors\APIException
      */
     public function get(string $id, ?Options $options = null): Operations\EventsGetResponse
@@ -91,7 +91,7 @@ class Events
 
                 $serializer = Utils\JSON::createSerializer();
                 $responseData = (string) $httpResponse->getBody();
-                $obj = $serializer->deserialize($responseData, '\Polar\Models\Components\MeterCreditEvent|\Polar\Models\Components\MeterResetEvent|\Polar\Models\Components\BenefitGrantedEvent|\Polar\Models\Components\BenefitCycledEvent|\Polar\Models\Components\BenefitUpdatedEvent|\Polar\Models\Components\BenefitRevokedEvent|\Polar\Models\Components\SubscriptionCreatedEvent|\Polar\Models\Components\SubscriptionUpdatedEvent|\Polar\Models\Components\SubscriptionCycledEvent|\Polar\Models\Components\SubscriptionCanceledEvent|\Polar\Models\Components\SubscriptionRevokedEvent|\Polar\Models\Components\SubscriptionUncanceledEvent|\Polar\Models\Components\SubscriptionProductUpdatedEvent|\Polar\Models\Components\SubscriptionSeatsUpdatedEvent|\Polar\Models\Components\SubscriptionBillingPeriodUpdatedEvent|\Polar\Models\Components\OrderPaidEvent|\Polar\Models\Components\OrderRefundedEvent|\Polar\Models\Components\CheckoutCreatedEvent|\Polar\Models\Components\CustomerCreatedEvent|\Polar\Models\Components\CustomerUpdatedEvent|\Polar\Models\Components\CustomerDeletedEvent|\Polar\Models\Components\BalanceOrderEvent|\Polar\Models\Components\BalanceCreditOrderEvent|\Polar\Models\Components\BalanceRefundEvent|\Polar\Models\Components\BalanceRefundReversalEvent|\Polar\Models\Components\BalanceDisputeEvent|\Polar\Models\Components\BalanceDisputeReversalEvent|\Polar\Models\Components\UserEvent', 'json', DeserializationContext::create()->setRequireAllRequiredProperties(true));
+                $obj = $serializer->deserialize($responseData, '\Polar\Models\Components\MeterCreditEvent|\Polar\Models\Components\MeterResetEvent|\Polar\Models\Components\BenefitGrantedEvent|\Polar\Models\Components\BenefitCycledEvent|\Polar\Models\Components\BenefitUpdatedEvent|\Polar\Models\Components\BenefitRevokedEvent|\Polar\Models\Components\SubscriptionCreatedEvent|\Polar\Models\Components\SubscriptionUpdatedEvent|\Polar\Models\Components\SubscriptionCycledEvent|\Polar\Models\Components\SubscriptionCanceledEvent|\Polar\Models\Components\SubscriptionRevokedEvent|\Polar\Models\Components\SubscriptionUncanceledEvent|\Polar\Models\Components\SubscriptionProductUpdatedEvent|\Polar\Models\Components\SubscriptionSeatsUpdatedEvent|\Polar\Models\Components\SubscriptionBillingPeriodUpdatedEvent|\Polar\Models\Components\OrderPaidEvent|\Polar\Models\Components\OrderRefundedEvent|\Polar\Models\Components\OrderVoidedEvent|\Polar\Models\Components\CheckoutCreatedEvent|\Polar\Models\Components\CustomerCreatedEvent|\Polar\Models\Components\CustomerUpdatedEvent|\Polar\Models\Components\CustomerDeletedEvent|\Polar\Models\Components\BalanceOrderEvent|\Polar\Models\Components\BalanceCreditOrderEvent|\Polar\Models\Components\BalanceRefundEvent|\Polar\Models\Components\BalanceRefundReversalEvent|\Polar\Models\Components\BalanceDisputeEvent|\Polar\Models\Components\BalanceDisputeReversalEvent|\Polar\Models\Components\UserEvent', 'json', DeserializationContext::create()->setRequireAllRequiredProperties(true));
                 $response = new Operations\EventsGetResponse(
                     statusCode: $statusCode,
                     contentType: $contentType,
@@ -140,8 +140,8 @@ class Events
      *
      * **Scopes**: `events:write`
      *
-     * @param  Components\EventsIngest  $request
-     * @return Operations\EventsIngestResponse
+     * @param  \Polar\Models\Components\EventsIngest  $request
+     * @return \Polar\Models\Operations\EventsIngestResponse
      * @throws \Polar\Models\Errors\APIException
      */
     public function ingest(Components\EventsIngest $request, ?Options $options = null): Operations\EventsIngestResponse
@@ -219,8 +219,8 @@ class Events
      *
      * **Scopes**: `events:read` `events:write`
      *
-     * @param  ?Operations\EventsListRequest  $request
-     * @return Operations\EventsListResponse
+     * @param  ?\Polar\Models\Operations\EventsListRequest  $request
+     * @return \Polar\Models\Operations\EventsListResponse
      * @throws \Polar\Models\Errors\APIException
      */
     public function list(?Operations\EventsListRequest $request = null, ?Options $options = null): Operations\EventsListResponse
@@ -296,8 +296,8 @@ class Events
      *
      * **Scopes**: `events:read` `events:write`
      *
-     * @param  ?Operations\EventsListNamesRequest  $request
-     * @return Operations\EventsListNamesResponse
+     * @param  ?\Polar\Models\Operations\EventsListNamesRequest  $request
+     * @return \Polar\Models\Operations\EventsListNamesResponse
      * @throws \Polar\Models\Errors\APIException
      */
     private function listNamesIndividual(?Operations\EventsListNamesRequest $request = null, ?Options $options = null): Operations\EventsListNamesResponse
@@ -413,8 +413,8 @@ class Events
      *
      * **Scopes**: `events:read` `events:write`
      *
-     * @param  ?Operations\EventsListNamesRequest  $request
-     * @return \Generator<Operations\EventsListNamesResponse>
+     * @param  ?\Polar\Models\Operations\EventsListNamesRequest  $request
+     * @return \Generator<\Polar\Models\Operations\EventsListNamesResponse>
      * @throws \Polar\Models\Errors\APIException
      */
     public function listNames(?Operations\EventsListNamesRequest $request = null, ?Options $options = null): \Generator

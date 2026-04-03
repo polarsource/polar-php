@@ -22,14 +22,14 @@ class CheckoutsClientConfirmRequest
 
     /**
      *
-     * @var Components\CheckoutConfirmStripe $checkoutConfirmStripe
+     * @var \Polar\Models\Components\CheckoutConfirmStripe $checkoutConfirmStripe
      */
     #[SpeakeasyMetadata('request:mediaType=application/json')]
     public Components\CheckoutConfirmStripe $checkoutConfirmStripe;
 
     /**
      * @param  string  $clientSecret
-     * @param  Components\CheckoutConfirmStripe  $checkoutConfirmStripe
+     * @param  \Polar\Models\Components\CheckoutConfirmStripe  $checkoutConfirmStripe
      * @phpstan-pure
      */
     public function __construct(string $clientSecret, Components\CheckoutConfirmStripe $checkoutConfirmStripe)

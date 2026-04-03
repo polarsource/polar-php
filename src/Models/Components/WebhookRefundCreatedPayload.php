@@ -26,7 +26,7 @@ class WebhookRefundCreatedPayload
 
     /**
      *
-     * @var Refund $data
+     * @var \Polar\Models\Components\Refund $data
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('data')]
     #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\Refund')]
@@ -42,7 +42,7 @@ class WebhookRefundCreatedPayload
     /**
      * @param  string  $type
      * @param  \DateTime  $timestamp
-     * @param  Refund  $data
+     * @param  \Polar\Models\Components\Refund  $data
      * @phpstan-pure
      */
     public function __construct(\DateTime $timestamp, Refund $data, string $type = 'refund.created')

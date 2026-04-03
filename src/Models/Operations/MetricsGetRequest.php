@@ -32,7 +32,7 @@ class MetricsGetRequest
     /**
      * Interval between two timestamps.
      *
-     * @var Components\TimeInterval $interval
+     * @var \Polar\Models\Components\TimeInterval $interval
      */
     #[SpeakeasyMetadata('queryParam:style=form,explode=true,name=interval')]
     public Components\TimeInterval $interval;
@@ -56,7 +56,7 @@ class MetricsGetRequest
     /**
      * Filter by billing type. `recurring` will filter data corresponding to subscriptions creations or renewals. `one_time` will filter data corresponding to one-time purchases.
      *
-     * @var Components\ProductBillingType|array<Components\ProductBillingType>|null $billingType
+     * @var \Polar\Models\Components\ProductBillingType|array<\Polar\Models\Components\ProductBillingType>|null $billingType
      */
     #[SpeakeasyMetadata('queryParam:style=form,explode=true,name=billing_type')]
     public Components\ProductBillingType|array|null $billingType = null;
@@ -88,11 +88,11 @@ class MetricsGetRequest
     /**
      * @param  LocalDate  $startDate
      * @param  LocalDate  $endDate
-     * @param  Components\TimeInterval  $interval
+     * @param  \Polar\Models\Components\TimeInterval  $interval
      * @param  ?string  $timezone
      * @param  string|array<string>|null  $organizationId
      * @param  string|array<string>|null  $productId
-     * @param  Components\ProductBillingType|array<Components\ProductBillingType>|null  $billingType
+     * @param  \Polar\Models\Components\ProductBillingType|array<\Polar\Models\Components\ProductBillingType>|null  $billingType
      * @param  string|array<string>|null  $customerId
      * @param  ?array<string>  $metrics
      * @phpstan-pure

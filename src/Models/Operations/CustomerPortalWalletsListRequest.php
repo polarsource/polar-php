@@ -15,7 +15,7 @@ class CustomerPortalWalletsListRequest
     /**
      * Sorting criterion. Several criteria can be used simultaneously and will be applied in order. Add a minus sign `-` before the criteria name to sort by descending order.
      *
-     * @var ?array<Components\CustomerWalletSortProperty> $sorting
+     * @var ?array<\Polar\Models\Components\CustomerWalletSortProperty> $sorting
      */
     #[SpeakeasyMetadata('queryParam:style=form,explode=true,name=sorting')]
     public ?array $sorting = null;
@@ -39,7 +39,7 @@ class CustomerPortalWalletsListRequest
     /**
      * @param  ?int  $page
      * @param  ?int  $limit
-     * @param  ?array<Components\CustomerWalletSortProperty>  $sorting
+     * @param  ?array<\Polar\Models\Components\CustomerWalletSortProperty>  $sorting
      * @phpstan-pure
      */
     public function __construct(?array $sorting = null, ?int $page = 1, ?int $limit = 10)

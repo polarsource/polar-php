@@ -35,7 +35,7 @@ class CustomerPortalCustomersListPaymentMethodsResponse
     /**
      * Successful Response
      *
-     * @var ?Components\ListResourceCustomerPaymentMethod $listResourceCustomerPaymentMethod
+     * @var ?\Polar\Models\Components\ListResourceCustomerPaymentMethod $listResourceCustomerPaymentMethod
      */
     public ?Components\ListResourceCustomerPaymentMethod $listResourceCustomerPaymentMethod = null;
 
@@ -47,7 +47,7 @@ class CustomerPortalCustomersListPaymentMethodsResponse
      * @param  string  $contentType
      * @param  int  $statusCode
      * @param  \Psr\Http\Message\ResponseInterface  $rawResponse
-     * @param  ?Components\ListResourceCustomerPaymentMethod  $listResourceCustomerPaymentMethod
+     * @param  ?\Polar\Models\Components\ListResourceCustomerPaymentMethod  $listResourceCustomerPaymentMethod
      * @phpstan-pure
      */
     public function __construct(string $contentType, int $statusCode, \Psr\Http\Message\ResponseInterface $rawResponse, ?Components\ListResourceCustomerPaymentMethod $listResourceCustomerPaymentMethod = null)

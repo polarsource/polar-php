@@ -47,7 +47,7 @@ class CheckoutsListRequest
     /**
      * Filter by checkout session status.
      *
-     * @var Components\CheckoutStatus|array<Components\CheckoutStatus>|null $status
+     * @var \Polar\Models\Components\CheckoutStatus|array<\Polar\Models\Components\CheckoutStatus>|null $status
      */
     #[SpeakeasyMetadata('queryParam:style=form,explode=true,name=status')]
     public Components\CheckoutStatus|array|null $status = null;
@@ -63,7 +63,7 @@ class CheckoutsListRequest
     /**
      * Sorting criterion. Several criteria can be used simultaneously and will be applied in order. Add a minus sign `-` before the criteria name to sort by descending order.
      *
-     * @var ?array<Components\CheckoutSortProperty> $sorting
+     * @var ?array<\Polar\Models\Components\CheckoutSortProperty> $sorting
      */
     #[SpeakeasyMetadata('queryParam:style=form,explode=true,name=sorting')]
     public ?array $sorting = null;
@@ -91,9 +91,9 @@ class CheckoutsListRequest
      * @param  string|array<string>|null  $productId
      * @param  string|array<string>|null  $customerId
      * @param  string|array<string>|null  $externalCustomerId
-     * @param  Components\CheckoutStatus|array<Components\CheckoutStatus>|null  $status
+     * @param  \Polar\Models\Components\CheckoutStatus|array<\Polar\Models\Components\CheckoutStatus>|null  $status
      * @param  ?string  $query
-     * @param  ?array<Components\CheckoutSortProperty>  $sorting
+     * @param  ?array<\Polar\Models\Components\CheckoutSortProperty>  $sorting
      * @phpstan-pure
      */
     public function __construct(string|array|null $organizationId = null, string|array|null $productId = null, string|array|null $customerId = null, string|array|null $externalCustomerId = null, Components\CheckoutStatus|array|null $status = null, ?string $query = null, ?array $sorting = null, ?int $page = 1, ?int $limit = 10)
