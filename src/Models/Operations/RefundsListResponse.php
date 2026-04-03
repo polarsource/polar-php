@@ -35,7 +35,7 @@ class RefundsListResponse
     /**
      * Successful Response
      *
-     * @var ?Components\ListResourceRefund $listResourceRefund
+     * @var ?\Polar\Models\Components\ListResourceRefund $listResourceRefund
      */
     public ?Components\ListResourceRefund $listResourceRefund = null;
 
@@ -47,7 +47,7 @@ class RefundsListResponse
      * @param  string  $contentType
      * @param  int  $statusCode
      * @param  \Psr\Http\Message\ResponseInterface  $rawResponse
-     * @param  ?Components\ListResourceRefund  $listResourceRefund
+     * @param  ?\Polar\Models\Components\ListResourceRefund  $listResourceRefund
      * @phpstan-pure
      */
     public function __construct(string $contentType, int $statusCode, \Psr\Http\Message\ResponseInterface $rawResponse, ?Components\ListResourceRefund $listResourceRefund = null)

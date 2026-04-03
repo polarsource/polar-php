@@ -22,7 +22,7 @@ class BenefitGitHubRepositoryCreate
     /**
      * Properties to create a benefit of type `github_repository`.
      *
-     * @var BenefitGitHubRepositoryCreateProperties $properties
+     * @var \Polar\Models\Components\BenefitGitHubRepositoryCreateProperties $properties
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('properties')]
     #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\BenefitGitHubRepositoryCreateProperties')]
@@ -68,7 +68,7 @@ class BenefitGitHubRepositoryCreate
     /**
      * @param  string  $type
      * @param  string  $description
-     * @param  BenefitGitHubRepositoryCreateProperties  $properties
+     * @param  \Polar\Models\Components\BenefitGitHubRepositoryCreateProperties  $properties
      * @param  ?array<string, string|int|float|bool>  $metadata
      * @param  ?string  $organizationId
      * @phpstan-pure

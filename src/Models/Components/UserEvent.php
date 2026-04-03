@@ -55,7 +55,7 @@ class UserEvent
     /**
      * $metadata
      *
-     * @var array<string, string|int|float|bool|CostMetadataOutput|LLMMetadata> $metadata
+     * @var array<string, string|int|float|bool|\Polar\Models\Components\CostMetadataOutput|\Polar\Models\Components\LLMMetadata> $metadata
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('metadata')]
     #[\Speakeasy\Serializer\Annotation\Type('array<string, string|int|float|bool|\Polar\Models\Components\CostMetadataOutput|\Polar\Models\Components\LLMMetadata>')]
@@ -72,11 +72,12 @@ class UserEvent
     /**
      * The customer associated with the event.
      *
-     * @var ?Customer $customer
+     * @var \Polar\Models\Components\CustomerIndividual|\Polar\Models\Components\CustomerTeam|null $customer
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('customer')]
-    #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\Customer|null')]
-    public ?Customer $customer;
+    #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\CustomerIndividual|\Polar\Models\Components\CustomerTeam|null')]
+    #[\Speakeasy\Serializer\Annotation\UnionDiscriminator(field: 'type', map: ['individual' => '\Polar\Models\Components\CustomerIndividual', 'team' => '\Polar\Models\Components\CustomerTeam'])]
+    public CustomerIndividual|CustomerTeam|null $customer;
 
     /**
      * ID of the customer in your system associated with the event.
@@ -137,9 +138,9 @@ class UserEvent
      * @param  string  $label
      * @param  string  $name
      * @param  string  $source
-     * @param  array<string, string|int|float|bool|CostMetadataOutput|LLMMetadata>  $metadata
+     * @param  array<string, string|int|float|bool|\Polar\Models\Components\CostMetadataOutput|\Polar\Models\Components\LLMMetadata>  $metadata
      * @param  ?string  $customerId
-     * @param  ?Customer  $customer
+     * @param  \Polar\Models\Components\CustomerIndividual|\Polar\Models\Components\CustomerTeam|null  $customer
      * @param  ?string  $externalCustomerId
      * @param  ?int  $childCount
      * @param  ?string  $memberId
@@ -147,7 +148,7 @@ class UserEvent
      * @param  ?string  $parentId
      * @phpstan-pure
      */
-    public function __construct(string $id, \DateTime $timestamp, string $organizationId, string $label, string $name, array $metadata, ?string $customerId = null, ?Customer $customer = null, ?string $externalCustomerId = null, ?string $memberId = null, ?string $externalMemberId = null, ?string $parentId = null, string $source = 'user', ?int $childCount = 0)
+    public function __construct(string $id, \DateTime $timestamp, string $organizationId, string $label, string $name, array $metadata, ?string $customerId = null, CustomerIndividual|CustomerTeam|null $customer = null, ?string $externalCustomerId = null, ?string $memberId = null, ?string $externalMemberId = null, ?string $parentId = null, string $source = 'user', ?int $childCount = 0)
     {
         $this->id = $id;
         $this->timestamp = $timestamp;

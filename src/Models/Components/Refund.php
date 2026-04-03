@@ -38,7 +38,7 @@ class Refund
 
     /**
      *
-     * @var RefundStatus $status
+     * @var \Polar\Models\Components\RefundStatus $status
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('status')]
     #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\RefundStatus')]
@@ -46,7 +46,7 @@ class Refund
 
     /**
      *
-     * @var RefundReason $reason
+     * @var \Polar\Models\Components\RefundReason $reason
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('reason')]
     #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\RefundReason')]
@@ -118,7 +118,7 @@ class Refund
 
     /**
      *
-     * @var ?RefundDispute $dispute
+     * @var ?\Polar\Models\Components\RefundDispute $dispute
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('dispute')]
     #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\RefundDispute|null')]
@@ -128,8 +128,8 @@ class Refund
      * @param  \DateTime  $createdAt
      * @param  string  $id
      * @param  array<string, string|int|float|bool>  $metadata
-     * @param  RefundStatus  $status
-     * @param  RefundReason  $reason
+     * @param  \Polar\Models\Components\RefundStatus  $status
+     * @param  \Polar\Models\Components\RefundReason  $reason
      * @param  int  $amount
      * @param  int  $taxAmount
      * @param  string  $currency
@@ -139,7 +139,7 @@ class Refund
      * @param  bool  $revokeBenefits
      * @param  ?\DateTime  $modifiedAt
      * @param  ?string  $subscriptionId
-     * @param  ?RefundDispute  $dispute
+     * @param  ?\Polar\Models\Components\RefundDispute  $dispute
      * @phpstan-pure
      */
     public function __construct(\DateTime $createdAt, string $id, array $metadata, RefundStatus $status, RefundReason $reason, int $amount, int $taxAmount, string $currency, string $organizationId, string $orderId, string $customerId, bool $revokeBenefits, ?\DateTime $modifiedAt = null, ?string $subscriptionId = null, ?RefundDispute $dispute = null)

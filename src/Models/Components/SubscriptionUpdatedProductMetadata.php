@@ -27,7 +27,7 @@ class SubscriptionUpdatedProductMetadata
 
     /**
      *
-     * @var SubscriptionProrationBehavior $prorationBehavior
+     * @var \Polar\Models\Components\SubscriptionProrationBehavior $prorationBehavior
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('proration_behavior')]
     #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\SubscriptionProrationBehavior')]
@@ -36,7 +36,7 @@ class SubscriptionUpdatedProductMetadata
     /**
      * @param  string  $subscriptionId
      * @param  string  $productId
-     * @param  SubscriptionProrationBehavior  $prorationBehavior
+     * @param  \Polar\Models\Components\SubscriptionProrationBehavior  $prorationBehavior
      * @phpstan-pure
      */
     public function __construct(string $subscriptionId, string $productId, SubscriptionProrationBehavior $prorationBehavior)

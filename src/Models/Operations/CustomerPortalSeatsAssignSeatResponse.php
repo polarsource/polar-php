@@ -35,7 +35,7 @@ class CustomerPortalSeatsAssignSeatResponse
     /**
      * Successful Response
      *
-     * @var ?Components\CustomerSeat $customerSeat
+     * @var ?\Polar\Models\Components\CustomerSeat $customerSeat
      */
     public ?Components\CustomerSeat $customerSeat = null;
 
@@ -43,7 +43,7 @@ class CustomerPortalSeatsAssignSeatResponse
      * @param  string  $contentType
      * @param  int  $statusCode
      * @param  \Psr\Http\Message\ResponseInterface  $rawResponse
-     * @param  ?Components\CustomerSeat  $customerSeat
+     * @param  ?\Polar\Models\Components\CustomerSeat  $customerSeat
      * @phpstan-pure
      */
     public function __construct(string $contentType, int $statusCode, \Psr\Http\Message\ResponseInterface $rawResponse, ?Components\CustomerSeat $customerSeat = null)

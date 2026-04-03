@@ -46,7 +46,7 @@ class CustomerStateBenefitGrant
 
     /**
      *
-     * @var BenefitType $benefitType
+     * @var \Polar\Models\Components\BenefitType $benefitType
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('benefit_type')]
     #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\BenefitType')]
@@ -63,7 +63,7 @@ class CustomerStateBenefitGrant
 
     /**
      *
-     * @var BenefitGrantDiscordProperties|BenefitGrantGitHubRepositoryProperties|BenefitGrantDownloadablesProperties|BenefitGrantLicenseKeysProperties|BenefitGrantCustomProperties|BenefitGrantFeatureFlagProperties $properties
+     * @var \Polar\Models\Components\BenefitGrantDiscordProperties|\Polar\Models\Components\BenefitGrantGitHubRepositoryProperties|\Polar\Models\Components\BenefitGrantDownloadablesProperties|\Polar\Models\Components\BenefitGrantLicenseKeysProperties|\Polar\Models\Components\BenefitGrantCustomProperties|\Polar\Models\Components\BenefitGrantFeatureFlagProperties $properties
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('properties')]
     #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\BenefitGrantDiscordProperties|\Polar\Models\Components\BenefitGrantGitHubRepositoryProperties|\Polar\Models\Components\BenefitGrantDownloadablesProperties|\Polar\Models\Components\BenefitGrantLicenseKeysProperties|\Polar\Models\Components\BenefitGrantCustomProperties|\Polar\Models\Components\BenefitGrantFeatureFlagProperties')]
@@ -82,9 +82,9 @@ class CustomerStateBenefitGrant
      * @param  \DateTime  $createdAt
      * @param  \DateTime  $grantedAt
      * @param  string  $benefitId
-     * @param  BenefitType  $benefitType
+     * @param  \Polar\Models\Components\BenefitType  $benefitType
      * @param  array<string, string|int|float|bool>  $benefitMetadata
-     * @param  BenefitGrantDiscordProperties|BenefitGrantGitHubRepositoryProperties|BenefitGrantDownloadablesProperties|BenefitGrantLicenseKeysProperties|BenefitGrantCustomProperties|BenefitGrantFeatureFlagProperties  $properties
+     * @param  \Polar\Models\Components\BenefitGrantDiscordProperties|\Polar\Models\Components\BenefitGrantGitHubRepositoryProperties|\Polar\Models\Components\BenefitGrantDownloadablesProperties|\Polar\Models\Components\BenefitGrantLicenseKeysProperties|\Polar\Models\Components\BenefitGrantCustomProperties|\Polar\Models\Components\BenefitGrantFeatureFlagProperties  $properties
      * @param  ?\DateTime  $modifiedAt
      * @phpstan-pure
      */

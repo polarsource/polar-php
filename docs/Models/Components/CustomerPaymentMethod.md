@@ -7,7 +7,7 @@
 
 ```php
 /**
-* @var Components\PaymentMethodCard
+* @var \Polar\Models\Components\PaymentMethodCard
 */
 Components\PaymentMethodCard $value = /* values here */
 ```
@@ -16,7 +16,7 @@ Components\PaymentMethodCard $value = /* values here */
 
 ```php
 /**
-* @var Components\PaymentMethodGeneric
+* @var \Polar\Models\Components\PaymentMethodGeneric
 */
 Components\PaymentMethodGeneric $value = /* values here */
 ```

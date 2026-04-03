@@ -51,7 +51,7 @@ class CustomerUpdateExternalID
 
     /**
      *
-     * @var ?AddressInput $billingAddress
+     * @var ?\Polar\Models\Components\AddressInput $billingAddress
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('billing_address')]
     #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\AddressInput|null')]
@@ -78,7 +78,7 @@ class CustomerUpdateExternalID
      * @param  ?array<string, string|int|float|bool>  $metadata
      * @param  ?string  $email
      * @param  ?string  $name
-     * @param  ?AddressInput  $billingAddress
+     * @param  ?\Polar\Models\Components\AddressInput  $billingAddress
      * @param  ?string  $taxId
      * @param  ?string  $locale
      * @phpstan-pure

@@ -15,7 +15,7 @@ class CustomerPortalMemberUpdate
     /**
      * The new role for the member.
      *
-     * @var ?MemberRole $role
+     * @var ?\Polar\Models\Components\MemberRole $role
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('role')]
     #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\MemberRole|null')]
@@ -23,7 +23,7 @@ class CustomerPortalMemberUpdate
     public ?MemberRole $role = null;
 
     /**
-     * @param  ?MemberRole  $role
+     * @param  ?\Polar\Models\Components\MemberRole  $role
      * @phpstan-pure
      */
     public function __construct(?MemberRole $role = null)

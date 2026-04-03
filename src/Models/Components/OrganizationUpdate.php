@@ -48,7 +48,7 @@ class OrganizationUpdate
     /**
      * Links to social profiles.
      *
-     * @var ?array<OrganizationSocialLink> $socials
+     * @var ?array<\Polar\Models\Components\OrganizationSocialLink> $socials
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('socials')]
     #[\Speakeasy\Serializer\Annotation\Type('array<\Polar\Models\Components\OrganizationSocialLink>|null')]
@@ -58,7 +58,7 @@ class OrganizationUpdate
     /**
      * Additional, private, business details Polar needs about active organizations for compliance (KYC).
      *
-     * @var ?OrganizationDetails $details
+     * @var ?\Polar\Models\Components\OrganizationDetails $details
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('details')]
     #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\OrganizationDetails|null')]
@@ -68,7 +68,7 @@ class OrganizationUpdate
     /**
      * Two-letter country code (ISO 3166-1 alpha-2).
      *
-     * @var ?CountryCountryAlpha2Input $country
+     * @var ?\Polar\Models\Components\CountryCountryAlpha2Input $country
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('country')]
     #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\CountryCountryAlpha2Input|null')]
@@ -77,7 +77,7 @@ class OrganizationUpdate
 
     /**
      *
-     * @var ?OrganizationFeatureSettings $featureSettings
+     * @var ?\Polar\Models\Components\OrganizationFeatureSettings $featureSettings
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('feature_settings')]
     #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\OrganizationFeatureSettings|null')]
@@ -86,7 +86,7 @@ class OrganizationUpdate
 
     /**
      *
-     * @var ?OrganizationSubscriptionSettings $subscriptionSettings
+     * @var ?\Polar\Models\Components\OrganizationSubscriptionSettings $subscriptionSettings
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('subscription_settings')]
     #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\OrganizationSubscriptionSettings|null')]
@@ -95,7 +95,7 @@ class OrganizationUpdate
 
     /**
      *
-     * @var ?OrganizationNotificationSettings $notificationSettings
+     * @var ?\Polar\Models\Components\OrganizationNotificationSettings $notificationSettings
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('notification_settings')]
     #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\OrganizationNotificationSettings|null')]
@@ -104,7 +104,7 @@ class OrganizationUpdate
 
     /**
      *
-     * @var ?OrganizationCustomerEmailSettings $customerEmailSettings
+     * @var ?\Polar\Models\Components\OrganizationCustomerEmailSettings $customerEmailSettings
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('customer_email_settings')]
     #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\OrganizationCustomerEmailSettings|null')]
@@ -113,7 +113,7 @@ class OrganizationUpdate
 
     /**
      *
-     * @var ?OrganizationCustomerPortalSettings $customerPortalSettings
+     * @var ?\Polar\Models\Components\OrganizationCustomerPortalSettings $customerPortalSettings
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('customer_portal_settings')]
     #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\OrganizationCustomerPortalSettings|null')]
@@ -123,7 +123,7 @@ class OrganizationUpdate
     /**
      * Default presentment currency for the organization
      *
-     * @var ?PresentmentCurrency $defaultPresentmentCurrency
+     * @var ?\Polar\Models\Components\PresentmentCurrency $defaultPresentmentCurrency
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('default_presentment_currency')]
     #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\PresentmentCurrency|null')]
@@ -133,7 +133,7 @@ class OrganizationUpdate
     /**
      * Default tax behavior applied on products.
      *
-     * @var ?TaxBehaviorOption $defaultTaxBehavior
+     * @var ?\Polar\Models\Components\TaxBehaviorOption $defaultTaxBehavior
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('default_tax_behavior')]
     #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\TaxBehaviorOption|null')]
@@ -145,16 +145,16 @@ class OrganizationUpdate
      * @param  ?string  $avatarUrl
      * @param  ?string  $email
      * @param  ?string  $website
-     * @param  ?array<OrganizationSocialLink>  $socials
-     * @param  ?OrganizationDetails  $details
-     * @param  ?CountryCountryAlpha2Input  $country
-     * @param  ?OrganizationFeatureSettings  $featureSettings
-     * @param  ?OrganizationSubscriptionSettings  $subscriptionSettings
-     * @param  ?OrganizationNotificationSettings  $notificationSettings
-     * @param  ?OrganizationCustomerEmailSettings  $customerEmailSettings
-     * @param  ?OrganizationCustomerPortalSettings  $customerPortalSettings
-     * @param  ?PresentmentCurrency  $defaultPresentmentCurrency
-     * @param  ?TaxBehaviorOption  $defaultTaxBehavior
+     * @param  ?array<\Polar\Models\Components\OrganizationSocialLink>  $socials
+     * @param  ?\Polar\Models\Components\OrganizationDetails  $details
+     * @param  ?\Polar\Models\Components\CountryCountryAlpha2Input  $country
+     * @param  ?\Polar\Models\Components\OrganizationFeatureSettings  $featureSettings
+     * @param  ?\Polar\Models\Components\OrganizationSubscriptionSettings  $subscriptionSettings
+     * @param  ?\Polar\Models\Components\OrganizationNotificationSettings  $notificationSettings
+     * @param  ?\Polar\Models\Components\OrganizationCustomerEmailSettings  $customerEmailSettings
+     * @param  ?\Polar\Models\Components\OrganizationCustomerPortalSettings  $customerPortalSettings
+     * @param  ?\Polar\Models\Components\PresentmentCurrency  $defaultPresentmentCurrency
+     * @param  ?\Polar\Models\Components\TaxBehaviorOption  $defaultTaxBehavior
      * @phpstan-pure
      */
     public function __construct(?string $name = null, ?string $avatarUrl = null, ?string $email = null, ?string $website = null, ?array $socials = null, ?OrganizationDetails $details = null, ?CountryCountryAlpha2Input $country = null, ?OrganizationFeatureSettings $featureSettings = null, ?OrganizationSubscriptionSettings $subscriptionSettings = null, ?OrganizationNotificationSettings $notificationSettings = null, ?OrganizationCustomerEmailSettings $customerEmailSettings = null, ?OrganizationCustomerPortalSettings $customerPortalSettings = null, ?PresentmentCurrency $defaultPresentmentCurrency = null, ?TaxBehaviorOption $defaultTaxBehavior = null)

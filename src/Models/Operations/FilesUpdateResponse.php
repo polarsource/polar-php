@@ -35,7 +35,7 @@ class FilesUpdateResponse
     /**
      * File updated.
      *
-     * @var Components\DownloadableFileRead|Components\ProductMediaFileRead|Components\OrganizationAvatarFileRead|null $responseFilesUpdate
+     * @var \Polar\Models\Components\DownloadableFileRead|\Polar\Models\Components\ProductMediaFileRead|\Polar\Models\Components\OrganizationAvatarFileRead|null $responseFilesUpdate
      */
     public Components\DownloadableFileRead|Components\ProductMediaFileRead|Components\OrganizationAvatarFileRead|null $responseFilesUpdate = null;
 
@@ -43,7 +43,7 @@ class FilesUpdateResponse
      * @param  string  $contentType
      * @param  int  $statusCode
      * @param  \Psr\Http\Message\ResponseInterface  $rawResponse
-     * @param  Components\DownloadableFileRead|Components\ProductMediaFileRead|Components\OrganizationAvatarFileRead|null  $responseFilesUpdate
+     * @param  \Polar\Models\Components\DownloadableFileRead|\Polar\Models\Components\ProductMediaFileRead|\Polar\Models\Components\OrganizationAvatarFileRead|null  $responseFilesUpdate
      * @phpstan-pure
      */
     public function __construct(string $contentType, int $statusCode, \Psr\Http\Message\ResponseInterface $rawResponse, Components\DownloadableFileRead|Components\ProductMediaFileRead|Components\OrganizationAvatarFileRead|null $responseFilesUpdate = null)

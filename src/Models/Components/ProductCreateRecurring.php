@@ -22,7 +22,7 @@ class ProductCreateRecurring
     /**
      * List of available prices for this product. It should contain at most one static price (fixed, custom or free), and any number of metered prices. Metered prices are not supported on one-time purchase products.
      *
-     * @var array<ProductPriceFixedCreate|ProductPriceCustomCreate|ProductPriceFreeCreate|ProductPriceSeatBasedCreate|ProductPriceMeteredUnitCreate> $prices
+     * @var array<\Polar\Models\Components\ProductPriceFixedCreate|\Polar\Models\Components\ProductPriceCustomCreate|\Polar\Models\Components\ProductPriceFreeCreate|\Polar\Models\Components\ProductPriceSeatBasedCreate|\Polar\Models\Components\ProductPriceMeteredUnitCreate> $prices
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('prices')]
     #[\Speakeasy\Serializer\Annotation\Type('array<\Polar\Models\Components\ProductPriceFixedCreate|\Polar\Models\Components\ProductPriceCustomCreate|\Polar\Models\Components\ProductPriceFreeCreate|\Polar\Models\Components\ProductPriceSeatBasedCreate|\Polar\Models\Components\ProductPriceMeteredUnitCreate>')]
@@ -30,7 +30,7 @@ class ProductCreateRecurring
 
     /**
      *
-     * @var SubscriptionRecurringInterval $recurringInterval
+     * @var \Polar\Models\Components\SubscriptionRecurringInterval $recurringInterval
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('recurring_interval')]
     #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\SubscriptionRecurringInterval')]
@@ -59,7 +59,7 @@ class ProductCreateRecurring
 
     /**
      *
-     * @var ?ProductVisibility $visibility
+     * @var ?\Polar\Models\Components\ProductVisibility $visibility
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('visibility')]
     #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\ProductVisibility|null')]
@@ -69,7 +69,7 @@ class ProductCreateRecurring
     /**
      * List of custom fields to attach.
      *
-     * @var ?array<AttachedCustomFieldCreate> $attachedCustomFields
+     * @var ?array<\Polar\Models\Components\AttachedCustomFieldCreate> $attachedCustomFields
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('attached_custom_fields')]
     #[\Speakeasy\Serializer\Annotation\Type('array<\Polar\Models\Components\AttachedCustomFieldCreate>|null')]
@@ -107,7 +107,7 @@ class ProductCreateRecurring
     /**
      * The interval unit for the trial period.
      *
-     * @var ?TrialInterval $trialInterval
+     * @var ?\Polar\Models\Components\TrialInterval $trialInterval
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('trial_interval')]
     #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\TrialInterval|null')]
@@ -134,16 +134,16 @@ class ProductCreateRecurring
 
     /**
      * @param  string  $name
-     * @param  array<ProductPriceFixedCreate|ProductPriceCustomCreate|ProductPriceFreeCreate|ProductPriceSeatBasedCreate|ProductPriceMeteredUnitCreate>  $prices
-     * @param  SubscriptionRecurringInterval  $recurringInterval
+     * @param  array<\Polar\Models\Components\ProductPriceFixedCreate|\Polar\Models\Components\ProductPriceCustomCreate|\Polar\Models\Components\ProductPriceFreeCreate|\Polar\Models\Components\ProductPriceSeatBasedCreate|\Polar\Models\Components\ProductPriceMeteredUnitCreate>  $prices
+     * @param  \Polar\Models\Components\SubscriptionRecurringInterval  $recurringInterval
      * @param  ?array<string, string|int|float|bool>  $metadata
-     * @param  ?ProductVisibility  $visibility
-     * @param  ?array<AttachedCustomFieldCreate>  $attachedCustomFields
+     * @param  ?\Polar\Models\Components\ProductVisibility  $visibility
+     * @param  ?array<\Polar\Models\Components\AttachedCustomFieldCreate>  $attachedCustomFields
      * @param  ?int  $recurringIntervalCount
      * @param  ?string  $description
      * @param  ?array<string>  $medias
      * @param  ?string  $organizationId
-     * @param  ?TrialInterval  $trialInterval
+     * @param  ?\Polar\Models\Components\TrialInterval  $trialInterval
      * @param  ?int  $trialIntervalCount
      * @phpstan-pure
      */

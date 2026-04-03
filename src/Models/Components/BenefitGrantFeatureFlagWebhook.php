@@ -60,13 +60,13 @@ class BenefitGrantFeatureFlagWebhook
     public string $benefitId;
 
     /**
-     * A customer in an organization.
      *
-     * @var Customer $customer
+     * @var \Polar\Models\Components\CustomerIndividual|\Polar\Models\Components\CustomerTeam $customer
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('customer')]
-    #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\Customer')]
-    public Customer $customer;
+    #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\CustomerIndividual|\Polar\Models\Components\CustomerTeam')]
+    #[\Speakeasy\Serializer\Annotation\UnionDiscriminator(field: 'type', map: ['individual' => '\Polar\Models\Components\CustomerIndividual', 'team' => '\Polar\Models\Components\CustomerTeam'])]
+    public CustomerIndividual|CustomerTeam $customer;
 
     /**
      * A benefit of type `feature_flag`.
@@ -75,7 +75,7 @@ class BenefitGrantFeatureFlagWebhook
      * Use it to grant feature flags with key-value metadata
      * that can be queried via the API and webhooks.
      *
-     * @var BenefitFeatureFlag $benefit
+     * @var \Polar\Models\Components\BenefitFeatureFlag $benefit
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('benefit')]
     #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\BenefitFeatureFlag')]
@@ -83,7 +83,7 @@ class BenefitGrantFeatureFlagWebhook
 
     /**
      *
-     * @var BenefitGrantFeatureFlagProperties $properties
+     * @var \Polar\Models\Components\BenefitGrantFeatureFlagProperties $properties
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('properties')]
     #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\BenefitGrantFeatureFlagProperties')]
@@ -143,7 +143,7 @@ class BenefitGrantFeatureFlagWebhook
     /**
      * The error information if the benefit grant failed with an unrecoverable error.
      *
-     * @var ?BenefitGrantError $error
+     * @var ?\Polar\Models\Components\BenefitGrantError $error
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('error')]
     #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\BenefitGrantError|null')]
@@ -152,7 +152,7 @@ class BenefitGrantFeatureFlagWebhook
 
     /**
      *
-     * @var ?Member $member
+     * @var ?\Polar\Models\Components\Member $member
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('member')]
     #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\Member|null')]
@@ -161,7 +161,7 @@ class BenefitGrantFeatureFlagWebhook
 
     /**
      *
-     * @var ?BenefitGrantFeatureFlagProperties $previousProperties
+     * @var ?\Polar\Models\Components\BenefitGrantFeatureFlagProperties $previousProperties
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('previous_properties')]
     #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\BenefitGrantFeatureFlagProperties|null')]
@@ -175,21 +175,21 @@ class BenefitGrantFeatureFlagWebhook
      * @param  bool  $isRevoked
      * @param  string  $customerId
      * @param  string  $benefitId
-     * @param  Customer  $customer
-     * @param  BenefitFeatureFlag  $benefit
-     * @param  BenefitGrantFeatureFlagProperties  $properties
+     * @param  \Polar\Models\Components\CustomerIndividual|\Polar\Models\Components\CustomerTeam  $customer
+     * @param  \Polar\Models\Components\BenefitFeatureFlag  $benefit
+     * @param  \Polar\Models\Components\BenefitGrantFeatureFlagProperties  $properties
      * @param  ?\DateTime  $modifiedAt
      * @param  ?string  $subscriptionId
      * @param  ?string  $orderId
      * @param  ?\DateTime  $grantedAt
      * @param  ?\DateTime  $revokedAt
      * @param  ?string  $memberId
-     * @param  ?BenefitGrantError  $error
-     * @param  ?Member  $member
-     * @param  ?BenefitGrantFeatureFlagProperties  $previousProperties
+     * @param  ?\Polar\Models\Components\BenefitGrantError  $error
+     * @param  ?\Polar\Models\Components\Member  $member
+     * @param  ?\Polar\Models\Components\BenefitGrantFeatureFlagProperties  $previousProperties
      * @phpstan-pure
      */
-    public function __construct(\DateTime $createdAt, string $id, bool $isGranted, bool $isRevoked, string $customerId, string $benefitId, Customer $customer, BenefitFeatureFlag $benefit, BenefitGrantFeatureFlagProperties $properties, ?\DateTime $modifiedAt = null, ?string $subscriptionId = null, ?string $orderId = null, ?\DateTime $grantedAt = null, ?\DateTime $revokedAt = null, ?string $memberId = null, ?BenefitGrantError $error = null, ?Member $member = null, ?BenefitGrantFeatureFlagProperties $previousProperties = null)
+    public function __construct(\DateTime $createdAt, string $id, bool $isGranted, bool $isRevoked, string $customerId, string $benefitId, CustomerIndividual|CustomerTeam $customer, BenefitFeatureFlag $benefit, BenefitGrantFeatureFlagProperties $properties, ?\DateTime $modifiedAt = null, ?string $subscriptionId = null, ?string $orderId = null, ?\DateTime $grantedAt = null, ?\DateTime $revokedAt = null, ?string $memberId = null, ?BenefitGrantError $error = null, ?Member $member = null, ?BenefitGrantFeatureFlagProperties $previousProperties = null)
     {
         $this->createdAt = $createdAt;
         $this->id = $id;

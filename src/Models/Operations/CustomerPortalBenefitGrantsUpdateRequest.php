@@ -22,14 +22,14 @@ class CustomerPortalBenefitGrantsUpdateRequest
 
     /**
      *
-     * @var Components\CustomerBenefitGrantDiscordUpdate|Components\CustomerBenefitGrantGitHubRepositoryUpdate|Components\CustomerBenefitGrantDownloadablesUpdate|Components\CustomerBenefitGrantLicenseKeysUpdate|Components\CustomerBenefitGrantCustomUpdate|Components\CustomerBenefitGrantMeterCreditUpdate|Components\CustomerBenefitGrantFeatureFlagUpdate $customerBenefitGrantUpdate
+     * @var \Polar\Models\Components\CustomerBenefitGrantDiscordUpdate|\Polar\Models\Components\CustomerBenefitGrantGitHubRepositoryUpdate|\Polar\Models\Components\CustomerBenefitGrantDownloadablesUpdate|\Polar\Models\Components\CustomerBenefitGrantLicenseKeysUpdate|\Polar\Models\Components\CustomerBenefitGrantCustomUpdate|\Polar\Models\Components\CustomerBenefitGrantMeterCreditUpdate|\Polar\Models\Components\CustomerBenefitGrantFeatureFlagUpdate $customerBenefitGrantUpdate
      */
     #[SpeakeasyMetadata('request:mediaType=application/json')]
     public Components\CustomerBenefitGrantDiscordUpdate|Components\CustomerBenefitGrantGitHubRepositoryUpdate|Components\CustomerBenefitGrantDownloadablesUpdate|Components\CustomerBenefitGrantLicenseKeysUpdate|Components\CustomerBenefitGrantCustomUpdate|Components\CustomerBenefitGrantMeterCreditUpdate|Components\CustomerBenefitGrantFeatureFlagUpdate $customerBenefitGrantUpdate;
 
     /**
      * @param  string  $id
-     * @param  Components\CustomerBenefitGrantDiscordUpdate|Components\CustomerBenefitGrantGitHubRepositoryUpdate|Components\CustomerBenefitGrantDownloadablesUpdate|Components\CustomerBenefitGrantLicenseKeysUpdate|Components\CustomerBenefitGrantCustomUpdate|Components\CustomerBenefitGrantMeterCreditUpdate|Components\CustomerBenefitGrantFeatureFlagUpdate  $customerBenefitGrantUpdate
+     * @param  \Polar\Models\Components\CustomerBenefitGrantDiscordUpdate|\Polar\Models\Components\CustomerBenefitGrantGitHubRepositoryUpdate|\Polar\Models\Components\CustomerBenefitGrantDownloadablesUpdate|\Polar\Models\Components\CustomerBenefitGrantLicenseKeysUpdate|\Polar\Models\Components\CustomerBenefitGrantCustomUpdate|\Polar\Models\Components\CustomerBenefitGrantMeterCreditUpdate|\Polar\Models\Components\CustomerBenefitGrantFeatureFlagUpdate  $customerBenefitGrantUpdate
      * @phpstan-pure
      */
     public function __construct(string $id, Components\CustomerBenefitGrantDiscordUpdate|Components\CustomerBenefitGrantGitHubRepositoryUpdate|Components\CustomerBenefitGrantDownloadablesUpdate|Components\CustomerBenefitGrantLicenseKeysUpdate|Components\CustomerBenefitGrantCustomUpdate|Components\CustomerBenefitGrantMeterCreditUpdate|Components\CustomerBenefitGrantFeatureFlagUpdate $customerBenefitGrantUpdate)

@@ -9,17 +9,16 @@ declare(strict_types=1);
 namespace Polar\Models\Components;
 
 
-/** OwnerCreate - Schema for creating an owner member during customer creation. */
-class OwnerCreate
+/** MemberOwnerCreate - Schema for creating an owner member during customer creation. */
+class MemberOwnerCreate
 {
     /**
      * The email address of the member.
      *
-     * @var ?string $email
+     * @var string $email
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('email')]
-    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
-    public ?string $email = null;
+    public string $email;
 
     /**
      *
@@ -39,12 +38,12 @@ class OwnerCreate
     public ?string $externalId = null;
 
     /**
-     * @param  ?string  $email
+     * @param  string  $email
      * @param  ?string  $name
      * @param  ?string  $externalId
      * @phpstan-pure
      */
-    public function __construct(?string $email = null, ?string $name = null, ?string $externalId = null)
+    public function __construct(string $email, ?string $name = null, ?string $externalId = null)
     {
         $this->email = $email;
         $this->name = $name;

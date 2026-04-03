@@ -13,7 +13,7 @@ class AuthorizeResponseOrganization
 {
     /**
      *
-     * @var OAuth2ClientPublic $client
+     * @var \Polar\Models\Components\OAuth2ClientPublic $client
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('client')]
     #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\OAuth2ClientPublic')]
@@ -22,7 +22,7 @@ class AuthorizeResponseOrganization
     /**
      * $scopes
      *
-     * @var array<Scope> $scopes
+     * @var array<\Polar\Models\Components\Scope> $scopes
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('scopes')]
     #[\Speakeasy\Serializer\Annotation\Type('array<\Polar\Models\Components\Scope>')]
@@ -31,7 +31,7 @@ class AuthorizeResponseOrganization
     /**
      * $organizations
      *
-     * @var array<AuthorizeOrganization> $organizations
+     * @var array<\Polar\Models\Components\AuthorizeOrganization> $organizations
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('organizations')]
     #[\Speakeasy\Serializer\Annotation\Type('array<\Polar\Models\Components\AuthorizeOrganization>')]
@@ -39,7 +39,7 @@ class AuthorizeResponseOrganization
 
     /**
      *
-     * @var ?AuthorizeOrganization $sub
+     * @var ?\Polar\Models\Components\AuthorizeOrganization $sub
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('sub')]
     #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\AuthorizeOrganization|null')]
@@ -63,11 +63,11 @@ class AuthorizeResponseOrganization
     public string $subType;
 
     /**
-     * @param  OAuth2ClientPublic  $client
+     * @param  \Polar\Models\Components\OAuth2ClientPublic  $client
      * @param  string  $subType
-     * @param  array<Scope>  $scopes
-     * @param  array<AuthorizeOrganization>  $organizations
-     * @param  ?AuthorizeOrganization  $sub
+     * @param  array<\Polar\Models\Components\Scope>  $scopes
+     * @param  array<\Polar\Models\Components\AuthorizeOrganization>  $organizations
+     * @param  ?\Polar\Models\Components\AuthorizeOrganization  $sub
      * @param  ?array<string, string>  $scopeDisplayNames
      * @phpstan-pure
      */

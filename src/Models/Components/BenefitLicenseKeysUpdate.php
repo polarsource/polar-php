@@ -43,7 +43,7 @@ class BenefitLicenseKeysUpdate
 
     /**
      *
-     * @var ?BenefitLicenseKeysCreateProperties $properties
+     * @var ?\Polar\Models\Components\BenefitLicenseKeysCreateProperties $properties
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('properties')]
     #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\BenefitLicenseKeysCreateProperties|null')]
@@ -61,7 +61,7 @@ class BenefitLicenseKeysUpdate
      * @param  string  $type
      * @param  ?array<string, string|int|float|bool>  $metadata
      * @param  ?string  $description
-     * @param  ?BenefitLicenseKeysCreateProperties  $properties
+     * @param  ?\Polar\Models\Components\BenefitLicenseKeysCreateProperties  $properties
      * @phpstan-pure
      */
     public function __construct(?array $metadata = null, ?string $description = null, ?BenefitLicenseKeysCreateProperties $properties = null, string $type = 'license_keys')

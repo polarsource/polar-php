@@ -30,7 +30,7 @@ class CardPayment
 
     /**
      *
-     * @var PaymentProcessor $processor
+     * @var \Polar\Models\Components\PaymentProcessor $processor
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('processor')]
     #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\PaymentProcessor')]
@@ -38,7 +38,7 @@ class CardPayment
 
     /**
      *
-     * @var PaymentStatus $status
+     * @var \Polar\Models\Components\PaymentStatus $status
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('status')]
     #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\PaymentStatus')]
@@ -71,7 +71,7 @@ class CardPayment
     /**
      * Additional metadata for a card payment method.
      *
-     * @var CardPaymentMetadata $methodMetadata
+     * @var \Polar\Models\Components\CardPaymentMetadata $methodMetadata
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('method_metadata')]
     #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\CardPaymentMetadata')]
@@ -138,13 +138,13 @@ class CardPayment
     /**
      * @param  \DateTime  $createdAt
      * @param  string  $id
-     * @param  PaymentProcessor  $processor
-     * @param  PaymentStatus  $status
+     * @param  \Polar\Models\Components\PaymentProcessor  $processor
+     * @param  \Polar\Models\Components\PaymentStatus  $status
      * @param  int  $amount
      * @param  string  $currency
      * @param  string  $method
      * @param  string  $organizationId
-     * @param  CardPaymentMetadata  $methodMetadata
+     * @param  \Polar\Models\Components\CardPaymentMetadata  $methodMetadata
      * @param  ?\DateTime  $modifiedAt
      * @param  ?string  $declineReason
      * @param  ?string  $declineMessage

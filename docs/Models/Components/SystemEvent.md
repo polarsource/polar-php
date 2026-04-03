@@ -7,7 +7,7 @@
 
 ```php
 /**
-* @var Components\BalanceCreditOrderEvent
+* @var \Polar\Models\Components\BalanceCreditOrderEvent
 */
 Components\BalanceCreditOrderEvent $value = /* values here */
 ```
@@ -16,7 +16,7 @@ Components\BalanceCreditOrderEvent $value = /* values here */
 
 ```php
 /**
-* @var Components\BalanceDisputeEvent
+* @var \Polar\Models\Components\BalanceDisputeEvent
 */
 Components\BalanceDisputeEvent $value = /* values here */
 ```
@@ -25,7 +25,7 @@ Components\BalanceDisputeEvent $value = /* values here */
 
 ```php
 /**
-* @var Components\BalanceDisputeReversalEvent
+* @var \Polar\Models\Components\BalanceDisputeReversalEvent
 */
 Components\BalanceDisputeReversalEvent $value = /* values here */
 ```
@@ -34,7 +34,7 @@ Components\BalanceDisputeReversalEvent $value = /* values here */
 
 ```php
 /**
-* @var Components\BalanceOrderEvent
+* @var \Polar\Models\Components\BalanceOrderEvent
 */
 Components\BalanceOrderEvent $value = /* values here */
 ```
@@ -43,7 +43,7 @@ Components\BalanceOrderEvent $value = /* values here */
 
 ```php
 /**
-* @var Components\BalanceRefundEvent
+* @var \Polar\Models\Components\BalanceRefundEvent
 */
 Components\BalanceRefundEvent $value = /* values here */
 ```
@@ -52,7 +52,7 @@ Components\BalanceRefundEvent $value = /* values here */
 
 ```php
 /**
-* @var Components\BalanceRefundReversalEvent
+* @var \Polar\Models\Components\BalanceRefundReversalEvent
 */
 Components\BalanceRefundReversalEvent $value = /* values here */
 ```
@@ -61,7 +61,7 @@ Components\BalanceRefundReversalEvent $value = /* values here */
 
 ```php
 /**
-* @var Components\BenefitCycledEvent
+* @var \Polar\Models\Components\BenefitCycledEvent
 */
 Components\BenefitCycledEvent $value = /* values here */
 ```
@@ -70,7 +70,7 @@ Components\BenefitCycledEvent $value = /* values here */
 
 ```php
 /**
-* @var Components\BenefitGrantedEvent
+* @var \Polar\Models\Components\BenefitGrantedEvent
 */
 Components\BenefitGrantedEvent $value = /* values here */
 ```
@@ -79,7 +79,7 @@ Components\BenefitGrantedEvent $value = /* values here */
 
 ```php
 /**
-* @var Components\BenefitRevokedEvent
+* @var \Polar\Models\Components\BenefitRevokedEvent
 */
 Components\BenefitRevokedEvent $value = /* values here */
 ```
@@ -88,7 +88,7 @@ Components\BenefitRevokedEvent $value = /* values here */
 
 ```php
 /**
-* @var Components\BenefitUpdatedEvent
+* @var \Polar\Models\Components\BenefitUpdatedEvent
 */
 Components\BenefitUpdatedEvent $value = /* values here */
 ```
@@ -97,7 +97,7 @@ Components\BenefitUpdatedEvent $value = /* values here */
 
 ```php
 /**
-* @var Components\CheckoutCreatedEvent
+* @var \Polar\Models\Components\CheckoutCreatedEvent
 */
 Components\CheckoutCreatedEvent $value = /* values here */
 ```
@@ -106,7 +106,7 @@ Components\CheckoutCreatedEvent $value = /* values here */
 
 ```php
 /**
-* @var Components\CustomerCreatedEvent
+* @var \Polar\Models\Components\CustomerCreatedEvent
 */
 Components\CustomerCreatedEvent $value = /* values here */
 ```
@@ -115,7 +115,7 @@ Components\CustomerCreatedEvent $value = /* values here */
 
 ```php
 /**
-* @var Components\CustomerDeletedEvent
+* @var \Polar\Models\Components\CustomerDeletedEvent
 */
 Components\CustomerDeletedEvent $value = /* values here */
 ```
@@ -124,7 +124,7 @@ Components\CustomerDeletedEvent $value = /* values here */
 
 ```php
 /**
-* @var Components\CustomerUpdatedEvent
+* @var \Polar\Models\Components\CustomerUpdatedEvent
 */
 Components\CustomerUpdatedEvent $value = /* values here */
 ```
@@ -133,7 +133,7 @@ Components\CustomerUpdatedEvent $value = /* values here */
 
 ```php
 /**
-* @var Components\MeterCreditEvent
+* @var \Polar\Models\Components\MeterCreditEvent
 */
 Components\MeterCreditEvent $value = /* values here */
 ```
@@ -142,7 +142,7 @@ Components\MeterCreditEvent $value = /* values here */
 
 ```php
 /**
-* @var Components\MeterResetEvent
+* @var \Polar\Models\Components\MeterResetEvent
 */
 Components\MeterResetEvent $value = /* values here */
 ```
@@ -151,7 +151,7 @@ Components\MeterResetEvent $value = /* values here */
 
 ```php
 /**
-* @var Components\OrderPaidEvent
+* @var \Polar\Models\Components\OrderPaidEvent
 */
 Components\OrderPaidEvent $value = /* values here */
 ```
@@ -160,16 +160,25 @@ Components\OrderPaidEvent $value = /* values here */
 
 ```php
 /**
-* @var Components\OrderRefundedEvent
+* @var \Polar\Models\Components\OrderRefundedEvent
 */
 Components\OrderRefundedEvent $value = /* values here */
+```
+
+### `Components\OrderVoidedEvent`
+
+```php
+/**
+* @var \Polar\Models\Components\OrderVoidedEvent
+*/
+Components\OrderVoidedEvent $value = /* values here */
 ```
 
 ### `Components\SubscriptionBillingPeriodUpdatedEvent`
 
 ```php
 /**
-* @var Components\SubscriptionBillingPeriodUpdatedEvent
+* @var \Polar\Models\Components\SubscriptionBillingPeriodUpdatedEvent
 */
 Components\SubscriptionBillingPeriodUpdatedEvent $value = /* values here */
 ```
@@ -178,7 +187,7 @@ Components\SubscriptionBillingPeriodUpdatedEvent $value = /* values here */
 
 ```php
 /**
-* @var Components\SubscriptionCanceledEvent
+* @var \Polar\Models\Components\SubscriptionCanceledEvent
 */
 Components\SubscriptionCanceledEvent $value = /* values here */
 ```
@@ -187,7 +196,7 @@ Components\SubscriptionCanceledEvent $value = /* values here */
 
 ```php
 /**
-* @var Components\SubscriptionCreatedEvent
+* @var \Polar\Models\Components\SubscriptionCreatedEvent
 */
 Components\SubscriptionCreatedEvent $value = /* values here */
 ```
@@ -196,7 +205,7 @@ Components\SubscriptionCreatedEvent $value = /* values here */
 
 ```php
 /**
-* @var Components\SubscriptionCycledEvent
+* @var \Polar\Models\Components\SubscriptionCycledEvent
 */
 Components\SubscriptionCycledEvent $value = /* values here */
 ```
@@ -205,7 +214,7 @@ Components\SubscriptionCycledEvent $value = /* values here */
 
 ```php
 /**
-* @var Components\SubscriptionProductUpdatedEvent
+* @var \Polar\Models\Components\SubscriptionProductUpdatedEvent
 */
 Components\SubscriptionProductUpdatedEvent $value = /* values here */
 ```
@@ -214,7 +223,7 @@ Components\SubscriptionProductUpdatedEvent $value = /* values here */
 
 ```php
 /**
-* @var Components\SubscriptionRevokedEvent
+* @var \Polar\Models\Components\SubscriptionRevokedEvent
 */
 Components\SubscriptionRevokedEvent $value = /* values here */
 ```
@@ -223,7 +232,7 @@ Components\SubscriptionRevokedEvent $value = /* values here */
 
 ```php
 /**
-* @var Components\SubscriptionSeatsUpdatedEvent
+* @var \Polar\Models\Components\SubscriptionSeatsUpdatedEvent
 */
 Components\SubscriptionSeatsUpdatedEvent $value = /* values here */
 ```
@@ -232,7 +241,7 @@ Components\SubscriptionSeatsUpdatedEvent $value = /* values here */
 
 ```php
 /**
-* @var Components\SubscriptionUncanceledEvent
+* @var \Polar\Models\Components\SubscriptionUncanceledEvent
 */
 Components\SubscriptionUncanceledEvent $value = /* values here */
 ```
@@ -241,7 +250,7 @@ Components\SubscriptionUncanceledEvent $value = /* values here */
 
 ```php
 /**
-* @var Components\SubscriptionUpdatedEvent
+* @var \Polar\Models\Components\SubscriptionUpdatedEvent
 */
 Components\SubscriptionUpdatedEvent $value = /* values here */
 ```

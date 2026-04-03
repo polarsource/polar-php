@@ -22,14 +22,14 @@ class CheckoutLinksUpdateRequest
 
     /**
      *
-     * @var Components\CheckoutLinkUpdate $checkoutLinkUpdate
+     * @var \Polar\Models\Components\CheckoutLinkUpdate $checkoutLinkUpdate
      */
     #[SpeakeasyMetadata('request:mediaType=application/json')]
     public Components\CheckoutLinkUpdate $checkoutLinkUpdate;
 
     /**
      * @param  string  $id
-     * @param  Components\CheckoutLinkUpdate  $checkoutLinkUpdate
+     * @param  \Polar\Models\Components\CheckoutLinkUpdate  $checkoutLinkUpdate
      * @phpstan-pure
      */
     public function __construct(string $id, Components\CheckoutLinkUpdate $checkoutLinkUpdate)

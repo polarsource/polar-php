@@ -7,7 +7,7 @@
 
 ```php
 /**
-* @var Components\SubscriptionUpdateProduct
+* @var \Polar\Models\Components\SubscriptionUpdateProduct
 */
 Components\SubscriptionUpdateProduct $value = /* values here */
 ```
@@ -16,7 +16,7 @@ Components\SubscriptionUpdateProduct $value = /* values here */
 
 ```php
 /**
-* @var Components\SubscriptionUpdateDiscount
+* @var \Polar\Models\Components\SubscriptionUpdateDiscount
 */
 Components\SubscriptionUpdateDiscount $value = /* values here */
 ```
@@ -25,7 +25,7 @@ Components\SubscriptionUpdateDiscount $value = /* values here */
 
 ```php
 /**
-* @var Components\SubscriptionUpdateTrial
+* @var \Polar\Models\Components\SubscriptionUpdateTrial
 */
 Components\SubscriptionUpdateTrial $value = /* values here */
 ```
@@ -34,7 +34,7 @@ Components\SubscriptionUpdateTrial $value = /* values here */
 
 ```php
 /**
-* @var Components\SubscriptionUpdateSeats
+* @var \Polar\Models\Components\SubscriptionUpdateSeats
 */
 Components\SubscriptionUpdateSeats $value = /* values here */
 ```
@@ -43,7 +43,7 @@ Components\SubscriptionUpdateSeats $value = /* values here */
 
 ```php
 /**
-* @var Components\SubscriptionUpdateBillingPeriod
+* @var \Polar\Models\Components\SubscriptionUpdateBillingPeriod
 */
 Components\SubscriptionUpdateBillingPeriod $value = /* values here */
 ```
@@ -52,7 +52,7 @@ Components\SubscriptionUpdateBillingPeriod $value = /* values here */
 
 ```php
 /**
-* @var Components\SubscriptionCancel
+* @var \Polar\Models\Components\SubscriptionCancel
 */
 Components\SubscriptionCancel $value = /* values here */
 ```
@@ -61,7 +61,7 @@ Components\SubscriptionCancel $value = /* values here */
 
 ```php
 /**
-* @var Components\SubscriptionRevoke
+* @var \Polar\Models\Components\SubscriptionRevoke
 */
 Components\SubscriptionRevoke $value = /* values here */
 ```

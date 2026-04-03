@@ -92,7 +92,7 @@ class CheckoutConfirmStripe
 
     /**
      *
-     * @var ?AddressInput $customerBillingAddress
+     * @var ?\Polar\Models\Components\AddressInput $customerBillingAddress
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('customer_billing_address')]
     #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\AddressInput|null')]
@@ -152,7 +152,7 @@ class CheckoutConfirmStripe
      * @param  ?string  $customerName
      * @param  ?string  $customerEmail
      * @param  ?string  $customerBillingName
-     * @param  ?AddressInput  $customerBillingAddress
+     * @param  ?\Polar\Models\Components\AddressInput  $customerBillingAddress
      * @param  ?string  $customerTaxId
      * @param  ?string  $locale
      * @param  ?string  $discountCode

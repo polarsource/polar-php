@@ -9,7 +9,7 @@ Filter by custom field type.
 
 ```php
 /**
-* @var Components\CustomFieldType
+* @var \Polar\Models\Components\CustomFieldType
 */
 Components\CustomFieldType $value = /* values here */
 ```
@@ -18,7 +18,7 @@ Components\CustomFieldType $value = /* values here */
 
 ```php
 /**
-* @var array<Components\CustomFieldType>
+* @var array<\Polar\Models\Components\CustomFieldType>
 */
 array $value = /* values here */
 ```

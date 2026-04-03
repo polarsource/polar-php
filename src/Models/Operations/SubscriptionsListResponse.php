@@ -35,7 +35,7 @@ class SubscriptionsListResponse
     /**
      * Successful Response
      *
-     * @var ?Components\ListResourceSubscription $listResourceSubscription
+     * @var ?\Polar\Models\Components\ListResourceSubscription $listResourceSubscription
      */
     public ?Components\ListResourceSubscription $listResourceSubscription = null;
 
@@ -47,7 +47,7 @@ class SubscriptionsListResponse
      * @param  string  $contentType
      * @param  int  $statusCode
      * @param  \Psr\Http\Message\ResponseInterface  $rawResponse
-     * @param  ?Components\ListResourceSubscription  $listResourceSubscription
+     * @param  ?\Polar\Models\Components\ListResourceSubscription  $listResourceSubscription
      * @phpstan-pure
      */
     public function __construct(string $contentType, int $statusCode, \Psr\Http\Message\ResponseInterface $rawResponse, ?Components\ListResourceSubscription $listResourceSubscription = null)

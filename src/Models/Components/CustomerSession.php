@@ -57,13 +57,13 @@ class CustomerSession
     public string $customerId;
 
     /**
-     * A customer in an organization.
      *
-     * @var Customer $customer
+     * @var \Polar\Models\Components\CustomerIndividual|\Polar\Models\Components\CustomerTeam $customer
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('customer')]
-    #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\Customer')]
-    public Customer $customer;
+    #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\CustomerIndividual|\Polar\Models\Components\CustomerTeam')]
+    #[\Speakeasy\Serializer\Annotation\UnionDiscriminator(field: 'type', map: ['individual' => '\Polar\Models\Components\CustomerIndividual', 'team' => '\Polar\Models\Components\CustomerTeam'])]
+    public CustomerIndividual|CustomerTeam $customer;
 
     /**
      * Last modification timestamp of the object.
@@ -87,12 +87,12 @@ class CustomerSession
      * @param  \DateTime  $expiresAt
      * @param  string  $customerPortalUrl
      * @param  string  $customerId
-     * @param  Customer  $customer
+     * @param  \Polar\Models\Components\CustomerIndividual|\Polar\Models\Components\CustomerTeam  $customer
      * @param  ?\DateTime  $modifiedAt
      * @param  ?string  $returnUrl
      * @phpstan-pure
      */
-    public function __construct(\DateTime $createdAt, string $id, string $token, \DateTime $expiresAt, string $customerPortalUrl, string $customerId, Customer $customer, ?\DateTime $modifiedAt = null, ?string $returnUrl = null)
+    public function __construct(\DateTime $createdAt, string $id, string $token, \DateTime $expiresAt, string $customerPortalUrl, string $customerId, CustomerIndividual|CustomerTeam $customer, ?\DateTime $modifiedAt = null, ?string $returnUrl = null)
     {
         $this->createdAt = $createdAt;
         $this->id = $id;

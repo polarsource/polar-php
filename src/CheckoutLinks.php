@@ -52,8 +52,8 @@ class CheckoutLinks
      *
      * **Scopes**: `checkout_links:write`
      *
-     * @param  Components\CheckoutLinkCreateProductPrice|Components\CheckoutLinkCreateProduct|Components\CheckoutLinkCreateProducts  $request
-     * @return Operations\CheckoutLinksCreateResponse
+     * @param  \Polar\Models\Components\CheckoutLinkCreateProductPrice|\Polar\Models\Components\CheckoutLinkCreateProduct|\Polar\Models\Components\CheckoutLinkCreateProducts  $request
+     * @return \Polar\Models\Operations\CheckoutLinksCreateResponse
      * @throws \Polar\Models\Errors\APIException
      */
     public function create(Components\CheckoutLinkCreateProductPrice|Components\CheckoutLinkCreateProduct|Components\CheckoutLinkCreateProducts $request, ?Options $options = null): Operations\CheckoutLinksCreateResponse
@@ -132,7 +132,7 @@ class CheckoutLinks
      * **Scopes**: `checkout_links:write`
      *
      * @param  string  $id
-     * @return Operations\CheckoutLinksDeleteResponse
+     * @return \Polar\Models\Operations\CheckoutLinksDeleteResponse
      * @throws \Polar\Models\Errors\APIException
      */
     public function delete(string $id, ?Options $options = null): Operations\CheckoutLinksDeleteResponse
@@ -211,7 +211,7 @@ class CheckoutLinks
      * **Scopes**: `checkout_links:read` `checkout_links:write`
      *
      * @param  string  $id
-     * @return Operations\CheckoutLinksGetResponse
+     * @return \Polar\Models\Operations\CheckoutLinksGetResponse
      * @throws \Polar\Models\Errors\APIException
      */
     public function get(string $id, ?Options $options = null): Operations\CheckoutLinksGetResponse
@@ -298,8 +298,8 @@ class CheckoutLinks
      *
      * **Scopes**: `checkout_links:read` `checkout_links:write`
      *
-     * @param  ?Operations\CheckoutLinksListRequest  $request
-     * @return Operations\CheckoutLinksListResponse
+     * @param  ?\Polar\Models\Operations\CheckoutLinksListRequest  $request
+     * @return \Polar\Models\Operations\CheckoutLinksListResponse
      * @throws \Polar\Models\Errors\APIException
      */
     private function listIndividual(?Operations\CheckoutLinksListRequest $request = null, ?Options $options = null): Operations\CheckoutLinksListResponse
@@ -412,8 +412,8 @@ class CheckoutLinks
      *
      * **Scopes**: `checkout_links:read` `checkout_links:write`
      *
-     * @param  ?Operations\CheckoutLinksListRequest  $request
-     * @return \Generator<Operations\CheckoutLinksListResponse>
+     * @param  ?\Polar\Models\Operations\CheckoutLinksListRequest  $request
+     * @return \Generator<\Polar\Models\Operations\CheckoutLinksListResponse>
      * @throws \Polar\Models\Errors\APIException
      */
     public function list(?Operations\CheckoutLinksListRequest $request = null, ?Options $options = null): \Generator
@@ -432,9 +432,9 @@ class CheckoutLinks
      *
      * **Scopes**: `checkout_links:write`
      *
-     * @param  Components\CheckoutLinkUpdate  $checkoutLinkUpdate
+     * @param  \Polar\Models\Components\CheckoutLinkUpdate  $checkoutLinkUpdate
      * @param  string  $id
-     * @return Operations\CheckoutLinksUpdateResponse
+     * @return \Polar\Models\Operations\CheckoutLinksUpdateResponse
      * @throws \Polar\Models\Errors\APIException
      */
     public function update(Components\CheckoutLinkUpdate $checkoutLinkUpdate, string $id, ?Options $options = null): Operations\CheckoutLinksUpdateResponse

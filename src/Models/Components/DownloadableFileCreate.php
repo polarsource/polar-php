@@ -35,7 +35,7 @@ class DownloadableFileCreate
 
     /**
      *
-     * @var S3FileCreateMultipart $upload
+     * @var \Polar\Models\Components\S3FileCreateMultipart $upload
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('upload')]
     #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\S3FileCreateMultipart')]
@@ -76,7 +76,7 @@ class DownloadableFileCreate
      * @param  string  $name
      * @param  string  $mimeType
      * @param  int  $size
-     * @param  S3FileCreateMultipart  $upload
+     * @param  \Polar\Models\Components\S3FileCreateMultipart  $upload
      * @param  string  $service
      * @param  ?string  $organizationId
      * @param  ?string  $checksumSha256Base64

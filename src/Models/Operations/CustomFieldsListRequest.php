@@ -31,7 +31,7 @@ class CustomFieldsListRequest
     /**
      * Filter by custom field type.
      *
-     * @var Components\CustomFieldType|array<Components\CustomFieldType>|null $typeFilter
+     * @var \Polar\Models\Components\CustomFieldType|array<\Polar\Models\Components\CustomFieldType>|null $typeFilter
      */
     #[SpeakeasyMetadata('queryParam:style=form,explode=true,name=type')]
     public Components\CustomFieldType|array|null $typeFilter = null;
@@ -39,7 +39,7 @@ class CustomFieldsListRequest
     /**
      * Sorting criterion. Several criteria can be used simultaneously and will be applied in order. Add a minus sign `-` before the criteria name to sort by descending order.
      *
-     * @var ?array<Components\CustomFieldSortProperty> $sorting
+     * @var ?array<\Polar\Models\Components\CustomFieldSortProperty> $sorting
      */
     #[SpeakeasyMetadata('queryParam:style=form,explode=true,name=sorting')]
     public ?array $sorting = null;
@@ -65,8 +65,8 @@ class CustomFieldsListRequest
      * @param  ?int  $limit
      * @param  string|array<string>|null  $organizationId
      * @param  ?string  $query
-     * @param  Components\CustomFieldType|array<Components\CustomFieldType>|null  $typeFilter
-     * @param  ?array<Components\CustomFieldSortProperty>  $sorting
+     * @param  \Polar\Models\Components\CustomFieldType|array<\Polar\Models\Components\CustomFieldType>|null  $typeFilter
+     * @param  ?array<\Polar\Models\Components\CustomFieldSortProperty>  $sorting
      * @phpstan-pure
      */
     public function __construct(string|array|null $organizationId = null, ?string $query = null, Components\CustomFieldType|array|null $typeFilter = null, ?array $sorting = null, ?int $page = 1, ?int $limit = 10)

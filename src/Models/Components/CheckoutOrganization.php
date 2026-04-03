@@ -45,7 +45,7 @@ class CheckoutOrganization
 
     /**
      *
-     * @var SubscriptionProrationBehavior $prorationBehavior
+     * @var \Polar\Models\Components\SubscriptionProrationBehavior $prorationBehavior
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('proration_behavior')]
     #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\SubscriptionProrationBehavior')]
@@ -80,7 +80,7 @@ class CheckoutOrganization
      * @param  string  $id
      * @param  string  $name
      * @param  string  $slug
-     * @param  SubscriptionProrationBehavior  $prorationBehavior
+     * @param  \Polar\Models\Components\SubscriptionProrationBehavior  $prorationBehavior
      * @param  bool  $allowCustomerUpdates
      * @param  ?\DateTime  $modifiedAt
      * @param  ?string  $avatarUrl

@@ -31,7 +31,7 @@ class WebhookEndpointUpdate
 
     /**
      *
-     * @var ?WebhookFormat $format
+     * @var ?\Polar\Models\Components\WebhookFormat $format
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('format')]
     #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\WebhookFormat|null')]
@@ -41,7 +41,7 @@ class WebhookEndpointUpdate
     /**
      * $events
      *
-     * @var ?array<WebhookEventType> $events
+     * @var ?array<\Polar\Models\Components\WebhookEventType> $events
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('events')]
     #[\Speakeasy\Serializer\Annotation\Type('array<\Polar\Models\Components\WebhookEventType>|null')]
@@ -60,8 +60,8 @@ class WebhookEndpointUpdate
     /**
      * @param  ?string  $url
      * @param  ?string  $name
-     * @param  ?WebhookFormat  $format
-     * @param  ?array<WebhookEventType>  $events
+     * @param  ?\Polar\Models\Components\WebhookFormat  $format
+     * @param  ?array<\Polar\Models\Components\WebhookEventType>  $events
      * @param  ?bool  $enabled
      * @phpstan-pure
      */

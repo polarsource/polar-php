@@ -46,7 +46,7 @@ class WebhookDelivery
      * It can be delivered multiple times until it's marked as succeeded,
      * each one creating a new delivery.
      *
-     * @var WebhookEvent $webhookEvent
+     * @var \Polar\Models\Components\WebhookEvent $webhookEvent
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('webhook_event')]
     #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\WebhookEvent')]
@@ -80,7 +80,7 @@ class WebhookDelivery
      * @param  \DateTime  $createdAt
      * @param  string  $id
      * @param  bool  $succeeded
-     * @param  WebhookEvent  $webhookEvent
+     * @param  \Polar\Models\Components\WebhookEvent  $webhookEvent
      * @param  ?\DateTime  $modifiedAt
      * @param  ?int  $httpCode
      * @param  ?string  $response

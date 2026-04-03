@@ -7,7 +7,7 @@
 
 ```php
 /**
-* @var Components\DownloadableFileRead
+* @var \Polar\Models\Components\DownloadableFileRead
 */
 Components\DownloadableFileRead $value = /* values here */
 ```
@@ -16,7 +16,7 @@ Components\DownloadableFileRead $value = /* values here */
 
 ```php
 /**
-* @var Components\OrganizationAvatarFileRead
+* @var \Polar\Models\Components\OrganizationAvatarFileRead
 */
 Components\OrganizationAvatarFileRead $value = /* values here */
 ```
@@ -25,7 +25,7 @@ Components\OrganizationAvatarFileRead $value = /* values here */
 
 ```php
 /**
-* @var Components\ProductMediaFileRead
+* @var \Polar\Models\Components\ProductMediaFileRead
 */
 Components\ProductMediaFileRead $value = /* values here */
 ```

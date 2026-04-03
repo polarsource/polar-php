@@ -69,9 +69,33 @@ class SubscriptionsListRequest
     public ?bool $cancelAtPeriodEnd = null;
 
     /**
+     * Filter by customer cancellation reason.
+     *
+     * @var \Polar\Models\Components\CustomerCancellationReason|array<\Polar\Models\Components\CustomerCancellationReason>|null $customerCancellationReason
+     */
+    #[SpeakeasyMetadata('queryParam:style=form,explode=true,name=customer_cancellation_reason')]
+    public Components\CustomerCancellationReason|array|null $customerCancellationReason = null;
+
+    /**
+     * Filter by cancellation date (after or equal to).
+     *
+     * @var ?\DateTime $canceledAtAfter
+     */
+    #[SpeakeasyMetadata('queryParam:style=form,explode=true,name=canceled_at_after,dateTimeFormat=Y-m-d\TH:i:s.up')]
+    public ?\DateTime $canceledAtAfter = null;
+
+    /**
+     * Filter by cancellation date (before or equal to).
+     *
+     * @var ?\DateTime $canceledAtBefore
+     */
+    #[SpeakeasyMetadata('queryParam:style=form,explode=true,name=canceled_at_before,dateTimeFormat=Y-m-d\TH:i:s.up')]
+    public ?\DateTime $canceledAtBefore = null;
+
+    /**
      * Sorting criterion. Several criteria can be used simultaneously and will be applied in order. Add a minus sign `-` before the criteria name to sort by descending order.
      *
-     * @var ?array<Components\SubscriptionSortProperty> $sorting
+     * @var ?array<\Polar\Models\Components\SubscriptionSortProperty> $sorting
      */
     #[SpeakeasyMetadata('queryParam:style=form,explode=true,name=sorting')]
     public ?array $sorting = null;
@@ -110,11 +134,14 @@ class SubscriptionsListRequest
      * @param  string|array<string>|null  $discountId
      * @param  ?bool  $active
      * @param  ?bool  $cancelAtPeriodEnd
-     * @param  ?array<Components\SubscriptionSortProperty>  $sorting
+     * @param  \Polar\Models\Components\CustomerCancellationReason|array<\Polar\Models\Components\CustomerCancellationReason>|null  $customerCancellationReason
+     * @param  ?\DateTime  $canceledAtAfter
+     * @param  ?\DateTime  $canceledAtBefore
+     * @param  ?array<\Polar\Models\Components\SubscriptionSortProperty>  $sorting
      * @param  ?array<string, string|int|bool|array<string>|array<int>|array<bool>>  $metadata
      * @phpstan-pure
      */
-    public function __construct(string|array|null $organizationId = null, string|array|null $productId = null, string|array|null $customerId = null, string|array|null $externalCustomerId = null, string|array|null $discountId = null, ?bool $active = null, ?bool $cancelAtPeriodEnd = null, ?array $sorting = null, ?array $metadata = null, ?int $page = 1, ?int $limit = 10)
+    public function __construct(string|array|null $organizationId = null, string|array|null $productId = null, string|array|null $customerId = null, string|array|null $externalCustomerId = null, string|array|null $discountId = null, ?bool $active = null, ?bool $cancelAtPeriodEnd = null, Components\CustomerCancellationReason|array|null $customerCancellationReason = null, ?\DateTime $canceledAtAfter = null, ?\DateTime $canceledAtBefore = null, ?array $sorting = null, ?array $metadata = null, ?int $page = 1, ?int $limit = 10)
     {
         $this->organizationId = $organizationId;
         $this->productId = $productId;
@@ -123,6 +150,9 @@ class SubscriptionsListRequest
         $this->discountId = $discountId;
         $this->active = $active;
         $this->cancelAtPeriodEnd = $cancelAtPeriodEnd;
+        $this->customerCancellationReason = $customerCancellationReason;
+        $this->canceledAtAfter = $canceledAtAfter;
+        $this->canceledAtBefore = $canceledAtBefore;
         $this->sorting = $sorting;
         $this->metadata = $metadata;
         $this->page = $page;

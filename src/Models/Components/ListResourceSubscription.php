@@ -14,7 +14,7 @@ class ListResourceSubscription
     /**
      * $items
      *
-     * @var array<Subscription> $items
+     * @var array<\Polar\Models\Components\Subscription> $items
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('items')]
     #[\Speakeasy\Serializer\Annotation\Type('array<\Polar\Models\Components\Subscription>')]
@@ -22,15 +22,15 @@ class ListResourceSubscription
 
     /**
      *
-     * @var Pagination $pagination
+     * @var \Polar\Models\Components\Pagination $pagination
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('pagination')]
     #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\Pagination')]
     public Pagination $pagination;
 
     /**
-     * @param  array<Subscription>  $items
-     * @param  Pagination  $pagination
+     * @param  array<\Polar\Models\Components\Subscription>  $items
+     * @param  \Polar\Models\Components\Pagination  $pagination
      * @phpstan-pure
      */
     public function __construct(array $items, Pagination $pagination)

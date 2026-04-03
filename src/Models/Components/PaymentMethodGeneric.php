@@ -29,7 +29,7 @@ class PaymentMethodGeneric
 
     /**
      *
-     * @var PaymentProcessor $processor
+     * @var \Polar\Models\Components\PaymentProcessor $processor
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('processor')]
     #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\PaymentProcessor')]
@@ -60,7 +60,7 @@ class PaymentMethodGeneric
     /**
      * @param  string  $id
      * @param  \DateTime  $createdAt
-     * @param  PaymentProcessor  $processor
+     * @param  \Polar\Models\Components\PaymentProcessor  $processor
      * @param  string  $customerId
      * @param  string  $type
      * @param  ?\DateTime  $modifiedAt

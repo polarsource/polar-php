@@ -51,7 +51,7 @@ class CustomFieldUpdateSelect
 
     /**
      *
-     * @var ?CustomFieldSelectProperties $properties
+     * @var ?\Polar\Models\Components\CustomFieldSelectProperties $properties
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('properties')]
     #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\CustomFieldSelectProperties|null')]
@@ -70,7 +70,7 @@ class CustomFieldUpdateSelect
      * @param  ?array<string, string|int|float|bool>  $metadata
      * @param  ?string  $name
      * @param  ?string  $slug
-     * @param  ?CustomFieldSelectProperties  $properties
+     * @param  ?\Polar\Models\Components\CustomFieldSelectProperties  $properties
      * @phpstan-pure
      */
     public function __construct(?array $metadata = null, ?string $name = null, ?string $slug = null, ?CustomFieldSelectProperties $properties = null, string $type = 'select')

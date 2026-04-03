@@ -22,14 +22,14 @@ class SubscriptionsUpdateRequest
 
     /**
      *
-     * @var Components\SubscriptionUpdateProduct|Components\SubscriptionUpdateDiscount|Components\SubscriptionUpdateTrial|Components\SubscriptionUpdateSeats|Components\SubscriptionUpdateBillingPeriod|Components\SubscriptionCancel|Components\SubscriptionRevoke $subscriptionUpdate
+     * @var \Polar\Models\Components\SubscriptionUpdateProduct|\Polar\Models\Components\SubscriptionUpdateDiscount|\Polar\Models\Components\SubscriptionUpdateTrial|\Polar\Models\Components\SubscriptionUpdateSeats|\Polar\Models\Components\SubscriptionUpdateBillingPeriod|\Polar\Models\Components\SubscriptionCancel|\Polar\Models\Components\SubscriptionRevoke $subscriptionUpdate
      */
     #[SpeakeasyMetadata('request:mediaType=application/json')]
     public Components\SubscriptionUpdateProduct|Components\SubscriptionUpdateDiscount|Components\SubscriptionUpdateTrial|Components\SubscriptionUpdateSeats|Components\SubscriptionUpdateBillingPeriod|Components\SubscriptionCancel|Components\SubscriptionRevoke $subscriptionUpdate;
 
     /**
      * @param  string  $id
-     * @param  Components\SubscriptionUpdateProduct|Components\SubscriptionUpdateDiscount|Components\SubscriptionUpdateTrial|Components\SubscriptionUpdateSeats|Components\SubscriptionUpdateBillingPeriod|Components\SubscriptionCancel|Components\SubscriptionRevoke  $subscriptionUpdate
+     * @param  \Polar\Models\Components\SubscriptionUpdateProduct|\Polar\Models\Components\SubscriptionUpdateDiscount|\Polar\Models\Components\SubscriptionUpdateTrial|\Polar\Models\Components\SubscriptionUpdateSeats|\Polar\Models\Components\SubscriptionUpdateBillingPeriod|\Polar\Models\Components\SubscriptionCancel|\Polar\Models\Components\SubscriptionRevoke  $subscriptionUpdate
      * @phpstan-pure
      */
     public function __construct(string $id, Components\SubscriptionUpdateProduct|Components\SubscriptionUpdateDiscount|Components\SubscriptionUpdateTrial|Components\SubscriptionUpdateSeats|Components\SubscriptionUpdateBillingPeriod|Components\SubscriptionCancel|Components\SubscriptionRevoke $subscriptionUpdate)

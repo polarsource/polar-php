@@ -30,7 +30,7 @@ class CustomFieldCreateNumber
 
     /**
      *
-     * @var CustomFieldNumberProperties $properties
+     * @var \Polar\Models\Components\CustomFieldNumberProperties $properties
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('properties')]
     #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\CustomFieldNumberProperties')]
@@ -77,7 +77,7 @@ class CustomFieldCreateNumber
      * @param  string  $type
      * @param  string  $slug
      * @param  string  $name
-     * @param  CustomFieldNumberProperties  $properties
+     * @param  \Polar\Models\Components\CustomFieldNumberProperties  $properties
      * @param  ?array<string, string|int|float|bool>  $metadata
      * @param  ?string  $organizationId
      * @phpstan-pure

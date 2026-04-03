@@ -7,7 +7,7 @@
 
 ```php
 /**
-* @var Components\PropertyAggregation
+* @var \Polar\Models\Components\PropertyAggregation
 */
 Components\PropertyAggregation $value = /* values here */
 ```
@@ -16,7 +16,7 @@ Components\PropertyAggregation $value = /* values here */
 
 ```php
 /**
-* @var Components\CountAggregation
+* @var \Polar\Models\Components\CountAggregation
 */
 Components\CountAggregation $value = /* values here */
 ```
@@ -25,7 +25,7 @@ Components\CountAggregation $value = /* values here */
 
 ```php
 /**
-* @var Components\PropertyAggregation
+* @var \Polar\Models\Components\PropertyAggregation
 */
 Components\PropertyAggregation $value = /* values here */
 ```
@@ -34,7 +34,7 @@ Components\PropertyAggregation $value = /* values here */
 
 ```php
 /**
-* @var Components\PropertyAggregation
+* @var \Polar\Models\Components\PropertyAggregation
 */
 Components\PropertyAggregation $value = /* values here */
 ```
@@ -43,7 +43,7 @@ Components\PropertyAggregation $value = /* values here */
 
 ```php
 /**
-* @var Components\PropertyAggregation
+* @var \Polar\Models\Components\PropertyAggregation
 */
 Components\PropertyAggregation $value = /* values here */
 ```
@@ -52,7 +52,7 @@ Components\PropertyAggregation $value = /* values here */
 
 ```php
 /**
-* @var Components\UniqueAggregation
+* @var \Polar\Models\Components\UniqueAggregation
 */
 Components\UniqueAggregation $value = /* values here */
 ```

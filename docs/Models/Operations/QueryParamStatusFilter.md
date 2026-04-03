@@ -9,7 +9,7 @@ Filter by checkout session status.
 
 ```php
 /**
-* @var Components\CheckoutStatus
+* @var \Polar\Models\Components\CheckoutStatus
 */
 Components\CheckoutStatus $value = /* values here */
 ```
@@ -18,7 +18,7 @@ Components\CheckoutStatus $value = /* values here */
 
 ```php
 /**
-* @var array<Components\CheckoutStatus>
+* @var array<\Polar\Models\Components\CheckoutStatus>
 */
 array $value = /* values here */
 ```

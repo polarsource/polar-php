@@ -7,7 +7,7 @@
 
 ```php
 /**
-* @var Components\OrganizationCompanyLegalEntitySchema
+* @var \Polar\Models\Components\OrganizationCompanyLegalEntitySchema
 */
 Components\OrganizationCompanyLegalEntitySchema $value = /* values here */
 ```
@@ -16,7 +16,7 @@ Components\OrganizationCompanyLegalEntitySchema $value = /* values here */
 
 ```php
 /**
-* @var Components\OrganizationIndividualLegalEntitySchema
+* @var \Polar\Models\Components\OrganizationIndividualLegalEntitySchema
 */
 Components\OrganizationIndividualLegalEntitySchema $value = /* values here */
 ```

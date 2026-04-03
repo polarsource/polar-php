@@ -35,7 +35,7 @@ class EventsListResponse
     /**
      * Successful Response
      *
-     * @var Components\ListResourceEvent|Components\ListResourceWithCursorPaginationEvent|null $responseEventsList
+     * @var \Polar\Models\Components\ListResourceEvent|\Polar\Models\Components\ListResourceWithCursorPaginationEvent|null $responseEventsList
      */
     public Components\ListResourceEvent|Components\ListResourceWithCursorPaginationEvent|null $responseEventsList = null;
 
@@ -43,7 +43,7 @@ class EventsListResponse
      * @param  string  $contentType
      * @param  int  $statusCode
      * @param  \Psr\Http\Message\ResponseInterface  $rawResponse
-     * @param  Components\ListResourceEvent|Components\ListResourceWithCursorPaginationEvent|null  $responseEventsList
+     * @param  \Polar\Models\Components\ListResourceEvent|\Polar\Models\Components\ListResourceWithCursorPaginationEvent|null  $responseEventsList
      * @phpstan-pure
      */
     public function __construct(string $contentType, int $statusCode, \Psr\Http\Message\ResponseInterface $rawResponse, Components\ListResourceEvent|Components\ListResourceWithCursorPaginationEvent|null $responseEventsList = null)

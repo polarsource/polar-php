@@ -30,7 +30,7 @@ class SubscriptionRevoke
      * * `too_complex`: Customer considers the service too complicated.
      * * `other`: Other reason(s).
      *
-     * @var ?CustomerCancellationReason $customerCancellationReason
+     * @var ?\Polar\Models\Components\CustomerCancellationReason $customerCancellationReason
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('customer_cancellation_reason')]
     #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\CustomerCancellationReason|null')]
@@ -66,7 +66,7 @@ class SubscriptionRevoke
 
     /**
      * @param  bool  $revoke
-     * @param  ?CustomerCancellationReason  $customerCancellationReason
+     * @param  ?\Polar\Models\Components\CustomerCancellationReason  $customerCancellationReason
      * @param  ?string  $customerCancellationComment
      * @phpstan-pure
      */

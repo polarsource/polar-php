@@ -7,7 +7,7 @@
 
 ```php
 /**
-* @var Components\CardPayment
+* @var \Polar\Models\Components\CardPayment
 */
 Components\CardPayment $value = /* values here */
 ```
@@ -16,7 +16,7 @@ Components\CardPayment $value = /* values here */
 
 ```php
 /**
-* @var Components\GenericPayment
+* @var \Polar\Models\Components\GenericPayment
 */
 Components\GenericPayment $value = /* values here */
 ```

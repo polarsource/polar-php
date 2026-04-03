@@ -35,7 +35,7 @@ class DisputesListResponse
     /**
      * Successful Response
      *
-     * @var ?Components\ListResourceDispute $listResourceDispute
+     * @var ?\Polar\Models\Components\ListResourceDispute $listResourceDispute
      */
     public ?Components\ListResourceDispute $listResourceDispute = null;
 
@@ -47,7 +47,7 @@ class DisputesListResponse
      * @param  string  $contentType
      * @param  int  $statusCode
      * @param  \Psr\Http\Message\ResponseInterface  $rawResponse
-     * @param  ?Components\ListResourceDispute  $listResourceDispute
+     * @param  ?\Polar\Models\Components\ListResourceDispute  $listResourceDispute
      * @phpstan-pure
      */
     public function __construct(string $contentType, int $statusCode, \Psr\Http\Message\ResponseInterface $rawResponse, ?Components\ListResourceDispute $listResourceDispute = null)

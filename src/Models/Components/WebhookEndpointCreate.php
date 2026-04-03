@@ -22,7 +22,7 @@ class WebhookEndpointCreate
 
     /**
      *
-     * @var WebhookFormat $format
+     * @var \Polar\Models\Components\WebhookFormat $format
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('format')]
     #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\WebhookFormat')]
@@ -31,7 +31,7 @@ class WebhookEndpointCreate
     /**
      * The events that will trigger the webhook.
      *
-     * @var array<WebhookEventType> $events
+     * @var array<\Polar\Models\Components\WebhookEventType> $events
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('events')]
     #[\Speakeasy\Serializer\Annotation\Type('array<\Polar\Models\Components\WebhookEventType>')]
@@ -57,8 +57,8 @@ class WebhookEndpointCreate
 
     /**
      * @param  string  $url
-     * @param  WebhookFormat  $format
-     * @param  array<WebhookEventType>  $events
+     * @param  \Polar\Models\Components\WebhookFormat  $format
+     * @param  array<\Polar\Models\Components\WebhookEventType>  $events
      * @param  ?string  $name
      * @param  ?string  $organizationId
      * @phpstan-pure

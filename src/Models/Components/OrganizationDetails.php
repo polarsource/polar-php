@@ -84,7 +84,7 @@ class OrganizationDetails
     /**
      * Which platform the organization is migrating from.
      *
-     * @var ?SwitchingFrom $switchingFrom
+     * @var ?\Polar\Models\Components\SwitchingFrom $switchingFrom
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('switching_from')]
     #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\SwitchingFrom|null')]
@@ -119,7 +119,7 @@ class OrganizationDetails
      * @param  ?string  $productDescription
      * @param  ?string  $intendedUse
      * @param  ?int  $futureAnnualRevenue
-     * @param  ?SwitchingFrom  $switchingFrom
+     * @param  ?\Polar\Models\Components\SwitchingFrom  $switchingFrom
      * @param  ?int  $previousAnnualRevenue
      * @phpstan-pure
      */

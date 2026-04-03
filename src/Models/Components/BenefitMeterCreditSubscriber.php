@@ -70,7 +70,7 @@ class BenefitMeterCreditSubscriber
 
     /**
      *
-     * @var BenefitSubscriberOrganization $organization
+     * @var \Polar\Models\Components\BenefitSubscriberOrganization $organization
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('organization')]
     #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\BenefitSubscriberOrganization')]
@@ -79,7 +79,7 @@ class BenefitMeterCreditSubscriber
     /**
      * Properties available to subscribers for a benefit of type `meter_unit`.
      *
-     * @var BenefitMeterCreditSubscriberProperties $properties
+     * @var \Polar\Models\Components\BenefitMeterCreditSubscriberProperties $properties
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('properties')]
     #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\BenefitMeterCreditSubscriberProperties')]
@@ -109,8 +109,8 @@ class BenefitMeterCreditSubscriber
      * @param  bool  $deletable
      * @param  string  $organizationId
      * @param  array<string, string|int|float|bool>  $metadata
-     * @param  BenefitSubscriberOrganization  $organization
-     * @param  BenefitMeterCreditSubscriberProperties  $properties
+     * @param  \Polar\Models\Components\BenefitSubscriberOrganization  $organization
+     * @param  \Polar\Models\Components\BenefitMeterCreditSubscriberProperties  $properties
      * @param  ?\DateTime  $modifiedAt
      * @phpstan-pure
      */

@@ -35,7 +35,7 @@ class CustomerPortalMembersAddMemberResponse
     /**
      * Member added.
      *
-     * @var ?Components\CustomerPortalMember $customerPortalMember
+     * @var ?\Polar\Models\Components\CustomerPortalMember $customerPortalMember
      */
     public ?Components\CustomerPortalMember $customerPortalMember = null;
 
@@ -43,7 +43,7 @@ class CustomerPortalMembersAddMemberResponse
      * @param  string  $contentType
      * @param  int  $statusCode
      * @param  \Psr\Http\Message\ResponseInterface  $rawResponse
-     * @param  ?Components\CustomerPortalMember  $customerPortalMember
+     * @param  ?\Polar\Models\Components\CustomerPortalMember  $customerPortalMember
      * @phpstan-pure
      */
     public function __construct(string $contentType, int $statusCode, \Psr\Http\Message\ResponseInterface $rawResponse, ?Components\CustomerPortalMember $customerPortalMember = null)

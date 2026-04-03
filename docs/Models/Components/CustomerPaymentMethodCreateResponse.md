@@ -7,7 +7,7 @@
 
 ```php
 /**
-* @var Components\CustomerPaymentMethodCreateRequiresActionResponse
+* @var \Polar\Models\Components\CustomerPaymentMethodCreateRequiresActionResponse
 */
 Components\CustomerPaymentMethodCreateRequiresActionResponse $value = /* values here */
 ```
@@ -16,7 +16,7 @@ Components\CustomerPaymentMethodCreateRequiresActionResponse $value = /* values 
 
 ```php
 /**
-* @var Components\CustomerPaymentMethodCreateSucceededResponse
+* @var \Polar\Models\Components\CustomerPaymentMethodCreateSucceededResponse
 */
 Components\CustomerPaymentMethodCreateSucceededResponse $value = /* values here */
 ```

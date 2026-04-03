@@ -35,7 +35,7 @@ class CheckoutsClientConfirmResponse
     /**
      * Checkout session confirmed.
      *
-     * @var ?Components\CheckoutPublicConfirmed $checkoutPublicConfirmed
+     * @var ?\Polar\Models\Components\CheckoutPublicConfirmed $checkoutPublicConfirmed
      */
     public ?Components\CheckoutPublicConfirmed $checkoutPublicConfirmed = null;
 
@@ -43,7 +43,7 @@ class CheckoutsClientConfirmResponse
      * @param  string  $contentType
      * @param  int  $statusCode
      * @param  \Psr\Http\Message\ResponseInterface  $rawResponse
-     * @param  ?Components\CheckoutPublicConfirmed  $checkoutPublicConfirmed
+     * @param  ?\Polar\Models\Components\CheckoutPublicConfirmed  $checkoutPublicConfirmed
      * @phpstan-pure
      */
     public function __construct(string $contentType, int $statusCode, \Psr\Http\Message\ResponseInterface $rawResponse, ?Components\CheckoutPublicConfirmed $checkoutPublicConfirmed = null)

@@ -35,7 +35,7 @@ class CustomerMetersGetResponse
     /**
      * Successful Response
      *
-     * @var ?Components\CustomerMeter $customerMeter
+     * @var ?\Polar\Models\Components\CustomerMeter $customerMeter
      */
     public ?Components\CustomerMeter $customerMeter = null;
 
@@ -43,7 +43,7 @@ class CustomerMetersGetResponse
      * @param  string  $contentType
      * @param  int  $statusCode
      * @param  \Psr\Http\Message\ResponseInterface  $rawResponse
-     * @param  ?Components\CustomerMeter  $customerMeter
+     * @param  ?\Polar\Models\Components\CustomerMeter  $customerMeter
      * @phpstan-pure
      */
     public function __construct(string $contentType, int $statusCode, \Psr\Http\Message\ResponseInterface $rawResponse, ?Components\CustomerMeter $customerMeter = null)

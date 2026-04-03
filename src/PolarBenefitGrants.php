@@ -52,9 +52,9 @@ class PolarBenefitGrants
      *
      * **Scopes**: `customer_portal:read` `customer_portal:write`
      *
-     * @param  Operations\CustomerPortalBenefitGrantsGetSecurity  $security
+     * @param  \Polar\Models\Operations\CustomerPortalBenefitGrantsGetSecurity  $security
      * @param  string  $id
-     * @return Operations\CustomerPortalBenefitGrantsGetResponse
+     * @return \Polar\Models\Operations\CustomerPortalBenefitGrantsGetResponse
      * @throws \Polar\Models\Errors\APIException
      */
     public function get(Operations\CustomerPortalBenefitGrantsGetSecurity $security, string $id, ?Options $options = null): Operations\CustomerPortalBenefitGrantsGetResponse
@@ -147,9 +147,9 @@ class PolarBenefitGrants
      *
      * **Scopes**: `customer_portal:read` `customer_portal:write`
      *
-     * @param  Operations\CustomerPortalBenefitGrantsListSecurity  $security
-     * @param  ?Operations\CustomerPortalBenefitGrantsListRequest  $request
-     * @return Operations\CustomerPortalBenefitGrantsListResponse
+     * @param  \Polar\Models\Operations\CustomerPortalBenefitGrantsListSecurity  $security
+     * @param  ?\Polar\Models\Operations\CustomerPortalBenefitGrantsListRequest  $request
+     * @return \Polar\Models\Operations\CustomerPortalBenefitGrantsListResponse
      * @throws \Polar\Models\Errors\APIException
      */
     private function listIndividual(Operations\CustomerPortalBenefitGrantsListSecurity $security, ?Operations\CustomerPortalBenefitGrantsListRequest $request = null, ?Options $options = null): Operations\CustomerPortalBenefitGrantsListResponse
@@ -274,9 +274,9 @@ class PolarBenefitGrants
      *
      * **Scopes**: `customer_portal:read` `customer_portal:write`
      *
-     * @param  Operations\CustomerPortalBenefitGrantsListSecurity  $security
-     * @param  ?Operations\CustomerPortalBenefitGrantsListRequest  $request
-     * @return \Generator<Operations\CustomerPortalBenefitGrantsListResponse>
+     * @param  \Polar\Models\Operations\CustomerPortalBenefitGrantsListSecurity  $security
+     * @param  ?\Polar\Models\Operations\CustomerPortalBenefitGrantsListRequest  $request
+     * @return \Generator<\Polar\Models\Operations\CustomerPortalBenefitGrantsListResponse>
      * @throws \Polar\Models\Errors\APIException
      */
     public function list(Operations\CustomerPortalBenefitGrantsListSecurity $security, ?Operations\CustomerPortalBenefitGrantsListRequest $request = null, ?Options $options = null): \Generator
@@ -295,10 +295,10 @@ class PolarBenefitGrants
      *
      * **Scopes**: `customer_portal:write`
      *
-     * @param  Operations\CustomerPortalBenefitGrantsUpdateSecurity  $security
-     * @param  Components\CustomerBenefitGrantDiscordUpdate|Components\CustomerBenefitGrantGitHubRepositoryUpdate|Components\CustomerBenefitGrantDownloadablesUpdate|Components\CustomerBenefitGrantLicenseKeysUpdate|Components\CustomerBenefitGrantCustomUpdate|Components\CustomerBenefitGrantMeterCreditUpdate|Components\CustomerBenefitGrantFeatureFlagUpdate  $customerBenefitGrantUpdate
+     * @param  \Polar\Models\Operations\CustomerPortalBenefitGrantsUpdateSecurity  $security
+     * @param  \Polar\Models\Components\CustomerBenefitGrantDiscordUpdate|\Polar\Models\Components\CustomerBenefitGrantGitHubRepositoryUpdate|\Polar\Models\Components\CustomerBenefitGrantDownloadablesUpdate|\Polar\Models\Components\CustomerBenefitGrantLicenseKeysUpdate|\Polar\Models\Components\CustomerBenefitGrantCustomUpdate|\Polar\Models\Components\CustomerBenefitGrantMeterCreditUpdate|\Polar\Models\Components\CustomerBenefitGrantFeatureFlagUpdate  $customerBenefitGrantUpdate
      * @param  string  $id
-     * @return Operations\CustomerPortalBenefitGrantsUpdateResponse
+     * @return \Polar\Models\Operations\CustomerPortalBenefitGrantsUpdateResponse
      * @throws \Polar\Models\Errors\APIException
      */
     public function update(Operations\CustomerPortalBenefitGrantsUpdateSecurity $security, Components\CustomerBenefitGrantDiscordUpdate|Components\CustomerBenefitGrantGitHubRepositoryUpdate|Components\CustomerBenefitGrantDownloadablesUpdate|Components\CustomerBenefitGrantLicenseKeysUpdate|Components\CustomerBenefitGrantCustomUpdate|Components\CustomerBenefitGrantMeterCreditUpdate|Components\CustomerBenefitGrantFeatureFlagUpdate $customerBenefitGrantUpdate, string $id, ?Options $options = null): Operations\CustomerPortalBenefitGrantsUpdateResponse

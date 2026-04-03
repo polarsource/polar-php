@@ -35,7 +35,7 @@ class WebhooksListWebhookEndpointsResponse
     /**
      * Successful Response
      *
-     * @var ?Components\ListResourceWebhookEndpoint $listResourceWebhookEndpoint
+     * @var ?\Polar\Models\Components\ListResourceWebhookEndpoint $listResourceWebhookEndpoint
      */
     public ?Components\ListResourceWebhookEndpoint $listResourceWebhookEndpoint = null;
 
@@ -47,7 +47,7 @@ class WebhooksListWebhookEndpointsResponse
      * @param  string  $contentType
      * @param  int  $statusCode
      * @param  \Psr\Http\Message\ResponseInterface  $rawResponse
-     * @param  ?Components\ListResourceWebhookEndpoint  $listResourceWebhookEndpoint
+     * @param  ?\Polar\Models\Components\ListResourceWebhookEndpoint  $listResourceWebhookEndpoint
      * @phpstan-pure
      */
     public function __construct(string $contentType, int $statusCode, \Psr\Http\Message\ResponseInterface $rawResponse, ?Components\ListResourceWebhookEndpoint $listResourceWebhookEndpoint = null)

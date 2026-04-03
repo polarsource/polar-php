@@ -35,7 +35,7 @@ class FilesListResponse
     /**
      * Successful Response
      *
-     * @var ?Components\ListResourceFileRead $listResourceFileRead
+     * @var ?\Polar\Models\Components\ListResourceFileRead $listResourceFileRead
      */
     public ?Components\ListResourceFileRead $listResourceFileRead = null;
 
@@ -47,7 +47,7 @@ class FilesListResponse
      * @param  string  $contentType
      * @param  int  $statusCode
      * @param  \Psr\Http\Message\ResponseInterface  $rawResponse
-     * @param  ?Components\ListResourceFileRead  $listResourceFileRead
+     * @param  ?\Polar\Models\Components\ListResourceFileRead  $listResourceFileRead
      * @phpstan-pure
      */
     public function __construct(string $contentType, int $statusCode, \Psr\Http\Message\ResponseInterface $rawResponse, ?Components\ListResourceFileRead $listResourceFileRead = null)

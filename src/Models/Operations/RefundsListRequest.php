@@ -71,7 +71,7 @@ class RefundsListRequest
     /**
      * Sorting criterion. Several criteria can be used simultaneously and will be applied in order. Add a minus sign `-` before the criteria name to sort by descending order.
      *
-     * @var ?array<Components\RefundSortProperty> $sorting
+     * @var ?array<\Polar\Models\Components\RefundSortProperty> $sorting
      */
     #[SpeakeasyMetadata('queryParam:style=form,explode=true,name=sorting')]
     public ?array $sorting = null;
@@ -102,7 +102,7 @@ class RefundsListRequest
      * @param  string|array<string>|null  $customerId
      * @param  string|array<string>|null  $externalCustomerId
      * @param  ?bool  $succeeded
-     * @param  ?array<Components\RefundSortProperty>  $sorting
+     * @param  ?array<\Polar\Models\Components\RefundSortProperty>  $sorting
      * @phpstan-pure
      */
     public function __construct(string|array|null $id = null, string|array|null $organizationId = null, string|array|null $orderId = null, string|array|null $subscriptionId = null, string|array|null $customerId = null, string|array|null $externalCustomerId = null, ?bool $succeeded = null, ?array $sorting = null, ?int $page = 1, ?int $limit = 10)

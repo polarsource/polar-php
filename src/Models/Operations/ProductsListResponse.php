@@ -35,7 +35,7 @@ class ProductsListResponse
     /**
      * Successful Response
      *
-     * @var ?Components\ListResourceProduct $listResourceProduct
+     * @var ?\Polar\Models\Components\ListResourceProduct $listResourceProduct
      */
     public ?Components\ListResourceProduct $listResourceProduct = null;
 
@@ -47,7 +47,7 @@ class ProductsListResponse
      * @param  string  $contentType
      * @param  int  $statusCode
      * @param  \Psr\Http\Message\ResponseInterface  $rawResponse
-     * @param  ?Components\ListResourceProduct  $listResourceProduct
+     * @param  ?\Polar\Models\Components\ListResourceProduct  $listResourceProduct
      * @phpstan-pure
      */
     public function __construct(string $contentType, int $statusCode, \Psr\Http\Message\ResponseInterface $rawResponse, ?Components\ListResourceProduct $listResourceProduct = null)

@@ -51,9 +51,9 @@ class PolarCustomerMeters
      *
      * **Scopes**: `customer_portal:read` `customer_portal:write`
      *
-     * @param  Operations\CustomerPortalCustomerMetersGetSecurity  $security
+     * @param  \Polar\Models\Operations\CustomerPortalCustomerMetersGetSecurity  $security
      * @param  string  $id
-     * @return Operations\CustomerPortalCustomerMetersGetResponse
+     * @return \Polar\Models\Operations\CustomerPortalCustomerMetersGetResponse
      * @throws \Polar\Models\Errors\APIException
      */
     public function get(Operations\CustomerPortalCustomerMetersGetSecurity $security, string $id, ?Options $options = null): Operations\CustomerPortalCustomerMetersGetResponse
@@ -146,9 +146,9 @@ class PolarCustomerMeters
      *
      * **Scopes**: `customer_portal:read` `customer_portal:write`
      *
-     * @param  Operations\CustomerPortalCustomerMetersListSecurity  $security
-     * @param  ?Operations\CustomerPortalCustomerMetersListRequest  $request
-     * @return Operations\CustomerPortalCustomerMetersListResponse
+     * @param  \Polar\Models\Operations\CustomerPortalCustomerMetersListSecurity  $security
+     * @param  ?\Polar\Models\Operations\CustomerPortalCustomerMetersListRequest  $request
+     * @return \Polar\Models\Operations\CustomerPortalCustomerMetersListResponse
      * @throws \Polar\Models\Errors\APIException
      */
     private function listIndividual(Operations\CustomerPortalCustomerMetersListSecurity $security, ?Operations\CustomerPortalCustomerMetersListRequest $request = null, ?Options $options = null): Operations\CustomerPortalCustomerMetersListResponse
@@ -268,9 +268,9 @@ class PolarCustomerMeters
      *
      * **Scopes**: `customer_portal:read` `customer_portal:write`
      *
-     * @param  Operations\CustomerPortalCustomerMetersListSecurity  $security
-     * @param  ?Operations\CustomerPortalCustomerMetersListRequest  $request
-     * @return \Generator<Operations\CustomerPortalCustomerMetersListResponse>
+     * @param  \Polar\Models\Operations\CustomerPortalCustomerMetersListSecurity  $security
+     * @param  ?\Polar\Models\Operations\CustomerPortalCustomerMetersListRequest  $request
+     * @return \Generator<\Polar\Models\Operations\CustomerPortalCustomerMetersListResponse>
      * @throws \Polar\Models\Errors\APIException
      */
     public function list(Operations\CustomerPortalCustomerMetersListSecurity $security, ?Operations\CustomerPortalCustomerMetersListRequest $request = null, ?Options $options = null): \Generator

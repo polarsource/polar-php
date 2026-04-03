@@ -7,7 +7,7 @@
 
 ```php
 /**
-* @var Components\CustomerBenefitGrantCustomUpdate
+* @var \Polar\Models\Components\CustomerBenefitGrantCustomUpdate
 */
 Components\CustomerBenefitGrantCustomUpdate $value = /* values here */
 ```
@@ -16,7 +16,7 @@ Components\CustomerBenefitGrantCustomUpdate $value = /* values here */
 
 ```php
 /**
-* @var Components\CustomerBenefitGrantDiscordUpdate
+* @var \Polar\Models\Components\CustomerBenefitGrantDiscordUpdate
 */
 Components\CustomerBenefitGrantDiscordUpdate $value = /* values here */
 ```
@@ -25,7 +25,7 @@ Components\CustomerBenefitGrantDiscordUpdate $value = /* values here */
 
 ```php
 /**
-* @var Components\CustomerBenefitGrantDownloadablesUpdate
+* @var \Polar\Models\Components\CustomerBenefitGrantDownloadablesUpdate
 */
 Components\CustomerBenefitGrantDownloadablesUpdate $value = /* values here */
 ```
@@ -34,7 +34,7 @@ Components\CustomerBenefitGrantDownloadablesUpdate $value = /* values here */
 
 ```php
 /**
-* @var Components\CustomerBenefitGrantFeatureFlagUpdate
+* @var \Polar\Models\Components\CustomerBenefitGrantFeatureFlagUpdate
 */
 Components\CustomerBenefitGrantFeatureFlagUpdate $value = /* values here */
 ```
@@ -43,7 +43,7 @@ Components\CustomerBenefitGrantFeatureFlagUpdate $value = /* values here */
 
 ```php
 /**
-* @var Components\CustomerBenefitGrantGitHubRepositoryUpdate
+* @var \Polar\Models\Components\CustomerBenefitGrantGitHubRepositoryUpdate
 */
 Components\CustomerBenefitGrantGitHubRepositoryUpdate $value = /* values here */
 ```
@@ -52,7 +52,7 @@ Components\CustomerBenefitGrantGitHubRepositoryUpdate $value = /* values here */
 
 ```php
 /**
-* @var Components\CustomerBenefitGrantLicenseKeysUpdate
+* @var \Polar\Models\Components\CustomerBenefitGrantLicenseKeysUpdate
 */
 Components\CustomerBenefitGrantLicenseKeysUpdate $value = /* values here */
 ```
@@ -61,7 +61,7 @@ Components\CustomerBenefitGrantLicenseKeysUpdate $value = /* values here */
 
 ```php
 /**
-* @var Components\CustomerBenefitGrantMeterCreditUpdate
+* @var \Polar\Models\Components\CustomerBenefitGrantMeterCreditUpdate
 */
 Components\CustomerBenefitGrantMeterCreditUpdate $value = /* values here */
 ```

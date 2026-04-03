@@ -18,7 +18,7 @@ class DiscountPercentageRepeatDurationCreate
 {
     /**
      *
-     * @var DiscountDuration $duration
+     * @var \Polar\Models\Components\DiscountDuration $duration
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('duration')]
     #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\DiscountDuration')]
@@ -38,7 +38,7 @@ class DiscountPercentageRepeatDurationCreate
 
     /**
      *
-     * @var DiscountType $type
+     * @var \Polar\Models\Components\DiscountType $type
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('type')]
     #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\DiscountType')]
@@ -141,9 +141,9 @@ class DiscountPercentageRepeatDurationCreate
     public ?string $organizationId = null;
 
     /**
-     * @param  DiscountDuration  $duration
+     * @param  \Polar\Models\Components\DiscountDuration  $duration
      * @param  int  $durationInMonths
-     * @param  DiscountType  $type
+     * @param  \Polar\Models\Components\DiscountType  $type
      * @param  int  $basisPoints
      * @param  string  $name
      * @param  ?array<string, string|int|float|bool>  $metadata

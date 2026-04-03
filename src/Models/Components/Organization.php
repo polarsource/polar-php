@@ -45,7 +45,7 @@ class Organization
 
     /**
      *
-     * @var SubscriptionProrationBehavior $prorationBehavior
+     * @var \Polar\Models\Components\SubscriptionProrationBehavior $prorationBehavior
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('proration_behavior')]
     #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\SubscriptionProrationBehavior')]
@@ -62,7 +62,7 @@ class Organization
     /**
      * Links to social profiles.
      *
-     * @var array<OrganizationSocialLink> $socials
+     * @var array<\Polar\Models\Components\OrganizationSocialLink> $socials
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('socials')]
     #[\Speakeasy\Serializer\Annotation\Type('array<\Polar\Models\Components\OrganizationSocialLink>')]
@@ -70,7 +70,7 @@ class Organization
 
     /**
      *
-     * @var OrganizationStatus $status
+     * @var \Polar\Models\Components\OrganizationStatus $status
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('status')]
     #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\OrganizationStatus')]
@@ -86,7 +86,7 @@ class Organization
 
     /**
      *
-     * @var TaxBehaviorOption $defaultTaxBehavior
+     * @var \Polar\Models\Components\TaxBehaviorOption $defaultTaxBehavior
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('default_tax_behavior')]
     #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\TaxBehaviorOption')]
@@ -94,7 +94,7 @@ class Organization
 
     /**
      *
-     * @var OrganizationSubscriptionSettings $subscriptionSettings
+     * @var \Polar\Models\Components\OrganizationSubscriptionSettings $subscriptionSettings
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('subscription_settings')]
     #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\OrganizationSubscriptionSettings')]
@@ -102,7 +102,7 @@ class Organization
 
     /**
      *
-     * @var OrganizationNotificationSettings $notificationSettings
+     * @var \Polar\Models\Components\OrganizationNotificationSettings $notificationSettings
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('notification_settings')]
     #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\OrganizationNotificationSettings')]
@@ -110,7 +110,7 @@ class Organization
 
     /**
      *
-     * @var OrganizationCustomerEmailSettings $customerEmailSettings
+     * @var \Polar\Models\Components\OrganizationCustomerEmailSettings $customerEmailSettings
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('customer_email_settings')]
     #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\OrganizationCustomerEmailSettings')]
@@ -118,7 +118,7 @@ class Organization
 
     /**
      *
-     * @var OrganizationCustomerPortalSettings $customerPortalSettings
+     * @var \Polar\Models\Components\OrganizationCustomerPortalSettings $customerPortalSettings
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('customer_portal_settings')]
     #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\OrganizationCustomerPortalSettings')]
@@ -167,7 +167,7 @@ class Organization
     /**
      * Organization feature settings
      *
-     * @var ?OrganizationFeatureSettings $featureSettings
+     * @var ?\Polar\Models\Components\OrganizationFeatureSettings $featureSettings
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('feature_settings')]
     #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\OrganizationFeatureSettings|null')]
@@ -176,7 +176,7 @@ class Organization
     /**
      * Two-letter country code (ISO 3166-1 alpha-2).
      *
-     * @var ?CountryAlpha2 $country
+     * @var ?\Polar\Models\Components\CountryAlpha2 $country
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('country')]
     #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\CountryAlpha2|null')]
@@ -188,23 +188,23 @@ class Organization
      * @param  string  $id
      * @param  string  $name
      * @param  string  $slug
-     * @param  SubscriptionProrationBehavior  $prorationBehavior
+     * @param  \Polar\Models\Components\SubscriptionProrationBehavior  $prorationBehavior
      * @param  bool  $allowCustomerUpdates
-     * @param  array<OrganizationSocialLink>  $socials
-     * @param  OrganizationStatus  $status
+     * @param  array<\Polar\Models\Components\OrganizationSocialLink>  $socials
+     * @param  \Polar\Models\Components\OrganizationStatus  $status
      * @param  string  $defaultPresentmentCurrency
-     * @param  TaxBehaviorOption  $defaultTaxBehavior
-     * @param  OrganizationSubscriptionSettings  $subscriptionSettings
-     * @param  OrganizationNotificationSettings  $notificationSettings
-     * @param  OrganizationCustomerEmailSettings  $customerEmailSettings
-     * @param  OrganizationCustomerPortalSettings  $customerPortalSettings
+     * @param  \Polar\Models\Components\TaxBehaviorOption  $defaultTaxBehavior
+     * @param  \Polar\Models\Components\OrganizationSubscriptionSettings  $subscriptionSettings
+     * @param  \Polar\Models\Components\OrganizationNotificationSettings  $notificationSettings
+     * @param  \Polar\Models\Components\OrganizationCustomerEmailSettings  $customerEmailSettings
+     * @param  \Polar\Models\Components\OrganizationCustomerPortalSettings  $customerPortalSettings
      * @param  ?\DateTime  $modifiedAt
      * @param  ?string  $avatarUrl
      * @param  ?string  $email
      * @param  ?string  $website
      * @param  ?\DateTime  $detailsSubmittedAt
-     * @param  ?OrganizationFeatureSettings  $featureSettings
-     * @param  ?CountryAlpha2  $country
+     * @param  ?\Polar\Models\Components\OrganizationFeatureSettings  $featureSettings
+     * @param  ?\Polar\Models\Components\CountryAlpha2  $country
      * @phpstan-pure
      */
     public function __construct(\DateTime $createdAt, string $id, string $name, string $slug, SubscriptionProrationBehavior $prorationBehavior, bool $allowCustomerUpdates, array $socials, OrganizationStatus $status, string $defaultPresentmentCurrency, TaxBehaviorOption $defaultTaxBehavior, OrganizationSubscriptionSettings $subscriptionSettings, OrganizationNotificationSettings $notificationSettings, OrganizationCustomerEmailSettings $customerEmailSettings, OrganizationCustomerPortalSettings $customerPortalSettings, ?\DateTime $modifiedAt = null, ?string $avatarUrl = null, ?string $email = null, ?string $website = null, ?\DateTime $detailsSubmittedAt = null, ?OrganizationFeatureSettings $featureSettings = null, ?CountryAlpha2 $country = null)

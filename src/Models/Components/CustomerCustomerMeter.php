@@ -69,7 +69,7 @@ class CustomerCustomerMeter
 
     /**
      *
-     * @var CustomerCustomerMeterMeter $meter
+     * @var \Polar\Models\Components\CustomerCustomerMeterMeter $meter
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('meter')]
     #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\CustomerCustomerMeterMeter')]
@@ -91,7 +91,7 @@ class CustomerCustomerMeter
      * @param  float  $consumedUnits
      * @param  int  $creditedUnits
      * @param  float  $balance
-     * @param  CustomerCustomerMeterMeter  $meter
+     * @param  \Polar\Models\Components\CustomerCustomerMeterMeter  $meter
      * @param  ?\DateTime  $modifiedAt
      * @phpstan-pure
      */

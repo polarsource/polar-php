@@ -23,7 +23,7 @@ class BenefitFeatureFlagCreate
     /**
      * Properties for creating a benefit of type `feature_flag`.
      *
-     * @var BenefitFeatureFlagCreateProperties $properties
+     * @var \Polar\Models\Components\BenefitFeatureFlagCreateProperties $properties
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('properties')]
     #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\BenefitFeatureFlagCreateProperties')]
@@ -69,7 +69,7 @@ class BenefitFeatureFlagCreate
     /**
      * @param  string  $type
      * @param  string  $description
-     * @param  BenefitFeatureFlagCreateProperties  $properties
+     * @param  \Polar\Models\Components\BenefitFeatureFlagCreateProperties  $properties
      * @param  ?array<string, string|int|float|bool>  $metadata
      * @param  ?string  $organizationId
      * @phpstan-pure

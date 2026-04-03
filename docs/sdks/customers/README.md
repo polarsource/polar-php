@@ -95,21 +95,20 @@ $sdk = Polar\Polar::builder()
     )
     ->build();
 
-$request = new Components\CustomerCreate(
+$request = new Components\CustomerIndividualCreate(
     externalId: 'usr_1337',
-    email: 'customer@example.com',
     name: 'John Doe',
     billingAddress: new Components\AddressInput(
         country: Components\AddressInputCountryAlpha2Input::Us,
     ),
     locale: 'en',
-    type: Components\CustomerType::Individual,
     organizationId: '1dbfc517-0bbf-4301-9ba8-555ca42b9737',
-    owner: new Components\OwnerCreate(
+    owner: new Components\MemberOwnerCreate(
         email: 'member@example.com',
         name: 'Jane Doe',
         externalId: 'usr_1337',
     ),
+    email: 'customer@example.com',
 );
 
 $response = $sdk->customers->create(
@@ -123,9 +122,9 @@ if ($response->customer !== null) {
 
 ### Parameters
 
-| Parameter                                                              | Type                                                                   | Required                                                               | Description                                                            |
-| ---------------------------------------------------------------------- | ---------------------------------------------------------------------- | ---------------------------------------------------------------------- | ---------------------------------------------------------------------- |
-| `$request`                                                             | [Components\CustomerCreate](../../Models/Components/CustomerCreate.md) | :heavy_check_mark:                                                     | The request object to use for the request.                             |
+| Parameter                                                                                                      | Type                                                                                                           | Required                                                                                                       | Description                                                                                                    |
+| -------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------- |
+| `$request`                                                                                                     | [Components\CustomerIndividualCreate\|Components\CustomerTeamCreate](../../Models/Components/CustomerCreate.md) | :heavy_check_mark:                                                                                             | The request object to use for the request.                                                                     |
 
 ### Response
 
@@ -338,7 +337,6 @@ $customerUpdate = new Components\CustomerUpdate(
     ),
     locale: 'en',
     externalId: 'usr_1337',
-    type: Components\CustomerType::Individual,
 );
 
 $response = $sdk->customers->update(

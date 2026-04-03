@@ -21,7 +21,7 @@ class BenefitLicenseKeysCreate
 
     /**
      *
-     * @var BenefitLicenseKeysCreateProperties $properties
+     * @var \Polar\Models\Components\BenefitLicenseKeysCreateProperties $properties
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('properties')]
     #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\BenefitLicenseKeysCreateProperties')]
@@ -67,7 +67,7 @@ class BenefitLicenseKeysCreate
     /**
      * @param  string  $type
      * @param  string  $description
-     * @param  BenefitLicenseKeysCreateProperties  $properties
+     * @param  \Polar\Models\Components\BenefitLicenseKeysCreateProperties  $properties
      * @param  ?array<string, string|int|float|bool>  $metadata
      * @param  ?string  $organizationId
      * @phpstan-pure

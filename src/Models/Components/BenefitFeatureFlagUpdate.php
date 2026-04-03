@@ -43,7 +43,7 @@ class BenefitFeatureFlagUpdate
 
     /**
      *
-     * @var ?BenefitFeatureFlagProperties $properties
+     * @var ?\Polar\Models\Components\BenefitFeatureFlagProperties $properties
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('properties')]
     #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\BenefitFeatureFlagProperties|null')]
@@ -61,7 +61,7 @@ class BenefitFeatureFlagUpdate
      * @param  string  $type
      * @param  ?array<string, string|int|float|bool>  $metadata
      * @param  ?string  $description
-     * @param  ?BenefitFeatureFlagProperties  $properties
+     * @param  ?\Polar\Models\Components\BenefitFeatureFlagProperties  $properties
      * @phpstan-pure
      */
     public function __construct(?array $metadata = null, ?string $description = null, ?BenefitFeatureFlagProperties $properties = null, string $type = 'feature_flag')

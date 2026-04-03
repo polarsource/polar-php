@@ -50,7 +50,7 @@ class LicenseKeyActivationRead
 
     /**
      *
-     * @var LicenseKeyRead $licenseKey
+     * @var \Polar\Models\Components\LicenseKeyRead $licenseKey
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('license_key')]
     #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\LicenseKeyRead')]
@@ -69,7 +69,7 @@ class LicenseKeyActivationRead
      * @param  string  $label
      * @param  array<string, string|int|float|bool>  $meta
      * @param  \DateTime  $createdAt
-     * @param  LicenseKeyRead  $licenseKey
+     * @param  \Polar\Models\Components\LicenseKeyRead  $licenseKey
      * @param  ?\DateTime  $modifiedAt
      * @phpstan-pure
      */

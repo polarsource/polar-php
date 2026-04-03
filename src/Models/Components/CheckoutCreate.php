@@ -83,7 +83,7 @@ class CheckoutCreate
     /**
      * The interval unit for the trial period.
      *
-     * @var ?TrialInterval $trialInterval
+     * @var ?\Polar\Models\Components\TrialInterval $trialInterval
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('trial_interval')]
     #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\TrialInterval|null')]
@@ -195,7 +195,7 @@ class CheckoutCreate
 
     /**
      *
-     * @var ?AddressInput $customerBillingAddress
+     * @var ?\Polar\Models\Components\AddressInput $customerBillingAddress
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('customer_billing_address')]
     #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\AddressInput|null')]
@@ -256,7 +256,7 @@ class CheckoutCreate
 
     /**
      *
-     * @var ?PresentmentCurrency $currency
+     * @var ?\Polar\Models\Components\PresentmentCurrency $currency
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('currency')]
     #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\PresentmentCurrency|null')]
@@ -266,7 +266,7 @@ class CheckoutCreate
     /**
      * Optional mapping of product IDs to a list of ad-hoc prices to create for that product. If not set, catalog prices of the product will be used.
      *
-     * @var ?array<string, array<ProductPriceFixedCreate|ProductPriceCustomCreate|ProductPriceFreeCreate|ProductPriceSeatBasedCreate|ProductPriceMeteredUnitCreate>> $prices
+     * @var ?array<string, array<\Polar\Models\Components\ProductPriceFixedCreate|\Polar\Models\Components\ProductPriceCustomCreate|\Polar\Models\Components\ProductPriceFreeCreate|\Polar\Models\Components\ProductPriceSeatBasedCreate|\Polar\Models\Components\ProductPriceMeteredUnitCreate>> $prices
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('prices')]
     #[\Speakeasy\Serializer\Annotation\Type('array<string, array<\Polar\Models\Components\ProductPriceFixedCreate|\Polar\Models\Components\ProductPriceCustomCreate|\Polar\Models\Components\ProductPriceFreeCreate|\Polar\Models\Components\ProductPriceSeatBasedCreate|\Polar\Models\Components\ProductPriceMeteredUnitCreate>>|null')]
@@ -318,7 +318,7 @@ class CheckoutCreate
      * @param  ?bool  $allowTrial
      * @param  ?bool  $isBusinessCustomer
      * @param  ?array<string, string|int|float|bool>  $customerMetadata
-     * @param  ?TrialInterval  $trialInterval
+     * @param  ?\Polar\Models\Components\TrialInterval  $trialInterval
      * @param  ?int  $trialIntervalCount
      * @param  ?string  $discountId
      * @param  ?int  $amount
@@ -331,15 +331,15 @@ class CheckoutCreate
      * @param  ?string  $customerEmail
      * @param  ?string  $customerIpAddress
      * @param  ?string  $customerBillingName
-     * @param  ?AddressInput  $customerBillingAddress
+     * @param  ?\Polar\Models\Components\AddressInput  $customerBillingAddress
      * @param  ?string  $customerTaxId
      * @param  ?string  $subscriptionId
      * @param  ?string  $successUrl
      * @param  ?string  $returnUrl
      * @param  ?string  $embedOrigin
      * @param  ?string  $locale
-     * @param  ?PresentmentCurrency  $currency
-     * @param  ?array<string, array<ProductPriceFixedCreate|ProductPriceCustomCreate|ProductPriceFreeCreate|ProductPriceSeatBasedCreate|ProductPriceMeteredUnitCreate>>  $prices
+     * @param  ?\Polar\Models\Components\PresentmentCurrency  $currency
+     * @param  ?array<string, array<\Polar\Models\Components\ProductPriceFixedCreate|\Polar\Models\Components\ProductPriceCustomCreate|\Polar\Models\Components\ProductPriceFreeCreate|\Polar\Models\Components\ProductPriceSeatBasedCreate|\Polar\Models\Components\ProductPriceMeteredUnitCreate>>  $prices
      * @phpstan-pure
      */
     public function __construct(array $products, ?array $metadata = null, ?array $customFieldData = null, ?array $customerMetadata = null, ?TrialInterval $trialInterval = null, ?int $trialIntervalCount = null, ?string $discountId = null, ?int $amount = null, ?int $seats = null, ?int $minSeats = null, ?int $maxSeats = null, ?string $customerId = null, ?string $externalCustomerId = null, ?string $customerName = null, ?string $customerEmail = null, ?string $customerIpAddress = null, ?string $customerBillingName = null, ?AddressInput $customerBillingAddress = null, ?string $customerTaxId = null, ?string $subscriptionId = null, ?string $successUrl = null, ?string $returnUrl = null, ?string $embedOrigin = null, ?string $locale = null, ?PresentmentCurrency $currency = null, ?array $prices = null, ?bool $allowDiscountCodes = true, ?bool $requireBillingAddress = false, ?bool $allowTrial = true, ?bool $isBusinessCustomer = false)

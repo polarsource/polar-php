@@ -35,7 +35,7 @@ class MembersListMembersResponse
     /**
      * Successful Response
      *
-     * @var ?Components\ListResourceMember $listResourceMember
+     * @var ?\Polar\Models\Components\ListResourceMember $listResourceMember
      */
     public ?Components\ListResourceMember $listResourceMember = null;
 
@@ -47,7 +47,7 @@ class MembersListMembersResponse
      * @param  string  $contentType
      * @param  int  $statusCode
      * @param  \Psr\Http\Message\ResponseInterface  $rawResponse
-     * @param  ?Components\ListResourceMember  $listResourceMember
+     * @param  ?\Polar\Models\Components\ListResourceMember  $listResourceMember
      * @phpstan-pure
      */
     public function __construct(string $contentType, int $statusCode, \Psr\Http\Message\ResponseInterface $rawResponse, ?Components\ListResourceMember $listResourceMember = null)

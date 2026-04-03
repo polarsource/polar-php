@@ -35,7 +35,7 @@ class MetersUpdateResponse
     /**
      * Meter updated.
      *
-     * @var ?Components\Meter $meter
+     * @var ?\Polar\Models\Components\Meter $meter
      */
     public ?Components\Meter $meter = null;
 
@@ -43,7 +43,7 @@ class MetersUpdateResponse
      * @param  string  $contentType
      * @param  int  $statusCode
      * @param  \Psr\Http\Message\ResponseInterface  $rawResponse
-     * @param  ?Components\Meter  $meter
+     * @param  ?\Polar\Models\Components\Meter  $meter
      * @phpstan-pure
      */
     public function __construct(string $contentType, int $statusCode, \Psr\Http\Message\ResponseInterface $rawResponse, ?Components\Meter $meter = null)

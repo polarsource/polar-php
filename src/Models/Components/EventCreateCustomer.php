@@ -39,7 +39,7 @@ class EventCreateCustomer
     /**
      * $metadata
      *
-     * @var ?array<string, string|int|float|bool|CostMetadataInput|LLMMetadata> $metadata
+     * @var ?array<string, string|int|float|bool|\Polar\Models\Components\CostMetadataInput|\Polar\Models\Components\LLMMetadata> $metadata
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('metadata')]
     #[\Speakeasy\Serializer\Annotation\Type('array<string, string|int|float|bool|\Polar\Models\Components\CostMetadataInput|\Polar\Models\Components\LLMMetadata>|null')]
@@ -86,7 +86,7 @@ class EventCreateCustomer
      * @param  string  $name
      * @param  string  $customerId
      * @param  ?\DateTime  $timestamp
-     * @param  ?array<string, string|int|float|bool|CostMetadataInput|LLMMetadata>  $metadata
+     * @param  ?array<string, string|int|float|bool|\Polar\Models\Components\CostMetadataInput|\Polar\Models\Components\LLMMetadata>  $metadata
      * @param  ?string  $organizationId
      * @param  ?string  $externalId
      * @param  ?string  $parentId

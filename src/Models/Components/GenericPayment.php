@@ -30,7 +30,7 @@ class GenericPayment
 
     /**
      *
-     * @var PaymentProcessor $processor
+     * @var \Polar\Models\Components\PaymentProcessor $processor
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('processor')]
     #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\PaymentProcessor')]
@@ -38,7 +38,7 @@ class GenericPayment
 
     /**
      *
-     * @var PaymentStatus $status
+     * @var \Polar\Models\Components\PaymentStatus $status
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('status')]
     #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\PaymentStatus')]
@@ -129,8 +129,8 @@ class GenericPayment
     /**
      * @param  \DateTime  $createdAt
      * @param  string  $id
-     * @param  PaymentProcessor  $processor
-     * @param  PaymentStatus  $status
+     * @param  \Polar\Models\Components\PaymentProcessor  $processor
+     * @param  \Polar\Models\Components\PaymentStatus  $status
      * @param  int  $amount
      * @param  string  $currency
      * @param  string  $method

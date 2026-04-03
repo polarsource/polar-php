@@ -43,7 +43,7 @@ class LicenseKeyRead
 
     /**
      *
-     * @var LicenseKeyCustomer $customer
+     * @var \Polar\Models\Components\LicenseKeyCustomer $customer
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('customer')]
     #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\LicenseKeyCustomer')]
@@ -73,7 +73,7 @@ class LicenseKeyRead
 
     /**
      *
-     * @var LicenseKeyStatus $status
+     * @var \Polar\Models\Components\LicenseKeyStatus $status
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('status')]
     #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\LicenseKeyStatus')]
@@ -134,11 +134,11 @@ class LicenseKeyRead
      * @param  \DateTime  $createdAt
      * @param  string  $organizationId
      * @param  string  $customerId
-     * @param  LicenseKeyCustomer  $customer
+     * @param  \Polar\Models\Components\LicenseKeyCustomer  $customer
      * @param  string  $benefitId
      * @param  string  $key
      * @param  string  $displayKey
-     * @param  LicenseKeyStatus  $status
+     * @param  \Polar\Models\Components\LicenseKeyStatus  $status
      * @param  int  $usage
      * @param  int  $validations
      * @param  ?\DateTime  $modifiedAt

@@ -31,18 +31,13 @@ class WebhookCustomerStateChangedPayload
     public \DateTime $timestamp;
 
     /**
-     * A customer along with additional state information:
      *
-     *
-     * * Active subscriptions
-     * * Granted benefits
-     * * Active meters
-     *
-     * @var CustomerState $data
+     * @var \Polar\Models\Components\CustomerStateIndividual|\Polar\Models\Components\CustomerStateTeam $data
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('data')]
-    #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\CustomerState')]
-    public CustomerState $data;
+    #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\CustomerStateIndividual|\Polar\Models\Components\CustomerStateTeam')]
+    #[\Speakeasy\Serializer\Annotation\UnionDiscriminator(field: 'type', map: ['individual' => '\Polar\Models\Components\CustomerStateIndividual', 'team' => '\Polar\Models\Components\CustomerStateTeam'])]
+    public CustomerStateIndividual|CustomerStateTeam $data;
 
     /**
      *
@@ -54,10 +49,10 @@ class WebhookCustomerStateChangedPayload
     /**
      * @param  string  $type
      * @param  \DateTime  $timestamp
-     * @param  CustomerState  $data
+     * @param  \Polar\Models\Components\CustomerStateIndividual|\Polar\Models\Components\CustomerStateTeam  $data
      * @phpstan-pure
      */
-    public function __construct(\DateTime $timestamp, CustomerState $data, string $type = 'customer.state_changed')
+    public function __construct(\DateTime $timestamp, CustomerStateIndividual|CustomerStateTeam $data, string $type = 'customer.state_changed')
     {
         $this->timestamp = $timestamp;
         $this->data = $data;

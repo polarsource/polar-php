@@ -50,9 +50,9 @@ class PolarCustomers
      *
      * Add a payment method to the authenticated customer.
      *
-     * @param  Operations\CustomerPortalCustomersAddPaymentMethodSecurity  $security
-     * @param  Components\CustomerPaymentMethodCreate  $request
-     * @return Operations\CustomerPortalCustomersAddPaymentMethodResponse
+     * @param  \Polar\Models\Operations\CustomerPortalCustomersAddPaymentMethodSecurity  $security
+     * @param  \Polar\Models\Components\CustomerPaymentMethodCreate  $request
+     * @return \Polar\Models\Operations\CustomerPortalCustomersAddPaymentMethodResponse
      * @throws \Polar\Models\Errors\APIException
      */
     public function addPaymentMethod(Operations\CustomerPortalCustomersAddPaymentMethodSecurity $security, Components\CustomerPaymentMethodCreate $request, ?Options $options = null): Operations\CustomerPortalCustomersAddPaymentMethodResponse
@@ -134,9 +134,9 @@ class PolarCustomers
      *
      * Confirm a payment method for the authenticated customer.
      *
-     * @param  Operations\CustomerPortalCustomersConfirmPaymentMethodSecurity  $security
-     * @param  Components\CustomerPaymentMethodConfirm  $request
-     * @return Operations\CustomerPortalCustomersConfirmPaymentMethodResponse
+     * @param  \Polar\Models\Operations\CustomerPortalCustomersConfirmPaymentMethodSecurity  $security
+     * @param  \Polar\Models\Components\CustomerPaymentMethodConfirm  $request
+     * @return \Polar\Models\Operations\CustomerPortalCustomersConfirmPaymentMethodResponse
      * @throws \Polar\Models\Errors\APIException
      */
     public function confirmPaymentMethod(Operations\CustomerPortalCustomersConfirmPaymentMethodSecurity $security, Components\CustomerPaymentMethodConfirm $request, ?Options $options = null): Operations\CustomerPortalCustomersConfirmPaymentMethodResponse
@@ -229,9 +229,9 @@ class PolarCustomers
      *
      * Delete a payment method from the authenticated customer.
      *
-     * @param  Operations\CustomerPortalCustomersDeletePaymentMethodSecurity  $security
+     * @param  \Polar\Models\Operations\CustomerPortalCustomersDeletePaymentMethodSecurity  $security
      * @param  string  $id
-     * @return Operations\CustomerPortalCustomersDeletePaymentMethodResponse
+     * @return \Polar\Models\Operations\CustomerPortalCustomersDeletePaymentMethodResponse
      * @throws \Polar\Models\Errors\APIException
      */
     public function deletePaymentMethod(Operations\CustomerPortalCustomersDeletePaymentMethodSecurity $security, string $id, ?Options $options = null): Operations\CustomerPortalCustomersDeletePaymentMethodResponse
@@ -326,8 +326,8 @@ class PolarCustomers
      *
      * **Scopes**: `customer_portal:read` `customer_portal:write`
      *
-     * @param  Operations\CustomerPortalCustomersGetSecurity  $security
-     * @return Operations\CustomerPortalCustomersGetResponse
+     * @param  \Polar\Models\Operations\CustomerPortalCustomersGetSecurity  $security
+     * @return \Polar\Models\Operations\CustomerPortalCustomersGetResponse
      * @throws \Polar\Models\Errors\APIException
      */
     public function get(Operations\CustomerPortalCustomersGetSecurity $security, ?Options $options = null): Operations\CustomerPortalCustomersGetResponse
@@ -393,10 +393,10 @@ class PolarCustomers
      *
      * Get saved payment methods of the authenticated customer.
      *
-     * @param  Operations\CustomerPortalCustomersListPaymentMethodsSecurity  $security
+     * @param  \Polar\Models\Operations\CustomerPortalCustomersListPaymentMethodsSecurity  $security
      * @param  ?int  $page
      * @param  ?int  $limit
-     * @return Operations\CustomerPortalCustomersListPaymentMethodsResponse
+     * @return \Polar\Models\Operations\CustomerPortalCustomersListPaymentMethodsResponse
      * @throws \Polar\Models\Errors\APIException
      */
     private function listPaymentMethodsIndividual(Operations\CustomerPortalCustomersListPaymentMethodsSecurity $security, ?int $page = null, ?int $limit = null, ?Options $options = null): Operations\CustomerPortalCustomersListPaymentMethodsResponse
@@ -513,10 +513,10 @@ class PolarCustomers
      *
      * Get saved payment methods of the authenticated customer.
      *
-     * @param  Operations\CustomerPortalCustomersListPaymentMethodsSecurity  $security
+     * @param  \Polar\Models\Operations\CustomerPortalCustomersListPaymentMethodsSecurity  $security
      * @param  ?int  $page
      * @param  ?int  $limit
-     * @return \Generator<Operations\CustomerPortalCustomersListPaymentMethodsResponse>
+     * @return \Generator<\Polar\Models\Operations\CustomerPortalCustomersListPaymentMethodsResponse>
      * @throws \Polar\Models\Errors\APIException
      */
     public function listPaymentMethods(Operations\CustomerPortalCustomersListPaymentMethodsSecurity $security, ?int $page = null, ?int $limit = null, ?Options $options = null): \Generator
@@ -533,9 +533,9 @@ class PolarCustomers
      *
      * Update authenticated customer.
      *
-     * @param  Operations\CustomerPortalCustomersUpdateSecurity  $security
-     * @param  Components\CustomerPortalCustomerUpdate  $request
-     * @return Operations\CustomerPortalCustomersUpdateResponse
+     * @param  \Polar\Models\Operations\CustomerPortalCustomersUpdateSecurity  $security
+     * @param  \Polar\Models\Components\CustomerPortalCustomerUpdate  $request
+     * @return \Polar\Models\Operations\CustomerPortalCustomersUpdateResponse
      * @throws \Polar\Models\Errors\APIException
      */
     public function update(Operations\CustomerPortalCustomersUpdateSecurity $security, Components\CustomerPortalCustomerUpdate $request, ?Options $options = null): Operations\CustomerPortalCustomersUpdateResponse

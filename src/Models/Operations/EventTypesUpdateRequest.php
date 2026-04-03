@@ -22,14 +22,14 @@ class EventTypesUpdateRequest
 
     /**
      *
-     * @var Components\EventTypeUpdate $eventTypeUpdate
+     * @var \Polar\Models\Components\EventTypeUpdate $eventTypeUpdate
      */
     #[SpeakeasyMetadata('request:mediaType=application/json')]
     public Components\EventTypeUpdate $eventTypeUpdate;
 
     /**
      * @param  string  $id
-     * @param  Components\EventTypeUpdate  $eventTypeUpdate
+     * @param  \Polar\Models\Components\EventTypeUpdate  $eventTypeUpdate
      * @phpstan-pure
      */
     public function __construct(string $id, Components\EventTypeUpdate $eventTypeUpdate)

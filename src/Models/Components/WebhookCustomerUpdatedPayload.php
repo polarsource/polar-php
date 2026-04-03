@@ -29,13 +29,13 @@ class WebhookCustomerUpdatedPayload
     public \DateTime $timestamp;
 
     /**
-     * A customer in an organization.
      *
-     * @var Customer $data
+     * @var \Polar\Models\Components\CustomerIndividual|\Polar\Models\Components\CustomerTeam $data
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('data')]
-    #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\Customer')]
-    public Customer $data;
+    #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\CustomerIndividual|\Polar\Models\Components\CustomerTeam')]
+    #[\Speakeasy\Serializer\Annotation\UnionDiscriminator(field: 'type', map: ['individual' => '\Polar\Models\Components\CustomerIndividual', 'team' => '\Polar\Models\Components\CustomerTeam'])]
+    public CustomerIndividual|CustomerTeam $data;
 
     /**
      *
@@ -47,10 +47,10 @@ class WebhookCustomerUpdatedPayload
     /**
      * @param  string  $type
      * @param  \DateTime  $timestamp
-     * @param  Customer  $data
+     * @param  \Polar\Models\Components\CustomerIndividual|\Polar\Models\Components\CustomerTeam  $data
      * @phpstan-pure
      */
-    public function __construct(\DateTime $timestamp, Customer $data, string $type = 'customer.updated')
+    public function __construct(\DateTime $timestamp, CustomerIndividual|CustomerTeam $data, string $type = 'customer.updated')
     {
         $this->timestamp = $timestamp;
         $this->data = $data;

@@ -45,7 +45,7 @@ class CustomerOrganization
 
     /**
      *
-     * @var SubscriptionProrationBehavior $prorationBehavior
+     * @var \Polar\Models\Components\SubscriptionProrationBehavior $prorationBehavior
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('proration_behavior')]
     #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\SubscriptionProrationBehavior')]
@@ -61,7 +61,7 @@ class CustomerOrganization
 
     /**
      *
-     * @var OrganizationCustomerPortalSettings $customerPortalSettings
+     * @var \Polar\Models\Components\OrganizationCustomerPortalSettings $customerPortalSettings
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('customer_portal_settings')]
     #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\OrganizationCustomerPortalSettings')]
@@ -86,7 +86,7 @@ class CustomerOrganization
     /**
      * Feature flags exposed to the customer portal.
      *
-     * @var ?CustomerOrganizationFeatureSettings $organizationFeatures
+     * @var ?\Polar\Models\Components\CustomerOrganizationFeatureSettings $organizationFeatures
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('organization_features')]
     #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\CustomerOrganizationFeatureSettings|null')]
@@ -98,12 +98,12 @@ class CustomerOrganization
      * @param  string  $id
      * @param  string  $name
      * @param  string  $slug
-     * @param  SubscriptionProrationBehavior  $prorationBehavior
+     * @param  \Polar\Models\Components\SubscriptionProrationBehavior  $prorationBehavior
      * @param  bool  $allowCustomerUpdates
-     * @param  OrganizationCustomerPortalSettings  $customerPortalSettings
+     * @param  \Polar\Models\Components\OrganizationCustomerPortalSettings  $customerPortalSettings
      * @param  ?\DateTime  $modifiedAt
      * @param  ?string  $avatarUrl
-     * @param  ?CustomerOrganizationFeatureSettings  $organizationFeatures
+     * @param  ?\Polar\Models\Components\CustomerOrganizationFeatureSettings  $organizationFeatures
      * @phpstan-pure
      */
     public function __construct(\DateTime $createdAt, string $id, string $name, string $slug, SubscriptionProrationBehavior $prorationBehavior, bool $allowCustomerUpdates, OrganizationCustomerPortalSettings $customerPortalSettings, ?\DateTime $modifiedAt = null, ?string $avatarUrl = null, ?CustomerOrganizationFeatureSettings $organizationFeatures = null)

@@ -49,11 +49,11 @@ class Downloadables
      *
      * **Scopes**: `customer_portal:read` `customer_portal:write`
      *
-     * @param  Operations\CustomerPortalDownloadablesListSecurity  $security
+     * @param  \Polar\Models\Operations\CustomerPortalDownloadablesListSecurity  $security
      * @param  string|array<string>|null  $benefitId
      * @param  ?int  $page
      * @param  ?int  $limit
-     * @return Operations\CustomerPortalDownloadablesListResponse
+     * @return \Polar\Models\Operations\CustomerPortalDownloadablesListResponse
      * @throws \Polar\Models\Errors\APIException
      */
     private function listIndividual(Operations\CustomerPortalDownloadablesListSecurity $security, string|array|null $benefitId = null, ?int $page = null, ?int $limit = null, ?Options $options = null): Operations\CustomerPortalDownloadablesListResponse
@@ -172,11 +172,11 @@ class Downloadables
      *
      * **Scopes**: `customer_portal:read` `customer_portal:write`
      *
-     * @param  Operations\CustomerPortalDownloadablesListSecurity  $security
+     * @param  \Polar\Models\Operations\CustomerPortalDownloadablesListSecurity  $security
      * @param  string|array<string>|null  $benefitId
      * @param  ?int  $page
      * @param  ?int  $limit
-     * @return \Generator<Operations\CustomerPortalDownloadablesListResponse>
+     * @return \Generator<\Polar\Models\Operations\CustomerPortalDownloadablesListResponse>
      * @throws \Polar\Models\Errors\APIException
      */
     public function list(Operations\CustomerPortalDownloadablesListSecurity $security, string|array|null $benefitId = null, ?int $page = null, ?int $limit = null, ?Options $options = null): \Generator

@@ -27,7 +27,7 @@ class OrganizationSubscriptionSettings
 
     /**
      *
-     * @var SubscriptionProrationBehavior $prorationBehavior
+     * @var \Polar\Models\Components\SubscriptionProrationBehavior $prorationBehavior
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('proration_behavior')]
     #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\SubscriptionProrationBehavior')]
@@ -50,7 +50,7 @@ class OrganizationSubscriptionSettings
     /**
      * @param  bool  $allowMultipleSubscriptions
      * @param  bool  $allowCustomerUpdates
-     * @param  SubscriptionProrationBehavior  $prorationBehavior
+     * @param  \Polar\Models\Components\SubscriptionProrationBehavior  $prorationBehavior
      * @param  int  $benefitRevocationGracePeriod
      * @param  bool  $preventTrialAbuse
      * @phpstan-pure

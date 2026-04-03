@@ -29,7 +29,7 @@ class BenefitGrantGitHubRepositoryProperties
 
     /**
      *
-     * @var ?BenefitGrantGitHubRepositoryPropertiesPermission $permission
+     * @var ?\Polar\Models\Components\BenefitGrantGitHubRepositoryPropertiesPermission $permission
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('permission')]
     #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\BenefitGrantGitHubRepositoryPropertiesPermission|null')]
@@ -55,7 +55,7 @@ class BenefitGrantGitHubRepositoryProperties
     /**
      * @param  ?string  $repositoryOwner
      * @param  ?string  $repositoryName
-     * @param  ?BenefitGrantGitHubRepositoryPropertiesPermission  $permission
+     * @param  ?\Polar\Models\Components\BenefitGrantGitHubRepositoryPropertiesPermission  $permission
      * @param  ?string  $grantedAccountId
      * @param  ?string  $accountId
      * @phpstan-pure

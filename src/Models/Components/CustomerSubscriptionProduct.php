@@ -37,7 +37,7 @@ class CustomerSubscriptionProduct
 
     /**
      *
-     * @var ProductVisibility $visibility
+     * @var \Polar\Models\Components\ProductVisibility $visibility
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('visibility')]
     #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\ProductVisibility')]
@@ -70,7 +70,7 @@ class CustomerSubscriptionProduct
     /**
      * List of prices for this product.
      *
-     * @var array<LegacyRecurringProductPriceFixed|LegacyRecurringProductPriceCustom|LegacyRecurringProductPriceFree|ProductPriceFixed|ProductPriceCustom|ProductPriceFree|ProductPriceSeatBased|ProductPriceMeteredUnit> $prices
+     * @var array<\Polar\Models\Components\LegacyRecurringProductPriceFixed|\Polar\Models\Components\LegacyRecurringProductPriceCustom|\Polar\Models\Components\LegacyRecurringProductPriceFree|\Polar\Models\Components\ProductPriceFixed|\Polar\Models\Components\ProductPriceCustom|\Polar\Models\Components\ProductPriceFree|\Polar\Models\Components\ProductPriceSeatBased|\Polar\Models\Components\ProductPriceMeteredUnit> $prices
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('prices')]
     #[\Speakeasy\Serializer\Annotation\Type('array<\Polar\Models\Components\LegacyRecurringProductPriceFixed|\Polar\Models\Components\LegacyRecurringProductPriceCustom|\Polar\Models\Components\LegacyRecurringProductPriceFree|\Polar\Models\Components\ProductPriceFixed|\Polar\Models\Components\ProductPriceCustom|\Polar\Models\Components\ProductPriceFree|\Polar\Models\Components\ProductPriceSeatBased|\Polar\Models\Components\ProductPriceMeteredUnit>')]
@@ -79,7 +79,7 @@ class CustomerSubscriptionProduct
     /**
      * List of benefits granted by the product.
      *
-     * @var array<BenefitPublic> $benefits
+     * @var array<\Polar\Models\Components\BenefitPublic> $benefits
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('benefits')]
     #[\Speakeasy\Serializer\Annotation\Type('array<\Polar\Models\Components\BenefitPublic>')]
@@ -88,7 +88,7 @@ class CustomerSubscriptionProduct
     /**
      * List of medias associated to the product.
      *
-     * @var array<ProductMediaFileRead> $medias
+     * @var array<\Polar\Models\Components\ProductMediaFileRead> $medias
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('medias')]
     #[\Speakeasy\Serializer\Annotation\Type('array<\Polar\Models\Components\ProductMediaFileRead>')]
@@ -96,7 +96,7 @@ class CustomerSubscriptionProduct
 
     /**
      *
-     * @var CustomerOrganization $organization
+     * @var \Polar\Models\Components\CustomerOrganization $organization
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('organization')]
     #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\CustomerOrganization')]
@@ -113,7 +113,7 @@ class CustomerSubscriptionProduct
     /**
      * The interval unit for the trial period.
      *
-     * @var ?TrialInterval $trialInterval
+     * @var ?\Polar\Models\Components\TrialInterval $trialInterval
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('trial_interval')]
     #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\TrialInterval|null')]
@@ -138,7 +138,7 @@ class CustomerSubscriptionProduct
     /**
      * The recurring interval of the product. If `None`, the product is a one-time purchase.
      *
-     * @var ?SubscriptionRecurringInterval $recurringInterval
+     * @var ?\Polar\Models\Components\SubscriptionRecurringInterval $recurringInterval
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('recurring_interval')]
     #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\SubscriptionRecurringInterval|null')]
@@ -156,19 +156,19 @@ class CustomerSubscriptionProduct
      * @param  string  $id
      * @param  \DateTime  $createdAt
      * @param  string  $name
-     * @param  ProductVisibility  $visibility
+     * @param  \Polar\Models\Components\ProductVisibility  $visibility
      * @param  bool  $isRecurring
      * @param  bool  $isArchived
      * @param  string  $organizationId
-     * @param  array<LegacyRecurringProductPriceFixed|LegacyRecurringProductPriceCustom|LegacyRecurringProductPriceFree|ProductPriceFixed|ProductPriceCustom|ProductPriceFree|ProductPriceSeatBased|ProductPriceMeteredUnit>  $prices
-     * @param  array<BenefitPublic>  $benefits
-     * @param  array<ProductMediaFileRead>  $medias
-     * @param  CustomerOrganization  $organization
+     * @param  array<\Polar\Models\Components\LegacyRecurringProductPriceFixed|\Polar\Models\Components\LegacyRecurringProductPriceCustom|\Polar\Models\Components\LegacyRecurringProductPriceFree|\Polar\Models\Components\ProductPriceFixed|\Polar\Models\Components\ProductPriceCustom|\Polar\Models\Components\ProductPriceFree|\Polar\Models\Components\ProductPriceSeatBased|\Polar\Models\Components\ProductPriceMeteredUnit>  $prices
+     * @param  array<\Polar\Models\Components\BenefitPublic>  $benefits
+     * @param  array<\Polar\Models\Components\ProductMediaFileRead>  $medias
+     * @param  \Polar\Models\Components\CustomerOrganization  $organization
      * @param  ?\DateTime  $modifiedAt
-     * @param  ?TrialInterval  $trialInterval
+     * @param  ?\Polar\Models\Components\TrialInterval  $trialInterval
      * @param  ?int  $trialIntervalCount
      * @param  ?string  $description
-     * @param  ?SubscriptionRecurringInterval  $recurringInterval
+     * @param  ?\Polar\Models\Components\SubscriptionRecurringInterval  $recurringInterval
      * @param  ?int  $recurringIntervalCount
      * @phpstan-pure
      */

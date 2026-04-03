@@ -7,7 +7,7 @@
 
 ```php
 /**
-* @var Components\AuthorizationCodeTokenRequest
+* @var \Polar\Models\Components\AuthorizationCodeTokenRequest
 */
 Components\AuthorizationCodeTokenRequest $value = /* values here */
 ```
@@ -16,7 +16,7 @@ Components\AuthorizationCodeTokenRequest $value = /* values here */
 
 ```php
 /**
-* @var Components\RefreshTokenRequest
+* @var \Polar\Models\Components\RefreshTokenRequest
 */
 Components\RefreshTokenRequest $value = /* values here */
 ```
@@ -25,7 +25,7 @@ Components\RefreshTokenRequest $value = /* values here */
 
 ```php
 /**
-* @var Components\WebTokenRequest
+* @var \Polar\Models\Components\WebTokenRequest
 */
 Components\WebTokenRequest $value = /* values here */
 ```

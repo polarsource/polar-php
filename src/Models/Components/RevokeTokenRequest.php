@@ -34,7 +34,7 @@ class RevokeTokenRequest
 
     /**
      *
-     * @var ?TokenTypeHint $tokenTypeHint
+     * @var ?\Polar\Models\Components\TokenTypeHint $tokenTypeHint
      */
     #[SpeakeasyMetadata('form:name=token_type_hint')]
     public ?TokenTypeHint $tokenTypeHint = null;
@@ -43,7 +43,7 @@ class RevokeTokenRequest
      * @param  string  $token
      * @param  string  $clientId
      * @param  string  $clientSecret
-     * @param  ?TokenTypeHint  $tokenTypeHint
+     * @param  ?\Polar\Models\Components\TokenTypeHint  $tokenTypeHint
      * @phpstan-pure
      */
     public function __construct(string $token, string $clientId, string $clientSecret, ?TokenTypeHint $tokenTypeHint = null)

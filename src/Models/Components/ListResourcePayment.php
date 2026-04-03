@@ -9,12 +9,12 @@ declare(strict_types=1);
 namespace Polar\Models\Components;
 
 
-class ListResource
+class ListResourcePayment
 {
     /**
      * $items
      *
-     * @var array<CardPayment|GenericPayment> $items
+     * @var array<\Polar\Models\Components\CardPayment|\Polar\Models\Components\GenericPayment> $items
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('items')]
     #[\Speakeasy\Serializer\Annotation\Type('array<\Polar\Models\Components\CardPayment|\Polar\Models\Components\GenericPayment>')]
@@ -22,15 +22,15 @@ class ListResource
 
     /**
      *
-     * @var Pagination $pagination
+     * @var \Polar\Models\Components\Pagination $pagination
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('pagination')]
     #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\Pagination')]
     public Pagination $pagination;
 
     /**
-     * @param  array<CardPayment|GenericPayment>  $items
-     * @param  Pagination  $pagination
+     * @param  array<\Polar\Models\Components\CardPayment|\Polar\Models\Components\GenericPayment>  $items
+     * @param  \Polar\Models\Components\Pagination  $pagination
      * @phpstan-pure
      */
     public function __construct(array $items, Pagination $pagination)

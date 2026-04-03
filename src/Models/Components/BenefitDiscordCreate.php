@@ -22,7 +22,7 @@ class BenefitDiscordCreate
     /**
      * Properties to create a benefit of type `discord`.
      *
-     * @var BenefitDiscordCreateProperties $properties
+     * @var \Polar\Models\Components\BenefitDiscordCreateProperties $properties
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('properties')]
     #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\BenefitDiscordCreateProperties')]
@@ -68,7 +68,7 @@ class BenefitDiscordCreate
     /**
      * @param  string  $type
      * @param  string  $description
-     * @param  BenefitDiscordCreateProperties  $properties
+     * @param  \Polar\Models\Components\BenefitDiscordCreateProperties  $properties
      * @param  ?array<string, string|int|float|bool>  $metadata
      * @param  ?string  $organizationId
      * @phpstan-pure

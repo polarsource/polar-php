@@ -14,7 +14,7 @@ class ListResourceOrganizationAccessToken
     /**
      * $items
      *
-     * @var array<OrganizationAccessToken> $items
+     * @var array<\Polar\Models\Components\OrganizationAccessToken> $items
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('items')]
     #[\Speakeasy\Serializer\Annotation\Type('array<\Polar\Models\Components\OrganizationAccessToken>')]
@@ -22,15 +22,15 @@ class ListResourceOrganizationAccessToken
 
     /**
      *
-     * @var Pagination $pagination
+     * @var \Polar\Models\Components\Pagination $pagination
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('pagination')]
     #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\Pagination')]
     public Pagination $pagination;
 
     /**
-     * @param  array<OrganizationAccessToken>  $items
-     * @param  Pagination  $pagination
+     * @param  array<\Polar\Models\Components\OrganizationAccessToken>  $items
+     * @param  \Polar\Models\Components\Pagination  $pagination
      * @phpstan-pure
      */
     public function __construct(array $items, Pagination $pagination)

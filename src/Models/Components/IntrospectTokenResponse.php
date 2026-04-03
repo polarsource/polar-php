@@ -27,7 +27,7 @@ class IntrospectTokenResponse
 
     /**
      *
-     * @var TokenType $tokenType
+     * @var \Polar\Models\Components\TokenType $tokenType
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('token_type')]
     #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\TokenType')]
@@ -42,7 +42,7 @@ class IntrospectTokenResponse
 
     /**
      *
-     * @var SubType $subType
+     * @var \Polar\Models\Components\SubType $subType
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('sub_type')]
     #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\SubType')]
@@ -86,9 +86,9 @@ class IntrospectTokenResponse
     /**
      * @param  bool  $active
      * @param  string  $clientId
-     * @param  TokenType  $tokenType
+     * @param  \Polar\Models\Components\TokenType  $tokenType
      * @param  string  $scope
-     * @param  SubType  $subType
+     * @param  \Polar\Models\Components\SubType  $subType
      * @param  string  $sub
      * @param  string  $aud
      * @param  string  $iss

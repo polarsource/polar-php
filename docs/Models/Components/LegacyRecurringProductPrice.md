@@ -7,7 +7,7 @@
 
 ```php
 /**
-* @var Components\LegacyRecurringProductPriceCustom
+* @var \Polar\Models\Components\LegacyRecurringProductPriceCustom
 */
 Components\LegacyRecurringProductPriceCustom $value = /* values here */
 ```
@@ -16,7 +16,7 @@ Components\LegacyRecurringProductPriceCustom $value = /* values here */
 
 ```php
 /**
-* @var Components\LegacyRecurringProductPriceFixed
+* @var \Polar\Models\Components\LegacyRecurringProductPriceFixed
 */
 Components\LegacyRecurringProductPriceFixed $value = /* values here */
 ```
@@ -25,7 +25,7 @@ Components\LegacyRecurringProductPriceFixed $value = /* values here */
 
 ```php
 /**
-* @var Components\LegacyRecurringProductPriceFree
+* @var \Polar\Models\Components\LegacyRecurringProductPriceFree
 */
 Components\LegacyRecurringProductPriceFree $value = /* values here */
 ```

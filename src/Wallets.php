@@ -50,9 +50,9 @@ class Wallets
      *
      * Get a wallet by ID for the authenticated customer.
      *
-     * @param  Operations\CustomerPortalWalletsGetSecurity  $security
+     * @param  \Polar\Models\Operations\CustomerPortalWalletsGetSecurity  $security
      * @param  string  $id
-     * @return Operations\CustomerPortalWalletsGetResponse
+     * @return \Polar\Models\Operations\CustomerPortalWalletsGetResponse
      * @throws \Polar\Models\Errors\APIException
      */
     public function get(Operations\CustomerPortalWalletsGetSecurity $security, string $id, ?Options $options = null): Operations\CustomerPortalWalletsGetResponse
@@ -143,11 +143,11 @@ class Wallets
      *
      * List wallets of the authenticated customer.
      *
-     * @param  Operations\CustomerPortalWalletsListSecurity  $security
+     * @param  \Polar\Models\Operations\CustomerPortalWalletsListSecurity  $security
      * @param  ?int  $page
      * @param  ?int  $limit
-     * @param  ?array<Components\CustomerWalletSortProperty>  $sorting
-     * @return Operations\CustomerPortalWalletsListResponse
+     * @param  ?array<\Polar\Models\Components\CustomerWalletSortProperty>  $sorting
+     * @return \Polar\Models\Operations\CustomerPortalWalletsListResponse
      * @throws \Polar\Models\Errors\APIException
      */
     private function listIndividual(Operations\CustomerPortalWalletsListSecurity $security, ?int $page = null, ?int $limit = null, ?array $sorting = null, ?Options $options = null): Operations\CustomerPortalWalletsListResponse
@@ -266,11 +266,11 @@ class Wallets
      *
      * List wallets of the authenticated customer.
      *
-     * @param  Operations\CustomerPortalWalletsListSecurity  $security
+     * @param  \Polar\Models\Operations\CustomerPortalWalletsListSecurity  $security
      * @param  ?int  $page
      * @param  ?int  $limit
-     * @param  ?array<Components\CustomerWalletSortProperty>  $sorting
-     * @return \Generator<Operations\CustomerPortalWalletsListResponse>
+     * @param  ?array<\Polar\Models\Components\CustomerWalletSortProperty>  $sorting
+     * @return \Generator<\Polar\Models\Operations\CustomerPortalWalletsListResponse>
      * @throws \Polar\Models\Errors\APIException
      */
     public function list(Operations\CustomerPortalWalletsListSecurity $security, ?int $page = null, ?int $limit = null, ?array $sorting = null, ?Options $options = null): \Generator

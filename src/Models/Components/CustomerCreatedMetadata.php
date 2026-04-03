@@ -20,10 +20,10 @@ class CustomerCreatedMetadata
 
     /**
      *
-     * @var string $customerEmail
+     * @var ?string $customerEmail
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('customer_email')]
-    public string $customerEmail;
+    public ?string $customerEmail;
 
     /**
      *
@@ -41,12 +41,12 @@ class CustomerCreatedMetadata
 
     /**
      * @param  string  $customerId
-     * @param  string  $customerEmail
+     * @param  ?string  $customerEmail
      * @param  ?string  $customerName
      * @param  ?string  $customerExternalId
      * @phpstan-pure
      */
-    public function __construct(string $customerId, string $customerEmail, ?string $customerName = null, ?string $customerExternalId = null)
+    public function __construct(string $customerId, ?string $customerEmail = null, ?string $customerName = null, ?string $customerExternalId = null)
     {
         $this->customerId = $customerId;
         $this->customerEmail = $customerEmail;

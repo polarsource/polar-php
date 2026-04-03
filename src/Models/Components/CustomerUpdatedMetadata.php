@@ -20,18 +20,18 @@ class CustomerUpdatedMetadata
 
     /**
      *
-     * @var string $customerEmail
-     */
-    #[\Speakeasy\Serializer\Annotation\SerializedName('customer_email')]
-    public string $customerEmail;
-
-    /**
-     *
-     * @var CustomerUpdatedFields $updatedFields
+     * @var \Polar\Models\Components\CustomerUpdatedFields $updatedFields
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('updated_fields')]
     #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\CustomerUpdatedFields')]
     public CustomerUpdatedFields $updatedFields;
+
+    /**
+     *
+     * @var ?string $customerEmail
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('customer_email')]
+    public ?string $customerEmail;
 
     /**
      *
@@ -49,17 +49,17 @@ class CustomerUpdatedMetadata
 
     /**
      * @param  string  $customerId
-     * @param  string  $customerEmail
-     * @param  CustomerUpdatedFields  $updatedFields
+     * @param  \Polar\Models\Components\CustomerUpdatedFields  $updatedFields
+     * @param  ?string  $customerEmail
      * @param  ?string  $customerName
      * @param  ?string  $customerExternalId
      * @phpstan-pure
      */
-    public function __construct(string $customerId, string $customerEmail, CustomerUpdatedFields $updatedFields, ?string $customerName = null, ?string $customerExternalId = null)
+    public function __construct(string $customerId, CustomerUpdatedFields $updatedFields, ?string $customerEmail = null, ?string $customerName = null, ?string $customerExternalId = null)
     {
         $this->customerId = $customerId;
-        $this->customerEmail = $customerEmail;
         $this->updatedFields = $updatedFields;
+        $this->customerEmail = $customerEmail;
         $this->customerName = $customerName;
         $this->customerExternalId = $customerExternalId;
     }

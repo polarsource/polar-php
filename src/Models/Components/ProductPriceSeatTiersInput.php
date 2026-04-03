@@ -22,7 +22,7 @@ class ProductPriceSeatTiersInput
     /**
      * List of pricing tiers
      *
-     * @var array<ProductPriceSeatTier> $tiers
+     * @var array<\Polar\Models\Components\ProductPriceSeatTier> $tiers
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('tiers')]
     #[\Speakeasy\Serializer\Annotation\Type('array<\Polar\Models\Components\ProductPriceSeatTier>')]
@@ -30,7 +30,7 @@ class ProductPriceSeatTiersInput
 
     /**
      *
-     * @var ?SeatTierType $seatTierType
+     * @var ?\Polar\Models\Components\SeatTierType $seatTierType
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('seat_tier_type')]
     #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\SeatTierType|null')]
@@ -38,8 +38,8 @@ class ProductPriceSeatTiersInput
     public ?SeatTierType $seatTierType = null;
 
     /**
-     * @param  array<ProductPriceSeatTier>  $tiers
-     * @param  ?SeatTierType  $seatTierType
+     * @param  array<\Polar\Models\Components\ProductPriceSeatTier>  $tiers
+     * @param  ?\Polar\Models\Components\SeatTierType  $seatTierType
      * @phpstan-pure
      */
     public function __construct(array $tiers, ?SeatTierType $seatTierType = null)

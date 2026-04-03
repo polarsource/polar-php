@@ -35,7 +35,7 @@ class CheckoutLinksGetResponse
     /**
      * Successful Response
      *
-     * @var ?Components\CheckoutLink $checkoutLink
+     * @var ?\Polar\Models\Components\CheckoutLink $checkoutLink
      */
     public ?Components\CheckoutLink $checkoutLink = null;
 
@@ -43,7 +43,7 @@ class CheckoutLinksGetResponse
      * @param  string  $contentType
      * @param  int  $statusCode
      * @param  \Psr\Http\Message\ResponseInterface  $rawResponse
-     * @param  ?Components\CheckoutLink  $checkoutLink
+     * @param  ?\Polar\Models\Components\CheckoutLink  $checkoutLink
      * @phpstan-pure
      */
     public function __construct(string $contentType, int $statusCode, \Psr\Http\Message\ResponseInterface $rawResponse, ?Components\CheckoutLink $checkoutLink = null)

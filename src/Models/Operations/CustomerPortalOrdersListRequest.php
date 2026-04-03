@@ -23,7 +23,7 @@ class CustomerPortalOrdersListRequest
     /**
      * Filter by product billing type. `recurring` will filter data corresponding to subscriptions creations or renewals. `one_time` will filter data corresponding to one-time purchases.
      *
-     * @var Components\ProductBillingType|array<Components\ProductBillingType>|null $productBillingType
+     * @var \Polar\Models\Components\ProductBillingType|array<\Polar\Models\Components\ProductBillingType>|null $productBillingType
      */
     #[SpeakeasyMetadata('queryParam:style=form,explode=true,name=product_billing_type')]
     public Components\ProductBillingType|array|null $productBillingType = null;
@@ -47,7 +47,7 @@ class CustomerPortalOrdersListRequest
     /**
      * Sorting criterion. Several criteria can be used simultaneously and will be applied in order. Add a minus sign `-` before the criteria name to sort by descending order.
      *
-     * @var ?array<Components\CustomerOrderSortProperty> $sorting
+     * @var ?array<\Polar\Models\Components\CustomerOrderSortProperty> $sorting
      */
     #[SpeakeasyMetadata('queryParam:style=form,explode=true,name=sorting')]
     public ?array $sorting = null;
@@ -72,10 +72,10 @@ class CustomerPortalOrdersListRequest
      * @param  ?int  $page
      * @param  ?int  $limit
      * @param  string|array<string>|null  $productId
-     * @param  Components\ProductBillingType|array<Components\ProductBillingType>|null  $productBillingType
+     * @param  \Polar\Models\Components\ProductBillingType|array<\Polar\Models\Components\ProductBillingType>|null  $productBillingType
      * @param  string|array<string>|null  $subscriptionId
      * @param  ?string  $query
-     * @param  ?array<Components\CustomerOrderSortProperty>  $sorting
+     * @param  ?array<\Polar\Models\Components\CustomerOrderSortProperty>  $sorting
      * @phpstan-pure
      */
     public function __construct(string|array|null $productId = null, Components\ProductBillingType|array|null $productBillingType = null, string|array|null $subscriptionId = null, ?string $query = null, ?array $sorting = null, ?int $page = 1, ?int $limit = 10)
