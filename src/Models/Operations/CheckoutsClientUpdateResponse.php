@@ -35,7 +35,7 @@ class CheckoutsClientUpdateResponse
     /**
      * Checkout session updated.
      *
-     * @var ?Components\CheckoutPublic $checkoutPublic
+     * @var ?\Polar\Models\Components\CheckoutPublic $checkoutPublic
      */
     public ?Components\CheckoutPublic $checkoutPublic = null;
 
@@ -43,7 +43,7 @@ class CheckoutsClientUpdateResponse
      * @param  string  $contentType
      * @param  int  $statusCode
      * @param  \Psr\Http\Message\ResponseInterface  $rawResponse
-     * @param  ?Components\CheckoutPublic  $checkoutPublic
+     * @param  ?\Polar\Models\Components\CheckoutPublic  $checkoutPublic
      * @phpstan-pure
      */
     public function __construct(string $contentType, int $statusCode, \Psr\Http\Message\ResponseInterface $rawResponse, ?Components\CheckoutPublic $checkoutPublic = null)

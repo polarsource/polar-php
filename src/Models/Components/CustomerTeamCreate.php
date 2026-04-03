@@ -9,16 +9,8 @@ declare(strict_types=1);
 namespace Polar\Models\Components;
 
 
-class CustomerCreate
+class CustomerTeamCreate
 {
-    /**
-     * The email address of the customer. This must be unique within the organization.
-     *
-     * @var string $email
-     */
-    #[\Speakeasy\Serializer\Annotation\SerializedName('email')]
-    public string $email;
-
     /**
      * Key-value object allowing you to store additional information.
      *
@@ -59,7 +51,7 @@ class CustomerCreate
 
     /**
      *
-     * @var ?AddressInput $billingAddress
+     * @var ?\Polar\Models\Components\AddressInput $billingAddress
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('billing_address')]
     #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\AddressInput|null')]
@@ -83,16 +75,6 @@ class CustomerCreate
     public ?string $locale = null;
 
     /**
-     * The type of customer. Defaults to 'individual'. Set to 'team' for customers that can have multiple members.
-     *
-     * @var ?CustomerType $type
-     */
-    #[\Speakeasy\Serializer\Annotation\SerializedName('type')]
-    #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\CustomerType|null')]
-    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
-    public ?CustomerType $type = null;
-
-    /**
      * The ID of the organization owning the customer. **Required unless you use an organization token.**
      *
      * @var ?string $organizationId
@@ -104,37 +86,53 @@ class CustomerCreate
     /**
      * Optional owner member to create with the customer. If not provided, an owner member will be automatically created using the customer's email and name.
      *
-     * @var ?OwnerCreate $owner
+     * @var ?\Polar\Models\Components\MemberOwnerCreate $owner
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('owner')]
-    #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\OwnerCreate|null')]
+    #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\MemberOwnerCreate|null')]
     #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
-    public ?OwnerCreate $owner = null;
+    public ?MemberOwnerCreate $owner = null;
 
     /**
-     * @param  string  $email
+     * The email address of the team customer. Optional for team customers — if omitted, an owner with an email must be provided.
+     *
+     * @var ?string $email
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('email')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
+    public ?string $email = null;
+
+    /**
+     *
+     * @var string $type
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('type')]
+    public string $type;
+
+    /**
+     * @param  string  $type
      * @param  ?array<string, string|int|float|bool>  $metadata
      * @param  ?string  $externalId
      * @param  ?string  $name
-     * @param  ?AddressInput  $billingAddress
+     * @param  ?\Polar\Models\Components\AddressInput  $billingAddress
      * @param  ?string  $taxId
      * @param  ?string  $locale
-     * @param  ?CustomerType  $type
      * @param  ?string  $organizationId
-     * @param  ?OwnerCreate  $owner
+     * @param  ?\Polar\Models\Components\MemberOwnerCreate  $owner
+     * @param  ?string  $email
      * @phpstan-pure
      */
-    public function __construct(string $email, ?array $metadata = null, ?string $externalId = null, ?string $name = null, ?AddressInput $billingAddress = null, ?string $taxId = null, ?string $locale = null, ?CustomerType $type = null, ?string $organizationId = null, ?OwnerCreate $owner = null)
+    public function __construct(?array $metadata = null, ?string $externalId = null, ?string $name = null, ?AddressInput $billingAddress = null, ?string $taxId = null, ?string $locale = null, ?string $organizationId = null, ?MemberOwnerCreate $owner = null, ?string $email = null, string $type = 'team')
     {
-        $this->email = $email;
         $this->metadata = $metadata;
         $this->externalId = $externalId;
         $this->name = $name;
         $this->billingAddress = $billingAddress;
         $this->taxId = $taxId;
         $this->locale = $locale;
-        $this->type = $type;
         $this->organizationId = $organizationId;
         $this->owner = $owner;
+        $this->email = $email;
+        $this->type = $type;
     }
 }

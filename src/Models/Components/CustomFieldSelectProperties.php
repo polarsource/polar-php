@@ -14,7 +14,7 @@ class CustomFieldSelectProperties
     /**
      * $options
      *
-     * @var array<CustomFieldSelectOption> $options
+     * @var array<\Polar\Models\Components\CustomFieldSelectOption> $options
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('options')]
     #[\Speakeasy\Serializer\Annotation\Type('array<\Polar\Models\Components\CustomFieldSelectOption>')]
@@ -45,7 +45,7 @@ class CustomFieldSelectProperties
     public ?string $formPlaceholder = null;
 
     /**
-     * @param  array<CustomFieldSelectOption>  $options
+     * @param  array<\Polar\Models\Components\CustomFieldSelectOption>  $options
      * @param  ?string  $formLabel
      * @param  ?string  $formHelpText
      * @param  ?string  $formPlaceholder

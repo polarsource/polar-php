@@ -35,7 +35,7 @@ class PaymentsGetResponse
     /**
      * Successful Response
      *
-     * @var Components\CardPayment|Components\GenericPayment|null $payment
+     * @var \Polar\Models\Components\CardPayment|\Polar\Models\Components\GenericPayment|null $payment
      */
     public Components\CardPayment|Components\GenericPayment|null $payment = null;
 
@@ -43,7 +43,7 @@ class PaymentsGetResponse
      * @param  string  $contentType
      * @param  int  $statusCode
      * @param  \Psr\Http\Message\ResponseInterface  $rawResponse
-     * @param  Components\CardPayment|Components\GenericPayment|null  $payment
+     * @param  \Polar\Models\Components\CardPayment|\Polar\Models\Components\GenericPayment|null  $payment
      * @phpstan-pure
      */
     public function __construct(string $contentType, int $statusCode, \Psr\Http\Message\ResponseInterface $rawResponse, Components\CardPayment|Components\GenericPayment|null $payment = null)

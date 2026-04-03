@@ -31,7 +31,7 @@ class DiscountsListRequest
     /**
      * Sorting criterion. Several criteria can be used simultaneously and will be applied in order. Add a minus sign `-` before the criteria name to sort by descending order.
      *
-     * @var ?array<Components\DiscountSortProperty> $sorting
+     * @var ?array<\Polar\Models\Components\DiscountSortProperty> $sorting
      */
     #[SpeakeasyMetadata('queryParam:style=form,explode=true,name=sorting')]
     public ?array $sorting = null;
@@ -57,7 +57,7 @@ class DiscountsListRequest
      * @param  ?int  $limit
      * @param  string|array<string>|null  $organizationId
      * @param  ?string  $query
-     * @param  ?array<Components\DiscountSortProperty>  $sorting
+     * @param  ?array<\Polar\Models\Components\DiscountSortProperty>  $sorting
      * @phpstan-pure
      */
     public function __construct(string|array|null $organizationId = null, ?string $query = null, ?array $sorting = null, ?int $page = 1, ?int $limit = 10)

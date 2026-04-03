@@ -34,10 +34,13 @@ class Utils
      * @param  mixed  $security
      * @return ClientInterface
      */
-    public static function configureSecurityClient(ClientInterface $client, mixed $security): ClientInterface
+    /**
+     * @param  ?string[]  $allowedFields
+     */
+    public static function configureSecurityClient(ClientInterface $client, mixed $security, ?array $allowedFields = null): ClientInterface
     {
         $sec = new Security();
-        $clientOptions = $sec->parseSecurity($security);
+        $clientOptions = $sec->parseSecurity($security, $allowedFields);
 
         return new SecurityClient(
             client: $client,

@@ -31,7 +31,7 @@ class DisputesListRequest
     /**
      * Filter by dispute status.
      *
-     * @var Components\DisputeStatus|array<Components\DisputeStatus>|null $status
+     * @var \Polar\Models\Components\DisputeStatus|array<\Polar\Models\Components\DisputeStatus>|null $status
      */
     #[SpeakeasyMetadata('queryParam:style=form,explode=true,name=status')]
     public Components\DisputeStatus|array|null $status = null;
@@ -39,7 +39,7 @@ class DisputesListRequest
     /**
      * Sorting criterion. Several criteria can be used simultaneously and will be applied in order. Add a minus sign `-` before the criteria name to sort by descending order.
      *
-     * @var ?array<Components\DisputeSortProperty> $sorting
+     * @var ?array<\Polar\Models\Components\DisputeSortProperty> $sorting
      */
     #[SpeakeasyMetadata('queryParam:style=form,explode=true,name=sorting')]
     public ?array $sorting = null;
@@ -65,8 +65,8 @@ class DisputesListRequest
      * @param  ?int  $limit
      * @param  string|array<string>|null  $organizationId
      * @param  string|array<string>|null  $orderId
-     * @param  Components\DisputeStatus|array<Components\DisputeStatus>|null  $status
-     * @param  ?array<Components\DisputeSortProperty>  $sorting
+     * @param  \Polar\Models\Components\DisputeStatus|array<\Polar\Models\Components\DisputeStatus>|null  $status
+     * @param  ?array<\Polar\Models\Components\DisputeSortProperty>  $sorting
      * @phpstan-pure
      */
     public function __construct(string|array|null $organizationId = null, string|array|null $orderId = null, Components\DisputeStatus|array|null $status = null, ?array $sorting = null, ?int $page = 1, ?int $limit = 10)

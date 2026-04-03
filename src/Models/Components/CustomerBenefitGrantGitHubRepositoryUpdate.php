@@ -13,7 +13,7 @@ class CustomerBenefitGrantGitHubRepositoryUpdate
 {
     /**
      *
-     * @var CustomerBenefitGrantGitHubRepositoryPropertiesUpdate $properties
+     * @var \Polar\Models\Components\CustomerBenefitGrantGitHubRepositoryPropertiesUpdate $properties
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('properties')]
     #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\CustomerBenefitGrantGitHubRepositoryPropertiesUpdate')]
@@ -28,7 +28,7 @@ class CustomerBenefitGrantGitHubRepositoryUpdate
 
     /**
      * @param  string  $benefitType
-     * @param  CustomerBenefitGrantGitHubRepositoryPropertiesUpdate  $properties
+     * @param  \Polar\Models\Components\CustomerBenefitGrantGitHubRepositoryPropertiesUpdate  $properties
      * @phpstan-pure
      */
     public function __construct(CustomerBenefitGrantGitHubRepositoryPropertiesUpdate $properties, string $benefitType = 'github_repository')

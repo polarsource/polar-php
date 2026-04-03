@@ -22,14 +22,14 @@ class CustomerPortalOrdersConfirmRetryPaymentRequest
 
     /**
      *
-     * @var Components\CustomerOrderConfirmPayment $customerOrderConfirmPayment
+     * @var \Polar\Models\Components\CustomerOrderConfirmPayment $customerOrderConfirmPayment
      */
     #[SpeakeasyMetadata('request:mediaType=application/json')]
     public Components\CustomerOrderConfirmPayment $customerOrderConfirmPayment;
 
     /**
      * @param  string  $id
-     * @param  Components\CustomerOrderConfirmPayment  $customerOrderConfirmPayment
+     * @param  \Polar\Models\Components\CustomerOrderConfirmPayment  $customerOrderConfirmPayment
      * @phpstan-pure
      */
     public function __construct(string $id, Components\CustomerOrderConfirmPayment $customerOrderConfirmPayment)

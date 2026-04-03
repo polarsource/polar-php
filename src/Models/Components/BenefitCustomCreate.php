@@ -23,7 +23,7 @@ class BenefitCustomCreate
     /**
      * Properties for creating a benefit of type `custom`.
      *
-     * @var BenefitCustomCreateProperties $properties
+     * @var \Polar\Models\Components\BenefitCustomCreateProperties $properties
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('properties')]
     #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\BenefitCustomCreateProperties')]
@@ -69,7 +69,7 @@ class BenefitCustomCreate
     /**
      * @param  string  $type
      * @param  string  $description
-     * @param  BenefitCustomCreateProperties  $properties
+     * @param  \Polar\Models\Components\BenefitCustomCreateProperties  $properties
      * @param  ?array<string, string|int|float|bool>  $metadata
      * @param  ?string  $organizationId
      * @phpstan-pure

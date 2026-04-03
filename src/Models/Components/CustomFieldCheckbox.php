@@ -63,7 +63,7 @@ class CustomFieldCheckbox
 
     /**
      *
-     * @var CustomFieldCheckboxProperties $properties
+     * @var \Polar\Models\Components\CustomFieldCheckboxProperties $properties
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('properties')]
     #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\CustomFieldCheckboxProperties')]
@@ -92,7 +92,7 @@ class CustomFieldCheckbox
      * @param  string  $slug
      * @param  string  $name
      * @param  string  $organizationId
-     * @param  CustomFieldCheckboxProperties  $properties
+     * @param  \Polar\Models\Components\CustomFieldCheckboxProperties  $properties
      * @param  ?\DateTime  $modifiedAt
      * @phpstan-pure
      */

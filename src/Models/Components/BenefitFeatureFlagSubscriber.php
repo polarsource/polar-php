@@ -70,7 +70,7 @@ class BenefitFeatureFlagSubscriber
 
     /**
      *
-     * @var BenefitSubscriberOrganization $organization
+     * @var \Polar\Models\Components\BenefitSubscriberOrganization $organization
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('organization')]
     #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\BenefitSubscriberOrganization')]
@@ -79,7 +79,7 @@ class BenefitFeatureFlagSubscriber
     /**
      * Properties available to subscribers for a benefit of type `feature_flag`.
      *
-     * @var BenefitFeatureFlagSubscriberProperties $properties
+     * @var \Polar\Models\Components\BenefitFeatureFlagSubscriberProperties $properties
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('properties')]
     #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\BenefitFeatureFlagSubscriberProperties')]
@@ -109,8 +109,8 @@ class BenefitFeatureFlagSubscriber
      * @param  bool  $deletable
      * @param  string  $organizationId
      * @param  array<string, string|int|float|bool>  $metadata
-     * @param  BenefitSubscriberOrganization  $organization
-     * @param  BenefitFeatureFlagSubscriberProperties  $properties
+     * @param  \Polar\Models\Components\BenefitSubscriberOrganization  $organization
+     * @param  \Polar\Models\Components\BenefitFeatureFlagSubscriberProperties  $properties
      * @param  ?\DateTime  $modifiedAt
      * @phpstan-pure
      */

@@ -9,7 +9,7 @@ Filter by webhook event type.
 
 ```php
 /**
-* @var Components\WebhookEventType
+* @var \Polar\Models\Components\WebhookEventType
 */
 Components\WebhookEventType $value = /* values here */
 ```
@@ -18,7 +18,7 @@ Components\WebhookEventType $value = /* values here */
 
 ```php
 /**
-* @var array<Components\WebhookEventType>
+* @var array<\Polar\Models\Components\WebhookEventType>
 */
 array $value = /* values here */
 ```

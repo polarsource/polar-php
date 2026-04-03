@@ -27,7 +27,7 @@ class WebhookProductCreatedPayload
     /**
      * A product.
      *
-     * @var Product $data
+     * @var \Polar\Models\Components\Product $data
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('data')]
     #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\Product')]
@@ -43,7 +43,7 @@ class WebhookProductCreatedPayload
     /**
      * @param  string  $type
      * @param  \DateTime  $timestamp
-     * @param  Product  $data
+     * @param  \Polar\Models\Components\Product  $data
      * @phpstan-pure
      */
     public function __construct(\DateTime $timestamp, Product $data, string $type = 'product.created')

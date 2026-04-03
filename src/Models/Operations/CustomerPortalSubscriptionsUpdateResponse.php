@@ -35,7 +35,7 @@ class CustomerPortalSubscriptionsUpdateResponse
     /**
      * Customer subscription updated.
      *
-     * @var ?Components\CustomerSubscription $customerSubscription
+     * @var ?\Polar\Models\Components\CustomerSubscription $customerSubscription
      */
     public ?Components\CustomerSubscription $customerSubscription = null;
 
@@ -43,7 +43,7 @@ class CustomerPortalSubscriptionsUpdateResponse
      * @param  string  $contentType
      * @param  int  $statusCode
      * @param  \Psr\Http\Message\ResponseInterface  $rawResponse
-     * @param  ?Components\CustomerSubscription  $customerSubscription
+     * @param  ?\Polar\Models\Components\CustomerSubscription  $customerSubscription
      * @phpstan-pure
      */
     public function __construct(string $contentType, int $statusCode, \Psr\Http\Message\ResponseInterface $rawResponse, ?Components\CustomerSubscription $customerSubscription = null)

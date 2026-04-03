@@ -47,7 +47,7 @@ class DiscountProduct
 
     /**
      *
-     * @var ProductVisibility $visibility
+     * @var \Polar\Models\Components\ProductVisibility $visibility
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('visibility')]
     #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\ProductVisibility')]
@@ -88,7 +88,7 @@ class DiscountProduct
     /**
      * The interval unit for the trial period.
      *
-     * @var ?TrialInterval $trialInterval
+     * @var ?\Polar\Models\Components\TrialInterval $trialInterval
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('trial_interval')]
     #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\TrialInterval|null')]
@@ -113,7 +113,7 @@ class DiscountProduct
     /**
      * The recurring interval of the product. If `None`, the product is a one-time purchase.
      *
-     * @var ?SubscriptionRecurringInterval $recurringInterval
+     * @var ?\Polar\Models\Components\SubscriptionRecurringInterval $recurringInterval
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('recurring_interval')]
     #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\SubscriptionRecurringInterval|null')]
@@ -132,15 +132,15 @@ class DiscountProduct
      * @param  string  $id
      * @param  \DateTime  $createdAt
      * @param  string  $name
-     * @param  ProductVisibility  $visibility
+     * @param  \Polar\Models\Components\ProductVisibility  $visibility
      * @param  bool  $isRecurring
      * @param  bool  $isArchived
      * @param  string  $organizationId
      * @param  ?\DateTime  $modifiedAt
-     * @param  ?TrialInterval  $trialInterval
+     * @param  ?\Polar\Models\Components\TrialInterval  $trialInterval
      * @param  ?int  $trialIntervalCount
      * @param  ?string  $description
-     * @param  ?SubscriptionRecurringInterval  $recurringInterval
+     * @param  ?\Polar\Models\Components\SubscriptionRecurringInterval  $recurringInterval
      * @param  ?int  $recurringIntervalCount
      * @phpstan-pure
      */

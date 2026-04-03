@@ -22,7 +22,7 @@ class OrganizationAccessTokenUpdate
     /**
      * $scopes
      *
-     * @var ?array<AvailableScope> $scopes
+     * @var ?array<\Polar\Models\Components\AvailableScope> $scopes
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('scopes')]
     #[\Speakeasy\Serializer\Annotation\Type('array<\Polar\Models\Components\AvailableScope>|null')]
@@ -31,7 +31,7 @@ class OrganizationAccessTokenUpdate
 
     /**
      * @param  ?string  $comment
-     * @param  ?array<AvailableScope>  $scopes
+     * @param  ?array<\Polar\Models\Components\AvailableScope>  $scopes
      * @phpstan-pure
      */
     public function __construct(?string $comment = null, ?array $scopes = null)

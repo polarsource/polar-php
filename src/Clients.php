@@ -50,8 +50,8 @@ class Clients
      *
      * Create an OAuth2 client.
      *
-     * @param  Components\OAuth2ClientConfiguration  $request
-     * @return Operations\Oauth2ClientsOauth2CreateClientResponse
+     * @param  \Polar\Models\Components\OAuth2ClientConfiguration  $request
+     * @return \Polar\Models\Operations\Oauth2ClientsOauth2CreateClientResponse
      * @throws \Polar\Models\Errors\APIException
      */
     public function create(Components\OAuth2ClientConfiguration $request, ?Options $options = null): Operations\Oauth2ClientsOauth2CreateClientResponse
@@ -128,7 +128,7 @@ class Clients
      * Delete an OAuth2 client.
      *
      * @param  string  $clientId
-     * @return Operations\Oauth2ClientsOauth2DeleteClientResponse
+     * @return \Polar\Models\Operations\Oauth2ClientsOauth2DeleteClientResponse
      * @throws \Polar\Models\Errors\APIException
      */
     public function delete(string $clientId, ?Options $options = null): Operations\Oauth2ClientsOauth2DeleteClientResponse
@@ -203,7 +203,7 @@ class Clients
      * Get an OAuth2 client by Client ID.
      *
      * @param  string  $clientId
-     * @return Operations\Oauth2ClientsOauth2GetClientResponse
+     * @return \Polar\Models\Operations\Oauth2ClientsOauth2GetClientResponse
      * @throws \Polar\Models\Errors\APIException
      */
     public function get(string $clientId, ?Options $options = null): Operations\Oauth2ClientsOauth2GetClientResponse
@@ -277,9 +277,9 @@ class Clients
      *
      * Update an OAuth2 client.
      *
-     * @param  Components\OAuth2ClientConfigurationUpdate  $oAuth2ClientConfigurationUpdate
+     * @param  \Polar\Models\Components\OAuth2ClientConfigurationUpdate  $oAuth2ClientConfigurationUpdate
      * @param  string  $clientId
-     * @return Operations\Oauth2ClientsOauth2UpdateClientResponse
+     * @return \Polar\Models\Operations\Oauth2ClientsOauth2UpdateClientResponse
      * @throws \Polar\Models\Errors\APIException
      */
     public function update(Components\OAuth2ClientConfigurationUpdate $oAuth2ClientConfigurationUpdate, string $clientId, ?Options $options = null): Operations\Oauth2ClientsOauth2UpdateClientResponse

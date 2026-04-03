@@ -35,7 +35,7 @@ class Oauth2RequestTokenResponse
     /**
      * Successful Response
      *
-     * @var ?Components\TokenResponse $tokenResponse
+     * @var ?\Polar\Models\Components\TokenResponse $tokenResponse
      */
     public ?Components\TokenResponse $tokenResponse = null;
 
@@ -43,7 +43,7 @@ class Oauth2RequestTokenResponse
      * @param  string  $contentType
      * @param  int  $statusCode
      * @param  \Psr\Http\Message\ResponseInterface  $rawResponse
-     * @param  ?Components\TokenResponse  $tokenResponse
+     * @param  ?\Polar\Models\Components\TokenResponse  $tokenResponse
      * @phpstan-pure
      */
     public function __construct(string $contentType, int $statusCode, \Psr\Http\Message\ResponseInterface $rawResponse, ?Components\TokenResponse $tokenResponse = null)

@@ -376,6 +376,11 @@ foreach ($responses as $response) {
 
 * [get](docs/sdks/metrics/README.md#get) - Get Metrics
 * [limits](docs/sdks/metrics/README.md#limits) - Get Metrics Limits
+* [listDashboards](docs/sdks/metrics/README.md#listdashboards) - List Metric Dashboards
+* [createDashboard](docs/sdks/metrics/README.md#createdashboard) - Create Metric Dashboard
+* [getDashboard](docs/sdks/metrics/README.md#getdashboard) - Get Metric Dashboard
+* [deleteDashboard](docs/sdks/metrics/README.md#deletedashboard) - Delete Metric Dashboard
+* [updateDashboard](docs/sdks/metrics/README.md#updatedashboard) - Update Metric Dashboard
 
 ### [Oauth2](docs/sdks/oauth2/README.md)
 

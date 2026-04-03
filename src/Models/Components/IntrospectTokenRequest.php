@@ -34,7 +34,7 @@ class IntrospectTokenRequest
 
     /**
      *
-     * @var ?IntrospectTokenRequestTokenTypeHint $tokenTypeHint
+     * @var ?\Polar\Models\Components\IntrospectTokenRequestTokenTypeHint $tokenTypeHint
      */
     #[SpeakeasyMetadata('form:name=token_type_hint')]
     public ?IntrospectTokenRequestTokenTypeHint $tokenTypeHint = null;
@@ -43,7 +43,7 @@ class IntrospectTokenRequest
      * @param  string  $token
      * @param  string  $clientId
      * @param  string  $clientSecret
-     * @param  ?IntrospectTokenRequestTokenTypeHint  $tokenTypeHint
+     * @param  ?\Polar\Models\Components\IntrospectTokenRequestTokenTypeHint  $tokenTypeHint
      * @phpstan-pure
      */
     public function __construct(string $token, string $clientId, string $clientSecret, ?IntrospectTokenRequestTokenTypeHint $tokenTypeHint = null)

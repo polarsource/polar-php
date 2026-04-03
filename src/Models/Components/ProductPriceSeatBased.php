@@ -30,7 +30,7 @@ class ProductPriceSeatBased
 
     /**
      *
-     * @var ProductPriceSource $source
+     * @var \Polar\Models\Components\ProductPriceSource $source
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('source')]
     #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\ProductPriceSource')]
@@ -68,7 +68,7 @@ class ProductPriceSeatBased
      * - minimum_seats = first tier's min_seats
      * - maximum_seats = last tier's max_seats (None for unlimited)
      *
-     * @var ProductPriceSeatTiersOutput $seatTiers
+     * @var \Polar\Models\Components\ProductPriceSeatTiersOutput $seatTiers
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('seat_tiers')]
     #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\ProductPriceSeatTiersOutput')]
@@ -85,7 +85,7 @@ class ProductPriceSeatBased
     /**
      * The tax behavior of the price. If null, it defaults to the organization's default tax behavior.
      *
-     * @var ?TaxBehaviorOption $taxBehavior
+     * @var ?\Polar\Models\Components\TaxBehaviorOption $taxBehavior
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('tax_behavior')]
     #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\TaxBehaviorOption|null')]
@@ -101,14 +101,14 @@ class ProductPriceSeatBased
     /**
      * @param  \DateTime  $createdAt
      * @param  string  $id
-     * @param  ProductPriceSource  $source
+     * @param  \Polar\Models\Components\ProductPriceSource  $source
      * @param  string  $amountType
      * @param  string  $priceCurrency
      * @param  bool  $isArchived
      * @param  string  $productId
-     * @param  ProductPriceSeatTiersOutput  $seatTiers
+     * @param  \Polar\Models\Components\ProductPriceSeatTiersOutput  $seatTiers
      * @param  ?\DateTime  $modifiedAt
-     * @param  ?TaxBehaviorOption  $taxBehavior
+     * @param  ?\Polar\Models\Components\TaxBehaviorOption  $taxBehavior
      * @phpstan-pure
      */
     public function __construct(\DateTime $createdAt, string $id, ProductPriceSource $source, string $priceCurrency, bool $isArchived, string $productId, ProductPriceSeatTiersOutput $seatTiers, ?\DateTime $modifiedAt = null, ?TaxBehaviorOption $taxBehavior = null, string $amountType = 'seat_based')

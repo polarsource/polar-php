@@ -30,7 +30,7 @@ class WebhookMemberDeletedPayload
     /**
      * A member of a customer.
      *
-     * @var Member $data
+     * @var \Polar\Models\Components\Member $data
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('data')]
     #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\Member')]
@@ -46,7 +46,7 @@ class WebhookMemberDeletedPayload
     /**
      * @param  string  $type
      * @param  \DateTime  $timestamp
-     * @param  Member  $data
+     * @param  \Polar\Models\Components\Member  $data
      * @phpstan-pure
      */
     public function __construct(\DateTime $timestamp, Member $data, string $type = 'member.deleted')

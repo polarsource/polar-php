@@ -45,7 +45,7 @@ class ValidationError
 
     /**
      *
-     * @var ?Context $ctx
+     * @var ?\Polar\Models\Components\Context $ctx
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('ctx')]
     #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\Context|null')]
@@ -57,7 +57,7 @@ class ValidationError
      * @param  string  $msg
      * @param  string  $type
      * @param  mixed  $input
-     * @param  ?Context  $ctx
+     * @param  ?\Polar\Models\Components\Context  $ctx
      * @phpstan-pure
      */
     public function __construct(array $loc, string $msg, string $type, mixed $input = null, ?Context $ctx = null)

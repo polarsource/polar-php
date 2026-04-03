@@ -30,7 +30,7 @@ class ProductPriceMeteredUnit
 
     /**
      *
-     * @var ProductPriceSource $source
+     * @var \Polar\Models\Components\ProductPriceSource $source
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('source')]
     #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\ProductPriceSource')]
@@ -79,7 +79,7 @@ class ProductPriceMeteredUnit
     /**
      * A meter associated to a metered price.
      *
-     * @var ProductPriceMeter $meter
+     * @var \Polar\Models\Components\ProductPriceMeter $meter
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('meter')]
     #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\ProductPriceMeter')]
@@ -96,7 +96,7 @@ class ProductPriceMeteredUnit
     /**
      * The tax behavior of the price. If null, it defaults to the organization's default tax behavior.
      *
-     * @var ?TaxBehaviorOption $taxBehavior
+     * @var ?\Polar\Models\Components\TaxBehaviorOption $taxBehavior
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('tax_behavior')]
     #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\TaxBehaviorOption|null')]
@@ -120,16 +120,16 @@ class ProductPriceMeteredUnit
     /**
      * @param  \DateTime  $createdAt
      * @param  string  $id
-     * @param  ProductPriceSource  $source
+     * @param  \Polar\Models\Components\ProductPriceSource  $source
      * @param  string  $amountType
      * @param  string  $priceCurrency
      * @param  bool  $isArchived
      * @param  string  $productId
      * @param  string  $unitAmount
      * @param  string  $meterId
-     * @param  ProductPriceMeter  $meter
+     * @param  \Polar\Models\Components\ProductPriceMeter  $meter
      * @param  ?\DateTime  $modifiedAt
-     * @param  ?TaxBehaviorOption  $taxBehavior
+     * @param  ?\Polar\Models\Components\TaxBehaviorOption  $taxBehavior
      * @param  ?int  $capAmount
      * @phpstan-pure
      */

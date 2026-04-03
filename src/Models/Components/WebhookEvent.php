@@ -47,7 +47,7 @@ class WebhookEvent
 
     /**
      *
-     * @var WebhookEventType $type
+     * @var \Polar\Models\Components\WebhookEventType $type
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('type')]
     #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\WebhookEventType')]
@@ -99,7 +99,7 @@ class WebhookEvent
      * @param  \DateTime  $createdAt
      * @param  string  $id
      * @param  bool  $skipped
-     * @param  WebhookEventType  $type
+     * @param  \Polar\Models\Components\WebhookEventType  $type
      * @param  bool  $isArchived
      * @param  ?\DateTime  $modifiedAt
      * @param  ?string  $payload

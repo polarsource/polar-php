@@ -21,14 +21,14 @@ class MembersUpdateMemberRequest
 
     /**
      *
-     * @var Components\MemberUpdate $memberUpdate
+     * @var \Polar\Models\Components\MemberUpdate $memberUpdate
      */
     #[SpeakeasyMetadata('request:mediaType=application/json')]
     public Components\MemberUpdate $memberUpdate;
 
     /**
      * @param  string  $id
-     * @param  Components\MemberUpdate  $memberUpdate
+     * @param  \Polar\Models\Components\MemberUpdate  $memberUpdate
      * @phpstan-pure
      */
     public function __construct(string $id, Components\MemberUpdate $memberUpdate)

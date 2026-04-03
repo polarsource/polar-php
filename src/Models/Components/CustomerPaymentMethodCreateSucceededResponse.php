@@ -13,7 +13,7 @@ class CustomerPaymentMethodCreateSucceededResponse
 {
     /**
      *
-     * @var PaymentMethodCard|PaymentMethodGeneric $paymentMethod
+     * @var \Polar\Models\Components\PaymentMethodCard|\Polar\Models\Components\PaymentMethodGeneric $paymentMethod
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('payment_method')]
     #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\PaymentMethodCard|\Polar\Models\Components\PaymentMethodGeneric')]
@@ -28,7 +28,7 @@ class CustomerPaymentMethodCreateSucceededResponse
 
     /**
      * @param  string  $status
-     * @param  PaymentMethodCard|PaymentMethodGeneric  $paymentMethod
+     * @param  \Polar\Models\Components\PaymentMethodCard|\Polar\Models\Components\PaymentMethodGeneric  $paymentMethod
      * @phpstan-pure
      */
     public function __construct(PaymentMethodCard|PaymentMethodGeneric $paymentMethod, string $status = 'succeeded')

@@ -35,18 +35,18 @@ class CustomersGetStateResponse
     /**
      * Successful Response
      *
-     * @var ?Components\CustomerState $customerState
+     * @var \Polar\Models\Components\CustomerStateIndividual|\Polar\Models\Components\CustomerStateTeam|null $customerState
      */
-    public ?Components\CustomerState $customerState = null;
+    public Components\CustomerStateIndividual|Components\CustomerStateTeam|null $customerState = null;
 
     /**
      * @param  string  $contentType
      * @param  int  $statusCode
      * @param  \Psr\Http\Message\ResponseInterface  $rawResponse
-     * @param  ?Components\CustomerState  $customerState
+     * @param  \Polar\Models\Components\CustomerStateIndividual|\Polar\Models\Components\CustomerStateTeam|null  $customerState
      * @phpstan-pure
      */
-    public function __construct(string $contentType, int $statusCode, \Psr\Http\Message\ResponseInterface $rawResponse, ?Components\CustomerState $customerState = null)
+    public function __construct(string $contentType, int $statusCode, \Psr\Http\Message\ResponseInterface $rawResponse, Components\CustomerStateIndividual|Components\CustomerStateTeam|null $customerState = null)
     {
         $this->contentType = $contentType;
         $this->statusCode = $statusCode;

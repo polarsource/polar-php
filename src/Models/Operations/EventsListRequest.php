@@ -79,7 +79,7 @@ class EventsListRequest
     /**
      * Filter by event source.
      *
-     * @var Components\EventSource|array<Components\EventSource>|null $source
+     * @var \Polar\Models\Components\EventSource|array<\Polar\Models\Components\EventSource>|null $source
      */
     #[SpeakeasyMetadata('queryParam:style=form,explode=true,name=source')]
     public Components\EventSource|array|null $source = null;
@@ -111,7 +111,7 @@ class EventsListRequest
     /**
      * Sorting criterion. Several criteria can be used simultaneously and will be applied in order. Add a minus sign `-` before the criteria name to sort by descending order.
      *
-     * @var ?array<Components\EventSortProperty> $sorting
+     * @var ?array<\Polar\Models\Components\EventSortProperty> $sorting
      */
     #[SpeakeasyMetadata('queryParam:style=form,explode=true,name=sorting')]
     public ?array $sorting = null;
@@ -151,11 +151,11 @@ class EventsListRequest
      * @param  string|array<string>|null  $externalCustomerId
      * @param  ?string  $meterId
      * @param  string|array<string>|null  $name
-     * @param  Components\EventSource|array<Components\EventSource>|null  $source
+     * @param  \Polar\Models\Components\EventSource|array<\Polar\Models\Components\EventSource>|null  $source
      * @param  ?string  $query
      * @param  ?string  $parentId
      * @param  ?int  $depth
-     * @param  ?array<Components\EventSortProperty>  $sorting
+     * @param  ?array<\Polar\Models\Components\EventSortProperty>  $sorting
      * @param  ?array<string, string|int|bool|array<string>|array<int>|array<bool>>  $metadata
      * @phpstan-pure
      */

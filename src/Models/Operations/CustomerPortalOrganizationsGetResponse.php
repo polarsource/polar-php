@@ -35,7 +35,7 @@ class CustomerPortalOrganizationsGetResponse
     /**
      * Successful Response
      *
-     * @var ?Components\CustomerOrganizationData $customerOrganizationData
+     * @var ?\Polar\Models\Components\CustomerOrganizationData $customerOrganizationData
      */
     public ?Components\CustomerOrganizationData $customerOrganizationData = null;
 
@@ -43,7 +43,7 @@ class CustomerPortalOrganizationsGetResponse
      * @param  string  $contentType
      * @param  int  $statusCode
      * @param  \Psr\Http\Message\ResponseInterface  $rawResponse
-     * @param  ?Components\CustomerOrganizationData  $customerOrganizationData
+     * @param  ?\Polar\Models\Components\CustomerOrganizationData  $customerOrganizationData
      * @phpstan-pure
      */
     public function __construct(string $contentType, int $statusCode, \Psr\Http\Message\ResponseInterface $rawResponse, ?Components\CustomerOrganizationData $customerOrganizationData = null)

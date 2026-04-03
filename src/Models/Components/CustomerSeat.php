@@ -29,7 +29,7 @@ class CustomerSeat
 
     /**
      *
-     * @var SeatStatus $status
+     * @var \Polar\Models\Components\SeatStatus $status
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('status')]
     #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\SeatStatus')]
@@ -82,7 +82,7 @@ class CustomerSeat
     /**
      * The member associated with this seat
      *
-     * @var ?Member $member
+     * @var ?\Polar\Models\Components\Member $member
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('member')]
     #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\Member|null')]
@@ -147,13 +147,13 @@ class CustomerSeat
     /**
      * @param  \DateTime  $createdAt
      * @param  string  $id
-     * @param  SeatStatus  $status
+     * @param  \Polar\Models\Components\SeatStatus  $status
      * @param  ?\DateTime  $modifiedAt
      * @param  ?string  $subscriptionId
      * @param  ?string  $orderId
      * @param  ?string  $customerId
      * @param  ?string  $memberId
-     * @param  ?Member  $member
+     * @param  ?\Polar\Models\Components\Member  $member
      * @param  ?string  $email
      * @param  ?string  $customerEmail
      * @param  ?\DateTime  $invitationTokenExpiresAt

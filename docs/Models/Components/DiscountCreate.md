@@ -7,7 +7,7 @@
 
 ```php
 /**
-* @var Components\DiscountFixedOnceForeverDurationCreate
+* @var \Polar\Models\Components\DiscountFixedOnceForeverDurationCreate
 */
 Components\DiscountFixedOnceForeverDurationCreate $value = /* values here */
 ```
@@ -16,7 +16,7 @@ Components\DiscountFixedOnceForeverDurationCreate $value = /* values here */
 
 ```php
 /**
-* @var Components\DiscountFixedRepeatDurationCreate
+* @var \Polar\Models\Components\DiscountFixedRepeatDurationCreate
 */
 Components\DiscountFixedRepeatDurationCreate $value = /* values here */
 ```
@@ -25,7 +25,7 @@ Components\DiscountFixedRepeatDurationCreate $value = /* values here */
 
 ```php
 /**
-* @var Components\DiscountPercentageOnceForeverDurationCreate
+* @var \Polar\Models\Components\DiscountPercentageOnceForeverDurationCreate
 */
 Components\DiscountPercentageOnceForeverDurationCreate $value = /* values here */
 ```
@@ -34,7 +34,7 @@ Components\DiscountPercentageOnceForeverDurationCreate $value = /* values here *
 
 ```php
 /**
-* @var Components\DiscountPercentageRepeatDurationCreate
+* @var \Polar\Models\Components\DiscountPercentageRepeatDurationCreate
 */
 Components\DiscountPercentageRepeatDurationCreate $value = /* values here */
 ```

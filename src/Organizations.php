@@ -52,8 +52,8 @@ class Organizations
      *
      * **Scopes**: `organizations:write`
      *
-     * @param  Components\OrganizationCreate  $request
-     * @return Operations\OrganizationsCreateResponse
+     * @param  \Polar\Models\Components\OrganizationCreate  $request
+     * @return \Polar\Models\Operations\OrganizationsCreateResponse
      * @throws \Polar\Models\Errors\APIException
      */
     public function create(Components\OrganizationCreate $request, ?Options $options = null): Operations\OrganizationsCreateResponse
@@ -132,7 +132,7 @@ class Organizations
      * **Scopes**: `organizations:read` `organizations:write`
      *
      * @param  string  $id
-     * @return Operations\OrganizationsGetResponse
+     * @return \Polar\Models\Operations\OrganizationsGetResponse
      * @throws \Polar\Models\Errors\APIException
      */
     public function get(string $id, ?Options $options = null): Operations\OrganizationsGetResponse
@@ -222,8 +222,8 @@ class Organizations
      * @param  ?string  $slug
      * @param  ?int  $page
      * @param  ?int  $limit
-     * @param  ?array<Components\OrganizationSortProperty>  $sorting
-     * @return Operations\OrganizationsListResponse
+     * @param  ?array<\Polar\Models\Components\OrganizationSortProperty>  $sorting
+     * @return \Polar\Models\Operations\OrganizationsListResponse
      * @throws \Polar\Models\Errors\APIException
      */
     private function listIndividual(?string $slug = null, ?int $page = null, ?int $limit = null, ?array $sorting = null, ?Options $options = null): Operations\OrganizationsListResponse
@@ -342,8 +342,8 @@ class Organizations
      * @param  ?string  $slug
      * @param  ?int  $page
      * @param  ?int  $limit
-     * @param  ?array<Components\OrganizationSortProperty>  $sorting
-     * @return \Generator<Operations\OrganizationsListResponse>
+     * @param  ?array<\Polar\Models\Components\OrganizationSortProperty>  $sorting
+     * @return \Generator<\Polar\Models\Operations\OrganizationsListResponse>
      * @throws \Polar\Models\Errors\APIException
      */
     public function list(?string $slug = null, ?int $page = null, ?int $limit = null, ?array $sorting = null, ?Options $options = null): \Generator
@@ -362,9 +362,9 @@ class Organizations
      *
      * **Scopes**: `organizations:write`
      *
-     * @param  Components\OrganizationUpdate  $organizationUpdate
+     * @param  \Polar\Models\Components\OrganizationUpdate  $organizationUpdate
      * @param  string  $id
-     * @return Operations\OrganizationsUpdateResponse
+     * @return \Polar\Models\Operations\OrganizationsUpdateResponse
      * @throws \Polar\Models\Errors\APIException
      */
     public function update(Components\OrganizationUpdate $organizationUpdate, string $id, ?Options $options = null): Operations\OrganizationsUpdateResponse

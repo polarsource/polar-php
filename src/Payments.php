@@ -52,7 +52,7 @@ class Payments
      * **Scopes**: `payments:read`
      *
      * @param  string  $id
-     * @return Operations\PaymentsGetResponse
+     * @return \Polar\Models\Operations\PaymentsGetResponse
      * @throws \Polar\Models\Errors\APIException
      */
     public function get(string $id, ?Options $options = null): Operations\PaymentsGetResponse
@@ -139,8 +139,8 @@ class Payments
      *
      * **Scopes**: `payments:read`
      *
-     * @param  ?Operations\PaymentsListRequest  $request
-     * @return Operations\PaymentsListResponse
+     * @param  ?\Polar\Models\Operations\PaymentsListRequest  $request
+     * @return \Polar\Models\Operations\PaymentsListResponse
      * @throws \Polar\Models\Errors\APIException
      */
     private function listIndividual(?Operations\PaymentsListRequest $request = null, ?Options $options = null): Operations\PaymentsListResponse
@@ -178,12 +178,12 @@ class Payments
 
                 $serializer = Utils\JSON::createSerializer();
                 $responseData = (string) $httpResponse->getBody();
-                $obj = $serializer->deserialize($responseData, '\Polar\Models\Components\ListResource', 'json', DeserializationContext::create()->setRequireAllRequiredProperties(true));
+                $obj = $serializer->deserialize($responseData, '\Polar\Models\Components\ListResourcePayment', 'json', DeserializationContext::create()->setRequireAllRequiredProperties(true));
                 $response = new Operations\PaymentsListResponse(
                     statusCode: $statusCode,
                     contentType: $contentType,
                     rawResponse: $httpResponse,
-                    listResource: $obj);
+                    listResourcePayment: $obj);
                 $sdk = $this;
 
                 $response->next = function () use ($sdk, $request, $responseData): ?Operations\PaymentsListResponse {
@@ -257,8 +257,8 @@ class Payments
      *
      * **Scopes**: `payments:read`
      *
-     * @param  ?Operations\PaymentsListRequest  $request
-     * @return \Generator<Operations\PaymentsListResponse>
+     * @param  ?\Polar\Models\Operations\PaymentsListRequest  $request
+     * @return \Generator<\Polar\Models\Operations\PaymentsListResponse>
      * @throws \Polar\Models\Errors\APIException
      */
     public function list(?Operations\PaymentsListRequest $request = null, ?Options $options = null): \Generator

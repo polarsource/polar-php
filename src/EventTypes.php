@@ -52,8 +52,8 @@ class EventTypes
      *
      * **Scopes**: `events:read` `events:write`
      *
-     * @param  ?Operations\EventTypesListRequest  $request
-     * @return Operations\EventTypesListResponse
+     * @param  ?\Polar\Models\Operations\EventTypesListRequest  $request
+     * @return \Polar\Models\Operations\EventTypesListResponse
      * @throws \Polar\Models\Errors\APIException
      */
     private function listIndividual(?Operations\EventTypesListRequest $request = null, ?Options $options = null): Operations\EventTypesListResponse
@@ -171,8 +171,8 @@ class EventTypes
      *
      * **Scopes**: `events:read` `events:write`
      *
-     * @param  ?Operations\EventTypesListRequest  $request
-     * @return \Generator<Operations\EventTypesListResponse>
+     * @param  ?\Polar\Models\Operations\EventTypesListRequest  $request
+     * @return \Generator<\Polar\Models\Operations\EventTypesListResponse>
      * @throws \Polar\Models\Errors\APIException
      */
     public function list(?Operations\EventTypesListRequest $request = null, ?Options $options = null): \Generator
@@ -189,9 +189,9 @@ class EventTypes
      *
      * Update an event type's label.
      *
-     * @param  Components\EventTypeUpdate  $eventTypeUpdate
+     * @param  \Polar\Models\Components\EventTypeUpdate  $eventTypeUpdate
      * @param  string  $id
-     * @return Operations\EventTypesUpdateResponse
+     * @return \Polar\Models\Operations\EventTypesUpdateResponse
      * @throws \Polar\Models\Errors\APIException
      */
     public function update(Components\EventTypeUpdate $eventTypeUpdate, string $id, ?Options $options = null): Operations\EventTypesUpdateResponse

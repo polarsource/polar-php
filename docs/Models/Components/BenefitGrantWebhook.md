@@ -7,7 +7,7 @@
 
 ```php
 /**
-* @var Components\BenefitGrantDiscordWebhook
+* @var \Polar\Models\Components\BenefitGrantDiscordWebhook
 */
 Components\BenefitGrantDiscordWebhook $value = /* values here */
 ```
@@ -16,7 +16,7 @@ Components\BenefitGrantDiscordWebhook $value = /* values here */
 
 ```php
 /**
-* @var Components\BenefitGrantCustomWebhook
+* @var \Polar\Models\Components\BenefitGrantCustomWebhook
 */
 Components\BenefitGrantCustomWebhook $value = /* values here */
 ```
@@ -25,7 +25,7 @@ Components\BenefitGrantCustomWebhook $value = /* values here */
 
 ```php
 /**
-* @var Components\BenefitGrantGitHubRepositoryWebhook
+* @var \Polar\Models\Components\BenefitGrantGitHubRepositoryWebhook
 */
 Components\BenefitGrantGitHubRepositoryWebhook $value = /* values here */
 ```
@@ -34,7 +34,7 @@ Components\BenefitGrantGitHubRepositoryWebhook $value = /* values here */
 
 ```php
 /**
-* @var Components\BenefitGrantDownloadablesWebhook
+* @var \Polar\Models\Components\BenefitGrantDownloadablesWebhook
 */
 Components\BenefitGrantDownloadablesWebhook $value = /* values here */
 ```
@@ -43,7 +43,7 @@ Components\BenefitGrantDownloadablesWebhook $value = /* values here */
 
 ```php
 /**
-* @var Components\BenefitGrantLicenseKeysWebhook
+* @var \Polar\Models\Components\BenefitGrantLicenseKeysWebhook
 */
 Components\BenefitGrantLicenseKeysWebhook $value = /* values here */
 ```
@@ -52,7 +52,7 @@ Components\BenefitGrantLicenseKeysWebhook $value = /* values here */
 
 ```php
 /**
-* @var Components\BenefitGrantMeterCreditWebhook
+* @var \Polar\Models\Components\BenefitGrantMeterCreditWebhook
 */
 Components\BenefitGrantMeterCreditWebhook $value = /* values here */
 ```
@@ -61,7 +61,7 @@ Components\BenefitGrantMeterCreditWebhook $value = /* values here */
 
 ```php
 /**
-* @var Components\BenefitGrantFeatureFlagWebhook
+* @var \Polar\Models\Components\BenefitGrantFeatureFlagWebhook
 */
 Components\BenefitGrantFeatureFlagWebhook $value = /* values here */
 ```

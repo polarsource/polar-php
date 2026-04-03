@@ -52,8 +52,8 @@ class LicenseKeys
      *
      * **Scopes**: `license_keys:write`
      *
-     * @param  Components\LicenseKeyActivate  $request
-     * @return Operations\LicenseKeysActivateResponse
+     * @param  \Polar\Models\Components\LicenseKeyActivate  $request
+     * @return \Polar\Models\Operations\LicenseKeysActivateResponse
      * @throws \Polar\Models\Errors\APIException
      */
     public function activate(Components\LicenseKeyActivate $request, ?Options $options = null): Operations\LicenseKeysActivateResponse
@@ -153,8 +153,8 @@ class LicenseKeys
      *
      * **Scopes**: `license_keys:write`
      *
-     * @param  Components\LicenseKeyDeactivate  $request
-     * @return Operations\LicenseKeysDeactivateResponse
+     * @param  \Polar\Models\Components\LicenseKeyDeactivate  $request
+     * @return \Polar\Models\Operations\LicenseKeysDeactivateResponse
      * @throws \Polar\Models\Errors\APIException
      */
     public function deactivate(Components\LicenseKeyDeactivate $request, ?Options $options = null): Operations\LicenseKeysDeactivateResponse
@@ -235,7 +235,7 @@ class LicenseKeys
      * **Scopes**: `license_keys:read` `license_keys:write`
      *
      * @param  string  $id
-     * @return Operations\LicenseKeysGetResponse
+     * @return \Polar\Models\Operations\LicenseKeysGetResponse
      * @throws \Polar\Models\Errors\APIException
      */
     public function get(string $id, ?Options $options = null): Operations\LicenseKeysGetResponse
@@ -335,7 +335,7 @@ class LicenseKeys
      *
      * @param  string  $id
      * @param  string  $activationId
-     * @return Operations\LicenseKeysGetActivationResponse
+     * @return \Polar\Models\Operations\LicenseKeysGetActivationResponse
      * @throws \Polar\Models\Errors\APIException
      */
     public function getActivation(string $id, string $activationId, ?Options $options = null): Operations\LicenseKeysGetActivationResponse
@@ -438,7 +438,7 @@ class LicenseKeys
      * @param  string|array<string>|null  $benefitId
      * @param  ?int  $page
      * @param  ?int  $limit
-     * @return Operations\LicenseKeysListResponse
+     * @return \Polar\Models\Operations\LicenseKeysListResponse
      * @throws \Polar\Models\Errors\APIException
      */
     private function listIndividual(string|array|null $organizationId = null, string|array|null $benefitId = null, ?int $page = null, ?int $limit = null, ?Options $options = null): Operations\LicenseKeysListResponse
@@ -580,7 +580,7 @@ class LicenseKeys
      * @param  string|array<string>|null  $benefitId
      * @param  ?int  $page
      * @param  ?int  $limit
-     * @return \Generator<Operations\LicenseKeysListResponse>
+     * @return \Generator<\Polar\Models\Operations\LicenseKeysListResponse>
      * @throws \Polar\Models\Errors\APIException
      */
     public function list(string|array|null $organizationId = null, string|array|null $benefitId = null, ?int $page = null, ?int $limit = null, ?Options $options = null): \Generator
@@ -599,9 +599,9 @@ class LicenseKeys
      *
      * **Scopes**: `license_keys:write`
      *
-     * @param  Components\LicenseKeyUpdate  $licenseKeyUpdate
+     * @param  \Polar\Models\Components\LicenseKeyUpdate  $licenseKeyUpdate
      * @param  string  $id
-     * @return Operations\LicenseKeysUpdateResponse
+     * @return \Polar\Models\Operations\LicenseKeysUpdateResponse
      * @throws \Polar\Models\Errors\APIException
      */
     public function update(Components\LicenseKeyUpdate $licenseKeyUpdate, string $id, ?Options $options = null): Operations\LicenseKeysUpdateResponse
@@ -705,8 +705,8 @@ class LicenseKeys
      *
      * **Scopes**: `license_keys:write`
      *
-     * @param  Components\LicenseKeyValidate  $request
-     * @return Operations\LicenseKeysValidateResponse
+     * @param  \Polar\Models\Components\LicenseKeyValidate  $request
+     * @return \Polar\Models\Operations\LicenseKeysValidateResponse
      * @throws \Polar\Models\Errors\APIException
      */
     public function validate(Components\LicenseKeyValidate $request, ?Options $options = null): Operations\LicenseKeysValidateResponse

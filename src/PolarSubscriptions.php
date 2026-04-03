@@ -50,9 +50,9 @@ class PolarSubscriptions
      *
      * Cancel a subscription of the authenticated customer.
      *
-     * @param  Operations\CustomerPortalSubscriptionsCancelSecurity  $security
+     * @param  \Polar\Models\Operations\CustomerPortalSubscriptionsCancelSecurity  $security
      * @param  string  $id
-     * @return Operations\CustomerPortalSubscriptionsCancelResponse
+     * @return \Polar\Models\Operations\CustomerPortalSubscriptionsCancelResponse
      * @throws \Polar\Models\Errors\APIException
      */
     public function cancel(Operations\CustomerPortalSubscriptionsCancelSecurity $security, string $id, ?Options $options = null): Operations\CustomerPortalSubscriptionsCancelResponse
@@ -156,9 +156,9 @@ class PolarSubscriptions
      *
      * **Scopes**: `customer_portal:read` `customer_portal:write`
      *
-     * @param  Operations\CustomerPortalSubscriptionsGetSecurity  $security
+     * @param  \Polar\Models\Operations\CustomerPortalSubscriptionsGetSecurity  $security
      * @param  string  $id
-     * @return Operations\CustomerPortalSubscriptionsGetResponse
+     * @return \Polar\Models\Operations\CustomerPortalSubscriptionsGetResponse
      * @throws \Polar\Models\Errors\APIException
      */
     public function get(Operations\CustomerPortalSubscriptionsGetSecurity $security, string $id, ?Options $options = null): Operations\CustomerPortalSubscriptionsGetResponse
@@ -251,9 +251,9 @@ class PolarSubscriptions
      *
      * **Scopes**: `customer_portal:read` `customer_portal:write`
      *
-     * @param  Operations\CustomerPortalSubscriptionsListSecurity  $security
-     * @param  ?Operations\CustomerPortalSubscriptionsListRequest  $request
-     * @return Operations\CustomerPortalSubscriptionsListResponse
+     * @param  \Polar\Models\Operations\CustomerPortalSubscriptionsListSecurity  $security
+     * @param  ?\Polar\Models\Operations\CustomerPortalSubscriptionsListRequest  $request
+     * @return \Polar\Models\Operations\CustomerPortalSubscriptionsListResponse
      * @throws \Polar\Models\Errors\APIException
      */
     private function listIndividual(Operations\CustomerPortalSubscriptionsListSecurity $security, ?Operations\CustomerPortalSubscriptionsListRequest $request = null, ?Options $options = null): Operations\CustomerPortalSubscriptionsListResponse
@@ -374,9 +374,9 @@ class PolarSubscriptions
      *
      * **Scopes**: `customer_portal:read` `customer_portal:write`
      *
-     * @param  Operations\CustomerPortalSubscriptionsListSecurity  $security
-     * @param  ?Operations\CustomerPortalSubscriptionsListRequest  $request
-     * @return \Generator<Operations\CustomerPortalSubscriptionsListResponse>
+     * @param  \Polar\Models\Operations\CustomerPortalSubscriptionsListSecurity  $security
+     * @param  ?\Polar\Models\Operations\CustomerPortalSubscriptionsListRequest  $request
+     * @return \Generator<\Polar\Models\Operations\CustomerPortalSubscriptionsListResponse>
      * @throws \Polar\Models\Errors\APIException
      */
     public function list(Operations\CustomerPortalSubscriptionsListSecurity $security, ?Operations\CustomerPortalSubscriptionsListRequest $request = null, ?Options $options = null): \Generator
@@ -393,10 +393,10 @@ class PolarSubscriptions
      *
      * Update a subscription of the authenticated customer.
      *
-     * @param  Operations\CustomerPortalSubscriptionsUpdateSecurity  $security
-     * @param  Components\CustomerSubscriptionUpdateProduct|Components\CustomerSubscriptionUpdateSeats|Components\CustomerSubscriptionCancel  $customerSubscriptionUpdate
+     * @param  \Polar\Models\Operations\CustomerPortalSubscriptionsUpdateSecurity  $security
+     * @param  \Polar\Models\Components\CustomerSubscriptionUpdateProduct|\Polar\Models\Components\CustomerSubscriptionUpdateSeats|\Polar\Models\Components\CustomerSubscriptionCancel  $customerSubscriptionUpdate
      * @param  string  $id
-     * @return Operations\CustomerPortalSubscriptionsUpdateResponse
+     * @return \Polar\Models\Operations\CustomerPortalSubscriptionsUpdateResponse
      * @throws \Polar\Models\Errors\APIException
      */
     public function update(Operations\CustomerPortalSubscriptionsUpdateSecurity $security, Components\CustomerSubscriptionUpdateProduct|Components\CustomerSubscriptionUpdateSeats|Components\CustomerSubscriptionCancel $customerSubscriptionUpdate, string $id, ?Options $options = null): Operations\CustomerPortalSubscriptionsUpdateResponse

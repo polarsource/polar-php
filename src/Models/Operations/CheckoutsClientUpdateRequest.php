@@ -22,14 +22,14 @@ class CheckoutsClientUpdateRequest
 
     /**
      *
-     * @var Components\CheckoutUpdatePublic $checkoutUpdatePublic
+     * @var \Polar\Models\Components\CheckoutUpdatePublic $checkoutUpdatePublic
      */
     #[SpeakeasyMetadata('request:mediaType=application/json')]
     public Components\CheckoutUpdatePublic $checkoutUpdatePublic;
 
     /**
      * @param  string  $clientSecret
-     * @param  Components\CheckoutUpdatePublic  $checkoutUpdatePublic
+     * @param  \Polar\Models\Components\CheckoutUpdatePublic  $checkoutUpdatePublic
      * @phpstan-pure
      */
     public function __construct(string $clientSecret, Components\CheckoutUpdatePublic $checkoutUpdatePublic)

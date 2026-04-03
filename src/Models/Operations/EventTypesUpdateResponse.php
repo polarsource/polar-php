@@ -35,7 +35,7 @@ class EventTypesUpdateResponse
     /**
      * Successful Response
      *
-     * @var ?Components\EventType $eventType
+     * @var ?\Polar\Models\Components\EventType $eventType
      */
     public ?Components\EventType $eventType = null;
 
@@ -43,7 +43,7 @@ class EventTypesUpdateResponse
      * @param  string  $contentType
      * @param  int  $statusCode
      * @param  \Psr\Http\Message\ResponseInterface  $rawResponse
-     * @param  ?Components\EventType  $eventType
+     * @param  ?\Polar\Models\Components\EventType  $eventType
      * @phpstan-pure
      */
     public function __construct(string $contentType, int $statusCode, \Psr\Http\Message\ResponseInterface $rawResponse, ?Components\EventType $eventType = null)

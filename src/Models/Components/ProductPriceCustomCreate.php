@@ -14,7 +14,7 @@ class ProductPriceCustomCreate
 {
     /**
      *
-     * @var ?PresentmentCurrency $priceCurrency
+     * @var ?\Polar\Models\Components\PresentmentCurrency $priceCurrency
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('price_currency')]
     #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\PresentmentCurrency|null')]
@@ -24,7 +24,7 @@ class ProductPriceCustomCreate
     /**
      * The tax behavior of the price. If not set, it will default to the organization's default tax behavior.
      *
-     * @var ?TaxBehaviorOption $taxBehavior
+     * @var ?\Polar\Models\Components\TaxBehaviorOption $taxBehavior
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('tax_behavior')]
     #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\TaxBehaviorOption|null')]
@@ -67,9 +67,9 @@ class ProductPriceCustomCreate
 
     /**
      * @param  string  $amountType
-     * @param  ?PresentmentCurrency  $priceCurrency
+     * @param  ?\Polar\Models\Components\PresentmentCurrency  $priceCurrency
      * @param  ?int  $minimumAmount
-     * @param  ?TaxBehaviorOption  $taxBehavior
+     * @param  ?\Polar\Models\Components\TaxBehaviorOption  $taxBehavior
      * @param  ?int  $maximumAmount
      * @param  ?int  $presetAmount
      * @phpstan-pure

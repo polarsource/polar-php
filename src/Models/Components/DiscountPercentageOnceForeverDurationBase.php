@@ -13,7 +13,7 @@ class DiscountPercentageOnceForeverDurationBase
 {
     /**
      *
-     * @var DiscountDuration $duration
+     * @var \Polar\Models\Components\DiscountDuration $duration
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('duration')]
     #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\DiscountDuration')]
@@ -21,7 +21,7 @@ class DiscountPercentageOnceForeverDurationBase
 
     /**
      *
-     * @var DiscountType $type
+     * @var \Polar\Models\Components\DiscountType $type
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('type')]
     #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\DiscountType')]
@@ -125,8 +125,8 @@ class DiscountPercentageOnceForeverDurationBase
     public ?int $maxRedemptions;
 
     /**
-     * @param  DiscountDuration  $duration
-     * @param  DiscountType  $type
+     * @param  \Polar\Models\Components\DiscountDuration  $duration
+     * @param  \Polar\Models\Components\DiscountType  $type
      * @param  int  $basisPoints
      * @param  \DateTime  $createdAt
      * @param  string  $id

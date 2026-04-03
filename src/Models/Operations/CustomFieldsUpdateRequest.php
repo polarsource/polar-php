@@ -22,14 +22,14 @@ class CustomFieldsUpdateRequest
 
     /**
      *
-     * @var Components\CustomFieldUpdateText|Components\CustomFieldUpdateNumber|Components\CustomFieldUpdateDate|Components\CustomFieldUpdateCheckbox|Components\CustomFieldUpdateSelect $customFieldUpdate
+     * @var \Polar\Models\Components\CustomFieldUpdateText|\Polar\Models\Components\CustomFieldUpdateNumber|\Polar\Models\Components\CustomFieldUpdateDate|\Polar\Models\Components\CustomFieldUpdateCheckbox|\Polar\Models\Components\CustomFieldUpdateSelect $customFieldUpdate
      */
     #[SpeakeasyMetadata('request:mediaType=application/json')]
     public Components\CustomFieldUpdateText|Components\CustomFieldUpdateNumber|Components\CustomFieldUpdateDate|Components\CustomFieldUpdateCheckbox|Components\CustomFieldUpdateSelect $customFieldUpdate;
 
     /**
      * @param  string  $id
-     * @param  Components\CustomFieldUpdateText|Components\CustomFieldUpdateNumber|Components\CustomFieldUpdateDate|Components\CustomFieldUpdateCheckbox|Components\CustomFieldUpdateSelect  $customFieldUpdate
+     * @param  \Polar\Models\Components\CustomFieldUpdateText|\Polar\Models\Components\CustomFieldUpdateNumber|\Polar\Models\Components\CustomFieldUpdateDate|\Polar\Models\Components\CustomFieldUpdateCheckbox|\Polar\Models\Components\CustomFieldUpdateSelect  $customFieldUpdate
      * @phpstan-pure
      */
     public function __construct(string $id, Components\CustomFieldUpdateText|Components\CustomFieldUpdateNumber|Components\CustomFieldUpdateDate|Components\CustomFieldUpdateCheckbox|Components\CustomFieldUpdateSelect $customFieldUpdate)

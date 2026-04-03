@@ -29,7 +29,7 @@ class CustomerUpdatedFields
 
     /**
      *
-     * @var ?AddressDict $billingAddress
+     * @var ?\Polar\Models\Components\AddressDict $billingAddress
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('billing_address')]
     #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\AddressDict|null')]
@@ -57,7 +57,7 @@ class CustomerUpdatedFields
     /**
      * @param  ?string  $name
      * @param  ?string  $email
-     * @param  ?AddressDict  $billingAddress
+     * @param  ?\Polar\Models\Components\AddressDict  $billingAddress
      * @param  ?string  $taxId
      * @param  ?array<string, string|int|bool>  $metadata
      * @phpstan-pure

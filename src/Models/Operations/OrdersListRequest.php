@@ -31,7 +31,7 @@ class OrdersListRequest
     /**
      * Filter by product billing type. `recurring` will filter data corresponding to subscriptions creations or renewals. `one_time` will filter data corresponding to one-time purchases.
      *
-     * @var Components\ProductBillingType|array<Components\ProductBillingType>|null $productBillingType
+     * @var \Polar\Models\Components\ProductBillingType|array<\Polar\Models\Components\ProductBillingType>|null $productBillingType
      */
     #[SpeakeasyMetadata('queryParam:style=form,explode=true,name=product_billing_type')]
     public Components\ProductBillingType|array|null $productBillingType = null;
@@ -71,7 +71,7 @@ class OrdersListRequest
     /**
      * Sorting criterion. Several criteria can be used simultaneously and will be applied in order. Add a minus sign `-` before the criteria name to sort by descending order.
      *
-     * @var ?array<Components\OrderSortProperty> $sorting
+     * @var ?array<\Polar\Models\Components\OrderSortProperty> $sorting
      */
     #[SpeakeasyMetadata('queryParam:style=form,explode=true,name=sorting')]
     public ?array $sorting = null;
@@ -105,12 +105,12 @@ class OrdersListRequest
      * @param  ?int  $limit
      * @param  string|array<string>|null  $organizationId
      * @param  string|array<string>|null  $productId
-     * @param  Components\ProductBillingType|array<Components\ProductBillingType>|null  $productBillingType
+     * @param  \Polar\Models\Components\ProductBillingType|array<\Polar\Models\Components\ProductBillingType>|null  $productBillingType
      * @param  string|array<string>|null  $discountId
      * @param  string|array<string>|null  $customerId
      * @param  string|array<string>|null  $externalCustomerId
      * @param  string|array<string>|null  $checkoutId
-     * @param  ?array<Components\OrderSortProperty>  $sorting
+     * @param  ?array<\Polar\Models\Components\OrderSortProperty>  $sorting
      * @param  ?array<string, string|int|bool|array<string>|array<int>|array<bool>>  $metadata
      * @phpstan-pure
      */

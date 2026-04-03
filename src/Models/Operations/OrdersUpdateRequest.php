@@ -22,14 +22,14 @@ class OrdersUpdateRequest
 
     /**
      *
-     * @var Components\OrderUpdate $orderUpdate
+     * @var \Polar\Models\Components\OrderUpdate $orderUpdate
      */
     #[SpeakeasyMetadata('request:mediaType=application/json')]
     public Components\OrderUpdate $orderUpdate;
 
     /**
      * @param  string  $id
-     * @param  Components\OrderUpdate  $orderUpdate
+     * @param  \Polar\Models\Components\OrderUpdate  $orderUpdate
      * @phpstan-pure
      */
     public function __construct(string $id, Components\OrderUpdate $orderUpdate)

@@ -57,7 +57,7 @@ class CustomerBenefitGrantGitHubRepository
 
     /**
      *
-     * @var CustomerPortalCustomer $customer
+     * @var \Polar\Models\Components\CustomerPortalCustomer $customer
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('customer')]
     #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\CustomerPortalCustomer')]
@@ -65,7 +65,7 @@ class CustomerBenefitGrantGitHubRepository
 
     /**
      *
-     * @var BenefitGitHubRepositorySubscriber $benefit
+     * @var \Polar\Models\Components\BenefitGitHubRepositorySubscriber $benefit
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('benefit')]
     #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\BenefitGitHubRepositorySubscriber')]
@@ -73,7 +73,7 @@ class CustomerBenefitGrantGitHubRepository
 
     /**
      *
-     * @var BenefitGrantGitHubRepositoryProperties $properties
+     * @var \Polar\Models\Components\BenefitGrantGitHubRepositoryProperties $properties
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('properties')]
     #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\BenefitGrantGitHubRepositoryProperties')]
@@ -125,7 +125,7 @@ class CustomerBenefitGrantGitHubRepository
 
     /**
      *
-     * @var ?BenefitGrantError $error
+     * @var ?\Polar\Models\Components\BenefitGrantError $error
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('error')]
     #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\BenefitGrantError|null')]
@@ -139,16 +139,16 @@ class CustomerBenefitGrantGitHubRepository
      * @param  string  $benefitId
      * @param  bool  $isGranted
      * @param  bool  $isRevoked
-     * @param  CustomerPortalCustomer  $customer
-     * @param  BenefitGitHubRepositorySubscriber  $benefit
-     * @param  BenefitGrantGitHubRepositoryProperties  $properties
+     * @param  \Polar\Models\Components\CustomerPortalCustomer  $customer
+     * @param  \Polar\Models\Components\BenefitGitHubRepositorySubscriber  $benefit
+     * @param  \Polar\Models\Components\BenefitGrantGitHubRepositoryProperties  $properties
      * @param  ?\DateTime  $modifiedAt
      * @param  ?\DateTime  $grantedAt
      * @param  ?\DateTime  $revokedAt
      * @param  ?string  $subscriptionId
      * @param  ?string  $orderId
      * @param  ?string  $memberId
-     * @param  ?BenefitGrantError  $error
+     * @param  ?\Polar\Models\Components\BenefitGrantError  $error
      * @phpstan-pure
      */
     public function __construct(\DateTime $createdAt, string $id, string $customerId, string $benefitId, bool $isGranted, bool $isRevoked, CustomerPortalCustomer $customer, BenefitGitHubRepositorySubscriber $benefit, BenefitGrantGitHubRepositoryProperties $properties, ?\DateTime $modifiedAt = null, ?\DateTime $grantedAt = null, ?\DateTime $revokedAt = null, ?string $subscriptionId = null, ?string $orderId = null, ?string $memberId = null, ?BenefitGrantError $error = null)

@@ -43,7 +43,7 @@ class BenefitCustomUpdate
 
     /**
      *
-     * @var ?BenefitCustomProperties $properties
+     * @var ?\Polar\Models\Components\BenefitCustomProperties $properties
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('properties')]
     #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\BenefitCustomProperties|null')]
@@ -61,7 +61,7 @@ class BenefitCustomUpdate
      * @param  string  $type
      * @param  ?array<string, string|int|float|bool>  $metadata
      * @param  ?string  $description
-     * @param  ?BenefitCustomProperties  $properties
+     * @param  ?\Polar\Models\Components\BenefitCustomProperties  $properties
      * @phpstan-pure
      */
     public function __construct(?array $metadata = null, ?string $description = null, ?BenefitCustomProperties $properties = null, string $type = 'custom')

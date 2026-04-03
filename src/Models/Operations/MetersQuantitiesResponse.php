@@ -35,7 +35,7 @@ class MetersQuantitiesResponse
     /**
      * Successful Response
      *
-     * @var ?Components\MeterQuantities $meterQuantities
+     * @var ?\Polar\Models\Components\MeterQuantities $meterQuantities
      */
     public ?Components\MeterQuantities $meterQuantities = null;
 
@@ -43,7 +43,7 @@ class MetersQuantitiesResponse
      * @param  string  $contentType
      * @param  int  $statusCode
      * @param  \Psr\Http\Message\ResponseInterface  $rawResponse
-     * @param  ?Components\MeterQuantities  $meterQuantities
+     * @param  ?\Polar\Models\Components\MeterQuantities  $meterQuantities
      * @phpstan-pure
      */
     public function __construct(string $contentType, int $statusCode, \Psr\Http\Message\ResponseInterface $rawResponse, ?Components\MeterQuantities $meterQuantities = null)

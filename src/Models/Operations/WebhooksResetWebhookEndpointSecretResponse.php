@@ -35,7 +35,7 @@ class WebhooksResetWebhookEndpointSecretResponse
     /**
      * Webhook endpoint secret reset.
      *
-     * @var ?Components\WebhookEndpoint $webhookEndpoint
+     * @var ?\Polar\Models\Components\WebhookEndpoint $webhookEndpoint
      */
     public ?Components\WebhookEndpoint $webhookEndpoint = null;
 
@@ -43,7 +43,7 @@ class WebhooksResetWebhookEndpointSecretResponse
      * @param  string  $contentType
      * @param  int  $statusCode
      * @param  \Psr\Http\Message\ResponseInterface  $rawResponse
-     * @param  ?Components\WebhookEndpoint  $webhookEndpoint
+     * @param  ?\Polar\Models\Components\WebhookEndpoint  $webhookEndpoint
      * @phpstan-pure
      */
     public function __construct(string $contentType, int $statusCode, \Psr\Http\Message\ResponseInterface $rawResponse, ?Components\WebhookEndpoint $webhookEndpoint = null)

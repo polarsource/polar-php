@@ -55,7 +55,7 @@ class ProductPriceFixedCreate
 
     /**
      *
-     * @var ?PresentmentCurrency $priceCurrency
+     * @var ?\Polar\Models\Components\PresentmentCurrency $priceCurrency
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('price_currency')]
     #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\PresentmentCurrency|null')]
@@ -65,7 +65,7 @@ class ProductPriceFixedCreate
     /**
      * The tax behavior of the price. If not set, it will default to the organization's default tax behavior.
      *
-     * @var ?TaxBehaviorOption $taxBehavior
+     * @var ?\Polar\Models\Components\TaxBehaviorOption $taxBehavior
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('tax_behavior')]
     #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\TaxBehaviorOption|null')]
@@ -82,8 +82,8 @@ class ProductPriceFixedCreate
     /**
      * @param  string  $amountType
      * @param  int  $priceAmount
-     * @param  ?PresentmentCurrency  $priceCurrency
-     * @param  ?TaxBehaviorOption  $taxBehavior
+     * @param  ?\Polar\Models\Components\PresentmentCurrency  $priceCurrency
+     * @param  ?\Polar\Models\Components\TaxBehaviorOption  $taxBehavior
      * @phpstan-pure
      */
     public function __construct(int $priceAmount, ?PresentmentCurrency $priceCurrency = null, ?TaxBehaviorOption $taxBehavior = null, string $amountType = 'fixed')

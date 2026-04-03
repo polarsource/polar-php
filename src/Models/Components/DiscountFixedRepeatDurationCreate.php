@@ -18,7 +18,7 @@ class DiscountFixedRepeatDurationCreate
 {
     /**
      *
-     * @var DiscountDuration $duration
+     * @var \Polar\Models\Components\DiscountDuration $duration
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('duration')]
     #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\DiscountDuration')]
@@ -38,7 +38,7 @@ class DiscountFixedRepeatDurationCreate
 
     /**
      *
-     * @var DiscountType $type
+     * @var \Polar\Models\Components\DiscountType $type
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('type')]
     #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\DiscountType')]
@@ -84,7 +84,7 @@ class DiscountFixedRepeatDurationCreate
 
     /**
      *
-     * @var ?PresentmentCurrency $currency
+     * @var ?\Polar\Models\Components\PresentmentCurrency $currency
      * @deprecated  field: This will be removed in a future release, please migrate away from it as soon as possible.
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('currency')]
@@ -158,13 +158,13 @@ class DiscountFixedRepeatDurationCreate
     public ?string $organizationId = null;
 
     /**
-     * @param  DiscountDuration  $duration
+     * @param  \Polar\Models\Components\DiscountDuration  $duration
      * @param  int  $durationInMonths
-     * @param  DiscountType  $type
+     * @param  \Polar\Models\Components\DiscountType  $type
      * @param  string  $name
      * @param  ?array<string, string|int|float|bool>  $metadata
      * @param  ?int  $amount
-     * @param  ?PresentmentCurrency  $currency
+     * @param  ?\Polar\Models\Components\PresentmentCurrency  $currency
      * @param  ?array<string, int>  $amounts
      * @param  ?string  $code
      * @param  ?\DateTime  $startsAt

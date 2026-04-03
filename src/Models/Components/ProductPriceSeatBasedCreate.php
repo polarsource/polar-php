@@ -20,7 +20,7 @@ class ProductPriceSeatBasedCreate
      * - minimum_seats = first tier's min_seats
      * - maximum_seats = last tier's max_seats (None for unlimited)
      *
-     * @var ProductPriceSeatTiersInput $seatTiers
+     * @var \Polar\Models\Components\ProductPriceSeatTiersInput $seatTiers
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('seat_tiers')]
     #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\ProductPriceSeatTiersInput')]
@@ -28,7 +28,7 @@ class ProductPriceSeatBasedCreate
 
     /**
      *
-     * @var ?PresentmentCurrency $priceCurrency
+     * @var ?\Polar\Models\Components\PresentmentCurrency $priceCurrency
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('price_currency')]
     #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\PresentmentCurrency|null')]
@@ -38,7 +38,7 @@ class ProductPriceSeatBasedCreate
     /**
      * The tax behavior of the price. If not set, it will default to the organization's default tax behavior.
      *
-     * @var ?TaxBehaviorOption $taxBehavior
+     * @var ?\Polar\Models\Components\TaxBehaviorOption $taxBehavior
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('tax_behavior')]
     #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\TaxBehaviorOption|null')]
@@ -54,9 +54,9 @@ class ProductPriceSeatBasedCreate
 
     /**
      * @param  string  $amountType
-     * @param  ProductPriceSeatTiersInput  $seatTiers
-     * @param  ?PresentmentCurrency  $priceCurrency
-     * @param  ?TaxBehaviorOption  $taxBehavior
+     * @param  \Polar\Models\Components\ProductPriceSeatTiersInput  $seatTiers
+     * @param  ?\Polar\Models\Components\PresentmentCurrency  $priceCurrency
+     * @param  ?\Polar\Models\Components\TaxBehaviorOption  $taxBehavior
      * @phpstan-pure
      */
     public function __construct(ProductPriceSeatTiersInput $seatTiers, ?PresentmentCurrency $priceCurrency = null, ?TaxBehaviorOption $taxBehavior = null, string $amountType = 'seat_based')

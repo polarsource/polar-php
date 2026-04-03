@@ -69,17 +69,17 @@ class CustomerMeter
     public float $balance;
 
     /**
-     * A customer in an organization.
      *
-     * @var Customer $customer
+     * @var \Polar\Models\Components\CustomerIndividual|\Polar\Models\Components\CustomerTeam $customer
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('customer')]
-    #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\Customer')]
-    public Customer $customer;
+    #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\CustomerIndividual|\Polar\Models\Components\CustomerTeam')]
+    #[\Speakeasy\Serializer\Annotation\UnionDiscriminator(field: 'type', map: ['individual' => '\Polar\Models\Components\CustomerIndividual', 'team' => '\Polar\Models\Components\CustomerTeam'])]
+    public CustomerIndividual|CustomerTeam $customer;
 
     /**
      *
-     * @var Meter $meter
+     * @var \Polar\Models\Components\Meter $meter
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('meter')]
     #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\Meter')]
@@ -101,12 +101,12 @@ class CustomerMeter
      * @param  float  $consumedUnits
      * @param  int  $creditedUnits
      * @param  float  $balance
-     * @param  Customer  $customer
-     * @param  Meter  $meter
+     * @param  \Polar\Models\Components\CustomerIndividual|\Polar\Models\Components\CustomerTeam  $customer
+     * @param  \Polar\Models\Components\Meter  $meter
      * @param  ?\DateTime  $modifiedAt
      * @phpstan-pure
      */
-    public function __construct(string $id, \DateTime $createdAt, string $customerId, string $meterId, float $consumedUnits, int $creditedUnits, float $balance, Customer $customer, Meter $meter, ?\DateTime $modifiedAt = null)
+    public function __construct(string $id, \DateTime $createdAt, string $customerId, string $meterId, float $consumedUnits, int $creditedUnits, float $balance, CustomerIndividual|CustomerTeam $customer, Meter $meter, ?\DateTime $modifiedAt = null)
     {
         $this->id = $id;
         $this->createdAt = $createdAt;

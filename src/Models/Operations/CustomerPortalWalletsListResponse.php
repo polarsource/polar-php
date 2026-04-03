@@ -35,7 +35,7 @@ class CustomerPortalWalletsListResponse
     /**
      * Successful Response
      *
-     * @var ?Components\ListResourceCustomerWallet $listResourceCustomerWallet
+     * @var ?\Polar\Models\Components\ListResourceCustomerWallet $listResourceCustomerWallet
      */
     public ?Components\ListResourceCustomerWallet $listResourceCustomerWallet = null;
 
@@ -47,7 +47,7 @@ class CustomerPortalWalletsListResponse
      * @param  string  $contentType
      * @param  int  $statusCode
      * @param  \Psr\Http\Message\ResponseInterface  $rawResponse
-     * @param  ?Components\ListResourceCustomerWallet  $listResourceCustomerWallet
+     * @param  ?\Polar\Models\Components\ListResourceCustomerWallet  $listResourceCustomerWallet
      * @phpstan-pure
      */
     public function __construct(string $contentType, int $statusCode, \Psr\Http\Message\ResponseInterface $rawResponse, ?Components\ListResourceCustomerWallet $listResourceCustomerWallet = null)

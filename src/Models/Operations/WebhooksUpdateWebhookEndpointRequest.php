@@ -22,14 +22,14 @@ class WebhooksUpdateWebhookEndpointRequest
 
     /**
      *
-     * @var Components\WebhookEndpointUpdate $webhookEndpointUpdate
+     * @var \Polar\Models\Components\WebhookEndpointUpdate $webhookEndpointUpdate
      */
     #[SpeakeasyMetadata('request:mediaType=application/json')]
     public Components\WebhookEndpointUpdate $webhookEndpointUpdate;
 
     /**
      * @param  string  $id
-     * @param  Components\WebhookEndpointUpdate  $webhookEndpointUpdate
+     * @param  \Polar\Models\Components\WebhookEndpointUpdate  $webhookEndpointUpdate
      * @phpstan-pure
      */
     public function __construct(string $id, Components\WebhookEndpointUpdate $webhookEndpointUpdate)

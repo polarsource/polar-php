@@ -35,7 +35,7 @@ class CustomFieldsGetResponse
     /**
      * Successful Response
      *
-     * @var Components\CustomFieldText|Components\CustomFieldNumber|Components\CustomFieldDate|Components\CustomFieldCheckbox|Components\CustomFieldSelect|null $customField
+     * @var \Polar\Models\Components\CustomFieldText|\Polar\Models\Components\CustomFieldNumber|\Polar\Models\Components\CustomFieldDate|\Polar\Models\Components\CustomFieldCheckbox|\Polar\Models\Components\CustomFieldSelect|null $customField
      */
     public Components\CustomFieldText|Components\CustomFieldNumber|Components\CustomFieldDate|Components\CustomFieldCheckbox|Components\CustomFieldSelect|null $customField = null;
 
@@ -43,7 +43,7 @@ class CustomFieldsGetResponse
      * @param  string  $contentType
      * @param  int  $statusCode
      * @param  \Psr\Http\Message\ResponseInterface  $rawResponse
-     * @param  Components\CustomFieldText|Components\CustomFieldNumber|Components\CustomFieldDate|Components\CustomFieldCheckbox|Components\CustomFieldSelect|null  $customField
+     * @param  \Polar\Models\Components\CustomFieldText|\Polar\Models\Components\CustomFieldNumber|\Polar\Models\Components\CustomFieldDate|\Polar\Models\Components\CustomFieldCheckbox|\Polar\Models\Components\CustomFieldSelect|null  $customField
      * @phpstan-pure
      */
     public function __construct(string $contentType, int $statusCode, \Psr\Http\Message\ResponseInterface $rawResponse, Components\CustomFieldText|Components\CustomFieldNumber|Components\CustomFieldDate|Components\CustomFieldCheckbox|Components\CustomFieldSelect|null $customField = null)

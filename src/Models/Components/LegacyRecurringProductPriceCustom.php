@@ -35,7 +35,7 @@ class LegacyRecurringProductPriceCustom
 
     /**
      *
-     * @var ProductPriceSource $source
+     * @var \Polar\Models\Components\ProductPriceSource $source
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('source')]
     #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\ProductPriceSource')]
@@ -67,7 +67,7 @@ class LegacyRecurringProductPriceCustom
 
     /**
      *
-     * @var SubscriptionRecurringInterval $recurringInterval
+     * @var \Polar\Models\Components\SubscriptionRecurringInterval $recurringInterval
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('recurring_interval')]
     #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\SubscriptionRecurringInterval')]
@@ -92,7 +92,7 @@ class LegacyRecurringProductPriceCustom
     /**
      * The tax behavior of the price. If null, it defaults to the organization's default tax behavior.
      *
-     * @var ?TaxBehaviorOption $taxBehavior
+     * @var ?\Polar\Models\Components\TaxBehaviorOption $taxBehavior
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('tax_behavior')]
     #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\TaxBehaviorOption|null')]
@@ -139,17 +139,17 @@ class LegacyRecurringProductPriceCustom
     /**
      * @param  \DateTime  $createdAt
      * @param  string  $id
-     * @param  ProductPriceSource  $source
+     * @param  \Polar\Models\Components\ProductPriceSource  $source
      * @param  string  $amountType
      * @param  string  $priceCurrency
      * @param  bool  $isArchived
      * @param  string  $productId
      * @param  string  $type
-     * @param  SubscriptionRecurringInterval  $recurringInterval
+     * @param  \Polar\Models\Components\SubscriptionRecurringInterval  $recurringInterval
      * @param  int  $minimumAmount
      * @param  bool  $legacy
      * @param  ?\DateTime  $modifiedAt
-     * @param  ?TaxBehaviorOption  $taxBehavior
+     * @param  ?\Polar\Models\Components\TaxBehaviorOption  $taxBehavior
      * @param  ?int  $maximumAmount
      * @param  ?int  $presetAmount
      * @phpstan-pure

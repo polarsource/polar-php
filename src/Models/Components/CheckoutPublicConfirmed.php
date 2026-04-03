@@ -36,7 +36,7 @@ class CheckoutPublicConfirmed
 
     /**
      *
-     * @var PaymentProcessor $paymentProcessor
+     * @var \Polar\Models\Components\PaymentProcessor $paymentProcessor
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('payment_processor')]
     #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\PaymentProcessor')]
@@ -197,7 +197,7 @@ class CheckoutPublicConfirmed
 
     /**
      *
-     * @var CheckoutBillingAddressFields $billingAddressFields
+     * @var \Polar\Models\Components\CheckoutBillingAddressFields $billingAddressFields
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('billing_address_fields')]
     #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\CheckoutBillingAddressFields')]
@@ -206,7 +206,7 @@ class CheckoutPublicConfirmed
     /**
      * List of products available to select.
      *
-     * @var array<CheckoutProduct> $products
+     * @var array<\Polar\Models\Components\CheckoutProduct> $products
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('products')]
     #[\Speakeasy\Serializer\Annotation\Type('array<\Polar\Models\Components\CheckoutProduct>')]
@@ -214,7 +214,7 @@ class CheckoutPublicConfirmed
 
     /**
      *
-     * @var CheckoutOrganization $organization
+     * @var \Polar\Models\Components\CheckoutOrganization $organization
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('organization')]
     #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\CheckoutOrganization')]
@@ -273,7 +273,7 @@ class CheckoutPublicConfirmed
     /**
      * Interval unit of the trial period, if any. This value is either set from the checkout, if `trial_interval` is set, or from the selected product.
      *
-     * @var ?TrialInterval $activeTrialInterval
+     * @var ?\Polar\Models\Components\TrialInterval $activeTrialInterval
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('active_trial_interval')]
     #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\TrialInterval|null')]
@@ -359,7 +359,7 @@ class CheckoutPublicConfirmed
 
     /**
      *
-     * @var ?Address $customerBillingAddress
+     * @var ?\Polar\Models\Components\Address $customerBillingAddress
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('customer_billing_address')]
     #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\Address|null')]
@@ -375,7 +375,7 @@ class CheckoutPublicConfirmed
     /**
      * Product selected to checkout.
      *
-     * @var ?CheckoutProduct $product
+     * @var ?\Polar\Models\Components\CheckoutProduct $product
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('product')]
     #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\CheckoutProduct|null')]
@@ -384,7 +384,7 @@ class CheckoutPublicConfirmed
     /**
      * Price of the selected product.
      *
-     * @var LegacyRecurringProductPriceFixed|LegacyRecurringProductPriceCustom|LegacyRecurringProductPriceFree|ProductPriceFixed|ProductPriceCustom|ProductPriceFree|ProductPriceSeatBased|ProductPriceMeteredUnit|null $productPrice
+     * @var \Polar\Models\Components\LegacyRecurringProductPriceFixed|\Polar\Models\Components\LegacyRecurringProductPriceCustom|\Polar\Models\Components\LegacyRecurringProductPriceFree|\Polar\Models\Components\ProductPriceFixed|\Polar\Models\Components\ProductPriceCustom|\Polar\Models\Components\ProductPriceFree|\Polar\Models\Components\ProductPriceSeatBased|\Polar\Models\Components\ProductPriceMeteredUnit|null $productPrice
      * @deprecated  field: This will be removed in a future release, please migrate away from it as soon as possible.
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('product_price')]
@@ -394,7 +394,7 @@ class CheckoutPublicConfirmed
     /**
      * Mapping of product IDs to their list of prices.
      *
-     * @var ?array<string, array<LegacyRecurringProductPriceFixed|LegacyRecurringProductPriceCustom|LegacyRecurringProductPriceFree|ProductPriceFixed|ProductPriceCustom|ProductPriceFree|ProductPriceSeatBased|ProductPriceMeteredUnit>> $prices
+     * @var ?array<string, array<\Polar\Models\Components\LegacyRecurringProductPriceFixed|\Polar\Models\Components\LegacyRecurringProductPriceCustom|\Polar\Models\Components\LegacyRecurringProductPriceFree|\Polar\Models\Components\ProductPriceFixed|\Polar\Models\Components\ProductPriceCustom|\Polar\Models\Components\ProductPriceFree|\Polar\Models\Components\ProductPriceSeatBased|\Polar\Models\Components\ProductPriceMeteredUnit>> $prices
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('prices')]
     #[\Speakeasy\Serializer\Annotation\Type('array<string, array<\Polar\Models\Components\LegacyRecurringProductPriceFixed|\Polar\Models\Components\LegacyRecurringProductPriceCustom|\Polar\Models\Components\LegacyRecurringProductPriceFree|\Polar\Models\Components\ProductPriceFixed|\Polar\Models\Components\ProductPriceCustom|\Polar\Models\Components\ProductPriceFree|\Polar\Models\Components\ProductPriceSeatBased|\Polar\Models\Components\ProductPriceMeteredUnit>>|null')]
@@ -402,7 +402,7 @@ class CheckoutPublicConfirmed
 
     /**
      *
-     * @var CheckoutDiscountFixedOnceForeverDuration|CheckoutDiscountFixedRepeatDuration|CheckoutDiscountPercentageOnceForeverDuration|CheckoutDiscountPercentageRepeatDuration|null $discount
+     * @var \Polar\Models\Components\CheckoutDiscountFixedOnceForeverDuration|\Polar\Models\Components\CheckoutDiscountFixedRepeatDuration|\Polar\Models\Components\CheckoutDiscountPercentageOnceForeverDuration|\Polar\Models\Components\CheckoutDiscountPercentageRepeatDuration|null $discount
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('discount')]
     #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\CheckoutDiscountFixedOnceForeverDuration|\Polar\Models\Components\CheckoutDiscountFixedRepeatDuration|\Polar\Models\Components\CheckoutDiscountPercentageOnceForeverDuration|\Polar\Models\Components\CheckoutDiscountPercentageRepeatDuration|null')]
@@ -411,7 +411,7 @@ class CheckoutPublicConfirmed
     /**
      * $attachedCustomFields
      *
-     * @var ?array<AttachedCustomField> $attachedCustomFields
+     * @var ?array<\Polar\Models\Components\AttachedCustomField> $attachedCustomFields
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('attached_custom_fields')]
     #[\Speakeasy\Serializer\Annotation\Type('array<\Polar\Models\Components\AttachedCustomField>|null')]
@@ -469,7 +469,7 @@ class CheckoutPublicConfirmed
     /**
      * @param  string  $id
      * @param  \DateTime  $createdAt
-     * @param  PaymentProcessor  $paymentProcessor
+     * @param  \Polar\Models\Components\PaymentProcessor  $paymentProcessor
      * @param  string  $status
      * @param  string  $clientSecret
      * @param  string  $url
@@ -490,16 +490,16 @@ class CheckoutPublicConfirmed
      * @param  bool  $isPaymentFormRequired
      * @param  bool  $isBusinessCustomer
      * @param  array<string, string>  $paymentProcessorMetadata
-     * @param  CheckoutBillingAddressFields  $billingAddressFields
-     * @param  array<CheckoutProduct>  $products
-     * @param  CheckoutOrganization  $organization
+     * @param  \Polar\Models\Components\CheckoutBillingAddressFields  $billingAddressFields
+     * @param  array<\Polar\Models\Components\CheckoutProduct>  $products
+     * @param  \Polar\Models\Components\CheckoutOrganization  $organization
      * @param  ?\DateTime  $modifiedAt
      * @param  ?array<string, string|int|bool|\DateTime|null>  $customFieldData
      * @param  ?string  $returnUrl
      * @param  ?string  $embedOrigin
      * @param  ?int  $taxAmount
      * @param  ?bool  $allowTrial
-     * @param  ?TrialInterval  $activeTrialInterval
+     * @param  ?\Polar\Models\Components\TrialInterval  $activeTrialInterval
      * @param  ?int  $activeTrialIntervalCount
      * @param  ?\DateTime  $trialEnd
      * @param  ?string  $productId
@@ -510,13 +510,13 @@ class CheckoutPublicConfirmed
      * @param  ?string  $customerEmail
      * @param  ?string  $customerIpAddress
      * @param  ?string  $customerBillingName
-     * @param  ?Address  $customerBillingAddress
+     * @param  ?\Polar\Models\Components\Address  $customerBillingAddress
      * @param  ?string  $customerTaxId
-     * @param  ?CheckoutProduct  $product
-     * @param  LegacyRecurringProductPriceFixed|LegacyRecurringProductPriceCustom|LegacyRecurringProductPriceFree|ProductPriceFixed|ProductPriceCustom|ProductPriceFree|ProductPriceSeatBased|ProductPriceMeteredUnit|null  $productPrice
-     * @param  ?array<string, array<LegacyRecurringProductPriceFixed|LegacyRecurringProductPriceCustom|LegacyRecurringProductPriceFree|ProductPriceFixed|ProductPriceCustom|ProductPriceFree|ProductPriceSeatBased|ProductPriceMeteredUnit>>  $prices
-     * @param  CheckoutDiscountFixedOnceForeverDuration|CheckoutDiscountFixedRepeatDuration|CheckoutDiscountPercentageOnceForeverDuration|CheckoutDiscountPercentageRepeatDuration|null  $discount
-     * @param  ?array<AttachedCustomField>  $attachedCustomFields
+     * @param  ?\Polar\Models\Components\CheckoutProduct  $product
+     * @param  \Polar\Models\Components\LegacyRecurringProductPriceFixed|\Polar\Models\Components\LegacyRecurringProductPriceCustom|\Polar\Models\Components\LegacyRecurringProductPriceFree|\Polar\Models\Components\ProductPriceFixed|\Polar\Models\Components\ProductPriceCustom|\Polar\Models\Components\ProductPriceFree|\Polar\Models\Components\ProductPriceSeatBased|\Polar\Models\Components\ProductPriceMeteredUnit|null  $productPrice
+     * @param  ?array<string, array<\Polar\Models\Components\LegacyRecurringProductPriceFixed|\Polar\Models\Components\LegacyRecurringProductPriceCustom|\Polar\Models\Components\LegacyRecurringProductPriceFree|\Polar\Models\Components\ProductPriceFixed|\Polar\Models\Components\ProductPriceCustom|\Polar\Models\Components\ProductPriceFree|\Polar\Models\Components\ProductPriceSeatBased|\Polar\Models\Components\ProductPriceMeteredUnit>>  $prices
+     * @param  \Polar\Models\Components\CheckoutDiscountFixedOnceForeverDuration|\Polar\Models\Components\CheckoutDiscountFixedRepeatDuration|\Polar\Models\Components\CheckoutDiscountPercentageOnceForeverDuration|\Polar\Models\Components\CheckoutDiscountPercentageRepeatDuration|null  $discount
+     * @param  ?array<\Polar\Models\Components\AttachedCustomField>  $attachedCustomFields
      * @param  ?string  $customerSessionToken
      * @param  ?int  $seats
      * @param  ?int  $minSeats

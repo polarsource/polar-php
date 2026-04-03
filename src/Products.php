@@ -52,8 +52,8 @@ class Products
      *
      * **Scopes**: `products:write`
      *
-     * @param  Components\ProductCreateRecurring|Components\ProductCreateOneTime  $request
-     * @return Operations\ProductsCreateResponse
+     * @param  \Polar\Models\Components\ProductCreateRecurring|\Polar\Models\Components\ProductCreateOneTime  $request
+     * @return \Polar\Models\Operations\ProductsCreateResponse
      * @throws \Polar\Models\Errors\APIException
      */
     public function create(Components\ProductCreateRecurring|Components\ProductCreateOneTime $request, ?Options $options = null): Operations\ProductsCreateResponse
@@ -132,7 +132,7 @@ class Products
      * **Scopes**: `products:read` `products:write`
      *
      * @param  string  $id
-     * @return Operations\ProductsGetResponse
+     * @return \Polar\Models\Operations\ProductsGetResponse
      * @throws \Polar\Models\Errors\APIException
      */
     public function get(string $id, ?Options $options = null): Operations\ProductsGetResponse
@@ -219,8 +219,8 @@ class Products
      *
      * **Scopes**: `products:read` `products:write`
      *
-     * @param  ?Operations\ProductsListRequest  $request
-     * @return Operations\ProductsListResponse
+     * @param  ?\Polar\Models\Operations\ProductsListRequest  $request
+     * @return \Polar\Models\Operations\ProductsListResponse
      * @throws \Polar\Models\Errors\APIException
      */
     private function listIndividual(?Operations\ProductsListRequest $request = null, ?Options $options = null): Operations\ProductsListResponse
@@ -339,8 +339,8 @@ class Products
      *
      * **Scopes**: `products:read` `products:write`
      *
-     * @param  ?Operations\ProductsListRequest  $request
-     * @return \Generator<Operations\ProductsListResponse>
+     * @param  ?\Polar\Models\Operations\ProductsListRequest  $request
+     * @return \Generator<\Polar\Models\Operations\ProductsListResponse>
      * @throws \Polar\Models\Errors\APIException
      */
     public function list(?Operations\ProductsListRequest $request = null, ?Options $options = null): \Generator
@@ -359,9 +359,9 @@ class Products
      *
      * **Scopes**: `products:write`
      *
-     * @param  Components\ProductUpdate  $productUpdate
+     * @param  \Polar\Models\Components\ProductUpdate  $productUpdate
      * @param  string  $id
-     * @return Operations\ProductsUpdateResponse
+     * @return \Polar\Models\Operations\ProductsUpdateResponse
      * @throws \Polar\Models\Errors\APIException
      */
     public function update(Components\ProductUpdate $productUpdate, string $id, ?Options $options = null): Operations\ProductsUpdateResponse
@@ -465,9 +465,9 @@ class Products
      *
      * **Scopes**: `products:write`
      *
-     * @param  Components\ProductBenefitsUpdate  $productBenefitsUpdate
+     * @param  \Polar\Models\Components\ProductBenefitsUpdate  $productBenefitsUpdate
      * @param  string  $id
-     * @return Operations\ProductsUpdateBenefitsResponse
+     * @return \Polar\Models\Operations\ProductsUpdateBenefitsResponse
      * @throws \Polar\Models\Errors\APIException
      */
     public function updateBenefits(Components\ProductBenefitsUpdate $productBenefitsUpdate, string $id, ?Options $options = null): Operations\ProductsUpdateBenefitsResponse

@@ -21,14 +21,14 @@ class BenefitsUpdateRequest
 
     /**
      *
-     * @var Components\BenefitCustomUpdate|Components\BenefitDiscordUpdate|Components\BenefitGitHubRepositoryUpdate|Components\BenefitDownloadablesUpdate|Components\BenefitLicenseKeysUpdate|Components\BenefitMeterCreditUpdate|Components\BenefitFeatureFlagUpdate $requestBody
+     * @var \Polar\Models\Components\BenefitCustomUpdate|\Polar\Models\Components\BenefitDiscordUpdate|\Polar\Models\Components\BenefitGitHubRepositoryUpdate|\Polar\Models\Components\BenefitDownloadablesUpdate|\Polar\Models\Components\BenefitLicenseKeysUpdate|\Polar\Models\Components\BenefitMeterCreditUpdate|\Polar\Models\Components\BenefitFeatureFlagUpdate $requestBody
      */
     #[SpeakeasyMetadata('request:mediaType=application/json')]
     public Components\BenefitCustomUpdate|Components\BenefitDiscordUpdate|Components\BenefitGitHubRepositoryUpdate|Components\BenefitDownloadablesUpdate|Components\BenefitLicenseKeysUpdate|Components\BenefitMeterCreditUpdate|Components\BenefitFeatureFlagUpdate $requestBody;
 
     /**
      * @param  string  $id
-     * @param  Components\BenefitCustomUpdate|Components\BenefitDiscordUpdate|Components\BenefitGitHubRepositoryUpdate|Components\BenefitDownloadablesUpdate|Components\BenefitLicenseKeysUpdate|Components\BenefitMeterCreditUpdate|Components\BenefitFeatureFlagUpdate  $requestBody
+     * @param  \Polar\Models\Components\BenefitCustomUpdate|\Polar\Models\Components\BenefitDiscordUpdate|\Polar\Models\Components\BenefitGitHubRepositoryUpdate|\Polar\Models\Components\BenefitDownloadablesUpdate|\Polar\Models\Components\BenefitLicenseKeysUpdate|\Polar\Models\Components\BenefitMeterCreditUpdate|\Polar\Models\Components\BenefitFeatureFlagUpdate  $requestBody
      * @phpstan-pure
      */
     public function __construct(string $id, Components\BenefitCustomUpdate|Components\BenefitDiscordUpdate|Components\BenefitGitHubRepositoryUpdate|Components\BenefitDownloadablesUpdate|Components\BenefitLicenseKeysUpdate|Components\BenefitMeterCreditUpdate|Components\BenefitFeatureFlagUpdate $requestBody)

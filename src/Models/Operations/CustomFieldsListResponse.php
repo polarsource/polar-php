@@ -35,7 +35,7 @@ class CustomFieldsListResponse
     /**
      * Successful Response
      *
-     * @var ?Components\ListResourceCustomField $listResourceCustomField
+     * @var ?\Polar\Models\Components\ListResourceCustomField $listResourceCustomField
      */
     public ?Components\ListResourceCustomField $listResourceCustomField = null;
 
@@ -47,7 +47,7 @@ class CustomFieldsListResponse
      * @param  string  $contentType
      * @param  int  $statusCode
      * @param  \Psr\Http\Message\ResponseInterface  $rawResponse
-     * @param  ?Components\ListResourceCustomField  $listResourceCustomField
+     * @param  ?\Polar\Models\Components\ListResourceCustomField  $listResourceCustomField
      * @phpstan-pure
      */
     public function __construct(string $contentType, int $statusCode, \Psr\Http\Message\ResponseInterface $rawResponse, ?Components\ListResourceCustomField $listResourceCustomField = null)

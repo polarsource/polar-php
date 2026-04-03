@@ -23,7 +23,7 @@ class OrganizationsListRequest
     /**
      * Sorting criterion. Several criteria can be used simultaneously and will be applied in order. Add a minus sign `-` before the criteria name to sort by descending order.
      *
-     * @var ?array<Components\OrganizationSortProperty> $sorting
+     * @var ?array<\Polar\Models\Components\OrganizationSortProperty> $sorting
      */
     #[SpeakeasyMetadata('queryParam:style=form,explode=true,name=sorting')]
     public ?array $sorting = null;
@@ -48,7 +48,7 @@ class OrganizationsListRequest
      * @param  ?int  $page
      * @param  ?int  $limit
      * @param  ?string  $slug
-     * @param  ?array<Components\OrganizationSortProperty>  $sorting
+     * @param  ?array<\Polar\Models\Components\OrganizationSortProperty>  $sorting
      * @phpstan-pure
      */
     public function __construct(?string $slug = null, ?array $sorting = null, ?int $page = 1, ?int $limit = 10)

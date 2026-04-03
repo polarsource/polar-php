@@ -22,7 +22,7 @@ class AttachedCustomField
 
     /**
      *
-     * @var CustomFieldText|CustomFieldNumber|CustomFieldDate|CustomFieldCheckbox|CustomFieldSelect $customField
+     * @var \Polar\Models\Components\CustomFieldText|\Polar\Models\Components\CustomFieldNumber|\Polar\Models\Components\CustomFieldDate|\Polar\Models\Components\CustomFieldCheckbox|\Polar\Models\Components\CustomFieldSelect $customField
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('custom_field')]
     #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\CustomFieldText|\Polar\Models\Components\CustomFieldNumber|\Polar\Models\Components\CustomFieldDate|\Polar\Models\Components\CustomFieldCheckbox|\Polar\Models\Components\CustomFieldSelect')]
@@ -47,7 +47,7 @@ class AttachedCustomField
 
     /**
      * @param  string  $customFieldId
-     * @param  CustomFieldText|CustomFieldNumber|CustomFieldDate|CustomFieldCheckbox|CustomFieldSelect  $customField
+     * @param  \Polar\Models\Components\CustomFieldText|\Polar\Models\Components\CustomFieldNumber|\Polar\Models\Components\CustomFieldDate|\Polar\Models\Components\CustomFieldCheckbox|\Polar\Models\Components\CustomFieldSelect  $customField
      * @param  int  $order
      * @param  bool  $required
      * @phpstan-pure

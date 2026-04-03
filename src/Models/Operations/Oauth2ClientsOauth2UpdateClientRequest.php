@@ -21,14 +21,14 @@ class Oauth2ClientsOauth2UpdateClientRequest
 
     /**
      *
-     * @var Components\OAuth2ClientConfigurationUpdate $oAuth2ClientConfigurationUpdate
+     * @var \Polar\Models\Components\OAuth2ClientConfigurationUpdate $oAuth2ClientConfigurationUpdate
      */
     #[SpeakeasyMetadata('request:mediaType=application/json')]
     public Components\OAuth2ClientConfigurationUpdate $oAuth2ClientConfigurationUpdate;
 
     /**
      * @param  string  $clientId
-     * @param  Components\OAuth2ClientConfigurationUpdate  $oAuth2ClientConfigurationUpdate
+     * @param  \Polar\Models\Components\OAuth2ClientConfigurationUpdate  $oAuth2ClientConfigurationUpdate
      * @phpstan-pure
      */
     public function __construct(string $clientId, Components\OAuth2ClientConfigurationUpdate $oAuth2ClientConfigurationUpdate)

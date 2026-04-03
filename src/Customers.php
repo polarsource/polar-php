@@ -52,11 +52,11 @@ class Customers
      *
      * **Scopes**: `customers:write`
      *
-     * @param  Components\CustomerCreate  $request
-     * @return Operations\CustomersCreateResponse
+     * @param  \Polar\Models\Components\CustomerIndividualCreate|\Polar\Models\Components\CustomerTeamCreate  $request
+     * @return \Polar\Models\Operations\CustomersCreateResponse
      * @throws \Polar\Models\Errors\APIException
      */
-    public function create(Components\CustomerCreate $request, ?Options $options = null): Operations\CustomersCreateResponse
+    public function create(Components\CustomerIndividualCreate|Components\CustomerTeamCreate $request, ?Options $options = null): Operations\CustomersCreateResponse
     {
         $baseUrl = $this->sdkConfiguration->getTemplatedServerUrl();
         $url = Utils\Utils::generateUrl($baseUrl, '/v1/customers/');
@@ -93,7 +93,7 @@ class Customers
 
                 $serializer = Utils\JSON::createSerializer();
                 $responseData = (string) $httpResponse->getBody();
-                $obj = $serializer->deserialize($responseData, '\Polar\Models\Components\Customer', 'json', DeserializationContext::create()->setRequireAllRequiredProperties(true));
+                $obj = $serializer->deserialize($responseData, '\Polar\Models\Components\CustomerIndividual|\Polar\Models\Components\CustomerTeam', 'json', DeserializationContext::create()->setRequireAllRequiredProperties(true));
                 $response = new Operations\CustomersCreateResponse(
                     statusCode: $statusCode,
                     contentType: $contentType,
@@ -147,7 +147,7 @@ class Customers
      *
      * @param  string  $id
      * @param  ?bool  $anonymize
-     * @return Operations\CustomersDeleteResponse
+     * @return \Polar\Models\Operations\CustomersDeleteResponse
      * @throws \Polar\Models\Errors\APIException
      */
     public function delete(string $id, ?bool $anonymize = null, ?Options $options = null): Operations\CustomersDeleteResponse
@@ -235,7 +235,7 @@ class Customers
      *
      * @param  string  $externalId
      * @param  ?bool  $anonymize
-     * @return Operations\CustomersDeleteExternalResponse
+     * @return \Polar\Models\Operations\CustomersDeleteExternalResponse
      * @throws \Polar\Models\Errors\APIException
      */
     public function deleteExternal(string $externalId, ?bool $anonymize = null, ?Options $options = null): Operations\CustomersDeleteExternalResponse
@@ -318,7 +318,7 @@ class Customers
      * **Scopes**: `customers:read` `customers:write`
      *
      * @param  string|array<string>|null  $organizationId
-     * @return Operations\CustomersExportResponse
+     * @return \Polar\Models\Operations\CustomersExportResponse
      * @throws \Polar\Models\Errors\APIException
      */
     public function export(string|array|null $organizationId = null, ?Options $options = null): Operations\CustomersExportResponse
@@ -408,7 +408,7 @@ class Customers
      * **Scopes**: `customers:read` `customers:write`
      *
      * @param  string  $id
-     * @return Operations\CustomersGetResponse
+     * @return \Polar\Models\Operations\CustomersGetResponse
      * @throws \Polar\Models\Errors\APIException
      */
     public function get(string $id, ?Options $options = null): Operations\CustomersGetResponse
@@ -446,7 +446,7 @@ class Customers
 
                 $serializer = Utils\JSON::createSerializer();
                 $responseData = (string) $httpResponse->getBody();
-                $obj = $serializer->deserialize($responseData, '\Polar\Models\Components\Customer', 'json', DeserializationContext::create()->setRequireAllRequiredProperties(true));
+                $obj = $serializer->deserialize($responseData, '\Polar\Models\Components\CustomerIndividual|\Polar\Models\Components\CustomerTeam', 'json', DeserializationContext::create()->setRequireAllRequiredProperties(true));
                 $response = new Operations\CustomersGetResponse(
                     statusCode: $statusCode,
                     contentType: $contentType,
@@ -496,7 +496,7 @@ class Customers
      * **Scopes**: `customers:read` `customers:write`
      *
      * @param  string  $externalId
-     * @return Operations\CustomersGetExternalResponse
+     * @return \Polar\Models\Operations\CustomersGetExternalResponse
      * @throws \Polar\Models\Errors\APIException
      */
     public function getExternal(string $externalId, ?Options $options = null): Operations\CustomersGetExternalResponse
@@ -534,7 +534,7 @@ class Customers
 
                 $serializer = Utils\JSON::createSerializer();
                 $responseData = (string) $httpResponse->getBody();
-                $obj = $serializer->deserialize($responseData, '\Polar\Models\Components\Customer', 'json', DeserializationContext::create()->setRequireAllRequiredProperties(true));
+                $obj = $serializer->deserialize($responseData, '\Polar\Models\Components\CustomerIndividual|\Polar\Models\Components\CustomerTeam', 'json', DeserializationContext::create()->setRequireAllRequiredProperties(true));
                 $response = new Operations\CustomersGetExternalResponse(
                     statusCode: $statusCode,
                     contentType: $contentType,
@@ -590,7 +590,7 @@ class Customers
      * **Scopes**: `customers:read` `customers:write`
      *
      * @param  string  $id
-     * @return Operations\CustomersGetStateResponse
+     * @return \Polar\Models\Operations\CustomersGetStateResponse
      * @throws \Polar\Models\Errors\APIException
      */
     public function getState(string $id, ?Options $options = null): Operations\CustomersGetStateResponse
@@ -628,7 +628,7 @@ class Customers
 
                 $serializer = Utils\JSON::createSerializer();
                 $responseData = (string) $httpResponse->getBody();
-                $obj = $serializer->deserialize($responseData, '\Polar\Models\Components\CustomerState', 'json', DeserializationContext::create()->setRequireAllRequiredProperties(true));
+                $obj = $serializer->deserialize($responseData, '\Polar\Models\Components\CustomerStateIndividual|\Polar\Models\Components\CustomerStateTeam', 'json', DeserializationContext::create()->setRequireAllRequiredProperties(true));
                 $response = new Operations\CustomersGetStateResponse(
                     statusCode: $statusCode,
                     contentType: $contentType,
@@ -684,7 +684,7 @@ class Customers
      * **Scopes**: `customers:read` `customers:write`
      *
      * @param  string  $externalId
-     * @return Operations\CustomersGetStateExternalResponse
+     * @return \Polar\Models\Operations\CustomersGetStateExternalResponse
      * @throws \Polar\Models\Errors\APIException
      */
     public function getStateExternal(string $externalId, ?Options $options = null): Operations\CustomersGetStateExternalResponse
@@ -722,7 +722,7 @@ class Customers
 
                 $serializer = Utils\JSON::createSerializer();
                 $responseData = (string) $httpResponse->getBody();
-                $obj = $serializer->deserialize($responseData, '\Polar\Models\Components\CustomerState', 'json', DeserializationContext::create()->setRequireAllRequiredProperties(true));
+                $obj = $serializer->deserialize($responseData, '\Polar\Models\Components\CustomerStateIndividual|\Polar\Models\Components\CustomerStateTeam', 'json', DeserializationContext::create()->setRequireAllRequiredProperties(true));
                 $response = new Operations\CustomersGetStateExternalResponse(
                     statusCode: $statusCode,
                     contentType: $contentType,
@@ -771,8 +771,8 @@ class Customers
      *
      * **Scopes**: `customers:read` `customers:write`
      *
-     * @param  ?Operations\CustomersListRequest  $request
-     * @return Operations\CustomersListResponse
+     * @param  ?\Polar\Models\Operations\CustomersListRequest  $request
+     * @return \Polar\Models\Operations\CustomersListResponse
      * @throws \Polar\Models\Errors\APIException
      */
     private function listIndividual(?Operations\CustomersListRequest $request = null, ?Options $options = null): Operations\CustomersListResponse
@@ -887,8 +887,8 @@ class Customers
      *
      * **Scopes**: `customers:read` `customers:write`
      *
-     * @param  ?Operations\CustomersListRequest  $request
-     * @return \Generator<Operations\CustomersListResponse>
+     * @param  ?\Polar\Models\Operations\CustomersListRequest  $request
+     * @return \Generator<\Polar\Models\Operations\CustomersListResponse>
      * @throws \Polar\Models\Errors\APIException
      */
     public function list(?Operations\CustomersListRequest $request = null, ?Options $options = null): \Generator
@@ -907,9 +907,9 @@ class Customers
      *
      * **Scopes**: `customers:write`
      *
-     * @param  Components\CustomerUpdate  $customerUpdate
+     * @param  \Polar\Models\Components\CustomerUpdate  $customerUpdate
      * @param  string  $id
-     * @return Operations\CustomersUpdateResponse
+     * @return \Polar\Models\Operations\CustomersUpdateResponse
      * @throws \Polar\Models\Errors\APIException
      */
     public function update(Components\CustomerUpdate $customerUpdate, string $id, ?Options $options = null): Operations\CustomersUpdateResponse
@@ -953,7 +953,7 @@ class Customers
 
                 $serializer = Utils\JSON::createSerializer();
                 $responseData = (string) $httpResponse->getBody();
-                $obj = $serializer->deserialize($responseData, '\Polar\Models\Components\Customer', 'json', DeserializationContext::create()->setRequireAllRequiredProperties(true));
+                $obj = $serializer->deserialize($responseData, '\Polar\Models\Components\CustomerIndividual|\Polar\Models\Components\CustomerTeam', 'json', DeserializationContext::create()->setRequireAllRequiredProperties(true));
                 $response = new Operations\CustomersUpdateResponse(
                     statusCode: $statusCode,
                     contentType: $contentType,
@@ -1002,9 +1002,9 @@ class Customers
      *
      * **Scopes**: `customers:write`
      *
-     * @param  Components\CustomerUpdateExternalID  $customerUpdateExternalID
+     * @param  \Polar\Models\Components\CustomerUpdateExternalID  $customerUpdateExternalID
      * @param  string  $externalId
-     * @return Operations\CustomersUpdateExternalResponse
+     * @return \Polar\Models\Operations\CustomersUpdateExternalResponse
      * @throws \Polar\Models\Errors\APIException
      */
     public function updateExternal(Components\CustomerUpdateExternalID $customerUpdateExternalID, string $externalId, ?Options $options = null): Operations\CustomersUpdateExternalResponse
@@ -1048,7 +1048,7 @@ class Customers
 
                 $serializer = Utils\JSON::createSerializer();
                 $responseData = (string) $httpResponse->getBody();
-                $obj = $serializer->deserialize($responseData, '\Polar\Models\Components\Customer', 'json', DeserializationContext::create()->setRequireAllRequiredProperties(true));
+                $obj = $serializer->deserialize($responseData, '\Polar\Models\Components\CustomerIndividual|\Polar\Models\Components\CustomerTeam', 'json', DeserializationContext::create()->setRequireAllRequiredProperties(true));
                 $response = new Operations\CustomersUpdateExternalResponse(
                     statusCode: $statusCode,
                     contentType: $contentType,

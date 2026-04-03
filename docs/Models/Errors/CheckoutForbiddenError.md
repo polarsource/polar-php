@@ -7,7 +7,7 @@
 
 ```php
 /**
-* @var Errors\AlreadyActiveSubscriptionError
+* @var \Polar\Models\Errors\AlreadyActiveSubscriptionError
 */
 Errors\AlreadyActiveSubscriptionError $value = /* values here */
 ```
@@ -16,7 +16,7 @@ Errors\AlreadyActiveSubscriptionError $value = /* values here */
 
 ```php
 /**
-* @var Errors\NotOpenCheckout
+* @var \Polar\Models\Errors\NotOpenCheckout
 */
 Errors\NotOpenCheckout $value = /* values here */
 ```
@@ -25,7 +25,7 @@ Errors\NotOpenCheckout $value = /* values here */
 
 ```php
 /**
-* @var Errors\PaymentNotReady
+* @var \Polar\Models\Errors\PaymentNotReady
 */
 Errors\PaymentNotReady $value = /* values here */
 ```
@@ -34,7 +34,7 @@ Errors\PaymentNotReady $value = /* values here */
 
 ```php
 /**
-* @var Errors\TrialAlreadyRedeemed
+* @var \Polar\Models\Errors\TrialAlreadyRedeemed
 */
 Errors\TrialAlreadyRedeemed $value = /* values here */
 ```

@@ -35,7 +35,7 @@ class Oauth2RevokeTokenResponse
     /**
      * Successful Response
      *
-     * @var ?Components\RevokeTokenResponse $revokeTokenResponse
+     * @var ?\Polar\Models\Components\RevokeTokenResponse $revokeTokenResponse
      */
     public ?Components\RevokeTokenResponse $revokeTokenResponse = null;
 
@@ -43,7 +43,7 @@ class Oauth2RevokeTokenResponse
      * @param  string  $contentType
      * @param  int  $statusCode
      * @param  \Psr\Http\Message\ResponseInterface  $rawResponse
-     * @param  ?Components\RevokeTokenResponse  $revokeTokenResponse
+     * @param  ?\Polar\Models\Components\RevokeTokenResponse  $revokeTokenResponse
      * @phpstan-pure
      */
     public function __construct(string $contentType, int $statusCode, \Psr\Http\Message\ResponseInterface $rawResponse, ?Components\RevokeTokenResponse $revokeTokenResponse = null)

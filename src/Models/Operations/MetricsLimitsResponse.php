@@ -35,7 +35,7 @@ class MetricsLimitsResponse
     /**
      * Successful Response
      *
-     * @var ?Components\MetricsLimits $metricsLimits
+     * @var ?\Polar\Models\Components\MetricsLimits $metricsLimits
      */
     public ?Components\MetricsLimits $metricsLimits = null;
 
@@ -43,7 +43,7 @@ class MetricsLimitsResponse
      * @param  string  $contentType
      * @param  int  $statusCode
      * @param  \Psr\Http\Message\ResponseInterface  $rawResponse
-     * @param  ?Components\MetricsLimits  $metricsLimits
+     * @param  ?\Polar\Models\Components\MetricsLimits  $metricsLimits
      * @phpstan-pure
      */
     public function __construct(string $contentType, int $statusCode, \Psr\Http\Message\ResponseInterface $rawResponse, ?Components\MetricsLimits $metricsLimits = null)

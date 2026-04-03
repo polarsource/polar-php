@@ -37,20 +37,20 @@ class LicenseKeyCustomer
     public array $metadata;
 
     /**
-     * The email address of the customer. This must be unique within the organization.
-     *
-     * @var string $email
-     */
-    #[\Speakeasy\Serializer\Annotation\SerializedName('email')]
-    public string $email;
-
-    /**
      * Whether the customer email address is verified. The address is automatically verified when the customer accesses the customer portal using their email address.
      *
      * @var bool $emailVerified
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('email_verified')]
     public bool $emailVerified;
+
+    /**
+     *
+     * @var \Polar\Models\Components\CustomerType $type
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('type')]
+    #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\CustomerType')]
+    public CustomerType $type;
 
     /**
      * The ID of the organization owning the customer.
@@ -85,7 +85,7 @@ class LicenseKeyCustomer
 
     /**
      *
-     * @var ?Address $billingAddress
+     * @var ?\Polar\Models\Components\Address $billingAddress
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('billing_address')]
     #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\Address|null')]
@@ -94,7 +94,7 @@ class LicenseKeyCustomer
     /**
      * $taxId
      *
-     * @var ?array<string|TaxIDFormat|null> $taxId
+     * @var ?array<string|\Polar\Models\Components\TaxIDFormat|null> $taxId
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('tax_id')]
     #[\Speakeasy\Serializer\Annotation\Type('array<string|\Polar\Models\Components\TaxIDFormat|null>|null')]
@@ -118,14 +118,13 @@ class LicenseKeyCustomer
     public ?string $externalId = null;
 
     /**
-     * The type of customer: 'individual' for single users, 'team' for customers with multiple members. Legacy customers may have NULL type which is treated as 'individual'.
+     * The email address of the customer. This must be unique within the organization.
      *
-     * @var ?CustomerType $type
+     * @var ?string $email
      */
-    #[\Speakeasy\Serializer\Annotation\SerializedName('type')]
-    #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\CustomerType|null')]
+    #[\Speakeasy\Serializer\Annotation\SerializedName('email')]
     #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
-    public ?CustomerType $type = null;
+    public ?string $email = null;
 
     /**
      *
@@ -139,27 +138,27 @@ class LicenseKeyCustomer
      * @param  string  $id
      * @param  \DateTime  $createdAt
      * @param  array<string, string|int|float|bool>  $metadata
-     * @param  string  $email
      * @param  bool  $emailVerified
+     * @param  \Polar\Models\Components\CustomerType  $type
      * @param  string  $organizationId
      * @param  string  $avatarUrl
      * @param  ?\DateTime  $modifiedAt
      * @param  ?string  $name
-     * @param  ?Address  $billingAddress
-     * @param  ?array<string|TaxIDFormat|null>  $taxId
+     * @param  ?\Polar\Models\Components\Address  $billingAddress
+     * @param  ?array<string|\Polar\Models\Components\TaxIDFormat|null>  $taxId
      * @param  ?\DateTime  $deletedAt
      * @param  ?string  $externalId
-     * @param  ?CustomerType  $type
+     * @param  ?string  $email
      * @param  ?string  $locale
      * @phpstan-pure
      */
-    public function __construct(string $id, \DateTime $createdAt, array $metadata, string $email, bool $emailVerified, string $organizationId, string $avatarUrl, ?\DateTime $modifiedAt = null, ?string $name = null, ?Address $billingAddress = null, ?array $taxId = null, ?\DateTime $deletedAt = null, ?string $externalId = null, ?CustomerType $type = null, ?string $locale = null)
+    public function __construct(string $id, \DateTime $createdAt, array $metadata, bool $emailVerified, CustomerType $type, string $organizationId, string $avatarUrl, ?\DateTime $modifiedAt = null, ?string $name = null, ?Address $billingAddress = null, ?array $taxId = null, ?\DateTime $deletedAt = null, ?string $externalId = null, ?string $email = null, ?string $locale = null)
     {
         $this->id = $id;
         $this->createdAt = $createdAt;
         $this->metadata = $metadata;
-        $this->email = $email;
         $this->emailVerified = $emailVerified;
+        $this->type = $type;
         $this->organizationId = $organizationId;
         $this->avatarUrl = $avatarUrl;
         $this->modifiedAt = $modifiedAt;
@@ -168,7 +167,7 @@ class LicenseKeyCustomer
         $this->taxId = $taxId;
         $this->deletedAt = $deletedAt;
         $this->externalId = $externalId;
-        $this->type = $type;
+        $this->email = $email;
         $this->locale = $locale;
     }
 }

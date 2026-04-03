@@ -60,13 +60,13 @@ class BenefitGrantMeterCreditWebhook
     public string $benefitId;
 
     /**
-     * A customer in an organization.
      *
-     * @var Customer $customer
+     * @var \Polar\Models\Components\CustomerIndividual|\Polar\Models\Components\CustomerTeam $customer
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('customer')]
-    #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\Customer')]
-    public Customer $customer;
+    #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\CustomerIndividual|\Polar\Models\Components\CustomerTeam')]
+    #[\Speakeasy\Serializer\Annotation\UnionDiscriminator(field: 'type', map: ['individual' => '\Polar\Models\Components\CustomerIndividual', 'team' => '\Polar\Models\Components\CustomerTeam'])]
+    public CustomerIndividual|CustomerTeam $customer;
 
     /**
      * A benefit of type `meter_unit`.
@@ -74,7 +74,7 @@ class BenefitGrantMeterCreditWebhook
      *
      * Use it to grant a number of units on a specific meter.
      *
-     * @var BenefitMeterCredit $benefit
+     * @var \Polar\Models\Components\BenefitMeterCredit $benefit
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('benefit')]
     #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\BenefitMeterCredit')]
@@ -82,7 +82,7 @@ class BenefitGrantMeterCreditWebhook
 
     /**
      *
-     * @var BenefitGrantMeterCreditProperties $properties
+     * @var \Polar\Models\Components\BenefitGrantMeterCreditProperties $properties
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('properties')]
     #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\BenefitGrantMeterCreditProperties')]
@@ -142,7 +142,7 @@ class BenefitGrantMeterCreditWebhook
     /**
      * The error information if the benefit grant failed with an unrecoverable error.
      *
-     * @var ?BenefitGrantError $error
+     * @var ?\Polar\Models\Components\BenefitGrantError $error
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('error')]
     #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\BenefitGrantError|null')]
@@ -151,7 +151,7 @@ class BenefitGrantMeterCreditWebhook
 
     /**
      *
-     * @var ?Member $member
+     * @var ?\Polar\Models\Components\Member $member
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('member')]
     #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\Member|null')]
@@ -160,7 +160,7 @@ class BenefitGrantMeterCreditWebhook
 
     /**
      *
-     * @var ?BenefitGrantMeterCreditProperties $previousProperties
+     * @var ?\Polar\Models\Components\BenefitGrantMeterCreditProperties $previousProperties
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('previous_properties')]
     #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\BenefitGrantMeterCreditProperties|null')]
@@ -174,21 +174,21 @@ class BenefitGrantMeterCreditWebhook
      * @param  bool  $isRevoked
      * @param  string  $customerId
      * @param  string  $benefitId
-     * @param  Customer  $customer
-     * @param  BenefitMeterCredit  $benefit
-     * @param  BenefitGrantMeterCreditProperties  $properties
+     * @param  \Polar\Models\Components\CustomerIndividual|\Polar\Models\Components\CustomerTeam  $customer
+     * @param  \Polar\Models\Components\BenefitMeterCredit  $benefit
+     * @param  \Polar\Models\Components\BenefitGrantMeterCreditProperties  $properties
      * @param  ?\DateTime  $modifiedAt
      * @param  ?string  $subscriptionId
      * @param  ?string  $orderId
      * @param  ?\DateTime  $grantedAt
      * @param  ?\DateTime  $revokedAt
      * @param  ?string  $memberId
-     * @param  ?BenefitGrantError  $error
-     * @param  ?Member  $member
-     * @param  ?BenefitGrantMeterCreditProperties  $previousProperties
+     * @param  ?\Polar\Models\Components\BenefitGrantError  $error
+     * @param  ?\Polar\Models\Components\Member  $member
+     * @param  ?\Polar\Models\Components\BenefitGrantMeterCreditProperties  $previousProperties
      * @phpstan-pure
      */
-    public function __construct(\DateTime $createdAt, string $id, bool $isGranted, bool $isRevoked, string $customerId, string $benefitId, Customer $customer, BenefitMeterCredit $benefit, BenefitGrantMeterCreditProperties $properties, ?\DateTime $modifiedAt = null, ?string $subscriptionId = null, ?string $orderId = null, ?\DateTime $grantedAt = null, ?\DateTime $revokedAt = null, ?string $memberId = null, ?BenefitGrantError $error = null, ?Member $member = null, ?BenefitGrantMeterCreditProperties $previousProperties = null)
+    public function __construct(\DateTime $createdAt, string $id, bool $isGranted, bool $isRevoked, string $customerId, string $benefitId, CustomerIndividual|CustomerTeam $customer, BenefitMeterCredit $benefit, BenefitGrantMeterCreditProperties $properties, ?\DateTime $modifiedAt = null, ?string $subscriptionId = null, ?string $orderId = null, ?\DateTime $grantedAt = null, ?\DateTime $revokedAt = null, ?string $memberId = null, ?BenefitGrantError $error = null, ?Member $member = null, ?BenefitGrantMeterCreditProperties $previousProperties = null)
     {
         $this->createdAt = $createdAt;
         $this->id = $id;

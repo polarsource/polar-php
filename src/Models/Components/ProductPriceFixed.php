@@ -30,7 +30,7 @@ class ProductPriceFixed
 
     /**
      *
-     * @var ProductPriceSource $source
+     * @var \Polar\Models\Components\ProductPriceSource $source
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('source')]
     #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\ProductPriceSource')]
@@ -79,7 +79,7 @@ class ProductPriceFixed
     /**
      * The tax behavior of the price. If null, it defaults to the organization's default tax behavior.
      *
-     * @var ?TaxBehaviorOption $taxBehavior
+     * @var ?\Polar\Models\Components\TaxBehaviorOption $taxBehavior
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('tax_behavior')]
     #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\TaxBehaviorOption|null')]
@@ -95,14 +95,14 @@ class ProductPriceFixed
     /**
      * @param  \DateTime  $createdAt
      * @param  string  $id
-     * @param  ProductPriceSource  $source
+     * @param  \Polar\Models\Components\ProductPriceSource  $source
      * @param  string  $amountType
      * @param  string  $priceCurrency
      * @param  bool  $isArchived
      * @param  string  $productId
      * @param  int  $priceAmount
      * @param  ?\DateTime  $modifiedAt
-     * @param  ?TaxBehaviorOption  $taxBehavior
+     * @param  ?\Polar\Models\Components\TaxBehaviorOption  $taxBehavior
      * @phpstan-pure
      */
     public function __construct(\DateTime $createdAt, string $id, ProductPriceSource $source, string $priceCurrency, bool $isArchived, string $productId, int $priceAmount, ?\DateTime $modifiedAt = null, ?TaxBehaviorOption $taxBehavior = null, string $amountType = 'fixed')

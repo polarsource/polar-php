@@ -77,7 +77,7 @@ class BenefitGitHubRepository
     /**
      * Properties for a benefit of type `github_repository`.
      *
-     * @var BenefitGitHubRepositoryProperties $properties
+     * @var \Polar\Models\Components\BenefitGitHubRepositoryProperties $properties
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('properties')]
     #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\BenefitGitHubRepositoryProperties')]
@@ -107,7 +107,7 @@ class BenefitGitHubRepository
      * @param  bool  $deletable
      * @param  string  $organizationId
      * @param  array<string, string|int|float|bool>  $metadata
-     * @param  BenefitGitHubRepositoryProperties  $properties
+     * @param  \Polar\Models\Components\BenefitGitHubRepositoryProperties  $properties
      * @param  ?\DateTime  $modifiedAt
      * @phpstan-pure
      */

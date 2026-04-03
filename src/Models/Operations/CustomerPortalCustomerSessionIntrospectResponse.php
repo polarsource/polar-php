@@ -35,7 +35,7 @@ class CustomerPortalCustomerSessionIntrospectResponse
     /**
      * Successful Response
      *
-     * @var ?Components\CustomerCustomerSession $customerCustomerSession
+     * @var ?\Polar\Models\Components\CustomerCustomerSession $customerCustomerSession
      */
     public ?Components\CustomerCustomerSession $customerCustomerSession = null;
 
@@ -43,7 +43,7 @@ class CustomerPortalCustomerSessionIntrospectResponse
      * @param  string  $contentType
      * @param  int  $statusCode
      * @param  \Psr\Http\Message\ResponseInterface  $rawResponse
-     * @param  ?Components\CustomerCustomerSession  $customerCustomerSession
+     * @param  ?\Polar\Models\Components\CustomerCustomerSession  $customerCustomerSession
      * @phpstan-pure
      */
     public function __construct(string $contentType, int $statusCode, \Psr\Http\Message\ResponseInterface $rawResponse, ?Components\CustomerCustomerSession $customerCustomerSession = null)

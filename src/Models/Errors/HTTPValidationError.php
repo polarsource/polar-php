@@ -15,7 +15,7 @@ class HTTPValidationError
     /**
      * $detail
      *
-     * @var ?array<Components\ValidationError> $detail
+     * @var ?array<\Polar\Models\Components\ValidationError> $detail
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('detail')]
     #[\Speakeasy\Serializer\Annotation\Type('array<\Polar\Models\Components\ValidationError>|null')]
@@ -23,7 +23,7 @@ class HTTPValidationError
     public ?array $detail = null;
 
     /**
-     * @param  ?array<Components\ValidationError>  $detail
+     * @param  ?array<\Polar\Models\Components\ValidationError>  $detail
      * @phpstan-pure
      */
     public function __construct(?array $detail = null)

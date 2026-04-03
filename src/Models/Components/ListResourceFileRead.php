@@ -14,7 +14,7 @@ class ListResourceFileRead
     /**
      * $items
      *
-     * @var array<DownloadableFileRead|ProductMediaFileRead|OrganizationAvatarFileRead> $items
+     * @var array<\Polar\Models\Components\DownloadableFileRead|\Polar\Models\Components\ProductMediaFileRead|\Polar\Models\Components\OrganizationAvatarFileRead> $items
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('items')]
     #[\Speakeasy\Serializer\Annotation\Type('array<\Polar\Models\Components\DownloadableFileRead|\Polar\Models\Components\ProductMediaFileRead|\Polar\Models\Components\OrganizationAvatarFileRead>')]
@@ -22,15 +22,15 @@ class ListResourceFileRead
 
     /**
      *
-     * @var Pagination $pagination
+     * @var \Polar\Models\Components\Pagination $pagination
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('pagination')]
     #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\Pagination')]
     public Pagination $pagination;
 
     /**
-     * @param  array<DownloadableFileRead|ProductMediaFileRead|OrganizationAvatarFileRead>  $items
-     * @param  Pagination  $pagination
+     * @param  array<\Polar\Models\Components\DownloadableFileRead|\Polar\Models\Components\ProductMediaFileRead|\Polar\Models\Components\OrganizationAvatarFileRead>  $items
+     * @param  \Polar\Models\Components\Pagination  $pagination
      * @phpstan-pure
      */
     public function __construct(array $items, Pagination $pagination)

@@ -7,7 +7,7 @@
 
 ```php
 /**
-* @var Components\BenefitGrantDiscordProperties
+* @var \Polar\Models\Components\BenefitGrantDiscordProperties
 */
 Components\BenefitGrantDiscordProperties $value = /* values here */
 ```
@@ -16,7 +16,7 @@ Components\BenefitGrantDiscordProperties $value = /* values here */
 
 ```php
 /**
-* @var Components\BenefitGrantGitHubRepositoryProperties
+* @var \Polar\Models\Components\BenefitGrantGitHubRepositoryProperties
 */
 Components\BenefitGrantGitHubRepositoryProperties $value = /* values here */
 ```
@@ -25,7 +25,7 @@ Components\BenefitGrantGitHubRepositoryProperties $value = /* values here */
 
 ```php
 /**
-* @var Components\BenefitGrantDownloadablesProperties
+* @var \Polar\Models\Components\BenefitGrantDownloadablesProperties
 */
 Components\BenefitGrantDownloadablesProperties $value = /* values here */
 ```
@@ -34,7 +34,7 @@ Components\BenefitGrantDownloadablesProperties $value = /* values here */
 
 ```php
 /**
-* @var Components\BenefitGrantLicenseKeysProperties
+* @var \Polar\Models\Components\BenefitGrantLicenseKeysProperties
 */
 Components\BenefitGrantLicenseKeysProperties $value = /* values here */
 ```
@@ -43,7 +43,7 @@ Components\BenefitGrantLicenseKeysProperties $value = /* values here */
 
 ```php
 /**
-* @var Components\BenefitGrantCustomProperties
+* @var \Polar\Models\Components\BenefitGrantCustomProperties
 */
 Components\BenefitGrantCustomProperties $value = /* values here */
 ```
@@ -52,7 +52,7 @@ Components\BenefitGrantCustomProperties $value = /* values here */
 
 ```php
 /**
-* @var Components\BenefitGrantFeatureFlagProperties
+* @var \Polar\Models\Components\BenefitGrantFeatureFlagProperties
 */
 Components\BenefitGrantFeatureFlagProperties $value = /* values here */
 ```

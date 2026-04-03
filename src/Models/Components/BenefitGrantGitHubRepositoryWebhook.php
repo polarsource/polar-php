@@ -60,13 +60,13 @@ class BenefitGrantGitHubRepositoryWebhook
     public string $benefitId;
 
     /**
-     * A customer in an organization.
      *
-     * @var Customer $customer
+     * @var \Polar\Models\Components\CustomerIndividual|\Polar\Models\Components\CustomerTeam $customer
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('customer')]
-    #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\Customer')]
-    public Customer $customer;
+    #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\CustomerIndividual|\Polar\Models\Components\CustomerTeam')]
+    #[\Speakeasy\Serializer\Annotation\UnionDiscriminator(field: 'type', map: ['individual' => '\Polar\Models\Components\CustomerIndividual', 'team' => '\Polar\Models\Components\CustomerTeam'])]
+    public CustomerIndividual|CustomerTeam $customer;
 
     /**
      * A benefit of type `github_repository`.
@@ -74,7 +74,7 @@ class BenefitGrantGitHubRepositoryWebhook
      *
      * Use it to automatically invite your backers to a private GitHub repository.
      *
-     * @var BenefitGitHubRepository $benefit
+     * @var \Polar\Models\Components\BenefitGitHubRepository $benefit
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('benefit')]
     #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\BenefitGitHubRepository')]
@@ -82,7 +82,7 @@ class BenefitGrantGitHubRepositoryWebhook
 
     /**
      *
-     * @var BenefitGrantGitHubRepositoryProperties $properties
+     * @var \Polar\Models\Components\BenefitGrantGitHubRepositoryProperties $properties
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('properties')]
     #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\BenefitGrantGitHubRepositoryProperties')]
@@ -142,7 +142,7 @@ class BenefitGrantGitHubRepositoryWebhook
     /**
      * The error information if the benefit grant failed with an unrecoverable error.
      *
-     * @var ?BenefitGrantError $error
+     * @var ?\Polar\Models\Components\BenefitGrantError $error
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('error')]
     #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\BenefitGrantError|null')]
@@ -151,7 +151,7 @@ class BenefitGrantGitHubRepositoryWebhook
 
     /**
      *
-     * @var ?Member $member
+     * @var ?\Polar\Models\Components\Member $member
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('member')]
     #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\Member|null')]
@@ -160,7 +160,7 @@ class BenefitGrantGitHubRepositoryWebhook
 
     /**
      *
-     * @var ?BenefitGrantGitHubRepositoryProperties $previousProperties
+     * @var ?\Polar\Models\Components\BenefitGrantGitHubRepositoryProperties $previousProperties
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('previous_properties')]
     #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\BenefitGrantGitHubRepositoryProperties|null')]
@@ -174,21 +174,21 @@ class BenefitGrantGitHubRepositoryWebhook
      * @param  bool  $isRevoked
      * @param  string  $customerId
      * @param  string  $benefitId
-     * @param  Customer  $customer
-     * @param  BenefitGitHubRepository  $benefit
-     * @param  BenefitGrantGitHubRepositoryProperties  $properties
+     * @param  \Polar\Models\Components\CustomerIndividual|\Polar\Models\Components\CustomerTeam  $customer
+     * @param  \Polar\Models\Components\BenefitGitHubRepository  $benefit
+     * @param  \Polar\Models\Components\BenefitGrantGitHubRepositoryProperties  $properties
      * @param  ?\DateTime  $modifiedAt
      * @param  ?string  $subscriptionId
      * @param  ?string  $orderId
      * @param  ?\DateTime  $grantedAt
      * @param  ?\DateTime  $revokedAt
      * @param  ?string  $memberId
-     * @param  ?BenefitGrantError  $error
-     * @param  ?Member  $member
-     * @param  ?BenefitGrantGitHubRepositoryProperties  $previousProperties
+     * @param  ?\Polar\Models\Components\BenefitGrantError  $error
+     * @param  ?\Polar\Models\Components\Member  $member
+     * @param  ?\Polar\Models\Components\BenefitGrantGitHubRepositoryProperties  $previousProperties
      * @phpstan-pure
      */
-    public function __construct(\DateTime $createdAt, string $id, bool $isGranted, bool $isRevoked, string $customerId, string $benefitId, Customer $customer, BenefitGitHubRepository $benefit, BenefitGrantGitHubRepositoryProperties $properties, ?\DateTime $modifiedAt = null, ?string $subscriptionId = null, ?string $orderId = null, ?\DateTime $grantedAt = null, ?\DateTime $revokedAt = null, ?string $memberId = null, ?BenefitGrantError $error = null, ?Member $member = null, ?BenefitGrantGitHubRepositoryProperties $previousProperties = null)
+    public function __construct(\DateTime $createdAt, string $id, bool $isGranted, bool $isRevoked, string $customerId, string $benefitId, CustomerIndividual|CustomerTeam $customer, BenefitGitHubRepository $benefit, BenefitGrantGitHubRepositoryProperties $properties, ?\DateTime $modifiedAt = null, ?string $subscriptionId = null, ?string $orderId = null, ?\DateTime $grantedAt = null, ?\DateTime $revokedAt = null, ?string $memberId = null, ?BenefitGrantError $error = null, ?Member $member = null, ?BenefitGrantGitHubRepositoryProperties $previousProperties = null)
     {
         $this->createdAt = $createdAt;
         $this->id = $id;

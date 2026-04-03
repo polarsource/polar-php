@@ -56,7 +56,7 @@ class FileDownload
 
     /**
      *
-     * @var S3DownloadURL $download
+     * @var \Polar\Models\Components\S3DownloadURL $download
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('download')]
     #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\S3DownloadURL')]
@@ -71,7 +71,7 @@ class FileDownload
 
     /**
      *
-     * @var FileServiceTypes $service
+     * @var \Polar\Models\Components\FileServiceTypes $service
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('service')]
     #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\FileServiceTypes')]
@@ -133,9 +133,9 @@ class FileDownload
      * @param  string  $path
      * @param  string  $mimeType
      * @param  int  $size
-     * @param  S3DownloadURL  $download
+     * @param  \Polar\Models\Components\S3DownloadURL  $download
      * @param  bool  $isUploaded
-     * @param  FileServiceTypes  $service
+     * @param  \Polar\Models\Components\FileServiceTypes  $service
      * @param  string  $sizeReadable
      * @param  ?string  $storageVersion
      * @param  ?string  $checksumEtag

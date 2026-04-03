@@ -46,7 +46,7 @@ class SubscriptionUpdatedEvent
 
     /**
      *
-     * @var SubscriptionUpdatedProductMetadata|SubscriptionUpdatedDiscountMetadata|SubscriptionUpdatedTrialMetadata|SubscriptionUpdatedSeatsMetadata|SubscriptionUpdatedBillingPeriodMetadata $metadata
+     * @var \Polar\Models\Components\SubscriptionUpdatedProductMetadata|\Polar\Models\Components\SubscriptionUpdatedDiscountMetadata|\Polar\Models\Components\SubscriptionUpdatedTrialMetadata|\Polar\Models\Components\SubscriptionUpdatedSeatsMetadata|\Polar\Models\Components\SubscriptionUpdatedBillingPeriodMetadata $metadata
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('metadata')]
     #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\SubscriptionUpdatedProductMetadata|\Polar\Models\Components\SubscriptionUpdatedDiscountMetadata|\Polar\Models\Components\SubscriptionUpdatedTrialMetadata|\Polar\Models\Components\SubscriptionUpdatedSeatsMetadata|\Polar\Models\Components\SubscriptionUpdatedBillingPeriodMetadata')]
@@ -63,11 +63,12 @@ class SubscriptionUpdatedEvent
     /**
      * The customer associated with the event.
      *
-     * @var ?Customer $customer
+     * @var \Polar\Models\Components\CustomerIndividual|\Polar\Models\Components\CustomerTeam|null $customer
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('customer')]
-    #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\Customer|null')]
-    public ?Customer $customer;
+    #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\CustomerIndividual|\Polar\Models\Components\CustomerTeam|null')]
+    #[\Speakeasy\Serializer\Annotation\UnionDiscriminator(field: 'type', map: ['individual' => '\Polar\Models\Components\CustomerIndividual', 'team' => '\Polar\Models\Components\CustomerTeam'])]
+    public CustomerIndividual|CustomerTeam|null $customer;
 
     /**
      * ID of the customer in your system associated with the event.
@@ -136,9 +137,9 @@ class SubscriptionUpdatedEvent
      * @param  string  $label
      * @param  string  $source
      * @param  string  $name
-     * @param  SubscriptionUpdatedProductMetadata|SubscriptionUpdatedDiscountMetadata|SubscriptionUpdatedTrialMetadata|SubscriptionUpdatedSeatsMetadata|SubscriptionUpdatedBillingPeriodMetadata  $metadata
+     * @param  \Polar\Models\Components\SubscriptionUpdatedProductMetadata|\Polar\Models\Components\SubscriptionUpdatedDiscountMetadata|\Polar\Models\Components\SubscriptionUpdatedTrialMetadata|\Polar\Models\Components\SubscriptionUpdatedSeatsMetadata|\Polar\Models\Components\SubscriptionUpdatedBillingPeriodMetadata  $metadata
      * @param  ?string  $customerId
-     * @param  ?Customer  $customer
+     * @param  \Polar\Models\Components\CustomerIndividual|\Polar\Models\Components\CustomerTeam|null  $customer
      * @param  ?string  $externalCustomerId
      * @param  ?int  $childCount
      * @param  ?string  $memberId
@@ -146,7 +147,7 @@ class SubscriptionUpdatedEvent
      * @param  ?string  $parentId
      * @phpstan-pure
      */
-    public function __construct(string $id, \DateTime $timestamp, string $organizationId, string $label, SubscriptionUpdatedProductMetadata|SubscriptionUpdatedDiscountMetadata|SubscriptionUpdatedTrialMetadata|SubscriptionUpdatedSeatsMetadata|SubscriptionUpdatedBillingPeriodMetadata $metadata, ?string $customerId = null, ?Customer $customer = null, ?string $externalCustomerId = null, ?string $memberId = null, ?string $externalMemberId = null, ?string $parentId = null, string $source = 'system', string $name = 'subscription.updated', ?int $childCount = 0)
+    public function __construct(string $id, \DateTime $timestamp, string $organizationId, string $label, SubscriptionUpdatedProductMetadata|SubscriptionUpdatedDiscountMetadata|SubscriptionUpdatedTrialMetadata|SubscriptionUpdatedSeatsMetadata|SubscriptionUpdatedBillingPeriodMetadata $metadata, ?string $customerId = null, CustomerIndividual|CustomerTeam|null $customer = null, ?string $externalCustomerId = null, ?string $memberId = null, ?string $externalMemberId = null, ?string $parentId = null, string $source = 'system', string $name = 'subscription.updated', ?int $childCount = 0)
     {
         $this->id = $id;
         $this->timestamp = $timestamp;

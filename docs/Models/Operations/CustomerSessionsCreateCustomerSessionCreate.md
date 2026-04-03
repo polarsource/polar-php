@@ -7,7 +7,7 @@
 
 ```php
 /**
-* @var Components\CustomerSessionCustomerIDCreate
+* @var \Polar\Models\Components\CustomerSessionCustomerIDCreate
 */
 Components\CustomerSessionCustomerIDCreate $value = /* values here */
 ```
@@ -16,7 +16,7 @@ Components\CustomerSessionCustomerIDCreate $value = /* values here */
 
 ```php
 /**
-* @var Components\CustomerSessionCustomerExternalIDCreate
+* @var \Polar\Models\Components\CustomerSessionCustomerExternalIDCreate
 */
 Components\CustomerSessionCustomerExternalIDCreate $value = /* values here */
 ```

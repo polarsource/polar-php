@@ -31,7 +31,7 @@ class BenefitGitHubRepositoryProperties
     /**
      * The permission level to grant. Read more about roles and their permissions on [GitHub documentation](https://docs.github.com/en/organizations/managing-user-access-to-your-organizations-repositories/managing-repository-roles/repository-roles-for-an-organization#permissions-for-each-role).
      *
-     * @var Permission $permission
+     * @var \Polar\Models\Components\Permission $permission
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('permission')]
     #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\Permission')]
@@ -40,7 +40,7 @@ class BenefitGitHubRepositoryProperties
     /**
      * @param  string  $repositoryOwner
      * @param  string  $repositoryName
-     * @param  Permission  $permission
+     * @param  \Polar\Models\Components\Permission  $permission
      * @phpstan-pure
      */
     public function __construct(string $repositoryOwner, string $repositoryName, Permission $permission)

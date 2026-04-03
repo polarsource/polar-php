@@ -35,7 +35,7 @@ class OrdersInvoiceResponse
     /**
      * Successful Response
      *
-     * @var ?Components\OrderInvoice $orderInvoice
+     * @var ?\Polar\Models\Components\OrderInvoice $orderInvoice
      */
     public ?Components\OrderInvoice $orderInvoice = null;
 
@@ -43,7 +43,7 @@ class OrdersInvoiceResponse
      * @param  string  $contentType
      * @param  int  $statusCode
      * @param  \Psr\Http\Message\ResponseInterface  $rawResponse
-     * @param  ?Components\OrderInvoice  $orderInvoice
+     * @param  ?\Polar\Models\Components\OrderInvoice  $orderInvoice
      * @phpstan-pure
      */
     public function __construct(string $contentType, int $statusCode, \Psr\Http\Message\ResponseInterface $rawResponse, ?Components\OrderInvoice $orderInvoice = null)

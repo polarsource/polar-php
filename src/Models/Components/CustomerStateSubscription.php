@@ -39,7 +39,7 @@ class CustomerStateSubscription
 
     /**
      *
-     * @var Status $status
+     * @var \Polar\Models\Components\Status $status
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('status')]
     #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\Status')]
@@ -63,7 +63,7 @@ class CustomerStateSubscription
 
     /**
      *
-     * @var SubscriptionRecurringInterval $recurringInterval
+     * @var \Polar\Models\Components\SubscriptionRecurringInterval $recurringInterval
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('recurring_interval')]
     #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\SubscriptionRecurringInterval')]
@@ -104,7 +104,7 @@ class CustomerStateSubscription
     /**
      * List of meters associated with the subscription.
      *
-     * @var array<CustomerStateSubscriptionMeter> $meters
+     * @var array<\Polar\Models\Components\CustomerStateSubscriptionMeter> $meters
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('meters')]
     #[\Speakeasy\Serializer\Annotation\Type('array<\Polar\Models\Components\CustomerStateSubscriptionMeter>')]
@@ -180,15 +180,15 @@ class CustomerStateSubscription
      * @param  string  $id
      * @param  \DateTime  $createdAt
      * @param  array<string, string|int|float|bool>  $metadata
-     * @param  Status  $status
+     * @param  \Polar\Models\Components\Status  $status
      * @param  int  $amount
      * @param  string  $currency
-     * @param  SubscriptionRecurringInterval  $recurringInterval
+     * @param  \Polar\Models\Components\SubscriptionRecurringInterval  $recurringInterval
      * @param  \DateTime  $currentPeriodStart
      * @param  \DateTime  $currentPeriodEnd
      * @param  bool  $cancelAtPeriodEnd
      * @param  string  $productId
-     * @param  array<CustomerStateSubscriptionMeter>  $meters
+     * @param  array<\Polar\Models\Components\CustomerStateSubscriptionMeter>  $meters
      * @param  ?\DateTime  $modifiedAt
      * @param  ?array<string, string|int|bool|\DateTime|null>  $customFieldData
      * @param  ?\DateTime  $trialStart

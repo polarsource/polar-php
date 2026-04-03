@@ -22,7 +22,7 @@ class ProductPriceSeatTiersOutput
     /**
      * List of pricing tiers
      *
-     * @var array<ProductPriceSeatTier> $tiers
+     * @var array<\Polar\Models\Components\ProductPriceSeatTier> $tiers
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('tiers')]
     #[\Speakeasy\Serializer\Annotation\Type('array<\Polar\Models\Components\ProductPriceSeatTier>')]
@@ -38,7 +38,7 @@ class ProductPriceSeatTiersOutput
 
     /**
      *
-     * @var ?SeatTierType $seatTierType
+     * @var ?\Polar\Models\Components\SeatTierType $seatTierType
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('seat_tier_type')]
     #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\SeatTierType|null')]
@@ -54,9 +54,9 @@ class ProductPriceSeatTiersOutput
     public ?int $maximumSeats;
 
     /**
-     * @param  array<ProductPriceSeatTier>  $tiers
+     * @param  array<\Polar\Models\Components\ProductPriceSeatTier>  $tiers
      * @param  int  $minimumSeats
-     * @param  ?SeatTierType  $seatTierType
+     * @param  ?\Polar\Models\Components\SeatTierType  $seatTierType
      * @param  ?int  $maximumSeats
      * @phpstan-pure
      */

@@ -14,14 +14,14 @@ class S3FileCreateMultipart
     /**
      * $parts
      *
-     * @var array<S3FileCreatePart> $parts
+     * @var array<\Polar\Models\Components\S3FileCreatePart> $parts
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('parts')]
     #[\Speakeasy\Serializer\Annotation\Type('array<\Polar\Models\Components\S3FileCreatePart>')]
     public array $parts;
 
     /**
-     * @param  array<S3FileCreatePart>  $parts
+     * @param  array<\Polar\Models\Components\S3FileCreatePart>  $parts
      * @phpstan-pure
      */
     public function __construct(array $parts)

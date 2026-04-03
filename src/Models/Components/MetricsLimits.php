@@ -23,7 +23,7 @@ class MetricsLimits
     /**
      * Date interval limits to get metrics for each interval.
      *
-     * @var MetricsIntervalsLimits $intervals
+     * @var \Polar\Models\Components\MetricsIntervalsLimits $intervals
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('intervals')]
     #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\MetricsIntervalsLimits')]
@@ -31,7 +31,7 @@ class MetricsLimits
 
     /**
      * @param  LocalDate  $minDate
-     * @param  MetricsIntervalsLimits  $intervals
+     * @param  \Polar\Models\Components\MetricsIntervalsLimits  $intervals
      * @phpstan-pure
      */
     public function __construct(LocalDate $minDate, MetricsIntervalsLimits $intervals)

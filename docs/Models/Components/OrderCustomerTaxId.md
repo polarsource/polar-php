@@ -16,7 +16,7 @@ string $value = /* values here */
 
 ```php
 /**
-* @var Components\TaxIDFormat
+* @var \Polar\Models\Components\TaxIDFormat
 */
 Components\TaxIDFormat $value = /* values here */
 ```

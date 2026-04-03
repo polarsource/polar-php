@@ -29,7 +29,7 @@ class CustomerOrder
 
     /**
      *
-     * @var OrderStatus $status
+     * @var \Polar\Models\Components\OrderStatus $status
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('status')]
     #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\OrderStatus')]
@@ -124,7 +124,7 @@ class CustomerOrder
 
     /**
      *
-     * @var OrderBillingReason $billingReason
+     * @var \Polar\Models\Components\OrderBillingReason $billingReason
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('billing_reason')]
     #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\OrderBillingReason')]
@@ -156,7 +156,7 @@ class CustomerOrder
     /**
      * Line items composing the order.
      *
-     * @var array<OrderItemSchema> $items
+     * @var array<\Polar\Models\Components\OrderItemSchema> $items
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('items')]
     #[\Speakeasy\Serializer\Annotation\Type('array<\Polar\Models\Components\OrderItemSchema>')]
@@ -188,7 +188,7 @@ class CustomerOrder
 
     /**
      *
-     * @var ?Address $billingAddress
+     * @var ?\Polar\Models\Components\Address $billingAddress
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('billing_address')]
     #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\Address|null')]
@@ -224,7 +224,7 @@ class CustomerOrder
 
     /**
      *
-     * @var ?CustomerOrderProduct $product
+     * @var ?\Polar\Models\Components\CustomerOrderProduct $product
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('product')]
     #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\CustomerOrderProduct|null')]
@@ -232,7 +232,7 @@ class CustomerOrder
 
     /**
      *
-     * @var ?CustomerOrderSubscription $subscription
+     * @var ?\Polar\Models\Components\CustomerOrderSubscription $subscription
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('subscription')]
     #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\CustomerOrderSubscription|null')]
@@ -259,7 +259,7 @@ class CustomerOrder
     /**
      * @param  string  $id
      * @param  \DateTime  $createdAt
-     * @param  OrderStatus  $status
+     * @param  \Polar\Models\Components\OrderStatus  $status
      * @param  bool  $paid
      * @param  int  $subtotalAmount
      * @param  int  $discountAmount
@@ -271,21 +271,21 @@ class CustomerOrder
      * @param  int  $refundedAmount
      * @param  int  $refundedTaxAmount
      * @param  string  $currency
-     * @param  OrderBillingReason  $billingReason
+     * @param  \Polar\Models\Components\OrderBillingReason  $billingReason
      * @param  string  $invoiceNumber
      * @param  bool  $isInvoiceGenerated
      * @param  string  $customerId
-     * @param  array<OrderItemSchema>  $items
+     * @param  array<\Polar\Models\Components\OrderItemSchema>  $items
      * @param  string  $description
      * @param  ?\DateTime  $modifiedAt
      * @param  ?string  $billingName
-     * @param  ?Address  $billingAddress
+     * @param  ?\Polar\Models\Components\Address  $billingAddress
      * @param  ?string  $productId
      * @param  ?string  $discountId
      * @param  ?string  $subscriptionId
      * @param  ?string  $checkoutId
-     * @param  ?CustomerOrderProduct  $product
-     * @param  ?CustomerOrderSubscription  $subscription
+     * @param  ?\Polar\Models\Components\CustomerOrderProduct  $product
+     * @param  ?\Polar\Models\Components\CustomerOrderSubscription  $subscription
      * @param  ?int  $seats
      * @param  ?\DateTime  $nextPaymentAttemptAt
      * @phpstan-pure
