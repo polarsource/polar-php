@@ -52,6 +52,14 @@ class BenefitGitHubRepositorySubscriber
     public bool $deletable;
 
     /**
+     * Whether the benefit is deleted.
+     *
+     * @var bool $isDeleted
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('is_deleted')]
+    public bool $isDeleted;
+
+    /**
      * The ID of the organization owning the benefit.
      *
      * @var string $organizationId
@@ -107,6 +115,7 @@ class BenefitGitHubRepositorySubscriber
      * @param  string  $description
      * @param  bool  $selectable
      * @param  bool  $deletable
+     * @param  bool  $isDeleted
      * @param  string  $organizationId
      * @param  array<string, string|int|float|bool>  $metadata
      * @param  \Polar\Models\Components\BenefitSubscriberOrganization  $organization
@@ -114,13 +123,14 @@ class BenefitGitHubRepositorySubscriber
      * @param  ?\DateTime  $modifiedAt
      * @phpstan-pure
      */
-    public function __construct(string $id, \DateTime $createdAt, string $description, bool $selectable, bool $deletable, string $organizationId, array $metadata, BenefitSubscriberOrganization $organization, BenefitGitHubRepositorySubscriberProperties $properties, ?\DateTime $modifiedAt = null, string $type = 'github_repository')
+    public function __construct(string $id, \DateTime $createdAt, string $description, bool $selectable, bool $deletable, bool $isDeleted, string $organizationId, array $metadata, BenefitSubscriberOrganization $organization, BenefitGitHubRepositorySubscriberProperties $properties, ?\DateTime $modifiedAt = null, string $type = 'github_repository')
     {
         $this->id = $id;
         $this->createdAt = $createdAt;
         $this->description = $description;
         $this->selectable = $selectable;
         $this->deletable = $deletable;
+        $this->isDeleted = $isDeleted;
         $this->organizationId = $organizationId;
         $this->metadata = $metadata;
         $this->organization = $organization;

@@ -59,6 +59,33 @@ class MeterCreate
     public ?array $metadata = null;
 
     /**
+     *
+     * @var ?\Polar\Models\Components\MeterUnit $unit
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('unit')]
+    #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\MeterUnit|null')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
+    public ?MeterUnit $unit = null;
+
+    /**
+     * The label for the custom unit, e.g. 'request'. Required when unit is 'custom'.
+     *
+     * @var ?string $customLabel
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('custom_label')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
+    public ?string $customLabel = null;
+
+    /**
+     * The multiplier to convert from the base unit to display scale, e.g. 1000 to display per 1000 units. Defaults to 1 when not provided.
+     *
+     * @var ?int $customMultiplier
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('custom_multiplier')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
+    public ?int $customMultiplier = null;
+
+    /**
      * The ID of the organization owning the meter. **Required unless you use an organization token.**
      *
      * @var ?string $organizationId
@@ -72,15 +99,21 @@ class MeterCreate
      * @param  \Polar\Models\Components\Filter  $filter
      * @param  \Polar\Models\Components\CountAggregation|\Polar\Models\Components\PropertyAggregation|\Polar\Models\Components\UniqueAggregation  $aggregation
      * @param  ?array<string, string|int|float|bool>  $metadata
+     * @param  ?\Polar\Models\Components\MeterUnit  $unit
+     * @param  ?string  $customLabel
+     * @param  ?int  $customMultiplier
      * @param  ?string  $organizationId
      * @phpstan-pure
      */
-    public function __construct(string $name, Filter $filter, CountAggregation|PropertyAggregation|UniqueAggregation $aggregation, ?array $metadata = null, ?string $organizationId = null)
+    public function __construct(string $name, Filter $filter, CountAggregation|PropertyAggregation|UniqueAggregation $aggregation, ?array $metadata = null, ?MeterUnit $unit = null, ?string $customLabel = null, ?int $customMultiplier = null, ?string $organizationId = null)
     {
         $this->name = $name;
         $this->filter = $filter;
         $this->aggregation = $aggregation;
         $this->metadata = $metadata;
+        $this->unit = $unit;
+        $this->customLabel = $customLabel;
+        $this->customMultiplier = $customMultiplier;
         $this->organizationId = $organizationId;
     }
 }

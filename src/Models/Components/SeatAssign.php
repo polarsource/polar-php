@@ -30,6 +30,15 @@ class SeatAssign
     public ?string $checkoutId = null;
 
     /**
+     * Client secret of the checkout. Required when assigning seats via checkout_id as an anonymous caller (e.g. the checkout confirmation page).
+     *
+     * @var ?string $checkoutClientSecret
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('checkout_client_secret')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
+    public ?string $checkoutClientSecret = null;
+
+    /**
      * Order ID for one-time purchases. Required if subscription_id and checkout_id are not provided.
      *
      * @var ?string $orderId
@@ -106,6 +115,7 @@ class SeatAssign
      * @param  ?bool  $immediateClaim
      * @param  ?string  $subscriptionId
      * @param  ?string  $checkoutId
+     * @param  ?string  $checkoutClientSecret
      * @param  ?string  $orderId
      * @param  ?string  $email
      * @param  ?string  $externalCustomerId
@@ -115,10 +125,11 @@ class SeatAssign
      * @param  ?array<string, mixed>  $metadata
      * @phpstan-pure
      */
-    public function __construct(?string $subscriptionId = null, ?string $checkoutId = null, ?string $orderId = null, ?string $email = null, ?string $externalCustomerId = null, ?string $customerId = null, ?string $externalMemberId = null, ?string $memberId = null, ?array $metadata = null, ?bool $immediateClaim = false)
+    public function __construct(?string $subscriptionId = null, ?string $checkoutId = null, ?string $checkoutClientSecret = null, ?string $orderId = null, ?string $email = null, ?string $externalCustomerId = null, ?string $customerId = null, ?string $externalMemberId = null, ?string $memberId = null, ?array $metadata = null, ?bool $immediateClaim = false)
     {
         $this->subscriptionId = $subscriptionId;
         $this->checkoutId = $checkoutId;
+        $this->checkoutClientSecret = $checkoutClientSecret;
         $this->orderId = $orderId;
         $this->email = $email;
         $this->externalCustomerId = $externalCustomerId;

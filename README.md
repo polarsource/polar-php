@@ -232,6 +232,9 @@ foreach ($responses as $response) {
 * [addPaymentMethod](docs/sdks/polarcustomers/README.md#addpaymentmethod) - Add Customer Payment Method
 * [confirmPaymentMethod](docs/sdks/polarcustomers/README.md#confirmpaymentmethod) - Confirm Customer Payment Method
 * [deletePaymentMethod](docs/sdks/polarcustomers/README.md#deletepaymentmethod) - Delete Customer Payment Method
+* [requestEmailUpdate](docs/sdks/polarcustomers/README.md#requestemailupdate) - Request Email Change
+* [checkEmailUpdate](docs/sdks/polarcustomers/README.md#checkemailupdate) - Check Email Change Token
+* [verifyEmailUpdate](docs/sdks/polarcustomers/README.md#verifyemailupdate) - Verify Email Change
 
 ### [CustomerPortal.Downloadables](docs/sdks/downloadables/README.md)
 
@@ -363,6 +366,9 @@ foreach ($responses as $response) {
 * [getMember](docs/sdks/members/README.md#getmember) - Get Member
 * [deleteMember](docs/sdks/members/README.md#deletemember) - Delete Member
 * [updateMember](docs/sdks/members/README.md#updatemember) - Update Member
+* [getMemberByExternalId](docs/sdks/members/README.md#getmemberbyexternalid) - Get Member by External ID
+* [deleteMemberByExternalId](docs/sdks/members/README.md#deletememberbyexternalid) - Delete Member by External ID
+* [updateMemberByExternalId](docs/sdks/members/README.md#updatememberbyexternalid) - Update Member by External ID
 
 ### [Meters](docs/sdks/meters/README.md)
 
@@ -375,6 +381,7 @@ foreach ($responses as $response) {
 ### [Metrics](docs/sdks/metrics/README.md)
 
 * [get](docs/sdks/metrics/README.md#get) - Get Metrics
+* [export](docs/sdks/metrics/README.md#export) - Export Metrics
 * [limits](docs/sdks/metrics/README.md#limits) - Get Metrics Limits
 * [listDashboards](docs/sdks/metrics/README.md#listdashboards) - List Metric Dashboards
 * [createDashboard](docs/sdks/metrics/README.md#createdashboard) - Create Metric Dashboard

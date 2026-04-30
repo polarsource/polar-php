@@ -19,7 +19,7 @@
   "require-dev": {
     "laravel/pint": "1.29.0",
     "phpstan/phpstan": "2.1.44",
-    "phpunit/phpunit": ">=10",
+    "phpunit/phpunit": "^11.5.50 || ^12.5.8 || >=13.0.0",
     "roave/security-advisories": "dev-latest",
     "orchestra/testbench": ">=9.6"
   },

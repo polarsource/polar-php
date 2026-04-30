@@ -40,12 +40,30 @@ class Metrics
 
     /**
      *
+     * @var ?\Polar\Models\Components\Metric $trialMonthlyRecurringRevenue
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('trial_monthly_recurring_revenue')]
+    #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\Metric|null')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
+    public ?Metric $trialMonthlyRecurringRevenue = null;
+
+    /**
+     *
      * @var ?\Polar\Models\Components\Metric $committedMonthlyRecurringRevenue
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('committed_monthly_recurring_revenue')]
     #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\Metric|null')]
     #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
     public ?Metric $committedMonthlyRecurringRevenue = null;
+
+    /**
+     *
+     * @var ?\Polar\Models\Components\Metric $trialCommittedMonthlyRecurringRevenue
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('trial_committed_monthly_recurring_revenue')]
+    #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\Metric|null')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
+    public ?Metric $trialCommittedMonthlyRecurringRevenue = null;
 
     /**
      *
@@ -91,6 +109,60 @@ class Metrics
     #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\Metric|null')]
     #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
     public ?Metric $churnRate = null;
+
+    /**
+     *
+     * @var ?\Polar\Models\Components\Metric $seatsTotal
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('seats_total')]
+    #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\Metric|null')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
+    public ?Metric $seatsTotal = null;
+
+    /**
+     *
+     * @var ?\Polar\Models\Components\Metric $seatsClaimed
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('seats_claimed')]
+    #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\Metric|null')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
+    public ?Metric $seatsClaimed = null;
+
+    /**
+     *
+     * @var ?\Polar\Models\Components\Metric $seatsPending
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('seats_pending')]
+    #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\Metric|null')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
+    public ?Metric $seatsPending = null;
+
+    /**
+     *
+     * @var ?\Polar\Models\Components\Metric $seatCustomers
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('seat_customers')]
+    #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\Metric|null')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
+    public ?Metric $seatCustomers = null;
+
+    /**
+     *
+     * @var ?\Polar\Models\Components\Metric $newSeatCustomers
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('new_seat_customers')]
+    #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\Metric|null')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
+    public ?Metric $newSeatCustomers = null;
+
+    /**
+     *
+     * @var ?\Polar\Models\Components\Metric $churnedSeatCustomers
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('churned_seat_customers')]
+    #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\Metric|null')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
+    public ?Metric $churnedSeatCustomers = null;
 
     /**
      *
@@ -355,6 +427,24 @@ class Metrics
 
     /**
      *
+     * @var ?\Polar\Models\Components\Metric $annualRecurringRevenue
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('annual_recurring_revenue')]
+    #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\Metric|null')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
+    public ?Metric $annualRecurringRevenue = null;
+
+    /**
+     *
+     * @var ?\Polar\Models\Components\Metric $committedAnnualRecurringRevenue
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('committed_annual_recurring_revenue')]
+    #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\Metric|null')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
+    public ?Metric $committedAnnualRecurringRevenue = null;
+
+    /**
+     *
      * @var ?\Polar\Models\Components\Metric $checkoutsConversion
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('checkouts_conversion')]
@@ -399,15 +489,41 @@ class Metrics
     public ?Metric $cashflow = null;
 
     /**
+     *
+     * @var ?\Polar\Models\Components\Metric $averageSeatsPerCustomer
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('average_seats_per_customer')]
+    #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\Metric|null')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
+    public ?Metric $averageSeatsPerCustomer = null;
+
+    /**
+     *
+     * @var ?\Polar\Models\Components\Metric $seatUtilizationRate
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('seat_utilization_rate')]
+    #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\Metric|null')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
+    public ?Metric $seatUtilizationRate = null;
+
+    /**
      * @param  ?\Polar\Models\Components\Metric  $activeSubscriptions
      * @param  ?\Polar\Models\Components\Metric  $committedSubscriptions
      * @param  ?\Polar\Models\Components\Metric  $monthlyRecurringRevenue
+     * @param  ?\Polar\Models\Components\Metric  $trialMonthlyRecurringRevenue
      * @param  ?\Polar\Models\Components\Metric  $committedMonthlyRecurringRevenue
+     * @param  ?\Polar\Models\Components\Metric  $trialCommittedMonthlyRecurringRevenue
      * @param  ?\Polar\Models\Components\Metric  $averageRevenuePerUser
      * @param  ?\Polar\Models\Components\Metric  $checkouts
      * @param  ?\Polar\Models\Components\Metric  $succeededCheckouts
      * @param  ?\Polar\Models\Components\Metric  $churnedSubscriptions
      * @param  ?\Polar\Models\Components\Metric  $churnRate
+     * @param  ?\Polar\Models\Components\Metric  $seatsTotal
+     * @param  ?\Polar\Models\Components\Metric  $seatsClaimed
+     * @param  ?\Polar\Models\Components\Metric  $seatsPending
+     * @param  ?\Polar\Models\Components\Metric  $seatCustomers
+     * @param  ?\Polar\Models\Components\Metric  $newSeatCustomers
+     * @param  ?\Polar\Models\Components\Metric  $churnedSeatCustomers
      * @param  ?\Polar\Models\Components\Metric  $orders
      * @param  ?\Polar\Models\Components\Metric  $revenue
      * @param  ?\Polar\Models\Components\Metric  $netRevenue
@@ -437,24 +553,36 @@ class Metrics
      * @param  ?\Polar\Models\Components\Metric  $canceledSubscriptionsTooExpensive
      * @param  ?\Polar\Models\Components\Metric  $canceledSubscriptionsUnused
      * @param  ?\Polar\Models\Components\Metric  $canceledSubscriptionsOther
+     * @param  ?\Polar\Models\Components\Metric  $annualRecurringRevenue
+     * @param  ?\Polar\Models\Components\Metric  $committedAnnualRecurringRevenue
      * @param  ?\Polar\Models\Components\Metric  $checkoutsConversion
      * @param  ?\Polar\Models\Components\Metric  $ltv
      * @param  ?\Polar\Models\Components\Metric  $grossMargin
      * @param  ?\Polar\Models\Components\Metric  $grossMarginPercentage
      * @param  ?\Polar\Models\Components\Metric  $cashflow
+     * @param  ?\Polar\Models\Components\Metric  $averageSeatsPerCustomer
+     * @param  ?\Polar\Models\Components\Metric  $seatUtilizationRate
      * @phpstan-pure
      */
-    public function __construct(?Metric $activeSubscriptions = null, ?Metric $committedSubscriptions = null, ?Metric $monthlyRecurringRevenue = null, ?Metric $committedMonthlyRecurringRevenue = null, ?Metric $averageRevenuePerUser = null, ?Metric $checkouts = null, ?Metric $succeededCheckouts = null, ?Metric $churnedSubscriptions = null, ?Metric $churnRate = null, ?Metric $orders = null, ?Metric $revenue = null, ?Metric $netRevenue = null, ?Metric $cumulativeRevenue = null, ?Metric $netCumulativeRevenue = null, ?Metric $costs = null, ?Metric $cumulativeCosts = null, ?Metric $averageOrderValue = null, ?Metric $netAverageOrderValue = null, ?Metric $costPerUser = null, ?Metric $activeUserByEvent = null, ?Metric $oneTimeProducts = null, ?Metric $oneTimeProductsRevenue = null, ?Metric $oneTimeProductsNetRevenue = null, ?Metric $newSubscriptions = null, ?Metric $newSubscriptionsRevenue = null, ?Metric $newSubscriptionsNetRevenue = null, ?Metric $renewedSubscriptions = null, ?Metric $renewedSubscriptionsRevenue = null, ?Metric $renewedSubscriptionsNetRevenue = null, ?Metric $canceledSubscriptions = null, ?Metric $canceledSubscriptionsCustomerService = null, ?Metric $canceledSubscriptionsLowQuality = null, ?Metric $canceledSubscriptionsMissingFeatures = null, ?Metric $canceledSubscriptionsSwitchedService = null, ?Metric $canceledSubscriptionsTooComplex = null, ?Metric $canceledSubscriptionsTooExpensive = null, ?Metric $canceledSubscriptionsUnused = null, ?Metric $canceledSubscriptionsOther = null, ?Metric $checkoutsConversion = null, ?Metric $ltv = null, ?Metric $grossMargin = null, ?Metric $grossMarginPercentage = null, ?Metric $cashflow = null)
+    public function __construct(?Metric $activeSubscriptions = null, ?Metric $committedSubscriptions = null, ?Metric $monthlyRecurringRevenue = null, ?Metric $trialMonthlyRecurringRevenue = null, ?Metric $committedMonthlyRecurringRevenue = null, ?Metric $trialCommittedMonthlyRecurringRevenue = null, ?Metric $averageRevenuePerUser = null, ?Metric $checkouts = null, ?Metric $succeededCheckouts = null, ?Metric $churnedSubscriptions = null, ?Metric $churnRate = null, ?Metric $seatsTotal = null, ?Metric $seatsClaimed = null, ?Metric $seatsPending = null, ?Metric $seatCustomers = null, ?Metric $newSeatCustomers = null, ?Metric $churnedSeatCustomers = null, ?Metric $orders = null, ?Metric $revenue = null, ?Metric $netRevenue = null, ?Metric $cumulativeRevenue = null, ?Metric $netCumulativeRevenue = null, ?Metric $costs = null, ?Metric $cumulativeCosts = null, ?Metric $averageOrderValue = null, ?Metric $netAverageOrderValue = null, ?Metric $costPerUser = null, ?Metric $activeUserByEvent = null, ?Metric $oneTimeProducts = null, ?Metric $oneTimeProductsRevenue = null, ?Metric $oneTimeProductsNetRevenue = null, ?Metric $newSubscriptions = null, ?Metric $newSubscriptionsRevenue = null, ?Metric $newSubscriptionsNetRevenue = null, ?Metric $renewedSubscriptions = null, ?Metric $renewedSubscriptionsRevenue = null, ?Metric $renewedSubscriptionsNetRevenue = null, ?Metric $canceledSubscriptions = null, ?Metric $canceledSubscriptionsCustomerService = null, ?Metric $canceledSubscriptionsLowQuality = null, ?Metric $canceledSubscriptionsMissingFeatures = null, ?Metric $canceledSubscriptionsSwitchedService = null, ?Metric $canceledSubscriptionsTooComplex = null, ?Metric $canceledSubscriptionsTooExpensive = null, ?Metric $canceledSubscriptionsUnused = null, ?Metric $canceledSubscriptionsOther = null, ?Metric $annualRecurringRevenue = null, ?Metric $committedAnnualRecurringRevenue = null, ?Metric $checkoutsConversion = null, ?Metric $ltv = null, ?Metric $grossMargin = null, ?Metric $grossMarginPercentage = null, ?Metric $cashflow = null, ?Metric $averageSeatsPerCustomer = null, ?Metric $seatUtilizationRate = null)
     {
         $this->activeSubscriptions = $activeSubscriptions;
         $this->committedSubscriptions = $committedSubscriptions;
         $this->monthlyRecurringRevenue = $monthlyRecurringRevenue;
+        $this->trialMonthlyRecurringRevenue = $trialMonthlyRecurringRevenue;
         $this->committedMonthlyRecurringRevenue = $committedMonthlyRecurringRevenue;
+        $this->trialCommittedMonthlyRecurringRevenue = $trialCommittedMonthlyRecurringRevenue;
         $this->averageRevenuePerUser = $averageRevenuePerUser;
         $this->checkouts = $checkouts;
         $this->succeededCheckouts = $succeededCheckouts;
         $this->churnedSubscriptions = $churnedSubscriptions;
         $this->churnRate = $churnRate;
+        $this->seatsTotal = $seatsTotal;
+        $this->seatsClaimed = $seatsClaimed;
+        $this->seatsPending = $seatsPending;
+        $this->seatCustomers = $seatCustomers;
+        $this->newSeatCustomers = $newSeatCustomers;
+        $this->churnedSeatCustomers = $churnedSeatCustomers;
         $this->orders = $orders;
         $this->revenue = $revenue;
         $this->netRevenue = $netRevenue;
@@ -484,10 +612,14 @@ class Metrics
         $this->canceledSubscriptionsTooExpensive = $canceledSubscriptionsTooExpensive;
         $this->canceledSubscriptionsUnused = $canceledSubscriptionsUnused;
         $this->canceledSubscriptionsOther = $canceledSubscriptionsOther;
+        $this->annualRecurringRevenue = $annualRecurringRevenue;
+        $this->committedAnnualRecurringRevenue = $committedAnnualRecurringRevenue;
         $this->checkoutsConversion = $checkoutsConversion;
         $this->ltv = $ltv;
         $this->grossMargin = $grossMargin;
         $this->grossMarginPercentage = $grossMarginPercentage;
         $this->cashflow = $cashflow;
+        $this->averageSeatsPerCustomer = $averageSeatsPerCustomer;
+        $this->seatUtilizationRate = $seatUtilizationRate;
     }
 }

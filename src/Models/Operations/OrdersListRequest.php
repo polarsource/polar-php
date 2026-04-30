@@ -69,6 +69,14 @@ class OrdersListRequest
     public string|array|null $checkoutId = null;
 
     /**
+     * Filter by subscription ID.
+     *
+     * @var string|array<string>|null $subscriptionId
+     */
+    #[SpeakeasyMetadata('queryParam:style=form,explode=true,name=subscription_id')]
+    public string|array|null $subscriptionId = null;
+
+    /**
      * Sorting criterion. Several criteria can be used simultaneously and will be applied in order. Add a minus sign `-` before the criteria name to sort by descending order.
      *
      * @var ?array<\Polar\Models\Components\OrderSortProperty> $sorting
@@ -110,11 +118,12 @@ class OrdersListRequest
      * @param  string|array<string>|null  $customerId
      * @param  string|array<string>|null  $externalCustomerId
      * @param  string|array<string>|null  $checkoutId
+     * @param  string|array<string>|null  $subscriptionId
      * @param  ?array<\Polar\Models\Components\OrderSortProperty>  $sorting
      * @param  ?array<string, string|int|bool|array<string>|array<int>|array<bool>>  $metadata
      * @phpstan-pure
      */
-    public function __construct(string|array|null $organizationId = null, string|array|null $productId = null, Components\ProductBillingType|array|null $productBillingType = null, string|array|null $discountId = null, string|array|null $customerId = null, string|array|null $externalCustomerId = null, string|array|null $checkoutId = null, ?array $sorting = null, ?array $metadata = null, ?int $page = 1, ?int $limit = 10)
+    public function __construct(string|array|null $organizationId = null, string|array|null $productId = null, Components\ProductBillingType|array|null $productBillingType = null, string|array|null $discountId = null, string|array|null $customerId = null, string|array|null $externalCustomerId = null, string|array|null $checkoutId = null, string|array|null $subscriptionId = null, ?array $sorting = null, ?array $metadata = null, ?int $page = 1, ?int $limit = 10)
     {
         $this->organizationId = $organizationId;
         $this->productId = $productId;
@@ -123,6 +132,7 @@ class OrdersListRequest
         $this->customerId = $customerId;
         $this->externalCustomerId = $externalCustomerId;
         $this->checkoutId = $checkoutId;
+        $this->subscriptionId = $subscriptionId;
         $this->sorting = $sorting;
         $this->metadata = $metadata;
         $this->page = $page;

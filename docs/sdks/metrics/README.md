@@ -5,6 +5,7 @@
 ### Available Operations
 
 * [get](#get) - Get Metrics
+* [export](#export) - Export Metrics
 * [limits](#limits) - Get Metrics Limits
 * [listDashboards](#listdashboards) - List Metric Dashboards
 * [createDashboard](#createdashboard) - Create Metric Dashboard
@@ -64,6 +65,64 @@ if ($response->metricsResponse !== null) {
 ### Response
 
 **[?Operations\MetricsGetResponse](../../Models/Operations/MetricsGetResponse.md)**
+
+### Errors
+
+| Error Type                 | Status Code                | Content Type               |
+| -------------------------- | -------------------------- | -------------------------- |
+| Errors\HTTPValidationError | 422                        | application/json           |
+| Errors\APIException        | 4XX, 5XX                   | \*/\*                      |
+
+## export
+
+Export metrics as a CSV file.
+
+**Scopes**: `metrics:read`
+
+### Example Usage
+
+<!-- UsageSnippet language="php" operationID="metrics:export" method="get" path="/v1/metrics/export" -->
+```php
+declare(strict_types=1);
+
+require 'vendor/autoload.php';
+
+use Brick\DateTime\LocalDate;
+use Polar;
+use Polar\Models\Components;
+use Polar\Models\Operations;
+
+$sdk = Polar\Polar::builder()
+    ->setSecurity(
+        '<YOUR_BEARER_TOKEN_HERE>'
+    )
+    ->build();
+
+$request = new Operations\MetricsExportRequest(
+    startDate: LocalDate::parse('2026-07-17'),
+    endDate: LocalDate::parse('2024-05-06'),
+    interval: Components\TimeInterval::Year,
+    organizationId: '1dbfc517-0bbf-4301-9ba8-555ca42b9737',
+);
+
+$response = $sdk->metrics->export(
+    request: $request
+);
+
+if ($response->any !== null) {
+    // handle response
+}
+```
+
+### Parameters
+
+| Parameter                                                                          | Type                                                                               | Required                                                                           | Description                                                                        |
+| ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- |
+| `$request`                                                                         | [Operations\MetricsExportRequest](../../Models/Operations/MetricsExportRequest.md) | :heavy_check_mark:                                                                 | The request object to use for the request.                                         |
+
+### Response
+
+**[?Operations\MetricsExportResponse](../../Models/Operations/MetricsExportResponse.md)**
 
 ### Errors
 

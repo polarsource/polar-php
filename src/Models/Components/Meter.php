@@ -46,6 +46,14 @@ class Meter
 
     /**
      *
+     * @var \Polar\Models\Components\MeterUnit $unit
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('unit')]
+    #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\MeterUnit')]
+    public MeterUnit $unit;
+
+    /**
+     *
      * @var \Polar\Models\Components\Filter $filter
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('filter')]
@@ -79,6 +87,24 @@ class Meter
     public ?\DateTime $modifiedAt;
 
     /**
+     * The label for the custom unit.
+     *
+     * @var ?string $customLabel
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('custom_label')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
+    public ?string $customLabel = null;
+
+    /**
+     * The multiplier to convert from base unit to display scale.
+     *
+     * @var ?int $customMultiplier
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('custom_multiplier')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
+    public ?int $customMultiplier = null;
+
+    /**
      * Whether the meter is archived and the time it was archived.
      *
      * @var ?\DateTime $archivedAt
@@ -92,23 +118,29 @@ class Meter
      * @param  \DateTime  $createdAt
      * @param  string  $id
      * @param  string  $name
+     * @param  \Polar\Models\Components\MeterUnit  $unit
      * @param  \Polar\Models\Components\Filter  $filter
      * @param  \Polar\Models\Components\CountAggregation|\Polar\Models\Components\PropertyAggregation|\Polar\Models\Components\UniqueAggregation  $aggregation
      * @param  string  $organizationId
      * @param  ?\DateTime  $modifiedAt
+     * @param  ?string  $customLabel
+     * @param  ?int  $customMultiplier
      * @param  ?\DateTime  $archivedAt
      * @phpstan-pure
      */
-    public function __construct(array $metadata, \DateTime $createdAt, string $id, string $name, Filter $filter, CountAggregation|PropertyAggregation|UniqueAggregation $aggregation, string $organizationId, ?\DateTime $modifiedAt = null, ?\DateTime $archivedAt = null)
+    public function __construct(array $metadata, \DateTime $createdAt, string $id, string $name, MeterUnit $unit, Filter $filter, CountAggregation|PropertyAggregation|UniqueAggregation $aggregation, string $organizationId, ?\DateTime $modifiedAt = null, ?string $customLabel = null, ?int $customMultiplier = null, ?\DateTime $archivedAt = null)
     {
         $this->metadata = $metadata;
         $this->createdAt = $createdAt;
         $this->id = $id;
         $this->name = $name;
+        $this->unit = $unit;
         $this->filter = $filter;
         $this->aggregation = $aggregation;
         $this->organizationId = $organizationId;
         $this->modifiedAt = $modifiedAt;
+        $this->customLabel = $customLabel;
+        $this->customMultiplier = $customMultiplier;
         $this->archivedAt = $archivedAt;
     }
 }
