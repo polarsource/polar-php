@@ -89,12 +89,10 @@ $sdk = Polar\Polar::builder()
     )
     ->build();
 
-$request = new Components\DiscountPercentageOnceForeverDurationCreate(
-    duration: Components\DiscountDuration::Once,
-    type: Components\DiscountType::Fixed,
-    basisPoints: 449604,
+$request = new Components\DiscountFixedCreate(
     name: '<value>',
     organizationId: '1dbfc517-0bbf-4301-9ba8-555ca42b9737',
+    duration: Components\DiscountDuration::Once,
 );
 
 $response = $sdk->discounts->create(
@@ -108,9 +106,9 @@ if ($response->discount !== null) {
 
 ### Parameters
 
-| Parameter                                                                                                                                                                                                                                            | Type                                                                                                                                                                                                                                                 | Required                                                                                                                                                                                                                                             | Description                                                                                                                                                                                                                                          |
-| ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `$request`                                                                                                                                                                                                                                           | [Components\DiscountFixedOnceForeverDurationCreate\|Components\DiscountFixedRepeatDurationCreate\|Components\DiscountPercentageOnceForeverDurationCreate\|Components\DiscountPercentageRepeatDurationCreate](../../Models/Components/DiscountCreate.md) | :heavy_check_mark:                                                                                                                                                                                                                                   | The request object to use for the request.                                                                                                                                                                                                           |
+| Parameter                                                                                                       | Type                                                                                                            | Required                                                                                                        | Description                                                                                                     |
+| --------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------- |
+| `$request`                                                                                                      | [Components\DiscountFixedCreate\|Components\DiscountPercentageCreate](../../Models/Components/DiscountCreate.md) | :heavy_check_mark:                                                                                              | The request object to use for the request.                                                                      |
 
 ### Response
 

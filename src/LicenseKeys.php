@@ -82,11 +82,12 @@ class LicenseKeys
         }
         $contentType = $httpResponse->getHeader('Content-Type')[0] ?? '';
 
-        $statusCode = $httpResponse->getStatusCode();
-        if (Utils\Utils::matchStatusCodes($statusCode, ['403', '404', '422', '4XX', '5XX'])) {
+        if (Utils\Utils::matchStatusCodes($httpResponse->getStatusCode(), ['4XX', '5XX'])) {
             $res = $this->sdkConfiguration->hooks->afterError(new Hooks\AfterErrorContext($hookContext), $httpResponse, null);
             $httpResponse = $res;
         }
+
+        $statusCode = $httpResponse->getStatusCode();
         if (Utils\Utils::matchStatusCodes($statusCode, ['200'])) {
             if (Utils\Utils::matchContentType($contentType, 'application/json')) {
                 $httpResponse = $this->sdkConfiguration->hooks->afterSuccess(new Hooks\AfterSuccessContext($hookContext), $httpResponse);
@@ -183,11 +184,12 @@ class LicenseKeys
         }
         $contentType = $httpResponse->getHeader('Content-Type')[0] ?? '';
 
-        $statusCode = $httpResponse->getStatusCode();
-        if (Utils\Utils::matchStatusCodes($statusCode, ['404', '422', '4XX', '5XX'])) {
+        if (Utils\Utils::matchStatusCodes($httpResponse->getStatusCode(), ['4XX', '5XX'])) {
             $res = $this->sdkConfiguration->hooks->afterError(new Hooks\AfterErrorContext($hookContext), $httpResponse, null);
             $httpResponse = $res;
         }
+
+        $statusCode = $httpResponse->getStatusCode();
         if (Utils\Utils::matchStatusCodes($statusCode, ['204'])) {
             $httpResponse = $this->sdkConfiguration->hooks->afterSuccess(new Hooks\AfterSuccessContext($hookContext), $httpResponse);
 
@@ -262,11 +264,12 @@ class LicenseKeys
         }
         $contentType = $httpResponse->getHeader('Content-Type')[0] ?? '';
 
-        $statusCode = $httpResponse->getStatusCode();
-        if (Utils\Utils::matchStatusCodes($statusCode, ['401', '404', '422', '4XX', '5XX'])) {
+        if (Utils\Utils::matchStatusCodes($httpResponse->getStatusCode(), ['4XX', '5XX'])) {
             $res = $this->sdkConfiguration->hooks->afterError(new Hooks\AfterErrorContext($hookContext), $httpResponse, null);
             $httpResponse = $res;
         }
+
+        $statusCode = $httpResponse->getStatusCode();
         if (Utils\Utils::matchStatusCodes($statusCode, ['200'])) {
             if (Utils\Utils::matchContentType($contentType, 'application/json')) {
                 $httpResponse = $this->sdkConfiguration->hooks->afterSuccess(new Hooks\AfterSuccessContext($hookContext), $httpResponse);
@@ -363,11 +366,12 @@ class LicenseKeys
         }
         $contentType = $httpResponse->getHeader('Content-Type')[0] ?? '';
 
-        $statusCode = $httpResponse->getStatusCode();
-        if (Utils\Utils::matchStatusCodes($statusCode, ['401', '404', '422', '4XX', '5XX'])) {
+        if (Utils\Utils::matchStatusCodes($httpResponse->getStatusCode(), ['4XX', '5XX'])) {
             $res = $this->sdkConfiguration->hooks->afterError(new Hooks\AfterErrorContext($hookContext), $httpResponse, null);
             $httpResponse = $res;
         }
+
+        $statusCode = $httpResponse->getStatusCode();
         if (Utils\Utils::matchStatusCodes($statusCode, ['200'])) {
             if (Utils\Utils::matchContentType($contentType, 'application/json')) {
                 $httpResponse = $this->sdkConfiguration->hooks->afterSuccess(new Hooks\AfterSuccessContext($hookContext), $httpResponse);
@@ -434,21 +438,12 @@ class LicenseKeys
      *
      * **Scopes**: `license_keys:read` `license_keys:write`
      *
-     * @param  string|array<string>|null  $organizationId
-     * @param  string|array<string>|null  $benefitId
-     * @param  ?int  $page
-     * @param  ?int  $limit
+     * @param  ?\Polar\Models\Operations\LicenseKeysListRequest  $request
      * @return \Polar\Models\Operations\LicenseKeysListResponse
      * @throws \Polar\Models\Errors\APIException
      */
-    private function listIndividual(string|array|null $organizationId = null, string|array|null $benefitId = null, ?int $page = null, ?int $limit = null, ?Options $options = null): Operations\LicenseKeysListResponse
+    private function listIndividual(?Operations\LicenseKeysListRequest $request = null, ?Options $options = null): Operations\LicenseKeysListResponse
     {
-        $request = new Operations\LicenseKeysListRequest(
-            organizationId: $organizationId,
-            benefitId: $benefitId,
-            page: $page,
-            limit: $limit,
-        );
         $baseUrl = $this->sdkConfiguration->getTemplatedServerUrl();
         $url = Utils\Utils::generateUrl($baseUrl, '/v1/license-keys/');
         $urlOverride = null;
@@ -471,11 +466,12 @@ class LicenseKeys
         }
         $contentType = $httpResponse->getHeader('Content-Type')[0] ?? '';
 
-        $statusCode = $httpResponse->getStatusCode();
-        if (Utils\Utils::matchStatusCodes($statusCode, ['401', '404', '422', '4XX', '5XX'])) {
+        if (Utils\Utils::matchStatusCodes($httpResponse->getStatusCode(), ['4XX', '5XX'])) {
             $res = $this->sdkConfiguration->hooks->afterError(new Hooks\AfterErrorContext($hookContext), $httpResponse, null);
             $httpResponse = $res;
         }
+
+        $statusCode = $httpResponse->getStatusCode();
         if (Utils\Utils::matchStatusCodes($statusCode, ['200'])) {
             if (Utils\Utils::matchContentType($contentType, 'application/json')) {
                 $httpResponse = $this->sdkConfiguration->hooks->afterSuccess(new Hooks\AfterSuccessContext($hookContext), $httpResponse);
@@ -516,10 +512,13 @@ class LicenseKeys
                     }
 
                     return $sdk->listIndividual(
-                        organizationId: $request != null ? $request->organizationId : null,
-                        benefitId: $request != null ? $request->benefitId : null,
-                        page: $nextPage,
-                        limit: $request != null ? $request->limit : null,
+                        request: new Operations\LicenseKeysListRequest(
+                            organizationId: $request != null ? $request->organizationId : null,
+                            benefitId: $request != null ? $request->benefitId : null,
+                            status: $request != null ? $request->status : null,
+                            page: $nextPage,
+                            limit: $request != null ? $request->limit : null,
+                        ),
                     );
                 };
 
@@ -576,16 +575,13 @@ class LicenseKeys
      *
      * **Scopes**: `license_keys:read` `license_keys:write`
      *
-     * @param  string|array<string>|null  $organizationId
-     * @param  string|array<string>|null  $benefitId
-     * @param  ?int  $page
-     * @param  ?int  $limit
+     * @param  ?\Polar\Models\Operations\LicenseKeysListRequest  $request
      * @return \Generator<\Polar\Models\Operations\LicenseKeysListResponse>
      * @throws \Polar\Models\Errors\APIException
      */
-    public function list(string|array|null $organizationId = null, string|array|null $benefitId = null, ?int $page = null, ?int $limit = null, ?Options $options = null): \Generator
+    public function list(?Operations\LicenseKeysListRequest $request = null, ?Options $options = null): \Generator
     {
-        $res = $this->listIndividual($organizationId, $benefitId, $page, $limit, $options);
+        $res = $this->listIndividual($request, $options);
         while ($res !== null) {
             yield $res;
             $res = $res->next($res);
@@ -634,11 +630,12 @@ class LicenseKeys
         }
         $contentType = $httpResponse->getHeader('Content-Type')[0] ?? '';
 
-        $statusCode = $httpResponse->getStatusCode();
-        if (Utils\Utils::matchStatusCodes($statusCode, ['401', '404', '422', '4XX', '5XX'])) {
+        if (Utils\Utils::matchStatusCodes($httpResponse->getStatusCode(), ['4XX', '5XX'])) {
             $res = $this->sdkConfiguration->hooks->afterError(new Hooks\AfterErrorContext($hookContext), $httpResponse, null);
             $httpResponse = $res;
         }
+
+        $statusCode = $httpResponse->getStatusCode();
         if (Utils\Utils::matchStatusCodes($statusCode, ['200'])) {
             if (Utils\Utils::matchContentType($contentType, 'application/json')) {
                 $httpResponse = $this->sdkConfiguration->hooks->afterSuccess(new Hooks\AfterSuccessContext($hookContext), $httpResponse);
@@ -735,11 +732,12 @@ class LicenseKeys
         }
         $contentType = $httpResponse->getHeader('Content-Type')[0] ?? '';
 
-        $statusCode = $httpResponse->getStatusCode();
-        if (Utils\Utils::matchStatusCodes($statusCode, ['404', '422', '4XX', '5XX'])) {
+        if (Utils\Utils::matchStatusCodes($httpResponse->getStatusCode(), ['4XX', '5XX'])) {
             $res = $this->sdkConfiguration->hooks->afterError(new Hooks\AfterErrorContext($hookContext), $httpResponse, null);
             $httpResponse = $res;
         }
+
+        $statusCode = $httpResponse->getStatusCode();
         if (Utils\Utils::matchStatusCodes($statusCode, ['200'])) {
             if (Utils\Utils::matchContentType($contentType, 'application/json')) {
                 $httpResponse = $this->sdkConfiguration->hooks->afterSuccess(new Hooks\AfterSuccessContext($hookContext), $httpResponse);

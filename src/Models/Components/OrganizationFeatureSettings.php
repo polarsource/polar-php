@@ -40,15 +40,6 @@ class OrganizationFeatureSettings
     public ?bool $seatBasedPricingEnabled = null;
 
     /**
-     * If this organization has RevOps enabled
-     *
-     * @var ?bool $revopsEnabled
-     */
-    #[\Speakeasy\Serializer\Annotation\SerializedName('revops_enabled')]
-    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
-    public ?bool $revopsEnabled = null;
-
-    /**
      * If this organization has Wallets enabled
      *
      * @var ?bool $walletsEnabled
@@ -67,24 +58,6 @@ class OrganizationFeatureSettings
     public ?bool $memberModelEnabled = null;
 
     /**
-     * If this organization reads from Tinybird
-     *
-     * @var ?bool $tinybirdRead
-     */
-    #[\Speakeasy\Serializer\Annotation\SerializedName('tinybird_read')]
-    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
-    public ?bool $tinybirdRead = null;
-
-    /**
-     * If this organization compares Tinybird results with database
-     *
-     * @var ?bool $tinybirdCompare
-     */
-    #[\Speakeasy\Serializer\Annotation\SerializedName('tinybird_compare')]
-    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
-    public ?bool $tinybirdCompare = null;
-
-    /**
      * If this organization has checkout localization enabled
      *
      * @var ?bool $checkoutLocalizationEnabled
@@ -94,27 +67,32 @@ class OrganizationFeatureSettings
     public ?bool $checkoutLocalizationEnabled = null;
 
     /**
+     * If this organization has access to reset proration behavior.
+     *
+     * @var ?bool $resetProrationBehaviorEnabled
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('reset_proration_behavior_enabled')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
+    public ?bool $resetProrationBehaviorEnabled = null;
+
+    /**
      * @param  ?bool  $issueFundingEnabled
      * @param  ?bool  $seatBasedPricingEnabled
-     * @param  ?bool  $revopsEnabled
      * @param  ?bool  $walletsEnabled
      * @param  ?bool  $memberModelEnabled
-     * @param  ?bool  $tinybirdRead
-     * @param  ?bool  $tinybirdCompare
      * @param  ?bool  $checkoutLocalizationEnabled
+     * @param  ?bool  $resetProrationBehaviorEnabled
      * @param  ?array<string>  $overviewMetrics
      * @phpstan-pure
      */
-    public function __construct(?array $overviewMetrics = null, ?bool $issueFundingEnabled = false, ?bool $seatBasedPricingEnabled = false, ?bool $revopsEnabled = false, ?bool $walletsEnabled = false, ?bool $memberModelEnabled = false, ?bool $tinybirdRead = false, ?bool $tinybirdCompare = false, ?bool $checkoutLocalizationEnabled = false)
+    public function __construct(?array $overviewMetrics = null, ?bool $issueFundingEnabled = false, ?bool $seatBasedPricingEnabled = false, ?bool $walletsEnabled = false, ?bool $memberModelEnabled = false, ?bool $checkoutLocalizationEnabled = false, ?bool $resetProrationBehaviorEnabled = false)
     {
         $this->overviewMetrics = $overviewMetrics;
         $this->issueFundingEnabled = $issueFundingEnabled;
         $this->seatBasedPricingEnabled = $seatBasedPricingEnabled;
-        $this->revopsEnabled = $revopsEnabled;
         $this->walletsEnabled = $walletsEnabled;
         $this->memberModelEnabled = $memberModelEnabled;
-        $this->tinybirdRead = $tinybirdRead;
-        $this->tinybirdCompare = $tinybirdCompare;
         $this->checkoutLocalizationEnabled = $checkoutLocalizationEnabled;
+        $this->resetProrationBehaviorEnabled = $resetProrationBehaviorEnabled;
     }
 }

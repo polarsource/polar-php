@@ -265,6 +265,15 @@ class CheckoutPublic
     public ?int $taxAmount;
 
     /**
+     * Tax behavior of the checkout. `inclusive` means the price includes tax, `exclusive` means tax is added on top. If `null`, tax is not yet calculated.
+     *
+     * @var ?\Polar\Models\Components\TaxBehavior $taxBehavior
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('tax_behavior')]
+    #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\TaxBehavior|null')]
+    public ?TaxBehavior $taxBehavior;
+
+    /**
      * Whether to enable the trial period for the checkout session. If `false`, the trial period will be disabled, even if the selected product has a trial configured.
      *
      * @var ?bool $allowTrial
@@ -486,6 +495,7 @@ class CheckoutPublic
      * @param  ?string  $returnUrl
      * @param  ?string  $embedOrigin
      * @param  ?int  $taxAmount
+     * @param  ?\Polar\Models\Components\TaxBehavior  $taxBehavior
      * @param  ?bool  $allowTrial
      * @param  ?\Polar\Models\Components\TrialInterval  $activeTrialInterval
      * @param  ?int  $activeTrialIntervalCount
@@ -511,7 +521,7 @@ class CheckoutPublic
      * @param  ?string  $locale
      * @phpstan-pure
      */
-    public function __construct(string $id, \DateTime $createdAt, PaymentProcessor $paymentProcessor, CheckoutStatus $status, string $clientSecret, string $url, \DateTime $expiresAt, string $successUrl, int $amount, int $discountAmount, int $netAmount, int $totalAmount, string $currency, string $organizationId, bool $allowDiscountCodes, bool $requireBillingAddress, bool $isDiscountApplicable, bool $isFreeProductPrice, bool $isPaymentRequired, bool $isPaymentSetupRequired, bool $isPaymentFormRequired, bool $isBusinessCustomer, array $paymentProcessorMetadata, CheckoutBillingAddressFields $billingAddressFields, array $products, CheckoutOrganization $organization, ?\DateTime $modifiedAt = null, ?array $customFieldData = null, ?string $returnUrl = null, ?string $embedOrigin = null, ?int $taxAmount = null, ?bool $allowTrial = null, ?TrialInterval $activeTrialInterval = null, ?int $activeTrialIntervalCount = null, ?\DateTime $trialEnd = null, ?string $productId = null, ?string $productPriceId = null, ?string $discountId = null, ?string $customerId = null, ?string $customerName = null, ?string $customerEmail = null, ?string $customerIpAddress = null, ?string $customerBillingName = null, ?Address $customerBillingAddress = null, ?string $customerTaxId = null, ?CheckoutProduct $product = null, LegacyRecurringProductPriceFixed|LegacyRecurringProductPriceCustom|LegacyRecurringProductPriceFree|ProductPriceFixed|ProductPriceCustom|ProductPriceFree|ProductPriceSeatBased|ProductPriceMeteredUnit|null $productPrice = null, ?array $prices = null, CheckoutDiscountFixedOnceForeverDuration|CheckoutDiscountFixedRepeatDuration|CheckoutDiscountPercentageOnceForeverDuration|CheckoutDiscountPercentageRepeatDuration|null $discount = null, ?array $attachedCustomFields = null, ?int $seats = null, ?int $minSeats = null, ?int $maxSeats = null, ?string $locale = null)
+    public function __construct(string $id, \DateTime $createdAt, PaymentProcessor $paymentProcessor, CheckoutStatus $status, string $clientSecret, string $url, \DateTime $expiresAt, string $successUrl, int $amount, int $discountAmount, int $netAmount, int $totalAmount, string $currency, string $organizationId, bool $allowDiscountCodes, bool $requireBillingAddress, bool $isDiscountApplicable, bool $isFreeProductPrice, bool $isPaymentRequired, bool $isPaymentSetupRequired, bool $isPaymentFormRequired, bool $isBusinessCustomer, array $paymentProcessorMetadata, CheckoutBillingAddressFields $billingAddressFields, array $products, CheckoutOrganization $organization, ?\DateTime $modifiedAt = null, ?array $customFieldData = null, ?string $returnUrl = null, ?string $embedOrigin = null, ?int $taxAmount = null, ?TaxBehavior $taxBehavior = null, ?bool $allowTrial = null, ?TrialInterval $activeTrialInterval = null, ?int $activeTrialIntervalCount = null, ?\DateTime $trialEnd = null, ?string $productId = null, ?string $productPriceId = null, ?string $discountId = null, ?string $customerId = null, ?string $customerName = null, ?string $customerEmail = null, ?string $customerIpAddress = null, ?string $customerBillingName = null, ?Address $customerBillingAddress = null, ?string $customerTaxId = null, ?CheckoutProduct $product = null, LegacyRecurringProductPriceFixed|LegacyRecurringProductPriceCustom|LegacyRecurringProductPriceFree|ProductPriceFixed|ProductPriceCustom|ProductPriceFree|ProductPriceSeatBased|ProductPriceMeteredUnit|null $productPrice = null, ?array $prices = null, CheckoutDiscountFixedOnceForeverDuration|CheckoutDiscountFixedRepeatDuration|CheckoutDiscountPercentageOnceForeverDuration|CheckoutDiscountPercentageRepeatDuration|null $discount = null, ?array $attachedCustomFields = null, ?int $seats = null, ?int $minSeats = null, ?int $maxSeats = null, ?string $locale = null)
     {
         $this->id = $id;
         $this->createdAt = $createdAt;
@@ -544,6 +554,7 @@ class CheckoutPublic
         $this->returnUrl = $returnUrl;
         $this->embedOrigin = $embedOrigin;
         $this->taxAmount = $taxAmount;
+        $this->taxBehavior = $taxBehavior;
         $this->allowTrial = $allowTrial;
         $this->activeTrialInterval = $activeTrialInterval;
         $this->activeTrialIntervalCount = $activeTrialIntervalCount;

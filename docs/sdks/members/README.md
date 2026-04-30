@@ -9,6 +9,9 @@
 * [getMember](#getmember) - Get Member
 * [deleteMember](#deletemember) - Delete Member
 * [updateMember](#updatemember) - Update Member
+* [getMemberByExternalId](#getmemberbyexternalid) - Get Member by External ID
+* [deleteMemberByExternalId](#deletememberbyexternalid) - Delete Member by External ID
+* [updateMemberByExternalId](#updatememberbyexternalid) - Update Member by External ID
 
 ## listMembers
 
@@ -281,6 +284,171 @@ if ($response->member !== null) {
 ### Response
 
 **[?Operations\MembersUpdateMemberResponse](../../Models/Operations/MembersUpdateMemberResponse.md)**
+
+### Errors
+
+| Error Type                 | Status Code                | Content Type               |
+| -------------------------- | -------------------------- | -------------------------- |
+| Errors\ResourceNotFound    | 404                        | application/json           |
+| Errors\HTTPValidationError | 422                        | application/json           |
+| Errors\APIException        | 4XX, 5XX                   | \*/\*                      |
+
+## getMemberByExternalId
+
+Get a member by external ID. One of customer_id or external_customer_id must be specified.
+
+**Scopes**: `members:read` `members:write`
+
+### Example Usage
+
+<!-- UsageSnippet language="php" operationID="members:get_member_by_external_id" method="get" path="/v1/members/external/{external_id}" -->
+```php
+declare(strict_types=1);
+
+require 'vendor/autoload.php';
+
+use Polar;
+
+$sdk = Polar\Polar::builder()
+    ->setSecurity(
+        '<YOUR_BEARER_TOKEN_HERE>'
+    )
+    ->build();
+
+
+
+$response = $sdk->members->getMemberByExternalId(
+    externalId: '<id>'
+);
+
+if ($response->member !== null) {
+    // handle response
+}
+```
+
+### Parameters
+
+| Parameter                 | Type                      | Required                  | Description               |
+| ------------------------- | ------------------------- | ------------------------- | ------------------------- |
+| `externalId`              | *string*                  | :heavy_check_mark:        | The member external ID.   |
+| `customerId`              | *?string*                 | :heavy_minus_sign:        | The customer ID.          |
+| `externalCustomerId`      | *?string*                 | :heavy_minus_sign:        | The customer external ID. |
+
+### Response
+
+**[?Operations\MembersGetMemberByExternalIdResponse](../../Models/Operations/MembersGetMemberByExternalIdResponse.md)**
+
+### Errors
+
+| Error Type                 | Status Code                | Content Type               |
+| -------------------------- | -------------------------- | -------------------------- |
+| Errors\ResourceNotFound    | 404                        | application/json           |
+| Errors\HTTPValidationError | 422                        | application/json           |
+| Errors\APIException        | 4XX, 5XX                   | \*/\*                      |
+
+## deleteMemberByExternalId
+
+Delete a member by external ID. One of customer_id or external_customer_id must be specified.
+
+**Scopes**: `members:write`
+
+### Example Usage
+
+<!-- UsageSnippet language="php" operationID="members:delete_member_by_external_id" method="delete" path="/v1/members/external/{external_id}" -->
+```php
+declare(strict_types=1);
+
+require 'vendor/autoload.php';
+
+use Polar;
+
+$sdk = Polar\Polar::builder()
+    ->setSecurity(
+        '<YOUR_BEARER_TOKEN_HERE>'
+    )
+    ->build();
+
+
+
+$response = $sdk->members->deleteMemberByExternalId(
+    externalId: '<id>'
+);
+
+if ($response->statusCode === 200) {
+    // handle response
+}
+```
+
+### Parameters
+
+| Parameter                 | Type                      | Required                  | Description               |
+| ------------------------- | ------------------------- | ------------------------- | ------------------------- |
+| `externalId`              | *string*                  | :heavy_check_mark:        | The member external ID.   |
+| `customerId`              | *?string*                 | :heavy_minus_sign:        | The customer ID.          |
+| `externalCustomerId`      | *?string*                 | :heavy_minus_sign:        | The customer external ID. |
+
+### Response
+
+**[?Operations\MembersDeleteMemberByExternalIdResponse](../../Models/Operations/MembersDeleteMemberByExternalIdResponse.md)**
+
+### Errors
+
+| Error Type                 | Status Code                | Content Type               |
+| -------------------------- | -------------------------- | -------------------------- |
+| Errors\ResourceNotFound    | 404                        | application/json           |
+| Errors\HTTPValidationError | 422                        | application/json           |
+| Errors\APIException        | 4XX, 5XX                   | \*/\*                      |
+
+## updateMemberByExternalId
+
+Update a member by external ID. One of customer_id or external_customer_id must be specified.
+
+**Scopes**: `members:write`
+
+### Example Usage
+
+<!-- UsageSnippet language="php" operationID="members:update_member_by_external_id" method="patch" path="/v1/members/external/{external_id}" -->
+```php
+declare(strict_types=1);
+
+require 'vendor/autoload.php';
+
+use Polar;
+use Polar\Models\Components;
+
+$sdk = Polar\Polar::builder()
+    ->setSecurity(
+        '<YOUR_BEARER_TOKEN_HERE>'
+    )
+    ->build();
+
+$memberUpdate = new Components\MemberUpdate(
+    name: 'Jane Doe',
+);
+
+$response = $sdk->members->updateMemberByExternalId(
+    externalId: '<id>',
+    memberUpdate: $memberUpdate
+
+);
+
+if ($response->member !== null) {
+    // handle response
+}
+```
+
+### Parameters
+
+| Parameter                                                          | Type                                                               | Required                                                           | Description                                                        |
+| ------------------------------------------------------------------ | ------------------------------------------------------------------ | ------------------------------------------------------------------ | ------------------------------------------------------------------ |
+| `externalId`                                                       | *string*                                                           | :heavy_check_mark:                                                 | The member external ID.                                            |
+| `memberUpdate`                                                     | [Components\MemberUpdate](../../Models/Components/MemberUpdate.md) | :heavy_check_mark:                                                 | N/A                                                                |
+| `customerId`                                                       | *?string*                                                          | :heavy_minus_sign:                                                 | The customer ID.                                                   |
+| `externalCustomerId`                                               | *?string*                                                          | :heavy_minus_sign:                                                 | The customer external ID.                                          |
+
+### Response
+
+**[?Operations\MembersUpdateMemberByExternalIdResponse](../../Models/Operations/MembersUpdateMemberByExternalIdResponse.md)**
 
 ### Errors
 

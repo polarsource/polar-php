@@ -9,25 +9,9 @@ declare(strict_types=1);
 namespace Polar\Models\Components;
 
 
-/** DiscountFixedOnceForeverDurationCreate - Schema to create a fixed amount discount that is applied once or forever. */
-class DiscountFixedOnceForeverDurationCreate
+/** DiscountFixedCreate - Schema to create a fixed amount discount. */
+class DiscountFixedCreate
 {
-    /**
-     *
-     * @var \Polar\Models\Components\DiscountDuration $duration
-     */
-    #[\Speakeasy\Serializer\Annotation\SerializedName('duration')]
-    #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\DiscountDuration')]
-    public DiscountDuration $duration;
-
-    /**
-     *
-     * @var \Polar\Models\Components\DiscountType $type
-     */
-    #[\Speakeasy\Serializer\Annotation\SerializedName('type')]
-    #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\DiscountType')]
-    public DiscountType $type;
-
     /**
      * Name of the discount. Will be displayed to the customer when the discount is applied.
      *
@@ -35,6 +19,14 @@ class DiscountFixedOnceForeverDurationCreate
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('name')]
     public string $name;
+
+    /**
+     *
+     * @var \Polar\Models\Components\DiscountDuration $duration
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('duration')]
+    #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\DiscountDuration')]
+    public DiscountDuration $duration;
 
     /**
      * Key-value object allowing you to store additional information.
@@ -56,35 +48,6 @@ class DiscountFixedOnceForeverDurationCreate
     #[\Speakeasy\Serializer\Annotation\Type('array<string, string|int|float|bool>|null')]
     #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
     public ?array $metadata = null;
-
-    /**
-     *
-     * @var ?int $amount
-     * @deprecated  field: This will be removed in a future release, please migrate away from it as soon as possible.
-     */
-    #[\Speakeasy\Serializer\Annotation\SerializedName('amount')]
-    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
-    public ?int $amount = null;
-
-    /**
-     *
-     * @var ?\Polar\Models\Components\PresentmentCurrency $currency
-     * @deprecated  field: This will be removed in a future release, please migrate away from it as soon as possible.
-     */
-    #[\Speakeasy\Serializer\Annotation\SerializedName('currency')]
-    #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\PresentmentCurrency|null')]
-    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
-    public ?PresentmentCurrency $currency = null;
-
-    /**
-     * $amounts
-     *
-     * @var ?array<string, int> $amounts
-     */
-    #[\Speakeasy\Serializer\Annotation\SerializedName('amounts')]
-    #[\Speakeasy\Serializer\Annotation\Type('array<string, int>|null')]
-    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
-    public ?array $amounts = null;
 
     /**
      * Code customers can use to apply the discount during checkout. Must be between 3 and 256 characters long and contain only alphanumeric characters.If not provided, the discount can only be applied via the API.
@@ -142,35 +105,89 @@ class DiscountFixedOnceForeverDurationCreate
     public ?string $organizationId = null;
 
     /**
-     * @param  \Polar\Models\Components\DiscountDuration  $duration
-     * @param  \Polar\Models\Components\DiscountType  $type
+     * Number of months the discount should be applied.
+     *
+     *
+     * Required when `duration` is `repeating`. Must be omitted otherwise.
+     *
+     * For this to work on yearly pricing, you should multiply this by 12.
+     * For example, to apply the discount for 2 years, set this to 24.
+     *
+     * @var ?int $durationInMonths
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('duration_in_months')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
+    public ?int $durationInMonths = null;
+
+    /**
+     *
+     * @var ?int $amount
+     * @deprecated  field: This will be removed in a future release, please migrate away from it as soon as possible.
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('amount')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
+    public ?int $amount = null;
+
+    /**
+     *
+     * @var ?\Polar\Models\Components\PresentmentCurrency $currency
+     * @deprecated  field: This will be removed in a future release, please migrate away from it as soon as possible.
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('currency')]
+    #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\PresentmentCurrency|null')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
+    public ?PresentmentCurrency $currency = null;
+
+    /**
+     * $amounts
+     *
+     * @var ?array<string, int> $amounts
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('amounts')]
+    #[\Speakeasy\Serializer\Annotation\Type('array<string, int>|null')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
+    public ?array $amounts = null;
+
+    /**
+     *
+     * @var ?string $type
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('type')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
+    public ?string $type = null;
+
+    /**
      * @param  string  $name
+     * @param  \Polar\Models\Components\DiscountDuration  $duration
      * @param  ?array<string, string|int|float|bool>  $metadata
-     * @param  ?int  $amount
-     * @param  ?\Polar\Models\Components\PresentmentCurrency  $currency
-     * @param  ?array<string, int>  $amounts
+     * @param  ?string  $type
      * @param  ?string  $code
      * @param  ?\DateTime  $startsAt
      * @param  ?\DateTime  $endsAt
      * @param  ?int  $maxRedemptions
      * @param  ?array<string>  $products
      * @param  ?string  $organizationId
+     * @param  ?int  $durationInMonths
+     * @param  ?int  $amount
+     * @param  ?\Polar\Models\Components\PresentmentCurrency  $currency
+     * @param  ?array<string, int>  $amounts
      * @phpstan-pure
      */
-    public function __construct(DiscountDuration $duration, DiscountType $type, string $name, ?array $metadata = null, ?int $amount = null, ?PresentmentCurrency $currency = null, ?array $amounts = null, ?string $code = null, ?\DateTime $startsAt = null, ?\DateTime $endsAt = null, ?int $maxRedemptions = null, ?array $products = null, ?string $organizationId = null)
+    public function __construct(string $name, DiscountDuration $duration, ?array $metadata = null, ?string $code = null, ?\DateTime $startsAt = null, ?\DateTime $endsAt = null, ?int $maxRedemptions = null, ?array $products = null, ?string $organizationId = null, ?int $durationInMonths = null, ?int $amount = null, ?PresentmentCurrency $currency = null, ?array $amounts = null, ?string $type = 'fixed')
     {
-        $this->duration = $duration;
-        $this->type = $type;
         $this->name = $name;
+        $this->duration = $duration;
         $this->metadata = $metadata;
-        $this->amount = $amount;
-        $this->currency = $currency;
-        $this->amounts = $amounts;
         $this->code = $code;
         $this->startsAt = $startsAt;
         $this->endsAt = $endsAt;
         $this->maxRedemptions = $maxRedemptions;
         $this->products = $products;
         $this->organizationId = $organizationId;
+        $this->durationInMonths = $durationInMonths;
+        $this->amount = $amount;
+        $this->currency = $currency;
+        $this->amounts = $amounts;
+        $this->type = $type;
     }
 }

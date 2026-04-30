@@ -1,4 +1,4 @@
-# DiscountFixedRepeatDurationCreateMetadata
+# DiscountFixedCreateMetadata
 
 
 ## Supported Types

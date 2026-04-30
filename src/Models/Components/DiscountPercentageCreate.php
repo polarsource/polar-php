@@ -9,9 +9,17 @@ declare(strict_types=1);
 namespace Polar\Models\Components;
 
 
-/** DiscountPercentageOnceForeverDurationCreate - Schema to create a percentage discount that is applied once or forever. */
-class DiscountPercentageOnceForeverDurationCreate
+/** DiscountPercentageCreate - Schema to create a percentage discount. */
+class DiscountPercentageCreate
 {
+    /**
+     * Name of the discount. Will be displayed to the customer when the discount is applied.
+     *
+     * @var string $name
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('name')]
+    public string $name;
+
     /**
      *
      * @var \Polar\Models\Components\DiscountDuration $duration
@@ -19,14 +27,6 @@ class DiscountPercentageOnceForeverDurationCreate
     #[\Speakeasy\Serializer\Annotation\SerializedName('duration')]
     #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\DiscountDuration')]
     public DiscountDuration $duration;
-
-    /**
-     *
-     * @var \Polar\Models\Components\DiscountType $type
-     */
-    #[\Speakeasy\Serializer\Annotation\SerializedName('type')]
-    #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\DiscountType')]
-    public DiscountType $type;
 
     /**
      * Discount percentage in basis points.
@@ -39,14 +39,6 @@ class DiscountPercentageOnceForeverDurationCreate
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('basis_points')]
     public int $basisPoints;
-
-    /**
-     * Name of the discount. Will be displayed to the customer when the discount is applied.
-     *
-     * @var string $name
-     */
-    #[\Speakeasy\Serializer\Annotation\SerializedName('name')]
-    public string $name;
 
     /**
      * Key-value object allowing you to store additional information.
@@ -125,25 +117,48 @@ class DiscountPercentageOnceForeverDurationCreate
     public ?string $organizationId = null;
 
     /**
-     * @param  \Polar\Models\Components\DiscountDuration  $duration
-     * @param  \Polar\Models\Components\DiscountType  $type
-     * @param  int  $basisPoints
+     * Number of months the discount should be applied.
+     *
+     *
+     * Required when `duration` is `repeating`. Must be omitted otherwise.
+     *
+     * For this to work on yearly pricing, you should multiply this by 12.
+     * For example, to apply the discount for 2 years, set this to 24.
+     *
+     * @var ?int $durationInMonths
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('duration_in_months')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
+    public ?int $durationInMonths = null;
+
+    /**
+     *
+     * @var ?string $type
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('type')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
+    public ?string $type = null;
+
+    /**
      * @param  string  $name
+     * @param  \Polar\Models\Components\DiscountDuration  $duration
+     * @param  int  $basisPoints
      * @param  ?array<string, string|int|float|bool>  $metadata
+     * @param  ?string  $type
      * @param  ?string  $code
      * @param  ?\DateTime  $startsAt
      * @param  ?\DateTime  $endsAt
      * @param  ?int  $maxRedemptions
      * @param  ?array<string>  $products
      * @param  ?string  $organizationId
+     * @param  ?int  $durationInMonths
      * @phpstan-pure
      */
-    public function __construct(DiscountDuration $duration, DiscountType $type, int $basisPoints, string $name, ?array $metadata = null, ?string $code = null, ?\DateTime $startsAt = null, ?\DateTime $endsAt = null, ?int $maxRedemptions = null, ?array $products = null, ?string $organizationId = null)
+    public function __construct(string $name, DiscountDuration $duration, int $basisPoints, ?array $metadata = null, ?string $code = null, ?\DateTime $startsAt = null, ?\DateTime $endsAt = null, ?int $maxRedemptions = null, ?array $products = null, ?string $organizationId = null, ?int $durationInMonths = null, ?string $type = 'percentage')
     {
-        $this->duration = $duration;
-        $this->type = $type;
-        $this->basisPoints = $basisPoints;
         $this->name = $name;
+        $this->duration = $duration;
+        $this->basisPoints = $basisPoints;
         $this->metadata = $metadata;
         $this->code = $code;
         $this->startsAt = $startsAt;
@@ -151,5 +166,7 @@ class DiscountPercentageOnceForeverDurationCreate
         $this->maxRedemptions = $maxRedemptions;
         $this->products = $products;
         $this->organizationId = $organizationId;
+        $this->durationInMonths = $durationInMonths;
+        $this->type = $type;
     }
 }

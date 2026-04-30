@@ -10,6 +10,9 @@
 * [addPaymentMethod](#addpaymentmethod) - Add Customer Payment Method
 * [confirmPaymentMethod](#confirmpaymentmethod) - Confirm Customer Payment Method
 * [deletePaymentMethod](#deletepaymentmethod) - Delete Customer Payment Method
+* [requestEmailUpdate](#requestemailupdate) - Request Email Change
+* [checkEmailUpdate](#checkemailupdate) - Check Email Change Token
+* [verifyEmailUpdate](#verifyemailupdate) - Verify Email Change
 
 ## get
 
@@ -333,3 +336,146 @@ if ($response->statusCode === 200) {
 | Errors\ResourceNotFound                       | 404                                           | application/json                              |
 | Errors\HTTPValidationError                    | 422                                           | application/json                              |
 | Errors\APIException                           | 4XX, 5XX                                      | \*/\*                                         |
+
+## requestEmailUpdate
+
+Request an email change for the authenticated customer.
+
+### Example Usage
+
+<!-- UsageSnippet language="php" operationID="customer_portal:customers:request_email_update" method="post" path="/v1/customer-portal/customers/me/email-update/request" -->
+```php
+declare(strict_types=1);
+
+require 'vendor/autoload.php';
+
+use Polar;
+use Polar\Models\Components;
+use Polar\Models\Operations;
+
+$sdk = Polar\Polar::builder()->build();
+
+$request = new Components\CustomerEmailUpdateRequest(
+    email: 'Tommie_Larkin78@gmail.com',
+);
+$requestSecurity = new Operations\CustomerPortalCustomersRequestEmailUpdateSecurity(
+    customerSession: '<YOUR_BEARER_TOKEN_HERE>',
+);
+
+$response = $sdk->customerPortal->customers->requestEmailUpdate(
+    request: $request,
+    security: $requestSecurity
+);
+
+if ($response->any !== null) {
+    // handle response
+}
+```
+
+### Parameters
+
+| Parameter                                                                                                                                    | Type                                                                                                                                         | Required                                                                                                                                     | Description                                                                                                                                  |
+| -------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------- |
+| `$request`                                                                                                                                   | [Components\CustomerEmailUpdateRequest](../../Models/Components/CustomerEmailUpdateRequest.md)                                               | :heavy_check_mark:                                                                                                                           | The request object to use for the request.                                                                                                   |
+| `security`                                                                                                                                   | [Operations\CustomerPortalCustomersRequestEmailUpdateSecurity](../../Models/Operations/CustomerPortalCustomersRequestEmailUpdateSecurity.md) | :heavy_check_mark:                                                                                                                           | The security requirements to use for the request.                                                                                            |
+
+### Response
+
+**[?Operations\CustomerPortalCustomersRequestEmailUpdateResponse](../../Models/Operations/CustomerPortalCustomersRequestEmailUpdateResponse.md)**
+
+### Errors
+
+| Error Type                 | Status Code                | Content Type               |
+| -------------------------- | -------------------------- | -------------------------- |
+| Errors\HTTPValidationError | 422                        | application/json           |
+| Errors\APIException        | 4XX, 5XX                   | \*/\*                      |
+
+## checkEmailUpdate
+
+Check if an email change verification token is still valid.
+
+### Example Usage
+
+<!-- UsageSnippet language="php" operationID="customer_portal:customers:check_email_update" method="get" path="/v1/customer-portal/customers/me/email-update/check" -->
+```php
+declare(strict_types=1);
+
+require 'vendor/autoload.php';
+
+use Polar;
+
+$sdk = Polar\Polar::builder()->build();
+
+
+
+$response = $sdk->customerPortal->customers->checkEmailUpdate(
+    token: '<value>'
+);
+
+if ($response->statusCode === 200) {
+    // handle response
+}
+```
+
+### Parameters
+
+| Parameter          | Type               | Required           | Description        |
+| ------------------ | ------------------ | ------------------ | ------------------ |
+| `token`            | *string*           | :heavy_check_mark: | N/A                |
+
+### Response
+
+**[?Operations\CustomerPortalCustomersCheckEmailUpdateResponse](../../Models/Operations/CustomerPortalCustomersCheckEmailUpdateResponse.md)**
+
+### Errors
+
+| Error Type                 | Status Code                | Content Type               |
+| -------------------------- | -------------------------- | -------------------------- |
+| Errors\HTTPValidationError | 422                        | application/json           |
+| Errors\APIException        | 4XX, 5XX                   | \*/\*                      |
+
+## verifyEmailUpdate
+
+Verify an email change using the token from the verification email.
+
+### Example Usage
+
+<!-- UsageSnippet language="php" operationID="customer_portal:customers:verify_email_update" method="post" path="/v1/customer-portal/customers/me/email-update/verify" -->
+```php
+declare(strict_types=1);
+
+require 'vendor/autoload.php';
+
+use Polar;
+use Polar\Models\Components;
+
+$sdk = Polar\Polar::builder()->build();
+
+$request = new Components\CustomerEmailUpdateVerifyRequest(
+    token: '<value>',
+);
+
+$response = $sdk->customerPortal->customers->verifyEmailUpdate(
+    request: $request
+);
+
+if ($response->customerEmailUpdateVerifyResponse !== null) {
+    // handle response
+}
+```
+
+### Parameters
+
+| Parameter                                                                                                  | Type                                                                                                       | Required                                                                                                   | Description                                                                                                |
+| ---------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------- |
+| `$request`                                                                                                 | [Components\CustomerEmailUpdateVerifyRequest](../../Models/Components/CustomerEmailUpdateVerifyRequest.md) | :heavy_check_mark:                                                                                         | The request object to use for the request.                                                                 |
+
+### Response
+
+**[?Operations\CustomerPortalCustomersVerifyEmailUpdateResponse](../../Models/Operations/CustomerPortalCustomersVerifyEmailUpdateResponse.md)**
+
+### Errors
+
+| Error Type          | Status Code         | Content Type        |
+| ------------------- | ------------------- | ------------------- |
+| Errors\APIException | 4XX, 5XX            | \*/\*               |

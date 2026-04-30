@@ -386,4 +386,5 @@ if ($response->customerOrderPaymentConfirmation !== null) {
 | Errors\ResourceNotFound         | 404                             | application/json                |
 | Errors\PaymentAlreadyInProgress | 409                             | application/json                |
 | Errors\OrderNotEligibleForRetry | 422                             | application/json                |
+| Errors\ManualRetryLimitExceeded | 429                             | application/json                |
 | Errors\APIException             | 4XX, 5XX                        | \*/\*                           |

@@ -125,8 +125,6 @@ if ($response->organization !== null) {
 
 Get an organization by ID.
 
-**Scopes**: `organizations:read` `organizations:write`
-
 ### Example Usage
 
 <!-- UsageSnippet language="php" operationID="organizations:get" method="get" path="/v1/organizations/{id}" -->
@@ -175,8 +173,6 @@ if ($response->organization !== null) {
 ## update
 
 Update an organization.
-
-**Scopes**: `organizations:write`
 
 ### Example Usage
 

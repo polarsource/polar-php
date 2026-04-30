@@ -28,13 +28,24 @@ class OrganizationCustomerPortalSettings
     public CustomerPortalSubscriptionSettings $subscription;
 
     /**
+     *
+     * @var ?\Polar\Models\Components\CustomerPortalCustomerSettings $customer
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('customer')]
+    #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\CustomerPortalCustomerSettings|null')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
+    public ?CustomerPortalCustomerSettings $customer = null;
+
+    /**
      * @param  \Polar\Models\Components\CustomerPortalUsageSettings  $usage
      * @param  \Polar\Models\Components\CustomerPortalSubscriptionSettings  $subscription
+     * @param  ?\Polar\Models\Components\CustomerPortalCustomerSettings  $customer
      * @phpstan-pure
      */
-    public function __construct(CustomerPortalUsageSettings $usage, CustomerPortalSubscriptionSettings $subscription)
+    public function __construct(CustomerPortalUsageSettings $usage, CustomerPortalSubscriptionSettings $subscription, ?CustomerPortalCustomerSettings $customer = null)
     {
         $this->usage = $usage;
         $this->subscription = $subscription;
+        $this->customer = $customer;
     }
 }
