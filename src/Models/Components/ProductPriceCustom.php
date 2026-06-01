@@ -61,7 +61,7 @@ class ProductPriceCustom
     public string $productId;
 
     /**
-     * The minimum amount the customer can pay. If 0, the price is 'free or pay what you want'. Defaults to 50 cents.
+     * The minimum amount the customer can pay. If 0, the price is 'free or pay what you want'.
      *
      * @var int $minimumAmount
      */

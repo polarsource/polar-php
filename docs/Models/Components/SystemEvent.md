@@ -210,6 +210,15 @@ Components\SubscriptionCreatedEvent $value = /* values here */
 Components\SubscriptionCycledEvent $value = /* values here */
 ```
 
+### `Components\SubscriptionPastDueEvent`
+
+```php
+/**
+* @var \Polar\Models\Components\SubscriptionPastDueEvent
+*/
+Components\SubscriptionPastDueEvent $value = /* values here */
+```
+
 ### `Components\SubscriptionProductUpdatedEvent`
 
 ```php
@@ -217,6 +226,15 @@ Components\SubscriptionCycledEvent $value = /* values here */
 * @var \Polar\Models\Components\SubscriptionProductUpdatedEvent
 */
 Components\SubscriptionProductUpdatedEvent $value = /* values here */
+```
+
+### `Components\SubscriptionReactivatedEvent`
+
+```php
+/**
+* @var \Polar\Models\Components\SubscriptionReactivatedEvent
+*/
+Components\SubscriptionReactivatedEvent $value = /* values here */
 ```
 
 ### `Components\SubscriptionRevokedEvent`
@@ -244,6 +262,15 @@ Components\SubscriptionSeatsUpdatedEvent $value = /* values here */
 * @var \Polar\Models\Components\SubscriptionUncanceledEvent
 */
 Components\SubscriptionUncanceledEvent $value = /* values here */
+```
+
+### `Components\SubscriptionUpdateClearedEvent`
+
+```php
+/**
+* @var \Polar\Models\Components\SubscriptionUpdateClearedEvent
+*/
+Components\SubscriptionUpdateClearedEvent $value = /* values here */
 ```
 
 ### `Components\SubscriptionUpdatedEvent`

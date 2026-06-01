@@ -4,12 +4,12 @@
 
 ### Available Operations
 
-* [list](#list) - List Organizations
+* [listOrganizations](#listorganizations) - List Organizations
 * [create](#create) - Create Organization
 * [get](#get) - Get Organization
 * [update](#update) - Update Organization
 
-## list
+## listOrganizations
 
 List organizations.
 
@@ -33,7 +33,7 @@ $sdk = Polar\Polar::builder()
 
 
 
-$responses = $sdk->organizations->list(
+$responses = $sdk->organizations->listOrganizations(
     page: 1,
     limit: 10
 

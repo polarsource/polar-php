@@ -67,6 +67,8 @@ foreach ($responses as $response) {
 
 Update an event type's label.
 
+**Scopes**: `events:write`
+
 ### Example Usage
 
 <!-- UsageSnippet language="php" operationID="event-types:update" method="patch" path="/v1/event-types/{id}" -->

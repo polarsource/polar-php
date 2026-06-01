@@ -70,7 +70,7 @@ $sdk = Polar\Polar::builder()
 
 
 
-$responses = $sdk->organizations->list(
+$responses = $sdk->organizations->listOrganizations(
     page: 1,
     limit: 10
 
@@ -112,7 +112,7 @@ $sdk = Polar\Polar::builder()
 
 
 
-$responses = $sdk->organizations->list(
+$responses = $sdk->organizations->listOrganizations(
     page: 1,
     limit: 10
 
@@ -232,6 +232,9 @@ foreach ($responses as $response) {
 * [addPaymentMethod](docs/sdks/polarcustomers/README.md#addpaymentmethod) - Add Customer Payment Method
 * [confirmPaymentMethod](docs/sdks/polarcustomers/README.md#confirmpaymentmethod) - Confirm Customer Payment Method
 * [deletePaymentMethod](docs/sdks/polarcustomers/README.md#deletepaymentmethod) - Delete Customer Payment Method
+* [requestEmailUpdate](docs/sdks/polarcustomers/README.md#requestemailupdate) - Request Email Change
+* [checkEmailUpdate](docs/sdks/polarcustomers/README.md#checkemailupdate) - Check Email Change Token
+* [verifyEmailUpdate](docs/sdks/polarcustomers/README.md#verifyemailupdate) - Verify Email Change
 
 ### [CustomerPortal.Downloadables](docs/sdks/downloadables/README.md)
 
@@ -259,6 +262,7 @@ foreach ($responses as $response) {
 * [update](docs/sdks/polarorders/README.md#update) - Update Order
 * [invoice](docs/sdks/polarorders/README.md#invoice) - Get Order Invoice
 * [generateInvoice](docs/sdks/polarorders/README.md#generateinvoice) - Generate Order Invoice
+* [receipt](docs/sdks/polarorders/README.md#receipt) - Get Order Receipt
 * [getPaymentStatus](docs/sdks/polarorders/README.md#getpaymentstatus) - Get Order Payment Status
 * [confirmRetryPayment](docs/sdks/polarorders/README.md#confirmretrypayment) - Confirm Retry Payment
 
@@ -363,6 +367,9 @@ foreach ($responses as $response) {
 * [getMember](docs/sdks/members/README.md#getmember) - Get Member
 * [deleteMember](docs/sdks/members/README.md#deletemember) - Delete Member
 * [updateMember](docs/sdks/members/README.md#updatemember) - Update Member
+* [getMemberByExternalId](docs/sdks/members/README.md#getmemberbyexternalid) - Get Member by External ID
+* [deleteMemberByExternalId](docs/sdks/members/README.md#deletememberbyexternalid) - Delete Member by External ID
+* [updateMemberByExternalId](docs/sdks/members/README.md#updatememberbyexternalid) - Update Member by External ID
 
 ### [Meters](docs/sdks/meters/README.md)
 
@@ -375,6 +382,7 @@ foreach ($responses as $response) {
 ### [Metrics](docs/sdks/metrics/README.md)
 
 * [get](docs/sdks/metrics/README.md#get) - Get Metrics
+* [export](docs/sdks/metrics/README.md#export) - Export Metrics
 * [limits](docs/sdks/metrics/README.md#limits) - Get Metrics Limits
 * [listDashboards](docs/sdks/metrics/README.md#listdashboards) - List Metric Dashboards
 * [createDashboard](docs/sdks/metrics/README.md#createdashboard) - Create Metric Dashboard
@@ -405,6 +413,7 @@ foreach ($responses as $response) {
 * [update](docs/sdks/orders/README.md#update) - Update Order
 * [invoice](docs/sdks/orders/README.md#invoice) - Get Order Invoice
 * [generateInvoice](docs/sdks/orders/README.md#generateinvoice) - Generate Order Invoice
+* [receipt](docs/sdks/orders/README.md#receipt) - Get Order Receipt
 
 ### [OrganizationAccessTokens](docs/sdks/organizationaccesstokens/README.md)
 
@@ -415,7 +424,7 @@ foreach ($responses as $response) {
 
 ### [Organizations](docs/sdks/organizations/README.md)
 
-* [list](docs/sdks/organizations/README.md#list) - List Organizations
+* [listOrganizations](docs/sdks/organizations/README.md#listorganizations) - List Organizations
 * [create](docs/sdks/organizations/README.md#create) - Create Organization
 * [get](docs/sdks/organizations/README.md#get) - Get Organization
 * [update](docs/sdks/organizations/README.md#update) - Update Organization
@@ -483,7 +492,7 @@ $sdk = Polar\Polar::builder()
 
 
 
-$responses = $sdk->organizations->list(
+$responses = $sdk->organizations->listOrganizations(
     page: 1,
     limit: 10
 
@@ -512,7 +521,7 @@ By default an API error will raise a `Errors\APIException` exception, which has 
 | `$rawResponse` | *?\Psr\Http\Message\ResponseInterface*  | The raw HTTP response |
 | `$body`        | *string*                                | The response content  |
 
-When custom error responses are specified for an operation, the SDK may also throw their associated exception. You can refer to respective *Errors* tables in SDK docs for more details on possible exception types for each operation. For example, the `list` method throws the following exceptions:
+When custom error responses are specified for an operation, the SDK may also throw their associated exception. You can refer to respective *Errors* tables in SDK docs for more details on possible exception types for each operation. For example, the `listOrganizations` method throws the following exceptions:
 
 | Error Type                 | Status Code | Content Type     |
 | -------------------------- | ----------- | ---------------- |
@@ -536,7 +545,7 @@ $sdk = Polar\Polar::builder()
     ->build();
 
 try {
-    $responses = $sdk->organizations->list(
+    $responses = $sdk->organizations->listOrganizations(
         page: 1,
         limit: 10
 
@@ -587,7 +596,7 @@ $sdk = Polar\Polar::builder()
 
 
 
-$responses = $sdk->organizations->list(
+$responses = $sdk->organizations->listOrganizations(
     page: 1,
     limit: 10
 
@@ -620,7 +629,7 @@ $sdk = Polar\Polar::builder()
 
 
 
-$responses = $sdk->organizations->list(
+$responses = $sdk->organizations->listOrganizations(
     page: 1,
     limit: 10
 

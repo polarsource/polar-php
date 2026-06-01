@@ -22,17 +22,17 @@ class CustomerPortalSubscriptionsUpdateRequest
 
     /**
      *
-     * @var \Polar\Models\Components\CustomerSubscriptionUpdateProduct|\Polar\Models\Components\CustomerSubscriptionUpdateSeats|\Polar\Models\Components\CustomerSubscriptionCancel $customerSubscriptionUpdate
+     * @var \Polar\Models\Components\CustomerSubscriptionUpdateProduct|\Polar\Models\Components\CustomerSubscriptionUpdateSeats|\Polar\Models\Components\CustomerSubscriptionCancel|\Polar\Models\Components\CustomerSubscriptionUpdateClear $customerSubscriptionUpdate
      */
     #[SpeakeasyMetadata('request:mediaType=application/json')]
-    public Components\CustomerSubscriptionUpdateProduct|Components\CustomerSubscriptionUpdateSeats|Components\CustomerSubscriptionCancel $customerSubscriptionUpdate;
+    public Components\CustomerSubscriptionUpdateProduct|Components\CustomerSubscriptionUpdateSeats|Components\CustomerSubscriptionCancel|Components\CustomerSubscriptionUpdateClear $customerSubscriptionUpdate;
 
     /**
      * @param  string  $id
-     * @param  \Polar\Models\Components\CustomerSubscriptionUpdateProduct|\Polar\Models\Components\CustomerSubscriptionUpdateSeats|\Polar\Models\Components\CustomerSubscriptionCancel  $customerSubscriptionUpdate
+     * @param  \Polar\Models\Components\CustomerSubscriptionUpdateProduct|\Polar\Models\Components\CustomerSubscriptionUpdateSeats|\Polar\Models\Components\CustomerSubscriptionCancel|\Polar\Models\Components\CustomerSubscriptionUpdateClear  $customerSubscriptionUpdate
      * @phpstan-pure
      */
-    public function __construct(string $id, Components\CustomerSubscriptionUpdateProduct|Components\CustomerSubscriptionUpdateSeats|Components\CustomerSubscriptionCancel $customerSubscriptionUpdate)
+    public function __construct(string $id, Components\CustomerSubscriptionUpdateProduct|Components\CustomerSubscriptionUpdateSeats|Components\CustomerSubscriptionCancel|Components\CustomerSubscriptionUpdateClear $customerSubscriptionUpdate)
     {
         $this->id = $id;
         $this->customerSubscriptionUpdate = $customerSubscriptionUpdate;

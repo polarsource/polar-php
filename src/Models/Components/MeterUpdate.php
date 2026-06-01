@@ -42,6 +42,34 @@ class MeterUpdate
     public ?string $name = null;
 
     /**
+     * The unit of the meter.
+     *
+     * @var ?\Polar\Models\Components\MeterUnit $unit
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('unit')]
+    #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\MeterUnit|null')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
+    public ?MeterUnit $unit = null;
+
+    /**
+     * The label for the custom unit. Required when unit is 'custom'.
+     *
+     * @var ?string $customLabel
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('custom_label')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
+    public ?string $customLabel = null;
+
+    /**
+     * The multiplier to convert from base unit to display scale. Required when unit is 'custom'.
+     *
+     * @var ?int $customMultiplier
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('custom_multiplier')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
+    public ?int $customMultiplier = null;
+
+    /**
      * The filter to apply on events that'll be used to calculate the meter.
      *
      * @var ?\Polar\Models\Components\Filter $filter
@@ -74,15 +102,21 @@ class MeterUpdate
     /**
      * @param  ?array<string, string|int|float|bool>  $metadata
      * @param  ?string  $name
+     * @param  ?\Polar\Models\Components\MeterUnit  $unit
+     * @param  ?string  $customLabel
+     * @param  ?int  $customMultiplier
      * @param  ?\Polar\Models\Components\Filter  $filter
      * @param  \Polar\Models\Components\CountAggregation|\Polar\Models\Components\PropertyAggregation|\Polar\Models\Components\UniqueAggregation|null  $aggregation
      * @param  ?bool  $isArchived
      * @phpstan-pure
      */
-    public function __construct(?array $metadata = null, ?string $name = null, ?Filter $filter = null, CountAggregation|PropertyAggregation|UniqueAggregation|null $aggregation = null, ?bool $isArchived = null)
+    public function __construct(?array $metadata = null, ?string $name = null, ?MeterUnit $unit = null, ?string $customLabel = null, ?int $customMultiplier = null, ?Filter $filter = null, CountAggregation|PropertyAggregation|UniqueAggregation|null $aggregation = null, ?bool $isArchived = null)
     {
         $this->metadata = $metadata;
         $this->name = $name;
+        $this->unit = $unit;
+        $this->customLabel = $customLabel;
+        $this->customMultiplier = $customMultiplier;
         $this->filter = $filter;
         $this->aggregation = $aggregation;
         $this->isArchived = $isArchived;

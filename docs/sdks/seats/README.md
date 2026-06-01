@@ -80,7 +80,7 @@ use Polar\Models\Operations;
 
 $sdk = Polar\Polar::builder()->build();
 
-$request = new Components\SeatAssign();
+$request = new Components\CustomerSeatAssign();
 $requestSecurity = new Operations\CustomerPortalSeatsAssignSeatSecurity(
     customerSession: '<YOUR_BEARER_TOKEN_HERE>',
 );
@@ -99,7 +99,7 @@ if ($response->customerSeat !== null) {
 
 | Parameter                                                                                                            | Type                                                                                                                 | Required                                                                                                             | Description                                                                                                          |
 | -------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------- |
-| `$request`                                                                                                           | [Components\SeatAssign](../../Models/Components/SeatAssign.md)                                                       | :heavy_check_mark:                                                                                                   | The request object to use for the request.                                                                           |
+| `$request`                                                                                                           | [Components\CustomerSeatAssign](../../Models/Components/CustomerSeatAssign.md)                                       | :heavy_check_mark:                                                                                                   | The request object to use for the request.                                                                           |
 | `security`                                                                                                           | [Operations\CustomerPortalSeatsAssignSeatSecurity](../../Models/Operations/CustomerPortalSeatsAssignSeatSecurity.md) | :heavy_check_mark:                                                                                                   | The security requirements to use for the request.                                                                    |
 
 ### Response
