@@ -14,7 +14,7 @@ $sdk = Polar\Polar::builder()
 
 
 
-$responses = $sdk->organizations->list(
+$responses = $sdk->organizations->listOrganizations(
     page: 1,
     limit: 10
 

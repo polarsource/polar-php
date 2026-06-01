@@ -9,6 +9,7 @@
 * [update](#update) - Update Order
 * [invoice](#invoice) - Get Order Invoice
 * [generateInvoice](#generateinvoice) - Generate Order Invoice
+* [receipt](#receipt) - Get Order Receipt
 * [getPaymentStatus](#getpaymentstatus) - Get Order Payment Status
 * [confirmRetryPayment](#confirmretrypayment) - Confirm Retry Payment
 
@@ -280,6 +281,58 @@ if ($response->any !== null) {
 | Errors\NotPaidOrder                 | 422                                 | application/json                    |
 | Errors\APIException                 | 4XX, 5XX                            | \*/\*                               |
 
+## receipt
+
+Get a presigned URL to download an order's receipt PDF.
+
+### Example Usage
+
+<!-- UsageSnippet language="php" operationID="customer_portal:orders:receipt" method="get" path="/v1/customer-portal/orders/{id}/receipt" -->
+```php
+declare(strict_types=1);
+
+require 'vendor/autoload.php';
+
+use Polar;
+use Polar\Models\Operations;
+
+$sdk = Polar\Polar::builder()->build();
+
+
+$requestSecurity = new Operations\CustomerPortalOrdersReceiptSecurity(
+    customerSession: '<YOUR_BEARER_TOKEN_HERE>',
+);
+
+$response = $sdk->customerPortal->orders->receipt(
+    security: $requestSecurity,
+    id: '<value>'
+
+);
+
+if ($response->customerOrderReceipt !== null) {
+    // handle response
+}
+```
+
+### Parameters
+
+| Parameter                                                                                                        | Type                                                                                                             | Required                                                                                                         | Description                                                                                                      |
+| ---------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------- |
+| `security`                                                                                                       | [Operations\CustomerPortalOrdersReceiptSecurity](../../Models/Operations/CustomerPortalOrdersReceiptSecurity.md) | :heavy_check_mark:                                                                                               | The security requirements to use for the request.                                                                |
+| `id`                                                                                                             | *string*                                                                                                         | :heavy_check_mark:                                                                                               | The order ID.                                                                                                    |
+
+### Response
+
+**[?Operations\CustomerPortalOrdersReceiptResponse](../../Models/Operations/CustomerPortalOrdersReceiptResponse.md)**
+
+### Errors
+
+| Error Type                 | Status Code                | Content Type               |
+| -------------------------- | -------------------------- | -------------------------- |
+| Errors\ResourceNotFound    | 404                        | application/json           |
+| Errors\HTTPValidationError | 422                        | application/json           |
+| Errors\APIException        | 4XX, 5XX                   | \*/\*                      |
+
 ## getPaymentStatus
 
 Get the current payment status for an order.
@@ -386,4 +439,5 @@ if ($response->customerOrderPaymentConfirmation !== null) {
 | Errors\ResourceNotFound         | 404                             | application/json                |
 | Errors\PaymentAlreadyInProgress | 409                             | application/json                |
 | Errors\OrderNotEligibleForRetry | 422                             | application/json                |
+| Errors\ManualRetryLimitExceeded | 429                             | application/json                |
 | Errors\APIException             | 4XX, 5XX                        | \*/\*                           |

@@ -37,15 +37,25 @@ class CustomerPortalCustomerUpdate
     public ?string $taxId = null;
 
     /**
+     *
+     * @var ?string $defaultPaymentMethodId
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('default_payment_method_id')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
+    public ?string $defaultPaymentMethodId = null;
+
+    /**
      * @param  ?string  $billingName
      * @param  ?\Polar\Models\Components\AddressInput  $billingAddress
      * @param  ?string  $taxId
+     * @param  ?string  $defaultPaymentMethodId
      * @phpstan-pure
      */
-    public function __construct(?string $billingName = null, ?AddressInput $billingAddress = null, ?string $taxId = null)
+    public function __construct(?string $billingName = null, ?AddressInput $billingAddress = null, ?string $taxId = null, ?string $defaultPaymentMethodId = null)
     {
         $this->billingName = $billingName;
         $this->billingAddress = $billingAddress;
         $this->taxId = $taxId;
+        $this->defaultPaymentMethodId = $defaultPaymentMethodId;
     }
 }

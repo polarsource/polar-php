@@ -82,11 +82,12 @@ class Organizations
         }
         $contentType = $httpResponse->getHeader('Content-Type')[0] ?? '';
 
-        $statusCode = $httpResponse->getStatusCode();
-        if (Utils\Utils::matchStatusCodes($statusCode, ['422', '4XX', '5XX'])) {
+        if (Utils\Utils::matchStatusCodes($httpResponse->getStatusCode(), ['4XX', '5XX'])) {
             $res = $this->sdkConfiguration->hooks->afterError(new Hooks\AfterErrorContext($hookContext), $httpResponse, null);
             $httpResponse = $res;
         }
+
+        $statusCode = $httpResponse->getStatusCode();
         if (Utils\Utils::matchStatusCodes($statusCode, ['201'])) {
             if (Utils\Utils::matchContentType($contentType, 'application/json')) {
                 $httpResponse = $this->sdkConfiguration->hooks->afterSuccess(new Hooks\AfterSuccessContext($hookContext), $httpResponse);
@@ -159,11 +160,12 @@ class Organizations
         }
         $contentType = $httpResponse->getHeader('Content-Type')[0] ?? '';
 
-        $statusCode = $httpResponse->getStatusCode();
-        if (Utils\Utils::matchStatusCodes($statusCode, ['404', '422', '4XX', '5XX'])) {
+        if (Utils\Utils::matchStatusCodes($httpResponse->getStatusCode(), ['4XX', '5XX'])) {
             $res = $this->sdkConfiguration->hooks->afterError(new Hooks\AfterErrorContext($hookContext), $httpResponse, null);
             $httpResponse = $res;
         }
+
+        $statusCode = $httpResponse->getStatusCode();
         if (Utils\Utils::matchStatusCodes($statusCode, ['200'])) {
             if (Utils\Utils::matchContentType($contentType, 'application/json')) {
                 $httpResponse = $this->sdkConfiguration->hooks->afterSuccess(new Hooks\AfterSuccessContext($hookContext), $httpResponse);
@@ -226,7 +228,7 @@ class Organizations
      * @return \Polar\Models\Operations\OrganizationsListResponse
      * @throws \Polar\Models\Errors\APIException
      */
-    private function listIndividual(?string $slug = null, ?int $page = null, ?int $limit = null, ?array $sorting = null, ?Options $options = null): Operations\OrganizationsListResponse
+    private function listOrganizationsIndividual(?string $slug = null, ?int $page = null, ?int $limit = null, ?array $sorting = null, ?Options $options = null): Operations\OrganizationsListResponse
     {
         $request = new Operations\OrganizationsListRequest(
             slug: $slug,
@@ -256,11 +258,12 @@ class Organizations
         }
         $contentType = $httpResponse->getHeader('Content-Type')[0] ?? '';
 
-        $statusCode = $httpResponse->getStatusCode();
-        if (Utils\Utils::matchStatusCodes($statusCode, ['422', '4XX', '5XX'])) {
+        if (Utils\Utils::matchStatusCodes($httpResponse->getStatusCode(), ['4XX', '5XX'])) {
             $res = $this->sdkConfiguration->hooks->afterError(new Hooks\AfterErrorContext($hookContext), $httpResponse, null);
             $httpResponse = $res;
         }
+
+        $statusCode = $httpResponse->getStatusCode();
         if (Utils\Utils::matchStatusCodes($statusCode, ['200'])) {
             if (Utils\Utils::matchContentType($contentType, 'application/json')) {
                 $httpResponse = $this->sdkConfiguration->hooks->afterSuccess(new Hooks\AfterSuccessContext($hookContext), $httpResponse);
@@ -300,7 +303,7 @@ class Organizations
                         return null;
                     }
 
-                    return $sdk->listIndividual(
+                    return $sdk->listOrganizationsIndividual(
                         slug: $request != null ? $request->slug : null,
                         page: $nextPage,
                         limit: $request != null ? $request->limit : null,
@@ -346,9 +349,9 @@ class Organizations
      * @return \Generator<\Polar\Models\Operations\OrganizationsListResponse>
      * @throws \Polar\Models\Errors\APIException
      */
-    public function list(?string $slug = null, ?int $page = null, ?int $limit = null, ?array $sorting = null, ?Options $options = null): \Generator
+    public function listOrganizations(?string $slug = null, ?int $page = null, ?int $limit = null, ?array $sorting = null, ?Options $options = null): \Generator
     {
-        $res = $this->listIndividual($slug, $page, $limit, $sorting, $options);
+        $res = $this->listOrganizationsIndividual($slug, $page, $limit, $sorting, $options);
         while ($res !== null) {
             yield $res;
             $res = $res->next($res);
@@ -397,11 +400,12 @@ class Organizations
         }
         $contentType = $httpResponse->getHeader('Content-Type')[0] ?? '';
 
-        $statusCode = $httpResponse->getStatusCode();
-        if (Utils\Utils::matchStatusCodes($statusCode, ['403', '404', '422', '4XX', '5XX'])) {
+        if (Utils\Utils::matchStatusCodes($httpResponse->getStatusCode(), ['4XX', '5XX'])) {
             $res = $this->sdkConfiguration->hooks->afterError(new Hooks\AfterErrorContext($hookContext), $httpResponse, null);
             $httpResponse = $res;
         }
+
+        $statusCode = $httpResponse->getStatusCode();
         if (Utils\Utils::matchStatusCodes($statusCode, ['200'])) {
             if (Utils\Utils::matchContentType($contentType, 'application/json')) {
                 $httpResponse = $this->sdkConfiguration->hooks->afterSuccess(new Hooks\AfterSuccessContext($hookContext), $httpResponse);

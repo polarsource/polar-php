@@ -10,6 +10,7 @@
 * [update](#update) - Update Order
 * [invoice](#invoice) - Get Order Invoice
 * [generateInvoice](#generateinvoice) - Generate Order Invoice
+* [receipt](#receipt) - Get Order Receipt
 
 ## list
 
@@ -329,3 +330,54 @@ if ($response->any !== null) {
 | Errors\MissingInvoiceBillingDetails | 422                                 | application/json                    |
 | Errors\NotPaidOrder                 | 422                                 | application/json                    |
 | Errors\APIException                 | 4XX, 5XX                            | \*/\*                               |
+
+## receipt
+
+Get a presigned URL to download an order's receipt PDF.
+
+**Scopes**: `orders:read`
+
+### Example Usage
+
+<!-- UsageSnippet language="php" operationID="orders:receipt" method="get" path="/v1/orders/{id}/receipt" -->
+```php
+declare(strict_types=1);
+
+require 'vendor/autoload.php';
+
+use Polar;
+
+$sdk = Polar\Polar::builder()
+    ->setSecurity(
+        '<YOUR_BEARER_TOKEN_HERE>'
+    )
+    ->build();
+
+
+
+$response = $sdk->orders->receipt(
+    id: '<value>'
+);
+
+if ($response->orderReceipt !== null) {
+    // handle response
+}
+```
+
+### Parameters
+
+| Parameter          | Type               | Required           | Description        |
+| ------------------ | ------------------ | ------------------ | ------------------ |
+| `id`               | *string*           | :heavy_check_mark: | The order ID.      |
+
+### Response
+
+**[?Operations\OrdersReceiptResponse](../../Models/Operations/OrdersReceiptResponse.md)**
+
+### Errors
+
+| Error Type                 | Status Code                | Content Type               |
+| -------------------------- | -------------------------- | -------------------------- |
+| Errors\ResourceNotFound    | 404                        | application/json           |
+| Errors\HTTPValidationError | 422                        | application/json           |
+| Errors\APIException        | 4XX, 5XX                   | \*/\*                      |

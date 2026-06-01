@@ -30,15 +30,6 @@ class MemberCreate
 
     /**
      *
-     * @var ?\Polar\Models\Components\MemberRole $role
-     */
-    #[\Speakeasy\Serializer\Annotation\SerializedName('role')]
-    #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\MemberRole|null')]
-    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
-    public ?MemberRole $role = null;
-
-    /**
-     *
      * @var ?string $name
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('name')]
@@ -55,19 +46,29 @@ class MemberCreate
     public ?string $externalId = null;
 
     /**
+     * The role of the member within the customer. To assign or transfer ownership, use the member update endpoint.
+     *
+     * @var ?\Polar\Models\Components\Role $role
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('role')]
+    #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\Role|null')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
+    public ?Role $role = null;
+
+    /**
      * @param  string  $customerId
      * @param  string  $email
-     * @param  ?\Polar\Models\Components\MemberRole  $role
+     * @param  ?\Polar\Models\Components\Role  $role
      * @param  ?string  $name
      * @param  ?string  $externalId
      * @phpstan-pure
      */
-    public function __construct(string $customerId, string $email, ?MemberRole $role = null, ?string $name = null, ?string $externalId = null)
+    public function __construct(string $customerId, string $email, ?string $name = null, ?string $externalId = null, ?Role $role = Role::Member)
     {
         $this->customerId = $customerId;
         $this->email = $email;
-        $this->role = $role;
         $this->name = $name;
         $this->externalId = $externalId;
+        $this->role = $role;
     }
 }

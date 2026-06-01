@@ -196,6 +196,22 @@ class Order
     public string $description;
 
     /**
+     * Amount in cents that can still be refunded (net, before taxes). Accounts for any applied customer balance and previous refunds.
+     *
+     * @var int $refundableAmount
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('refundable_amount')]
+    public int $refundableAmount;
+
+    /**
+     * Sales tax in cents that would be refunded if the full refundable amount is refunded.
+     *
+     * @var int $refundableTaxAmount
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('refundable_tax_amount')]
+    public int $refundableTaxAmount;
+
+    /**
      * Last modification timestamp of the object.
      *
      * @var ?\DateTime $modifiedAt
@@ -218,6 +234,14 @@ class Order
     #[\Speakeasy\Serializer\Annotation\SerializedName('billing_address')]
     #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\Address|null')]
     public ?Address $billingAddress;
+
+    /**
+     * The receipt number for this order. Set once the order is paid for organizations with receipts enabled. When set, a downloadable receipt PDF can be obtained via the receipt endpoint.
+     *
+     * @var ?string $receiptNumber
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('receipt_number')]
+    public ?string $receiptNumber;
 
     /**
      *
@@ -322,9 +346,12 @@ class Order
      * @param  \Polar\Models\Components\OrderCustomer  $customer
      * @param  array<\Polar\Models\Components\OrderItemSchema>  $items
      * @param  string  $description
+     * @param  int  $refundableAmount
+     * @param  int  $refundableTaxAmount
      * @param  ?\DateTime  $modifiedAt
      * @param  ?string  $billingName
      * @param  ?\Polar\Models\Components\Address  $billingAddress
+     * @param  ?string  $receiptNumber
      * @param  ?string  $productId
      * @param  ?string  $discountId
      * @param  ?string  $subscriptionId
@@ -337,7 +364,7 @@ class Order
      * @param  ?int  $seats
      * @phpstan-pure
      */
-    public function __construct(string $id, \DateTime $createdAt, OrderStatus $status, bool $paid, int $subtotalAmount, int $discountAmount, int $netAmount, int $taxAmount, int $totalAmount, int $appliedBalanceAmount, int $dueAmount, int $refundedAmount, int $refundedTaxAmount, string $currency, OrderBillingReason $billingReason, string $invoiceNumber, bool $isInvoiceGenerated, string $customerId, array $metadata, int $platformFeeAmount, OrderCustomer $customer, array $items, string $description, ?\DateTime $modifiedAt = null, ?string $billingName = null, ?Address $billingAddress = null, ?string $productId = null, ?string $discountId = null, ?string $subscriptionId = null, ?string $checkoutId = null, ?array $customFieldData = null, ?string $platformFeeCurrency = null, ?OrderProduct $product = null, DiscountFixedOnceForeverDurationBase|DiscountFixedRepeatDurationBase|DiscountPercentageOnceForeverDurationBase|DiscountPercentageRepeatDurationBase|null $discount = null, ?OrderSubscription $subscription = null, ?int $seats = null)
+    public function __construct(string $id, \DateTime $createdAt, OrderStatus $status, bool $paid, int $subtotalAmount, int $discountAmount, int $netAmount, int $taxAmount, int $totalAmount, int $appliedBalanceAmount, int $dueAmount, int $refundedAmount, int $refundedTaxAmount, string $currency, OrderBillingReason $billingReason, string $invoiceNumber, bool $isInvoiceGenerated, string $customerId, array $metadata, int $platformFeeAmount, OrderCustomer $customer, array $items, string $description, int $refundableAmount, int $refundableTaxAmount, ?\DateTime $modifiedAt = null, ?string $billingName = null, ?Address $billingAddress = null, ?string $receiptNumber = null, ?string $productId = null, ?string $discountId = null, ?string $subscriptionId = null, ?string $checkoutId = null, ?array $customFieldData = null, ?string $platformFeeCurrency = null, ?OrderProduct $product = null, DiscountFixedOnceForeverDurationBase|DiscountFixedRepeatDurationBase|DiscountPercentageOnceForeverDurationBase|DiscountPercentageRepeatDurationBase|null $discount = null, ?OrderSubscription $subscription = null, ?int $seats = null)
     {
         $this->id = $id;
         $this->createdAt = $createdAt;
@@ -362,9 +389,12 @@ class Order
         $this->customer = $customer;
         $this->items = $items;
         $this->description = $description;
+        $this->refundableAmount = $refundableAmount;
+        $this->refundableTaxAmount = $refundableTaxAmount;
         $this->modifiedAt = $modifiedAt;
         $this->billingName = $billingName;
         $this->billingAddress = $billingAddress;
+        $this->receiptNumber = $receiptNumber;
         $this->productId = $productId;
         $this->discountId = $discountId;
         $this->subscriptionId = $subscriptionId;

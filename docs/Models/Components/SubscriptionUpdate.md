@@ -66,3 +66,12 @@ Components\SubscriptionCancel $value = /* values here */
 Components\SubscriptionRevoke $value = /* values here */
 ```
 
+### `Components\SubscriptionUpdateClear`
+
+```php
+/**
+* @var \Polar\Models\Components\SubscriptionUpdateClear
+*/
+Components\SubscriptionUpdateClear $value = /* values here */
+```
+

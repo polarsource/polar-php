@@ -30,3 +30,12 @@ Components\CustomerSubscriptionUpdateSeats $value = /* values here */
 Components\CustomerSubscriptionCancel $value = /* values here */
 ```
 
+### `Components\CustomerSubscriptionUpdateClear`
+
+```php
+/**
+* @var \Polar\Models\Components\CustomerSubscriptionUpdateClear
+*/
+Components\CustomerSubscriptionUpdateClear $value = /* values here */
+```
+

@@ -3,11 +3,12 @@
 
 ## Values
 
-| Name                | Value               |
-| ------------------- | ------------------- |
-| `Created`           | created             |
-| `OnboardingStarted` | onboarding_started  |
-| `InitialReview`     | initial_review      |
-| `OngoingReview`     | ongoing_review      |
-| `Denied`            | denied              |
-| `Active`            | active              |
+| Name          | Value         |
+| ------------- | ------------- |
+| `Created`     | created       |
+| `Review`      | review        |
+| `Snoozed`     | snoozed       |
+| `Denied`      | denied        |
+| `Active`      | active        |
+| `Blocked`     | blocked       |
+| `Offboarding` | offboarding   |

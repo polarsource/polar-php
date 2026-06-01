@@ -12,22 +12,6 @@ namespace Polar\Models\Components;
 class EventTypeWithStats
 {
     /**
-     * Creation timestamp of the object.
-     *
-     * @var \DateTime $createdAt
-     */
-    #[\Speakeasy\Serializer\Annotation\SerializedName('created_at')]
-    public \DateTime $createdAt;
-
-    /**
-     * The ID of the object.
-     *
-     * @var string $id
-     */
-    #[\Speakeasy\Serializer\Annotation\SerializedName('id')]
-    public string $id;
-
-    /**
      * The name of the event type.
      *
      * @var string $name
@@ -84,12 +68,31 @@ class EventTypeWithStats
     public \DateTime $lastSeen;
 
     /**
-     * Last modification timestamp of the object.
+     * The ID of the event type. Null for system event types.
+     *
+     * @var ?string $id
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('id')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
+    public ?string $id = null;
+
+    /**
+     * Creation timestamp of the event type. Null for system event types.
+     *
+     * @var ?\DateTime $createdAt
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('created_at')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
+    public ?\DateTime $createdAt = null;
+
+    /**
+     * Last modification timestamp of the event type. Null for system event types.
      *
      * @var ?\DateTime $modifiedAt
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('modified_at')]
-    public ?\DateTime $modifiedAt;
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
+    public ?\DateTime $modifiedAt = null;
 
     /**
      * Property path to extract dynamic label from event metadata.
@@ -101,8 +104,6 @@ class EventTypeWithStats
     public ?string $labelPropertySelector = null;
 
     /**
-     * @param  \DateTime  $createdAt
-     * @param  string  $id
      * @param  string  $name
      * @param  string  $label
      * @param  string  $organizationId
@@ -110,14 +111,14 @@ class EventTypeWithStats
      * @param  int  $occurrences
      * @param  \DateTime  $firstSeen
      * @param  \DateTime  $lastSeen
+     * @param  ?string  $id
+     * @param  ?\DateTime  $createdAt
      * @param  ?\DateTime  $modifiedAt
      * @param  ?string  $labelPropertySelector
      * @phpstan-pure
      */
-    public function __construct(\DateTime $createdAt, string $id, string $name, string $label, string $organizationId, EventSource $source, int $occurrences, \DateTime $firstSeen, \DateTime $lastSeen, ?\DateTime $modifiedAt = null, ?string $labelPropertySelector = null)
+    public function __construct(string $name, string $label, string $organizationId, EventSource $source, int $occurrences, \DateTime $firstSeen, \DateTime $lastSeen, ?string $id = null, ?\DateTime $createdAt = null, ?\DateTime $modifiedAt = null, ?string $labelPropertySelector = null)
     {
-        $this->createdAt = $createdAt;
-        $this->id = $id;
         $this->name = $name;
         $this->label = $label;
         $this->organizationId = $organizationId;
@@ -125,6 +126,8 @@ class EventTypeWithStats
         $this->occurrences = $occurrences;
         $this->firstSeen = $firstSeen;
         $this->lastSeen = $lastSeen;
+        $this->id = $id;
+        $this->createdAt = $createdAt;
         $this->modifiedAt = $modifiedAt;
         $this->labelPropertySelector = $labelPropertySelector;
     }
