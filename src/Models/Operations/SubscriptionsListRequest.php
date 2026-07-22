@@ -56,9 +56,18 @@ class SubscriptionsListRequest
      * Filter by active or inactive subscription.
      *
      * @var ?bool $active
+     * @deprecated  field: This will be removed in a future release, please migrate away from it as soon as possible.
      */
     #[SpeakeasyMetadata('queryParam:style=form,explode=true,name=active')]
     public ?bool $active = null;
+
+    /**
+     * Filter by subscription status.
+     *
+     * @var \Polar\Models\Components\SubscriptionStatus|array<\Polar\Models\Components\SubscriptionStatus>|null $status
+     */
+    #[SpeakeasyMetadata('queryParam:style=form,explode=true,name=status')]
+    public Components\SubscriptionStatus|array|null $status = null;
 
     /**
      * Filter by subscriptions that are set to cancel at period end.
@@ -133,6 +142,7 @@ class SubscriptionsListRequest
      * @param  string|array<string>|null  $externalCustomerId
      * @param  string|array<string>|null  $discountId
      * @param  ?bool  $active
+     * @param  \Polar\Models\Components\SubscriptionStatus|array<\Polar\Models\Components\SubscriptionStatus>|null  $status
      * @param  ?bool  $cancelAtPeriodEnd
      * @param  \Polar\Models\Components\CustomerCancellationReason|array<\Polar\Models\Components\CustomerCancellationReason>|null  $customerCancellationReason
      * @param  ?\DateTime  $canceledAtAfter
@@ -141,7 +151,7 @@ class SubscriptionsListRequest
      * @param  ?array<string, string|int|bool|array<string>|array<int>|array<bool>>  $metadata
      * @phpstan-pure
      */
-    public function __construct(string|array|null $organizationId = null, string|array|null $productId = null, string|array|null $customerId = null, string|array|null $externalCustomerId = null, string|array|null $discountId = null, ?bool $active = null, ?bool $cancelAtPeriodEnd = null, Components\CustomerCancellationReason|array|null $customerCancellationReason = null, ?\DateTime $canceledAtAfter = null, ?\DateTime $canceledAtBefore = null, ?array $sorting = null, ?array $metadata = null, ?int $page = 1, ?int $limit = 10)
+    public function __construct(string|array|null $organizationId = null, string|array|null $productId = null, string|array|null $customerId = null, string|array|null $externalCustomerId = null, string|array|null $discountId = null, ?bool $active = null, Components\SubscriptionStatus|array|null $status = null, ?bool $cancelAtPeriodEnd = null, Components\CustomerCancellationReason|array|null $customerCancellationReason = null, ?\DateTime $canceledAtAfter = null, ?\DateTime $canceledAtBefore = null, ?array $sorting = null, ?array $metadata = null, ?int $page = 1, ?int $limit = 10)
     {
         $this->organizationId = $organizationId;
         $this->productId = $productId;
@@ -149,6 +159,7 @@ class SubscriptionsListRequest
         $this->externalCustomerId = $externalCustomerId;
         $this->discountId = $discountId;
         $this->active = $active;
+        $this->status = $status;
         $this->cancelAtPeriodEnd = $cancelAtPeriodEnd;
         $this->customerCancellationReason = $customerCancellationReason;
         $this->canceledAtAfter = $canceledAtAfter;

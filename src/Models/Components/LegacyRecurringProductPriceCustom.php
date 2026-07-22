@@ -67,14 +67,14 @@ class LegacyRecurringProductPriceCustom
 
     /**
      *
-     * @var \Polar\Models\Components\SubscriptionRecurringInterval $recurringInterval
+     * @var \Polar\Models\Components\RecurringInterval $recurringInterval
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('recurring_interval')]
-    #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\SubscriptionRecurringInterval')]
-    public SubscriptionRecurringInterval $recurringInterval;
+    #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\RecurringInterval')]
+    public RecurringInterval $recurringInterval;
 
     /**
-     * The minimum amount the customer can pay. If 0, the price is 'free or pay what you want'. Defaults to 50 cents.
+     * The minimum amount the customer can pay. If 0, the price is 'free or pay what you want'.
      *
      * @var int $minimumAmount
      */
@@ -145,7 +145,7 @@ class LegacyRecurringProductPriceCustom
      * @param  bool  $isArchived
      * @param  string  $productId
      * @param  string  $type
-     * @param  \Polar\Models\Components\SubscriptionRecurringInterval  $recurringInterval
+     * @param  \Polar\Models\Components\RecurringInterval  $recurringInterval
      * @param  int  $minimumAmount
      * @param  bool  $legacy
      * @param  ?\DateTime  $modifiedAt
@@ -154,7 +154,7 @@ class LegacyRecurringProductPriceCustom
      * @param  ?int  $presetAmount
      * @phpstan-pure
      */
-    public function __construct(\DateTime $createdAt, string $id, ProductPriceSource $source, string $priceCurrency, bool $isArchived, string $productId, SubscriptionRecurringInterval $recurringInterval, int $minimumAmount, ?\DateTime $modifiedAt = null, ?TaxBehaviorOption $taxBehavior = null, ?int $maximumAmount = null, ?int $presetAmount = null, string $amountType = 'custom', string $type = 'recurring', bool $legacy = true)
+    public function __construct(\DateTime $createdAt, string $id, ProductPriceSource $source, string $priceCurrency, bool $isArchived, string $productId, RecurringInterval $recurringInterval, int $minimumAmount, ?\DateTime $modifiedAt = null, ?TaxBehaviorOption $taxBehavior = null, ?int $maximumAmount = null, ?int $presetAmount = null, string $amountType = 'custom', string $type = 'recurring', bool $legacy = true)
     {
         $this->createdAt = $createdAt;
         $this->id = $id;

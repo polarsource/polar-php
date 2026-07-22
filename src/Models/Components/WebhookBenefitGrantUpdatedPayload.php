@@ -26,11 +26,11 @@ class WebhookBenefitGrantUpdatedPayload
 
     /**
      *
-     * @var \Polar\Models\Components\BenefitGrantDiscordWebhook|\Polar\Models\Components\BenefitGrantCustomWebhook|\Polar\Models\Components\BenefitGrantGitHubRepositoryWebhook|\Polar\Models\Components\BenefitGrantDownloadablesWebhook|\Polar\Models\Components\BenefitGrantLicenseKeysWebhook|\Polar\Models\Components\BenefitGrantMeterCreditWebhook|\Polar\Models\Components\BenefitGrantFeatureFlagWebhook $data
+     * @var \Polar\Models\Components\BenefitGrantDiscordWebhook|\Polar\Models\Components\BenefitGrantCustomWebhook|\Polar\Models\Components\BenefitGrantGitHubRepositoryWebhook|\Polar\Models\Components\BenefitGrantDownloadablesWebhook|\Polar\Models\Components\BenefitGrantLicenseKeysWebhook|\Polar\Models\Components\BenefitGrantMeterCreditWebhook|\Polar\Models\Components\BenefitGrantFeatureFlagWebhook|\Polar\Models\Components\BenefitGrantSlackSharedChannelWebhook $data
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('data')]
-    #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\BenefitGrantDiscordWebhook|\Polar\Models\Components\BenefitGrantCustomWebhook|\Polar\Models\Components\BenefitGrantGitHubRepositoryWebhook|\Polar\Models\Components\BenefitGrantDownloadablesWebhook|\Polar\Models\Components\BenefitGrantLicenseKeysWebhook|\Polar\Models\Components\BenefitGrantMeterCreditWebhook|\Polar\Models\Components\BenefitGrantFeatureFlagWebhook')]
-    public BenefitGrantDiscordWebhook|BenefitGrantCustomWebhook|BenefitGrantGitHubRepositoryWebhook|BenefitGrantDownloadablesWebhook|BenefitGrantLicenseKeysWebhook|BenefitGrantMeterCreditWebhook|BenefitGrantFeatureFlagWebhook $data;
+    #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\BenefitGrantDiscordWebhook|\Polar\Models\Components\BenefitGrantCustomWebhook|\Polar\Models\Components\BenefitGrantGitHubRepositoryWebhook|\Polar\Models\Components\BenefitGrantDownloadablesWebhook|\Polar\Models\Components\BenefitGrantLicenseKeysWebhook|\Polar\Models\Components\BenefitGrantMeterCreditWebhook|\Polar\Models\Components\BenefitGrantFeatureFlagWebhook|\Polar\Models\Components\BenefitGrantSlackSharedChannelWebhook')]
+    public BenefitGrantDiscordWebhook|BenefitGrantCustomWebhook|BenefitGrantGitHubRepositoryWebhook|BenefitGrantDownloadablesWebhook|BenefitGrantLicenseKeysWebhook|BenefitGrantMeterCreditWebhook|BenefitGrantFeatureFlagWebhook|BenefitGrantSlackSharedChannelWebhook $data;
 
     /**
      *
@@ -42,10 +42,10 @@ class WebhookBenefitGrantUpdatedPayload
     /**
      * @param  string  $type
      * @param  \DateTime  $timestamp
-     * @param  \Polar\Models\Components\BenefitGrantDiscordWebhook|\Polar\Models\Components\BenefitGrantCustomWebhook|\Polar\Models\Components\BenefitGrantGitHubRepositoryWebhook|\Polar\Models\Components\BenefitGrantDownloadablesWebhook|\Polar\Models\Components\BenefitGrantLicenseKeysWebhook|\Polar\Models\Components\BenefitGrantMeterCreditWebhook|\Polar\Models\Components\BenefitGrantFeatureFlagWebhook  $data
+     * @param  \Polar\Models\Components\BenefitGrantDiscordWebhook|\Polar\Models\Components\BenefitGrantCustomWebhook|\Polar\Models\Components\BenefitGrantGitHubRepositoryWebhook|\Polar\Models\Components\BenefitGrantDownloadablesWebhook|\Polar\Models\Components\BenefitGrantLicenseKeysWebhook|\Polar\Models\Components\BenefitGrantMeterCreditWebhook|\Polar\Models\Components\BenefitGrantFeatureFlagWebhook|\Polar\Models\Components\BenefitGrantSlackSharedChannelWebhook  $data
      * @phpstan-pure
      */
-    public function __construct(\DateTime $timestamp, BenefitGrantDiscordWebhook|BenefitGrantCustomWebhook|BenefitGrantGitHubRepositoryWebhook|BenefitGrantDownloadablesWebhook|BenefitGrantLicenseKeysWebhook|BenefitGrantMeterCreditWebhook|BenefitGrantFeatureFlagWebhook $data, string $type = 'benefit_grant.updated')
+    public function __construct(\DateTime $timestamp, BenefitGrantDiscordWebhook|BenefitGrantCustomWebhook|BenefitGrantGitHubRepositoryWebhook|BenefitGrantDownloadablesWebhook|BenefitGrantLicenseKeysWebhook|BenefitGrantMeterCreditWebhook|BenefitGrantFeatureFlagWebhook|BenefitGrantSlackSharedChannelWebhook $data, string $type = 'benefit_grant.updated')
     {
         $this->timestamp = $timestamp;
         $this->data = $data;

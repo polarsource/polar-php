@@ -12,9 +12,11 @@ namespace Polar\Models\Components;
 enum OrganizationStatus: string
 {
     case Created = 'created';
-    case OnboardingStarted = 'onboarding_started';
-    case InitialReview = 'initial_review';
-    case OngoingReview = 'ongoing_review';
+    case Review = 'review';
+    case Snoozed = 'snoozed';
     case Denied = 'denied';
     case Active = 'active';
+    case Blocked = 'blocked';
+    case Offboarding = 'offboarding';
+    case Offboarded = 'offboarded';
 }

@@ -1,24 +1,24 @@
 # StatusFilter
 
-Filter by dispute status.
+Filter by subscription status.
 
 
 ## Supported Types
 
-### `Components\DisputeStatus`
+### `Components\SubscriptionStatus`
 
 ```php
 /**
-* @var \Polar\Models\Components\DisputeStatus
+* @var \Polar\Models\Components\SubscriptionStatus
 */
-Components\DisputeStatus $value = /* values here */
+Components\SubscriptionStatus $value = /* values here */
 ```
 
 ### `array`
 
 ```php
 /**
-* @var array<\Polar\Models\Components\DisputeStatus>
+* @var array<\Polar\Models\Components\SubscriptionStatus>
 */
 array $value = /* values here */
 ```

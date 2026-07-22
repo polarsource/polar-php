@@ -30,3 +30,30 @@ Components\CustomerSubscriptionUpdateSeats $value = /* values here */
 Components\CustomerSubscriptionCancel $value = /* values here */
 ```
 
+### `Components\CustomerSubscriptionPause`
+
+```php
+/**
+* @var \Polar\Models\Components\CustomerSubscriptionPause
+*/
+Components\CustomerSubscriptionPause $value = /* values here */
+```
+
+### `Components\CustomerSubscriptionResume`
+
+```php
+/**
+* @var \Polar\Models\Components\CustomerSubscriptionResume
+*/
+Components\CustomerSubscriptionResume $value = /* values here */
+```
+
+### `Components\CustomerSubscriptionUpdateClear`
+
+```php
+/**
+* @var \Polar\Models\Components\CustomerSubscriptionUpdateClear
+*/
+Components\CustomerSubscriptionUpdateClear $value = /* values here */
+```
+

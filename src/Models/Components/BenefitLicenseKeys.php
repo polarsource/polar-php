@@ -52,6 +52,14 @@ class BenefitLicenseKeys
     public bool $deletable;
 
     /**
+     * Whether the benefit is deleted.
+     *
+     * @var bool $isDeleted
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('is_deleted')]
+    public bool $isDeleted;
+
+    /**
      * The ID of the organization owning the benefit.
      *
      * @var string $organizationId
@@ -70,11 +78,26 @@ class BenefitLicenseKeys
 
     /**
      *
+     * @var \Polar\Models\Components\BenefitVisibility $visibility
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('visibility')]
+    #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\BenefitVisibility')]
+    public BenefitVisibility $visibility;
+
+    /**
+     *
      * @var \Polar\Models\Components\BenefitLicenseKeysProperties $properties
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('properties')]
     #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\BenefitLicenseKeysProperties')]
     public BenefitLicenseKeysProperties $properties;
+
+    /**
+     *
+     * @var bool $visibilityConfigurable
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('visibility_configurable')]
+    public bool $visibilityConfigurable;
 
     /**
      * Last modification timestamp of the object.
@@ -98,22 +121,28 @@ class BenefitLicenseKeys
      * @param  string  $description
      * @param  bool  $selectable
      * @param  bool  $deletable
+     * @param  bool  $isDeleted
      * @param  string  $organizationId
      * @param  array<string, string|int|float|bool>  $metadata
+     * @param  \Polar\Models\Components\BenefitVisibility  $visibility
      * @param  \Polar\Models\Components\BenefitLicenseKeysProperties  $properties
+     * @param  bool  $visibilityConfigurable
      * @param  ?\DateTime  $modifiedAt
      * @phpstan-pure
      */
-    public function __construct(string $id, \DateTime $createdAt, string $description, bool $selectable, bool $deletable, string $organizationId, array $metadata, BenefitLicenseKeysProperties $properties, ?\DateTime $modifiedAt = null, string $type = 'license_keys')
+    public function __construct(string $id, \DateTime $createdAt, string $description, bool $selectable, bool $deletable, bool $isDeleted, string $organizationId, array $metadata, BenefitVisibility $visibility, BenefitLicenseKeysProperties $properties, bool $visibilityConfigurable, ?\DateTime $modifiedAt = null, string $type = 'license_keys')
     {
         $this->id = $id;
         $this->createdAt = $createdAt;
         $this->description = $description;
         $this->selectable = $selectable;
         $this->deletable = $deletable;
+        $this->isDeleted = $isDeleted;
         $this->organizationId = $organizationId;
         $this->metadata = $metadata;
+        $this->visibility = $visibility;
         $this->properties = $properties;
+        $this->visibilityConfigurable = $visibilityConfigurable;
         $this->modifiedAt = $modifiedAt;
         $this->type = $type;
     }

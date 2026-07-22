@@ -71,10 +71,10 @@ class CheckoutProduct
     /**
      * List of prices for this product.
      *
-     * @var array<\Polar\Models\Components\LegacyRecurringProductPriceFixed|\Polar\Models\Components\LegacyRecurringProductPriceCustom|\Polar\Models\Components\LegacyRecurringProductPriceFree|\Polar\Models\Components\ProductPriceFixed|\Polar\Models\Components\ProductPriceCustom|\Polar\Models\Components\ProductPriceFree|\Polar\Models\Components\ProductPriceSeatBased|\Polar\Models\Components\ProductPriceMeteredUnit> $prices
+     * @var array<\Polar\Models\Components\LegacyRecurringProductPriceFixed|\Polar\Models\Components\LegacyRecurringProductPriceCustom|\Polar\Models\Components\ProductPriceFixed|\Polar\Models\Components\ProductPriceCustom|\Polar\Models\Components\ProductPriceSeatBased|\Polar\Models\Components\ProductPriceMeteredUnit> $prices
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('prices')]
-    #[\Speakeasy\Serializer\Annotation\Type('array<\Polar\Models\Components\LegacyRecurringProductPriceFixed|\Polar\Models\Components\LegacyRecurringProductPriceCustom|\Polar\Models\Components\LegacyRecurringProductPriceFree|\Polar\Models\Components\ProductPriceFixed|\Polar\Models\Components\ProductPriceCustom|\Polar\Models\Components\ProductPriceFree|\Polar\Models\Components\ProductPriceSeatBased|\Polar\Models\Components\ProductPriceMeteredUnit>')]
+    #[\Speakeasy\Serializer\Annotation\Type('array<\Polar\Models\Components\LegacyRecurringProductPriceFixed|\Polar\Models\Components\LegacyRecurringProductPriceCustom|\Polar\Models\Components\ProductPriceFixed|\Polar\Models\Components\ProductPriceCustom|\Polar\Models\Components\ProductPriceSeatBased|\Polar\Models\Components\ProductPriceMeteredUnit>')]
     public array $prices;
 
     /**
@@ -131,11 +131,11 @@ class CheckoutProduct
     /**
      * The recurring interval of the product. If `None`, the product is a one-time purchase.
      *
-     * @var ?\Polar\Models\Components\SubscriptionRecurringInterval $recurringInterval
+     * @var ?\Polar\Models\Components\RecurringInterval $recurringInterval
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('recurring_interval')]
-    #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\SubscriptionRecurringInterval|null')]
-    public ?SubscriptionRecurringInterval $recurringInterval;
+    #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\RecurringInterval|null')]
+    public ?RecurringInterval $recurringInterval;
 
     /**
      * Number of interval units of the subscription. If this is set to 1 the charge will happen every interval (e.g. every month), if set to 2 it will be every other month, and so on. None for one-time products.
@@ -146,6 +146,23 @@ class CheckoutProduct
     public ?int $recurringIntervalCount;
 
     /**
+     * The meter cycle of the product, independent of the billing interval. If `None`, metered concerns follow the billing interval.
+     *
+     * @var ?\Polar\Models\Components\RecurringInterval $meterInterval
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('meter_interval')]
+    #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\RecurringInterval|null')]
+    public ?RecurringInterval $meterInterval;
+
+    /**
+     * Number of meter interval units. None when no meter cycle is set.
+     *
+     * @var ?int $meterIntervalCount
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('meter_interval_count')]
+    public ?int $meterIntervalCount;
+
+    /**
      * @param  string  $id
      * @param  \DateTime  $createdAt
      * @param  string  $name
@@ -153,18 +170,20 @@ class CheckoutProduct
      * @param  bool  $isRecurring
      * @param  bool  $isArchived
      * @param  string  $organizationId
-     * @param  array<\Polar\Models\Components\LegacyRecurringProductPriceFixed|\Polar\Models\Components\LegacyRecurringProductPriceCustom|\Polar\Models\Components\LegacyRecurringProductPriceFree|\Polar\Models\Components\ProductPriceFixed|\Polar\Models\Components\ProductPriceCustom|\Polar\Models\Components\ProductPriceFree|\Polar\Models\Components\ProductPriceSeatBased|\Polar\Models\Components\ProductPriceMeteredUnit>  $prices
+     * @param  array<\Polar\Models\Components\LegacyRecurringProductPriceFixed|\Polar\Models\Components\LegacyRecurringProductPriceCustom|\Polar\Models\Components\ProductPriceFixed|\Polar\Models\Components\ProductPriceCustom|\Polar\Models\Components\ProductPriceSeatBased|\Polar\Models\Components\ProductPriceMeteredUnit>  $prices
      * @param  array<\Polar\Models\Components\BenefitPublic>  $benefits
      * @param  array<\Polar\Models\Components\ProductMediaFileRead>  $medias
      * @param  ?\DateTime  $modifiedAt
      * @param  ?\Polar\Models\Components\TrialInterval  $trialInterval
      * @param  ?int  $trialIntervalCount
      * @param  ?string  $description
-     * @param  ?\Polar\Models\Components\SubscriptionRecurringInterval  $recurringInterval
+     * @param  ?\Polar\Models\Components\RecurringInterval  $recurringInterval
      * @param  ?int  $recurringIntervalCount
+     * @param  ?\Polar\Models\Components\RecurringInterval  $meterInterval
+     * @param  ?int  $meterIntervalCount
      * @phpstan-pure
      */
-    public function __construct(string $id, \DateTime $createdAt, string $name, ProductVisibility $visibility, bool $isRecurring, bool $isArchived, string $organizationId, array $prices, array $benefits, array $medias, ?\DateTime $modifiedAt = null, ?TrialInterval $trialInterval = null, ?int $trialIntervalCount = null, ?string $description = null, ?SubscriptionRecurringInterval $recurringInterval = null, ?int $recurringIntervalCount = null)
+    public function __construct(string $id, \DateTime $createdAt, string $name, ProductVisibility $visibility, bool $isRecurring, bool $isArchived, string $organizationId, array $prices, array $benefits, array $medias, ?\DateTime $modifiedAt = null, ?TrialInterval $trialInterval = null, ?int $trialIntervalCount = null, ?string $description = null, ?RecurringInterval $recurringInterval = null, ?int $recurringIntervalCount = null, ?RecurringInterval $meterInterval = null, ?int $meterIntervalCount = null)
     {
         $this->id = $id;
         $this->createdAt = $createdAt;
@@ -182,5 +201,7 @@ class CheckoutProduct
         $this->description = $description;
         $this->recurringInterval = $recurringInterval;
         $this->recurringIntervalCount = $recurringIntervalCount;
+        $this->meterInterval = $meterInterval;
+        $this->meterIntervalCount = $meterIntervalCount;
     }
 }

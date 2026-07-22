@@ -20,18 +20,11 @@ class OrganizationSubscriptionSettings
 
     /**
      *
-     * @var bool $allowCustomerUpdates
-     */
-    #[\Speakeasy\Serializer\Annotation\SerializedName('allow_customer_updates')]
-    public bool $allowCustomerUpdates;
-
-    /**
-     *
-     * @var \Polar\Models\Components\SubscriptionProrationBehavior $prorationBehavior
+     * @var \Polar\Models\Components\PublicSubscriptionProrationBehavior $prorationBehavior
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('proration_behavior')]
-    #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\SubscriptionProrationBehavior')]
-    public SubscriptionProrationBehavior $prorationBehavior;
+    #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\PublicSubscriptionProrationBehavior')]
+    public PublicSubscriptionProrationBehavior $prorationBehavior;
 
     /**
      *
@@ -48,19 +41,26 @@ class OrganizationSubscriptionSettings
     public bool $preventTrialAbuse;
 
     /**
+     *
+     * @var bool $allowCustomerUpdates
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('allow_customer_updates')]
+    public bool $allowCustomerUpdates;
+
+    /**
      * @param  bool  $allowMultipleSubscriptions
-     * @param  bool  $allowCustomerUpdates
-     * @param  \Polar\Models\Components\SubscriptionProrationBehavior  $prorationBehavior
+     * @param  \Polar\Models\Components\PublicSubscriptionProrationBehavior  $prorationBehavior
      * @param  int  $benefitRevocationGracePeriod
      * @param  bool  $preventTrialAbuse
+     * @param  bool  $allowCustomerUpdates
      * @phpstan-pure
      */
-    public function __construct(bool $allowMultipleSubscriptions, bool $allowCustomerUpdates, SubscriptionProrationBehavior $prorationBehavior, int $benefitRevocationGracePeriod, bool $preventTrialAbuse)
+    public function __construct(bool $allowMultipleSubscriptions, PublicSubscriptionProrationBehavior $prorationBehavior, int $benefitRevocationGracePeriod, bool $preventTrialAbuse, bool $allowCustomerUpdates)
     {
         $this->allowMultipleSubscriptions = $allowMultipleSubscriptions;
-        $this->allowCustomerUpdates = $allowCustomerUpdates;
         $this->prorationBehavior = $prorationBehavior;
         $this->benefitRevocationGracePeriod = $benefitRevocationGracePeriod;
         $this->preventTrialAbuse = $preventTrialAbuse;
+        $this->allowCustomerUpdates = $allowCustomerUpdates;
     }
 }

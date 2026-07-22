@@ -77,12 +77,12 @@ class OrganizationUpdate
 
     /**
      *
-     * @var ?\Polar\Models\Components\OrganizationFeatureSettings $featureSettings
+     * @var ?\Polar\Models\Components\OrganizationFeatureSettingsUpdate $featureSettings
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('feature_settings')]
-    #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\OrganizationFeatureSettings|null')]
+    #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\OrganizationFeatureSettingsUpdate|null')]
     #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
-    public ?OrganizationFeatureSettings $featureSettings = null;
+    public ?OrganizationFeatureSettingsUpdate $featureSettings = null;
 
     /**
      *
@@ -92,15 +92,6 @@ class OrganizationUpdate
     #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\OrganizationSubscriptionSettings|null')]
     #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
     public ?OrganizationSubscriptionSettings $subscriptionSettings = null;
-
-    /**
-     *
-     * @var ?\Polar\Models\Components\OrganizationNotificationSettings $notificationSettings
-     */
-    #[\Speakeasy\Serializer\Annotation\SerializedName('notification_settings')]
-    #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\OrganizationNotificationSettings|null')]
-    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
-    public ?OrganizationNotificationSettings $notificationSettings = null;
 
     /**
      *
@@ -141,6 +132,15 @@ class OrganizationUpdate
     public ?TaxBehaviorOption $defaultTaxBehavior = null;
 
     /**
+     * Whether members must access this organization through its SSO connection. Turning this on requires an active SSO session for this organization and at least one enabled SSO connection.
+     *
+     * @var ?bool $ssoEnforced
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('sso_enforced')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
+    public ?bool $ssoEnforced = null;
+
+    /**
      * @param  ?string  $name
      * @param  ?string  $avatarUrl
      * @param  ?string  $email
@@ -148,16 +148,16 @@ class OrganizationUpdate
      * @param  ?array<\Polar\Models\Components\OrganizationSocialLink>  $socials
      * @param  ?\Polar\Models\Components\OrganizationDetails  $details
      * @param  ?\Polar\Models\Components\CountryCountryAlpha2Input  $country
-     * @param  ?\Polar\Models\Components\OrganizationFeatureSettings  $featureSettings
+     * @param  ?\Polar\Models\Components\OrganizationFeatureSettingsUpdate  $featureSettings
      * @param  ?\Polar\Models\Components\OrganizationSubscriptionSettings  $subscriptionSettings
-     * @param  ?\Polar\Models\Components\OrganizationNotificationSettings  $notificationSettings
      * @param  ?\Polar\Models\Components\OrganizationCustomerEmailSettings  $customerEmailSettings
      * @param  ?\Polar\Models\Components\OrganizationCustomerPortalSettings  $customerPortalSettings
      * @param  ?\Polar\Models\Components\PresentmentCurrency  $defaultPresentmentCurrency
      * @param  ?\Polar\Models\Components\TaxBehaviorOption  $defaultTaxBehavior
+     * @param  ?bool  $ssoEnforced
      * @phpstan-pure
      */
-    public function __construct(?string $name = null, ?string $avatarUrl = null, ?string $email = null, ?string $website = null, ?array $socials = null, ?OrganizationDetails $details = null, ?CountryCountryAlpha2Input $country = null, ?OrganizationFeatureSettings $featureSettings = null, ?OrganizationSubscriptionSettings $subscriptionSettings = null, ?OrganizationNotificationSettings $notificationSettings = null, ?OrganizationCustomerEmailSettings $customerEmailSettings = null, ?OrganizationCustomerPortalSettings $customerPortalSettings = null, ?PresentmentCurrency $defaultPresentmentCurrency = null, ?TaxBehaviorOption $defaultTaxBehavior = null)
+    public function __construct(?string $name = null, ?string $avatarUrl = null, ?string $email = null, ?string $website = null, ?array $socials = null, ?OrganizationDetails $details = null, ?CountryCountryAlpha2Input $country = null, ?OrganizationFeatureSettingsUpdate $featureSettings = null, ?OrganizationSubscriptionSettings $subscriptionSettings = null, ?OrganizationCustomerEmailSettings $customerEmailSettings = null, ?OrganizationCustomerPortalSettings $customerPortalSettings = null, ?PresentmentCurrency $defaultPresentmentCurrency = null, ?TaxBehaviorOption $defaultTaxBehavior = null, ?bool $ssoEnforced = null)
     {
         $this->name = $name;
         $this->avatarUrl = $avatarUrl;
@@ -168,10 +168,10 @@ class OrganizationUpdate
         $this->country = $country;
         $this->featureSettings = $featureSettings;
         $this->subscriptionSettings = $subscriptionSettings;
-        $this->notificationSettings = $notificationSettings;
         $this->customerEmailSettings = $customerEmailSettings;
         $this->customerPortalSettings = $customerPortalSettings;
         $this->defaultPresentmentCurrency = $defaultPresentmentCurrency;
         $this->defaultTaxBehavior = $defaultTaxBehavior;
+        $this->ssoEnforced = $ssoEnforced;
     }
 }

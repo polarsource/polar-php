@@ -85,6 +85,15 @@ class GenericPayment
     public ?\DateTime $modifiedAt;
 
     /**
+     * What initiated this payment attempt, e.g. initial purchase, subscription renewal, or an automated dunning retry.
+     *
+     * @var ?\Polar\Models\Components\PaymentTrigger $trigger
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('trigger')]
+    #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\PaymentTrigger|null')]
+    public ?PaymentTrigger $trigger;
+
+    /**
      * Error code, if the payment was declined.
      *
      * @var ?string $declineReason
@@ -136,6 +145,7 @@ class GenericPayment
      * @param  string  $method
      * @param  string  $organizationId
      * @param  ?\DateTime  $modifiedAt
+     * @param  ?\Polar\Models\Components\PaymentTrigger  $trigger
      * @param  ?string  $declineReason
      * @param  ?string  $declineMessage
      * @param  ?string  $checkoutId
@@ -143,7 +153,7 @@ class GenericPayment
      * @param  ?array<string, mixed>  $processorMetadata
      * @phpstan-pure
      */
-    public function __construct(\DateTime $createdAt, string $id, PaymentProcessor $processor, PaymentStatus $status, int $amount, string $currency, string $method, string $organizationId, ?\DateTime $modifiedAt = null, ?string $declineReason = null, ?string $declineMessage = null, ?string $checkoutId = null, ?string $orderId = null, ?array $processorMetadata = null)
+    public function __construct(\DateTime $createdAt, string $id, PaymentProcessor $processor, PaymentStatus $status, int $amount, string $currency, string $method, string $organizationId, ?\DateTime $modifiedAt = null, ?PaymentTrigger $trigger = null, ?string $declineReason = null, ?string $declineMessage = null, ?string $checkoutId = null, ?string $orderId = null, ?array $processorMetadata = null)
     {
         $this->createdAt = $createdAt;
         $this->id = $id;
@@ -154,6 +164,7 @@ class GenericPayment
         $this->method = $method;
         $this->organizationId = $organizationId;
         $this->modifiedAt = $modifiedAt;
+        $this->trigger = $trigger;
         $this->declineReason = $declineReason;
         $this->declineMessage = $declineMessage;
         $this->checkoutId = $checkoutId;

@@ -42,6 +42,16 @@ class BenefitLicenseKeysUpdate
     public ?string $description = null;
 
     /**
+     * The visibility of the benefit in the customer portal.
+     *
+     * @var ?\Polar\Models\Components\BenefitVisibility $visibility
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('visibility')]
+    #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\BenefitVisibility|null')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
+    public ?BenefitVisibility $visibility = null;
+
+    /**
      *
      * @var ?\Polar\Models\Components\BenefitLicenseKeysCreateProperties $properties
      */
@@ -61,13 +71,15 @@ class BenefitLicenseKeysUpdate
      * @param  string  $type
      * @param  ?array<string, string|int|float|bool>  $metadata
      * @param  ?string  $description
+     * @param  ?\Polar\Models\Components\BenefitVisibility  $visibility
      * @param  ?\Polar\Models\Components\BenefitLicenseKeysCreateProperties  $properties
      * @phpstan-pure
      */
-    public function __construct(?array $metadata = null, ?string $description = null, ?BenefitLicenseKeysCreateProperties $properties = null, string $type = 'license_keys')
+    public function __construct(?array $metadata = null, ?string $description = null, ?BenefitVisibility $visibility = null, ?BenefitLicenseKeysCreateProperties $properties = null, string $type = 'license_keys')
     {
         $this->metadata = $metadata;
         $this->description = $description;
+        $this->visibility = $visibility;
         $this->properties = $properties;
         $this->type = $type;
     }

@@ -70,7 +70,7 @@ $sdk = Polar\Polar::builder()
 
 
 
-$responses = $sdk->organizations->list(
+$responses = $sdk->organizations->listOrganizations(
     page: 1,
     limit: 10
 
@@ -112,7 +112,7 @@ $sdk = Polar\Polar::builder()
 
 
 
-$responses = $sdk->organizations->list(
+$responses = $sdk->organizations->listOrganizations(
     page: 1,
     limit: 10
 
@@ -232,6 +232,9 @@ foreach ($responses as $response) {
 * [addPaymentMethod](docs/sdks/polarcustomers/README.md#addpaymentmethod) - Add Customer Payment Method
 * [confirmPaymentMethod](docs/sdks/polarcustomers/README.md#confirmpaymentmethod) - Confirm Customer Payment Method
 * [deletePaymentMethod](docs/sdks/polarcustomers/README.md#deletepaymentmethod) - Delete Customer Payment Method
+* [requestEmailUpdate](docs/sdks/polarcustomers/README.md#requestemailupdate) - Request Email Change
+* [checkEmailUpdate](docs/sdks/polarcustomers/README.md#checkemailupdate) - Check Email Change Token
+* [verifyEmailUpdate](docs/sdks/polarcustomers/README.md#verifyemailupdate) - Verify Email Change
 
 ### [CustomerPortal.Downloadables](docs/sdks/downloadables/README.md)
 
@@ -245,12 +248,12 @@ foreach ($responses as $response) {
 * [activate](docs/sdks/polarlicensekeys/README.md#activate) - Activate License Key
 * [deactivate](docs/sdks/polarlicensekeys/README.md#deactivate) - Deactivate License Key
 
-### [CustomerPortal.Members](docs/sdks/polarmembers/README.md)
+### [CustomerPortal.Members](docs/sdks/polarcustomerportalmembers/README.md)
 
-* [listMembers](docs/sdks/polarmembers/README.md#listmembers) - List Members
-* [addMember](docs/sdks/polarmembers/README.md#addmember) - Add Member
-* [removeMember](docs/sdks/polarmembers/README.md#removemember) - Remove Member
-* [updateMember](docs/sdks/polarmembers/README.md#updatemember) - Update Member
+* [listMembers](docs/sdks/polarcustomerportalmembers/README.md#listmembers) - List Members
+* [addMember](docs/sdks/polarcustomerportalmembers/README.md#addmember) - Add Member
+* [removeMember](docs/sdks/polarcustomerportalmembers/README.md#removemember) - Remove Member
+* [updateMember](docs/sdks/polarcustomerportalmembers/README.md#updatemember) - Update Member
 
 ### [CustomerPortal.Orders](docs/sdks/polarorders/README.md)
 
@@ -259,6 +262,7 @@ foreach ($responses as $response) {
 * [update](docs/sdks/polarorders/README.md#update) - Update Order
 * [invoice](docs/sdks/polarorders/README.md#invoice) - Get Order Invoice
 * [generateInvoice](docs/sdks/polarorders/README.md#generateinvoice) - Generate Order Invoice
+* [receipt](docs/sdks/polarorders/README.md#receipt) - Get Order Receipt
 * [getPaymentStatus](docs/sdks/polarorders/README.md#getpaymentstatus) - Get Order Payment Status
 * [confirmRetryPayment](docs/sdks/polarorders/README.md#confirmretrypayment) - Confirm Retry Payment
 
@@ -312,6 +316,19 @@ foreach ($responses as $response) {
 * [updateExternal](docs/sdks/customers/README.md#updateexternal) - Update Customer by External ID
 * [getState](docs/sdks/customers/README.md#getstate) - Get Customer State
 * [getStateExternal](docs/sdks/customers/README.md#getstateexternal) - Get Customer State by External ID
+* [listPaymentMethods](docs/sdks/customers/README.md#listpaymentmethods) - List Customer Payment Methods
+* [listPaymentMethodsExternal](docs/sdks/customers/README.md#listpaymentmethodsexternal) - List Customer Payment Methods by External ID
+
+#### [Customers.Members](docs/sdks/polarmembers/README.md)
+
+* [create](docs/sdks/polarmembers/README.md#create) - Create Member
+* [createExternal](docs/sdks/polarmembers/README.md#createexternal) - Create Member by Customer External ID
+* [get](docs/sdks/polarmembers/README.md#get) - Get Member
+* [delete](docs/sdks/polarmembers/README.md#delete) - Delete Member
+* [update](docs/sdks/polarmembers/README.md#update) - Update Member
+* [getExternal](docs/sdks/polarmembers/README.md#getexternal) - Get Member by External ID
+* [deleteExternal](docs/sdks/polarmembers/README.md#deleteexternal) - Delete Member by External ID
+* [updateExternal](docs/sdks/polarmembers/README.md#updateexternal) - Update Member by External ID
 
 ### [Discounts](docs/sdks/discounts/README.md)
 
@@ -325,6 +342,7 @@ foreach ($responses as $response) {
 
 * [list](docs/sdks/disputes/README.md#list) - List Disputes
 * [get](docs/sdks/disputes/README.md#get) - Get Dispute
+* [accept](docs/sdks/disputes/README.md#accept) - Accept Dispute
 
 ### [EventTypes](docs/sdks/eventtypes/README.md)
 
@@ -359,10 +377,6 @@ foreach ($responses as $response) {
 ### [Members](docs/sdks/members/README.md)
 
 * [listMembers](docs/sdks/members/README.md#listmembers) - List Members
-* [createMember](docs/sdks/members/README.md#createmember) - Create Member
-* [getMember](docs/sdks/members/README.md#getmember) - Get Member
-* [deleteMember](docs/sdks/members/README.md#deletemember) - Delete Member
-* [updateMember](docs/sdks/members/README.md#updatemember) - Update Member
 
 ### [Meters](docs/sdks/meters/README.md)
 
@@ -375,6 +389,7 @@ foreach ($responses as $response) {
 ### [Metrics](docs/sdks/metrics/README.md)
 
 * [get](docs/sdks/metrics/README.md#get) - Get Metrics
+* [export](docs/sdks/metrics/README.md#export) - Export Metrics
 * [limits](docs/sdks/metrics/README.md#limits) - Get Metrics Limits
 * [listDashboards](docs/sdks/metrics/README.md#listdashboards) - List Metric Dashboards
 * [createDashboard](docs/sdks/metrics/README.md#createdashboard) - Create Metric Dashboard
@@ -400,22 +415,18 @@ foreach ($responses as $response) {
 ### [Orders](docs/sdks/orders/README.md)
 
 * [list](docs/sdks/orders/README.md#list) - List Orders
+* [create](docs/sdks/orders/README.md#create) - Create Order
 * [export](docs/sdks/orders/README.md#export) - Export Orders
 * [get](docs/sdks/orders/README.md#get) - Get Order
 * [update](docs/sdks/orders/README.md#update) - Update Order
+* [finalize](docs/sdks/orders/README.md#finalize) - Finalize Order
 * [invoice](docs/sdks/orders/README.md#invoice) - Get Order Invoice
 * [generateInvoice](docs/sdks/orders/README.md#generateinvoice) - Generate Order Invoice
-
-### [OrganizationAccessTokens](docs/sdks/organizationaccesstokens/README.md)
-
-* [list](docs/sdks/organizationaccesstokens/README.md#list) - List
-* [create](docs/sdks/organizationaccesstokens/README.md#create) - Create
-* [delete](docs/sdks/organizationaccesstokens/README.md#delete) - Delete
-* [update](docs/sdks/organizationaccesstokens/README.md#update) - Update
+* [receipt](docs/sdks/orders/README.md#receipt) - Get Order Receipt
 
 ### [Organizations](docs/sdks/organizations/README.md)
 
-* [list](docs/sdks/organizations/README.md#list) - List Organizations
+* [listOrganizations](docs/sdks/organizations/README.md#listorganizations) - List Organizations
 * [create](docs/sdks/organizations/README.md#create) - Create Organization
 * [get](docs/sdks/organizations/README.md#get) - Get Organization
 * [update](docs/sdks/organizations/README.md#update) - Update Organization
@@ -483,7 +494,7 @@ $sdk = Polar\Polar::builder()
 
 
 
-$responses = $sdk->organizations->list(
+$responses = $sdk->organizations->listOrganizations(
     page: 1,
     limit: 10
 
@@ -512,7 +523,7 @@ By default an API error will raise a `Errors\APIException` exception, which has 
 | `$rawResponse` | *?\Psr\Http\Message\ResponseInterface*  | The raw HTTP response |
 | `$body`        | *string*                                | The response content  |
 
-When custom error responses are specified for an operation, the SDK may also throw their associated exception. You can refer to respective *Errors* tables in SDK docs for more details on possible exception types for each operation. For example, the `list` method throws the following exceptions:
+When custom error responses are specified for an operation, the SDK may also throw their associated exception. You can refer to respective *Errors* tables in SDK docs for more details on possible exception types for each operation. For example, the `listOrganizations` method throws the following exceptions:
 
 | Error Type                 | Status Code | Content Type     |
 | -------------------------- | ----------- | ---------------- |
@@ -536,7 +547,7 @@ $sdk = Polar\Polar::builder()
     ->build();
 
 try {
-    $responses = $sdk->organizations->list(
+    $responses = $sdk->organizations->listOrganizations(
         page: 1,
         limit: 10
 
@@ -587,7 +598,7 @@ $sdk = Polar\Polar::builder()
 
 
 
-$responses = $sdk->organizations->list(
+$responses = $sdk->organizations->listOrganizations(
     page: 1,
     limit: 10
 
@@ -620,7 +631,7 @@ $sdk = Polar\Polar::builder()
 
 
 
-$responses = $sdk->organizations->list(
+$responses = $sdk->organizations->listOrganizations(
     page: 1,
     limit: 10
 

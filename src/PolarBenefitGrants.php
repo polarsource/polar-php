@@ -87,18 +87,19 @@ class PolarBenefitGrants
         }
         $contentType = $httpResponse->getHeader('Content-Type')[0] ?? '';
 
-        $statusCode = $httpResponse->getStatusCode();
-        if (Utils\Utils::matchStatusCodes($statusCode, ['404', '422', '4XX', '5XX'])) {
+        if (Utils\Utils::matchStatusCodes($httpResponse->getStatusCode(), ['4XX', '5XX'])) {
             $res = $this->sdkConfiguration->hooks->afterError(new Hooks\AfterErrorContext($hookContext), $httpResponse, null);
             $httpResponse = $res;
         }
+
+        $statusCode = $httpResponse->getStatusCode();
         if (Utils\Utils::matchStatusCodes($statusCode, ['200'])) {
             if (Utils\Utils::matchContentType($contentType, 'application/json')) {
                 $httpResponse = $this->sdkConfiguration->hooks->afterSuccess(new Hooks\AfterSuccessContext($hookContext), $httpResponse);
 
                 $serializer = Utils\JSON::createSerializer();
                 $responseData = (string) $httpResponse->getBody();
-                $obj = $serializer->deserialize($responseData, '\Polar\Models\Components\CustomerBenefitGrantDiscord|\Polar\Models\Components\CustomerBenefitGrantGitHubRepository|\Polar\Models\Components\CustomerBenefitGrantDownloadables|\Polar\Models\Components\CustomerBenefitGrantLicenseKeys|\Polar\Models\Components\CustomerBenefitGrantCustom|\Polar\Models\Components\CustomerBenefitGrantMeterCredit|\Polar\Models\Components\CustomerBenefitGrantFeatureFlag', 'json', DeserializationContext::create()->setRequireAllRequiredProperties(true));
+                $obj = $serializer->deserialize($responseData, '\Polar\Models\Components\CustomerBenefitGrantDiscord|\Polar\Models\Components\CustomerBenefitGrantGitHubRepository|\Polar\Models\Components\CustomerBenefitGrantDownloadables|\Polar\Models\Components\CustomerBenefitGrantLicenseKeys|\Polar\Models\Components\CustomerBenefitGrantCustom|\Polar\Models\Components\CustomerBenefitGrantMeterCredit|\Polar\Models\Components\CustomerBenefitGrantFeatureFlag|\Polar\Models\Components\CustomerBenefitGrantSlackSharedChannel', 'json', DeserializationContext::create()->setRequireAllRequiredProperties(true));
                 $response = new Operations\CustomerPortalBenefitGrantsGetResponse(
                     statusCode: $statusCode,
                     contentType: $contentType,
@@ -182,11 +183,12 @@ class PolarBenefitGrants
         }
         $contentType = $httpResponse->getHeader('Content-Type')[0] ?? '';
 
-        $statusCode = $httpResponse->getStatusCode();
-        if (Utils\Utils::matchStatusCodes($statusCode, ['422', '4XX', '5XX'])) {
+        if (Utils\Utils::matchStatusCodes($httpResponse->getStatusCode(), ['4XX', '5XX'])) {
             $res = $this->sdkConfiguration->hooks->afterError(new Hooks\AfterErrorContext($hookContext), $httpResponse, null);
             $httpResponse = $res;
         }
+
+        $statusCode = $httpResponse->getStatusCode();
         if (Utils\Utils::matchStatusCodes($statusCode, ['200'])) {
             if (Utils\Utils::matchContentType($contentType, 'application/json')) {
                 $httpResponse = $this->sdkConfiguration->hooks->afterSuccess(new Hooks\AfterSuccessContext($hookContext), $httpResponse);
@@ -296,12 +298,12 @@ class PolarBenefitGrants
      * **Scopes**: `customer_portal:write`
      *
      * @param  \Polar\Models\Operations\CustomerPortalBenefitGrantsUpdateSecurity  $security
-     * @param  \Polar\Models\Components\CustomerBenefitGrantDiscordUpdate|\Polar\Models\Components\CustomerBenefitGrantGitHubRepositoryUpdate|\Polar\Models\Components\CustomerBenefitGrantDownloadablesUpdate|\Polar\Models\Components\CustomerBenefitGrantLicenseKeysUpdate|\Polar\Models\Components\CustomerBenefitGrantCustomUpdate|\Polar\Models\Components\CustomerBenefitGrantMeterCreditUpdate|\Polar\Models\Components\CustomerBenefitGrantFeatureFlagUpdate  $customerBenefitGrantUpdate
+     * @param  \Polar\Models\Components\CustomerBenefitGrantDiscordUpdate|\Polar\Models\Components\CustomerBenefitGrantGitHubRepositoryUpdate|\Polar\Models\Components\CustomerBenefitGrantDownloadablesUpdate|\Polar\Models\Components\CustomerBenefitGrantLicenseKeysUpdate|\Polar\Models\Components\CustomerBenefitGrantCustomUpdate|\Polar\Models\Components\CustomerBenefitGrantMeterCreditUpdate|\Polar\Models\Components\CustomerBenefitGrantFeatureFlagUpdate|\Polar\Models\Components\CustomerBenefitGrantSlackSharedChannelUpdate  $customerBenefitGrantUpdate
      * @param  string  $id
      * @return \Polar\Models\Operations\CustomerPortalBenefitGrantsUpdateResponse
      * @throws \Polar\Models\Errors\APIException
      */
-    public function update(Operations\CustomerPortalBenefitGrantsUpdateSecurity $security, Components\CustomerBenefitGrantDiscordUpdate|Components\CustomerBenefitGrantGitHubRepositoryUpdate|Components\CustomerBenefitGrantDownloadablesUpdate|Components\CustomerBenefitGrantLicenseKeysUpdate|Components\CustomerBenefitGrantCustomUpdate|Components\CustomerBenefitGrantMeterCreditUpdate|Components\CustomerBenefitGrantFeatureFlagUpdate $customerBenefitGrantUpdate, string $id, ?Options $options = null): Operations\CustomerPortalBenefitGrantsUpdateResponse
+    public function update(Operations\CustomerPortalBenefitGrantsUpdateSecurity $security, Components\CustomerBenefitGrantDiscordUpdate|Components\CustomerBenefitGrantGitHubRepositoryUpdate|Components\CustomerBenefitGrantDownloadablesUpdate|Components\CustomerBenefitGrantLicenseKeysUpdate|Components\CustomerBenefitGrantCustomUpdate|Components\CustomerBenefitGrantMeterCreditUpdate|Components\CustomerBenefitGrantFeatureFlagUpdate|Components\CustomerBenefitGrantSlackSharedChannelUpdate $customerBenefitGrantUpdate, string $id, ?Options $options = null): Operations\CustomerPortalBenefitGrantsUpdateResponse
     {
         $request = new Operations\CustomerPortalBenefitGrantsUpdateRequest(
             id: $id,
@@ -337,18 +339,19 @@ class PolarBenefitGrants
         }
         $contentType = $httpResponse->getHeader('Content-Type')[0] ?? '';
 
-        $statusCode = $httpResponse->getStatusCode();
-        if (Utils\Utils::matchStatusCodes($statusCode, ['403', '404', '422', '4XX', '5XX'])) {
+        if (Utils\Utils::matchStatusCodes($httpResponse->getStatusCode(), ['4XX', '5XX'])) {
             $res = $this->sdkConfiguration->hooks->afterError(new Hooks\AfterErrorContext($hookContext), $httpResponse, null);
             $httpResponse = $res;
         }
+
+        $statusCode = $httpResponse->getStatusCode();
         if (Utils\Utils::matchStatusCodes($statusCode, ['200'])) {
             if (Utils\Utils::matchContentType($contentType, 'application/json')) {
                 $httpResponse = $this->sdkConfiguration->hooks->afterSuccess(new Hooks\AfterSuccessContext($hookContext), $httpResponse);
 
                 $serializer = Utils\JSON::createSerializer();
                 $responseData = (string) $httpResponse->getBody();
-                $obj = $serializer->deserialize($responseData, '\Polar\Models\Components\CustomerBenefitGrantDiscord|\Polar\Models\Components\CustomerBenefitGrantGitHubRepository|\Polar\Models\Components\CustomerBenefitGrantDownloadables|\Polar\Models\Components\CustomerBenefitGrantLicenseKeys|\Polar\Models\Components\CustomerBenefitGrantCustom|\Polar\Models\Components\CustomerBenefitGrantMeterCredit|\Polar\Models\Components\CustomerBenefitGrantFeatureFlag', 'json', DeserializationContext::create()->setRequireAllRequiredProperties(true));
+                $obj = $serializer->deserialize($responseData, '\Polar\Models\Components\CustomerBenefitGrantDiscord|\Polar\Models\Components\CustomerBenefitGrantGitHubRepository|\Polar\Models\Components\CustomerBenefitGrantDownloadables|\Polar\Models\Components\CustomerBenefitGrantLicenseKeys|\Polar\Models\Components\CustomerBenefitGrantCustom|\Polar\Models\Components\CustomerBenefitGrantMeterCredit|\Polar\Models\Components\CustomerBenefitGrantFeatureFlag|\Polar\Models\Components\CustomerBenefitGrantSlackSharedChannel', 'json', DeserializationContext::create()->setRequireAllRequiredProperties(true));
                 $response = new Operations\CustomerPortalBenefitGrantsUpdateResponse(
                     statusCode: $statusCode,
                     contentType: $contentType,

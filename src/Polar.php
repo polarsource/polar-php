@@ -80,8 +80,6 @@ class Polar
 
     public Meters $meters;
 
-    public OrganizationAccessTokens $organizationAccessTokens;
-
     public CustomerMeters $customerMeters;
 
     public Payments $payments;
@@ -127,7 +125,6 @@ class Polar
         $this->events = new Events($this->sdkConfiguration);
         $this->eventTypes = new EventTypes($this->sdkConfiguration);
         $this->meters = new Meters($this->sdkConfiguration);
-        $this->organizationAccessTokens = new OrganizationAccessTokens($this->sdkConfiguration);
         $this->customerMeters = new CustomerMeters($this->sdkConfiguration);
         $this->payments = new Payments($this->sdkConfiguration);
         $this->initHooks();

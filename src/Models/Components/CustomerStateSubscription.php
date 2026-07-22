@@ -63,11 +63,11 @@ class CustomerStateSubscription
 
     /**
      *
-     * @var \Polar\Models\Components\SubscriptionRecurringInterval $recurringInterval
+     * @var \Polar\Models\Components\RecurringInterval $recurringInterval
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('recurring_interval')]
-    #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\SubscriptionRecurringInterval')]
-    public SubscriptionRecurringInterval $recurringInterval;
+    #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\RecurringInterval')]
+    public RecurringInterval $recurringInterval;
 
     /**
      * The start timestamp of the current billing period.
@@ -183,7 +183,7 @@ class CustomerStateSubscription
      * @param  \Polar\Models\Components\Status  $status
      * @param  int  $amount
      * @param  string  $currency
-     * @param  \Polar\Models\Components\SubscriptionRecurringInterval  $recurringInterval
+     * @param  \Polar\Models\Components\RecurringInterval  $recurringInterval
      * @param  \DateTime  $currentPeriodStart
      * @param  \DateTime  $currentPeriodEnd
      * @param  bool  $cancelAtPeriodEnd
@@ -199,7 +199,7 @@ class CustomerStateSubscription
      * @param  ?string  $discountId
      * @phpstan-pure
      */
-    public function __construct(string $id, \DateTime $createdAt, array $metadata, Status $status, int $amount, string $currency, SubscriptionRecurringInterval $recurringInterval, \DateTime $currentPeriodStart, \DateTime $currentPeriodEnd, bool $cancelAtPeriodEnd, string $productId, array $meters, ?\DateTime $modifiedAt = null, ?array $customFieldData = null, ?\DateTime $trialStart = null, ?\DateTime $trialEnd = null, ?\DateTime $canceledAt = null, ?\DateTime $startedAt = null, ?\DateTime $endsAt = null, ?string $discountId = null)
+    public function __construct(string $id, \DateTime $createdAt, array $metadata, Status $status, int $amount, string $currency, RecurringInterval $recurringInterval, \DateTime $currentPeriodStart, \DateTime $currentPeriodEnd, bool $cancelAtPeriodEnd, string $productId, array $meters, ?\DateTime $modifiedAt = null, ?array $customFieldData = null, ?\DateTime $trialStart = null, ?\DateTime $trialEnd = null, ?\DateTime $canceledAt = null, ?\DateTime $startedAt = null, ?\DateTime $endsAt = null, ?string $discountId = null)
     {
         $this->id = $id;
         $this->createdAt = $createdAt;

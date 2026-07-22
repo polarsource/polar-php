@@ -18,4 +18,5 @@ enum BenefitType: string
     case LicenseKeys = 'license_keys';
     case MeterCredit = 'meter_credit';
     case FeatureFlag = 'feature_flag';
+    case SlackSharedChannel = 'slack_shared_channel';
 }

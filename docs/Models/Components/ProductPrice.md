@@ -21,15 +21,6 @@ Components\ProductPriceCustom $value = /* values here */
 Components\ProductPriceFixed $value = /* values here */
 ```
 
-### `Components\ProductPriceFree`
-
-```php
-/**
-* @var \Polar\Models\Components\ProductPriceFree
-*/
-Components\ProductPriceFree $value = /* values here */
-```
-
 ### `Components\ProductPriceMeteredUnit`
 
 ```php

@@ -5,11 +5,14 @@
 ### Available Operations
 
 * [list](#list) - List Orders
+* [create](#create) - Create Order
 * [export](#export) - Export Orders
 * [get](#get) - Get Order
 * [update](#update) - Update Order
+* [finalize](#finalize) - Finalize Order
 * [invoice](#invoice) - Get Order Invoice
 * [generateInvoice](#generateinvoice) - Generate Order Invoice
+* [receipt](#receipt) - Get Order Receipt
 
 ## list
 
@@ -67,6 +70,65 @@ foreach ($responses as $response) {
 | Errors\HTTPValidationError | 422                        | application/json           |
 | Errors\APIException        | 4XX, 5XX                   | \*/\*                      |
 
+## create
+
+Create a draft order for an off-session charge against a saved payment
+method. The order is created with `status=draft` and no invoice number;
+call `POST /v1/orders/{id}/finalize` to attempt the charge.
+
+The organization must have the `off_session_charges_enabled` feature flag.
+
+**Scopes**: `orders:write`
+
+### Example Usage
+
+<!-- UsageSnippet language="php" operationID="orders:create" method="post" path="/v1/orders/" -->
+```php
+declare(strict_types=1);
+
+require 'vendor/autoload.php';
+
+use Polar;
+use Polar\Models\Components;
+
+$sdk = Polar\Polar::builder()
+    ->setSecurity(
+        '<YOUR_BEARER_TOKEN_HERE>'
+    )
+    ->build();
+
+$request = new Components\OrderCreate(
+    organizationId: '1dbfc517-0bbf-4301-9ba8-555ca42b9737',
+    customerId: '<value>',
+    productId: '<value>',
+);
+
+$response = $sdk->orders->create(
+    request: $request
+);
+
+if ($response->order !== null) {
+    // handle response
+}
+```
+
+### Parameters
+
+| Parameter                                                        | Type                                                             | Required                                                         | Description                                                      |
+| ---------------------------------------------------------------- | ---------------------------------------------------------------- | ---------------------------------------------------------------- | ---------------------------------------------------------------- |
+| `$request`                                                       | [Components\OrderCreate](../../Models/Components/OrderCreate.md) | :heavy_check_mark:                                               | The request object to use for the request.                       |
+
+### Response
+
+**[?Operations\OrdersCreateResponse](../../Models/Operations/OrdersCreateResponse.md)**
+
+### Errors
+
+| Error Type                 | Status Code                | Content Type               |
+| -------------------------- | -------------------------- | -------------------------- |
+| Errors\HTTPValidationError | 422                        | application/json           |
+| Errors\APIException        | 4XX, 5XX                   | \*/\*                      |
+
 ## export
 
 Export orders as a CSV file.
@@ -95,7 +157,7 @@ $response = $sdk->orders->export(
     organizationId: null
 );
 
-if ($response->any !== null) {
+if ($response->res !== null) {
     // handle response
 }
 ```
@@ -228,6 +290,71 @@ if ($response->order !== null) {
 | Errors\HTTPValidationError | 422                        | application/json           |
 | Errors\APIException        | 4XX, 5XX                   | \*/\*                      |
 
+## finalize
+
+Finalize a draft order and synchronously attempt an off-session charge.
+
+On success, the order transitions to `paid` and benefit grants fire
+before the response returns. On failure (decline, missing payment method,
+SCA challenge), the order stays in `draft` and a 4xx error is returned.
+
+The request fails with 412 if the order is not in `draft` status.
+
+**Scopes**: `orders:write`
+
+### Example Usage
+
+<!-- UsageSnippet language="php" operationID="orders:finalize" method="post" path="/v1/orders/{id}/finalize" -->
+```php
+declare(strict_types=1);
+
+require 'vendor/autoload.php';
+
+use Polar;
+
+$sdk = Polar\Polar::builder()
+    ->setSecurity(
+        '<YOUR_BEARER_TOKEN_HERE>'
+    )
+    ->build();
+
+
+
+$response = $sdk->orders->finalize(
+    id: '<value>',
+    orderFinalize: $orderFinalize
+
+);
+
+if ($response->order !== null) {
+    // handle response
+}
+```
+
+### Parameters
+
+| Parameter                                                             | Type                                                                  | Required                                                              | Description                                                           |
+| --------------------------------------------------------------------- | --------------------------------------------------------------------- | --------------------------------------------------------------------- | --------------------------------------------------------------------- |
+| `id`                                                                  | *string*                                                              | :heavy_check_mark:                                                    | The order ID.                                                         |
+| `orderFinalize`                                                       | [?Components\OrderFinalize](../../Models/Components/OrderFinalize.md) | :heavy_minus_sign:                                                    | N/A                                                                   |
+
+### Response
+
+**[?Operations\OrdersFinalizeResponse](../../Models/Operations/OrdersFinalizeResponse.md)**
+
+### Errors
+
+| Error Type                             | Status Code                            | Content Type                           |
+| -------------------------------------- | -------------------------------------- | -------------------------------------- |
+| Errors\PaymentFailed1                  | 402                                    | application/json                       |
+| Errors\PaymentActionRequired           | 402                                    | application/json                       |
+| Errors\OffSessionChargesNotEnabled     | 403                                    | application/json                       |
+| Errors\OrganizationNotReadyForPayments | 403                                    | application/json                       |
+| Errors\ResourceNotFound                | 404                                    | application/json                       |
+| Errors\OrderNotDraft                   | 412                                    | application/json                       |
+| Errors\HTTPValidationError             | 422                                    | application/json                       |
+| Errors\APIException                    | 4XX, 5XX                               | \*/\*                                  |
+
 ## invoice
 
 Get an order's invoice data.
@@ -326,6 +453,58 @@ if ($response->any !== null) {
 
 | Error Type                          | Status Code                         | Content Type                        |
 | ----------------------------------- | ----------------------------------- | ----------------------------------- |
+| Errors\ResourceNotFound             | 404                                 | application/json                    |
+| Errors\OrderNotEligibleForInvoice   | 409                                 | application/json                    |
 | Errors\MissingInvoiceBillingDetails | 422                                 | application/json                    |
-| Errors\NotPaidOrder                 | 422                                 | application/json                    |
 | Errors\APIException                 | 4XX, 5XX                            | \*/\*                               |
+
+## receipt
+
+Get a presigned URL to download an order's receipt PDF.
+
+**Scopes**: `orders:read`
+
+### Example Usage
+
+<!-- UsageSnippet language="php" operationID="orders:receipt" method="get" path="/v1/orders/{id}/receipt" -->
+```php
+declare(strict_types=1);
+
+require 'vendor/autoload.php';
+
+use Polar;
+
+$sdk = Polar\Polar::builder()
+    ->setSecurity(
+        '<YOUR_BEARER_TOKEN_HERE>'
+    )
+    ->build();
+
+
+
+$response = $sdk->orders->receipt(
+    id: '<value>'
+);
+
+if ($response->orderReceipt !== null) {
+    // handle response
+}
+```
+
+### Parameters
+
+| Parameter          | Type               | Required           | Description        |
+| ------------------ | ------------------ | ------------------ | ------------------ |
+| `id`               | *string*           | :heavy_check_mark: | The order ID.      |
+
+### Response
+
+**[?Operations\OrdersReceiptResponse](../../Models/Operations/OrdersReceiptResponse.md)**
+
+### Errors
+
+| Error Type                 | Status Code                | Content Type               |
+| -------------------------- | -------------------------- | -------------------------- |
+| Errors\ResourceNotFound    | 404                        | application/json           |
+| Errors\HTTPValidationError | 422                        | application/json           |
+| Errors\APIException        | 4XX, 5XX                   | \*/\*                      |

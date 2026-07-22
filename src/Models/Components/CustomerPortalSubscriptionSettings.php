@@ -26,13 +26,23 @@ class CustomerPortalSubscriptionSettings
     public bool $updatePlan;
 
     /**
+     *
+     * @var ?bool $pause
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('pause')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
+    public ?bool $pause = null;
+
+    /**
      * @param  bool  $updateSeats
      * @param  bool  $updatePlan
+     * @param  ?bool  $pause
      * @phpstan-pure
      */
-    public function __construct(bool $updateSeats, bool $updatePlan)
+    public function __construct(bool $updateSeats, bool $updatePlan, ?bool $pause = null)
     {
         $this->updateSeats = $updateSeats;
         $this->updatePlan = $updatePlan;
+        $this->pause = $pause;
     }
 }

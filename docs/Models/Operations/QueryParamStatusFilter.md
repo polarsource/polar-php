@@ -1,24 +1,24 @@
 # QueryParamStatusFilter
 
-Filter by checkout session status.
+Filter by dispute status.
 
 
 ## Supported Types
 
-### `Components\CheckoutStatus`
+### `Components\DisputeStatus`
 
 ```php
 /**
-* @var \Polar\Models\Components\CheckoutStatus
+* @var \Polar\Models\Components\DisputeStatus
 */
-Components\CheckoutStatus $value = /* values here */
+Components\DisputeStatus $value = /* values here */
 ```
 
 ### `array`
 
 ```php
 /**
-* @var array<\Polar\Models\Components\CheckoutStatus>
+* @var array<\Polar\Models\Components\DisputeStatus>
 */
 array $value = /* values here */
 ```

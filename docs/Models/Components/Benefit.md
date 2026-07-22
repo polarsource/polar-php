@@ -66,3 +66,12 @@ Components\BenefitLicenseKeys $value = /* values here */
 Components\BenefitMeterCredit $value = /* values here */
 ```
 
+### `Components\BenefitSlackSharedChannel`
+
+```php
+/**
+* @var \Polar\Models\Components\BenefitSlackSharedChannel
+*/
+Components\BenefitSlackSharedChannel $value = /* values here */
+```
+

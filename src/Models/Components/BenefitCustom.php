@@ -58,6 +58,14 @@ class BenefitCustom
     public bool $deletable;
 
     /**
+     * Whether the benefit is deleted.
+     *
+     * @var bool $isDeleted
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('is_deleted')]
+    public bool $isDeleted;
+
+    /**
      * The ID of the organization owning the benefit.
      *
      * @var string $organizationId
@@ -75,6 +83,14 @@ class BenefitCustom
     public array $metadata;
 
     /**
+     *
+     * @var \Polar\Models\Components\BenefitVisibility $visibility
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('visibility')]
+    #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\BenefitVisibility')]
+    public BenefitVisibility $visibility;
+
+    /**
      * Properties for a benefit of type `custom`.
      *
      * @var \Polar\Models\Components\BenefitCustomProperties $properties
@@ -82,6 +98,13 @@ class BenefitCustom
     #[\Speakeasy\Serializer\Annotation\SerializedName('properties')]
     #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\BenefitCustomProperties')]
     public BenefitCustomProperties $properties;
+
+    /**
+     *
+     * @var bool $visibilityConfigurable
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('visibility_configurable')]
+    public bool $visibilityConfigurable;
 
     /**
      * Last modification timestamp of the object.
@@ -105,22 +128,28 @@ class BenefitCustom
      * @param  string  $description
      * @param  bool  $selectable
      * @param  bool  $deletable
+     * @param  bool  $isDeleted
      * @param  string  $organizationId
      * @param  array<string, string|int|float|bool>  $metadata
+     * @param  \Polar\Models\Components\BenefitVisibility  $visibility
      * @param  \Polar\Models\Components\BenefitCustomProperties  $properties
+     * @param  bool  $visibilityConfigurable
      * @param  ?\DateTime  $modifiedAt
      * @phpstan-pure
      */
-    public function __construct(string $id, \DateTime $createdAt, string $description, bool $selectable, bool $deletable, string $organizationId, array $metadata, BenefitCustomProperties $properties, ?\DateTime $modifiedAt = null, string $type = 'custom')
+    public function __construct(string $id, \DateTime $createdAt, string $description, bool $selectable, bool $deletable, bool $isDeleted, string $organizationId, array $metadata, BenefitVisibility $visibility, BenefitCustomProperties $properties, bool $visibilityConfigurable, ?\DateTime $modifiedAt = null, string $type = 'custom')
     {
         $this->id = $id;
         $this->createdAt = $createdAt;
         $this->description = $description;
         $this->selectable = $selectable;
         $this->deletable = $deletable;
+        $this->isDeleted = $isDeleted;
         $this->organizationId = $organizationId;
         $this->metadata = $metadata;
+        $this->visibility = $visibility;
         $this->properties = $properties;
+        $this->visibilityConfigurable = $visibilityConfigurable;
         $this->modifiedAt = $modifiedAt;
         $this->type = $type;
     }

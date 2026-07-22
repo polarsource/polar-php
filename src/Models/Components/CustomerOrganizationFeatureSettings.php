@@ -22,11 +22,22 @@ class CustomerOrganizationFeatureSettings
     public ?bool $memberModelEnabled = null;
 
     /**
+     * Whether localization is enabled for this organization.
+     *
+     * @var ?bool $checkoutLocalizationEnabled
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('checkout_localization_enabled')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
+    public ?bool $checkoutLocalizationEnabled = null;
+
+    /**
      * @param  ?bool  $memberModelEnabled
+     * @param  ?bool  $checkoutLocalizationEnabled
      * @phpstan-pure
      */
-    public function __construct(?bool $memberModelEnabled = false)
+    public function __construct(?bool $memberModelEnabled = false, ?bool $checkoutLocalizationEnabled = false)
     {
         $this->memberModelEnabled = $memberModelEnabled;
+        $this->checkoutLocalizationEnabled = $checkoutLocalizationEnabled;
     }
 }

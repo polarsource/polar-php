@@ -87,11 +87,12 @@ class Subscriptions
         }
         $contentType = $httpResponse->getHeader('Content-Type')[0] ?? '';
 
-        $statusCode = $httpResponse->getStatusCode();
-        if (Utils\Utils::matchStatusCodes($statusCode, ['422', '4XX', '5XX'])) {
+        if (Utils\Utils::matchStatusCodes($httpResponse->getStatusCode(), ['4XX', '5XX'])) {
             $res = $this->sdkConfiguration->hooks->afterError(new Hooks\AfterErrorContext($hookContext), $httpResponse, null);
             $httpResponse = $res;
         }
+
+        $statusCode = $httpResponse->getStatusCode();
         if (Utils\Utils::matchStatusCodes($statusCode, ['201'])) {
             if (Utils\Utils::matchContentType($contentType, 'application/json')) {
                 $httpResponse = $this->sdkConfiguration->hooks->afterSuccess(new Hooks\AfterSuccessContext($hookContext), $httpResponse);
@@ -151,7 +152,7 @@ class Subscriptions
         $httpOptions = ['http_errors' => false];
 
         $qp = Utils\Utils::getQueryParams(Operations\SubscriptionsExportRequest::class, $request, $urlOverride);
-        $httpOptions['headers']['Accept'] = 'application/json;q=1, text/csv;q=0';
+        $httpOptions['headers']['Accept'] = 'text/csv';
         $httpOptions['headers']['user-agent'] = $this->sdkConfiguration->userAgent;
         $httpRequest = new \GuzzleHttp\Psr7\Request('GET', $url);
         $hookContext = new HookContext($this->sdkConfiguration, $baseUrl, 'subscriptions:export', null, $this->sdkConfiguration->securitySource);
@@ -167,26 +168,14 @@ class Subscriptions
         }
         $contentType = $httpResponse->getHeader('Content-Type')[0] ?? '';
 
-        $statusCode = $httpResponse->getStatusCode();
-        if (Utils\Utils::matchStatusCodes($statusCode, ['422', '4XX', '5XX'])) {
+        if (Utils\Utils::matchStatusCodes($httpResponse->getStatusCode(), ['4XX', '5XX'])) {
             $res = $this->sdkConfiguration->hooks->afterError(new Hooks\AfterErrorContext($hookContext), $httpResponse, null);
             $httpResponse = $res;
         }
+
+        $statusCode = $httpResponse->getStatusCode();
         if (Utils\Utils::matchStatusCodes($statusCode, ['200'])) {
-            if (Utils\Utils::matchContentType($contentType, 'application/json')) {
-                $httpResponse = $this->sdkConfiguration->hooks->afterSuccess(new Hooks\AfterSuccessContext($hookContext), $httpResponse);
-
-                $serializer = Utils\JSON::createSerializer();
-                $responseData = (string) $httpResponse->getBody();
-                $obj = $serializer->deserialize($responseData, 'mixed', 'json', DeserializationContext::create()->setRequireAllRequiredProperties(true));
-                $response = new Operations\SubscriptionsExportResponse(
-                    statusCode: $statusCode,
-                    contentType: $contentType,
-                    rawResponse: $httpResponse,
-                    any: $obj);
-
-                return $response;
-            } elseif (Utils\Utils::matchContentType($contentType, 'text/csv')) {
+            if (Utils\Utils::matchContentType($contentType, 'text/csv')) {
                 $httpResponse = $this->sdkConfiguration->hooks->afterSuccess(new Hooks\AfterSuccessContext($hookContext), $httpResponse);
 
                 $obj = $httpResponse->getBody()->getContents();
@@ -254,11 +243,12 @@ class Subscriptions
         }
         $contentType = $httpResponse->getHeader('Content-Type')[0] ?? '';
 
-        $statusCode = $httpResponse->getStatusCode();
-        if (Utils\Utils::matchStatusCodes($statusCode, ['404', '422', '4XX', '5XX'])) {
+        if (Utils\Utils::matchStatusCodes($httpResponse->getStatusCode(), ['4XX', '5XX'])) {
             $res = $this->sdkConfiguration->hooks->afterError(new Hooks\AfterErrorContext($hookContext), $httpResponse, null);
             $httpResponse = $res;
         }
+
+        $statusCode = $httpResponse->getStatusCode();
         if (Utils\Utils::matchStatusCodes($statusCode, ['200'])) {
             if (Utils\Utils::matchContentType($contentType, 'application/json')) {
                 $httpResponse = $this->sdkConfiguration->hooks->afterSuccess(new Hooks\AfterSuccessContext($hookContext), $httpResponse);
@@ -342,11 +332,12 @@ class Subscriptions
         }
         $contentType = $httpResponse->getHeader('Content-Type')[0] ?? '';
 
-        $statusCode = $httpResponse->getStatusCode();
-        if (Utils\Utils::matchStatusCodes($statusCode, ['422', '4XX', '5XX'])) {
+        if (Utils\Utils::matchStatusCodes($httpResponse->getStatusCode(), ['4XX', '5XX'])) {
             $res = $this->sdkConfiguration->hooks->afterError(new Hooks\AfterErrorContext($hookContext), $httpResponse, null);
             $httpResponse = $res;
         }
+
+        $statusCode = $httpResponse->getStatusCode();
         if (Utils\Utils::matchStatusCodes($statusCode, ['200'])) {
             if (Utils\Utils::matchContentType($contentType, 'application/json')) {
                 $httpResponse = $this->sdkConfiguration->hooks->afterSuccess(new Hooks\AfterSuccessContext($hookContext), $httpResponse);
@@ -394,6 +385,7 @@ class Subscriptions
                             externalCustomerId: $request != null ? $request->externalCustomerId : null,
                             discountId: $request != null ? $request->discountId : null,
                             active: $request != null ? $request->active : null,
+                            status: $request != null ? $request->status : null,
                             cancelAtPeriodEnd: $request != null ? $request->cancelAtPeriodEnd : null,
                             customerCancellationReason: $request != null ? $request->customerCancellationReason : null,
                             canceledAtAfter: $request != null ? $request->canceledAtAfter : null,
@@ -485,11 +477,12 @@ class Subscriptions
         }
         $contentType = $httpResponse->getHeader('Content-Type')[0] ?? '';
 
-        $statusCode = $httpResponse->getStatusCode();
-        if (Utils\Utils::matchStatusCodes($statusCode, ['403', '404', '409', '422', '4XX', '5XX'])) {
+        if (Utils\Utils::matchStatusCodes($httpResponse->getStatusCode(), ['4XX', '5XX'])) {
             $res = $this->sdkConfiguration->hooks->afterError(new Hooks\AfterErrorContext($hookContext), $httpResponse, null);
             $httpResponse = $res;
         }
+
+        $statusCode = $httpResponse->getStatusCode();
         if (Utils\Utils::matchStatusCodes($statusCode, ['200'])) {
             if (Utils\Utils::matchContentType($contentType, 'application/json')) {
                 $httpResponse = $this->sdkConfiguration->hooks->afterSuccess(new Hooks\AfterSuccessContext($hookContext), $httpResponse);
@@ -567,12 +560,12 @@ class Subscriptions
      *
      * **Scopes**: `subscriptions:write`
      *
-     * @param  \Polar\Models\Components\SubscriptionUpdateProduct|\Polar\Models\Components\SubscriptionUpdateDiscount|\Polar\Models\Components\SubscriptionUpdateTrial|\Polar\Models\Components\SubscriptionUpdateSeats|\Polar\Models\Components\SubscriptionUpdateBillingPeriod|\Polar\Models\Components\SubscriptionCancel|\Polar\Models\Components\SubscriptionRevoke  $subscriptionUpdate
+     * @param  \Polar\Models\Components\SubscriptionUpdateBase|\Polar\Models\Components\SubscriptionUpdateSeats|\Polar\Models\Components\SubscriptionUpdateBillingPeriod|\Polar\Models\Components\SubscriptionCancel|\Polar\Models\Components\SubscriptionRevoke|\Polar\Models\Components\SubscriptionPause|\Polar\Models\Components\SubscriptionResume|\Polar\Models\Components\SubscriptionUpdateClear  $subscriptionUpdate
      * @param  string  $id
      * @return \Polar\Models\Operations\SubscriptionsUpdateResponse
      * @throws \Polar\Models\Errors\APIException
      */
-    public function update(Components\SubscriptionUpdateProduct|Components\SubscriptionUpdateDiscount|Components\SubscriptionUpdateTrial|Components\SubscriptionUpdateSeats|Components\SubscriptionUpdateBillingPeriod|Components\SubscriptionCancel|Components\SubscriptionRevoke $subscriptionUpdate, string $id, ?Options $options = null): Operations\SubscriptionsUpdateResponse
+    public function update(Components\SubscriptionUpdateBase|Components\SubscriptionUpdateSeats|Components\SubscriptionUpdateBillingPeriod|Components\SubscriptionCancel|Components\SubscriptionRevoke|Components\SubscriptionPause|Components\SubscriptionResume|Components\SubscriptionUpdateClear $subscriptionUpdate, string $id, ?Options $options = null): Operations\SubscriptionsUpdateResponse
     {
         $request = new Operations\SubscriptionsUpdateRequest(
             id: $id,
@@ -602,11 +595,12 @@ class Subscriptions
         }
         $contentType = $httpResponse->getHeader('Content-Type')[0] ?? '';
 
-        $statusCode = $httpResponse->getStatusCode();
-        if (Utils\Utils::matchStatusCodes($statusCode, ['402', '403', '404', '409', '422', '4XX', '5XX'])) {
+        if (Utils\Utils::matchStatusCodes($httpResponse->getStatusCode(), ['4XX', '5XX'])) {
             $res = $this->sdkConfiguration->hooks->afterError(new Hooks\AfterErrorContext($hookContext), $httpResponse, null);
             $httpResponse = $res;
         }
+
+        $statusCode = $httpResponse->getStatusCode();
         if (Utils\Utils::matchStatusCodes($statusCode, ['200'])) {
             if (Utils\Utils::matchContentType($contentType, 'application/json')) {
                 $httpResponse = $this->sdkConfiguration->hooks->afterSuccess(new Hooks\AfterSuccessContext($hookContext), $httpResponse);

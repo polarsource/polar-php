@@ -33,24 +33,15 @@ class Oauth2ClientsOauth2DeleteClientResponse
     public \Psr\Http\Message\ResponseInterface $rawResponse;
 
     /**
-     * Successful Response
-     *
-     * @var mixed $any
-     */
-    public mixed $any = null;
-
-    /**
      * @param  string  $contentType
      * @param  int  $statusCode
      * @param  \Psr\Http\Message\ResponseInterface  $rawResponse
-     * @param  mixed  $any
      * @phpstan-pure
      */
-    public function __construct(string $contentType, int $statusCode, \Psr\Http\Message\ResponseInterface $rawResponse, mixed $any = null)
+    public function __construct(string $contentType, int $statusCode, \Psr\Http\Message\ResponseInterface $rawResponse)
     {
         $this->contentType = $contentType;
         $this->statusCode = $statusCode;
         $this->rawResponse = $rawResponse;
-        $this->any = $any;
     }
 }

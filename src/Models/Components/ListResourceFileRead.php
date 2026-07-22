@@ -14,10 +14,10 @@ class ListResourceFileRead
     /**
      * $items
      *
-     * @var array<\Polar\Models\Components\DownloadableFileRead|\Polar\Models\Components\ProductMediaFileRead|\Polar\Models\Components\OrganizationAvatarFileRead> $items
+     * @var array<\Polar\Models\Components\DownloadableFileRead|\Polar\Models\Components\ProductMediaFileRead|\Polar\Models\Components\OrganizationAvatarFileRead|\Polar\Models\Components\SupportCaseAttachmentFileRead> $items
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('items')]
-    #[\Speakeasy\Serializer\Annotation\Type('array<\Polar\Models\Components\DownloadableFileRead|\Polar\Models\Components\ProductMediaFileRead|\Polar\Models\Components\OrganizationAvatarFileRead>')]
+    #[\Speakeasy\Serializer\Annotation\Type('array<\Polar\Models\Components\DownloadableFileRead|\Polar\Models\Components\ProductMediaFileRead|\Polar\Models\Components\OrganizationAvatarFileRead|\Polar\Models\Components\SupportCaseAttachmentFileRead>')]
     public array $items;
 
     /**
@@ -29,7 +29,7 @@ class ListResourceFileRead
     public Pagination $pagination;
 
     /**
-     * @param  array<\Polar\Models\Components\DownloadableFileRead|\Polar\Models\Components\ProductMediaFileRead|\Polar\Models\Components\OrganizationAvatarFileRead>  $items
+     * @param  array<\Polar\Models\Components\DownloadableFileRead|\Polar\Models\Components\ProductMediaFileRead|\Polar\Models\Components\OrganizationAvatarFileRead|\Polar\Models\Components\SupportCaseAttachmentFileRead>  $items
      * @param  \Polar\Models\Components\Pagination  $pagination
      * @phpstan-pure
      */

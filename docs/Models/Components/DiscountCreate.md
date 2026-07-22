@@ -3,39 +3,21 @@
 
 ## Supported Types
 
-### `Components\DiscountFixedOnceForeverDurationCreate`
+### `Components\DiscountFixedCreate`
 
 ```php
 /**
-* @var \Polar\Models\Components\DiscountFixedOnceForeverDurationCreate
+* @var \Polar\Models\Components\DiscountFixedCreate
 */
-Components\DiscountFixedOnceForeverDurationCreate $value = /* values here */
+Components\DiscountFixedCreate $value = /* values here */
 ```
 
-### `Components\DiscountFixedRepeatDurationCreate`
+### `Components\DiscountPercentageCreate`
 
 ```php
 /**
-* @var \Polar\Models\Components\DiscountFixedRepeatDurationCreate
+* @var \Polar\Models\Components\DiscountPercentageCreate
 */
-Components\DiscountFixedRepeatDurationCreate $value = /* values here */
-```
-
-### `Components\DiscountPercentageOnceForeverDurationCreate`
-
-```php
-/**
-* @var \Polar\Models\Components\DiscountPercentageOnceForeverDurationCreate
-*/
-Components\DiscountPercentageOnceForeverDurationCreate $value = /* values here */
-```
-
-### `Components\DiscountPercentageRepeatDurationCreate`
-
-```php
-/**
-* @var \Polar\Models\Components\DiscountPercentageRepeatDurationCreate
-*/
-Components\DiscountPercentageRepeatDurationCreate $value = /* values here */
+Components\DiscountPercentageCreate $value = /* values here */
 ```
 

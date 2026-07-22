@@ -54,11 +54,11 @@ class OrderSubscription
 
     /**
      *
-     * @var \Polar\Models\Components\SubscriptionRecurringInterval $recurringInterval
+     * @var \Polar\Models\Components\RecurringInterval $recurringInterval
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('recurring_interval')]
-    #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\SubscriptionRecurringInterval')]
-    public SubscriptionRecurringInterval $recurringInterval;
+    #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\RecurringInterval')]
+    public RecurringInterval $recurringInterval;
 
     /**
      * Number of interval units of the subscription. If this is set to 1 the charge will happen every interval (e.g. every month), if set to 2 it will be every other month, and so on.
@@ -101,6 +101,14 @@ class OrderSubscription
     public bool $cancelAtPeriodEnd;
 
     /**
+     * Whether the subscription will be paused at the end of the current period.
+     *
+     * @var bool $pauseAtPeriodEnd
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('pause_at_period_end')]
+    public bool $pauseAtPeriodEnd;
+
+    /**
      * The ID of the subscribed customer.
      *
      * @var string $customerId
@@ -123,6 +131,22 @@ class OrderSubscription
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('modified_at')]
     public ?\DateTime $modifiedAt;
+
+    /**
+     * The start timestamp of the current meter period, if the product has a meter cycle set. Metered credits are granted and overage is settled on this cadence.
+     *
+     * @var ?\DateTime $currentMeterPeriodStart
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('current_meter_period_start')]
+    public ?\DateTime $currentMeterPeriodStart;
+
+    /**
+     * The end timestamp of the current meter period, if the product has a meter cycle set. This is when credits next renew.
+     *
+     * @var ?\DateTime $currentMeterPeriodEnd
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('current_meter_period_end')]
+    public ?\DateTime $currentMeterPeriodEnd;
 
     /**
      * The start timestamp of the trial period, if any.
@@ -173,6 +197,22 @@ class OrderSubscription
     public ?\DateTime $endedAt;
 
     /**
+     * The timestamp when the subscription was paused.
+     *
+     * @var ?\DateTime $pausedAt
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('paused_at')]
+    public ?\DateTime $pausedAt;
+
+    /**
+     * The timestamp when a paused subscription is scheduled to automatically resume, if set.
+     *
+     * @var ?\DateTime $resumesAt
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('resumes_at')]
+    public ?\DateTime $resumesAt;
+
+    /**
      * The ID of the applied discount, if any.
      *
      * @var ?string $discountId
@@ -203,6 +243,15 @@ class OrderSubscription
     public ?string $customerCancellationComment;
 
     /**
+     * The timestamp when the subscription entered `past_due` status.
+     *
+     * @var ?\DateTime $pastDueAt
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('past_due_at')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
+    public ?\DateTime $pastDueAt = null;
+
+    /**
      * The number of seats for seat-based subscriptions. None for non-seat subscriptions.
      *
      * @var ?int $seats
@@ -217,29 +266,35 @@ class OrderSubscription
      * @param  string  $id
      * @param  int  $amount
      * @param  string  $currency
-     * @param  \Polar\Models\Components\SubscriptionRecurringInterval  $recurringInterval
+     * @param  \Polar\Models\Components\RecurringInterval  $recurringInterval
      * @param  int  $recurringIntervalCount
      * @param  \Polar\Models\Components\SubscriptionStatus  $status
      * @param  \DateTime  $currentPeriodStart
      * @param  \DateTime  $currentPeriodEnd
      * @param  bool  $cancelAtPeriodEnd
+     * @param  bool  $pauseAtPeriodEnd
      * @param  string  $customerId
      * @param  string  $productId
      * @param  ?\DateTime  $modifiedAt
+     * @param  ?\DateTime  $currentMeterPeriodStart
+     * @param  ?\DateTime  $currentMeterPeriodEnd
      * @param  ?\DateTime  $trialStart
      * @param  ?\DateTime  $trialEnd
      * @param  ?\DateTime  $canceledAt
      * @param  ?\DateTime  $startedAt
      * @param  ?\DateTime  $endsAt
      * @param  ?\DateTime  $endedAt
+     * @param  ?\DateTime  $pausedAt
+     * @param  ?\DateTime  $resumesAt
      * @param  ?string  $discountId
      * @param  ?string  $checkoutId
      * @param  ?\Polar\Models\Components\CustomerCancellationReason  $customerCancellationReason
      * @param  ?string  $customerCancellationComment
+     * @param  ?\DateTime  $pastDueAt
      * @param  ?int  $seats
      * @phpstan-pure
      */
-    public function __construct(array $metadata, \DateTime $createdAt, string $id, int $amount, string $currency, SubscriptionRecurringInterval $recurringInterval, int $recurringIntervalCount, SubscriptionStatus $status, \DateTime $currentPeriodStart, \DateTime $currentPeriodEnd, bool $cancelAtPeriodEnd, string $customerId, string $productId, ?\DateTime $modifiedAt = null, ?\DateTime $trialStart = null, ?\DateTime $trialEnd = null, ?\DateTime $canceledAt = null, ?\DateTime $startedAt = null, ?\DateTime $endsAt = null, ?\DateTime $endedAt = null, ?string $discountId = null, ?string $checkoutId = null, ?CustomerCancellationReason $customerCancellationReason = null, ?string $customerCancellationComment = null, ?int $seats = null)
+    public function __construct(array $metadata, \DateTime $createdAt, string $id, int $amount, string $currency, RecurringInterval $recurringInterval, int $recurringIntervalCount, SubscriptionStatus $status, \DateTime $currentPeriodStart, \DateTime $currentPeriodEnd, bool $cancelAtPeriodEnd, bool $pauseAtPeriodEnd, string $customerId, string $productId, ?\DateTime $modifiedAt = null, ?\DateTime $currentMeterPeriodStart = null, ?\DateTime $currentMeterPeriodEnd = null, ?\DateTime $trialStart = null, ?\DateTime $trialEnd = null, ?\DateTime $canceledAt = null, ?\DateTime $startedAt = null, ?\DateTime $endsAt = null, ?\DateTime $endedAt = null, ?\DateTime $pausedAt = null, ?\DateTime $resumesAt = null, ?string $discountId = null, ?string $checkoutId = null, ?CustomerCancellationReason $customerCancellationReason = null, ?string $customerCancellationComment = null, ?\DateTime $pastDueAt = null, ?int $seats = null)
     {
         $this->metadata = $metadata;
         $this->createdAt = $createdAt;
@@ -252,19 +307,25 @@ class OrderSubscription
         $this->currentPeriodStart = $currentPeriodStart;
         $this->currentPeriodEnd = $currentPeriodEnd;
         $this->cancelAtPeriodEnd = $cancelAtPeriodEnd;
+        $this->pauseAtPeriodEnd = $pauseAtPeriodEnd;
         $this->customerId = $customerId;
         $this->productId = $productId;
         $this->modifiedAt = $modifiedAt;
+        $this->currentMeterPeriodStart = $currentMeterPeriodStart;
+        $this->currentMeterPeriodEnd = $currentMeterPeriodEnd;
         $this->trialStart = $trialStart;
         $this->trialEnd = $trialEnd;
         $this->canceledAt = $canceledAt;
         $this->startedAt = $startedAt;
         $this->endsAt = $endsAt;
         $this->endedAt = $endedAt;
+        $this->pausedAt = $pausedAt;
+        $this->resumesAt = $resumesAt;
         $this->discountId = $discountId;
         $this->checkoutId = $checkoutId;
         $this->customerCancellationReason = $customerCancellationReason;
         $this->customerCancellationComment = $customerCancellationComment;
+        $this->pastDueAt = $pastDueAt;
         $this->seats = $seats;
     }
 }

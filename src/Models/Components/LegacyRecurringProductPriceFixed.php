@@ -67,11 +67,11 @@ class LegacyRecurringProductPriceFixed
 
     /**
      *
-     * @var \Polar\Models\Components\SubscriptionRecurringInterval $recurringInterval
+     * @var \Polar\Models\Components\RecurringInterval $recurringInterval
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('recurring_interval')]
-    #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\SubscriptionRecurringInterval')]
-    public SubscriptionRecurringInterval $recurringInterval;
+    #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\RecurringInterval')]
+    public RecurringInterval $recurringInterval;
 
     /**
      * The price in cents.
@@ -129,14 +129,14 @@ class LegacyRecurringProductPriceFixed
      * @param  bool  $isArchived
      * @param  string  $productId
      * @param  string  $type
-     * @param  \Polar\Models\Components\SubscriptionRecurringInterval  $recurringInterval
+     * @param  \Polar\Models\Components\RecurringInterval  $recurringInterval
      * @param  int  $priceAmount
      * @param  bool  $legacy
      * @param  ?\DateTime  $modifiedAt
      * @param  ?\Polar\Models\Components\TaxBehaviorOption  $taxBehavior
      * @phpstan-pure
      */
-    public function __construct(\DateTime $createdAt, string $id, ProductPriceSource $source, string $priceCurrency, bool $isArchived, string $productId, SubscriptionRecurringInterval $recurringInterval, int $priceAmount, ?\DateTime $modifiedAt = null, ?TaxBehaviorOption $taxBehavior = null, string $amountType = 'fixed', string $type = 'recurring', bool $legacy = true)
+    public function __construct(\DateTime $createdAt, string $id, ProductPriceSource $source, string $priceCurrency, bool $isArchived, string $productId, RecurringInterval $recurringInterval, int $priceAmount, ?\DateTime $modifiedAt = null, ?TaxBehaviorOption $taxBehavior = null, string $amountType = 'fixed', string $type = 'recurring', bool $legacy = true)
     {
         $this->createdAt = $createdAt;
         $this->id = $id;

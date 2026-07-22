@@ -49,8 +49,7 @@ class CustomerSeat
      * @var ?string $subscriptionId
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('subscription_id')]
-    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
-    public ?string $subscriptionId = null;
+    public ?string $subscriptionId;
 
     /**
      * The order ID (for one-time purchase seats)
@@ -58,8 +57,7 @@ class CustomerSeat
      * @var ?string $orderId
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('order_id')]
-    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
-    public ?string $orderId = null;
+    public ?string $orderId;
 
     /**
      * The customer ID. When member_model_enabled is true, this is the billing customer (purchaser). When false, this is the seat member customer.
@@ -67,8 +65,7 @@ class CustomerSeat
      * @var ?string $customerId
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('customer_id')]
-    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
-    public ?string $customerId = null;
+    public ?string $customerId;
 
     /**
      * The member ID of the seat occupant
@@ -76,8 +73,7 @@ class CustomerSeat
      * @var ?string $memberId
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('member_id')]
-    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
-    public ?string $memberId = null;
+    public ?string $memberId;
 
     /**
      * The member associated with this seat
@@ -86,8 +82,7 @@ class CustomerSeat
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('member')]
     #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\Member|null')]
-    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
-    public ?Member $member = null;
+    public ?Member $member;
 
     /**
      * Email of the seat member (set when member_model_enabled is true)
@@ -95,8 +90,7 @@ class CustomerSeat
      * @var ?string $email
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('email')]
-    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
-    public ?string $email = null;
+    public ?string $email;
 
     /**
      * The assigned customer email
@@ -104,8 +98,7 @@ class CustomerSeat
      * @var ?string $customerEmail
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('customer_email')]
-    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
-    public ?string $customerEmail = null;
+    public ?string $customerEmail;
 
     /**
      * When the invitation token expires
@@ -113,8 +106,7 @@ class CustomerSeat
      * @var ?\DateTime $invitationTokenExpiresAt
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('invitation_token_expires_at')]
-    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
-    public ?\DateTime $invitationTokenExpiresAt = null;
+    public ?\DateTime $invitationTokenExpiresAt;
 
     /**
      * When the seat was claimed
@@ -122,8 +114,7 @@ class CustomerSeat
      * @var ?\DateTime $claimedAt
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('claimed_at')]
-    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
-    public ?\DateTime $claimedAt = null;
+    public ?\DateTime $claimedAt;
 
     /**
      * When the seat was revoked
@@ -131,8 +122,7 @@ class CustomerSeat
      * @var ?\DateTime $revokedAt
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('revoked_at')]
-    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
-    public ?\DateTime $revokedAt = null;
+    public ?\DateTime $revokedAt;
 
     /**
      * Additional metadata for the seat
@@ -141,8 +131,7 @@ class CustomerSeat
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('seat_metadata')]
     #[\Speakeasy\Serializer\Annotation\Type('array<string, mixed>|null')]
-    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
-    public ?array $seatMetadata = null;
+    public ?array $seatMetadata;
 
     /**
      * @param  \DateTime  $createdAt

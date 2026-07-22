@@ -263,6 +263,15 @@ class CheckoutPublicConfirmed
     public ?int $taxAmount;
 
     /**
+     * Tax behavior of the checkout. `inclusive` means the price includes tax, `exclusive` means tax is added on top. If `null`, tax is not yet calculated.
+     *
+     * @var ?\Polar\Models\Components\TaxBehavior $taxBehavior
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('tax_behavior')]
+    #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\TaxBehavior|null')]
+    public ?TaxBehavior $taxBehavior;
+
+    /**
      * Whether to enable the trial period for the checkout session. If `false`, the trial period will be disabled, even if the selected product has a trial configured.
      *
      * @var ?bool $allowTrial
@@ -384,20 +393,20 @@ class CheckoutPublicConfirmed
     /**
      * Price of the selected product.
      *
-     * @var \Polar\Models\Components\LegacyRecurringProductPriceFixed|\Polar\Models\Components\LegacyRecurringProductPriceCustom|\Polar\Models\Components\LegacyRecurringProductPriceFree|\Polar\Models\Components\ProductPriceFixed|\Polar\Models\Components\ProductPriceCustom|\Polar\Models\Components\ProductPriceFree|\Polar\Models\Components\ProductPriceSeatBased|\Polar\Models\Components\ProductPriceMeteredUnit|null $productPrice
+     * @var \Polar\Models\Components\LegacyRecurringProductPriceFixed|\Polar\Models\Components\LegacyRecurringProductPriceCustom|\Polar\Models\Components\ProductPriceFixed|\Polar\Models\Components\ProductPriceCustom|\Polar\Models\Components\ProductPriceSeatBased|\Polar\Models\Components\ProductPriceMeteredUnit|null $productPrice
      * @deprecated  field: This will be removed in a future release, please migrate away from it as soon as possible.
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('product_price')]
-    #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\LegacyRecurringProductPriceFixed|\Polar\Models\Components\LegacyRecurringProductPriceCustom|\Polar\Models\Components\LegacyRecurringProductPriceFree|\Polar\Models\Components\ProductPriceFixed|\Polar\Models\Components\ProductPriceCustom|\Polar\Models\Components\ProductPriceFree|\Polar\Models\Components\ProductPriceSeatBased|\Polar\Models\Components\ProductPriceMeteredUnit|null')]
-    public LegacyRecurringProductPriceFixed|LegacyRecurringProductPriceCustom|LegacyRecurringProductPriceFree|ProductPriceFixed|ProductPriceCustom|ProductPriceFree|ProductPriceSeatBased|ProductPriceMeteredUnit|null $productPrice;
+    #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\LegacyRecurringProductPriceFixed|\Polar\Models\Components\LegacyRecurringProductPriceCustom|\Polar\Models\Components\ProductPriceFixed|\Polar\Models\Components\ProductPriceCustom|\Polar\Models\Components\ProductPriceSeatBased|\Polar\Models\Components\ProductPriceMeteredUnit|null')]
+    public LegacyRecurringProductPriceFixed|LegacyRecurringProductPriceCustom|ProductPriceFixed|ProductPriceCustom|ProductPriceSeatBased|ProductPriceMeteredUnit|null $productPrice;
 
     /**
      * Mapping of product IDs to their list of prices.
      *
-     * @var ?array<string, array<\Polar\Models\Components\LegacyRecurringProductPriceFixed|\Polar\Models\Components\LegacyRecurringProductPriceCustom|\Polar\Models\Components\LegacyRecurringProductPriceFree|\Polar\Models\Components\ProductPriceFixed|\Polar\Models\Components\ProductPriceCustom|\Polar\Models\Components\ProductPriceFree|\Polar\Models\Components\ProductPriceSeatBased|\Polar\Models\Components\ProductPriceMeteredUnit>> $prices
+     * @var ?array<string, array<\Polar\Models\Components\LegacyRecurringProductPriceFixed|\Polar\Models\Components\LegacyRecurringProductPriceCustom|\Polar\Models\Components\ProductPriceFixed|\Polar\Models\Components\ProductPriceCustom|\Polar\Models\Components\ProductPriceSeatBased|\Polar\Models\Components\ProductPriceMeteredUnit>> $prices
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('prices')]
-    #[\Speakeasy\Serializer\Annotation\Type('array<string, array<\Polar\Models\Components\LegacyRecurringProductPriceFixed|\Polar\Models\Components\LegacyRecurringProductPriceCustom|\Polar\Models\Components\LegacyRecurringProductPriceFree|\Polar\Models\Components\ProductPriceFixed|\Polar\Models\Components\ProductPriceCustom|\Polar\Models\Components\ProductPriceFree|\Polar\Models\Components\ProductPriceSeatBased|\Polar\Models\Components\ProductPriceMeteredUnit>>|null')]
+    #[\Speakeasy\Serializer\Annotation\Type('array<string, array<\Polar\Models\Components\LegacyRecurringProductPriceFixed|\Polar\Models\Components\LegacyRecurringProductPriceCustom|\Polar\Models\Components\ProductPriceFixed|\Polar\Models\Components\ProductPriceCustom|\Polar\Models\Components\ProductPriceSeatBased|\Polar\Models\Components\ProductPriceMeteredUnit>>|null')]
     public ?array $prices;
 
     /**
@@ -498,6 +507,7 @@ class CheckoutPublicConfirmed
      * @param  ?string  $returnUrl
      * @param  ?string  $embedOrigin
      * @param  ?int  $taxAmount
+     * @param  ?\Polar\Models\Components\TaxBehavior  $taxBehavior
      * @param  ?bool  $allowTrial
      * @param  ?\Polar\Models\Components\TrialInterval  $activeTrialInterval
      * @param  ?int  $activeTrialIntervalCount
@@ -513,8 +523,8 @@ class CheckoutPublicConfirmed
      * @param  ?\Polar\Models\Components\Address  $customerBillingAddress
      * @param  ?string  $customerTaxId
      * @param  ?\Polar\Models\Components\CheckoutProduct  $product
-     * @param  \Polar\Models\Components\LegacyRecurringProductPriceFixed|\Polar\Models\Components\LegacyRecurringProductPriceCustom|\Polar\Models\Components\LegacyRecurringProductPriceFree|\Polar\Models\Components\ProductPriceFixed|\Polar\Models\Components\ProductPriceCustom|\Polar\Models\Components\ProductPriceFree|\Polar\Models\Components\ProductPriceSeatBased|\Polar\Models\Components\ProductPriceMeteredUnit|null  $productPrice
-     * @param  ?array<string, array<\Polar\Models\Components\LegacyRecurringProductPriceFixed|\Polar\Models\Components\LegacyRecurringProductPriceCustom|\Polar\Models\Components\LegacyRecurringProductPriceFree|\Polar\Models\Components\ProductPriceFixed|\Polar\Models\Components\ProductPriceCustom|\Polar\Models\Components\ProductPriceFree|\Polar\Models\Components\ProductPriceSeatBased|\Polar\Models\Components\ProductPriceMeteredUnit>>  $prices
+     * @param  \Polar\Models\Components\LegacyRecurringProductPriceFixed|\Polar\Models\Components\LegacyRecurringProductPriceCustom|\Polar\Models\Components\ProductPriceFixed|\Polar\Models\Components\ProductPriceCustom|\Polar\Models\Components\ProductPriceSeatBased|\Polar\Models\Components\ProductPriceMeteredUnit|null  $productPrice
+     * @param  ?array<string, array<\Polar\Models\Components\LegacyRecurringProductPriceFixed|\Polar\Models\Components\LegacyRecurringProductPriceCustom|\Polar\Models\Components\ProductPriceFixed|\Polar\Models\Components\ProductPriceCustom|\Polar\Models\Components\ProductPriceSeatBased|\Polar\Models\Components\ProductPriceMeteredUnit>>  $prices
      * @param  \Polar\Models\Components\CheckoutDiscountFixedOnceForeverDuration|\Polar\Models\Components\CheckoutDiscountFixedRepeatDuration|\Polar\Models\Components\CheckoutDiscountPercentageOnceForeverDuration|\Polar\Models\Components\CheckoutDiscountPercentageRepeatDuration|null  $discount
      * @param  ?array<\Polar\Models\Components\AttachedCustomField>  $attachedCustomFields
      * @param  ?string  $customerSessionToken
@@ -524,7 +534,7 @@ class CheckoutPublicConfirmed
      * @param  ?string  $locale
      * @phpstan-pure
      */
-    public function __construct(string $id, \DateTime $createdAt, PaymentProcessor $paymentProcessor, string $clientSecret, string $url, \DateTime $expiresAt, string $successUrl, int $amount, int $discountAmount, int $netAmount, int $totalAmount, string $currency, string $organizationId, bool $allowDiscountCodes, bool $requireBillingAddress, bool $isDiscountApplicable, bool $isFreeProductPrice, bool $isPaymentRequired, bool $isPaymentSetupRequired, bool $isPaymentFormRequired, bool $isBusinessCustomer, array $paymentProcessorMetadata, CheckoutBillingAddressFields $billingAddressFields, array $products, CheckoutOrganization $organization, ?\DateTime $modifiedAt = null, ?array $customFieldData = null, ?string $returnUrl = null, ?string $embedOrigin = null, ?int $taxAmount = null, ?bool $allowTrial = null, ?TrialInterval $activeTrialInterval = null, ?int $activeTrialIntervalCount = null, ?\DateTime $trialEnd = null, ?string $productId = null, ?string $productPriceId = null, ?string $discountId = null, ?string $customerId = null, ?string $customerName = null, ?string $customerEmail = null, ?string $customerIpAddress = null, ?string $customerBillingName = null, ?Address $customerBillingAddress = null, ?string $customerTaxId = null, ?CheckoutProduct $product = null, LegacyRecurringProductPriceFixed|LegacyRecurringProductPriceCustom|LegacyRecurringProductPriceFree|ProductPriceFixed|ProductPriceCustom|ProductPriceFree|ProductPriceSeatBased|ProductPriceMeteredUnit|null $productPrice = null, ?array $prices = null, CheckoutDiscountFixedOnceForeverDuration|CheckoutDiscountFixedRepeatDuration|CheckoutDiscountPercentageOnceForeverDuration|CheckoutDiscountPercentageRepeatDuration|null $discount = null, ?array $attachedCustomFields = null, ?string $customerSessionToken = null, ?int $seats = null, ?int $minSeats = null, ?int $maxSeats = null, ?string $locale = null, string $status = 'confirmed')
+    public function __construct(string $id, \DateTime $createdAt, PaymentProcessor $paymentProcessor, string $clientSecret, string $url, \DateTime $expiresAt, string $successUrl, int $amount, int $discountAmount, int $netAmount, int $totalAmount, string $currency, string $organizationId, bool $allowDiscountCodes, bool $requireBillingAddress, bool $isDiscountApplicable, bool $isFreeProductPrice, bool $isPaymentRequired, bool $isPaymentSetupRequired, bool $isPaymentFormRequired, bool $isBusinessCustomer, array $paymentProcessorMetadata, CheckoutBillingAddressFields $billingAddressFields, array $products, CheckoutOrganization $organization, ?\DateTime $modifiedAt = null, ?array $customFieldData = null, ?string $returnUrl = null, ?string $embedOrigin = null, ?int $taxAmount = null, ?TaxBehavior $taxBehavior = null, ?bool $allowTrial = null, ?TrialInterval $activeTrialInterval = null, ?int $activeTrialIntervalCount = null, ?\DateTime $trialEnd = null, ?string $productId = null, ?string $productPriceId = null, ?string $discountId = null, ?string $customerId = null, ?string $customerName = null, ?string $customerEmail = null, ?string $customerIpAddress = null, ?string $customerBillingName = null, ?Address $customerBillingAddress = null, ?string $customerTaxId = null, ?CheckoutProduct $product = null, LegacyRecurringProductPriceFixed|LegacyRecurringProductPriceCustom|ProductPriceFixed|ProductPriceCustom|ProductPriceSeatBased|ProductPriceMeteredUnit|null $productPrice = null, ?array $prices = null, CheckoutDiscountFixedOnceForeverDuration|CheckoutDiscountFixedRepeatDuration|CheckoutDiscountPercentageOnceForeverDuration|CheckoutDiscountPercentageRepeatDuration|null $discount = null, ?array $attachedCustomFields = null, ?string $customerSessionToken = null, ?int $seats = null, ?int $minSeats = null, ?int $maxSeats = null, ?string $locale = null, string $status = 'confirmed')
     {
         $this->id = $id;
         $this->createdAt = $createdAt;
@@ -556,6 +566,7 @@ class CheckoutPublicConfirmed
         $this->returnUrl = $returnUrl;
         $this->embedOrigin = $embedOrigin;
         $this->taxAmount = $taxAmount;
+        $this->taxBehavior = $taxBehavior;
         $this->allowTrial = $allowTrial;
         $this->activeTrialInterval = $activeTrialInterval;
         $this->activeTrialIntervalCount = $activeTrialIntervalCount;

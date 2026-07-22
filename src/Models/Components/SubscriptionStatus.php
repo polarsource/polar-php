@@ -18,4 +18,5 @@ enum SubscriptionStatus: string
     case PastDue = 'past_due';
     case Canceled = 'canceled';
     case Unpaid = 'unpaid';
+    case Paused = 'paused';
 }

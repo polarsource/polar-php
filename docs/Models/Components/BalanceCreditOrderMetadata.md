@@ -14,3 +14,4 @@
 | `taxState`         | *?string*          | :heavy_minus_sign: | N/A                |
 | `taxCountry`       | *?string*          | :heavy_minus_sign: | N/A                |
 | `fee`              | *int*              | :heavy_check_mark: | N/A                |
+| `exchangeRate`     | *?float*           | :heavy_minus_sign: | N/A                |

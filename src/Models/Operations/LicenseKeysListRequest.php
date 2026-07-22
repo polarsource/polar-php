@@ -8,6 +8,7 @@ declare(strict_types=1);
 
 namespace Polar\Models\Operations;
 
+use Polar\Models\Components;
 use Polar\Utils\SpeakeasyMetadata;
 class LicenseKeysListRequest
 {
@@ -26,6 +27,14 @@ class LicenseKeysListRequest
      */
     #[SpeakeasyMetadata('queryParam:style=form,explode=true,name=benefit_id')]
     public string|array|null $benefitId = null;
+
+    /**
+     * Filter by license key status.
+     *
+     * @var \Polar\Models\Components\LicenseKeyStatus|array<\Polar\Models\Components\LicenseKeyStatus>|null $status
+     */
+    #[SpeakeasyMetadata('queryParam:style=form,explode=true,name=status')]
+    public Components\LicenseKeyStatus|array|null $status = null;
 
     /**
      * Page number, defaults to 1.
@@ -48,12 +57,14 @@ class LicenseKeysListRequest
      * @param  ?int  $limit
      * @param  string|array<string>|null  $organizationId
      * @param  string|array<string>|null  $benefitId
+     * @param  \Polar\Models\Components\LicenseKeyStatus|array<\Polar\Models\Components\LicenseKeyStatus>|null  $status
      * @phpstan-pure
      */
-    public function __construct(string|array|null $organizationId = null, string|array|null $benefitId = null, ?int $page = 1, ?int $limit = 10)
+    public function __construct(string|array|null $organizationId = null, string|array|null $benefitId = null, Components\LicenseKeyStatus|array|null $status = null, ?int $page = 1, ?int $limit = 10)
     {
         $this->organizationId = $organizationId;
         $this->benefitId = $benefitId;
+        $this->status = $status;
         $this->page = $page;
         $this->limit = $limit;
     }

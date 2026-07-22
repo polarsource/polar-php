@@ -22,17 +22,17 @@ class SubscriptionsUpdateRequest
 
     /**
      *
-     * @var \Polar\Models\Components\SubscriptionUpdateProduct|\Polar\Models\Components\SubscriptionUpdateDiscount|\Polar\Models\Components\SubscriptionUpdateTrial|\Polar\Models\Components\SubscriptionUpdateSeats|\Polar\Models\Components\SubscriptionUpdateBillingPeriod|\Polar\Models\Components\SubscriptionCancel|\Polar\Models\Components\SubscriptionRevoke $subscriptionUpdate
+     * @var \Polar\Models\Components\SubscriptionUpdateBase|\Polar\Models\Components\SubscriptionUpdateSeats|\Polar\Models\Components\SubscriptionUpdateBillingPeriod|\Polar\Models\Components\SubscriptionCancel|\Polar\Models\Components\SubscriptionRevoke|\Polar\Models\Components\SubscriptionPause|\Polar\Models\Components\SubscriptionResume|\Polar\Models\Components\SubscriptionUpdateClear $subscriptionUpdate
      */
     #[SpeakeasyMetadata('request:mediaType=application/json')]
-    public Components\SubscriptionUpdateProduct|Components\SubscriptionUpdateDiscount|Components\SubscriptionUpdateTrial|Components\SubscriptionUpdateSeats|Components\SubscriptionUpdateBillingPeriod|Components\SubscriptionCancel|Components\SubscriptionRevoke $subscriptionUpdate;
+    public Components\SubscriptionUpdateBase|Components\SubscriptionUpdateSeats|Components\SubscriptionUpdateBillingPeriod|Components\SubscriptionCancel|Components\SubscriptionRevoke|Components\SubscriptionPause|Components\SubscriptionResume|Components\SubscriptionUpdateClear $subscriptionUpdate;
 
     /**
      * @param  string  $id
-     * @param  \Polar\Models\Components\SubscriptionUpdateProduct|\Polar\Models\Components\SubscriptionUpdateDiscount|\Polar\Models\Components\SubscriptionUpdateTrial|\Polar\Models\Components\SubscriptionUpdateSeats|\Polar\Models\Components\SubscriptionUpdateBillingPeriod|\Polar\Models\Components\SubscriptionCancel|\Polar\Models\Components\SubscriptionRevoke  $subscriptionUpdate
+     * @param  \Polar\Models\Components\SubscriptionUpdateBase|\Polar\Models\Components\SubscriptionUpdateSeats|\Polar\Models\Components\SubscriptionUpdateBillingPeriod|\Polar\Models\Components\SubscriptionCancel|\Polar\Models\Components\SubscriptionRevoke|\Polar\Models\Components\SubscriptionPause|\Polar\Models\Components\SubscriptionResume|\Polar\Models\Components\SubscriptionUpdateClear  $subscriptionUpdate
      * @phpstan-pure
      */
-    public function __construct(string $id, Components\SubscriptionUpdateProduct|Components\SubscriptionUpdateDiscount|Components\SubscriptionUpdateTrial|Components\SubscriptionUpdateSeats|Components\SubscriptionUpdateBillingPeriod|Components\SubscriptionCancel|Components\SubscriptionRevoke $subscriptionUpdate)
+    public function __construct(string $id, Components\SubscriptionUpdateBase|Components\SubscriptionUpdateSeats|Components\SubscriptionUpdateBillingPeriod|Components\SubscriptionCancel|Components\SubscriptionRevoke|Components\SubscriptionPause|Components\SubscriptionResume|Components\SubscriptionUpdateClear $subscriptionUpdate)
     {
         $this->id = $id;
         $this->subscriptionUpdate = $subscriptionUpdate;

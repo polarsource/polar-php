@@ -14,10 +14,10 @@ class ListResourceCustomerBenefitGrant
     /**
      * $items
      *
-     * @var array<\Polar\Models\Components\CustomerBenefitGrantDiscord|\Polar\Models\Components\CustomerBenefitGrantGitHubRepository|\Polar\Models\Components\CustomerBenefitGrantDownloadables|\Polar\Models\Components\CustomerBenefitGrantLicenseKeys|\Polar\Models\Components\CustomerBenefitGrantCustom|\Polar\Models\Components\CustomerBenefitGrantMeterCredit|\Polar\Models\Components\CustomerBenefitGrantFeatureFlag> $items
+     * @var array<\Polar\Models\Components\CustomerBenefitGrantDiscord|\Polar\Models\Components\CustomerBenefitGrantGitHubRepository|\Polar\Models\Components\CustomerBenefitGrantDownloadables|\Polar\Models\Components\CustomerBenefitGrantLicenseKeys|\Polar\Models\Components\CustomerBenefitGrantCustom|\Polar\Models\Components\CustomerBenefitGrantMeterCredit|\Polar\Models\Components\CustomerBenefitGrantFeatureFlag|\Polar\Models\Components\CustomerBenefitGrantSlackSharedChannel> $items
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('items')]
-    #[\Speakeasy\Serializer\Annotation\Type('array<\Polar\Models\Components\CustomerBenefitGrantDiscord|\Polar\Models\Components\CustomerBenefitGrantGitHubRepository|\Polar\Models\Components\CustomerBenefitGrantDownloadables|\Polar\Models\Components\CustomerBenefitGrantLicenseKeys|\Polar\Models\Components\CustomerBenefitGrantCustom|\Polar\Models\Components\CustomerBenefitGrantMeterCredit|\Polar\Models\Components\CustomerBenefitGrantFeatureFlag>')]
+    #[\Speakeasy\Serializer\Annotation\Type('array<\Polar\Models\Components\CustomerBenefitGrantDiscord|\Polar\Models\Components\CustomerBenefitGrantGitHubRepository|\Polar\Models\Components\CustomerBenefitGrantDownloadables|\Polar\Models\Components\CustomerBenefitGrantLicenseKeys|\Polar\Models\Components\CustomerBenefitGrantCustom|\Polar\Models\Components\CustomerBenefitGrantMeterCredit|\Polar\Models\Components\CustomerBenefitGrantFeatureFlag|\Polar\Models\Components\CustomerBenefitGrantSlackSharedChannel>')]
     public array $items;
 
     /**
@@ -29,7 +29,7 @@ class ListResourceCustomerBenefitGrant
     public Pagination $pagination;
 
     /**
-     * @param  array<\Polar\Models\Components\CustomerBenefitGrantDiscord|\Polar\Models\Components\CustomerBenefitGrantGitHubRepository|\Polar\Models\Components\CustomerBenefitGrantDownloadables|\Polar\Models\Components\CustomerBenefitGrantLicenseKeys|\Polar\Models\Components\CustomerBenefitGrantCustom|\Polar\Models\Components\CustomerBenefitGrantMeterCredit|\Polar\Models\Components\CustomerBenefitGrantFeatureFlag>  $items
+     * @param  array<\Polar\Models\Components\CustomerBenefitGrantDiscord|\Polar\Models\Components\CustomerBenefitGrantGitHubRepository|\Polar\Models\Components\CustomerBenefitGrantDownloadables|\Polar\Models\Components\CustomerBenefitGrantLicenseKeys|\Polar\Models\Components\CustomerBenefitGrantCustom|\Polar\Models\Components\CustomerBenefitGrantMeterCredit|\Polar\Models\Components\CustomerBenefitGrantFeatureFlag|\Polar\Models\Components\CustomerBenefitGrantSlackSharedChannel>  $items
      * @param  \Polar\Models\Components\Pagination  $pagination
      * @phpstan-pure
      */

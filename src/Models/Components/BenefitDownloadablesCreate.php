@@ -58,6 +58,16 @@ class BenefitDownloadablesCreate
     public ?string $organizationId = null;
 
     /**
+     * The visibility of the benefit in the customer portal.
+     *
+     * @var ?\Polar\Models\Components\BenefitVisibility $visibility
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('visibility')]
+    #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\BenefitVisibility|null')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
+    public ?BenefitVisibility $visibility = null;
+
+    /**
      *
      * @var string $type
      */
@@ -70,14 +80,16 @@ class BenefitDownloadablesCreate
      * @param  \Polar\Models\Components\BenefitDownloadablesCreateProperties  $properties
      * @param  ?array<string, string|int|float|bool>  $metadata
      * @param  ?string  $organizationId
+     * @param  ?\Polar\Models\Components\BenefitVisibility  $visibility
      * @phpstan-pure
      */
-    public function __construct(string $description, BenefitDownloadablesCreateProperties $properties, ?array $metadata = null, ?string $organizationId = null, string $type = 'downloadables')
+    public function __construct(string $description, BenefitDownloadablesCreateProperties $properties, ?array $metadata = null, ?string $organizationId = null, ?BenefitVisibility $visibility = null, string $type = 'downloadables')
     {
         $this->description = $description;
         $this->properties = $properties;
         $this->metadata = $metadata;
         $this->organizationId = $organizationId;
+        $this->visibility = $visibility;
         $this->type = $type;
     }
 }

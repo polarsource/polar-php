@@ -27,7 +27,7 @@ class CustomerPortal
 
     public PolarLicenseKeys $licenseKeys;
 
-    public PolarMembers $members;
+    public PolarCustomerPortalMembers $members;
 
     public PolarOrders $orders;
 
@@ -50,7 +50,7 @@ class CustomerPortal
         $this->customerSession = new CustomerSession($this->sdkConfiguration);
         $this->downloadables = new Downloadables($this->sdkConfiguration);
         $this->licenseKeys = new PolarLicenseKeys($this->sdkConfiguration);
-        $this->members = new PolarMembers($this->sdkConfiguration);
+        $this->members = new PolarCustomerPortalMembers($this->sdkConfiguration);
         $this->orders = new PolarOrders($this->sdkConfiguration);
         $this->organizations = new PolarOrganizations($this->sdkConfiguration);
         $this->subscriptions = new PolarSubscriptions($this->sdkConfiguration);

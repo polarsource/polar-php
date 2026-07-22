@@ -21,6 +21,14 @@ class CustomerUpdatedFields
 
     /**
      *
+     * @var ?string $billingName
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('billing_name')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
+    public ?string $billingName = null;
+
+    /**
+     *
      * @var ?string $email
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('email')]
@@ -56,15 +64,17 @@ class CustomerUpdatedFields
 
     /**
      * @param  ?string  $name
+     * @param  ?string  $billingName
      * @param  ?string  $email
      * @param  ?\Polar\Models\Components\AddressDict  $billingAddress
      * @param  ?string  $taxId
      * @param  ?array<string, string|int|bool>  $metadata
      * @phpstan-pure
      */
-    public function __construct(?string $name = null, ?string $email = null, ?AddressDict $billingAddress = null, ?string $taxId = null, ?array $metadata = null)
+    public function __construct(?string $name = null, ?string $billingName = null, ?string $email = null, ?AddressDict $billingAddress = null, ?string $taxId = null, ?array $metadata = null)
     {
         $this->name = $name;
+        $this->billingName = $billingName;
         $this->email = $email;
         $this->billingAddress = $billingAddress;
         $this->taxId = $taxId;

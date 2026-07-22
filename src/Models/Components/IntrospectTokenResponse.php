@@ -56,6 +56,15 @@ class IntrospectTokenResponse
     public string $sub;
 
     /**
+     * $organizations
+     *
+     * @var array<string> $organizations
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('organizations')]
+    #[\Speakeasy\Serializer\Annotation\Type('array<string>')]
+    public array $organizations;
+
+    /**
      *
      * @var string $aud
      */
@@ -90,13 +99,14 @@ class IntrospectTokenResponse
      * @param  string  $scope
      * @param  \Polar\Models\Components\SubType  $subType
      * @param  string  $sub
+     * @param  array<string>  $organizations
      * @param  string  $aud
      * @param  string  $iss
      * @param  int  $exp
      * @param  int  $iat
      * @phpstan-pure
      */
-    public function __construct(bool $active, string $clientId, TokenType $tokenType, string $scope, SubType $subType, string $sub, string $aud, string $iss, int $exp, int $iat)
+    public function __construct(bool $active, string $clientId, TokenType $tokenType, string $scope, SubType $subType, string $sub, array $organizations, string $aud, string $iss, int $exp, int $iat)
     {
         $this->active = $active;
         $this->clientId = $clientId;
@@ -104,6 +114,7 @@ class IntrospectTokenResponse
         $this->scope = $scope;
         $this->subType = $subType;
         $this->sub = $sub;
+        $this->organizations = $organizations;
         $this->aud = $aud;
         $this->iss = $iss;
         $this->exp = $exp;

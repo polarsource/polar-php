@@ -15,6 +15,8 @@
 * [updateExternal](#updateexternal) - Update Customer by External ID
 * [getState](#getstate) - Get Customer State
 * [getStateExternal](#getstateexternal) - Get Customer State by External ID
+* [listPaymentMethods](#listpaymentmethods) - List Customer Payment Methods
+* [listPaymentMethodsExternal](#listpaymentmethodsexternal) - List Customer Payment Methods by External ID
 
 ## list
 
@@ -165,7 +167,7 @@ $response = $sdk->customers->export(
     organizationId: '1dbfc517-0bbf-4301-9ba8-555ca42b9737'
 );
 
-if ($response->any !== null) {
+if ($response->res !== null) {
     // handle response
 }
 ```
@@ -645,6 +647,124 @@ if ($response->customerState !== null) {
 ### Response
 
 **[?Operations\CustomersGetStateExternalResponse](../../Models/Operations/CustomersGetStateExternalResponse.md)**
+
+### Errors
+
+| Error Type                 | Status Code                | Content Type               |
+| -------------------------- | -------------------------- | -------------------------- |
+| Errors\ResourceNotFound    | 404                        | application/json           |
+| Errors\HTTPValidationError | 422                        | application/json           |
+| Errors\APIException        | 4XX, 5XX                   | \*/\*                      |
+
+## listPaymentMethods
+
+Get saved payment methods of a customer.
+
+**Scopes**: `customers:read` `customers:write`
+
+### Example Usage
+
+<!-- UsageSnippet language="php" operationID="customers:list_payment_methods" method="get" path="/v1/customers/{id}/payment-methods" -->
+```php
+declare(strict_types=1);
+
+require 'vendor/autoload.php';
+
+use Polar;
+
+$sdk = Polar\Polar::builder()
+    ->setSecurity(
+        '<YOUR_BEARER_TOKEN_HERE>'
+    )
+    ->build();
+
+
+
+$responses = $sdk->customers->listPaymentMethods(
+    id: '<value>',
+    page: 1,
+    limit: 10
+
+);
+
+
+foreach ($responses as $response) {
+    if ($response->statusCode === 200) {
+        // handle response
+    }
+}
+```
+
+### Parameters
+
+| Parameter                                       | Type                                            | Required                                        | Description                                     |
+| ----------------------------------------------- | ----------------------------------------------- | ----------------------------------------------- | ----------------------------------------------- |
+| `id`                                            | *string*                                        | :heavy_check_mark:                              | The customer ID.                                |
+| `page`                                          | *?int*                                          | :heavy_minus_sign:                              | Page number, defaults to 1.                     |
+| `limit`                                         | *?int*                                          | :heavy_minus_sign:                              | Size of a page, defaults to 10. Maximum is 100. |
+
+### Response
+
+**[?Operations\CustomersListPaymentMethodsResponse](../../Models/Operations/CustomersListPaymentMethodsResponse.md)**
+
+### Errors
+
+| Error Type                 | Status Code                | Content Type               |
+| -------------------------- | -------------------------- | -------------------------- |
+| Errors\ResourceNotFound    | 404                        | application/json           |
+| Errors\HTTPValidationError | 422                        | application/json           |
+| Errors\APIException        | 4XX, 5XX                   | \*/\*                      |
+
+## listPaymentMethodsExternal
+
+Get saved payment methods of a customer by external ID.
+
+**Scopes**: `customers:read` `customers:write`
+
+### Example Usage
+
+<!-- UsageSnippet language="php" operationID="customers:list_payment_methods_external" method="get" path="/v1/customers/external/{external_id}/payment-methods" -->
+```php
+declare(strict_types=1);
+
+require 'vendor/autoload.php';
+
+use Polar;
+
+$sdk = Polar\Polar::builder()
+    ->setSecurity(
+        '<YOUR_BEARER_TOKEN_HERE>'
+    )
+    ->build();
+
+
+
+$responses = $sdk->customers->listPaymentMethodsExternal(
+    externalId: '<id>',
+    page: 1,
+    limit: 10
+
+);
+
+
+foreach ($responses as $response) {
+    if ($response->statusCode === 200) {
+        // handle response
+    }
+}
+```
+
+### Parameters
+
+| Parameter                                       | Type                                            | Required                                        | Description                                     |
+| ----------------------------------------------- | ----------------------------------------------- | ----------------------------------------------- | ----------------------------------------------- |
+| `externalId`                                    | *string*                                        | :heavy_check_mark:                              | The customer external ID.                       |
+| `page`                                          | *?int*                                          | :heavy_minus_sign:                              | Page number, defaults to 1.                     |
+| `limit`                                         | *?int*                                          | :heavy_minus_sign:                              | Size of a page, defaults to 10. Maximum is 100. |
+
+### Response
+
+**[?Operations\CustomersListPaymentMethodsExternalResponse](../../Models/Operations/CustomersListPaymentMethodsExternalResponse.md)**
 
 ### Errors
 

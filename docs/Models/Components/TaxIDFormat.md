@@ -84,3 +84,4 @@ Ref: https://docs.stripe.com/billing/customer/tax-ids#supported-tax-id
 | `VeRif`    | ve_rif     |
 | `VnTin`    | vn_tin     |
 | `ZaVat`    | za_vat     |
+| `MuTan`    | mu_tan     |

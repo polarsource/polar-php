@@ -30,3 +30,12 @@ Components\OrganizationAvatarFileRead $value = /* values here */
 Components\ProductMediaFileRead $value = /* values here */
 ```
 
+### `Components\SupportCaseAttachmentFileRead`
+
+```php
+/**
+* @var \Polar\Models\Components\SupportCaseAttachmentFileRead
+*/
+Components\SupportCaseAttachmentFileRead $value = /* values here */
+```
+

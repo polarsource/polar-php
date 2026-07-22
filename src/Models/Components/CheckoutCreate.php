@@ -266,10 +266,10 @@ class CheckoutCreate
     /**
      * Optional mapping of product IDs to a list of ad-hoc prices to create for that product. If not set, catalog prices of the product will be used.
      *
-     * @var ?array<string, array<\Polar\Models\Components\ProductPriceFixedCreate|\Polar\Models\Components\ProductPriceCustomCreate|\Polar\Models\Components\ProductPriceFreeCreate|\Polar\Models\Components\ProductPriceSeatBasedCreate|\Polar\Models\Components\ProductPriceMeteredUnitCreate>> $prices
+     * @var ?array<string, array<\Polar\Models\Components\ProductPriceFixedCreate|\Polar\Models\Components\ProductPriceCustomCreate|\Polar\Models\Components\ProductPriceSeatBasedCreate|\Polar\Models\Components\ProductPriceMeteredUnitCreate>> $prices
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('prices')]
-    #[\Speakeasy\Serializer\Annotation\Type('array<string, array<\Polar\Models\Components\ProductPriceFixedCreate|\Polar\Models\Components\ProductPriceCustomCreate|\Polar\Models\Components\ProductPriceFreeCreate|\Polar\Models\Components\ProductPriceSeatBasedCreate|\Polar\Models\Components\ProductPriceMeteredUnitCreate>>|null')]
+    #[\Speakeasy\Serializer\Annotation\Type('array<string, array<\Polar\Models\Components\ProductPriceFixedCreate|\Polar\Models\Components\ProductPriceCustomCreate|\Polar\Models\Components\ProductPriceSeatBasedCreate|\Polar\Models\Components\ProductPriceMeteredUnitCreate>>|null')]
     #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
     public ?array $prices = null;
 
@@ -339,7 +339,7 @@ class CheckoutCreate
      * @param  ?string  $embedOrigin
      * @param  ?string  $locale
      * @param  ?\Polar\Models\Components\PresentmentCurrency  $currency
-     * @param  ?array<string, array<\Polar\Models\Components\ProductPriceFixedCreate|\Polar\Models\Components\ProductPriceCustomCreate|\Polar\Models\Components\ProductPriceFreeCreate|\Polar\Models\Components\ProductPriceSeatBasedCreate|\Polar\Models\Components\ProductPriceMeteredUnitCreate>>  $prices
+     * @param  ?array<string, array<\Polar\Models\Components\ProductPriceFixedCreate|\Polar\Models\Components\ProductPriceCustomCreate|\Polar\Models\Components\ProductPriceSeatBasedCreate|\Polar\Models\Components\ProductPriceMeteredUnitCreate>>  $prices
      * @phpstan-pure
      */
     public function __construct(array $products, ?array $metadata = null, ?array $customFieldData = null, ?array $customerMetadata = null, ?TrialInterval $trialInterval = null, ?int $trialIntervalCount = null, ?string $discountId = null, ?int $amount = null, ?int $seats = null, ?int $minSeats = null, ?int $maxSeats = null, ?string $customerId = null, ?string $externalCustomerId = null, ?string $customerName = null, ?string $customerEmail = null, ?string $customerIpAddress = null, ?string $customerBillingName = null, ?AddressInput $customerBillingAddress = null, ?string $customerTaxId = null, ?string $subscriptionId = null, ?string $successUrl = null, ?string $returnUrl = null, ?string $embedOrigin = null, ?string $locale = null, ?PresentmentCurrency $currency = null, ?array $prices = null, ?bool $allowDiscountCodes = true, ?bool $requireBillingAddress = false, ?bool $allowTrial = true, ?bool $isBusinessCustomer = false)

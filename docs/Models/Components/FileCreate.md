@@ -30,3 +30,12 @@ Components\OrganizationAvatarFileCreate $value = /* values here */
 Components\ProductMediaFileCreate $value = /* values here */
 ```
 
+### `Components\SupportCaseAttachmentFileCreate`
+
+```php
+/**
+* @var \Polar\Models\Components\SupportCaseAttachmentFileCreate
+*/
+Components\SupportCaseAttachmentFileCreate $value = /* values here */
+```
+

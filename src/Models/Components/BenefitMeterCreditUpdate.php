@@ -42,6 +42,16 @@ class BenefitMeterCreditUpdate
     public ?string $description = null;
 
     /**
+     * The visibility of the benefit in the customer portal.
+     *
+     * @var ?\Polar\Models\Components\BenefitVisibility $visibility
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('visibility')]
+    #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\BenefitVisibility|null')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
+    public ?BenefitVisibility $visibility = null;
+
+    /**
      *
      * @var ?\Polar\Models\Components\BenefitMeterCreditCreateProperties $properties
      */
@@ -61,13 +71,15 @@ class BenefitMeterCreditUpdate
      * @param  string  $type
      * @param  ?array<string, string|int|float|bool>  $metadata
      * @param  ?string  $description
+     * @param  ?\Polar\Models\Components\BenefitVisibility  $visibility
      * @param  ?\Polar\Models\Components\BenefitMeterCreditCreateProperties  $properties
      * @phpstan-pure
      */
-    public function __construct(?array $metadata = null, ?string $description = null, ?BenefitMeterCreditCreateProperties $properties = null, string $type = 'meter_credit')
+    public function __construct(?array $metadata = null, ?string $description = null, ?BenefitVisibility $visibility = null, ?BenefitMeterCreditCreateProperties $properties = null, string $type = 'meter_credit')
     {
         $this->metadata = $metadata;
         $this->description = $description;
+        $this->visibility = $visibility;
         $this->properties = $properties;
         $this->type = $type;
     }

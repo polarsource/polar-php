@@ -61,13 +61,6 @@ class OrderCustomer
     public string $organizationId;
 
     /**
-     *
-     * @var string $avatarUrl
-     */
-    #[\Speakeasy\Serializer\Annotation\SerializedName('avatar_url')]
-    public string $avatarUrl;
-
-    /**
      * Last modification timestamp of the object.
      *
      * @var ?\DateTime $modifiedAt
@@ -82,6 +75,14 @@ class OrderCustomer
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('name')]
     public ?string $name;
+
+    /**
+     * The name that should appear on the customer's invoices. Falls back to the customer name when not explicitly set.
+     *
+     * @var ?string $billingName
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('billing_name')]
+    public ?string $billingName;
 
     /**
      *
@@ -107,6 +108,13 @@ class OrderCustomer
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('deleted_at')]
     public ?\DateTime $deletedAt;
+
+    /**
+     *
+     * @var ?string $avatarUrl
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('avatar_url')]
+    public ?string $avatarUrl;
 
     /**
      * The ID of the customer in your system. This must be unique within the organization. Once set, it can't be updated.
@@ -135,24 +143,35 @@ class OrderCustomer
     public ?string $locale = null;
 
     /**
+     * The ID of the customer's default payment method, if any. Use the payment methods endpoint to retrieve its details.
+     *
+     * @var ?string $defaultPaymentMethodId
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('default_payment_method_id')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
+    public ?string $defaultPaymentMethodId = null;
+
+    /**
      * @param  string  $id
      * @param  \DateTime  $createdAt
      * @param  array<string, string|int|float|bool>  $metadata
      * @param  bool  $emailVerified
      * @param  \Polar\Models\Components\CustomerType  $type
      * @param  string  $organizationId
-     * @param  string  $avatarUrl
      * @param  ?\DateTime  $modifiedAt
      * @param  ?string  $name
+     * @param  ?string  $billingName
      * @param  ?\Polar\Models\Components\Address  $billingAddress
      * @param  ?array<string|\Polar\Models\Components\TaxIDFormat|null>  $taxId
      * @param  ?\DateTime  $deletedAt
+     * @param  ?string  $avatarUrl
      * @param  ?string  $externalId
      * @param  ?string  $email
      * @param  ?string  $locale
+     * @param  ?string  $defaultPaymentMethodId
      * @phpstan-pure
      */
-    public function __construct(string $id, \DateTime $createdAt, array $metadata, bool $emailVerified, CustomerType $type, string $organizationId, string $avatarUrl, ?\DateTime $modifiedAt = null, ?string $name = null, ?Address $billingAddress = null, ?array $taxId = null, ?\DateTime $deletedAt = null, ?string $externalId = null, ?string $email = null, ?string $locale = null)
+    public function __construct(string $id, \DateTime $createdAt, array $metadata, bool $emailVerified, CustomerType $type, string $organizationId, ?\DateTime $modifiedAt = null, ?string $name = null, ?string $billingName = null, ?Address $billingAddress = null, ?array $taxId = null, ?\DateTime $deletedAt = null, ?string $avatarUrl = null, ?string $externalId = null, ?string $email = null, ?string $locale = null, ?string $defaultPaymentMethodId = null)
     {
         $this->id = $id;
         $this->createdAt = $createdAt;
@@ -160,14 +179,16 @@ class OrderCustomer
         $this->emailVerified = $emailVerified;
         $this->type = $type;
         $this->organizationId = $organizationId;
-        $this->avatarUrl = $avatarUrl;
         $this->modifiedAt = $modifiedAt;
         $this->name = $name;
+        $this->billingName = $billingName;
         $this->billingAddress = $billingAddress;
         $this->taxId = $taxId;
         $this->deletedAt = $deletedAt;
+        $this->avatarUrl = $avatarUrl;
         $this->externalId = $externalId;
         $this->email = $email;
         $this->locale = $locale;
+        $this->defaultPaymentMethodId = $defaultPaymentMethodId;
     }
 }

@@ -26,25 +26,14 @@ class MissingInvoiceBillingDetails
     public string $detail;
 
     /**
-     * Raw HTTP response; suitable for custom response parsing
-     *
-     * @var ?\Psr\Http\Message\ResponseInterface $rawResponse
-     */
-    #[\Speakeasy\Serializer\Annotation\Exclude]
-
-    public ?\Psr\Http\Message\ResponseInterface $rawResponse = null;
-
-    /**
      * @param  string  $error
      * @param  string  $detail
-     * @param  ?\Psr\Http\Message\ResponseInterface  $rawResponse
      * @phpstan-pure
      */
-    public function __construct(string $detail, ?\Psr\Http\Message\ResponseInterface $rawResponse = null, string $error = 'MissingInvoiceBillingDetails')
+    public function __construct(string $detail, string $error = 'MissingInvoiceBillingDetails')
     {
         $this->error = $error;
         $this->detail = $detail;
-        $this->rawResponse = $rawResponse;
     }
 
     public function toException(): MissingInvoiceBillingDetailsThrowable

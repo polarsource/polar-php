@@ -86,6 +86,15 @@ class CardPayment
     public ?\DateTime $modifiedAt;
 
     /**
+     * What initiated this payment attempt, e.g. initial purchase, subscription renewal, or an automated dunning retry.
+     *
+     * @var ?\Polar\Models\Components\PaymentTrigger $trigger
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('trigger')]
+    #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\PaymentTrigger|null')]
+    public ?PaymentTrigger $trigger;
+
+    /**
      * Error code, if the payment was declined.
      *
      * @var ?string $declineReason
@@ -146,6 +155,7 @@ class CardPayment
      * @param  string  $organizationId
      * @param  \Polar\Models\Components\CardPaymentMetadata  $methodMetadata
      * @param  ?\DateTime  $modifiedAt
+     * @param  ?\Polar\Models\Components\PaymentTrigger  $trigger
      * @param  ?string  $declineReason
      * @param  ?string  $declineMessage
      * @param  ?string  $checkoutId
@@ -153,7 +163,7 @@ class CardPayment
      * @param  ?array<string, mixed>  $processorMetadata
      * @phpstan-pure
      */
-    public function __construct(\DateTime $createdAt, string $id, PaymentProcessor $processor, PaymentStatus $status, int $amount, string $currency, string $organizationId, CardPaymentMetadata $methodMetadata, ?\DateTime $modifiedAt = null, ?string $declineReason = null, ?string $declineMessage = null, ?string $checkoutId = null, ?string $orderId = null, ?array $processorMetadata = null, string $method = 'card')
+    public function __construct(\DateTime $createdAt, string $id, PaymentProcessor $processor, PaymentStatus $status, int $amount, string $currency, string $organizationId, CardPaymentMetadata $methodMetadata, ?\DateTime $modifiedAt = null, ?PaymentTrigger $trigger = null, ?string $declineReason = null, ?string $declineMessage = null, ?string $checkoutId = null, ?string $orderId = null, ?array $processorMetadata = null, string $method = 'card')
     {
         $this->createdAt = $createdAt;
         $this->id = $id;
@@ -164,6 +174,7 @@ class CardPayment
         $this->organizationId = $organizationId;
         $this->methodMetadata = $methodMetadata;
         $this->modifiedAt = $modifiedAt;
+        $this->trigger = $trigger;
         $this->declineReason = $declineReason;
         $this->declineMessage = $declineMessage;
         $this->checkoutId = $checkoutId;

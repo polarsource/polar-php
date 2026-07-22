@@ -52,11 +52,11 @@ class Benefits
      *
      * **Scopes**: `benefits:write`
      *
-     * @param  \Polar\Models\Components\BenefitCustomCreate|\Polar\Models\Components\BenefitDiscordCreate|\Polar\Models\Components\BenefitGitHubRepositoryCreate|\Polar\Models\Components\BenefitDownloadablesCreate|\Polar\Models\Components\BenefitLicenseKeysCreate|\Polar\Models\Components\BenefitMeterCreditCreate|\Polar\Models\Components\BenefitFeatureFlagCreate  $request
+     * @param  \Polar\Models\Components\BenefitCustomCreate|\Polar\Models\Components\BenefitDiscordCreate|\Polar\Models\Components\BenefitGitHubRepositoryCreate|\Polar\Models\Components\BenefitDownloadablesCreate|\Polar\Models\Components\BenefitLicenseKeysCreate|\Polar\Models\Components\BenefitMeterCreditCreate|\Polar\Models\Components\BenefitFeatureFlagCreate|\Polar\Models\Components\BenefitSlackSharedChannelCreate  $request
      * @return \Polar\Models\Operations\BenefitsCreateResponse
      * @throws \Polar\Models\Errors\APIException
      */
-    public function create(Components\BenefitCustomCreate|Components\BenefitDiscordCreate|Components\BenefitGitHubRepositoryCreate|Components\BenefitDownloadablesCreate|Components\BenefitLicenseKeysCreate|Components\BenefitMeterCreditCreate|Components\BenefitFeatureFlagCreate $request, ?Options $options = null): Operations\BenefitsCreateResponse
+    public function create(Components\BenefitCustomCreate|Components\BenefitDiscordCreate|Components\BenefitGitHubRepositoryCreate|Components\BenefitDownloadablesCreate|Components\BenefitLicenseKeysCreate|Components\BenefitMeterCreditCreate|Components\BenefitFeatureFlagCreate|Components\BenefitSlackSharedChannelCreate $request, ?Options $options = null): Operations\BenefitsCreateResponse
     {
         $baseUrl = $this->sdkConfiguration->getTemplatedServerUrl();
         $url = Utils\Utils::generateUrl($baseUrl, '/v1/benefits/');
@@ -82,18 +82,19 @@ class Benefits
         }
         $contentType = $httpResponse->getHeader('Content-Type')[0] ?? '';
 
-        $statusCode = $httpResponse->getStatusCode();
-        if (Utils\Utils::matchStatusCodes($statusCode, ['422', '4XX', '5XX'])) {
+        if (Utils\Utils::matchStatusCodes($httpResponse->getStatusCode(), ['4XX', '5XX'])) {
             $res = $this->sdkConfiguration->hooks->afterError(new Hooks\AfterErrorContext($hookContext), $httpResponse, null);
             $httpResponse = $res;
         }
+
+        $statusCode = $httpResponse->getStatusCode();
         if (Utils\Utils::matchStatusCodes($statusCode, ['201'])) {
             if (Utils\Utils::matchContentType($contentType, 'application/json')) {
                 $httpResponse = $this->sdkConfiguration->hooks->afterSuccess(new Hooks\AfterSuccessContext($hookContext), $httpResponse);
 
                 $serializer = Utils\JSON::createSerializer();
                 $responseData = (string) $httpResponse->getBody();
-                $obj = $serializer->deserialize($responseData, '\Polar\Models\Components\BenefitCustom|\Polar\Models\Components\BenefitDiscord|\Polar\Models\Components\BenefitGitHubRepository|\Polar\Models\Components\BenefitDownloadables|\Polar\Models\Components\BenefitLicenseKeys|\Polar\Models\Components\BenefitMeterCredit|\Polar\Models\Components\BenefitFeatureFlag', 'json', DeserializationContext::create()->setRequireAllRequiredProperties(true));
+                $obj = $serializer->deserialize($responseData, '\Polar\Models\Components\BenefitCustom|\Polar\Models\Components\BenefitDiscord|\Polar\Models\Components\BenefitGitHubRepository|\Polar\Models\Components\BenefitDownloadables|\Polar\Models\Components\BenefitLicenseKeys|\Polar\Models\Components\BenefitMeterCredit|\Polar\Models\Components\BenefitFeatureFlag|\Polar\Models\Components\BenefitSlackSharedChannel', 'json', DeserializationContext::create()->setRequireAllRequiredProperties(true));
                 $response = new Operations\BenefitsCreateResponse(
                     statusCode: $statusCode,
                     contentType: $contentType,
@@ -163,11 +164,12 @@ class Benefits
         }
         $contentType = $httpResponse->getHeader('Content-Type')[0] ?? '';
 
-        $statusCode = $httpResponse->getStatusCode();
-        if (Utils\Utils::matchStatusCodes($statusCode, ['403', '404', '422', '4XX', '5XX'])) {
+        if (Utils\Utils::matchStatusCodes($httpResponse->getStatusCode(), ['4XX', '5XX'])) {
             $res = $this->sdkConfiguration->hooks->afterError(new Hooks\AfterErrorContext($hookContext), $httpResponse, null);
             $httpResponse = $res;
         }
+
+        $statusCode = $httpResponse->getStatusCode();
         if (Utils\Utils::matchStatusCodes($statusCode, ['204'])) {
             $httpResponse = $this->sdkConfiguration->hooks->afterSuccess(new Hooks\AfterSuccessContext($hookContext), $httpResponse);
 
@@ -253,18 +255,19 @@ class Benefits
         }
         $contentType = $httpResponse->getHeader('Content-Type')[0] ?? '';
 
-        $statusCode = $httpResponse->getStatusCode();
-        if (Utils\Utils::matchStatusCodes($statusCode, ['404', '422', '4XX', '5XX'])) {
+        if (Utils\Utils::matchStatusCodes($httpResponse->getStatusCode(), ['4XX', '5XX'])) {
             $res = $this->sdkConfiguration->hooks->afterError(new Hooks\AfterErrorContext($hookContext), $httpResponse, null);
             $httpResponse = $res;
         }
+
+        $statusCode = $httpResponse->getStatusCode();
         if (Utils\Utils::matchStatusCodes($statusCode, ['200'])) {
             if (Utils\Utils::matchContentType($contentType, 'application/json')) {
                 $httpResponse = $this->sdkConfiguration->hooks->afterSuccess(new Hooks\AfterSuccessContext($hookContext), $httpResponse);
 
                 $serializer = Utils\JSON::createSerializer();
                 $responseData = (string) $httpResponse->getBody();
-                $obj = $serializer->deserialize($responseData, '\Polar\Models\Components\BenefitCustom|\Polar\Models\Components\BenefitDiscord|\Polar\Models\Components\BenefitGitHubRepository|\Polar\Models\Components\BenefitDownloadables|\Polar\Models\Components\BenefitLicenseKeys|\Polar\Models\Components\BenefitMeterCredit|\Polar\Models\Components\BenefitFeatureFlag', 'json', DeserializationContext::create()->setRequireAllRequiredProperties(true));
+                $obj = $serializer->deserialize($responseData, '\Polar\Models\Components\BenefitCustom|\Polar\Models\Components\BenefitDiscord|\Polar\Models\Components\BenefitGitHubRepository|\Polar\Models\Components\BenefitDownloadables|\Polar\Models\Components\BenefitLicenseKeys|\Polar\Models\Components\BenefitMeterCredit|\Polar\Models\Components\BenefitFeatureFlag|\Polar\Models\Components\BenefitSlackSharedChannel', 'json', DeserializationContext::create()->setRequireAllRequiredProperties(true));
                 $response = new Operations\BenefitsGetResponse(
                     statusCode: $statusCode,
                     contentType: $contentType,
@@ -343,11 +346,12 @@ class Benefits
         }
         $contentType = $httpResponse->getHeader('Content-Type')[0] ?? '';
 
-        $statusCode = $httpResponse->getStatusCode();
-        if (Utils\Utils::matchStatusCodes($statusCode, ['404', '422', '4XX', '5XX'])) {
+        if (Utils\Utils::matchStatusCodes($httpResponse->getStatusCode(), ['4XX', '5XX'])) {
             $res = $this->sdkConfiguration->hooks->afterError(new Hooks\AfterErrorContext($hookContext), $httpResponse, null);
             $httpResponse = $res;
         }
+
+        $statusCode = $httpResponse->getStatusCode();
         if (Utils\Utils::matchStatusCodes($statusCode, ['200'])) {
             if (Utils\Utils::matchContentType($contentType, 'application/json')) {
                 $httpResponse = $this->sdkConfiguration->hooks->afterSuccess(new Hooks\AfterSuccessContext($hookContext), $httpResponse);
@@ -491,11 +495,12 @@ class Benefits
         }
         $contentType = $httpResponse->getHeader('Content-Type')[0] ?? '';
 
-        $statusCode = $httpResponse->getStatusCode();
-        if (Utils\Utils::matchStatusCodes($statusCode, ['422', '4XX', '5XX'])) {
+        if (Utils\Utils::matchStatusCodes($httpResponse->getStatusCode(), ['4XX', '5XX'])) {
             $res = $this->sdkConfiguration->hooks->afterError(new Hooks\AfterErrorContext($hookContext), $httpResponse, null);
             $httpResponse = $res;
         }
+
+        $statusCode = $httpResponse->getStatusCode();
         if (Utils\Utils::matchStatusCodes($statusCode, ['200'])) {
             if (Utils\Utils::matchContentType($contentType, 'application/json')) {
                 $httpResponse = $this->sdkConfiguration->hooks->afterSuccess(new Hooks\AfterSuccessContext($hookContext), $httpResponse);
@@ -601,12 +606,12 @@ class Benefits
      *
      * **Scopes**: `benefits:write`
      *
-     * @param  \Polar\Models\Components\BenefitCustomUpdate|\Polar\Models\Components\BenefitDiscordUpdate|\Polar\Models\Components\BenefitGitHubRepositoryUpdate|\Polar\Models\Components\BenefitDownloadablesUpdate|\Polar\Models\Components\BenefitLicenseKeysUpdate|\Polar\Models\Components\BenefitMeterCreditUpdate|\Polar\Models\Components\BenefitFeatureFlagUpdate  $requestBody
+     * @param  \Polar\Models\Components\BenefitCustomUpdate|\Polar\Models\Components\BenefitDiscordUpdate|\Polar\Models\Components\BenefitGitHubRepositoryUpdate|\Polar\Models\Components\BenefitDownloadablesUpdate|\Polar\Models\Components\BenefitLicenseKeysUpdate|\Polar\Models\Components\BenefitMeterCreditUpdate|\Polar\Models\Components\BenefitFeatureFlagUpdate|\Polar\Models\Components\BenefitSlackSharedChannelUpdate  $requestBody
      * @param  string  $id
      * @return \Polar\Models\Operations\BenefitsUpdateResponse
      * @throws \Polar\Models\Errors\APIException
      */
-    public function update(Components\BenefitCustomUpdate|Components\BenefitDiscordUpdate|Components\BenefitGitHubRepositoryUpdate|Components\BenefitDownloadablesUpdate|Components\BenefitLicenseKeysUpdate|Components\BenefitMeterCreditUpdate|Components\BenefitFeatureFlagUpdate $requestBody, string $id, ?Options $options = null): Operations\BenefitsUpdateResponse
+    public function update(Components\BenefitCustomUpdate|Components\BenefitDiscordUpdate|Components\BenefitGitHubRepositoryUpdate|Components\BenefitDownloadablesUpdate|Components\BenefitLicenseKeysUpdate|Components\BenefitMeterCreditUpdate|Components\BenefitFeatureFlagUpdate|Components\BenefitSlackSharedChannelUpdate $requestBody, string $id, ?Options $options = null): Operations\BenefitsUpdateResponse
     {
         $request = new Operations\BenefitsUpdateRequest(
             id: $id,
@@ -636,18 +641,19 @@ class Benefits
         }
         $contentType = $httpResponse->getHeader('Content-Type')[0] ?? '';
 
-        $statusCode = $httpResponse->getStatusCode();
-        if (Utils\Utils::matchStatusCodes($statusCode, ['404', '422', '4XX', '5XX'])) {
+        if (Utils\Utils::matchStatusCodes($httpResponse->getStatusCode(), ['4XX', '5XX'])) {
             $res = $this->sdkConfiguration->hooks->afterError(new Hooks\AfterErrorContext($hookContext), $httpResponse, null);
             $httpResponse = $res;
         }
+
+        $statusCode = $httpResponse->getStatusCode();
         if (Utils\Utils::matchStatusCodes($statusCode, ['200'])) {
             if (Utils\Utils::matchContentType($contentType, 'application/json')) {
                 $httpResponse = $this->sdkConfiguration->hooks->afterSuccess(new Hooks\AfterSuccessContext($hookContext), $httpResponse);
 
                 $serializer = Utils\JSON::createSerializer();
                 $responseData = (string) $httpResponse->getBody();
-                $obj = $serializer->deserialize($responseData, '\Polar\Models\Components\BenefitCustom|\Polar\Models\Components\BenefitDiscord|\Polar\Models\Components\BenefitGitHubRepository|\Polar\Models\Components\BenefitDownloadables|\Polar\Models\Components\BenefitLicenseKeys|\Polar\Models\Components\BenefitMeterCredit|\Polar\Models\Components\BenefitFeatureFlag', 'json', DeserializationContext::create()->setRequireAllRequiredProperties(true));
+                $obj = $serializer->deserialize($responseData, '\Polar\Models\Components\BenefitCustom|\Polar\Models\Components\BenefitDiscord|\Polar\Models\Components\BenefitGitHubRepository|\Polar\Models\Components\BenefitDownloadables|\Polar\Models\Components\BenefitLicenseKeys|\Polar\Models\Components\BenefitMeterCredit|\Polar\Models\Components\BenefitFeatureFlag|\Polar\Models\Components\BenefitSlackSharedChannel', 'json', DeserializationContext::create()->setRequireAllRequiredProperties(true));
                 $response = new Operations\BenefitsUpdateResponse(
                     statusCode: $statusCode,
                     contentType: $contentType,

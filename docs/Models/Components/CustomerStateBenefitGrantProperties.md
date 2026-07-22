@@ -57,3 +57,12 @@ Components\BenefitGrantCustomProperties $value = /* values here */
 Components\BenefitGrantFeatureFlagProperties $value = /* values here */
 ```
 
+### `Components\BenefitGrantSlackSharedChannelProperties`
+
+```php
+/**
+* @var \Polar\Models\Components\BenefitGrantSlackSharedChannelProperties
+*/
+Components\BenefitGrantSlackSharedChannelProperties $value = /* values here */
+```
+

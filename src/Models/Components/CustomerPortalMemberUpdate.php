@@ -9,9 +9,18 @@ declare(strict_types=1);
 namespace Polar\Models\Components;
 
 
-/** CustomerPortalMemberUpdate - Schema for updating a member's role in the customer portal. */
+/** CustomerPortalMemberUpdate - Schema for updating a member in the customer portal. */
 class CustomerPortalMemberUpdate
 {
+    /**
+     * The new name for the member.
+     *
+     * @var ?string $name
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('name')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
+    public ?string $name = null;
+
     /**
      * The new role for the member.
      *
@@ -23,11 +32,13 @@ class CustomerPortalMemberUpdate
     public ?MemberRole $role = null;
 
     /**
+     * @param  ?string  $name
      * @param  ?\Polar\Models\Components\MemberRole  $role
      * @phpstan-pure
      */
-    public function __construct(?MemberRole $role = null)
+    public function __construct(?string $name = null, ?MemberRole $role = null)
     {
+        $this->name = $name;
         $this->role = $role;
     }
 }
