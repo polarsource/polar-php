@@ -63,11 +63,11 @@ class CustomerStateBenefitGrant
 
     /**
      *
-     * @var \Polar\Models\Components\BenefitGrantDiscordProperties|\Polar\Models\Components\BenefitGrantGitHubRepositoryProperties|\Polar\Models\Components\BenefitGrantDownloadablesProperties|\Polar\Models\Components\BenefitGrantLicenseKeysProperties|\Polar\Models\Components\BenefitGrantCustomProperties|\Polar\Models\Components\BenefitGrantFeatureFlagProperties $properties
+     * @var \Polar\Models\Components\BenefitGrantDiscordProperties|\Polar\Models\Components\BenefitGrantGitHubRepositoryProperties|\Polar\Models\Components\BenefitGrantDownloadablesProperties|\Polar\Models\Components\BenefitGrantLicenseKeysProperties|\Polar\Models\Components\BenefitGrantCustomProperties|\Polar\Models\Components\BenefitGrantFeatureFlagProperties|\Polar\Models\Components\BenefitGrantSlackSharedChannelProperties $properties
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('properties')]
-    #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\BenefitGrantDiscordProperties|\Polar\Models\Components\BenefitGrantGitHubRepositoryProperties|\Polar\Models\Components\BenefitGrantDownloadablesProperties|\Polar\Models\Components\BenefitGrantLicenseKeysProperties|\Polar\Models\Components\BenefitGrantCustomProperties|\Polar\Models\Components\BenefitGrantFeatureFlagProperties')]
-    public BenefitGrantDiscordProperties|BenefitGrantGitHubRepositoryProperties|BenefitGrantDownloadablesProperties|BenefitGrantLicenseKeysProperties|BenefitGrantCustomProperties|BenefitGrantFeatureFlagProperties $properties;
+    #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\BenefitGrantDiscordProperties|\Polar\Models\Components\BenefitGrantGitHubRepositoryProperties|\Polar\Models\Components\BenefitGrantDownloadablesProperties|\Polar\Models\Components\BenefitGrantLicenseKeysProperties|\Polar\Models\Components\BenefitGrantCustomProperties|\Polar\Models\Components\BenefitGrantFeatureFlagProperties|\Polar\Models\Components\BenefitGrantSlackSharedChannelProperties')]
+    public BenefitGrantDiscordProperties|BenefitGrantGitHubRepositoryProperties|BenefitGrantDownloadablesProperties|BenefitGrantLicenseKeysProperties|BenefitGrantCustomProperties|BenefitGrantFeatureFlagProperties|BenefitGrantSlackSharedChannelProperties $properties;
 
     /**
      * Last modification timestamp of the object.
@@ -84,11 +84,11 @@ class CustomerStateBenefitGrant
      * @param  string  $benefitId
      * @param  \Polar\Models\Components\BenefitType  $benefitType
      * @param  array<string, string|int|float|bool>  $benefitMetadata
-     * @param  \Polar\Models\Components\BenefitGrantDiscordProperties|\Polar\Models\Components\BenefitGrantGitHubRepositoryProperties|\Polar\Models\Components\BenefitGrantDownloadablesProperties|\Polar\Models\Components\BenefitGrantLicenseKeysProperties|\Polar\Models\Components\BenefitGrantCustomProperties|\Polar\Models\Components\BenefitGrantFeatureFlagProperties  $properties
+     * @param  \Polar\Models\Components\BenefitGrantDiscordProperties|\Polar\Models\Components\BenefitGrantGitHubRepositoryProperties|\Polar\Models\Components\BenefitGrantDownloadablesProperties|\Polar\Models\Components\BenefitGrantLicenseKeysProperties|\Polar\Models\Components\BenefitGrantCustomProperties|\Polar\Models\Components\BenefitGrantFeatureFlagProperties|\Polar\Models\Components\BenefitGrantSlackSharedChannelProperties  $properties
      * @param  ?\DateTime  $modifiedAt
      * @phpstan-pure
      */
-    public function __construct(string $id, \DateTime $createdAt, \DateTime $grantedAt, string $benefitId, BenefitType $benefitType, array $benefitMetadata, BenefitGrantDiscordProperties|BenefitGrantGitHubRepositoryProperties|BenefitGrantDownloadablesProperties|BenefitGrantLicenseKeysProperties|BenefitGrantCustomProperties|BenefitGrantFeatureFlagProperties $properties, ?\DateTime $modifiedAt = null)
+    public function __construct(string $id, \DateTime $createdAt, \DateTime $grantedAt, string $benefitId, BenefitType $benefitType, array $benefitMetadata, BenefitGrantDiscordProperties|BenefitGrantGitHubRepositoryProperties|BenefitGrantDownloadablesProperties|BenefitGrantLicenseKeysProperties|BenefitGrantCustomProperties|BenefitGrantFeatureFlagProperties|BenefitGrantSlackSharedChannelProperties $properties, ?\DateTime $modifiedAt = null)
     {
         $this->id = $id;
         $this->createdAt = $createdAt;

@@ -64,6 +64,14 @@ class BalanceCreditOrderMetadata
 
     /**
      *
+     * @var ?float $exchangeRate
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('exchange_rate')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
+    public ?float $exchangeRate = null;
+
+    /**
+     *
      * @var ?string $taxState
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('tax_state')]
@@ -86,11 +94,12 @@ class BalanceCreditOrderMetadata
      * @param  int  $fee
      * @param  ?string  $productId
      * @param  ?string  $subscriptionId
+     * @param  ?float  $exchangeRate
      * @param  ?string  $taxState
      * @param  ?string  $taxCountry
      * @phpstan-pure
      */
-    public function __construct(string $orderId, int $amount, string $currency, int $taxAmount, int $fee, ?string $productId = null, ?string $subscriptionId = null, ?string $taxState = null, ?string $taxCountry = null)
+    public function __construct(string $orderId, int $amount, string $currency, int $taxAmount, int $fee, ?string $productId = null, ?string $subscriptionId = null, ?float $exchangeRate = null, ?string $taxState = null, ?string $taxCountry = null)
     {
         $this->orderId = $orderId;
         $this->amount = $amount;
@@ -99,6 +108,7 @@ class BalanceCreditOrderMetadata
         $this->fee = $fee;
         $this->productId = $productId;
         $this->subscriptionId = $subscriptionId;
+        $this->exchangeRate = $exchangeRate;
         $this->taxState = $taxState;
         $this->taxCountry = $taxCountry;
     }

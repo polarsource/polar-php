@@ -111,12 +111,12 @@ class OrganizationCreate
 
     /**
      *
-     * @var ?\Polar\Models\Components\OrganizationFeatureSettings $featureSettings
+     * @var ?\Polar\Models\Components\OrganizationFeatureSettingsUpdate $featureSettings
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('feature_settings')]
-    #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\OrganizationFeatureSettings|null')]
+    #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\OrganizationFeatureSettingsUpdate|null')]
     #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
-    public ?OrganizationFeatureSettings $featureSettings = null;
+    public ?OrganizationFeatureSettingsUpdate $featureSettings = null;
 
     /**
      *
@@ -126,15 +126,6 @@ class OrganizationCreate
     #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\OrganizationSubscriptionSettings|null')]
     #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
     public ?OrganizationSubscriptionSettings $subscriptionSettings = null;
-
-    /**
-     *
-     * @var ?\Polar\Models\Components\OrganizationNotificationSettings $notificationSettings
-     */
-    #[\Speakeasy\Serializer\Annotation\SerializedName('notification_settings')]
-    #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\OrganizationNotificationSettings|null')]
-    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
-    public ?OrganizationNotificationSettings $notificationSettings = null;
 
     /**
      *
@@ -166,14 +157,13 @@ class OrganizationCreate
      * @param  ?array<\Polar\Models\Components\OrganizationSocialLink>  $socials
      * @param  ?\Polar\Models\Components\OrganizationDetails  $details
      * @param  ?\Polar\Models\Components\CountryAlpha2Input  $country
-     * @param  ?\Polar\Models\Components\OrganizationFeatureSettings  $featureSettings
+     * @param  ?\Polar\Models\Components\OrganizationFeatureSettingsUpdate  $featureSettings
      * @param  ?\Polar\Models\Components\OrganizationSubscriptionSettings  $subscriptionSettings
-     * @param  ?\Polar\Models\Components\OrganizationNotificationSettings  $notificationSettings
      * @param  ?\Polar\Models\Components\OrganizationCustomerEmailSettings  $customerEmailSettings
      * @param  ?\Polar\Models\Components\OrganizationCustomerPortalSettings  $customerPortalSettings
      * @phpstan-pure
      */
-    public function __construct(string $name, string $slug, ?PresentmentCurrency $defaultPresentmentCurrency = null, ?TaxBehaviorOption $defaultTaxBehavior = null, ?string $avatarUrl = null, OrganizationIndividualLegalEntitySchema|OrganizationCompanyLegalEntitySchema|null $legalEntity = null, ?string $email = null, ?string $website = null, ?array $socials = null, ?OrganizationDetails $details = null, ?CountryAlpha2Input $country = null, ?OrganizationFeatureSettings $featureSettings = null, ?OrganizationSubscriptionSettings $subscriptionSettings = null, ?OrganizationNotificationSettings $notificationSettings = null, ?OrganizationCustomerEmailSettings $customerEmailSettings = null, ?OrganizationCustomerPortalSettings $customerPortalSettings = null)
+    public function __construct(string $name, string $slug, ?PresentmentCurrency $defaultPresentmentCurrency = null, ?TaxBehaviorOption $defaultTaxBehavior = null, ?string $avatarUrl = null, OrganizationIndividualLegalEntitySchema|OrganizationCompanyLegalEntitySchema|null $legalEntity = null, ?string $email = null, ?string $website = null, ?array $socials = null, ?OrganizationDetails $details = null, ?CountryAlpha2Input $country = null, ?OrganizationFeatureSettingsUpdate $featureSettings = null, ?OrganizationSubscriptionSettings $subscriptionSettings = null, ?OrganizationCustomerEmailSettings $customerEmailSettings = null, ?OrganizationCustomerPortalSettings $customerPortalSettings = null)
     {
         $this->name = $name;
         $this->slug = $slug;
@@ -188,7 +178,6 @@ class OrganizationCreate
         $this->country = $country;
         $this->featureSettings = $featureSettings;
         $this->subscriptionSettings = $subscriptionSettings;
-        $this->notificationSettings = $notificationSettings;
         $this->customerEmailSettings = $customerEmailSettings;
         $this->customerPortalSettings = $customerPortalSettings;
     }

@@ -6,12 +6,13 @@
 
 * [list](#list) - List Disputes
 * [get](#get) - Get Dispute
+* [accept](#accept) - Accept Dispute
 
 ## list
 
 List disputes.
 
-**Scopes**: `disputes:read`
+**Scopes**: `disputes:read` `disputes:write`
 
 ### Example Usage
 
@@ -67,7 +68,7 @@ foreach ($responses as $response) {
 
 Get a dispute by ID.
 
-**Scopes**: `disputes:read`
+**Scopes**: `disputes:read` `disputes:write`
 
 ### Example Usage
 
@@ -111,5 +112,60 @@ if ($response->dispute !== null) {
 | Error Type                 | Status Code                | Content Type               |
 | -------------------------- | -------------------------- | -------------------------- |
 | Errors\ResourceNotFound    | 404                        | application/json           |
+| Errors\HTTPValidationError | 422                        | application/json           |
+| Errors\APIException        | 4XX, 5XX                   | \*/\*                      |
+
+## accept
+
+Accept a dispute, conceding the chargeback.
+
+Closes the dispute with the processor (settling it as `lost`) and records
+the merchant's decision on the dispute's support case.
+
+**Scopes**: `disputes:write`
+
+### Example Usage
+
+<!-- UsageSnippet language="php" operationID="disputes:accept" method="post" path="/v1/disputes/{id}/accept" -->
+```php
+declare(strict_types=1);
+
+require 'vendor/autoload.php';
+
+use Polar;
+
+$sdk = Polar\Polar::builder()
+    ->setSecurity(
+        '<YOUR_BEARER_TOKEN_HERE>'
+    )
+    ->build();
+
+
+
+$response = $sdk->disputes->accept(
+    id: '<value>'
+);
+
+if ($response->dispute !== null) {
+    // handle response
+}
+```
+
+### Parameters
+
+| Parameter          | Type               | Required           | Description        |
+| ------------------ | ------------------ | ------------------ | ------------------ |
+| `id`               | *string*           | :heavy_check_mark: | The dispute ID.    |
+
+### Response
+
+**[?Operations\DisputesAcceptResponse](../../Models/Operations/DisputesAcceptResponse.md)**
+
+### Errors
+
+| Error Type                 | Status Code                | Content Type               |
+| -------------------------- | -------------------------- | -------------------------- |
+| Errors\ResourceNotFound    | 404                        | application/json           |
+| Errors\DisputeNotOpenError | 409                        | application/json           |
 | Errors\HTTPValidationError | 422                        | application/json           |
 | Errors\APIException        | 4XX, 5XX                   | \*/\*                      |

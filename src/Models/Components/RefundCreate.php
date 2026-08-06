@@ -19,12 +19,13 @@ class RefundCreate
     public string $orderId;
 
     /**
+     * Reason for the refund.
      *
-     * @var \Polar\Models\Components\RefundReason $reason
+     * @var \Polar\Models\Components\Reason $reason
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('reason')]
-    #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\RefundReason')]
-    public RefundReason $reason;
+    #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\Reason')]
+    public Reason $reason;
 
     /**
      * Amount to refund in cents. Minimum is 1.
@@ -81,14 +82,14 @@ class RefundCreate
 
     /**
      * @param  string  $orderId
-     * @param  \Polar\Models\Components\RefundReason  $reason
+     * @param  \Polar\Models\Components\Reason  $reason
      * @param  int  $amount
      * @param  ?array<string, string|int|float|bool>  $metadata
      * @param  ?bool  $revokeBenefits
      * @param  ?string  $comment
      * @phpstan-pure
      */
-    public function __construct(string $orderId, RefundReason $reason, int $amount, ?array $metadata = null, ?string $comment = null, ?bool $revokeBenefits = false)
+    public function __construct(string $orderId, Reason $reason, int $amount, ?array $metadata = null, ?string $comment = null, ?bool $revokeBenefits = false)
     {
         $this->orderId = $orderId;
         $this->reason = $reason;

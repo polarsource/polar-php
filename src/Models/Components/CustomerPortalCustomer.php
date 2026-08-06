@@ -107,6 +107,14 @@ class CustomerPortalCustomer
     public ?CustomerType $type = null;
 
     /**
+     *
+     * @var ?string $locale
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('locale')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
+    public ?string $locale = null;
+
+    /**
      * @param  \DateTime  $createdAt
      * @param  string  $id
      * @param  bool  $emailVerified
@@ -119,9 +127,10 @@ class CustomerPortalCustomer
      * @param  ?array<string|\Polar\Models\Components\TaxIDFormat|null>  $taxId
      * @param  ?string  $defaultPaymentMethodId
      * @param  ?\Polar\Models\Components\CustomerType  $type
+     * @param  ?string  $locale
      * @phpstan-pure
      */
-    public function __construct(\DateTime $createdAt, string $id, bool $emailVerified, array $oauthAccounts, ?\DateTime $modifiedAt = null, ?string $email = null, ?string $name = null, ?string $billingName = null, ?Address $billingAddress = null, ?array $taxId = null, ?string $defaultPaymentMethodId = null, ?CustomerType $type = null)
+    public function __construct(\DateTime $createdAt, string $id, bool $emailVerified, array $oauthAccounts, ?\DateTime $modifiedAt = null, ?string $email = null, ?string $name = null, ?string $billingName = null, ?Address $billingAddress = null, ?array $taxId = null, ?string $defaultPaymentMethodId = null, ?CustomerType $type = null, ?string $locale = null)
     {
         $this->createdAt = $createdAt;
         $this->id = $id;
@@ -135,5 +144,6 @@ class CustomerPortalCustomer
         $this->taxId = $taxId;
         $this->defaultPaymentMethodId = $defaultPaymentMethodId;
         $this->type = $type;
+        $this->locale = $locale;
     }
 }

@@ -35,18 +35,18 @@ class CustomerPortalBenefitGrantsGetResponse
     /**
      * Successful Response
      *
-     * @var \Polar\Models\Components\CustomerBenefitGrantDiscord|\Polar\Models\Components\CustomerBenefitGrantGitHubRepository|\Polar\Models\Components\CustomerBenefitGrantDownloadables|\Polar\Models\Components\CustomerBenefitGrantLicenseKeys|\Polar\Models\Components\CustomerBenefitGrantCustom|\Polar\Models\Components\CustomerBenefitGrantMeterCredit|\Polar\Models\Components\CustomerBenefitGrantFeatureFlag|null $customerBenefitGrant
+     * @var \Polar\Models\Components\CustomerBenefitGrantDiscord|\Polar\Models\Components\CustomerBenefitGrantGitHubRepository|\Polar\Models\Components\CustomerBenefitGrantDownloadables|\Polar\Models\Components\CustomerBenefitGrantLicenseKeys|\Polar\Models\Components\CustomerBenefitGrantCustom|\Polar\Models\Components\CustomerBenefitGrantMeterCredit|\Polar\Models\Components\CustomerBenefitGrantFeatureFlag|\Polar\Models\Components\CustomerBenefitGrantSlackSharedChannel|null $customerBenefitGrant
      */
-    public Components\CustomerBenefitGrantDiscord|Components\CustomerBenefitGrantGitHubRepository|Components\CustomerBenefitGrantDownloadables|Components\CustomerBenefitGrantLicenseKeys|Components\CustomerBenefitGrantCustom|Components\CustomerBenefitGrantMeterCredit|Components\CustomerBenefitGrantFeatureFlag|null $customerBenefitGrant = null;
+    public Components\CustomerBenefitGrantDiscord|Components\CustomerBenefitGrantGitHubRepository|Components\CustomerBenefitGrantDownloadables|Components\CustomerBenefitGrantLicenseKeys|Components\CustomerBenefitGrantCustom|Components\CustomerBenefitGrantMeterCredit|Components\CustomerBenefitGrantFeatureFlag|Components\CustomerBenefitGrantSlackSharedChannel|null $customerBenefitGrant = null;
 
     /**
      * @param  string  $contentType
      * @param  int  $statusCode
      * @param  \Psr\Http\Message\ResponseInterface  $rawResponse
-     * @param  \Polar\Models\Components\CustomerBenefitGrantDiscord|\Polar\Models\Components\CustomerBenefitGrantGitHubRepository|\Polar\Models\Components\CustomerBenefitGrantDownloadables|\Polar\Models\Components\CustomerBenefitGrantLicenseKeys|\Polar\Models\Components\CustomerBenefitGrantCustom|\Polar\Models\Components\CustomerBenefitGrantMeterCredit|\Polar\Models\Components\CustomerBenefitGrantFeatureFlag|null  $customerBenefitGrant
+     * @param  \Polar\Models\Components\CustomerBenefitGrantDiscord|\Polar\Models\Components\CustomerBenefitGrantGitHubRepository|\Polar\Models\Components\CustomerBenefitGrantDownloadables|\Polar\Models\Components\CustomerBenefitGrantLicenseKeys|\Polar\Models\Components\CustomerBenefitGrantCustom|\Polar\Models\Components\CustomerBenefitGrantMeterCredit|\Polar\Models\Components\CustomerBenefitGrantFeatureFlag|\Polar\Models\Components\CustomerBenefitGrantSlackSharedChannel|null  $customerBenefitGrant
      * @phpstan-pure
      */
-    public function __construct(string $contentType, int $statusCode, \Psr\Http\Message\ResponseInterface $rawResponse, Components\CustomerBenefitGrantDiscord|Components\CustomerBenefitGrantGitHubRepository|Components\CustomerBenefitGrantDownloadables|Components\CustomerBenefitGrantLicenseKeys|Components\CustomerBenefitGrantCustom|Components\CustomerBenefitGrantMeterCredit|Components\CustomerBenefitGrantFeatureFlag|null $customerBenefitGrant = null)
+    public function __construct(string $contentType, int $statusCode, \Psr\Http\Message\ResponseInterface $rawResponse, Components\CustomerBenefitGrantDiscord|Components\CustomerBenefitGrantGitHubRepository|Components\CustomerBenefitGrantDownloadables|Components\CustomerBenefitGrantLicenseKeys|Components\CustomerBenefitGrantCustom|Components\CustomerBenefitGrantMeterCredit|Components\CustomerBenefitGrantFeatureFlag|Components\CustomerBenefitGrantSlackSharedChannel|null $customerBenefitGrant = null)
     {
         $this->contentType = $contentType;
         $this->statusCode = $statusCode;

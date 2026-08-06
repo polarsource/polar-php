@@ -4,12 +4,12 @@
 
 ### Available Operations
 
-* [list](#list) - List Organizations
+* [listOrganizations](#listorganizations) - List Organizations
 * [create](#create) - Create Organization
 * [get](#get) - Get Organization
 * [update](#update) - Update Organization
 
-## list
+## listOrganizations
 
 List organizations.
 
@@ -33,7 +33,7 @@ $sdk = Polar\Polar::builder()
 
 
 
-$responses = $sdk->organizations->list(
+$responses = $sdk->organizations->listOrganizations(
     page: 1,
     limit: 10
 
@@ -116,10 +116,11 @@ if ($response->organization !== null) {
 
 ### Errors
 
-| Error Type                 | Status Code                | Content Type               |
-| -------------------------- | -------------------------- | -------------------------- |
-| Errors\HTTPValidationError | 422                        | application/json           |
-| Errors\APIException        | 4XX, 5XX                   | \*/\*                      |
+| Error Type                           | Status Code                          | Content Type                         |
+| ------------------------------------ | ------------------------------------ | ------------------------------------ |
+| Errors\CannotCreateOrganizationError | 403                                  | application/json                     |
+| Errors\HTTPValidationError           | 422                                  | application/json                     |
+| Errors\APIException                  | 4XX, 5XX                             | \*/\*                                |
 
 ## get
 
@@ -221,9 +222,10 @@ if ($response->organization !== null) {
 
 ### Errors
 
-| Error Type                 | Status Code                | Content Type               |
-| -------------------------- | -------------------------- | -------------------------- |
-| Errors\NotPermitted        | 403                        | application/json           |
-| Errors\ResourceNotFound    | 404                        | application/json           |
-| Errors\HTTPValidationError | 422                        | application/json           |
-| Errors\APIException        | 4XX, 5XX                   | \*/\*                      |
+| Error Type                              | Status Code                             | Content Type                            |
+| --------------------------------------- | --------------------------------------- | --------------------------------------- |
+| Errors\NotPermitted                     | 403                                     | application/json                        |
+| Errors\ResourceNotFound                 | 404                                     | application/json                        |
+| Errors\SSOEnforcementRequiresConnection | 409                                     | application/json                        |
+| Errors\HTTPValidationError              | 422                                     | application/json                        |
+| Errors\APIException                     | 4XX, 5XX                                | \*/\*                                   |

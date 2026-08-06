@@ -60,6 +60,14 @@ class BenefitPublic
     public bool $deletable;
 
     /**
+     * Whether the benefit is deleted.
+     *
+     * @var bool $isDeleted
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('is_deleted')]
+    public bool $isDeleted;
+
+    /**
      * The ID of the organization owning the benefit.
      *
      * @var string $organizationId
@@ -82,11 +90,12 @@ class BenefitPublic
      * @param  string  $description
      * @param  bool  $selectable
      * @param  bool  $deletable
+     * @param  bool  $isDeleted
      * @param  string  $organizationId
      * @param  ?\DateTime  $modifiedAt
      * @phpstan-pure
      */
-    public function __construct(string $id, \DateTime $createdAt, BenefitType $type, string $description, bool $selectable, bool $deletable, string $organizationId, ?\DateTime $modifiedAt = null)
+    public function __construct(string $id, \DateTime $createdAt, BenefitType $type, string $description, bool $selectable, bool $deletable, bool $isDeleted, string $organizationId, ?\DateTime $modifiedAt = null)
     {
         $this->id = $id;
         $this->createdAt = $createdAt;
@@ -94,6 +103,7 @@ class BenefitPublic
         $this->description = $description;
         $this->selectable = $selectable;
         $this->deletable = $deletable;
+        $this->isDeleted = $isDeleted;
         $this->organizationId = $organizationId;
         $this->modifiedAt = $modifiedAt;
     }

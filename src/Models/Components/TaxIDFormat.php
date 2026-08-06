@@ -92,4 +92,5 @@ enum TaxIDFormat: string
     case VeRif = 've_rif';
     case VnTin = 'vn_tin';
     case ZaVat = 'za_vat';
+    case MuTan = 'mu_tan';
 }

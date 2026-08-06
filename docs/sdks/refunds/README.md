@@ -88,7 +88,7 @@ $sdk = Polar\Polar::builder()
 
 $request = new Components\RefundCreate(
     orderId: '<value>',
-    reason: Components\RefundReason::CustomerRequest,
+    reason: Components\Reason::CustomerRequest,
     amount: 90,
 );
 

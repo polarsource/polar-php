@@ -72,12 +72,12 @@ class ProductUpdate
     /**
      * The recurring interval of the product. If `None`, the product is a one-time purchase. **Can only be set on legacy recurring products. Once set, it can't be changed.**
      *
-     * @var ?\Polar\Models\Components\SubscriptionRecurringInterval $recurringInterval
+     * @var ?\Polar\Models\Components\RecurringInterval $recurringInterval
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('recurring_interval')]
-    #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\SubscriptionRecurringInterval|null')]
+    #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\RecurringInterval|null')]
     #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
-    public ?SubscriptionRecurringInterval $recurringInterval = null;
+    public ?RecurringInterval $recurringInterval = null;
 
     /**
      * Number of interval units of the subscription. If this is set to 1 the charge will happen every interval (e.g. every month), if set to 2 it will be every other month, and so on. Once set, it can't be changed.**
@@ -110,10 +110,10 @@ class ProductUpdate
     /**
      * List of available prices for this product. If you want to keep existing prices, include them in the list as an `ExistingProductPrice` object.
      *
-     * @var ?array<\Polar\Models\Components\ExistingProductPrice|\Polar\Models\Components\ProductPriceFixedCreate|\Polar\Models\Components\ProductPriceCustomCreate|\Polar\Models\Components\ProductPriceFreeCreate|\Polar\Models\Components\ProductPriceSeatBasedCreate|\Polar\Models\Components\ProductPriceMeteredUnitCreate> $prices
+     * @var ?array<\Polar\Models\Components\ExistingProductPrice|\Polar\Models\Components\ProductPriceFixedCreate|\Polar\Models\Components\ProductPriceCustomCreate|\Polar\Models\Components\ProductPriceSeatBasedCreate|\Polar\Models\Components\ProductPriceMeteredUnitCreate> $prices
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('prices')]
-    #[\Speakeasy\Serializer\Annotation\Type('array<\Polar\Models\Components\ExistingProductPrice|\Polar\Models\Components\ProductPriceFixedCreate|\Polar\Models\Components\ProductPriceCustomCreate|\Polar\Models\Components\ProductPriceFreeCreate|\Polar\Models\Components\ProductPriceSeatBasedCreate|\Polar\Models\Components\ProductPriceMeteredUnitCreate>|null')]
+    #[\Speakeasy\Serializer\Annotation\Type('array<\Polar\Models\Components\ExistingProductPrice|\Polar\Models\Components\ProductPriceFixedCreate|\Polar\Models\Components\ProductPriceCustomCreate|\Polar\Models\Components\ProductPriceSeatBasedCreate|\Polar\Models\Components\ProductPriceMeteredUnitCreate>|null')]
     #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
     public ?array $prices = null;
 
@@ -143,16 +143,16 @@ class ProductUpdate
      * @param  ?int  $trialIntervalCount
      * @param  ?string  $name
      * @param  ?string  $description
-     * @param  ?\Polar\Models\Components\SubscriptionRecurringInterval  $recurringInterval
+     * @param  ?\Polar\Models\Components\RecurringInterval  $recurringInterval
      * @param  ?int  $recurringIntervalCount
      * @param  ?bool  $isArchived
      * @param  ?\Polar\Models\Components\ProductVisibility  $visibility
-     * @param  ?array<\Polar\Models\Components\ExistingProductPrice|\Polar\Models\Components\ProductPriceFixedCreate|\Polar\Models\Components\ProductPriceCustomCreate|\Polar\Models\Components\ProductPriceFreeCreate|\Polar\Models\Components\ProductPriceSeatBasedCreate|\Polar\Models\Components\ProductPriceMeteredUnitCreate>  $prices
+     * @param  ?array<\Polar\Models\Components\ExistingProductPrice|\Polar\Models\Components\ProductPriceFixedCreate|\Polar\Models\Components\ProductPriceCustomCreate|\Polar\Models\Components\ProductPriceSeatBasedCreate|\Polar\Models\Components\ProductPriceMeteredUnitCreate>  $prices
      * @param  ?array<string>  $medias
      * @param  ?array<\Polar\Models\Components\AttachedCustomFieldCreate>  $attachedCustomFields
      * @phpstan-pure
      */
-    public function __construct(?array $metadata = null, ?TrialInterval $trialInterval = null, ?int $trialIntervalCount = null, ?string $name = null, ?string $description = null, ?SubscriptionRecurringInterval $recurringInterval = null, ?int $recurringIntervalCount = null, ?bool $isArchived = null, ?ProductVisibility $visibility = null, ?array $prices = null, ?array $medias = null, ?array $attachedCustomFields = null)
+    public function __construct(?array $metadata = null, ?TrialInterval $trialInterval = null, ?int $trialIntervalCount = null, ?string $name = null, ?string $description = null, ?RecurringInterval $recurringInterval = null, ?int $recurringIntervalCount = null, ?bool $isArchived = null, ?ProductVisibility $visibility = null, ?array $prices = null, ?array $medias = null, ?array $attachedCustomFields = null)
     {
         $this->metadata = $metadata;
         $this->trialInterval = $trialInterval;

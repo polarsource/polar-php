@@ -21,6 +21,14 @@ class MemberUpdate
     public ?string $name = null;
 
     /**
+     *
+     * @var ?string $email
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('email')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
+    public ?string $email = null;
+
+    /**
      * The role of the member within the customer.
      *
      * @var ?\Polar\Models\Components\MemberRole $role
@@ -32,12 +40,14 @@ class MemberUpdate
 
     /**
      * @param  ?string  $name
+     * @param  ?string  $email
      * @param  ?\Polar\Models\Components\MemberRole  $role
      * @phpstan-pure
      */
-    public function __construct(?string $name = null, ?MemberRole $role = null)
+    public function __construct(?string $name = null, ?string $email = null, ?MemberRole $role = null)
     {
         $this->name = $name;
+        $this->email = $email;
         $this->role = $role;
     }
 }

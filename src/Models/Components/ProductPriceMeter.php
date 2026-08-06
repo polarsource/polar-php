@@ -29,13 +29,43 @@ class ProductPriceMeter
     public string $name;
 
     /**
+     *
+     * @var \Polar\Models\Components\MeterUnit $unit
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('unit')]
+    #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\MeterUnit')]
+    public MeterUnit $unit;
+
+    /**
+     * The label for the custom unit.
+     *
+     * @var ?string $customLabel
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('custom_label')]
+    public ?string $customLabel;
+
+    /**
+     * The multiplier to convert from base unit to display scale.
+     *
+     * @var ?int $customMultiplier
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('custom_multiplier')]
+    public ?int $customMultiplier;
+
+    /**
      * @param  string  $id
      * @param  string  $name
+     * @param  \Polar\Models\Components\MeterUnit  $unit
+     * @param  ?string  $customLabel
+     * @param  ?int  $customMultiplier
      * @phpstan-pure
      */
-    public function __construct(string $id, string $name)
+    public function __construct(string $id, string $name, MeterUnit $unit, ?string $customLabel = null, ?int $customMultiplier = null)
     {
         $this->id = $id;
         $this->name = $name;
+        $this->unit = $unit;
+        $this->customLabel = $customLabel;
+        $this->customMultiplier = $customMultiplier;
     }
 }

@@ -74,6 +74,10 @@ class RetryUtils
         if ($response == null) {
             return 0;
         }
+        $retryAfterMs = $response->getHeader('retry-after-ms');
+        if (count($retryAfterMs) > 0 && is_numeric($retryAfterMs[0])) {
+            return max(0, (int) $retryAfterMs[0]);
+        }
         $retryAfter = $response->getHeader('Retry-After');
         if (count($retryAfter) == 0) {
             return 0;

@@ -16,8 +16,6 @@ enum Scope: string
     case Email = 'email';
     case UserRead = 'user:read';
     case UserWrite = 'user:write';
-    case WebRead = 'web:read';
-    case WebWrite = 'web:write';
     case OrganizationsRead = 'organizations:read';
     case OrganizationsWrite = 'organizations:write';
     case CustomFieldsRead = 'custom_fields:read';
@@ -51,6 +49,7 @@ enum Scope: string
     case WalletsRead = 'wallets:read';
     case WalletsWrite = 'wallets:write';
     case DisputesRead = 'disputes:read';
+    case DisputesWrite = 'disputes:write';
     case CustomerMetersRead = 'customer_meters:read';
     case CustomerSessionsWrite = 'customer_sessions:write';
     case MemberSessionsWrite = 'member_sessions:write';

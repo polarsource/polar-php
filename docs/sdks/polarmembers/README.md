@@ -1,83 +1,30 @@
-# CustomerPortal.Members
+# Customers.Members
 
 ## Overview
 
 ### Available Operations
 
-* [listMembers](#listmembers) - List Members
-* [addMember](#addmember) - Add Member
-* [removeMember](#removemember) - Remove Member
-* [updateMember](#updatemember) - Update Member
+* [create](#create) - Create Member
+* [createExternal](#createexternal) - Create Member by Customer External ID
+* [get](#get) - Get Member
+* [delete](#delete) - Delete Member
+* [update](#update) - Update Member
+* [getExternal](#getexternal) - Get Member by External ID
+* [deleteExternal](#deleteexternal) - Delete Member by External ID
+* [updateExternal](#updateexternal) - Update Member by External ID
 
-## listMembers
+## create
 
-List all members of the customer's team.
+Create a new member for a customer.
 
-Only available to owners and billing managers of team customers.
+Only B2B customers with the member management feature enabled can add members.
+The authenticated user or organization must have access to the customer's organization.
 
-### Example Usage
-
-<!-- UsageSnippet language="php" operationID="customer_portal:members:list_members" method="get" path="/v1/customer-portal/members" -->
-```php
-declare(strict_types=1);
-
-require 'vendor/autoload.php';
-
-use Polar;
-
-$sdk = Polar\Polar::builder()
-    ->setSecurity(
-        '<YOUR_BEARER_TOKEN_HERE>'
-    )
-    ->build();
-
-
-
-$responses = $sdk->customerPortal->members->listMembers(
-    page: 1,
-    limit: 10
-
-);
-
-
-foreach ($responses as $response) {
-    if ($response->statusCode === 200) {
-        // handle response
-    }
-}
-```
-
-### Parameters
-
-| Parameter                                       | Type                                            | Required                                        | Description                                     |
-| ----------------------------------------------- | ----------------------------------------------- | ----------------------------------------------- | ----------------------------------------------- |
-| `page`                                          | *?int*                                          | :heavy_minus_sign:                              | Page number, defaults to 1.                     |
-| `limit`                                         | *?int*                                          | :heavy_minus_sign:                              | Size of a page, defaults to 10. Maximum is 100. |
-
-### Response
-
-**[?Operations\CustomerPortalMembersListMembersResponse](../../Models/Operations/CustomerPortalMembersListMembersResponse.md)**
-
-### Errors
-
-| Error Type                 | Status Code                | Content Type               |
-| -------------------------- | -------------------------- | -------------------------- |
-| Errors\HTTPValidationError | 422                        | application/json           |
-| Errors\APIException        | 4XX, 5XX                   | \*/\*                      |
-
-## addMember
-
-Add a new member to the customer's team.
-
-Only available to owners and billing managers of team customers.
-
-Rules:
-- Cannot add a member with the owner role (there must be exactly one owner)
-- If a member with this email already exists, the existing member is returned
+**Scopes**: `members:write`
 
 ### Example Usage
 
-<!-- UsageSnippet language="php" operationID="customer_portal:members:add_member" method="post" path="/v1/customer-portal/members" -->
+<!-- UsageSnippet language="php" operationID="customers:members:create" method="post" path="/v1/customers/{id}/members" -->
 ```php
 declare(strict_types=1);
 
@@ -92,49 +39,113 @@ $sdk = Polar\Polar::builder()
     )
     ->build();
 
-$request = new Components\CustomerPortalMemberCreate(
-    email: 'Domenica.Schamberger@yahoo.com',
+$memberCreateFromCustomer = new Components\MemberCreateFromCustomer(
+    email: 'member@example.com',
+    name: 'Jane Doe',
+    externalId: 'usr_1337',
 );
 
-$response = $sdk->customerPortal->members->addMember(
-    request: $request
+$response = $sdk->customers->members->create(
+    id: '<value>',
+    memberCreateFromCustomer: $memberCreateFromCustomer
+
 );
 
-if ($response->customerPortalMember !== null) {
+if ($response->member !== null) {
     // handle response
 }
 ```
 
 ### Parameters
 
-| Parameter                                                                                      | Type                                                                                           | Required                                                                                       | Description                                                                                    |
-| ---------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------- |
-| `$request`                                                                                     | [Components\CustomerPortalMemberCreate](../../Models/Components/CustomerPortalMemberCreate.md) | :heavy_check_mark:                                                                             | The request object to use for the request.                                                     |
+| Parameter                                                                                  | Type                                                                                       | Required                                                                                   | Description                                                                                |
+| ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------ |
+| `id`                                                                                       | *string*                                                                                   | :heavy_check_mark:                                                                         | The customer ID.                                                                           |
+| `memberCreateFromCustomer`                                                                 | [Components\MemberCreateFromCustomer](../../Models/Components/MemberCreateFromCustomer.md) | :heavy_check_mark:                                                                         | N/A                                                                                        |
 
 ### Response
 
-**[?Operations\CustomerPortalMembersAddMemberResponse](../../Models/Operations/CustomerPortalMembersAddMemberResponse.md)**
+**[?Operations\CustomersMembersCreateResponse](../../Models/Operations/CustomersMembersCreateResponse.md)**
 
 ### Errors
 
 | Error Type                 | Status Code                | Content Type               |
 | -------------------------- | -------------------------- | -------------------------- |
+| Errors\NotPermitted        | 403                        | application/json           |
+| Errors\ResourceNotFound    | 404                        | application/json           |
 | Errors\HTTPValidationError | 422                        | application/json           |
 | Errors\APIException        | 4XX, 5XX                   | \*/\*                      |
 
-## removeMember
+## createExternal
 
-Remove a member from the team.
+Create a new member for a customer identified by its external ID.
 
-Only available to owners and billing managers of team customers.
-
-Rules:
-- Cannot remove yourself
-- Cannot remove the only owner
+**Scopes**: `members:write`
 
 ### Example Usage
 
-<!-- UsageSnippet language="php" operationID="customer_portal:members:remove_member" method="delete" path="/v1/customer-portal/members/{id}" -->
+<!-- UsageSnippet language="php" operationID="customers:members:create_external" method="post" path="/v1/customers/external/{external_id}/members" -->
+```php
+declare(strict_types=1);
+
+require 'vendor/autoload.php';
+
+use Polar;
+use Polar\Models\Components;
+
+$sdk = Polar\Polar::builder()
+    ->setSecurity(
+        '<YOUR_BEARER_TOKEN_HERE>'
+    )
+    ->build();
+
+$memberCreateFromCustomer = new Components\MemberCreateFromCustomer(
+    email: 'member@example.com',
+    name: 'Jane Doe',
+    externalId: 'usr_1337',
+);
+
+$response = $sdk->customers->members->createExternal(
+    externalId: '<id>',
+    memberCreateFromCustomer: $memberCreateFromCustomer
+
+);
+
+if ($response->member !== null) {
+    // handle response
+}
+```
+
+### Parameters
+
+| Parameter                                                                                  | Type                                                                                       | Required                                                                                   | Description                                                                                |
+| ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------ |
+| `externalId`                                                                               | *string*                                                                                   | :heavy_check_mark:                                                                         | The customer external ID.                                                                  |
+| `memberCreateFromCustomer`                                                                 | [Components\MemberCreateFromCustomer](../../Models/Components/MemberCreateFromCustomer.md) | :heavy_check_mark:                                                                         | N/A                                                                                        |
+
+### Response
+
+**[?Operations\CustomersMembersCreateExternalResponse](../../Models/Operations/CustomersMembersCreateExternalResponse.md)**
+
+### Errors
+
+| Error Type                         | Status Code                        | Content Type                       |
+| ---------------------------------- | ---------------------------------- | ---------------------------------- |
+| Errors\NotPermitted                | 403                                | application/json                   |
+| Errors\ResourceNotFound            | 404                                | application/json                   |
+| Errors\AmbiguousExternalCustomerID | 409                                | application/json                   |
+| Errors\HTTPValidationError         | 422                                | application/json                   |
+| Errors\APIException                | 4XX, 5XX                           | \*/\*                              |
+
+## get
+
+Get a member of a customer by its ID.
+
+**Scopes**: `members:read` `members:write`
+
+### Example Usage
+
+<!-- UsageSnippet language="php" operationID="customers:members:get" method="get" path="/v1/customers/{id}/members/{member_id}" -->
 ```php
 declare(strict_types=1);
 
@@ -150,8 +161,64 @@ $sdk = Polar\Polar::builder()
 
 
 
-$response = $sdk->customerPortal->members->removeMember(
-    id: 'b61c5e87-cda5-4b14-93ee-71a695f42d9d'
+$response = $sdk->customers->members->get(
+    id: '<value>',
+    memberId: 'a794a9c8-dc43-40b4-b2f5-ed16145e28ac'
+
+);
+
+if ($response->member !== null) {
+    // handle response
+}
+```
+
+### Parameters
+
+| Parameter          | Type               | Required           | Description        |
+| ------------------ | ------------------ | ------------------ | ------------------ |
+| `id`               | *string*           | :heavy_check_mark: | The customer ID.   |
+| `memberId`         | *string*           | :heavy_check_mark: | N/A                |
+
+### Response
+
+**[?Operations\CustomersMembersGetResponse](../../Models/Operations/CustomersMembersGetResponse.md)**
+
+### Errors
+
+| Error Type                 | Status Code                | Content Type               |
+| -------------------------- | -------------------------- | -------------------------- |
+| Errors\ResourceNotFound    | 404                        | application/json           |
+| Errors\HTTPValidationError | 422                        | application/json           |
+| Errors\APIException        | 4XX, 5XX                   | \*/\*                      |
+
+## delete
+
+Delete a member of a customer.
+
+**Scopes**: `members:write`
+
+### Example Usage
+
+<!-- UsageSnippet language="php" operationID="customers:members:delete" method="delete" path="/v1/customers/{id}/members/{member_id}" -->
+```php
+declare(strict_types=1);
+
+require 'vendor/autoload.php';
+
+use Polar;
+
+$sdk = Polar\Polar::builder()
+    ->setSecurity(
+        '<YOUR_BEARER_TOKEN_HERE>'
+    )
+    ->build();
+
+
+
+$response = $sdk->customers->members->delete(
+    id: '<value>',
+    memberId: 'a6d6f519-f76e-49a0-9868-b346c98100a6'
+
 );
 
 if ($response->statusCode === 200) {
@@ -163,32 +230,32 @@ if ($response->statusCode === 200) {
 
 | Parameter          | Type               | Required           | Description        |
 | ------------------ | ------------------ | ------------------ | ------------------ |
-| `id`               | *string*           | :heavy_check_mark: | N/A                |
+| `id`               | *string*           | :heavy_check_mark: | The customer ID.   |
+| `memberId`         | *string*           | :heavy_check_mark: | N/A                |
 
 ### Response
 
-**[?Operations\CustomerPortalMembersRemoveMemberResponse](../../Models/Operations/CustomerPortalMembersRemoveMemberResponse.md)**
+**[?Operations\CustomersMembersDeleteResponse](../../Models/Operations/CustomersMembersDeleteResponse.md)**
 
 ### Errors
 
 | Error Type                 | Status Code                | Content Type               |
 | -------------------------- | -------------------------- | -------------------------- |
+| Errors\ResourceNotFound    | 404                        | application/json           |
 | Errors\HTTPValidationError | 422                        | application/json           |
 | Errors\APIException        | 4XX, 5XX                   | \*/\*                      |
 
-## updateMember
+## update
 
-Update a member's role.
+Update a member of a customer.
 
-Only available to owners and billing managers of team customers.
+Only name, email and role can be updated.
 
-Rules:
-- Cannot modify your own role (to prevent self-demotion)
-- Customer must have exactly one owner at all times
+**Scopes**: `members:write`
 
 ### Example Usage
 
-<!-- UsageSnippet language="php" operationID="customer_portal:members:update_member" method="patch" path="/v1/customer-portal/members/{id}" -->
+<!-- UsageSnippet language="php" operationID="customers:members:update" method="patch" path="/v1/customers/{id}/members/{member_id}" -->
 ```php
 declare(strict_types=1);
 
@@ -203,33 +270,208 @@ $sdk = Polar\Polar::builder()
     )
     ->build();
 
-$customerPortalMemberUpdate = new Components\CustomerPortalMemberUpdate();
+$memberUpdate = new Components\MemberUpdate(
+    name: 'Jane Doe',
+);
 
-$response = $sdk->customerPortal->members->updateMember(
-    id: '8319ae11-ed5f-4642-81e4-4b40731df195',
-    customerPortalMemberUpdate: $customerPortalMemberUpdate
+$response = $sdk->customers->members->update(
+    id: '<value>',
+    memberId: 'f48ea05d-6a60-4bb1-b3d9-4b3cd7194f3a',
+    memberUpdate: $memberUpdate
 
 );
 
-if ($response->customerPortalMember !== null) {
+if ($response->member !== null) {
     // handle response
 }
 ```
 
 ### Parameters
 
-| Parameter                                                                                      | Type                                                                                           | Required                                                                                       | Description                                                                                    |
-| ---------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------- |
-| `id`                                                                                           | *string*                                                                                       | :heavy_check_mark:                                                                             | N/A                                                                                            |
-| `customerPortalMemberUpdate`                                                                   | [Components\CustomerPortalMemberUpdate](../../Models/Components/CustomerPortalMemberUpdate.md) | :heavy_check_mark:                                                                             | N/A                                                                                            |
+| Parameter                                                          | Type                                                               | Required                                                           | Description                                                        |
+| ------------------------------------------------------------------ | ------------------------------------------------------------------ | ------------------------------------------------------------------ | ------------------------------------------------------------------ |
+| `id`                                                               | *string*                                                           | :heavy_check_mark:                                                 | The customer ID.                                                   |
+| `memberId`                                                         | *string*                                                           | :heavy_check_mark:                                                 | N/A                                                                |
+| `memberUpdate`                                                     | [Components\MemberUpdate](../../Models/Components/MemberUpdate.md) | :heavy_check_mark:                                                 | N/A                                                                |
 
 ### Response
 
-**[?Operations\CustomerPortalMembersUpdateMemberResponse](../../Models/Operations/CustomerPortalMembersUpdateMemberResponse.md)**
+**[?Operations\CustomersMembersUpdateResponse](../../Models/Operations/CustomersMembersUpdateResponse.md)**
 
 ### Errors
 
 | Error Type                 | Status Code                | Content Type               |
 | -------------------------- | -------------------------- | -------------------------- |
+| Errors\ResourceNotFound    | 404                        | application/json           |
 | Errors\HTTPValidationError | 422                        | application/json           |
 | Errors\APIException        | 4XX, 5XX                   | \*/\*                      |
+
+## getExternal
+
+Get a member by external ID for a customer identified by its external ID.
+
+**Scopes**: `members:read` `members:write`
+
+### Example Usage
+
+<!-- UsageSnippet language="php" operationID="customers:members:get_external" method="get" path="/v1/customers/external/{external_id}/members/{member_external_id}" -->
+```php
+declare(strict_types=1);
+
+require 'vendor/autoload.php';
+
+use Polar;
+
+$sdk = Polar\Polar::builder()
+    ->setSecurity(
+        '<YOUR_BEARER_TOKEN_HERE>'
+    )
+    ->build();
+
+
+
+$response = $sdk->customers->members->getExternal(
+    externalId: '<id>',
+    memberExternalId: '<id>'
+
+);
+
+if ($response->member !== null) {
+    // handle response
+}
+```
+
+### Parameters
+
+| Parameter                 | Type                      | Required                  | Description               |
+| ------------------------- | ------------------------- | ------------------------- | ------------------------- |
+| `externalId`              | *string*                  | :heavy_check_mark:        | The customer external ID. |
+| `memberExternalId`        | *string*                  | :heavy_check_mark:        | The member external ID.   |
+
+### Response
+
+**[?Operations\CustomersMembersGetExternalResponse](../../Models/Operations/CustomersMembersGetExternalResponse.md)**
+
+### Errors
+
+| Error Type                         | Status Code                        | Content Type                       |
+| ---------------------------------- | ---------------------------------- | ---------------------------------- |
+| Errors\ResourceNotFound            | 404                                | application/json                   |
+| Errors\AmbiguousExternalCustomerID | 409                                | application/json                   |
+| Errors\HTTPValidationError         | 422                                | application/json                   |
+| Errors\APIException                | 4XX, 5XX                           | \*/\*                              |
+
+## deleteExternal
+
+Delete a member by external ID for a customer identified by its external ID.
+
+**Scopes**: `members:write`
+
+### Example Usage
+
+<!-- UsageSnippet language="php" operationID="customers:members:delete_external" method="delete" path="/v1/customers/external/{external_id}/members/{member_external_id}" -->
+```php
+declare(strict_types=1);
+
+require 'vendor/autoload.php';
+
+use Polar;
+
+$sdk = Polar\Polar::builder()
+    ->setSecurity(
+        '<YOUR_BEARER_TOKEN_HERE>'
+    )
+    ->build();
+
+
+
+$response = $sdk->customers->members->deleteExternal(
+    externalId: '<id>',
+    memberExternalId: '<id>'
+
+);
+
+if ($response->statusCode === 200) {
+    // handle response
+}
+```
+
+### Parameters
+
+| Parameter                 | Type                      | Required                  | Description               |
+| ------------------------- | ------------------------- | ------------------------- | ------------------------- |
+| `externalId`              | *string*                  | :heavy_check_mark:        | The customer external ID. |
+| `memberExternalId`        | *string*                  | :heavy_check_mark:        | The member external ID.   |
+
+### Response
+
+**[?Operations\CustomersMembersDeleteExternalResponse](../../Models/Operations/CustomersMembersDeleteExternalResponse.md)**
+
+### Errors
+
+| Error Type                         | Status Code                        | Content Type                       |
+| ---------------------------------- | ---------------------------------- | ---------------------------------- |
+| Errors\ResourceNotFound            | 404                                | application/json                   |
+| Errors\AmbiguousExternalCustomerID | 409                                | application/json                   |
+| Errors\HTTPValidationError         | 422                                | application/json                   |
+| Errors\APIException                | 4XX, 5XX                           | \*/\*                              |
+
+## updateExternal
+
+Update a member by external ID for a customer identified by its external ID.
+
+**Scopes**: `members:write`
+
+### Example Usage
+
+<!-- UsageSnippet language="php" operationID="customers:members:update_external" method="patch" path="/v1/customers/external/{external_id}/members/{member_external_id}" -->
+```php
+declare(strict_types=1);
+
+require 'vendor/autoload.php';
+
+use Polar;
+use Polar\Models\Components;
+
+$sdk = Polar\Polar::builder()
+    ->setSecurity(
+        '<YOUR_BEARER_TOKEN_HERE>'
+    )
+    ->build();
+
+$memberUpdate = new Components\MemberUpdate(
+    name: 'Jane Doe',
+);
+
+$response = $sdk->customers->members->updateExternal(
+    externalId: '<id>',
+    memberExternalId: '<id>',
+    memberUpdate: $memberUpdate
+
+);
+
+if ($response->member !== null) {
+    // handle response
+}
+```
+
+### Parameters
+
+| Parameter                                                          | Type                                                               | Required                                                           | Description                                                        |
+| ------------------------------------------------------------------ | ------------------------------------------------------------------ | ------------------------------------------------------------------ | ------------------------------------------------------------------ |
+| `externalId`                                                       | *string*                                                           | :heavy_check_mark:                                                 | The customer external ID.                                          |
+| `memberExternalId`                                                 | *string*                                                           | :heavy_check_mark:                                                 | The member external ID.                                            |
+| `memberUpdate`                                                     | [Components\MemberUpdate](../../Models/Components/MemberUpdate.md) | :heavy_check_mark:                                                 | N/A                                                                |
+
+### Response
+
+**[?Operations\CustomersMembersUpdateExternalResponse](../../Models/Operations/CustomersMembersUpdateExternalResponse.md)**
+
+### Errors
+
+| Error Type                         | Status Code                        | Content Type                       |
+| ---------------------------------- | ---------------------------------- | ---------------------------------- |
+| Errors\ResourceNotFound            | 404                                | application/json                   |
+| Errors\AmbiguousExternalCustomerID | 409                                | application/json                   |
+| Errors\HTTPValidationError         | 422                                | application/json                   |
+| Errors\APIException                | 4XX, 5XX                           | \*/\*                              |

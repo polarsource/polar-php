@@ -113,11 +113,11 @@ class DiscountProduct
     /**
      * The recurring interval of the product. If `None`, the product is a one-time purchase.
      *
-     * @var ?\Polar\Models\Components\SubscriptionRecurringInterval $recurringInterval
+     * @var ?\Polar\Models\Components\RecurringInterval $recurringInterval
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('recurring_interval')]
-    #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\SubscriptionRecurringInterval|null')]
-    public ?SubscriptionRecurringInterval $recurringInterval;
+    #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\RecurringInterval|null')]
+    public ?RecurringInterval $recurringInterval;
 
     /**
      * Number of interval units of the subscription. If this is set to 1 the charge will happen every interval (e.g. every month), if set to 2 it will be every other month, and so on. None for one-time products.
@@ -126,6 +126,23 @@ class DiscountProduct
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('recurring_interval_count')]
     public ?int $recurringIntervalCount;
+
+    /**
+     * The meter cycle of the product, independent of the billing interval. If `None`, metered concerns follow the billing interval.
+     *
+     * @var ?\Polar\Models\Components\RecurringInterval $meterInterval
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('meter_interval')]
+    #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\RecurringInterval|null')]
+    public ?RecurringInterval $meterInterval;
+
+    /**
+     * Number of meter interval units. None when no meter cycle is set.
+     *
+     * @var ?int $meterIntervalCount
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('meter_interval_count')]
+    public ?int $meterIntervalCount;
 
     /**
      * @param  array<string, string|int|float|bool>  $metadata
@@ -140,11 +157,13 @@ class DiscountProduct
      * @param  ?\Polar\Models\Components\TrialInterval  $trialInterval
      * @param  ?int  $trialIntervalCount
      * @param  ?string  $description
-     * @param  ?\Polar\Models\Components\SubscriptionRecurringInterval  $recurringInterval
+     * @param  ?\Polar\Models\Components\RecurringInterval  $recurringInterval
      * @param  ?int  $recurringIntervalCount
+     * @param  ?\Polar\Models\Components\RecurringInterval  $meterInterval
+     * @param  ?int  $meterIntervalCount
      * @phpstan-pure
      */
-    public function __construct(array $metadata, string $id, \DateTime $createdAt, string $name, ProductVisibility $visibility, bool $isRecurring, bool $isArchived, string $organizationId, ?\DateTime $modifiedAt = null, ?TrialInterval $trialInterval = null, ?int $trialIntervalCount = null, ?string $description = null, ?SubscriptionRecurringInterval $recurringInterval = null, ?int $recurringIntervalCount = null)
+    public function __construct(array $metadata, string $id, \DateTime $createdAt, string $name, ProductVisibility $visibility, bool $isRecurring, bool $isArchived, string $organizationId, ?\DateTime $modifiedAt = null, ?TrialInterval $trialInterval = null, ?int $trialIntervalCount = null, ?string $description = null, ?RecurringInterval $recurringInterval = null, ?int $recurringIntervalCount = null, ?RecurringInterval $meterInterval = null, ?int $meterIntervalCount = null)
     {
         $this->metadata = $metadata;
         $this->id = $id;
@@ -160,5 +179,7 @@ class DiscountProduct
         $this->description = $description;
         $this->recurringInterval = $recurringInterval;
         $this->recurringIntervalCount = $recurringIntervalCount;
+        $this->meterInterval = $meterInterval;
+        $this->meterIntervalCount = $meterIntervalCount;
     }
 }

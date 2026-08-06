@@ -151,6 +151,14 @@ class CheckoutLink
     public ?string $discountId;
 
     /**
+     * Preconfigured number of seats for seat-based pricing. When set, checkout sessions created from this link are locked to this number of seats and the customer won't be able to change it. All products on the link must use seat-based pricing and allow this number of seats. If the products no longer accommodate this value when the link is opened, it'll be ignored.
+     *
+     * @var ?int $seats
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('seats')]
+    public ?int $seats;
+
+    /**
      *
      * @var \Polar\Models\Components\DiscountFixedOnceForeverDurationBase|\Polar\Models\Components\DiscountFixedRepeatDurationBase|\Polar\Models\Components\DiscountPercentageOnceForeverDurationBase|\Polar\Models\Components\DiscountPercentageRepeatDurationBase|null $discount
      */
@@ -176,10 +184,11 @@ class CheckoutLink
      * @param  ?string  $returnUrl
      * @param  ?string  $label
      * @param  ?string  $discountId
+     * @param  ?int  $seats
      * @param  \Polar\Models\Components\DiscountFixedOnceForeverDurationBase|\Polar\Models\Components\DiscountFixedRepeatDurationBase|\Polar\Models\Components\DiscountPercentageOnceForeverDurationBase|\Polar\Models\Components\DiscountPercentageRepeatDurationBase|null  $discount
      * @phpstan-pure
      */
-    public function __construct(string $id, \DateTime $createdAt, array $metadata, PaymentProcessor $paymentProcessor, string $clientSecret, bool $allowDiscountCodes, bool $requireBillingAddress, string $organizationId, array $products, string $url, ?\DateTime $modifiedAt = null, ?TrialInterval $trialInterval = null, ?int $trialIntervalCount = null, ?string $successUrl = null, ?string $returnUrl = null, ?string $label = null, ?string $discountId = null, DiscountFixedOnceForeverDurationBase|DiscountFixedRepeatDurationBase|DiscountPercentageOnceForeverDurationBase|DiscountPercentageRepeatDurationBase|null $discount = null)
+    public function __construct(string $id, \DateTime $createdAt, array $metadata, PaymentProcessor $paymentProcessor, string $clientSecret, bool $allowDiscountCodes, bool $requireBillingAddress, string $organizationId, array $products, string $url, ?\DateTime $modifiedAt = null, ?TrialInterval $trialInterval = null, ?int $trialIntervalCount = null, ?string $successUrl = null, ?string $returnUrl = null, ?string $label = null, ?string $discountId = null, ?int $seats = null, DiscountFixedOnceForeverDurationBase|DiscountFixedRepeatDurationBase|DiscountPercentageOnceForeverDurationBase|DiscountPercentageRepeatDurationBase|null $discount = null)
     {
         $this->id = $id;
         $this->createdAt = $createdAt;
@@ -198,6 +207,7 @@ class CheckoutLink
         $this->returnUrl = $returnUrl;
         $this->label = $label;
         $this->discountId = $discountId;
+        $this->seats = $seats;
         $this->discount = $discount;
     }
 }

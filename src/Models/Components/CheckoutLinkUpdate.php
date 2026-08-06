@@ -98,6 +98,15 @@ class CheckoutLinkUpdate
     public ?string $discountId = null;
 
     /**
+     * Preconfigured number of seats for seat-based pricing. When set, checkout sessions created from this link are locked to this number of seats and the customer won't be able to change it. All products on the link must use seat-based pricing and allow this number of seats. If the products no longer accommodate this value when the link is opened, it'll be ignored.
+     *
+     * @var ?int $seats
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('seats')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
+    public ?int $seats = null;
+
+    /**
      * URL where the customer will be redirected after a successful payment.You can add the `checkout_id={CHECKOUT_ID}` query parameter to retrieve the checkout session id.
      *
      * @var ?string $successUrl
@@ -124,11 +133,12 @@ class CheckoutLinkUpdate
      * @param  ?bool  $allowDiscountCodes
      * @param  ?bool  $requireBillingAddress
      * @param  ?string  $discountId
+     * @param  ?int  $seats
      * @param  ?string  $successUrl
      * @param  ?string  $returnUrl
      * @phpstan-pure
      */
-    public function __construct(?array $metadata = null, ?TrialInterval $trialInterval = null, ?int $trialIntervalCount = null, ?array $products = null, ?string $label = null, ?bool $allowDiscountCodes = null, ?bool $requireBillingAddress = null, ?string $discountId = null, ?string $successUrl = null, ?string $returnUrl = null)
+    public function __construct(?array $metadata = null, ?TrialInterval $trialInterval = null, ?int $trialIntervalCount = null, ?array $products = null, ?string $label = null, ?bool $allowDiscountCodes = null, ?bool $requireBillingAddress = null, ?string $discountId = null, ?int $seats = null, ?string $successUrl = null, ?string $returnUrl = null)
     {
         $this->metadata = $metadata;
         $this->trialInterval = $trialInterval;
@@ -138,6 +148,7 @@ class CheckoutLinkUpdate
         $this->allowDiscountCodes = $allowDiscountCodes;
         $this->requireBillingAddress = $requireBillingAddress;
         $this->discountId = $discountId;
+        $this->seats = $seats;
         $this->successUrl = $successUrl;
         $this->returnUrl = $returnUrl;
     }

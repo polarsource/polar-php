@@ -3,31 +3,13 @@
 
 ## Supported Types
 
-### `Components\SubscriptionUpdateProduct`
+### `Components\SubscriptionUpdateBase`
 
 ```php
 /**
-* @var \Polar\Models\Components\SubscriptionUpdateProduct
+* @var \Polar\Models\Components\SubscriptionUpdateBase
 */
-Components\SubscriptionUpdateProduct $value = /* values here */
-```
-
-### `Components\SubscriptionUpdateDiscount`
-
-```php
-/**
-* @var \Polar\Models\Components\SubscriptionUpdateDiscount
-*/
-Components\SubscriptionUpdateDiscount $value = /* values here */
-```
-
-### `Components\SubscriptionUpdateTrial`
-
-```php
-/**
-* @var \Polar\Models\Components\SubscriptionUpdateTrial
-*/
-Components\SubscriptionUpdateTrial $value = /* values here */
+Components\SubscriptionUpdateBase $value = /* values here */
 ```
 
 ### `Components\SubscriptionUpdateSeats`
@@ -64,5 +46,32 @@ Components\SubscriptionCancel $value = /* values here */
 * @var \Polar\Models\Components\SubscriptionRevoke
 */
 Components\SubscriptionRevoke $value = /* values here */
+```
+
+### `Components\SubscriptionPause`
+
+```php
+/**
+* @var \Polar\Models\Components\SubscriptionPause
+*/
+Components\SubscriptionPause $value = /* values here */
+```
+
+### `Components\SubscriptionResume`
+
+```php
+/**
+* @var \Polar\Models\Components\SubscriptionResume
+*/
+Components\SubscriptionResume $value = /* values here */
+```
+
+### `Components\SubscriptionUpdateClear`
+
+```php
+/**
+* @var \Polar\Models\Components\SubscriptionUpdateClear
+*/
+Components\SubscriptionUpdateClear $value = /* values here */
 ```
 

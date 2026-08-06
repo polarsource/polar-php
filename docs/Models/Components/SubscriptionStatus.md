@@ -12,3 +12,4 @@
 | `PastDue`           | past_due            |
 | `Canceled`          | canceled            |
 | `Unpaid`            | unpaid              |
+| `Paused`            | paused              |

@@ -5,6 +5,7 @@
 
 | Name                | Value               |
 | ------------------- | ------------------- |
+| `Draft`             | draft               |
 | `Pending`           | pending             |
 | `Paid`              | paid                |
 | `Refunded`          | refunded            |

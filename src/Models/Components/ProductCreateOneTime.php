@@ -20,12 +20,12 @@ class ProductCreateOneTime
     public string $name;
 
     /**
-     * List of available prices for this product. It should contain at most one static price (fixed, custom or free), and any number of metered prices. Metered prices are not supported on one-time purchase products.
+     * List of available prices for this product. It may combine at most one fixed price with one seat-based price (billed as `fixed + seat_charge`), or contain a single custom or free price, plus any number of metered prices. A free price cannot be combined with other prices, and a custom price cannot be combined with a fixed or seat-based price. Metered prices are not supported on one-time purchase products.
      *
-     * @var array<\Polar\Models\Components\ProductPriceFixedCreate|\Polar\Models\Components\ProductPriceCustomCreate|\Polar\Models\Components\ProductPriceFreeCreate|\Polar\Models\Components\ProductPriceSeatBasedCreate|\Polar\Models\Components\ProductPriceMeteredUnitCreate> $prices
+     * @var array<\Polar\Models\Components\ProductPriceFixedCreate|\Polar\Models\Components\ProductPriceCustomCreate|\Polar\Models\Components\ProductPriceSeatBasedCreate|\Polar\Models\Components\ProductPriceMeteredUnitCreate> $prices
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('prices')]
-    #[\Speakeasy\Serializer\Annotation\Type('array<\Polar\Models\Components\ProductPriceFixedCreate|\Polar\Models\Components\ProductPriceCustomCreate|\Polar\Models\Components\ProductPriceFreeCreate|\Polar\Models\Components\ProductPriceSeatBasedCreate|\Polar\Models\Components\ProductPriceMeteredUnitCreate>')]
+    #[\Speakeasy\Serializer\Annotation\Type('array<\Polar\Models\Components\ProductPriceFixedCreate|\Polar\Models\Components\ProductPriceCustomCreate|\Polar\Models\Components\ProductPriceSeatBasedCreate|\Polar\Models\Components\ProductPriceMeteredUnitCreate>')]
     public array $prices;
 
     /**
@@ -118,7 +118,7 @@ class ProductCreateOneTime
 
     /**
      * @param  string  $name
-     * @param  array<\Polar\Models\Components\ProductPriceFixedCreate|\Polar\Models\Components\ProductPriceCustomCreate|\Polar\Models\Components\ProductPriceFreeCreate|\Polar\Models\Components\ProductPriceSeatBasedCreate|\Polar\Models\Components\ProductPriceMeteredUnitCreate>  $prices
+     * @param  array<\Polar\Models\Components\ProductPriceFixedCreate|\Polar\Models\Components\ProductPriceCustomCreate|\Polar\Models\Components\ProductPriceSeatBasedCreate|\Polar\Models\Components\ProductPriceMeteredUnitCreate>  $prices
      * @param  ?array<string, string|int|float|bool>  $metadata
      * @param  ?\Polar\Models\Components\ProductVisibility  $visibility
      * @param  ?array<\Polar\Models\Components\AttachedCustomFieldCreate>  $attachedCustomFields

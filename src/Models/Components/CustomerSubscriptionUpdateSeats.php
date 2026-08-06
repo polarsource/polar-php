@@ -20,23 +20,11 @@ class CustomerSubscriptionUpdateSeats
     public int $seats;
 
     /**
-     * Determine how to handle the proration billing. If not provided, will use the default organization setting.
-     *
-     * @var ?\Polar\Models\Components\SubscriptionProrationBehavior $prorationBehavior
-     */
-    #[\Speakeasy\Serializer\Annotation\SerializedName('proration_behavior')]
-    #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\SubscriptionProrationBehavior|null')]
-    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
-    public ?SubscriptionProrationBehavior $prorationBehavior = null;
-
-    /**
      * @param  int  $seats
-     * @param  ?\Polar\Models\Components\SubscriptionProrationBehavior  $prorationBehavior
      * @phpstan-pure
      */
-    public function __construct(int $seats, ?SubscriptionProrationBehavior $prorationBehavior = null)
+    public function __construct(int $seats)
     {
         $this->seats = $seats;
-        $this->prorationBehavior = $prorationBehavior;
     }
 }

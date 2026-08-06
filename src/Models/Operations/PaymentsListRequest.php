@@ -37,6 +37,14 @@ class PaymentsListRequest
     public string|array|null $orderId = null;
 
     /**
+     * Filter by customer ID.
+     *
+     * @var string|array<string>|null $customerId
+     */
+    #[SpeakeasyMetadata('queryParam:style=form,explode=true,name=customer_id')]
+    public string|array|null $customerId = null;
+
+    /**
      * Filter by payment status.
      *
      * @var \Polar\Models\Components\PaymentStatus|array<\Polar\Models\Components\PaymentStatus>|null $status
@@ -90,17 +98,19 @@ class PaymentsListRequest
      * @param  string|array<string>|null  $organizationId
      * @param  string|array<string>|null  $checkoutId
      * @param  string|array<string>|null  $orderId
+     * @param  string|array<string>|null  $customerId
      * @param  \Polar\Models\Components\PaymentStatus|array<\Polar\Models\Components\PaymentStatus>|null  $status
      * @param  string|array<string>|null  $method
      * @param  string|array<string>|null  $customerEmail
      * @param  ?array<\Polar\Models\Components\PaymentSortProperty>  $sorting
      * @phpstan-pure
      */
-    public function __construct(string|array|null $organizationId = null, string|array|null $checkoutId = null, string|array|null $orderId = null, Components\PaymentStatus|array|null $status = null, string|array|null $method = null, string|array|null $customerEmail = null, ?array $sorting = null, ?int $page = 1, ?int $limit = 10)
+    public function __construct(string|array|null $organizationId = null, string|array|null $checkoutId = null, string|array|null $orderId = null, string|array|null $customerId = null, Components\PaymentStatus|array|null $status = null, string|array|null $method = null, string|array|null $customerEmail = null, ?array $sorting = null, ?int $page = 1, ?int $limit = 10)
     {
         $this->organizationId = $organizationId;
         $this->checkoutId = $checkoutId;
         $this->orderId = $orderId;
+        $this->customerId = $customerId;
         $this->status = $status;
         $this->method = $method;
         $this->customerEmail = $customerEmail;

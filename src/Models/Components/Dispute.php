@@ -82,6 +82,14 @@ class Dispute
     public string $currency;
 
     /**
+     * Whether the evidence submission deadline has passed.
+     *
+     * @var bool $pastDue
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('past_due')]
+    public bool $pastDue;
+
+    /**
      * The ID of the order associated with the dispute.
      *
      * @var string $orderId
@@ -98,12 +106,44 @@ class Dispute
     public string $paymentId;
 
     /**
+     *
+     * @var \Polar\Models\Components\DisputeCustomer $customer
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('customer')]
+    #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\DisputeCustomer')]
+    public DisputeCustomer $customer;
+
+    /**
      * Last modification timestamp of the object.
      *
      * @var ?\DateTime $modifiedAt
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('modified_at')]
     public ?\DateTime $modifiedAt;
+
+    /**
+     * The reason for the dispute as reported by the card network (e.g. `fraudulent`, `product_not_received`). `None` until the processor reports it.
+     *
+     * @var ?string $reason
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('reason')]
+    public ?string $reason;
+
+    /**
+     * Deadline to submit evidence in response to the dispute. `None` when no response is required.
+     *
+     * @var ?\DateTime $evidenceDueBy
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('evidence_due_by')]
+    public ?\DateTime $evidenceDueBy;
+
+    /**
+     * The ID of the support case for this dispute, if one was opened.
+     *
+     * @var ?string $caseId
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('case_id')]
+    public ?string $caseId;
 
     /**
      * @param  \DateTime  $createdAt
@@ -114,12 +154,17 @@ class Dispute
      * @param  int  $amount
      * @param  int  $taxAmount
      * @param  string  $currency
+     * @param  bool  $pastDue
      * @param  string  $orderId
      * @param  string  $paymentId
+     * @param  \Polar\Models\Components\DisputeCustomer  $customer
      * @param  ?\DateTime  $modifiedAt
+     * @param  ?string  $reason
+     * @param  ?\DateTime  $evidenceDueBy
+     * @param  ?string  $caseId
      * @phpstan-pure
      */
-    public function __construct(\DateTime $createdAt, string $id, DisputeStatus $status, bool $resolved, bool $closed, int $amount, int $taxAmount, string $currency, string $orderId, string $paymentId, ?\DateTime $modifiedAt = null)
+    public function __construct(\DateTime $createdAt, string $id, DisputeStatus $status, bool $resolved, bool $closed, int $amount, int $taxAmount, string $currency, bool $pastDue, string $orderId, string $paymentId, DisputeCustomer $customer, ?\DateTime $modifiedAt = null, ?string $reason = null, ?\DateTime $evidenceDueBy = null, ?string $caseId = null)
     {
         $this->createdAt = $createdAt;
         $this->id = $id;
@@ -129,8 +174,13 @@ class Dispute
         $this->amount = $amount;
         $this->taxAmount = $taxAmount;
         $this->currency = $currency;
+        $this->pastDue = $pastDue;
         $this->orderId = $orderId;
         $this->paymentId = $paymentId;
+        $this->customer = $customer;
         $this->modifiedAt = $modifiedAt;
+        $this->reason = $reason;
+        $this->evidenceDueBy = $evidenceDueBy;
+        $this->caseId = $caseId;
     }
 }

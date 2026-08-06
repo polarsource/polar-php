@@ -27,6 +27,7 @@ declare(strict_types=1);
 require 'vendor/autoload.php';
 
 use Polar;
+use Polar\Models\Operations;
 
 $sdk = Polar\Polar::builder()
     ->setSecurity(
@@ -34,13 +35,12 @@ $sdk = Polar\Polar::builder()
     )
     ->build();
 
-
+$request = new Operations\LicenseKeysListRequest(
+    organizationId: '1dbfc517-0bbf-4301-9ba8-555ca42b9737',
+);
 
 $responses = $sdk->licenseKeys->list(
-    organizationId: '1dbfc517-0bbf-4301-9ba8-555ca42b9737',
-    page: 1,
-    limit: 10
-
+    request: $request
 );
 
 
@@ -53,12 +53,9 @@ foreach ($responses as $response) {
 
 ### Parameters
 
-| Parameter                                                                                     | Type                                                                                          | Required                                                                                      | Description                                                                                   |
-| --------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------- |
-| `organizationId`                                                                              | [string\|array\|null](../../Models/Operations/LicenseKeysListQueryParamOrganizationIDFilter.md) | :heavy_minus_sign:                                                                            | Filter by organization ID.                                                                    |
-| `benefitId`                                                                                   | [string\|array\|null](../../Models/Operations/QueryParamBenefitIDFilter.md)                   | :heavy_minus_sign:                                                                            | Filter by benefit ID.                                                                         |
-| `page`                                                                                        | *?int*                                                                                        | :heavy_minus_sign:                                                                            | Page number, defaults to 1.                                                                   |
-| `limit`                                                                                       | *?int*                                                                                        | :heavy_minus_sign:                                                                            | Size of a page, defaults to 10. Maximum is 100.                                               |
+| Parameter                                                                              | Type                                                                                   | Required                                                                               | Description                                                                            |
+| -------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- |
+| `$request`                                                                             | [Operations\LicenseKeysListRequest](../../Models/Operations/LicenseKeysListRequest.md) | :heavy_check_mark:                                                                     | The request object to use for the request.                                             |
 
 ### Response
 

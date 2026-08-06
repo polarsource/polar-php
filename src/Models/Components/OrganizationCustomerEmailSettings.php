@@ -55,6 +55,20 @@ class OrganizationCustomerEmailSettings
 
     /**
      *
+     * @var bool $subscriptionPaused
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('subscription_paused')]
+    public bool $subscriptionPaused;
+
+    /**
+     *
+     * @var bool $subscriptionResumed
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('subscription_resumed')]
+    public bool $subscriptionResumed;
+
+    /**
+     *
      * @var bool $subscriptionRenewalReminder
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('subscription_renewal_reminder')]
@@ -95,6 +109,8 @@ class OrganizationCustomerEmailSettings
      * @param  bool  $subscriptionCycled
      * @param  bool  $subscriptionCycledAfterTrial
      * @param  bool  $subscriptionPastDue
+     * @param  bool  $subscriptionPaused
+     * @param  bool  $subscriptionResumed
      * @param  bool  $subscriptionRenewalReminder
      * @param  bool  $subscriptionRevoked
      * @param  bool  $subscriptionTrialConversionReminder
@@ -102,7 +118,7 @@ class OrganizationCustomerEmailSettings
      * @param  bool  $subscriptionUpdated
      * @phpstan-pure
      */
-    public function __construct(bool $orderConfirmation, bool $subscriptionCancellation, bool $subscriptionConfirmation, bool $subscriptionCycled, bool $subscriptionCycledAfterTrial, bool $subscriptionPastDue, bool $subscriptionRenewalReminder, bool $subscriptionRevoked, bool $subscriptionTrialConversionReminder, bool $subscriptionUncanceled, bool $subscriptionUpdated)
+    public function __construct(bool $orderConfirmation, bool $subscriptionCancellation, bool $subscriptionConfirmation, bool $subscriptionCycled, bool $subscriptionCycledAfterTrial, bool $subscriptionPastDue, bool $subscriptionPaused, bool $subscriptionResumed, bool $subscriptionRenewalReminder, bool $subscriptionRevoked, bool $subscriptionTrialConversionReminder, bool $subscriptionUncanceled, bool $subscriptionUpdated)
     {
         $this->orderConfirmation = $orderConfirmation;
         $this->subscriptionCancellation = $subscriptionCancellation;
@@ -110,6 +126,8 @@ class OrganizationCustomerEmailSettings
         $this->subscriptionCycled = $subscriptionCycled;
         $this->subscriptionCycledAfterTrial = $subscriptionCycledAfterTrial;
         $this->subscriptionPastDue = $subscriptionPastDue;
+        $this->subscriptionPaused = $subscriptionPaused;
+        $this->subscriptionResumed = $subscriptionResumed;
         $this->subscriptionRenewalReminder = $subscriptionRenewalReminder;
         $this->subscriptionRevoked = $subscriptionRevoked;
         $this->subscriptionTrialConversionReminder = $subscriptionTrialConversionReminder;

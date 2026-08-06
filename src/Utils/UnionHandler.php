@@ -75,6 +75,10 @@ final class UnionHandler implements SubscribingHandlerInterface
                 } else {
                     return $this->matchAssociativeArrayType($data, $type, $context);
                 }
+            } elseif (is_array($data)) {
+                $resolvedType = ['name' => 'array', 'params' => []];
+            } elseif ($this->paramsLookLikeUnionDiscriminator($type)) {
+                $resolvedType = ['name' => get_class($data), 'params' => []];
             } else {
                 $resolvedType = null;
                 foreach ($type['params'] as $possibleType) {
@@ -109,7 +113,7 @@ final class UnionHandler implements SubscribingHandlerInterface
 
         // if three params exist, it may mean that there was a union discriminator set for this type.
         // It also may mean that there are three possible types.
-        if (count($type['params']) == 3 && $this->paramsLookLikeUnionDiscriminator($type)) {
+        if ($this->paramsLookLikeUnionDiscriminator($type)) {
             $lookupField = $type['params'][1];
             if (empty($data[$lookupField])) {
                 throw new NonVisitableTypeException(sprintf('Union Discriminator Field "%s" not found in data', $lookupField));
@@ -180,11 +184,11 @@ final class UnionHandler implements SubscribingHandlerInterface
      */
     private function paramsLookLikeUnionDiscriminator(array $type): bool
     {
-        // if the first param is null, then the second and third parameters
-        // will contain the discriminator details.
-        $first = $type['params'][0];
-
-        return $first === null;
+        // Discriminated unions are encoded as a fixed [null, field, map] triple:
+        //   params[0] = null sentinel
+        //   params[1] = discriminator field name
+        //   params[2] = mapping of discriminator value -> FQCN
+        return count($type['params']) === 3 && $type['params'][0] === null;
     }
 
     /**

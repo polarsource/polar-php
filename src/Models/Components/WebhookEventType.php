@@ -35,6 +35,8 @@ enum WebhookEventType: string
     case SubscriptionUncanceled = 'subscription.uncanceled';
     case SubscriptionRevoked = 'subscription.revoked';
     case SubscriptionPastDue = 'subscription.past_due';
+    case SubscriptionPaused = 'subscription.paused';
+    case SubscriptionResumed = 'subscription.resumed';
     case RefundCreated = 'refund.created';
     case RefundUpdated = 'refund.updated';
     case ProductCreated = 'product.created';

@@ -46,11 +46,11 @@ class SubscriptionUpdatedEvent
 
     /**
      *
-     * @var \Polar\Models\Components\SubscriptionUpdatedProductMetadata|\Polar\Models\Components\SubscriptionUpdatedDiscountMetadata|\Polar\Models\Components\SubscriptionUpdatedTrialMetadata|\Polar\Models\Components\SubscriptionUpdatedSeatsMetadata|\Polar\Models\Components\SubscriptionUpdatedBillingPeriodMetadata $metadata
+     * @var \Polar\Models\Components\SubscriptionUpdatedMetadata $metadata
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('metadata')]
-    #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\SubscriptionUpdatedProductMetadata|\Polar\Models\Components\SubscriptionUpdatedDiscountMetadata|\Polar\Models\Components\SubscriptionUpdatedTrialMetadata|\Polar\Models\Components\SubscriptionUpdatedSeatsMetadata|\Polar\Models\Components\SubscriptionUpdatedBillingPeriodMetadata')]
-    public SubscriptionUpdatedProductMetadata|SubscriptionUpdatedDiscountMetadata|SubscriptionUpdatedTrialMetadata|SubscriptionUpdatedSeatsMetadata|SubscriptionUpdatedBillingPeriodMetadata $metadata;
+    #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\SubscriptionUpdatedMetadata')]
+    public SubscriptionUpdatedMetadata $metadata;
 
     /**
      * ID of the customer in your Polar organization associated with the event.
@@ -137,7 +137,7 @@ class SubscriptionUpdatedEvent
      * @param  string  $label
      * @param  string  $source
      * @param  string  $name
-     * @param  \Polar\Models\Components\SubscriptionUpdatedProductMetadata|\Polar\Models\Components\SubscriptionUpdatedDiscountMetadata|\Polar\Models\Components\SubscriptionUpdatedTrialMetadata|\Polar\Models\Components\SubscriptionUpdatedSeatsMetadata|\Polar\Models\Components\SubscriptionUpdatedBillingPeriodMetadata  $metadata
+     * @param  \Polar\Models\Components\SubscriptionUpdatedMetadata  $metadata
      * @param  ?string  $customerId
      * @param  \Polar\Models\Components\CustomerIndividual|\Polar\Models\Components\CustomerTeam|null  $customer
      * @param  ?string  $externalCustomerId
@@ -147,7 +147,7 @@ class SubscriptionUpdatedEvent
      * @param  ?string  $parentId
      * @phpstan-pure
      */
-    public function __construct(string $id, \DateTime $timestamp, string $organizationId, string $label, SubscriptionUpdatedProductMetadata|SubscriptionUpdatedDiscountMetadata|SubscriptionUpdatedTrialMetadata|SubscriptionUpdatedSeatsMetadata|SubscriptionUpdatedBillingPeriodMetadata $metadata, ?string $customerId = null, CustomerIndividual|CustomerTeam|null $customer = null, ?string $externalCustomerId = null, ?string $memberId = null, ?string $externalMemberId = null, ?string $parentId = null, string $source = 'system', string $name = 'subscription.updated', ?int $childCount = 0)
+    public function __construct(string $id, \DateTime $timestamp, string $organizationId, string $label, SubscriptionUpdatedMetadata $metadata, ?string $customerId = null, CustomerIndividual|CustomerTeam|null $customer = null, ?string $externalCustomerId = null, ?string $memberId = null, ?string $externalMemberId = null, ?string $parentId = null, string $source = 'system', string $name = 'subscription.updated', ?int $childCount = 0)
     {
         $this->id = $id;
         $this->timestamp = $timestamp;

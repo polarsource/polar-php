@@ -113,9 +113,9 @@ if ($response->fileUpload !== null) {
 
 ### Parameters
 
-| Parameter                                                                                                                                            | Type                                                                                                                                                 | Required                                                                                                                                             | Description                                                                                                                                          |
-| ---------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `$request`                                                                                                                                           | [Components\DownloadableFileCreate\|Components\ProductMediaFileCreate\|Components\OrganizationAvatarFileCreate](../../Models/Components/FileCreate.md) | :heavy_check_mark:                                                                                                                                   | The request object to use for the request.                                                                                                           |
+| Parameter                                                                                                                                                                                       | Type                                                                                                                                                                                            | Required                                                                                                                                                                                        | Description                                                                                                                                                                                     |
+| ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `$request`                                                                                                                                                                                      | [Components\DownloadableFileCreate\|Components\ProductMediaFileCreate\|Components\OrganizationAvatarFileCreate\|Components\SupportCaseAttachmentFileCreate](../../Models/Components/FileCreate.md) | :heavy_check_mark:                                                                                                                                                                              | The request object to use for the request.                                                                                                                                                      |
 
 ### Response
 
@@ -179,7 +179,7 @@ $response = $sdk->files->uploaded(
 
 );
 
-if ($response->responseFilesUploaded !== null) {
+if ($response->fileRead !== null) {
     // handle response
 }
 ```
@@ -287,7 +287,7 @@ $response = $sdk->files->update(
 
 );
 
-if ($response->responseFilesUpdate !== null) {
+if ($response->fileRead !== null) {
     // handle response
 }
 ```

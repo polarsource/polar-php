@@ -20,6 +20,14 @@ class EventName
     public string $name;
 
     /**
+     * Human readable label of the event.
+     *
+     * @var string $label
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('label')]
+    public string $label;
+
+    /**
      *
      * @var \Polar\Models\Components\EventSource $source
      */
@@ -53,15 +61,17 @@ class EventName
 
     /**
      * @param  string  $name
+     * @param  string  $label
      * @param  \Polar\Models\Components\EventSource  $source
      * @param  int  $occurrences
      * @param  \DateTime  $firstSeen
      * @param  \DateTime  $lastSeen
      * @phpstan-pure
      */
-    public function __construct(string $name, EventSource $source, int $occurrences, \DateTime $firstSeen, \DateTime $lastSeen)
+    public function __construct(string $name, string $label, EventSource $source, int $occurrences, \DateTime $firstSeen, \DateTime $lastSeen)
     {
         $this->name = $name;
+        $this->label = $label;
         $this->source = $source;
         $this->occurrences = $occurrences;
         $this->firstSeen = $firstSeen;

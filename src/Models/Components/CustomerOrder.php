@@ -131,14 +131,6 @@ class CustomerOrder
     public OrderBillingReason $billingReason;
 
     /**
-     * The invoice number associated with this order.
-     *
-     * @var string $invoiceNumber
-     */
-    #[\Speakeasy\Serializer\Annotation\SerializedName('invoice_number')]
-    public string $invoiceNumber;
-
-    /**
      * Whether an invoice has been generated for this order.
      *
      * @var bool $isInvoiceGenerated
@@ -171,6 +163,22 @@ class CustomerOrder
     public string $description;
 
     /**
+     * Amount in cents that can still be refunded (net, before taxes). Accounts for any applied customer balance and previous refunds.
+     *
+     * @var int $refundableAmount
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('refundable_amount')]
+    public int $refundableAmount;
+
+    /**
+     * Sales tax in cents that would be refunded if the full refundable amount is refunded.
+     *
+     * @var int $refundableTaxAmount
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('refundable_tax_amount')]
+    public int $refundableTaxAmount;
+
+    /**
      * Last modification timestamp of the object.
      *
      * @var ?\DateTime $modifiedAt
@@ -193,6 +201,22 @@ class CustomerOrder
     #[\Speakeasy\Serializer\Annotation\SerializedName('billing_address')]
     #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\Address|null')]
     public ?Address $billingAddress;
+
+    /**
+     * The invoice number associated with this order. `null` while the order is in `draft` status; assigned at finalize.
+     *
+     * @var ?string $invoiceNumber
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('invoice_number')]
+    public ?string $invoiceNumber;
+
+    /**
+     * The receipt number for this order. Set once the order is paid for organizations with receipts enabled. When set, a downloadable receipt PDF can be obtained via the receipt endpoint.
+     *
+     * @var ?string $receiptNumber
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('receipt_number')]
+    public ?string $receiptNumber;
 
     /**
      *
@@ -248,7 +272,7 @@ class CustomerOrder
     public ?int $seats = null;
 
     /**
-     * When the next payment retry is scheduled
+     * When the next automatic payment retry is scheduled. `null` if the order is not in dunning or all retries have been exhausted.
      *
      * @var ?\DateTime $nextPaymentAttemptAt
      */
@@ -272,14 +296,17 @@ class CustomerOrder
      * @param  int  $refundedTaxAmount
      * @param  string  $currency
      * @param  \Polar\Models\Components\OrderBillingReason  $billingReason
-     * @param  string  $invoiceNumber
      * @param  bool  $isInvoiceGenerated
      * @param  string  $customerId
      * @param  array<\Polar\Models\Components\OrderItemSchema>  $items
      * @param  string  $description
+     * @param  int  $refundableAmount
+     * @param  int  $refundableTaxAmount
      * @param  ?\DateTime  $modifiedAt
      * @param  ?string  $billingName
      * @param  ?\Polar\Models\Components\Address  $billingAddress
+     * @param  ?string  $invoiceNumber
+     * @param  ?string  $receiptNumber
      * @param  ?string  $productId
      * @param  ?string  $discountId
      * @param  ?string  $subscriptionId
@@ -290,7 +317,7 @@ class CustomerOrder
      * @param  ?\DateTime  $nextPaymentAttemptAt
      * @phpstan-pure
      */
-    public function __construct(string $id, \DateTime $createdAt, OrderStatus $status, bool $paid, int $subtotalAmount, int $discountAmount, int $netAmount, int $taxAmount, int $totalAmount, int $appliedBalanceAmount, int $dueAmount, int $refundedAmount, int $refundedTaxAmount, string $currency, OrderBillingReason $billingReason, string $invoiceNumber, bool $isInvoiceGenerated, string $customerId, array $items, string $description, ?\DateTime $modifiedAt = null, ?string $billingName = null, ?Address $billingAddress = null, ?string $productId = null, ?string $discountId = null, ?string $subscriptionId = null, ?string $checkoutId = null, ?CustomerOrderProduct $product = null, ?CustomerOrderSubscription $subscription = null, ?int $seats = null, ?\DateTime $nextPaymentAttemptAt = null)
+    public function __construct(string $id, \DateTime $createdAt, OrderStatus $status, bool $paid, int $subtotalAmount, int $discountAmount, int $netAmount, int $taxAmount, int $totalAmount, int $appliedBalanceAmount, int $dueAmount, int $refundedAmount, int $refundedTaxAmount, string $currency, OrderBillingReason $billingReason, bool $isInvoiceGenerated, string $customerId, array $items, string $description, int $refundableAmount, int $refundableTaxAmount, ?\DateTime $modifiedAt = null, ?string $billingName = null, ?Address $billingAddress = null, ?string $invoiceNumber = null, ?string $receiptNumber = null, ?string $productId = null, ?string $discountId = null, ?string $subscriptionId = null, ?string $checkoutId = null, ?CustomerOrderProduct $product = null, ?CustomerOrderSubscription $subscription = null, ?int $seats = null, ?\DateTime $nextPaymentAttemptAt = null)
     {
         $this->id = $id;
         $this->createdAt = $createdAt;
@@ -307,14 +334,17 @@ class CustomerOrder
         $this->refundedTaxAmount = $refundedTaxAmount;
         $this->currency = $currency;
         $this->billingReason = $billingReason;
-        $this->invoiceNumber = $invoiceNumber;
         $this->isInvoiceGenerated = $isInvoiceGenerated;
         $this->customerId = $customerId;
         $this->items = $items;
         $this->description = $description;
+        $this->refundableAmount = $refundableAmount;
+        $this->refundableTaxAmount = $refundableTaxAmount;
         $this->modifiedAt = $modifiedAt;
         $this->billingName = $billingName;
         $this->billingAddress = $billingAddress;
+        $this->invoiceNumber = $invoiceNumber;
+        $this->receiptNumber = $receiptNumber;
         $this->productId = $productId;
         $this->discountId = $discountId;
         $this->subscriptionId = $subscriptionId;

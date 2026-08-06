@@ -21,17 +21,17 @@ class BenefitsUpdateRequest
 
     /**
      *
-     * @var \Polar\Models\Components\BenefitCustomUpdate|\Polar\Models\Components\BenefitDiscordUpdate|\Polar\Models\Components\BenefitGitHubRepositoryUpdate|\Polar\Models\Components\BenefitDownloadablesUpdate|\Polar\Models\Components\BenefitLicenseKeysUpdate|\Polar\Models\Components\BenefitMeterCreditUpdate|\Polar\Models\Components\BenefitFeatureFlagUpdate $requestBody
+     * @var \Polar\Models\Components\BenefitCustomUpdate|\Polar\Models\Components\BenefitDiscordUpdate|\Polar\Models\Components\BenefitGitHubRepositoryUpdate|\Polar\Models\Components\BenefitDownloadablesUpdate|\Polar\Models\Components\BenefitLicenseKeysUpdate|\Polar\Models\Components\BenefitMeterCreditUpdate|\Polar\Models\Components\BenefitFeatureFlagUpdate|\Polar\Models\Components\BenefitSlackSharedChannelUpdate $requestBody
      */
     #[SpeakeasyMetadata('request:mediaType=application/json')]
-    public Components\BenefitCustomUpdate|Components\BenefitDiscordUpdate|Components\BenefitGitHubRepositoryUpdate|Components\BenefitDownloadablesUpdate|Components\BenefitLicenseKeysUpdate|Components\BenefitMeterCreditUpdate|Components\BenefitFeatureFlagUpdate $requestBody;
+    public Components\BenefitCustomUpdate|Components\BenefitDiscordUpdate|Components\BenefitGitHubRepositoryUpdate|Components\BenefitDownloadablesUpdate|Components\BenefitLicenseKeysUpdate|Components\BenefitMeterCreditUpdate|Components\BenefitFeatureFlagUpdate|Components\BenefitSlackSharedChannelUpdate $requestBody;
 
     /**
      * @param  string  $id
-     * @param  \Polar\Models\Components\BenefitCustomUpdate|\Polar\Models\Components\BenefitDiscordUpdate|\Polar\Models\Components\BenefitGitHubRepositoryUpdate|\Polar\Models\Components\BenefitDownloadablesUpdate|\Polar\Models\Components\BenefitLicenseKeysUpdate|\Polar\Models\Components\BenefitMeterCreditUpdate|\Polar\Models\Components\BenefitFeatureFlagUpdate  $requestBody
+     * @param  \Polar\Models\Components\BenefitCustomUpdate|\Polar\Models\Components\BenefitDiscordUpdate|\Polar\Models\Components\BenefitGitHubRepositoryUpdate|\Polar\Models\Components\BenefitDownloadablesUpdate|\Polar\Models\Components\BenefitLicenseKeysUpdate|\Polar\Models\Components\BenefitMeterCreditUpdate|\Polar\Models\Components\BenefitFeatureFlagUpdate|\Polar\Models\Components\BenefitSlackSharedChannelUpdate  $requestBody
      * @phpstan-pure
      */
-    public function __construct(string $id, Components\BenefitCustomUpdate|Components\BenefitDiscordUpdate|Components\BenefitGitHubRepositoryUpdate|Components\BenefitDownloadablesUpdate|Components\BenefitLicenseKeysUpdate|Components\BenefitMeterCreditUpdate|Components\BenefitFeatureFlagUpdate $requestBody)
+    public function __construct(string $id, Components\BenefitCustomUpdate|Components\BenefitDiscordUpdate|Components\BenefitGitHubRepositoryUpdate|Components\BenefitDownloadablesUpdate|Components\BenefitLicenseKeysUpdate|Components\BenefitMeterCreditUpdate|Components\BenefitFeatureFlagUpdate|Components\BenefitSlackSharedChannelUpdate $requestBody)
     {
         $this->id = $id;
         $this->requestBody = $requestBody;

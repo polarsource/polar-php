@@ -66,3 +66,12 @@ Components\CustomerBenefitGrantLicenseKeysUpdate $value = /* values here */
 Components\CustomerBenefitGrantMeterCreditUpdate $value = /* values here */
 ```
 
+### `Components\CustomerBenefitGrantSlackSharedChannelUpdate`
+
+```php
+/**
+* @var \Polar\Models\Components\CustomerBenefitGrantSlackSharedChannelUpdate
+*/
+Components\CustomerBenefitGrantSlackSharedChannelUpdate $value = /* values here */
+```
+

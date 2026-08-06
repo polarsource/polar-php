@@ -197,7 +197,7 @@ $response = $sdk->oauth2->clients->delete(
     clientId: '<id>'
 );
 
-if ($response->any !== null) {
+if ($response->statusCode === 200) {
     // handle response
 }
 ```

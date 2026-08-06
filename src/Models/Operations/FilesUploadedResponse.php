@@ -35,22 +35,22 @@ class FilesUploadedResponse
     /**
      * File upload completed.
      *
-     * @var \Polar\Models\Components\DownloadableFileRead|\Polar\Models\Components\ProductMediaFileRead|\Polar\Models\Components\OrganizationAvatarFileRead|null $responseFilesUploaded
+     * @var \Polar\Models\Components\DownloadableFileRead|\Polar\Models\Components\ProductMediaFileRead|\Polar\Models\Components\OrganizationAvatarFileRead|\Polar\Models\Components\SupportCaseAttachmentFileRead|null $fileRead
      */
-    public Components\DownloadableFileRead|Components\ProductMediaFileRead|Components\OrganizationAvatarFileRead|null $responseFilesUploaded = null;
+    public Components\DownloadableFileRead|Components\ProductMediaFileRead|Components\OrganizationAvatarFileRead|Components\SupportCaseAttachmentFileRead|null $fileRead = null;
 
     /**
      * @param  string  $contentType
      * @param  int  $statusCode
      * @param  \Psr\Http\Message\ResponseInterface  $rawResponse
-     * @param  \Polar\Models\Components\DownloadableFileRead|\Polar\Models\Components\ProductMediaFileRead|\Polar\Models\Components\OrganizationAvatarFileRead|null  $responseFilesUploaded
+     * @param  \Polar\Models\Components\DownloadableFileRead|\Polar\Models\Components\ProductMediaFileRead|\Polar\Models\Components\OrganizationAvatarFileRead|\Polar\Models\Components\SupportCaseAttachmentFileRead|null  $fileRead
      * @phpstan-pure
      */
-    public function __construct(string $contentType, int $statusCode, \Psr\Http\Message\ResponseInterface $rawResponse, Components\DownloadableFileRead|Components\ProductMediaFileRead|Components\OrganizationAvatarFileRead|null $responseFilesUploaded = null)
+    public function __construct(string $contentType, int $statusCode, \Psr\Http\Message\ResponseInterface $rawResponse, Components\DownloadableFileRead|Components\ProductMediaFileRead|Components\OrganizationAvatarFileRead|Components\SupportCaseAttachmentFileRead|null $fileRead = null)
     {
         $this->contentType = $contentType;
         $this->statusCode = $statusCode;
         $this->rawResponse = $rawResponse;
-        $this->responseFilesUploaded = $responseFilesUploaded;
+        $this->fileRead = $fileRead;
     }
 }

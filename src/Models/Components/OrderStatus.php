@@ -11,6 +11,7 @@ namespace Polar\Models\Components;
 
 enum OrderStatus: string
 {
+    case Draft = 'draft';
     case Pending = 'pending';
     case Paid = 'paid';
     case Refunded = 'refunded';

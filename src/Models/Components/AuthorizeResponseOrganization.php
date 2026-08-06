@@ -63,15 +63,24 @@ class AuthorizeResponseOrganization
     public string $subType;
 
     /**
+     *
+     * @var ?bool $requiresSingleOrganization
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('requires_single_organization')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
+    public ?bool $requiresSingleOrganization = null;
+
+    /**
      * @param  \Polar\Models\Components\OAuth2ClientPublic  $client
      * @param  string  $subType
      * @param  array<\Polar\Models\Components\Scope>  $scopes
      * @param  array<\Polar\Models\Components\AuthorizeOrganization>  $organizations
      * @param  ?\Polar\Models\Components\AuthorizeOrganization  $sub
+     * @param  ?bool  $requiresSingleOrganization
      * @param  ?array<string, string>  $scopeDisplayNames
      * @phpstan-pure
      */
-    public function __construct(OAuth2ClientPublic $client, array $scopes, array $organizations, ?AuthorizeOrganization $sub = null, ?array $scopeDisplayNames = null, string $subType = 'organization')
+    public function __construct(OAuth2ClientPublic $client, array $scopes, array $organizations, ?AuthorizeOrganization $sub = null, ?array $scopeDisplayNames = null, string $subType = 'organization', ?bool $requiresSingleOrganization = false)
     {
         $this->client = $client;
         $this->scopes = $scopes;
@@ -79,5 +88,6 @@ class AuthorizeResponseOrganization
         $this->sub = $sub;
         $this->scopeDisplayNames = $scopeDisplayNames;
         $this->subType = $subType;
+        $this->requiresSingleOrganization = $requiresSingleOrganization;
     }
 }

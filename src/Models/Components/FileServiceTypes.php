@@ -14,4 +14,5 @@ enum FileServiceTypes: string
     case Downloadable = 'downloadable';
     case ProductMedia = 'product_media';
     case OrganizationAvatar = 'organization_avatar';
+    case SupportCaseAttachment = 'support_case_attachment';
 }

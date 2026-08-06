@@ -66,3 +66,12 @@ Components\BenefitMeterCreditUpdate $value = /* values here */
 Components\BenefitFeatureFlagUpdate $value = /* values here */
 ```
 
+### `Components\BenefitSlackSharedChannelUpdate`
+
+```php
+/**
+* @var \Polar\Models\Components\BenefitSlackSharedChannelUpdate
+*/
+Components\BenefitSlackSharedChannelUpdate $value = /* values here */
+```
+

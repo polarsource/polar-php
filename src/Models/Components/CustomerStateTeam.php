@@ -88,13 +88,6 @@ class CustomerStateTeam
     public array $activeMeters;
 
     /**
-     *
-     * @var string $avatarUrl
-     */
-    #[\Speakeasy\Serializer\Annotation\SerializedName('avatar_url')]
-    public string $avatarUrl;
-
-    /**
      * Last modification timestamp of the object.
      *
      * @var ?\DateTime $modifiedAt
@@ -109,6 +102,14 @@ class CustomerStateTeam
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('name')]
     public ?string $name;
+
+    /**
+     * The name that should appear on the customer's invoices. Falls back to the customer name when not explicitly set.
+     *
+     * @var ?string $billingName
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('billing_name')]
+    public ?string $billingName;
 
     /**
      *
@@ -134,6 +135,13 @@ class CustomerStateTeam
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('deleted_at')]
     public ?\DateTime $deletedAt;
+
+    /**
+     *
+     * @var ?string $avatarUrl
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('avatar_url')]
+    public ?string $avatarUrl;
 
     /**
      * The ID of the customer in your system. This must be unique within the organization. Once set, it can't be updated.
@@ -162,6 +170,15 @@ class CustomerStateTeam
     public ?string $locale = null;
 
     /**
+     * The ID of the customer's default payment method, if any. Use the payment methods endpoint to retrieve its details.
+     *
+     * @var ?string $defaultPaymentMethodId
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('default_payment_method_id')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
+    public ?string $defaultPaymentMethodId = null;
+
+    /**
      * The type of customer. Team customers can have multiple members.
      *
      * @var string $type
@@ -179,18 +196,20 @@ class CustomerStateTeam
      * @param  array<\Polar\Models\Components\CustomerStateSubscription>  $activeSubscriptions
      * @param  array<\Polar\Models\Components\CustomerStateBenefitGrant>  $grantedBenefits
      * @param  array<\Polar\Models\Components\CustomerStateMeter>  $activeMeters
-     * @param  string  $avatarUrl
      * @param  ?\DateTime  $modifiedAt
      * @param  ?string  $name
+     * @param  ?string  $billingName
      * @param  ?\Polar\Models\Components\Address  $billingAddress
      * @param  ?array<string|\Polar\Models\Components\TaxIDFormat|null>  $taxId
      * @param  ?\DateTime  $deletedAt
+     * @param  ?string  $avatarUrl
      * @param  ?string  $externalId
      * @param  ?string  $email
      * @param  ?string  $locale
+     * @param  ?string  $defaultPaymentMethodId
      * @phpstan-pure
      */
-    public function __construct(string $id, \DateTime $createdAt, array $metadata, bool $emailVerified, string $organizationId, array $activeSubscriptions, array $grantedBenefits, array $activeMeters, string $avatarUrl, ?\DateTime $modifiedAt = null, ?string $name = null, ?Address $billingAddress = null, ?array $taxId = null, ?\DateTime $deletedAt = null, ?string $externalId = null, ?string $email = null, ?string $locale = null, string $type = 'team')
+    public function __construct(string $id, \DateTime $createdAt, array $metadata, bool $emailVerified, string $organizationId, array $activeSubscriptions, array $grantedBenefits, array $activeMeters, ?\DateTime $modifiedAt = null, ?string $name = null, ?string $billingName = null, ?Address $billingAddress = null, ?array $taxId = null, ?\DateTime $deletedAt = null, ?string $avatarUrl = null, ?string $externalId = null, ?string $email = null, ?string $locale = null, ?string $defaultPaymentMethodId = null, string $type = 'team')
     {
         $this->id = $id;
         $this->createdAt = $createdAt;
@@ -200,15 +219,17 @@ class CustomerStateTeam
         $this->activeSubscriptions = $activeSubscriptions;
         $this->grantedBenefits = $grantedBenefits;
         $this->activeMeters = $activeMeters;
-        $this->avatarUrl = $avatarUrl;
         $this->modifiedAt = $modifiedAt;
         $this->name = $name;
+        $this->billingName = $billingName;
         $this->billingAddress = $billingAddress;
         $this->taxId = $taxId;
         $this->deletedAt = $deletedAt;
+        $this->avatarUrl = $avatarUrl;
         $this->externalId = $externalId;
         $this->email = $email;
         $this->locale = $locale;
+        $this->defaultPaymentMethodId = $defaultPaymentMethodId;
         $this->type = $type;
     }
 }

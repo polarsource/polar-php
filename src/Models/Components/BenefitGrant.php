@@ -70,20 +70,20 @@ class BenefitGrant
 
     /**
      *
-     * @var \Polar\Models\Components\BenefitCustom|\Polar\Models\Components\BenefitDiscord|\Polar\Models\Components\BenefitGitHubRepository|\Polar\Models\Components\BenefitDownloadables|\Polar\Models\Components\BenefitLicenseKeys|\Polar\Models\Components\BenefitMeterCredit|\Polar\Models\Components\BenefitFeatureFlag $benefit
+     * @var \Polar\Models\Components\BenefitCustom|\Polar\Models\Components\BenefitDiscord|\Polar\Models\Components\BenefitGitHubRepository|\Polar\Models\Components\BenefitDownloadables|\Polar\Models\Components\BenefitLicenseKeys|\Polar\Models\Components\BenefitMeterCredit|\Polar\Models\Components\BenefitFeatureFlag|\Polar\Models\Components\BenefitSlackSharedChannel $benefit
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('benefit')]
-    #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\BenefitCustom|\Polar\Models\Components\BenefitDiscord|\Polar\Models\Components\BenefitGitHubRepository|\Polar\Models\Components\BenefitDownloadables|\Polar\Models\Components\BenefitLicenseKeys|\Polar\Models\Components\BenefitMeterCredit|\Polar\Models\Components\BenefitFeatureFlag')]
-    #[\Speakeasy\Serializer\Annotation\UnionDiscriminator(field: 'type', map: ['custom' => '\Polar\Models\Components\BenefitCustom', 'discord' => '\Polar\Models\Components\BenefitDiscord', 'downloadables' => '\Polar\Models\Components\BenefitDownloadables', 'feature_flag' => '\Polar\Models\Components\BenefitFeatureFlag', 'github_repository' => '\Polar\Models\Components\BenefitGitHubRepository', 'license_keys' => '\Polar\Models\Components\BenefitLicenseKeys', 'meter_credit' => '\Polar\Models\Components\BenefitMeterCredit'])]
-    public BenefitCustom|BenefitDiscord|BenefitGitHubRepository|BenefitDownloadables|BenefitLicenseKeys|BenefitMeterCredit|BenefitFeatureFlag $benefit;
+    #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\BenefitCustom|\Polar\Models\Components\BenefitDiscord|\Polar\Models\Components\BenefitGitHubRepository|\Polar\Models\Components\BenefitDownloadables|\Polar\Models\Components\BenefitLicenseKeys|\Polar\Models\Components\BenefitMeterCredit|\Polar\Models\Components\BenefitFeatureFlag|\Polar\Models\Components\BenefitSlackSharedChannel')]
+    #[\Speakeasy\Serializer\Annotation\UnionDiscriminator(field: 'type', map: ['custom' => '\Polar\Models\Components\BenefitCustom', 'discord' => '\Polar\Models\Components\BenefitDiscord', 'downloadables' => '\Polar\Models\Components\BenefitDownloadables', 'feature_flag' => '\Polar\Models\Components\BenefitFeatureFlag', 'github_repository' => '\Polar\Models\Components\BenefitGitHubRepository', 'license_keys' => '\Polar\Models\Components\BenefitLicenseKeys', 'meter_credit' => '\Polar\Models\Components\BenefitMeterCredit', 'slack_shared_channel' => '\Polar\Models\Components\BenefitSlackSharedChannel'])]
+    public BenefitCustom|BenefitDiscord|BenefitGitHubRepository|BenefitDownloadables|BenefitLicenseKeys|BenefitMeterCredit|BenefitFeatureFlag|BenefitSlackSharedChannel $benefit;
 
     /**
      *
-     * @var \Polar\Models\Components\BenefitGrantDiscordProperties|\Polar\Models\Components\BenefitGrantGitHubRepositoryProperties|\Polar\Models\Components\BenefitGrantDownloadablesProperties|\Polar\Models\Components\BenefitGrantLicenseKeysProperties|\Polar\Models\Components\BenefitGrantCustomProperties|\Polar\Models\Components\BenefitGrantFeatureFlagProperties $properties
+     * @var \Polar\Models\Components\BenefitGrantDiscordProperties|\Polar\Models\Components\BenefitGrantGitHubRepositoryProperties|\Polar\Models\Components\BenefitGrantDownloadablesProperties|\Polar\Models\Components\BenefitGrantLicenseKeysProperties|\Polar\Models\Components\BenefitGrantCustomProperties|\Polar\Models\Components\BenefitGrantFeatureFlagProperties|\Polar\Models\Components\BenefitGrantSlackSharedChannelProperties $properties
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('properties')]
-    #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\BenefitGrantDiscordProperties|\Polar\Models\Components\BenefitGrantGitHubRepositoryProperties|\Polar\Models\Components\BenefitGrantDownloadablesProperties|\Polar\Models\Components\BenefitGrantLicenseKeysProperties|\Polar\Models\Components\BenefitGrantCustomProperties|\Polar\Models\Components\BenefitGrantFeatureFlagProperties')]
-    public BenefitGrantDiscordProperties|BenefitGrantGitHubRepositoryProperties|BenefitGrantDownloadablesProperties|BenefitGrantLicenseKeysProperties|BenefitGrantCustomProperties|BenefitGrantFeatureFlagProperties $properties;
+    #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\BenefitGrantDiscordProperties|\Polar\Models\Components\BenefitGrantGitHubRepositoryProperties|\Polar\Models\Components\BenefitGrantDownloadablesProperties|\Polar\Models\Components\BenefitGrantLicenseKeysProperties|\Polar\Models\Components\BenefitGrantCustomProperties|\Polar\Models\Components\BenefitGrantFeatureFlagProperties|\Polar\Models\Components\BenefitGrantSlackSharedChannelProperties')]
+    public BenefitGrantDiscordProperties|BenefitGrantGitHubRepositoryProperties|BenefitGrantDownloadablesProperties|BenefitGrantLicenseKeysProperties|BenefitGrantCustomProperties|BenefitGrantFeatureFlagProperties|BenefitGrantSlackSharedChannelProperties $properties;
 
     /**
      * Last modification timestamp of the object.
@@ -163,8 +163,8 @@ class BenefitGrant
      * @param  string  $customerId
      * @param  string  $benefitId
      * @param  \Polar\Models\Components\CustomerIndividual|\Polar\Models\Components\CustomerTeam  $customer
-     * @param  \Polar\Models\Components\BenefitCustom|\Polar\Models\Components\BenefitDiscord|\Polar\Models\Components\BenefitGitHubRepository|\Polar\Models\Components\BenefitDownloadables|\Polar\Models\Components\BenefitLicenseKeys|\Polar\Models\Components\BenefitMeterCredit|\Polar\Models\Components\BenefitFeatureFlag  $benefit
-     * @param  \Polar\Models\Components\BenefitGrantDiscordProperties|\Polar\Models\Components\BenefitGrantGitHubRepositoryProperties|\Polar\Models\Components\BenefitGrantDownloadablesProperties|\Polar\Models\Components\BenefitGrantLicenseKeysProperties|\Polar\Models\Components\BenefitGrantCustomProperties|\Polar\Models\Components\BenefitGrantFeatureFlagProperties  $properties
+     * @param  \Polar\Models\Components\BenefitCustom|\Polar\Models\Components\BenefitDiscord|\Polar\Models\Components\BenefitGitHubRepository|\Polar\Models\Components\BenefitDownloadables|\Polar\Models\Components\BenefitLicenseKeys|\Polar\Models\Components\BenefitMeterCredit|\Polar\Models\Components\BenefitFeatureFlag|\Polar\Models\Components\BenefitSlackSharedChannel  $benefit
+     * @param  \Polar\Models\Components\BenefitGrantDiscordProperties|\Polar\Models\Components\BenefitGrantGitHubRepositoryProperties|\Polar\Models\Components\BenefitGrantDownloadablesProperties|\Polar\Models\Components\BenefitGrantLicenseKeysProperties|\Polar\Models\Components\BenefitGrantCustomProperties|\Polar\Models\Components\BenefitGrantFeatureFlagProperties|\Polar\Models\Components\BenefitGrantSlackSharedChannelProperties  $properties
      * @param  ?\DateTime  $modifiedAt
      * @param  ?string  $subscriptionId
      * @param  ?string  $orderId
@@ -175,7 +175,7 @@ class BenefitGrant
      * @param  ?\Polar\Models\Components\Member  $member
      * @phpstan-pure
      */
-    public function __construct(\DateTime $createdAt, string $id, bool $isGranted, bool $isRevoked, string $customerId, string $benefitId, CustomerIndividual|CustomerTeam $customer, BenefitCustom|BenefitDiscord|BenefitGitHubRepository|BenefitDownloadables|BenefitLicenseKeys|BenefitMeterCredit|BenefitFeatureFlag $benefit, BenefitGrantDiscordProperties|BenefitGrantGitHubRepositoryProperties|BenefitGrantDownloadablesProperties|BenefitGrantLicenseKeysProperties|BenefitGrantCustomProperties|BenefitGrantFeatureFlagProperties $properties, ?\DateTime $modifiedAt = null, ?string $subscriptionId = null, ?string $orderId = null, ?\DateTime $grantedAt = null, ?\DateTime $revokedAt = null, ?string $memberId = null, ?BenefitGrantError $error = null, ?Member $member = null)
+    public function __construct(\DateTime $createdAt, string $id, bool $isGranted, bool $isRevoked, string $customerId, string $benefitId, CustomerIndividual|CustomerTeam $customer, BenefitCustom|BenefitDiscord|BenefitGitHubRepository|BenefitDownloadables|BenefitLicenseKeys|BenefitMeterCredit|BenefitFeatureFlag|BenefitSlackSharedChannel $benefit, BenefitGrantDiscordProperties|BenefitGrantGitHubRepositoryProperties|BenefitGrantDownloadablesProperties|BenefitGrantLicenseKeysProperties|BenefitGrantCustomProperties|BenefitGrantFeatureFlagProperties|BenefitGrantSlackSharedChannelProperties $properties, ?\DateTime $modifiedAt = null, ?string $subscriptionId = null, ?string $orderId = null, ?\DateTime $grantedAt = null, ?\DateTime $revokedAt = null, ?string $memberId = null, ?BenefitGrantError $error = null, ?Member $member = null)
     {
         $this->createdAt = $createdAt;
         $this->id = $id;

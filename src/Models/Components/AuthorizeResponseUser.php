@@ -29,6 +29,15 @@ class AuthorizeResponseUser
     public array $scopes;
 
     /**
+     * $organizations
+     *
+     * @var array<\Polar\Models\Components\AuthorizeOrganization> $organizations
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('organizations')]
+    #[\Speakeasy\Serializer\Annotation\Type('array<\Polar\Models\Components\AuthorizeOrganization>')]
+    public array $organizations;
+
+    /**
      *
      * @var ?\Polar\Models\Components\AuthorizeUser $sub
      */
@@ -54,19 +63,31 @@ class AuthorizeResponseUser
     public string $subType;
 
     /**
+     *
+     * @var ?bool $requiresSingleOrganization
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('requires_single_organization')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
+    public ?bool $requiresSingleOrganization = null;
+
+    /**
      * @param  \Polar\Models\Components\OAuth2ClientPublic  $client
      * @param  string  $subType
      * @param  array<\Polar\Models\Components\Scope>  $scopes
+     * @param  array<\Polar\Models\Components\AuthorizeOrganization>  $organizations
      * @param  ?\Polar\Models\Components\AuthorizeUser  $sub
+     * @param  ?bool  $requiresSingleOrganization
      * @param  ?array<string, string>  $scopeDisplayNames
      * @phpstan-pure
      */
-    public function __construct(OAuth2ClientPublic $client, array $scopes, ?AuthorizeUser $sub = null, ?array $scopeDisplayNames = null, string $subType = 'user')
+    public function __construct(OAuth2ClientPublic $client, array $scopes, array $organizations, ?AuthorizeUser $sub = null, ?array $scopeDisplayNames = null, string $subType = 'user', ?bool $requiresSingleOrganization = false)
     {
         $this->client = $client;
         $this->scopes = $scopes;
+        $this->organizations = $organizations;
         $this->sub = $sub;
         $this->scopeDisplayNames = $scopeDisplayNames;
         $this->subType = $subType;
+        $this->requiresSingleOrganization = $requiresSingleOrganization;
     }
 }

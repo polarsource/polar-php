@@ -77,6 +77,14 @@ class Organization
     public OrganizationStatus $status;
 
     /**
+     * Whether members must access this organization through its SSO connection.
+     *
+     * @var bool $ssoEnforced
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('sso_enforced')]
+    public bool $ssoEnforced;
+
+    /**
      * Default presentment currency. Used as fallback in checkout and customer portal, if the customer's local currency is not available.
      *
      * @var string $defaultPresentmentCurrency
@@ -102,14 +110,6 @@ class Organization
 
     /**
      *
-     * @var \Polar\Models\Components\OrganizationNotificationSettings $notificationSettings
-     */
-    #[\Speakeasy\Serializer\Annotation\SerializedName('notification_settings')]
-    #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\OrganizationNotificationSettings')]
-    public OrganizationNotificationSettings $notificationSettings;
-
-    /**
-     *
      * @var \Polar\Models\Components\OrganizationCustomerEmailSettings $customerEmailSettings
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('customer_email_settings')]
@@ -123,6 +123,14 @@ class Organization
     #[\Speakeasy\Serializer\Annotation\SerializedName('customer_portal_settings')]
     #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\OrganizationCustomerPortalSettings')]
     public OrganizationCustomerPortalSettings $customerPortalSettings;
+
+    /**
+     *
+     * @var \Polar\Models\Components\OrganizationCapabilities $capabilities
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('capabilities')]
+    #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\OrganizationCapabilities')]
+    public OrganizationCapabilities $capabilities;
 
     /**
      * Last modification timestamp of the object.
@@ -174,6 +182,22 @@ class Organization
     public ?OrganizationFeatureSettings $featureSettings;
 
     /**
+     * ID of the transactions account.
+     *
+     * @var ?string $accountId
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('account_id')]
+    public ?string $accountId;
+
+    /**
+     * ID of the payout account.
+     *
+     * @var ?string $payoutAccountId
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('payout_account_id')]
+    public ?string $payoutAccountId;
+
+    /**
      * Two-letter country code (ISO 3166-1 alpha-2).
      *
      * @var ?\Polar\Models\Components\CountryAlpha2 $country
@@ -192,22 +216,25 @@ class Organization
      * @param  bool  $allowCustomerUpdates
      * @param  array<\Polar\Models\Components\OrganizationSocialLink>  $socials
      * @param  \Polar\Models\Components\OrganizationStatus  $status
+     * @param  bool  $ssoEnforced
      * @param  string  $defaultPresentmentCurrency
      * @param  \Polar\Models\Components\TaxBehaviorOption  $defaultTaxBehavior
      * @param  \Polar\Models\Components\OrganizationSubscriptionSettings  $subscriptionSettings
-     * @param  \Polar\Models\Components\OrganizationNotificationSettings  $notificationSettings
      * @param  \Polar\Models\Components\OrganizationCustomerEmailSettings  $customerEmailSettings
      * @param  \Polar\Models\Components\OrganizationCustomerPortalSettings  $customerPortalSettings
+     * @param  \Polar\Models\Components\OrganizationCapabilities  $capabilities
      * @param  ?\DateTime  $modifiedAt
      * @param  ?string  $avatarUrl
      * @param  ?string  $email
      * @param  ?string  $website
      * @param  ?\DateTime  $detailsSubmittedAt
      * @param  ?\Polar\Models\Components\OrganizationFeatureSettings  $featureSettings
+     * @param  ?string  $accountId
+     * @param  ?string  $payoutAccountId
      * @param  ?\Polar\Models\Components\CountryAlpha2  $country
      * @phpstan-pure
      */
-    public function __construct(\DateTime $createdAt, string $id, string $name, string $slug, SubscriptionProrationBehavior $prorationBehavior, bool $allowCustomerUpdates, array $socials, OrganizationStatus $status, string $defaultPresentmentCurrency, TaxBehaviorOption $defaultTaxBehavior, OrganizationSubscriptionSettings $subscriptionSettings, OrganizationNotificationSettings $notificationSettings, OrganizationCustomerEmailSettings $customerEmailSettings, OrganizationCustomerPortalSettings $customerPortalSettings, ?\DateTime $modifiedAt = null, ?string $avatarUrl = null, ?string $email = null, ?string $website = null, ?\DateTime $detailsSubmittedAt = null, ?OrganizationFeatureSettings $featureSettings = null, ?CountryAlpha2 $country = null)
+    public function __construct(\DateTime $createdAt, string $id, string $name, string $slug, SubscriptionProrationBehavior $prorationBehavior, bool $allowCustomerUpdates, array $socials, OrganizationStatus $status, bool $ssoEnforced, string $defaultPresentmentCurrency, TaxBehaviorOption $defaultTaxBehavior, OrganizationSubscriptionSettings $subscriptionSettings, OrganizationCustomerEmailSettings $customerEmailSettings, OrganizationCustomerPortalSettings $customerPortalSettings, OrganizationCapabilities $capabilities, ?\DateTime $modifiedAt = null, ?string $avatarUrl = null, ?string $email = null, ?string $website = null, ?\DateTime $detailsSubmittedAt = null, ?OrganizationFeatureSettings $featureSettings = null, ?string $accountId = null, ?string $payoutAccountId = null, ?CountryAlpha2 $country = null)
     {
         $this->createdAt = $createdAt;
         $this->id = $id;
@@ -217,18 +244,21 @@ class Organization
         $this->allowCustomerUpdates = $allowCustomerUpdates;
         $this->socials = $socials;
         $this->status = $status;
+        $this->ssoEnforced = $ssoEnforced;
         $this->defaultPresentmentCurrency = $defaultPresentmentCurrency;
         $this->defaultTaxBehavior = $defaultTaxBehavior;
         $this->subscriptionSettings = $subscriptionSettings;
-        $this->notificationSettings = $notificationSettings;
         $this->customerEmailSettings = $customerEmailSettings;
         $this->customerPortalSettings = $customerPortalSettings;
+        $this->capabilities = $capabilities;
         $this->modifiedAt = $modifiedAt;
         $this->avatarUrl = $avatarUrl;
         $this->email = $email;
         $this->website = $website;
         $this->detailsSubmittedAt = $detailsSubmittedAt;
         $this->featureSettings = $featureSettings;
+        $this->accountId = $accountId;
+        $this->payoutAccountId = $payoutAccountId;
         $this->country = $country;
     }
 }

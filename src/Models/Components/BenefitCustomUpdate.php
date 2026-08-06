@@ -42,6 +42,16 @@ class BenefitCustomUpdate
     public ?string $description = null;
 
     /**
+     * The visibility of the benefit in the customer portal.
+     *
+     * @var ?\Polar\Models\Components\BenefitVisibility $visibility
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('visibility')]
+    #[\Speakeasy\Serializer\Annotation\Type('\Polar\Models\Components\BenefitVisibility|null')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
+    public ?BenefitVisibility $visibility = null;
+
+    /**
      *
      * @var ?\Polar\Models\Components\BenefitCustomProperties $properties
      */
@@ -61,13 +71,15 @@ class BenefitCustomUpdate
      * @param  string  $type
      * @param  ?array<string, string|int|float|bool>  $metadata
      * @param  ?string  $description
+     * @param  ?\Polar\Models\Components\BenefitVisibility  $visibility
      * @param  ?\Polar\Models\Components\BenefitCustomProperties  $properties
      * @phpstan-pure
      */
-    public function __construct(?array $metadata = null, ?string $description = null, ?BenefitCustomProperties $properties = null, string $type = 'custom')
+    public function __construct(?array $metadata = null, ?string $description = null, ?BenefitVisibility $visibility = null, ?BenefitCustomProperties $properties = null, string $type = 'custom')
     {
         $this->metadata = $metadata;
         $this->description = $description;
+        $this->visibility = $visibility;
         $this->properties = $properties;
         $this->type = $type;
     }

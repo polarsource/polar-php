@@ -10,8 +10,6 @@
 | `Email`                          | email                            |
 | `UserRead`                       | user:read                        |
 | `UserWrite`                      | user:write                       |
-| `WebRead`                        | web:read                         |
-| `WebWrite`                       | web:write                        |
 | `OrganizationsRead`              | organizations:read               |
 | `OrganizationsWrite`             | organizations:write              |
 | `CustomFieldsRead`               | custom_fields:read               |
@@ -45,6 +43,7 @@
 | `WalletsRead`                    | wallets:read                     |
 | `WalletsWrite`                   | wallets:write                    |
 | `DisputesRead`                   | disputes:read                    |
+| `DisputesWrite`                  | disputes:write                   |
 | `CustomerMetersRead`             | customer_meters:read             |
 | `CustomerSessionsWrite`          | customer_sessions:write          |
 | `MemberSessionsWrite`            | member_sessions:write            |

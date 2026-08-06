@@ -40,15 +40,6 @@ class OrganizationFeatureSettings
     public ?bool $seatBasedPricingEnabled = null;
 
     /**
-     * If this organization has RevOps enabled
-     *
-     * @var ?bool $revopsEnabled
-     */
-    #[\Speakeasy\Serializer\Annotation\SerializedName('revops_enabled')]
-    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
-    public ?bool $revopsEnabled = null;
-
-    /**
      * If this organization has Wallets enabled
      *
      * @var ?bool $walletsEnabled
@@ -67,24 +58,6 @@ class OrganizationFeatureSettings
     public ?bool $memberModelEnabled = null;
 
     /**
-     * If this organization reads from Tinybird
-     *
-     * @var ?bool $tinybirdRead
-     */
-    #[\Speakeasy\Serializer\Annotation\SerializedName('tinybird_read')]
-    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
-    public ?bool $tinybirdRead = null;
-
-    /**
-     * If this organization compares Tinybird results with database
-     *
-     * @var ?bool $tinybirdCompare
-     */
-    #[\Speakeasy\Serializer\Annotation\SerializedName('tinybird_compare')]
-    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
-    public ?bool $tinybirdCompare = null;
-
-    /**
      * If this organization has checkout localization enabled
      *
      * @var ?bool $checkoutLocalizationEnabled
@@ -94,27 +67,109 @@ class OrganizationFeatureSettings
     public ?bool $checkoutLocalizationEnabled = null;
 
     /**
+     * If this organization has access to reset proration behavior.
+     *
+     * @var ?bool $resetProrationBehaviorEnabled
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('reset_proration_behavior_enabled')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
+    public ?bool $resetProrationBehaviorEnabled = null;
+
+    /**
+     * If this organization can create and finalize draft orders via the API (off-session charges against a saved payment method).
+     *
+     * @var ?bool $offSessionChargesEnabled
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('off_session_charges_enabled')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
+    public ?bool $offSessionChargesEnabled = null;
+
+    /**
+     * Enables the slack shared channel benefit
+     *
+     * @var ?bool $slackBenefitEnabled
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('slack_benefit_enabled')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
+    public ?bool $slackBenefitEnabled = null;
+
+    /**
+     * If this organization has preview access to new features enabled
+     *
+     * @var ?bool $previewAccessEnabled
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('preview_access_enabled')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
+    public ?bool $previewAccessEnabled = null;
+
+    /**
+     * If this organization has the disputes dashboard enabled
+     *
+     * @var ?bool $disputesEnabled
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('disputes_enabled')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
+    public ?bool $disputesEnabled = null;
+
+    /**
+     * If this organization has single sign-on configuration enabled
+     *
+     * @var ?bool $ssoEnabled
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('sso_enabled')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
+    public ?bool $ssoEnabled = null;
+
+    /**
+     * If this organization has the split product navigation (Billing / Compass / Customers) enabled in the dashboard
+     *
+     * @var ?bool $compassEnabled
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('compass_enabled')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
+    public ?bool $compassEnabled = null;
+
+    /**
+     * If this organization can migrate its billing from another provider (e.g. Stripe) to Polar.
+     *
+     * @var ?bool $merchantMigrationEnabled
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('merchant_migration_enabled')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
+    public ?bool $merchantMigrationEnabled = null;
+
+    /**
      * @param  ?bool  $issueFundingEnabled
      * @param  ?bool  $seatBasedPricingEnabled
-     * @param  ?bool  $revopsEnabled
      * @param  ?bool  $walletsEnabled
      * @param  ?bool  $memberModelEnabled
-     * @param  ?bool  $tinybirdRead
-     * @param  ?bool  $tinybirdCompare
      * @param  ?bool  $checkoutLocalizationEnabled
+     * @param  ?bool  $resetProrationBehaviorEnabled
+     * @param  ?bool  $offSessionChargesEnabled
+     * @param  ?bool  $slackBenefitEnabled
+     * @param  ?bool  $previewAccessEnabled
+     * @param  ?bool  $disputesEnabled
+     * @param  ?bool  $ssoEnabled
+     * @param  ?bool  $compassEnabled
+     * @param  ?bool  $merchantMigrationEnabled
      * @param  ?array<string>  $overviewMetrics
      * @phpstan-pure
      */
-    public function __construct(?array $overviewMetrics = null, ?bool $issueFundingEnabled = false, ?bool $seatBasedPricingEnabled = false, ?bool $revopsEnabled = false, ?bool $walletsEnabled = false, ?bool $memberModelEnabled = false, ?bool $tinybirdRead = false, ?bool $tinybirdCompare = false, ?bool $checkoutLocalizationEnabled = false)
+    public function __construct(?array $overviewMetrics = null, ?bool $issueFundingEnabled = false, ?bool $seatBasedPricingEnabled = false, ?bool $walletsEnabled = false, ?bool $memberModelEnabled = false, ?bool $checkoutLocalizationEnabled = false, ?bool $resetProrationBehaviorEnabled = false, ?bool $offSessionChargesEnabled = false, ?bool $slackBenefitEnabled = false, ?bool $previewAccessEnabled = false, ?bool $disputesEnabled = false, ?bool $ssoEnabled = false, ?bool $compassEnabled = false, ?bool $merchantMigrationEnabled = false)
     {
         $this->overviewMetrics = $overviewMetrics;
         $this->issueFundingEnabled = $issueFundingEnabled;
         $this->seatBasedPricingEnabled = $seatBasedPricingEnabled;
-        $this->revopsEnabled = $revopsEnabled;
         $this->walletsEnabled = $walletsEnabled;
         $this->memberModelEnabled = $memberModelEnabled;
-        $this->tinybirdRead = $tinybirdRead;
-        $this->tinybirdCompare = $tinybirdCompare;
         $this->checkoutLocalizationEnabled = $checkoutLocalizationEnabled;
+        $this->resetProrationBehaviorEnabled = $resetProrationBehaviorEnabled;
+        $this->offSessionChargesEnabled = $offSessionChargesEnabled;
+        $this->slackBenefitEnabled = $slackBenefitEnabled;
+        $this->previewAccessEnabled = $previewAccessEnabled;
+        $this->disputesEnabled = $disputesEnabled;
+        $this->ssoEnabled = $ssoEnabled;
+        $this->compassEnabled = $compassEnabled;
+        $this->merchantMigrationEnabled = $merchantMigrationEnabled;
     }
 }

@@ -66,3 +66,12 @@ Components\BenefitGrantMeterCreditWebhook $value = /* values here */
 Components\BenefitGrantFeatureFlagWebhook $value = /* values here */
 ```
 
+### `Components\BenefitGrantSlackSharedChannelWebhook`
+
+```php
+/**
+* @var \Polar\Models\Components\BenefitGrantSlackSharedChannelWebhook
+*/
+Components\BenefitGrantSlackSharedChannelWebhook $value = /* values here */
+```
+
